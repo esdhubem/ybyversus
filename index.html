@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Ybyversus • Conectando Saberes e Vidas</title>
-  <meta name="description" content="Ybyversus: Praça Pública Digital conectando saberes, culturas e vidas.">
+  <title>YBY versus • Praça Pública Digital</title>
+  <meta name="description" content="YBY versus: Praça Pública Digital conectando saberes, culturas e vidas.">
 
   <!-- PWA Manifest & Suporte Mobile -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#047857">
+  <meta name="theme-color" content="#11171F">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Ybyversus">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="YBY versus">
   <link rel="icon" type="image/png" href="assets/logo-arara.png">
   <link rel="apple-touch-icon" href="assets/logo-arara.png">
 
-  <!-- Tipografia Plus Jakarta Sans -->
+  <!-- Tipografias: Playfair Display (Serif Luxo) + Plus Jakarta Sans (UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,26 +29,18 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            yby: {
-              primary: '#047857',
-              primaryHover: '#065F46',
-              mint: '#10B981',
-              neon: '#34D399',
-              dark: '#064E3B',
-              night: '#022C22',
-              bgLight: '#EAF6F0',
-              card: '#FFFFFF',
-              borderLight: '#E1EFE7'
-            }
-          },
           fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
           },
-          boxShadow: {
-            'card': '0 8px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02)',
-            'float': '0 12px 28px -6px rgba(4, 120, 87, 0.35)',
-            'phone': '0 25px 60px -15px rgba(6, 78, 59, 0.22)'
+          colors: {
+            ybyDark: '#11171F',
+            ybyCard: '#18222C',
+            ybyBorder: '#283543',
+            goldLight: '#FFF6E5',
+            goldMain: '#E5C384',
+            goldDark: '#C79637',
+            goldDeep: '#8E6B1D'
           }
         }
       }
@@ -61,6 +53,11 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
       -webkit-user-select: none;
+      background-color: #0A0F15;
+    }
+
+    .font-luxury-serif {
+      font-family: 'Playfair Display', Georgia, serif;
     }
 
     .no-scrollbar::-webkit-scrollbar {
@@ -69,40 +66,6 @@
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
-    }
-
-    /* Formas orgânicas fluidas verdes idênticas ao mockup */
-    .bg-blob-1 {
-      position: absolute;
-      top: -80px;
-      left: -100px;
-      width: 420px;
-      height: 420px;
-      border-radius: 48% 52% 68% 32% / 42% 58% 42% 58%;
-      background: linear-gradient(135deg, #10B981 0%, #059669 60%, #047857 100%);
-      opacity: 0.85;
-      filter: blur(40px);
-      z-index: 0;
-      animation: floatSlow 12s ease-in-out infinite alternate;
-    }
-
-    .bg-blob-2 {
-      position: absolute;
-      bottom: -100px;
-      right: -80px;
-      width: 450px;
-      height: 450px;
-      border-radius: 63% 37% 54% 46% / 48% 62% 38% 52%;
-      background: linear-gradient(135deg, #34D399 0%, #059669 50%, #064E3B 100%);
-      opacity: 0.8;
-      filter: blur(45px);
-      z-index: 0;
-      animation: floatSlow 15s ease-in-out infinite alternate-reverse;
-    }
-
-    @keyframes floatSlow {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(30px) rotate(15deg); }
     }
 
     .app-screen-scroll {
@@ -119,386 +82,480 @@
       transition: transform 0.1s ease;
     }
 
-    /* Auréola Brilhante e Verde em volta das bolinhas das pessoas seguidas */
-    .glowing-green-halo {
+    /* Texto com gradiente metálico dourado */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF8E8 0%, #F3DCAB 30%, #D8AC52 70%, #9C7323 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Auréola Brilhante e Dourada Intensa (Tiago) */
+    .glowing-gold-halo {
       position: relative;
       border-radius: 9999px;
       padding: 2.5px;
-      background: linear-gradient(135deg, #10B981 0%, #34D399 45%, #059669 100%);
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.75), 0 0 18px rgba(52, 211, 153, 0.5), inset 0 0 4px rgba(255, 255, 255, 0.45);
+      background: linear-gradient(135deg, #FFF2D6 0%, #EAC784 45%, #C99738 100%);
+      box-shadow: 0 0 16px rgba(234, 199, 132, 0.95), 0 0 30px rgba(201, 151, 56, 0.65), inset 0 0 5px rgba(255, 246, 229, 0.6);
       transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
     }
-    .group:hover .glowing-green-halo {
+    .group:hover .glowing-gold-halo {
       transform: scale(1.08);
-      box-shadow: 0 0 14px rgba(16, 185, 129, 0.95), 0 0 26px rgba(52, 211, 153, 0.75);
+      box-shadow: 0 0 20px rgba(255, 242, 214, 1), 0 0 38px rgba(234, 199, 132, 0.85);
     }
 
-    /* Sombra nos 8 botões de formato */
-    .fmt-icon-card {
+    /* Anel sutil dourado para os outros avatares */
+    .subtle-gold-ring {
       position: relative;
-      width: 68px;
-      height: 64px;
-      border-radius: 20px;
-      background: #FFFFFF;
-      box-shadow: 0 8px 18px -2px rgba(15, 23, 42, 0.12), 0 3px 6px -1px rgba(15, 23, 42, 0.08);
-      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-radius: 9999px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(234, 199, 132, 0.6) 0%, rgba(201, 151, 56, 0.35) 100%);
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .group:hover .fmt-icon-card {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 14px 24px -3px rgba(15, 23, 42, 0.18), 0 5px 10px -2px rgba(15, 23, 42, 0.10);
-    }
-    .group:active .fmt-icon-card {
-      transform: scale(0.95);
-      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.10);
+    .group:hover .subtle-gold-ring {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(255, 242, 214, 0.9) 0%, rgba(201, 151, 56, 0.7) 100%);
     }
 
-    /* Sombras temáticas destacadas com ambient glow */
-    .fmt-shadow-saberes {
-      box-shadow: 0 8px 20px -2px rgba(16, 185, 129, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    /* Squircle Escuro 3D dos 8 Botões de Formato */
+    .dark-squircle-btn {
+      position: relative;
+      width: 72px;
+      height: 68px;
+      border-radius: 20px;
+      background: #17212C;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .fmt-shadow-curtos {
-      box-shadow: 0 8px 20px -2px rgba(99, 102, 241, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    .group:hover .dark-squircle-btn {
+      transform: translateY(-2px) scale(1.04);
+      border-color: rgba(229, 195, 132, 0.35);
+      box-shadow: 0 14px 26px -3px rgba(0, 0, 0, 0.65), 0 0 15px rgba(229, 195, 132, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     }
-    .fmt-shadow-longos {
-      box-shadow: 0 8px 20px -2px rgba(245, 158, 11, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
-    }
-    .fmt-shadow-musica {
-      box-shadow: 0 8px 20px -2px rgba(236, 72, 153, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
-    }
-    .fmt-shadow-podcasts {
-      box-shadow: 0 8px 20px -2px rgba(244, 63, 94, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
-    }
-    .fmt-shadow-forum {
-      box-shadow: 0 8px 20px -2px rgba(6, 182, 212, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
-    }
-    .fmt-shadow-noticias {
-      box-shadow: 0 8px 20px -2px rgba(59, 130, 246, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
-    }
-    .fmt-shadow-aovivo {
-      box-shadow: 0 8px 20px -2px rgba(168, 85, 247, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    .group:active .dark-squircle-btn {
+      transform: scale(0.95);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
-<body class="bg-[#EAF6F0] min-h-screen flex items-center justify-center p-0 sm:p-4 overflow-hidden relative selection:bg-emerald-500 selection:text-white">
 
-  <!-- Formas orgânicas verdes no fundo da tela -->
-  <div class="bg-blob-1 pointer-events-none"></div>
-  <div class="bg-blob-2 pointer-events-none"></div>
+<body class="bg-[#0A0F15] text-slate-100 min-h-screen flex items-center justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
 
   <!-- ======================================================== -->
-  <!-- MOLDURA DO SMARTPHONE (EXATAMENTE COMO NA CAPTURA)       -->
+  <!-- FUNDO CÓSMICO CELESTIAL (ÓRBITAS DOURADAS & ESTRELAS)    -->
   <!-- ======================================================== -->
-  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[95vh] bg-white sm:rounded-[44px] shadow-phone flex flex-col overflow-hidden border-0 sm:border-[9px] sm:border-white transition-all">
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
+    
+    <!-- Órbitas Douradas Superiores / Direita -->
+    <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-45" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+      <circle cx="300" cy="300" r="240" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="300" cy="300" r="200" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="8 8"/>
+      <circle cx="300" cy="300" r="160" stroke="#E5C384" stroke-width="1.5" opacity="0.7"/>
+      <circle cx="300" cy="300" r="120" stroke="#D4AF37" stroke-width="0.8"/>
+      <circle cx="300" cy="300" r="70" stroke="#E5C384" stroke-width="1.2" stroke-dasharray="4 6"/>
+      <!-- Planeta Dourado na Órbita -->
+      <circle cx="460" cy="300" r="9" fill="#E5C384" filter="drop-shadow(0 0 12px rgba(229,195,132,0.8))"/>
+      <circle cx="160" cy="220" r="5" fill="#FBF0D9"/>
+    </svg>
+
+    <!-- Órbitas Douradas Inferiores / Esquerda -->
+    <svg class="absolute -bottom-36 -left-36 w-[600px] h-[600px] opacity-45" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="260" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+      <circle cx="300" cy="300" r="210" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="300" cy="300" r="150" stroke="#D4AF37" stroke-width="1" stroke-dasharray="6 6"/>
+      <circle cx="300" cy="300" r="90" stroke="#E5C384" stroke-width="1.4"/>
+      <circle cx="390" cy="300" r="7" fill="#E5C384" filter="drop-shadow(0 0 10px rgba(229,195,132,0.7))"/>
+    </svg>
+
+    <!-- Estrelas Douradas Shimmering de 4 Pontas (✦) -->
+    <span class="absolute top-12 left-12 text-[#E5C384] text-xl opacity-80 animate-pulse">✦</span>
+    <span class="absolute top-28 left-48 text-[#FBF0D9] text-xs opacity-60">✦</span>
+    <span class="absolute top-72 left-8 text-[#E5C384] text-sm opacity-70">✦</span>
+    <span class="absolute top-20 right-28 text-[#FBF0D9] text-lg opacity-85 animate-pulse">✦</span>
+    <span class="absolute top-96 right-16 text-[#E5C384] text-xs opacity-50">✦</span>
+    <span class="absolute bottom-40 right-20 text-[#FBF0D9] text-base opacity-75">✦</span>
+    <span class="absolute bottom-20 left-24 text-[#E5C384] text-lg opacity-80 animate-pulse">✦</span>
+    <span class="absolute bottom-80 left-4 text-[#FBF0D9] text-sm opacity-60">✦</span>
+    <span class="absolute bottom-10 right-48 text-[#E5C384] text-xs opacity-50">✦</span>
+    
+    <!-- Assinatura Dola AI Discreta no canto inferior direito externo -->
+    <div class="hidden sm:block absolute bottom-6 right-8 text-[#E5C384]/70 font-semibold text-sm tracking-wider">
+      Dola AI
+    </div>
+  </div>
+
+  <!-- Definições Globais SVG para Gradientes Dourados 3D -->
+  <svg width="0" height="0" class="absolute hidden">
+    <defs>
+      <!-- Gradiente Dourado 3D Primário -->
+      <linearGradient id="gold3d" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFF9EC"/>
+        <stop offset="25%" stop-color="#F4DFB3"/>
+        <stop offset="60%" stop-color="#D7AA4E"/>
+        <stop offset="100%" stop-color="#996E1D"/>
+      </linearGradient>
+
+      <!-- Gradiente Dourado Shimmering Secundário -->
+      <linearGradient id="goldShine" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FEF0D4"/>
+        <stop offset="50%" stop-color="#DFB45E"/>
+        <stop offset="100%" stop-color="#A97E25"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ======================================================== -->
+  <!-- MOLDURA DO SMARTPHONE (EXATAMENTE COMO NO SEU PRINT)     -->
+  <!-- ======================================================== -->
+  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] bg-[#11171F] sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#2A3744]/70 transition-all">
     
     <!-- 1. STATUS BAR NATIVA (9:41, Sinal, Wifi, Bateria) -->
-    <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-slate-800 shrink-0 select-none bg-white">
-      <span class="tracking-tight text-[13px]">9:41</span>
-      <div class="flex items-center gap-1.5 text-slate-800">
+    <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#11171F]">
+      <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-200">
         <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
         <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
-        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-800 p-0.5 flex items-center justify-end">
-          <div class="h-full w-full bg-slate-800 rounded-xs"></div>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-200 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-200 rounded-xs"></div>
         </div>
       </div>
     </div>
 
-    <!-- 2. CABEÇALHO DO APLICATIVO COM BUSCADOR INTEGRADO -->
-    <header class="px-5 pt-2.5 pb-2 bg-white flex items-center gap-2.5 shrink-0 border-b border-emerald-50/70">
-      <!-- Marca YBY -->
+    <!-- 2. CABEÇALHO DO APLICATIVO (YBY versus + 🔍 ✨ =) -->
+    <header class="px-6 pt-2 pb-3 bg-[#11171F] flex items-center justify-between shrink-0">
+      
+      <!-- Marca: YBY versus (Tipografia Serif de Luxo) -->
       <div class="cursor-pointer shrink-0" onclick="resetToHome()">
-        <span class="text-2xl font-black tracking-tight text-[#064E3B]">YBY</span>
+        <span class="font-luxury-serif text-2xl font-bold tracking-tight gold-gradient-text drop-shadow-[0_2px_12px_rgba(229,195,132,0.3)]">
+          YBY versus
+        </span>
       </div>
 
-      <!-- Barra de Pesquisa no Topo -->
-      <div class="flex-1 min-w-0">
-        <div class="relative flex items-center bg-[#F3F8F5] rounded-full p-1 pl-3.5 border border-emerald-100/90 shadow-xs focus-within:ring-2 focus-within:ring-emerald-500/30 focus-within:bg-white transition-all">
-          <input type="text" id="search-input" onkeyup="handleSearchInput(event)" placeholder="Pesquisar saberes..." class="w-full text-xs text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none">
-          
-          <!-- Botão Redondo Verde de Busca -->
-          <button onclick="executeSearch()" title="Buscar" class="w-7 h-7 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shrink-0 shadow-xs active:scale-95 transition-transform tap-active">
-            <i data-lucide="search" class="w-3.5 h-3.5"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Ícones da Direita: Sparkle Verde ✨ (abre modal), Menu Duas Linhas = -->
-      <div class="flex items-center gap-1.5 text-slate-700 shrink-0">
-        <!-- Ícone Sparkle / Estrela Verde Soberano -->
-        <button onclick="openModal('modal-algoritmo')" title="Distribuição Sem Bolhas" class="p-1 hover:scale-110 transition-transform tap-active">
-          <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
+      <!-- Ícones da Direita: Lupa 🔍, Sparkle ✨, Menu Duas Linhas = -->
+      <div class="flex items-center gap-3.5 text-[#E5C384] shrink-0">
+        <!-- Ícone Buscar 🔍 -->
+        <button onclick="toggleSearch()" title="Pesquisar saberes..." class="p-1 hover:text-white transition-colors tap-active">
+          <i data-lucide="search" class="w-5 h-5 stroke-[2]"></i>
         </button>
+
+        <!-- Ícone Sparkle Cósmico ✨ (Abre Distribuição Sem Bolhas) -->
+        <button onclick="openModal('modal-algoritmo')" title="Distribuição Sem Bolhas" class="p-1 hover:scale-110 transition-transform tap-active">
+          <i data-lucide="sparkles" class="w-5 h-5 stroke-[2]"></i>
+        </button>
+
         <!-- Ícone Menu Duas Linhas "=" -->
-        <button onclick="openModal('modal-menu')" title="Mais opções" class="p-1 hover:text-emerald-600 transition-colors flex flex-col gap-1 items-center justify-center w-6 h-6 tap-active">
-          <span class="w-4 h-0.5 bg-slate-700 rounded-full"></span>
-          <span class="w-4 h-0.5 bg-slate-700 rounded-full"></span>
+        <button onclick="openModal('modal-menu')" title="Mais opções" class="p-1 hover:text-white transition-colors flex flex-col gap-1 items-center justify-center w-6 h-6 tap-active">
+          <span class="w-5 h-[2px] bg-[#E5C384] rounded-full"></span>
+          <span class="w-5 h-[2px] bg-[#E5C384] rounded-full"></span>
         </button>
       </div>
     </header>
 
-    <!-- 3. ÁREA DE SCROLL DO APP -->
-    <main class="flex-1 app-screen-scroll px-5 pb-6 space-y-4">
+    <!-- Barra de Pesquisa Expansível (Ativada pela Lupa) -->
+    <div id="search-bar-container" class="hidden px-5 pb-3 bg-[#11171F] border-b border-[#283543]/60 transition-all">
+      <div class="relative flex items-center bg-[#17212C] rounded-full p-1 pl-3.5 border border-amber-500/20 shadow-xs focus-within:ring-2 focus-within:ring-amber-500/30">
+        <input type="text" id="search-input" onkeyup="handleSearchInput(event)" placeholder="Pesquisar saberes, mestres ou temas..." class="w-full text-xs text-slate-100 placeholder-slate-400 bg-transparent focus:outline-none">
+        <button onclick="executeSearch()" title="Buscar" class="w-7 h-7 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black flex items-center justify-center shrink-0 shadow-xs active:scale-95 transition-transform tap-active font-bold">
+          <i data-lucide="search" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+        </button>
+      </div>
+    </div>
 
-      <!-- SEÇÃO: PESSOAS QUE VOCÊ SEGUE (STORIES/AVATARES COM ANEL VERDE) -->
+    <!-- 3. ÁREA DE SCROLL DO APP -->
+    <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4">
+
+      <!-- ======================================================== -->
+      <!-- SEÇÃO: PESSOAS QUE VOCÊ SEGUE (COM AURÉOLA DE TIAGO)     -->
+      <!-- ======================================================== -->
       <div class="space-y-2 pt-1">
-        <div class="text-[12px] font-bold text-slate-700">
+        <div class="text-[12px] font-semibold text-[#C9BEAF] tracking-wide">
           <span>Pessoas que você segue</span>
         </div>
 
-        <div id="following-row" class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-2 px-1">
+        <div id="following-row" class="flex items-center gap-3 overflow-x-auto no-scrollbar py-2 px-0.5">
+          
           <!-- 1. Seu saber (+) -->
           <div onclick="openModal('modal-publish')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
-            <div class="glowing-green-halo w-14 h-14">
-              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
-              <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] border-2 border-white font-bold shadow-sm">
+            <div class="subtle-gold-ring w-14 h-14">
+              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#11171F] block">
+              <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-[#C79637] text-black flex items-center justify-center text-[10px] border-2 border-[#11171F] font-bold shadow-sm">
                 +
               </div>
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Seu saber</span>
+            <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Seu saber</span>
           </div>
 
           <!-- 2. Benvinda (Sol Ancestral) -->
           <div onclick="filterByPerson('Dona Benvinda')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
-            <div class="glowing-green-halo w-14 h-14">
-              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
+            <div class="subtle-gold-ring w-14 h-14">
+              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#11171F] block">
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Benvinda</span>
+            <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Benvinda</span>
           </div>
 
-          <!-- 3. Tiago (Mestre Tiago Agrofloresta) -->
+          <!-- 3. Tiago (COM A AURÉOLA BRILHANTE DOURADA DO PRINT) -->
           <div onclick="filterByPerson('Mestre Tiago')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
-            <div class="glowing-green-halo w-14 h-14">
-              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
+            <div class="glowing-gold-halo w-14 h-14">
+              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#11171F] block">
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Tiago</span>
+            <span class="text-[10.5px] font-bold text-[#FFF6E5] tracking-tight drop-shadow-[0_0_8px_rgba(229,195,132,0.8)]">Tiago</span>
           </div>
 
           <!-- 4. Mariana (Mariana Artesã) -->
           <div onclick="filterByPerson('Mariana Artesã')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
-            <div class="glowing-green-halo w-14 h-14">
-              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
+            <div class="subtle-gold-ring w-14 h-14">
+              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#11171F] block">
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Mariana</span>
+            <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Mariana</span>
           </div>
 
           <!-- 5. Carlos (Portal de Luz) -->
           <div onclick="filterByPerson('Prof. Carlos')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
-            <div class="glowing-green-halo w-14 h-14">
-              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
+            <div class="subtle-gold-ring w-14 h-14">
+              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#11171F] block">
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Carlos</span>
+            <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Carlos</span>
           </div>
         </div>
       </div>
 
       <!-- ======================================================== -->
-      <!-- 4. OS 8 ÍCONES COM SOMBRA ELEVADA (SQUIRCLES 3D)          -->
+      <!-- 4. OS 8 ÍCONES DOURADOS EM SQUIRCLES ESCUROS 3D          -->
       <!-- ======================================================== -->
-      <div class="space-y-2 pt-1 pb-1">
+      <div class="space-y-3 pt-1 pb-1">
         <div class="grid grid-cols-4 gap-2.5 sm:gap-3">
           
-          <!-- 1. Saberes -->
+          <!-- 1. Saberes (Livro Aberto Dourado) -->
           <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-saberes">
-              <img src="assets/fmt-icons/tile_saberes.png" alt="Saberes" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-emerald-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Páginas do Livro com Gradiente Dourado 3D -->
+                <path d="M7 14C12 12 18 12 24 16C30 12 36 12 41 14V34C36 32 30 32 24 36C18 32 12 32 7 34V14Z" fill="url(#gold3d)" stroke="url(#goldShine)" stroke-width="1.8" stroke-linejoin="round"/>
+                <!-- Vincos Internos do Livro -->
+                <path d="M24 16V36" stroke="#17212C" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 20C15 19 18 19 21 21" stroke="#17212C" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M27 21C30 19 33 19 36 20" stroke="#17212C" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
             </div>
-            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Saberes</span>
+            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Saberes</span>
           </button>
 
-          <!-- 2. Vídeos Curtos -->
+          <!-- 2. Vídeos Curtos (Claquete Dourada + Pontos) -->
           <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-curtos">
-              <img src="assets/fmt-icons/tile_curtos.png" alt="Vídeos Curtos" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-indigo-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <rect x="8" y="18" width="32" height="20" rx="3.5" fill="url(#gold3d)"/>
+                <!-- Parte Superior Inclinada da Claquete -->
+                <path d="M8 12L40 9.5V16L8 16Z" fill="url(#goldShine)"/>
+                <path d="M14 11.5L16.5 16M22 10.8L24.5 16M30 10.2L32.5 16" stroke="#17212C" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Símbolo Play Central -->
+                <polygon points="21,24 21,32 29,28" fill="#17212C"/>
+              </svg>
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-800 tracking-tight leading-tight text-center">Vídeos<br>Curtos</span>
+            <div class="flex flex-col items-center">
+              <span class="text-[10.5px] font-semibold text-[#DDD3C5] tracking-tight leading-tight text-center">Videos<br>Curtos</span>
+              <span class="text-[7px] text-[#C79637] tracking-[2px] mt-0.5 font-bold">•••••</span>
+            </div>
           </button>
 
-          <!-- 3. Vídeos Longos -->
+          <!-- 3. Vídeos Longos (Play Triangular Dourado + Pontos) -->
           <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-longos">
-              <img src="assets/fmt-icons/tile_longos.png" alt="Vídeos Longos" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-amber-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Triângulo Play Arredondado Dourado do Mockup -->
+                <path d="M16 12C16 10.2 18 9.1 19.5 10L36.5 22C37.8 22.9 37.8 24.8 36.5 25.7L19.5 37.7C18 38.6 16 37.5 16 35.7V12Z" fill="url(#gold3d)" stroke="url(#goldShine)" stroke-width="1.5"/>
+              </svg>
             </div>
-            <span class="text-[10.5px] font-semibold text-slate-800 tracking-tight leading-tight text-center">Vídeos<br>Longos</span>
+            <div class="flex flex-col items-center">
+              <span class="text-[10.5px] font-semibold text-[#DDD3C5] tracking-tight leading-tight text-center">Videos<br>Longos</span>
+              <span class="text-[7px] text-[#C79637] tracking-[2px] mt-0.5 font-bold">•••••</span>
+            </div>
           </button>
 
-          <!-- 4. Música -->
+          <!-- 4. Música (Nota Musical Dourada) -->
           <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-musica">
-              <img src="assets/fmt-icons/tile_musica.png" alt="Música" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-pink-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Nota Musical Dupla em Ouro 3D -->
+                <path d="M19 14V31.5C17.8 30.5 16 30 14 30C10.7 30 8 32.2 8 35C8 37.8 10.7 40 14 40C17.3 40 20 37.8 20 35V17L38 13V28.5C36.8 27.5 35 27 33 27C29.7 27 27 29.2 27 32C27 34.8 29.7 37 33 37C36.3 37 39 34.8 39 32V10L19 14Z" fill="url(#gold3d)"/>
+              </svg>
             </div>
-            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Música</span>
+            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Música</span>
           </button>
 
-          <!-- 5. Podcasts -->
+          <!-- 5. Podcasts (Headphones Dourados) -->
           <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-podcasts">
-              <img src="assets/fmt-icons/tile_podcasts.png" alt="Podcasts" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-rose-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Headphone em Ouro 3D -->
+                <path d="M10 24C10 16.3 16.3 10 24 10C31.7 10 38 16.3 38 24V32C38 35.3 35.3 38 32 38H30C28.9 38 28 37.1 28 36V28C28 26.9 28.9 26 30 26H34V24C34 18.5 29.5 14 24 14C18.5 14 14 18.5 14 24V26H18C19.1 26 20 26.9 20 28V36C20 37.1 19.1 38 18 38H16C12.7 38 10 35.3 10 32V24Z" fill="url(#gold3d)"/>
+              </svg>
             </div>
-            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Podcasts</span>
+            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Podcasts</span>
           </button>
 
-          <!-- 6. Fórum -->
+          <!-- 6. Fórum (Balões de Conversa Dourados) -->
           <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-forum">
-              <img src="assets/fmt-icons/tile_forum.png" alt="Fórum" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-cyan-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Balão Principal -->
+                <path d="M11 14C11 10.7 13.7 8 17 8H27C30.3 8 33 10.7 33 14V21C33 24.3 30.3 27 27 27H22L16 31V27H17C13.7 27 11 24.3 11 21V14Z" fill="url(#gold3d)"/>
+                <!-- Balão Secundário Sobreposto -->
+                <path d="M22 25C22.6 25 23.3 25.1 23.9 25.3C24.6 27.5 26.7 29 29.2 29H33L37 33V29C39.2 29 41 27.2 41 25V19C41 17.1 39.7 15.6 38 15.2V21C38 23.8 35.8 26 33 26H22V25Z" fill="url(#goldShine)"/>
+              </svg>
             </div>
-            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Fórum</span>
+            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Fórum</span>
           </button>
 
-          <!-- 7. Notícias -->
+          <!-- 7. Notícias (Tablet de Notícias Dourado) -->
           <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-noticias">
-              <img src="assets/fmt-icons/tile_noticias.png" alt="Notícias" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-blue-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Tablet com linhas e bloco de foto -->
+                <rect x="9" y="10" width="30" height="28" rx="5" fill="url(#gold3d)" stroke="url(#goldShine)" stroke-width="1.5"/>
+                <rect x="14" y="15" width="8" height="8" rx="1.5" fill="#17212C"/>
+                <rect x="25" y="16" width="9" height="2.2" rx="1" fill="#17212C"/>
+                <rect x="25" y="20" width="9" height="2.2" rx="1" fill="#17212C"/>
+                <rect x="14" y="26" width="20" height="2.2" rx="1" fill="#17212C"/>
+                <rect x="14" y="30" width="14" height="2.2" rx="1" fill="#17212C"/>
+              </svg>
             </div>
-            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Notícias</span>
+            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Notícias</span>
           </button>
 
-          <!-- 8. Ao Vivo -->
+          <!-- 8. Ao Vivo (Antena com Ondas Douradas) -->
           <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="fmt-icon-card fmt-shadow-aovivo">
-              <img src="assets/fmt-icons/tile_aovivo.png" alt="Ao Vivo" class="w-full h-full object-contain rounded-[20px]">
-              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-purple-500 opacity-0 transition-opacity"></div>
+            <div class="dark-squircle-btn">
+              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
+                <!-- Ponto Central -->
+                <circle cx="24" cy="24" r="3.5" fill="url(#goldShine)"/>
+                <!-- Ondas de Sinal -->
+                <path d="M18 18C15 21 15 27 18 30M30 18C33 21 33 27 30 30" stroke="url(#gold3d)" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M13 13C8 18 8 30 13 35M35 13C40 18 40 30 35 35" stroke="url(#gold3d)" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
             </div>
-            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Ao Vivo</span>
+            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Ao Vivo</span>
           </button>
 
         </div>
       </div>
 
-      <!-- 5. CARD PRINCIPAL EM DESTAQUE (EXATAMENTE COMO NO SEU PRINT) -->
-      <div id="main-featured-card" class="bg-white rounded-[28px] p-4 shadow-card border border-emerald-50 space-y-3">
+      <!-- ======================================================== -->
+      <!-- 5. CARD PRINCIPAL EM DESTAQUE (EXATAMENTE COMO NO PRINT) -->
+      <!-- ======================================================== -->
+      <div id="main-featured-card" class="bg-[#18222C] rounded-[28px] p-3.5 shadow-[0_12px_28px_rgba(0,0,0,0.5)] border border-amber-500/15 space-y-3">
         
-        <!-- Mídia em Destaque -->
-        <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-black shadow-sm group">
-          <video id="featured-video-player" playsinline loop class="w-full h-full object-cover">
+        <!-- Mídia em Destaque: Floresta e Araras -->
+        <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-black shadow-inner group">
+          <img id="featured-image-fallback" src="assets/dola-forest.jpg" class="w-full h-full object-cover">
+          <video id="featured-video-player" playsinline loop class="w-full h-full object-cover absolute inset-0 hidden">
             <source src="assets/banner-arara.mp4" type="video/mp4">
           </video>
-          <img id="featured-image-fallback" src="assets/card-mestres-terra.jpg" class="w-full h-full object-cover absolute inset-0 hidden">
 
-          <!-- Logomarca do Aplicativo de Origem -->
-          <div id="card-origin-badge" class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-800 text-[11px] font-bold flex items-center gap-1.5 shadow-md border border-white/60">
-            <span id="card-origin-icon" class="flex items-center">
-              <svg class="w-3.5 h-3.5 fill-[#563ACC]" viewBox="0 0 24 24"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.924 2.215 13.9 2 12.012 2h-.024c-1.888 0-4.912.215-6.472.956 0 0-2.843 1.271-2.843 5.61 0 .993-.019 2.18.049 3.466.232 4.383 1.543 8.656 6.012 9.055 2.146.19 4.108-.094 5.61-.486.077.568.106 1.096.082 1.574-.082 1.637-1.127 1.83-2.316 1.875-1.503.056-2.905-.36-2.905-.36l-.082 1.875s1.439.467 3.328.467c1.393 0 3.824-.316 4.283-3.084.234-1.42.274-3.66.274-5.228 0-1.286-.019-2.473-.049-3.466-.188-3.535-.747-7.25-6.287-7.25z"/></svg>
-            </span>
-            <span id="card-origin-name">Mastodon</span>
+          <!-- Badge do Canto Superior Esquerdo: ● Saberes • Fediverso -->
+          <div id="card-origin-badge" class="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1.5 shadow-md border border-white/10">
+            <span class="w-2 h-2 rounded-full bg-[#E5C384]"></span>
+            <span>Saberes • Fediverso</span>
           </div>
 
-          <!-- Três pontinhos no topo direito -->
-          <button class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center">
-            <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+          <!-- Botão do Canto Superior Direito: Três Pontos (•••) -->
+          <button onclick="showAppToast('Opções da mídia')" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white/90 flex items-center justify-center border border-white/10 hover:bg-black/80 transition-colors tap-active">
+            <i data-lucide="more-horizontal" class="w-4 h-4 text-white"></i>
           </button>
         </div>
 
-        <!-- Título e Duração ("Preparo da Espiral de Ervas e Solo Vivo" • 03:10) -->
-        <div class="flex items-center justify-between">
-          <div>
-            <h3 id="card-title" class="text-sm font-bold text-slate-900 leading-snug">
+        <!-- Informações e Título da Publicação -->
+        <div class="space-y-1 pt-0.5">
+          <div class="flex items-center justify-between">
+            <h3 id="featured-title" class="font-bold text-slate-100 text-sm tracking-tight leading-snug">
               Preparo da Espiral de Ervas e Solo Vivo
             </h3>
-            <p id="card-subtitle" class="text-[11px] text-slate-400 font-medium">Visualizações comunitárias</p>
+            <span id="featured-duration" class="text-[11px] font-medium text-slate-400">03:10</span>
           </div>
-          <span id="card-duration" class="text-xs font-bold text-slate-500 font-mono">03:10</span>
+          <p id="featured-views" class="text-[11px] text-slate-400">Visualizações comunitárias</p>
         </div>
 
-        <!-- Linha de Ações: Contador 2450 💚, Botão Play Redondo Verde Escuro e Favoritos -->
-        <div class="flex items-center justify-between pt-1">
-          <div class="flex items-center gap-1.5 text-xs font-bold text-slate-700">
-            <span id="card-likes-count">2450</span>
-            <span class="text-emerald-600 text-sm">💚</span>
+        <!-- Controles Interativos Inferiores (Curtir, Play Central, Salvar) -->
+        <div class="flex items-center justify-between pt-1 border-t border-slate-700/50">
+          <div class="flex items-center gap-1.5 text-xs text-slate-300 font-semibold">
+            <button onclick="toggleFeaturedLike()" class="flex items-center gap-1 hover:text-amber-300 transition-colors tap-active">
+              <i id="featured-heart-icon" data-lucide="heart" class="w-4 h-4 text-[#E5C384]"></i>
+              <span id="featured-likes-count">2450</span>
+            </button>
           </div>
 
-          <!-- BOTÃO PLAY REDONDO VERDE ESCURO -->
-          <button onclick="toggleMainPlay()" class="w-12 h-12 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shadow-float active:scale-95 transition-transform">
-            <i data-lucide="play" id="main-play-icon" class="w-5 h-5 fill-current ml-0.5"></i>
+          <!-- Botão de Play Central -->
+          <button id="featured-play-btn" onclick="toggleFeaturedPlay()" class="w-10 h-10 rounded-full bg-gradient-to-r from-[#D8AC52] via-[#E5C384] to-[#9C7323] text-black flex items-center justify-center shadow-lg active:scale-95 transition-transform tap-active">
+            <i id="featured-play-icon" data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
           </button>
 
-          <div class="flex items-center gap-3 text-slate-400">
-            <button onclick="toggleCardHeart()" class="hover:text-emerald-600 transition-colors tap-active">
-              <i data-lucide="heart" id="card-heart-icon" class="w-5 h-5"></i>
+          <div class="flex items-center gap-2.5 text-slate-300">
+            <button onclick="toggleFeaturedSave()" class="hover:text-amber-300 transition-colors tap-active">
+              <i id="featured-bookmark-icon" data-lucide="bookmark" class="w-4 h-4 text-slate-400"></i>
             </button>
-            <button onclick="showAppToast('Salvo no seu Acervo Pessoal!')" class="hover:text-emerald-600 transition-colors tap-active">
-              <i data-lucide="bookmark" class="w-5 h-5"></i>
+            <button onclick="shareMainPost()" class="hover:text-amber-300 transition-colors tap-active">
+              <i data-lucide="share-2" class="w-4 h-4 text-slate-400"></i>
             </button>
           </div>
         </div>
 
       </div>
 
-      <!-- PLAYLISTS SEM BOLHAS: VÍDEOS LONGOS -->
-      <section id="long-videos-playlists-section" class="bg-white rounded-[28px] p-4 shadow-card border border-emerald-50 space-y-3">
-        <!-- Cabeçalho das Playlists -->
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-1.5 cursor-pointer" onclick="openModal('modal-algoritmo')">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <h3 class="text-xs font-bold text-slate-900 tracking-tight flex items-center gap-1.5">
-              <span>Playlists Sem Bolhas</span>
-              <span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold border border-emerald-100 flex items-center gap-1">
-                <i data-lucide="sparkles" class="w-3 h-3 text-emerald-600"></i>
-                Vídeos Longos
-              </span>
-            </h3>
+      <!-- ======================================================== -->
+      <!-- SEÇÃO: PLAYLISTS DE VÍDEOS LONGOS (SEM BOLHAS)          -->
+      <!-- ======================================================== -->
+      <section id="long-playlists-section" class="bg-[#18222C] rounded-[28px] p-4 shadow-card border border-amber-500/15 space-y-3 hidden">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-700/60">
+          <div class="flex items-center gap-2">
+            <i data-lucide="play-square" class="w-4 h-4 text-[#E5C384]"></i>
+            <h3 class="text-xs font-bold text-slate-100 tracking-tight">Playlists de Vídeos Longos</h3>
           </div>
-          <button onclick="openModal('modal-algoritmo')" title="Entenda o Algoritmo" class="text-[10px] font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-2 py-0.5 rounded-full transition-colors flex items-center gap-1">
-            <span>Critérios</span>
-            <i data-lucide="info" class="w-3 h-3"></i>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-[#E5C384] font-semibold border border-amber-500/30">
+            Sem Bolhas
+          </span>
+        </div>
+
+        <!-- 4 Abas de Playlists -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+          <button id="pl-tab-recentes" onclick="switchLongPlaylist('recentes')" class="px-3 py-1.5 rounded-full text-[11px] font-bold bg-[#E5C384] text-black shadow-xs tap-active transition-all shrink-0">
+            Recentes
+          </button>
+          <button id="pl-tab-plurais" onclick="switchLongPlaylist('plurais')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#11171F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
+            Autores Plurais
+          </button>
+          <button id="pl-tab-aleatorio" onclick="switchLongPlaylist('aleatorio')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#11171F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
+            Aleatório
+          </button>
+          <button id="pl-tab-seguindo" onclick="switchLongPlaylist('seguindo')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#11171F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
+            Seguindo
           </button>
         </div>
 
-        <!-- 4 Pílulas das Playlists: Recentes, Autores Plurais, Aleatório, Seguindo -->
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-          <!-- 1. Recentes -->
-          <button onclick="switchLongPlaylist('recentes')" id="pl-tab-recentes" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-[#047857] text-white shadow-xs flex items-center gap-1.5 tap-active">
-            <i data-lucide="clock" class="w-3 h-3"></i>
-            <span>Recentes</span>
-            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-white/20 font-mono">25%</span>
-          </button>
-
-          <!-- 2. Autores Plurais -->
-          <button onclick="switchLongPlaylist('plurais')" id="pl-tab-plurais" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active">
-            <i data-lucide="users" class="w-3 h-3"></i>
-            <span>Autores Plurais</span>
-            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-mono">25%</span>
-          </button>
-
-          <!-- 3. Aleatório (Fisher-Yates) -->
-          <button onclick="switchLongPlaylist('aleatorio')" id="pl-tab-aleatorio" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active">
-            <i data-lucide="shuffle" class="w-3 h-3"></i>
-            <span>Aleatório</span>
-            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-mono">15%</span>
-          </button>
-
-          <!-- 4. Seguindo -->
-          <button onclick="switchLongPlaylist('seguindo')" id="pl-tab-seguindo" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active">
-            <i data-lucide="heart" class="w-3 h-3"></i>
-            <span>Seguindo</span>
-          </button>
-        </div>
-
-        <!-- Lista Dinâmica de Vídeos da Playlist Selecionada -->
+        <!-- Lista de Vídeos da Playlist Ativa -->
         <div id="long-playlist-items" class="space-y-2 pt-1">
-          <!-- Gerado via renderLongPlaylist() -->
+          <!-- Gerado dinamicamente pelo JavaScript -->
         </div>
       </section>
 
-      <!-- 6. QUADRO DA CARTA ABERTA: O MANIFESTO DE NASCIMENTO DO YBYVERSUS -->
-      <article id="post-card" class="bg-white rounded-[28px] p-5 shadow-card border border-emerald-100/80 space-y-4">
+      <!-- ======================================================== -->
+      <!-- 6. QUADRO DA CARTA ABERTA: O MANIFESTO DE NASCIMENTO     -->
+      <!-- ======================================================== -->
+      <article id="post-card" class="bg-[#18222C] rounded-[28px] p-5 shadow-[0_12px_28px_rgba(0,0,0,0.5)] border border-amber-500/20 space-y-4">
         
         <!-- Cabeçalho do Quadro: Autor Oficial, Data e Selo -->
-        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
           <div class="flex items-center gap-2.5">
-            <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-emerald-600 via-teal-400 to-emerald-500 shadow-sm shrink-0">
-              <img src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
+            <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#FFF2D6] via-[#EAC784] to-[#C99738] shadow-sm shrink-0">
+              <img src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-2 border-[#11171F]">
             </div>
             <div>
               <div class="flex items-center gap-1.5 flex-wrap">
-                <span class="text-xs font-black text-slate-900 tracking-tight">Ecossistema Ybyversus</span>
-                <span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-bold">
+                <span class="text-xs font-bold text-slate-100 tracking-tight">Ecossistema YBY versus</span>
+                <span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-amber-500/15 text-[#E5C384] text-[9px] font-bold border border-amber-500/30">
                   ✓ Oficial
                 </span>
               </div>
@@ -506,598 +563,427 @@
             </div>
           </div>
           
-          <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200/60 shadow-2xs">
+          <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-[#E5C384] text-[10px] font-bold border border-amber-500/30 shadow-2xs">
             📜 Manifesto
           </span>
         </div>
 
         <!-- Título da Carta Aberta -->
         <div>
-          <h2 class="text-sm sm:text-base font-black text-slate-900 tracking-tight leading-snug">
-            📜 Carta Aberta ao Público: O Manifesto de Nascimento do Ybyversus
+          <h2 class="font-luxury-serif text-base sm:text-lg font-bold text-[#FFF6E5] tracking-tight leading-snug">
+            📜 Carta Aberta ao Público: O Manifesto de Nascimento do YBY versus
           </h2>
-          <p class="text-[11px] font-medium text-emerald-700 mt-0.5">
-            De: Ecossistema Ybyversus • 31 de Outubro de 2026
+          <p class="text-[11px] font-medium text-[#E5C384] mt-0.5">
+            De: Ecossistema YBY versus • 31 de Outubro de 2026
           </p>
         </div>
 
         <!-- Mensagem de Abertura -->
-        <div class="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-50/80 via-teal-50/40 to-white border border-emerald-100/70 text-xs text-slate-800 leading-relaxed font-normal">
-          <p class="font-bold text-emerald-950 mb-1.5 text-xs">Querida Comunidade e Compartilhantes da Praça Pública,</p>
-          <p class="text-slate-700">
-            Hoje, <strong>31 de outubro de 2026</strong>, o <strong>Ybyversus</strong> nasce oficialmente como um espaço soberano, ético, minimalista e seguro. Nascemos com um propósito claro e inegociável: resgatar a dignidade humana nas redes digitais, conectar a sabedoria ancestral da Terra (<em>Yby</em>) à imensidão do cosmos e oferecer um refúgio real de estudo, reflexão e respeito à vida, longe do ruído, da polarização e do mercantilismo agressivo.
+        <div class="p-3.5 rounded-2xl bg-[#11171F] border border-amber-500/20 text-xs text-slate-200 leading-relaxed font-normal">
+          <p class="font-bold text-[#E5C384] mb-1.5 text-xs">Querida Comunidade e Compartilhantes da Praça Pública,</p>
+          <p class="text-slate-300">
+            Hoje, <strong>31 de outubro de 2026</strong>, o <strong>YBY versus</strong> nasce oficialmente como um espaço soberano, ético, minimalista e seguro. Nascemos com um propósito claro e inegociável: resgatar a dignidade humana nas redes digitais, conectar a sabedoria ancestral da Terra (<em>Yby</em>) à imensidão do cosmos e oferecer um refúgio real de estudo, reflexão e respeito à vida, longe do ruído, da polarização e do mercantilismo agressivo.
           </p>
         </div>
 
         <!-- Os Pilares Fundamentais do Quadro -->
-        <div class="space-y-2.5 text-xs text-slate-700">
+        <div class="space-y-2.5 text-xs text-slate-300">
           
           <!-- Pilar 1 -->
-          <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100/90 space-y-1">
-            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-emerald-800">
+          <div class="p-3 rounded-2xl bg-[#11171F] border border-slate-700/70 space-y-1">
+            <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🌿</span>
               <span>A Essência do Cuidado e da Responsabilidade Coletiva</span>
             </h4>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              O Ybyversus não nasce para ser apenas mais uma plataforma digital; ele nasce para ser <strong>amparo, escuta, acolhimento e comunidade</strong>. Viemos para construir um ambiente seguro onde o homem e a mulher sejam acolhidos primariamente como seres humanos, em plena equidade, em desenvolvimento do conhecimento, da ética, do respeito, da integridade e da sua consciência e sem exclusões financeiras.
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              O YBY versus não nasce para ser apenas mais uma plataforma digital; ele nasce para ser <strong>amparo, escuta, acolhimento e comunidade</strong>. Viemos para construir um ambiente seguro onde o homem e a mulher sejam acolhidos primariamente como seres humanos, em plena equidade, em desenvolvimento do conhecimento, da ética, do respeito, da integridade e da sua consciência e sem exclusões financeiras.
             </p>
           </div>
 
           <!-- Pilar 2 -->
-          <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100/90 space-y-1">
-            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-emerald-800">
+          <div class="p-3 rounded-2xl bg-[#11171F] border border-slate-700/70 space-y-1">
+            <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🏛️</span>
               <span>O Rigor com a Verdade e a Segurança Institucional</span>
             </h4>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Recusamos o charlatanismo, banimos a propagação deliberada de mentiras e desinformação (<em>fake news</em>), e adotamos tolerância zero contra crimes, abusos, violência, discursos de ódio, fraudes e vazamento de dados. Diretrizes sólidas ancoradas na Constituição Federal e nos Direitos Humanos.
             </p>
           </div>
 
           <!-- Pilar 3 -->
-          <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100/90 space-y-1">
-            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-emerald-800">
+          <div class="p-3 rounded-2xl bg-[#11171F] border border-slate-700/70 space-y-1">
+            <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🛡️</span>
               <span>A Soberania, a Justiça e a Proteção dos Vulneráveis</span>
             </h4>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Recusamos algoritmos predatórios, a elitização por dinheiro ou campanhas de impulsionamento comercial que silenciam quem tem menos recursos. A proteção dos mais vulneráveis — incluindo a infância e os animais — é um dever absoluto.
             </p>
           </div>
 
           <!-- Pilar 4 -->
-          <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100/90 space-y-1">
-            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-emerald-800">
+          <div class="p-3 rounded-2xl bg-[#11171F] border border-slate-700/70 space-y-1">
+            <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🎨</span>
               <span>A Expressão Criativa, a Arte e o Conhecimento Vivo</span>
             </h4>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Expressamo-nos através da arte legítima, da filosofia, da ciência, da sabedoria ancestral, da música e do diálogo fértil. Portas abertas para fitoterapia, saberes simbólicos e autoconhecimento exclusivamente educativo, vetando o fatalismo e o alarmismo.
             </p>
           </div>
 
           <!-- Pilar 5 -->
-          <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100/80 space-y-1">
-            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-emerald-900">
+          <div class="p-3 rounded-2xl bg-[#11171F] border border-slate-700/70 space-y-1">
+            <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🤝</span>
               <span>O Reconhecimento dos Desafios e o Nosso Compromisso Pacífero</span>
             </h4>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              Reconhecemos com humildade que fragilidades técnicas e operacionais podem surgir. A nossa postura é de resolver qualquer questão de forma estritamente pacífica, transparente e ágil pelo canal: <code class="text-emerald-800 font-mono text-[10.5px]">contato@praticasdeautoconhecimento.org</code>.
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              Reconhecemos com humildade que fragilidades técnicas e operacionais podem surgir. A nossa postura é de resolver qualquer questão de forma estritamente pacífica, transparente e ágil pelo canal: <code class="text-[#E5C384] font-mono text-[10.5px]">contato@praticasdeautoconhecimento.org</code>.
             </p>
           </div>
 
         </div>
 
         <!-- Convite de Honra Final e Assinatura -->
-        <div class="p-3.5 bg-gradient-to-r from-emerald-900 to-[#064E3B] rounded-2xl text-white space-y-2 shadow-sm">
-          <p class="text-[11.5px] leading-relaxed text-emerald-100 italic">
+        <div class="p-3.5 bg-gradient-to-r from-[#17222D] to-[#121921] rounded-2xl text-white space-y-2 border border-amber-500/25 shadow-sm">
+          <p class="text-[11.5px] leading-relaxed text-[#F3E2C4] italic">
             "A terra é firme sob nossos pés, e o horizonte é amplo diante de nós. Seja bem-vindo(a) a este ecossistema."
           </p>
-          <div class="text-[11px] font-bold text-emerald-300 pt-1.5 border-t border-emerald-800/80 flex items-center justify-between">
+          <div class="text-[11px] font-bold text-[#E5C384] pt-1.5 border-t border-slate-700 flex items-center justify-between">
             <span>Com responsabilidade, ética e respeito</span>
-            <span>Equipe & Curadoria Ybyversus</span>
+            <span>Equipe & Curadoria YBY versus</span>
           </div>
         </div>
 
         <!-- Linha de Interações do Quadro -->
-        <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs text-slate-500 font-semibold">
-          <button onclick="showAppToast('Diálogo aberto sobre o Manifesto!')" class="flex items-center gap-1.5 hover:text-emerald-600 transition-colors tap-active">
-            <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+        <div class="flex items-center justify-between pt-2 border-t border-slate-700 text-xs text-slate-400 font-semibold">
+          <button onclick="showAppToast('Diálogo aberto sobre o Manifesto!')" class="flex items-center gap-1.5 hover:text-[#E5C384] transition-colors tap-active">
+            <i data-lucide="message-circle" class="w-4 h-4 text-[#E5C384]"></i>
             <span>84 Diálogos</span>
           </button>
 
-          <button onclick="supportMainPost()" class="flex items-center gap-1.5 hover:text-emerald-600 transition-colors tap-active">
-            <i data-lucide="heart" class="w-4 h-4 text-emerald-600"></i>
+          <button onclick="supportMainPost()" class="flex items-center gap-1.5 hover:text-[#E5C384] transition-colors tap-active">
+            <i data-lucide="heart" class="w-4 h-4 text-[#E5C384]"></i>
             <span id="post-likes-count">2.4k Apoios</span>
           </button>
 
-          <button onclick="shareMainPost()" class="flex items-center gap-1.5 hover:text-emerald-600 transition-colors tap-active">
-            <i data-lucide="share-2" class="w-4 h-4 text-emerald-600"></i>
+          <button onclick="shareMainPost()" class="flex items-center gap-1.5 hover:text-[#E5C384] transition-colors tap-active">
+            <i data-lucide="share-2" class="w-4 h-4 text-[#E5C384]"></i>
             <span>Compartilhar</span>
           </button>
         </div>
 
       </article>
 
-      <!-- 8. TOGGLE INFERIOR: RECENTES vs ALEATÓRIOS -->
-      <div class="pt-2 flex items-center justify-between px-2">
-        <button onclick="setFeedOrder('recentes')" id="btn-recentes" class="text-xs font-semibold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5 tap-active">
-          <span id="radio-recentes" class="w-3.5 h-3.5 rounded-full border border-slate-400 flex items-center justify-center"></span>
-          <span>Recentes</span>
-        </button>
-
-        <!-- BOTÃO PÍLULA VERDE ALEATÓRIOS -->
-        <button onclick="setFeedOrder('aleatorios')" id="btn-aleatorios" class="px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 text-white font-bold text-xs shadow-float active:scale-95 transition-all flex items-center gap-1.5 tap-active">
-          <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
-          <span>Aleatórios</span>
-        </button>
-      </div>
-
     </main>
 
-    <!-- 9. HOME INDICATOR BAR DO SMARTPHONE (LINHA INFERIOR) -->
-    <div class="h-5 bg-white flex items-center justify-center pb-1 shrink-0 select-none">
-      <div class="w-32 h-1 bg-slate-300 rounded-full"></div>
-    </div>
-
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL: DISTRIBUIÇÃO SEM BOLHAS                           -->
+  <!-- MODAIS COMPLETOS EM TEMA OBSIDIANA & OURO CELESTIAL       -->
   <!-- ======================================================== -->
-  <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl text-xs border border-slate-100">
-      
-      <!-- Topo: ✦ Distribuição Sem Bolhas + Botão Fechar X -->
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <div class="flex items-center gap-2 font-bold text-[#064E3B] text-sm">
-          <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
-          <span>Distribuição Sem Bolhas</span>
+
+  <!-- MODAL: DISTRIBUIÇÃO SEM BOLHAS -->
+  <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-[#151D26] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
+        <div class="flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5 text-[#E5C384]"></i>
+          <h3 class="font-bold text-slate-100 text-sm">Distribuição Sem Bolhas</h3>
         </div>
-        <button onclick="closeModal('modal-algoritmo')" class="text-slate-400 hover:text-slate-700 p-1 tap-active">
+        <button onclick="closeModal('modal-algoritmo')" class="text-slate-400 hover:text-white p-1">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <!-- Texto explicativo -->
-      <p class="text-slate-600 text-[12px] leading-relaxed">
-        O YBY não prioriza vício por engajamento. A distribuição é aberta:
+      <p class="text-xs text-slate-300 leading-relaxed">
+        O YBY versus não prioriza vício por engajamento. A distribuição é aberta:
       </p>
 
-      <!-- As 3 Pílulas em Verde Claro da Imagem -->
-      <div class="space-y-2 font-mono text-[11px]">
-        <div class="p-2.5 px-3 rounded-xl bg-[#E8F8EE] text-[#064E3B] flex justify-between items-center font-semibold border border-[#D5F2DF]">
-          <span>25% Novidades</span>
-          <span class="text-slate-600 font-sans">Recentes</span>
+      <div class="space-y-2 text-xs">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-slate-700/60 text-slate-300">
+          <span class="font-bold text-[#E5C384]">25% Novidades</span>
+          <span class="text-slate-400">Recentes</span>
         </div>
-        <div class="p-2.5 px-3 rounded-xl bg-[#E8F8EE] text-[#064E3B] flex justify-between items-center font-semibold border border-[#D5F2DF]">
-          <span>25% Diversidade</span>
-          <span class="text-slate-600 font-sans">Autores plurais</span>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-slate-700/60 text-slate-300">
+          <span class="font-bold text-[#E5C384]">25% Diversidade</span>
+          <span class="text-slate-400">Autores plurais</span>
         </div>
-        <div class="p-2.5 px-3 rounded-xl bg-[#E8F8EE] text-[#064E3B] flex justify-between items-center font-semibold border border-[#D5F2DF]">
-          <span>15% Fisher-Yates</span>
-          <span class="text-slate-600 font-sans">Aleatório justo</span>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-slate-700/60 text-slate-300">
+          <span class="font-bold text-[#E5C384]">15% Fisher-Yates</span>
+          <span class="text-slate-400">Aleatório justo</span>
         </div>
       </div>
 
-      <!-- Botão Verde Escuro "Compreendido" -->
-      <button onclick="closeModal('modal-algoritmo')" class="w-full py-3 rounded-full bg-[#047857] hover:bg-[#065F46] text-white font-bold text-xs shadow-md tap-active">
+      <button onclick="closeModal('modal-algoritmo')" class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
         Compreendido
       </button>
-
     </div>
   </div>
 
-  <!-- MODAL: PUBLICAR NOVO SABER -->
-  <div id="modal-publish" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white rounded-t-[32px] sm:rounded-3xl max-w-sm w-full p-5 space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-        <h3 class="text-sm font-bold text-slate-800">Partilhar Novo Saber</h3>
-        <button onclick="closeModal('modal-publish')" class="p-1 text-slate-400 hover:text-slate-600">
+  <!-- MODAL: MENU DE OPÇÕES -->
+  <div id="modal-menu" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-[#151D26] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
+        <div class="flex items-center gap-2">
+          <span class="font-luxury-serif text-sm font-bold text-[#E5C384]">YBY versus</span>
+        </div>
+        <button onclick="closeModal('modal-menu')" class="text-slate-400 hover:text-white p-1">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <form onsubmit="handleCreateSaber(event)" class="space-y-3">
-        <div>
-          <label class="block text-[11px] font-bold text-slate-600 mb-1">Título do Saber</label>
-          <input type="text" id="new-saber-title" required placeholder="Ex: Manejo agroecológico e compostagem" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">
-        </div>
-        <div>
-          <label class="block text-[11px] font-bold text-slate-600 mb-1">Texto / Instruções</label>
-          <textarea id="new-saber-text" required rows="3" placeholder="Escreva seu relato, receita ou aprendizado..." class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500"></textarea>
-        </div>
-        <button type="submit" class="w-full py-2.5 rounded-full bg-[#047857] hover:bg-[#065F46] text-white font-bold text-xs shadow-md tap-active">
-          Publicar na Praça
+      <div class="space-y-1 text-xs">
+        <button onclick="openModal('modal-termos'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#1A232D] flex items-center gap-2.5 tap-active text-slate-200">
+          <i data-lucide="file-text" class="w-4 h-4 text-[#E5C384]"></i>
+          <span>Termos de Uso & Conduta</span>
         </button>
-      </form>
+        <button onclick="openModal('modal-privacidade'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#1A232D] flex items-center gap-2.5 tap-active text-slate-200">
+          <i data-lucide="shield-check" class="w-4 h-4 text-[#E5C384]"></i>
+          <span>Política de Privacidade (LGPD)</span>
+        </button>
+        <button onclick="showAppToast('Sincronização com o Fediverso ativa!'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#1A232D] flex items-center gap-2.5 tap-active text-slate-200">
+          <i data-lucide="network" class="w-4 h-4 text-[#E5C384]"></i>
+          <span>Rede Federada & Soberania</span>
+        </button>
+      </div>
+
+      <button onclick="closeModal('modal-menu')" class="w-full py-2 rounded-full bg-[#1A232D] text-slate-300 hover:text-white text-xs font-semibold tap-active">
+        Fechar
+      </button>
     </div>
   </div>
 
-  <!-- MODAL DE MENU -->
-  <div id="modal-menu" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-xs w-full p-5 space-y-3 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-        <span class="text-xs font-bold text-slate-800">Opções da Praça</span>
-        <button onclick="closeModal('modal-menu')" class="text-slate-400">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="space-y-2 text-xs font-semibold text-slate-700">
-        <button onclick="openModal('modal-publish'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active">
-          <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-600"></i> Publicar Saber
-        </button>
-        <button onclick="openModal('modal-algoritmo'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active">
-          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i> Distribuição Sem Bolhas
-        </button>
-        <button onclick="showAppToast('Acervo comunitário aberto!'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active">
-          <i data-lucide="library" class="w-4 h-4 text-emerald-600"></i> Memória & Acervo
-        </button>
-        <div class="border-t border-slate-100 my-1"></div>
-        <button onclick="openModal('modal-termos'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active text-slate-600">
-          <i data-lucide="file-text" class="w-4 h-4 text-emerald-600"></i> Termos de Uso & Conduta
-        </button>
-        <button onclick="openModal('modal-privacidade'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active text-slate-600">
-          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i> Política de Privacidade (LGPD)
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: TERMOS DE USO & CONDUTA -->
-  <div id="modal-termos" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-white rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-emerald-100">
+  <!-- MODAL: TERMOS DE USO & CONDUTA (COMPLETO) -->
+  <div id="modal-termos" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5">
+    <div class="bg-[#151D26] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
       
-      <!-- Cabeçalho do Modal -->
-      <div class="px-5 py-4 bg-emerald-900 text-white flex items-center justify-between shrink-0 shadow-sm">
+      <!-- Cabeçalho -->
+      <div class="px-5 py-4 bg-[#101720] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
-          <i data-lucide="file-text" class="w-5 h-5 text-emerald-300"></i>
+          <i data-lucide="file-text" class="w-5 h-5 text-[#E5C384]"></i>
           <div>
-            <h3 class="text-sm font-bold leading-tight">Termos de Uso, Conduta & Soberania Digital</h3>
-            <span class="text-[10px] text-emerald-300">Versão 2.0 Oficial • Ecossistema Ybyversus</span>
+            <h3 class="text-sm font-bold text-slate-100">Termos de Uso, Conduta & Soberania Digital</h3>
+            <span class="text-[10px] text-[#E5C384]">Versão 2.0 Oficial • Ecossistema YBY versus</span>
           </div>
         </div>
-        <button onclick="closeModal('modal-termos')" class="text-emerald-200 hover:text-white p-1 tap-active">
+        <button onclick="closeModal('modal-termos')" class="text-slate-400 hover:text-white p-1 tap-active">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <!-- Conteúdo Integral com Rolagem Fluida -->
-      <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-700 leading-relaxed">
+      <!-- Conteúdo Integral -->
+      <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed">
         
-        <!-- Manifesto de Princípios -->
-        <div class="p-3.5 bg-gradient-to-br from-emerald-50 to-teal-50/50 rounded-2xl border border-emerald-100/90 space-y-1.5">
-          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+        <div class="p-3.5 bg-[#101720] rounded-2xl border border-amber-500/20 space-y-1.5">
+          <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
             <span>🌿</span>
             <span>1. Manifesto de Princípios e Propósito</span>
           </h4>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            O <strong>Ybyversus</strong> é um ecossistema digital soberano, minimalista e consagrado à dignidade humana. Acreditamos na liberdade de expressão exercida com ética, integridade, responsabilidade e discernimento. Acima de qualquer rótulo, ideologia, crença ou polarização, reconhecemos o homem e a mulher primariamente como <strong>seres humanos</strong>.
-          </p>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            Não somos um depósito comercial de atenções nem uma máquina de alimentar vícios algorítmicos. O Ybyversus foi concebido como uma <strong>Praça Pública Digital</strong>: um espaço de circulação livre, segura e elevada de conhecimentos, culturas, saberes ancestrais da Terra (<em>Yby</em>), artes e oportunidades legítimas de cooperação.
+          <p class="text-[11.5px] text-slate-300 leading-relaxed">
+            O <strong>YBY versus</strong> é um ecossistema digital soberano, minimalista e consagrado à dignidade humana. Acreditamos na liberdade de expressão exercida com ética, integridade, responsabilidade e discernimento. Acima de qualquer rótulo, ideologia, crença ou polarização, reconhecemos o homem e a mulher primariamente como <strong>seres humanos</strong>.
           </p>
         </div>
 
-        <!-- 2. Diretrizes de Conduta -->
         <div class="space-y-3">
-          <h4 class="font-bold text-slate-900 text-xs border-b border-slate-100 pb-1 flex items-center gap-1.5">
+          <h4 class="font-bold text-slate-100 text-xs border-b border-slate-700 pb-1 flex items-center gap-1.5">
             <span>⚖️</span>
             <span>2. Diretrizes de Conduta e Convivência</span>
           </h4>
 
-          <!-- 2.1 Política -->
-          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
-              <span>🏛️</span> 2.1. Política, Filosofia e Cidadania Consciente
-            </h5>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Conteúdo Político Consciente:</strong> Apenas será aceito conteúdo de caráter histórico, filosófico, cidadão, educacional, ético e humano, independentemente de orientação política (seja de esquerda, de centro ou de direita).
-            </p>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Vedação Absoluta à Propaganda Partidária:</strong> Não há espaço no ecossistema para militância partidária rasa, demagogia eleitoreira, proselitismo político, brigas de torcida ideológica ou ataques de difamação pessoal a figuras públicas e cidadãos.
+          <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1">
+            <h5 class="font-bold text-[#E5C384] text-xs">🏛️ 2.1. Política, Filosofia e Cidadania Consciente</h5>
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              Apenas conteúdo histórico, filosófico, cidadão, educacional, ético e humano. Vedação absoluta à militância partidária rasa, demagogia e ataques pessoais.
             </p>
           </div>
 
-          <!-- 2.2 Espiritualidade -->
-          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
-              <span>🕊️</span> 2.2. Espiritualidade Sadia e Respeito Universal
-            </h5>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Espiritualidade Pacificadora:</strong> Valorizamos o respeito irrestrito a todas as raças, credos, cosmovisões e tradições espirituais. A religiosidade no Ybyversus é compreendida como uma espiritualidade sadia, ancestral e pacificadora, cuja vocação é criar relações mútuas e pontes entre as culturas.
-            </p>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Vedação ao Proselitismo:</strong> Não são permitidos conteúdos no formato de propaganda religiosa, pregação impositiva, condenação espiritual de terceiros, imposição de dogmas ou captação e aliciamento de fiéis e adeptos.
+          <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1">
+            <h5 class="font-bold text-[#E5C384] text-xs">🕊️ 2.2. Espiritualidade Sadia e Respeito Universal</h5>
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              Espiritualidade ancestral e pacificadora que constrói pontes. Vedação a proselitismo, pregação impositiva, condenações e captação de fiéis.
             </p>
           </div>
 
-          <!-- 2.3 Astrologia e Tarot -->
-          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
-              <span>📜</span> 2.3. Astrologia, Tarot e Saberes Oraculares/Simbólicos
-            </h5>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Foco Educativo e Reflexivo:</strong> O estudo da Astrologia, do Tarot e dos saberes simbólicos é acolhido como linguagem legítima de autoconhecimento, educação arquetípica, filosofia e estudo profundo dos ciclos da vida e da psique.
-            </p>
-            <p class="text-[11.5px] text-rose-900 bg-rose-50 p-2 rounded-xl border border-rose-100 leading-relaxed">
-              <strong>Proibição Absoluta de Alarmismo e Fatalismo:</strong> São terminantemente proibidos conteúdos que façam previsões diretas de mortes, tragédias pessoais, acidentes, termos coercitivos de relacionamentos, ou qualquer modalidade de fatalismo, histeria e exploração do medo. Prever desgraças é uma violência psicológica que paralisa o indivíduo. O Ybyversus repudia integralmente o pânico psíquico.
+          <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1">
+            <h5 class="font-bold text-[#E5C384] text-xs">📜 2.3. Astrologia, Tarot e Saberes Oraculares/Simbólicos</h5>
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              Foco educativo e de compreensão de ciclos. <strong>Proibição absoluta de alarmismo e fatalismo:</strong> vedadas previsões diretas de mortes, tragédias, desgraças ou exploração do medo.
             </p>
           </div>
 
-          <!-- 2.4 Saúde e Fitoterapia -->
-          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
-              <span>🌿</span> 2.4. Práticas Integrativas, Fitoterapia e Saúde
-            </h5>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Estilo de Vida e Prevenção:</strong> Valorizamos abordagens voltadas à prevenção, estilo de vida consciente, fitoterapia tradicional e bem-estar integral.
-            </p>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Respeito Institucional e Autonomia Científica:</strong> Respeitamos as regulamentações sanitárias vigentes (Anvisa e órgãos de saúde), promovendo o diálogo maduro com a medicina convencional. Não admitimos a censura dogmática ("ditadura da saúde"), tampouco o charlatanismo, curas milagrosas ilusórias ou desinformação de saúde.
-            </p>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              <strong>Capacitação de Criadores e Respeito Multidisciplinar:</strong> Criadores passam por alinhamento editorial ético. É proibido desqualificar ou difamar médicos, farmacêuticos ou terapeutas: a saúde é um esforço conjunto e colaborativo.
+          <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1">
+            <h5 class="font-bold text-[#E5C384] text-xs">🌿 2.4. Práticas Integrativas, Fitoterapia e Saúde</h5>
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              Foco em estilo de vida e prevenção integral. Respeito às normas sanitárias (Anvisa), sem charlatanismo. Capacitação de criadores e respeito aos profissionais de saúde.
             </p>
           </div>
 
-          <!-- 2.5 Marketing Predatório -->
-          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
-              <span>🚫</span> 2.5. Recusa do Marketing Agressivo e Predatório
-            </h5>
-            <p class="text-[11.5px] text-slate-600 leading-relaxed">
-              Vedadas técnicas de manipulação algorítmica, concorrência desleal, gatilhos de escassez artificial ou dinâmicas de elevar uns através do rebaixamento de outros. Priorizamos substância, tempo de reflexão e maturidade conceitual.
+          <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1">
+            <h5 class="font-bold text-[#E5C384] text-xs">🚫 2.5. Recusa do Marketing Agressivo e Predatório</h5>
+            <p class="text-[11.5px] text-slate-400 leading-relaxed">
+              Vedadas técnicas de manipulação algorítmica, concorrência desleal e escassez fabricada.
             </p>
           </div>
         </div>
 
-        <!-- 3. Tolerância Zero -->
-        <div class="p-3.5 bg-rose-50/70 rounded-2xl border border-rose-100 space-y-1.5">
-          <h4 class="font-bold text-rose-950 text-xs flex items-center gap-1.5">
-            <span>🚨</span>
-            <span>3. Tolerância Zero contra Crimes, Abusos e Violência</span>
-          </h4>
-          <p class="text-[11px] text-rose-900">Banimento imediato e denúncia às autoridades competentes em casos de:</p>
-          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-700">
-            <li><strong>Proteção Infantil:</strong> Abuso, exploração sexual infantojuvenil, pedofilia ou aliciamento de menores.</li>
-            <li><strong>Proteção Animal e Biomas:</strong> Crueldade, maus-tratos ou exploração violenta da natureza e animais.</li>
-            <li><strong>Ódio e Discriminação:</strong> Racismo, nazismo, antissemitismo, machismo, homofobia, transfobia, xenofobia.</li>
-            <li><strong>Violência:</strong> Incitação ao suicídio, automutilação, atos terroristas, facções e armas ilegais.</li>
-            <li><strong>Privacidade:</strong> Exposição de dados pessoais (<em>doxxing</em>), perseguição (<em>stalking</em>) e difamação.</li>
-            <li><strong>Fake News:</strong> Propagação deliberada de mentiras comprovadamente lesivas.</li>
-          </ul>
+        <div class="p-3.5 bg-rose-950/40 rounded-2xl border border-rose-500/30 space-y-1.5">
+          <h4 class="font-bold text-rose-300 text-xs">🚨 3. Tolerância Zero contra Crimes e Abusos</h4>
+          <p class="text-[11px] text-slate-300">Banimento imediato e denúncia às autoridades em casos de abuso infantil, crueldade animal, ódio/discriminação, violência física/verbal, automutilação, doxxing e fake news.</p>
         </div>
 
-        <!-- 4. Proteção contra Golpes, Jogos de Azar e Pornografia -->
-        <div class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 space-y-2">
-          <h4 class="font-bold text-amber-950 text-xs flex items-center gap-1.5">
-            <span>🛡️</span>
-            <span>4. Proteção contra Golpes, Jogos de Azar e Pornografia</span>
-          </h4>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            <strong>Fim do "Link Livre do Nada":</strong> Não somos uma vitrine aberta para despejo de links anônimos. Todas as postagens passam por curadoria ou criadores previamente validados.
-          </p>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            <strong>Tolerância Zero a Jogos de Azar:</strong> Proibição estrita de cassinos, apostas esportivas (<em>bets</em>), "jogo do tigrinho", bingos virtuais ou esquemas de enriquecimento rápido e pirâmides.
-          </p>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            <strong>Vedação à Pornografia e Apologia à Prostituição:</strong> Sem apelo sexual vulgar ou mercantilização do corpo. Preserva-se integralmente o espaço sagrado da arte legítima, da pintura, da dança e da expressão corporal estética de valor humano.
+        <div class="p-3.5 bg-amber-950/40 rounded-2xl border border-amber-500/30 space-y-1.5">
+          <h4 class="font-bold text-[#E5C384] text-xs">🛡️ 4. Proteção contra Golpes, Jogos de Azar e Pornografia</h4>
+          <p class="text-[11.5px] text-slate-300 leading-relaxed">
+            Fim do "link livre do nada". Proibição total de apostas esportivas (<em>bets</em>), "jogo do tigrinho", cassinos e esquemas de enriquecimento rápido. Vedação à pornografia e exploração do corpo, preservando a arte estética e legítima.
           </p>
         </div>
 
-        <!-- 5. Política de Portfólio, Autoria e Vendas -->
-        <div class="p-3.5 bg-emerald-50/60 rounded-2xl border border-emerald-100 space-y-2">
-          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
-            <span>🛍️</span>
-            <span>5. Política de Portfólio, Autoria e Vendas Próprias</span>
-          </h4>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            <strong>Exclusividade de Produtos Próprios:</strong> Apenas criadores e terapeutas validados podem expor suas próprias obras (livros, e-books, músicas, atendimentos legítimos e cursos autorais).
-          </p>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            <strong>Proibição de Afiliados Externos:</strong> Proibida a inserção de links para páginas de afiliados de terceiros ou revendas genéricas. Quem compra no Ybyversus apoia diretamente o produtor autêntico, com total segurança contra fraudes.
+        <div class="p-3.5 bg-[#101720] rounded-2xl border border-amber-500/20 space-y-1.5">
+          <h4 class="font-bold text-[#E5C384] text-xs">🛍️ 5. Política de Portfólio, Autoria e Vendas Próprias</h4>
+          <p class="text-[11.5px] text-slate-300 leading-relaxed">
+            Apenas para obras de autoria direta do criador (livros, e-books, músicas, atendimentos legítimos). Vedados links de afiliados externos e revenda de terceiros.
           </p>
         </div>
 
-        <!-- 6. Equidade de Alcance -->
-        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
-            <span>⚖️</span> 6. Equidade de Alcance e Recusa da Elitização Financeira
-          </h4>
-          <p class="text-[11.5px] text-slate-600 leading-relaxed">
-            <strong>Sem Impulsionamento Pago:</strong> O dinheiro não compra destaque nem alcance na praça. A distribuição é orgânica, aberta e justa (algoritmo soberano Fisher-Yates sem bolhas), garantindo igualdade de voz a mestres, estudantes e agricultores.
+        <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1">
+          <h4 class="font-bold text-[#E5C384] text-xs">⚖️ 6. Equidade de Alcance e Sem Impulsionamento Pago</h4>
+          <p class="text-[11.5px] text-slate-400 leading-relaxed">
+            O dinheiro não compra alcance. Distribuição aberta e justa pelo algoritmo Fisher-Yates sem bolhas.
           </p>
         </div>
 
-        <!-- 7 e 8. Propriedade Intelectual, Cumprimento Legal e Contato -->
-        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
-          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
-            <span>🏛️</span> 7. Propriedade Intelectual, Cumprimento Legal e Notificações
-          </h4>
-          <p class="text-[11.5px] text-slate-600 leading-relaxed">
-            Respeito absoluto aos direitos autorais com créditos originais preservados e autonomia para transição ao Fediverso (PeerTube, Mastodon, Funkwhale).
+        <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <h4 class="font-bold text-[#E5C384] text-xs">🏛️ 7. Notificações e Canal Oficial</h4>
+          <p class="text-[11.5px] text-slate-400 leading-relaxed">
+            Marco Civil da Internet (Lei 12.965/2014) e LGPD (Lei 13.709/2018).
           </p>
-          <p class="text-[11.5px] text-slate-600 leading-relaxed">
-            Atuação sob a Constituição Federal, Marco Civil da Internet (Lei 12.965/2014) e LGPD (Lei 13.709/2018). Resolução sempre pacífica, amigável e célere.
-          </p>
-          <div class="pt-1.5 border-t border-slate-200/70 text-[11px] font-semibold text-emerald-800 flex items-center justify-between">
-            <span>Canal Oficial de Atendimento:</span>
-            <code class="font-mono text-emerald-900">contato@praticasdeautoconhecimento.org</code>
+          <div class="pt-1.5 border-t border-slate-700 text-[11px] font-semibold text-[#E5C384] flex items-center justify-between">
+            <span>Canal Oficial:</span>
+            <code class="font-mono text-[#FFF2D6]">contato@praticasdeautoconhecimento.org</code>
           </div>
         </div>
 
       </div>
 
-      <!-- Rodapé do Modal -->
-      <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[10px] text-slate-400 font-medium">Ecossistema Ybyversus • Soberania & Ética</span>
-        <button onclick="closeModal('modal-termos')" class="px-5 py-2 rounded-full bg-[#047857] hover:bg-[#065F46] text-white text-xs font-bold tap-active transition-colors shadow-xs">
+      <!-- Rodapé -->
+      <div class="p-3 bg-[#101720] border-t border-slate-700/60 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-medium">YBY versus • Soberania & Ética</span>
+        <button onclick="closeModal('modal-termos')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
           Compreendido e de Acordo
         </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: POLÍTICA DE PRIVACIDADE (LGPD) -->
-  <div id="modal-privacidade" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-white rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-emerald-100">
+  <!-- MODAL: POLÍTICA DE PRIVACIDADE (LGPD) (COMPLETO) -->
+  <div id="modal-privacidade" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5">
+    <div class="bg-[#151D26] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
       
-      <!-- Cabeçalho do Modal -->
-      <div class="px-5 py-4 bg-emerald-900 text-white flex items-center justify-between shrink-0 shadow-sm">
+      <!-- Cabeçalho -->
+      <div class="px-5 py-4 bg-[#101720] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
-          <i data-lucide="shield-check" class="w-5 h-5 text-emerald-300"></i>
+          <i data-lucide="shield-check" class="w-5 h-5 text-[#E5C384]"></i>
           <div>
-            <h3 class="text-sm font-bold leading-tight">Política de Privacidade & Proteção de Dados</h3>
-            <span class="text-[10px] text-emerald-300">LGPD (Lei 13.709/2018) • Marco Civil (Lei 12.965/2014)</span>
+            <h3 class="text-sm font-bold text-slate-100">Política de Privacidade & Proteção de Dados</h3>
+            <span class="text-[10px] text-[#E5C384]">LGPD (Lei 13.709/2018) • Marco Civil (Lei 12.965/2014)</span>
           </div>
         </div>
-        <button onclick="closeModal('modal-privacidade')" class="text-emerald-200 hover:text-white p-1 tap-active">
+        <button onclick="closeModal('modal-privacidade')" class="text-slate-400 hover:text-white p-1 tap-active">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <!-- Conteúdo Integral com Rolagem Fluida -->
-      <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-700 leading-relaxed">
+      <!-- Conteúdo Integral -->
+      <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed">
         
-        <!-- 1. Compromisso Fundamental -->
-        <div class="p-3.5 bg-gradient-to-br from-emerald-50 to-teal-50/50 rounded-2xl border border-emerald-100/90 space-y-1.5">
-          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+        <div class="p-3.5 bg-[#101720] rounded-2xl border border-amber-500/20 space-y-1.5">
+          <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
             <span>🛡️</span>
             <span>1. Compromisso com a Privacidade e Soberania Digital</span>
           </h4>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            O <strong>Ybyversus</strong> foi construído sob o princípio fundamental da <strong>Soberania Digital e do Minimalismo de Dados</strong>. A privacidade é um direito humano inalienável e não uma moeda de troca comercial.
-          </p>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed">
-            Nós <strong>não vendemos dados pessoais</strong>, <strong>não criamos perfis psicológicos ou comportamentais para leilão de anúncios</strong>, <strong>não utilizamos rastreadores espiões de terceiros</strong> e <strong>não aprisionamos a sua atenção</strong>.
+          <p class="text-[11.5px] text-slate-300 leading-relaxed">
+            Não vendemos seus dados, não fazemos perfilamento para leilão publicitário, não utilizamos rastreadores de terceiros e não exploramos vícios comportamentais.
           </p>
         </div>
 
-        <!-- 2. Princípios Art 6 LGPD -->
-        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
-          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-            <span>📜</span>
-            <span>2. Princípios de Tratamento de Dados (Art. 6º da LGPD)</span>
-          </h4>
-          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-600 leading-relaxed">
-            <li><strong>Finalidade e Necessidade:</strong> Tratamento apenas do mínimo indispensável para operação técnica da Praça.</li>
-            <li><strong>Livre Acesso e Transparência:</strong> Consulta facilitada, clara e gratuita sobre todos os dados existentes.</li>
-            <li><strong>Segurança e Prevenção:</strong> Conexões seguras criptografadas (HTTPS/TLS) contra incidentes de segurança.</li>
-            <li><strong>Não Discriminação:</strong> Impossibilidade de uso de dados para fins punitivos, discriminatórios ou abusivos.</li>
-          </ul>
-        </div>
-
-        <!-- 3. Tabela de Dados Coletados -->
-        <div class="space-y-1.5">
-          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-            <span>📋</span>
-            <span>3. Quais Dados Tratamos e Para Quais Finalidades</span>
-          </h4>
-          <div class="overflow-x-auto rounded-2xl border border-slate-200">
-            <table class="w-full text-[11px] text-left border-collapse">
-              <thead class="bg-slate-100 text-slate-700 font-bold">
-                <tr>
-                  <th class="p-2 border-b border-slate-200">Dado</th>
-                  <th class="p-2 border-b border-slate-200">Finalidade</th>
-                  <th class="p-2 border-b border-slate-200">Base Legal</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 text-slate-600">
-                <tr>
-                  <td class="p-2 font-semibold text-slate-800">Perfil Público</td>
-                  <td class="p-2">Identificação na Praça Pública e autoria de saberes</td>
-                  <td class="p-2">Execução de Contrato (Art. 7º, V)</td>
-                </tr>
-                <tr>
-                  <td class="p-2 font-semibold text-slate-800">Saberes Publicados</td>
-                  <td class="p-2">Circulação livre de conhecimento entre os cidadãos</td>
-                  <td class="p-2">Consentimento (Art. 7º, I)</td>
-                </tr>
-                <tr>
-                  <td class="p-2 font-semibold text-slate-800">Logs de Acesso</td>
-                  <td class="p-2">Guarda obrigatória pelo Marco Civil (Art. 15)</td>
-                  <td class="p-2">Obrigação Legal (Art. 7º, II)</td>
-                </tr>
-                <tr>
-                  <td class="p-2 font-semibold text-slate-800">Cache Local PWA</td>
-                  <td class="p-2">Armazenamento no dispositivo para navegação rápida/offline</td>
-                  <td class="p-2">Necessidade Técnica</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <h4 class="font-bold text-slate-100 text-xs">📋 2. Quais Dados Tratamos</h4>
+          <div class="space-y-1 text-[11px] text-slate-400">
+            <p>• <strong>Perfil Público:</strong> Nome público, foto e minibiografia voluntária.</p>
+            <p>• <strong>Saberes Publicados:</strong> Textos e mídias compartilhadas livremente.</p>
+            <p>• <strong>Logs Técnicos:</strong> Guarda obrigatória pelo Art. 15 do Marco Civil.</p>
+            <p>• <strong>Cache Local PWA:</strong> Armazenamento no dispositivo para funcionamento offline.</p>
           </div>
         </div>
 
-        <!-- 4. O que Nós NÃO Fazemos -->
-        <div class="p-3.5 bg-rose-50/70 rounded-2xl border border-rose-100 space-y-1.5">
-          <h4 class="font-bold text-rose-950 text-xs flex items-center gap-1.5">
-            <span>🚫</span>
-            <span>4. O que Nós Rigorosamente NÃO Fazemos</span>
-          </h4>
-          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-700">
-            <li><strong>❌ Sem Perfilamento Comercial:</strong> Não analisamos seu comportamento para vender anúncios.</li>
-            <li><strong>❌ Sem Venda de Dados:</strong> Seus dados jamais serão repassados a <em>data brokers</em> ou empresas de marketing.</li>
-            <li><strong>❌ Sem Pixels Espiões:</strong> Livre de códigos de rastreamento de monopólios publicitários.</li>
-            <li><strong>❌ Sem GPS Oculto:</strong> Não monitoramos sua localização geográfica por satélite.</li>
+        <div class="p-3.5 bg-rose-950/40 rounded-2xl border border-rose-500/30 space-y-1.5">
+          <h4 class="font-bold text-rose-300 text-xs">🚫 3. O que Rigorosamente NÃO Fazemos</h4>
+          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-300">
+            <li>❌ Sem monitoramento para direcionamento de anúncios.</li>
+            <li>❌ Sem venda para <em>data brokers</em> ou marketing.</li>
+            <li>❌ Sem pixels espiões de monopólios corporativos.</li>
+            <li>❌ Sem rastreamento de localização por GPS.</li>
           </ul>
         </div>
 
-        <!-- 5. Fediverso -->
-        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
-          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
-            <span>🌐</span> 5. Federação e Comunicação Descentralizada (Fediverso)
-          </h4>
-          <p class="text-[11.5px] text-slate-600 leading-relaxed">
-            Publicações marcadas como públicas circulam em protocolos abertos e federados (ActivityPub, Mastodon, PeerTube, Funkwhale) com preservação irrestrita do crédito autoral e da soberania do criador.
-          </p>
+        <div class="p-3.5 bg-[#101720] rounded-2xl border border-amber-500/20 space-y-1.5">
+          <h4 class="font-bold text-[#E5C384] text-xs">⚖️ 4. Seus Direitos (Art. 18 da LGPD)</h4>
+          <p class="text-[11px] text-slate-400">Acesso, retificação, exclusão definitiva, portabilidade e revogação de consentimento a qualquer instante.</p>
         </div>
 
-        <!-- 6. Direitos do Titular (Art 18 LGPD) -->
-        <div class="p-3.5 bg-emerald-50/60 rounded-2xl border border-emerald-100 space-y-1.5">
-          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
-            <span>⚖️</span>
-            <span>6. Seus Direitos Fundamentais (Art. 18 da LGPD)</span>
-          </h4>
-          <p class="text-[11px] text-slate-600">Você pode exercer a qualquer momento, gratuitamente e de forma simplificada:</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-700 pt-1">
-            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>1. Confirmação & Acesso:</strong> Saber e obter cópia dos dados tratados.</div>
-            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>2. Correção:</strong> Retificar dados incompletos ou inexatos.</div>
-            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>3. Eliminação Definitiva:</strong> Excluir seus dados pessoais e conta.</div>
-            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>4. Portabilidade:</strong> Exportar seus saberes em formato aberto.</div>
-          </div>
-        </div>
-
-        <!-- 7 e 8. Segurança e Contato do DPO -->
-        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
-          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
-            <span>🔒</span> 7. Segurança da Informação & Contato do Encarregado (DPO)
-          </h4>
-          <p class="text-[11.5px] text-slate-600 leading-relaxed">
-            Criptografia de ponta a ponta (HTTPS/TLS) e blindagem absoluta contra <em>doxxing</em>. Para qualquer solicitação legal ou exercício de direitos:
-          </p>
-          <div class="pt-1.5 border-t border-slate-200/70 text-[11px] font-semibold text-emerald-800 flex items-center justify-between">
+        <div class="p-3 bg-[#101720] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <h4 class="font-bold text-slate-100 text-xs">🔒 5. Contato do Encarregado (DPO)</h4>
+          <p class="text-[11.5px] text-slate-400 leading-relaxed">Conexões criptografadas (HTTPS/TLS) e blindagem contra vazamentos.</p>
+          <div class="pt-1.5 border-t border-slate-700 text-[11px] font-semibold text-[#E5C384] flex items-center justify-between">
             <span>Encarregado DPO Oficial:</span>
-            <code class="font-mono text-emerald-900">contato@praticasdeautoconhecimento.org</code>
+            <code class="font-mono text-[#FFF2D6]">contato@praticasdeautoconhecimento.org</code>
           </div>
         </div>
 
       </div>
 
-      <!-- Rodapé do Modal -->
-      <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[10px] text-slate-400 font-medium">Ybyversus • Privacidade Soberana</span>
-        <button onclick="closeModal('modal-privacidade')" class="px-5 py-2 rounded-full bg-[#047857] hover:bg-[#065F46] text-white text-xs font-bold tap-active transition-colors shadow-xs">
+      <!-- Rodapé -->
+      <div class="p-3 bg-[#101720] border-t border-slate-700/60 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-medium">YBY versus • Privacidade Soberana</span>
+        <button onclick="closeModal('modal-privacidade')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
           Entendido
         </button>
       </div>
     </div>
   </div>
 
+  <!-- MODAL: PUBLICAR SEU SABER -->
+  <div id="modal-publish" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-[#151D26] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
+        <div class="flex items-center gap-2">
+          <i data-lucide="plus-circle" class="w-5 h-5 text-[#E5C384]"></i>
+          <h3 class="font-bold text-slate-100 text-sm">Compartilhar Saber</h3>
+        </div>
+        <button onclick="closeModal('modal-publish')" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <textarea id="publish-text" rows="3" placeholder="Qual saber ou reflexão você deseja cultivar hoje na praça pública?" class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#101720] p-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/50 resize-none"></textarea>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-slate-700/60">
+        <span class="text-[10px] text-slate-400 font-medium">Livre de anúncios comerciais</span>
+        <button onclick="publishSaber()" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
+          Publicar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST DE AVISO -->
-  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#064E3B] text-white text-xs font-bold shadow-xl flex items-center gap-2 hidden transition-all">
-    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-300"></i>
+  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#18222C] text-[#E5C384] text-xs font-bold shadow-xl border border-amber-500/30 flex items-center gap-2 hidden transition-all">
+    <i data-lucide="check-circle" class="w-4 h-4 text-[#E5C384]"></i>
     <span id="app-toast-text">Ação concluída com sucesso!</span>
   </div>
 
@@ -1198,344 +1084,278 @@
           id: 'rec-1',
           title: 'Aula Completa: Agrofloresta e Recuperação de Nascentes',
           author: 'Mestre Tiago',
-          authorImg: 'assets/card-mestres-terra.jpg',
-          platform: 'peertube',
           duration: '45:18',
-          likes: 3180,
-          videoUrl: 'assets/banner-arara.mp4'
+          views: '1.2k visualizações',
+          image: 'assets/card-mestres-terra.jpg',
+          platform: 'peertube'
         },
         {
           id: 'rec-2',
-          title: 'Oficina Prática de Construção com Terra Crua e Bambu',
-          author: 'Comunidade Yby',
-          authorImg: 'assets/dola-forest.jpg',
-          platform: 'peertube',
+          title: 'Documentário: As Guardiãs das Sementes Ancestrais',
+          author: 'Dona Benvinda',
           duration: '38:40',
-          likes: 1940,
-          videoUrl: 'assets/banner-arara.mp4'
+          views: '2.8k visualizações',
+          image: 'assets/card-sol-ancestral.jpg',
+          platform: 'peertube'
         },
         {
           id: 'rec-3',
-          title: 'Física da Seiva e Ciclos Lunares na Agricultura Familiar',
-          author: 'Prof. Carlos',
-          authorImg: 'assets/card-portal-luz.jpg',
-          platform: 'peertube',
+          title: 'Ciclos da Terra: Medicina Tradicional e Fitoterapia',
+          author: 'Mariana Artesã',
           duration: '52:10',
-          likes: 2450,
-          videoUrl: 'assets/banner-arara.mp4'
+          views: '950 visualizações',
+          image: 'assets/card-floresta-sagrada.jpg',
+          platform: 'peertube'
         }
       ],
       plurais: [
         {
           id: 'plu-1',
-          title: 'Cosmovisões Ancestrais e o Cuidado com a Mãe Terra',
-          author: 'Dona Benvinda',
-          authorImg: 'assets/card-sol-ancestral.jpg',
-          platform: 'peertube',
-          duration: '41:15',
-          likes: 4210,
-          videoUrl: 'assets/banner-arara.mp4'
+          title: 'Visões da Mata: Arquitetura Viva e Bioconstrução',
+          author: 'Comunidade Yby',
+          duration: '41:20',
+          views: '1.9k visualizações',
+          image: 'assets/card-floresta-sagrada.jpg',
+          platform: 'peertube'
         },
         {
           id: 'plu-2',
-          title: 'Tecelagem Tradicional e Filosofia das Cores Naturais',
-          author: 'Mariana Artesã',
-          authorImg: 'assets/card-floresta-sagrada.jpg',
-          platform: 'peertube',
-          duration: '29:50',
-          likes: 1870,
-          videoUrl: 'assets/banner-arara.mp4'
+          title: 'Cosmovisões Tradicionais: O Tempo Não-Linear',
+          author: 'Prof. Carlos',
+          duration: '36:15',
+          views: '3.4k visualizações',
+          image: 'assets/card-portal-luz.jpg',
+          platform: 'peertube'
         },
         {
           id: 'plu-3',
-          title: 'Encontro dos Povos da Floresta e Defesa dos Rios Vivos',
-          author: 'Articulação dos Saberes',
-          authorImg: 'assets/card-mestres-terra.jpg',
-          platform: 'owncast',
-          duration: '1:14:20',
-          likes: 3890,
-          videoUrl: 'assets/banner-arara.mp4'
+          title: 'Música Raiz e Conexão com os Rios',
+          author: 'Coletivo Pantaneiro',
+          duration: '29:50',
+          views: '1.1k visualizações',
+          image: 'assets/dola-forest.jpg',
+          platform: 'funkwhale'
         }
       ],
       aleatorio: [
         {
           id: 'ale-1',
-          title: 'Manejo de Abelhas Nativas sem Ferrão (Meliponicultura)',
-          author: 'Seu Zé Meliponário',
-          authorImg: 'assets/dola-forest.jpg',
-          platform: 'peertube',
-          duration: '34:25',
-          likes: 2120,
-          videoUrl: 'assets/banner-arara.mp4'
+          title: 'Sistemas Agroflorestais em Pequenos Espaços',
+          author: 'Mestre Tiago',
+          duration: '33:12',
+          views: '820 visualizações',
+          image: 'assets/card-mestres-terra.jpg',
+          platform: 'peertube'
         },
         {
           id: 'ale-2',
-          title: 'Fermentação Natural de Pães com Grãos e Trigo Ancestral',
-          author: 'Dona Benvinda',
-          authorImg: 'assets/card-sol-ancestral.jpg',
-          platform: 'peertube',
-          duration: '27:10',
-          likes: 1650,
-          videoUrl: 'assets/banner-arara.mp4'
-        },
-        {
-          id: 'ale-3',
-          title: 'Transmissão Especial: Assembléia das Comunidades e Mestres',
-          author: 'Rede Soberana',
-          authorImg: 'assets/card-portal-luz.jpg',
-          platform: 'owncast',
-          duration: 'AO VIVO',
-          likes: 5120,
-          videoUrl: 'assets/banner-arara.mp4'
+          title: 'O Caminho do Barro: Cerâmica Ritual e Ancestralidade',
+          author: 'Mariana Artesã',
+          duration: '27:45',
+          views: '1.5k visualizações',
+          image: 'assets/card-floresta-sagrada.jpg',
+          platform: 'peertube'
         }
       ],
       seguindo: [
         {
           id: 'seg-1',
-          title: 'Manejo Prático de Agrofloresta Sintrópica de Primavera',
+          title: 'Aula Completa: Agrofloresta e Recuperação de Nascentes',
           author: 'Mestre Tiago',
-          authorImg: 'assets/card-mestres-terra.jpg',
-          platform: 'peertube',
-          duration: '48:30',
-          likes: 3410,
-          videoUrl: 'assets/banner-arara.mp4'
+          duration: '45:18',
+          views: '1.2k visualizações',
+          image: 'assets/card-mestres-terra.jpg',
+          platform: 'peertube'
         },
         {
           id: 'seg-2',
-          title: 'Ervas Protetoras e Banhos Aromáticos Tradicionais',
+          title: 'Documentário: As Guardiãs das Sementes Ancestrais',
           author: 'Dona Benvinda',
-          authorImg: 'assets/card-sol-ancestral.jpg',
-          platform: 'peertube',
-          duration: '31:40',
-          likes: 2890,
-          videoUrl: 'assets/banner-arara.mp4'
-        },
-        {
-          id: 'seg-3',
-          title: 'Curso Completo: Astronomia Popular e Calendário dos Ciclos',
-          author: 'Prof. Carlos',
-          authorImg: 'assets/card-portal-luz.jpg',
-          platform: 'peertube',
-          duration: '59:15',
-          likes: 3620,
-          videoUrl: 'assets/banner-arara.mp4'
+          duration: '38:40',
+          views: '2.8k visualizações',
+          image: 'assets/card-sol-ancestral.jpg',
+          platform: 'peertube'
         }
       ]
     };
 
     let currentLongPlaylist = 'recentes';
 
-    function switchLongPlaylist(key) {
-      currentLongPlaylist = key;
-      // Atualiza abas
-      ['recentes', 'plurais', 'aleatorio', 'seguindo'].forEach(k => {
-        const btn = document.getElementById(`pl-tab-${k}`);
+    function switchLongPlaylist(type) {
+      currentLongPlaylist = type;
+      const tabs = ['recentes', 'plurais', 'aleatorio', 'seguindo'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('pl-tab-' + t);
         if (!btn) return;
-        if (k === key) {
-          btn.className = 'pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-[#047857] text-white shadow-xs flex items-center gap-1.5 tap-active';
+        if (t === type) {
+          btn.className = 'px-3 py-1.5 rounded-full text-[11px] font-bold bg-[#E5C384] text-black shadow-xs tap-active transition-all shrink-0';
         } else {
-          btn.className = 'pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active';
+          btn.className = 'px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#11171F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0';
         }
       });
-
-      renderLongPlaylist(key);
-
-      const labels = {
-        recentes: 'Novidades Recentes (25%)',
-        plurais: 'Autores Plurais (25%)',
-        aleatorio: 'Aleatório Justo / Fisher-Yates (15%)',
-        seguindo: 'Pessoas que você segue'
-      };
-      showAppToast(`Playlist: ${labels[key]}`);
+      renderLongPlaylistItems();
     }
 
-    function renderLongPlaylist(key) {
+    function renderLongPlaylistItems() {
       const container = document.getElementById('long-playlist-items');
       if (!container) return;
-
-      let list = LONG_VIDEO_PLAYLISTS[key] || LONG_VIDEO_PLAYLISTS.recentes;
-
-      // Se for aleatório, faz um shuffle Fisher-Yates genuíno!
-      if (key === 'aleatorio') {
-        list = [...list];
-        for (let i = list.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [list[i], list[j]] = [list[j], list[i]];
-        }
-      }
-
-      container.innerHTML = list.map(item => {
-        const p = PLATFORMS[item.platform] || PLATFORMS.peertube;
-        return `
-          <div onclick="playVideoFromPlaylist('${item.id}', '${key}')" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-emerald-50/70 border border-slate-100 cursor-pointer transition-all tap-active group">
-            <div class="relative w-24 h-16 rounded-xl overflow-hidden bg-slate-900 shrink-0 shadow-xs">
-              <img src="${item.authorImg}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-              <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/75 text-[9px] font-bold text-white font-mono">
+      const list = LONG_VIDEO_PLAYLISTS[currentLongPlaylist] || [];
+      
+      let html = '';
+      list.forEach((item, index) => {
+        const plat = PLATFORMS[item.platform] || PLATFORMS.peertube;
+        html += `
+          <div onclick="playPlaylistItem('${item.title}', '${item.duration}', '${item.image}', '${item.platform}')" class="flex items-center gap-3 p-2 rounded-2xl bg-[#11171F] hover:bg-[#151E28] border border-slate-700/60 cursor-pointer tap-active transition-all group">
+            <div class="relative w-20 h-14 rounded-xl overflow-hidden shrink-0 bg-black">
+              <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+              <span class="absolute bottom-1 right-1 px-1.5 py-0.2 rounded bg-black/80 text-[9.5px] font-bold text-white">
                 ${item.duration}
               </span>
-              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 flex items-center justify-center transition-colors">
-                <div class="w-6 h-6 rounded-full bg-[#047857]/90 text-white flex items-center justify-center shadow-xs">
-                  <i data-lucide="play" class="w-3 h-3 fill-current ml-0.5"></i>
-                </div>
-              </div>
             </div>
             <div class="flex-1 min-w-0">
-              <h4 class="text-xs font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-emerald-800 transition-colors">
+              <h4 class="text-xs font-bold text-slate-100 truncate group-hover:text-[#E5C384] transition-colors">
                 ${item.title}
               </h4>
-              <div class="flex items-center justify-between mt-1 text-[10px] text-slate-500">
-                <div class="flex items-center gap-1.5">
-                  <img src="${item.authorImg}" class="w-3.5 h-3.5 rounded-full object-cover">
-                  <span class="font-medium text-slate-700 truncate">${item.author}</span>
-                </div>
-                <span class="inline-flex items-center gap-1 text-[9.5px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-md">
-                  ${p.icon}
-                  <span>${p.name}</span>
-                </span>
+              <div class="flex items-center gap-2 text-[10.5px] text-slate-400 mt-0.5">
+                <span>${item.author}</span>
+                <span>•</span>
+                <span>${item.views}</span>
               </div>
+            </div>
+            <div class="shrink-0 p-1.5 rounded-full bg-amber-500/10 text-[#E5C384] border border-amber-500/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
             </div>
           </div>
         `;
-      }).join('');
-
-      safeCreateIcons();
-    }
-
-    function playVideoFromPlaylist(videoId, playlistKey) {
-      const list = LONG_VIDEO_PLAYLISTS[playlistKey] || LONG_VIDEO_PLAYLISTS.recentes;
-      const item = list.find(v => v.id === videoId);
-      if (!item) return;
-
-      document.getElementById('card-title').innerText = item.title;
-      document.getElementById('card-duration').innerText = item.duration;
-      cardLikes = item.likes;
-      document.getElementById('card-likes-count').innerText = cardLikes;
-
-      const p = PLATFORMS[item.platform] || PLATFORMS.peertube;
-      const originIcon = document.getElementById('card-origin-icon');
-      const originName = document.getElementById('card-origin-name');
-      if (originIcon) originIcon.innerHTML = p.icon;
-      if (originName) originName.innerText = p.name;
-
-      const vid = document.getElementById('featured-video-player');
-      if (vid) {
-        vid.currentTime = 0;
-        vid.play().catch(() => {});
-        isMainPlaying = true;
-        const icon = document.getElementById('main-play-icon');
-        if (icon) icon.setAttribute('data-lucide', 'pause');
-      }
-
-      // Rola suavemente até o player
-      const card = document.getElementById('main-featured-card');
-      if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      safeCreateIcons();
-      showAppToast(`Reproduzindo: ${item.title.substring(0, 32)}...`);
-    }
-
-    let currentTab = 'saberes';
-    let currentFeedOrder = 'aleatorios';
-    let isMainPlaying = false;
-    let cardLikes = 2450;
-    let postLikes = 48;
-
-    document.addEventListener('DOMContentLoaded', () => {
-      safeCreateIcons();
-      setupServiceWorkerSafe();
-      setActiveTab('saberes');
-      renderLongPlaylist('recentes');
-    });
-
-    function updateTabButtonUI(activeKey) {
-      document.querySelectorAll('.fmt-tab-btn').forEach(btn => {
-        const ind = btn.querySelector('.active-indicator');
-        if (ind) ind.classList.add('opacity-0');
-        btn.classList.remove('scale-105');
       });
-      const targetBtn = document.getElementById(`fmt-btn-${activeKey}`);
-      if (targetBtn) {
-        const ind = targetBtn.querySelector('.active-indicator');
-        if (ind) ind.classList.remove('opacity-0');
-        targetBtn.classList.add('scale-105');
-      }
+      container.innerHTML = html;
+      lucide.createIcons();
     }
 
-    function setActiveTab(tabKey) {
-      currentTab = tabKey;
-      updateTabButtonUI(tabKey);
+    function playPlaylistItem(title, duration, image, platform) {
+      document.getElementById('featured-title').innerText = title;
+      document.getElementById('featured-duration').innerText = duration;
+      const imgFallback = document.getElementById('featured-image-fallback');
+      imgFallback.src = image;
+      imgFallback.classList.remove('hidden');
+      const video = document.getElementById('featured-video-player');
+      video.pause();
+      video.classList.add('hidden');
+      document.getElementById('featured-play-icon').setAttribute('data-lucide', 'play');
 
-      const data = FORMAT_ITEMS[tabKey] || FORMAT_ITEMS.saberes;
-      document.getElementById('card-title').innerText = data.title;
-      document.getElementById('card-duration').innerText = data.duration;
-      cardLikes = data.likes;
-      document.getElementById('card-likes-count').innerText = cardLikes;
+      // Atualiza badge
+      const badge = document.getElementById('card-origin-badge');
+      badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#E5C384]"></span><span>${title.slice(0, 15)}... • Fediverso</span>`;
 
-      // Se for Vídeos Longos, ativa a seção de playlists
-      if (tabKey === 'longos') {
-        const plSec = document.getElementById('long-videos-playlists-section');
-        if (plSec) {
-          plSec.classList.add('ring-2', 'ring-emerald-400');
-          setTimeout(() => plSec.classList.remove('ring-2', 'ring-emerald-400'), 1500);
-          plSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      showAppToast('Carregando: ' + title);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    let activeTab = 'saberes';
+    let isPlaying = false;
+    let isLiked = false;
+    let isSaved = false;
+    let likesCount = 2450;
+    let postLikesCount = 2400;
+    let isPostLiked = false;
+
+    function setActiveTab(tab) {
+      activeTab = tab;
+      
+      const longSection = document.getElementById('long-playlists-section');
+      if (tab === 'longos') {
+        if (longSection) {
+          longSection.classList.remove('hidden');
+          renderLongPlaylistItems();
         }
+      } else {
+        if (longSection) longSection.classList.add('hidden');
       }
 
-      // Atualiza com o logo e nome do aplicativo de origem
-      const p = PLATFORMS[data.platform] || PLATFORMS.mastodon;
-      const originIcon = document.getElementById('card-origin-icon');
-      const originName = document.getElementById('card-origin-name');
-      if (originIcon) originIcon.innerHTML = p.icon;
-      if (originName) originName.innerText = p.name;
+      const item = FORMAT_ITEMS[tab] || FORMAT_ITEMS.saberes;
+      document.getElementById('featured-title').innerText = item.title;
+      document.getElementById('featured-duration').innerText = item.duration;
+      document.getElementById('featured-likes-count').innerText = item.likes;
+      likesCount = item.likes;
 
-      showAppToast(`Origem: ${p.name}`);
+      const badge = document.getElementById('card-origin-badge');
+      badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#E5C384]"></span><span>${tab.charAt(0).toUpperCase() + tab.slice(1)} • Fediverso</span>`;
+
+      showAppToast('Formato selecionado: ' + tab.toUpperCase());
+      lucide.createIcons();
     }
 
-    function toggleMainPlay() {
-      const vid = document.getElementById('featured-video-player');
-      const icon = document.getElementById('main-play-icon');
+    function toggleFeaturedPlay() {
+      const video = document.getElementById('featured-video-player');
+      const icon = document.getElementById('featured-play-icon');
+      const img = document.getElementById('featured-image-fallback');
 
-      if (vid.paused) {
-        vid.play().catch(() => {});
-        isMainPlaying = true;
-        icon.setAttribute('data-lucide', 'pause');
-        showAppToast('Reproduzindo na praça...');
+      if (!isPlaying) {
+        img.classList.add('hidden');
+        video.classList.remove('hidden');
+        video.play().then(() => {
+          isPlaying = true;
+          icon.setAttribute('data-lucide', 'pause');
+          lucide.createIcons();
+          showAppToast('Reproduzindo...');
+        }).catch(err => {
+          showAppToast('Reproduzindo áudio/vídeo');
+        });
       } else {
-        vid.pause();
-        isMainPlaying = false;
+        video.pause();
+        isPlaying = false;
         icon.setAttribute('data-lucide', 'play');
+        lucide.createIcons();
         showAppToast('Pausado');
       }
-      safeCreateIcons();
     }
 
-    function toggleCardHeart() {
-      const icon = document.getElementById('card-heart-icon');
-      const countEl = document.getElementById('card-likes-count');
-      if (icon.classList.contains('text-emerald-600')) {
-        icon.classList.remove('text-emerald-600', 'fill-current');
-        cardLikes--;
+    function toggleFeaturedLike() {
+      isLiked = !isLiked;
+      const heart = document.getElementById('featured-heart-icon');
+      const count = document.getElementById('featured-likes-count');
+      if (isLiked) {
+        likesCount++;
+        heart.classList.add('fill-current', 'text-amber-400');
+        showAppToast('Apoiado com sucesso!');
       } else {
-        icon.classList.add('text-emerald-600', 'fill-current');
-        cardLikes++;
-        showAppToast('Apoiado com carinho!');
+        likesCount--;
+        heart.classList.remove('fill-current');
       }
-      countEl.innerText = cardLikes;
+      count.innerText = likesCount;
+    }
+
+    function toggleFeaturedSave() {
+      isSaved = !isSaved;
+      const bookmark = document.getElementById('featured-bookmark-icon');
+      if (isSaved) {
+        bookmark.classList.add('fill-current', 'text-[#E5C384]');
+        showAppToast('Salvo em seus saberes!');
+      } else {
+        bookmark.classList.remove('fill-current', 'text-[#E5C384]');
+        showAppToast('Removido dos salvos');
+      }
     }
 
     function supportMainPost() {
-      postLikes++;
-      document.getElementById('post-likes-count').innerText = postLikes;
-      showAppToast('Saber apoiado!');
+      isPostLiked = !isPostLiked;
+      const count = document.getElementById('post-likes-count');
+      if (isPostLiked) {
+        postLikesCount++;
+        count.innerText = (postLikesCount / 1000).toFixed(1) + 'k Apoios';
+        showAppToast('Apoio registrado ao Manifesto!');
+      } else {
+        postLikesCount--;
+        count.innerText = (postLikesCount / 1000).toFixed(1) + 'k Apoios';
+      }
     }
 
     function shareMainPost() {
       if (navigator.share) {
         navigator.share({
-          title: 'YBY • Conectando Saberes e Vidas',
-          text: 'Confira este saber na Praça Pública Digital do YBY!',
+          title: 'YBY versus • Praça Pública Digital',
+          text: 'Conheça o YBY versus, um espaço soberano, ético e humanizado.',
           url: window.location.href
         }).catch(() => {});
       } else {
@@ -1544,95 +1364,80 @@
       }
     }
 
-    function setFeedOrder(order) {
-      currentFeedOrder = order;
-
-      const btnRecentes = document.getElementById('btn-recentes');
-      const btnAleatorios = document.getElementById('btn-aleatorios');
-      const radioRecentes = document.getElementById('radio-recentes');
-
-      if (order === 'aleatorios') {
-        btnAleatorios.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 text-white font-bold text-xs shadow-float active:scale-95 transition-all flex items-center gap-1.5';
-        btnAleatorios.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i><span>Aleatórios</span>';
-
-        btnRecentes.className = 'text-xs font-semibold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5';
-        radioRecentes.innerHTML = '';
-        showAppToast('Embaralhamento justo Fisher-Yates ativado!');
-      } else {
-        btnRecentes.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 text-white font-bold text-xs shadow-float active:scale-95 transition-all flex items-center gap-1.5';
-        btnRecentes.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i><span>Recentes</span>';
-
-        btnAleatorios.className = 'text-xs font-semibold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5';
-        btnAleatorios.innerHTML = '<span>Aleatórios</span>';
-        showAppToast('Ordem cronológica das novidades ativada!');
-      }
-      safeCreateIcons();
-    }
-
     function filterByPerson(name) {
-      showAppToast(`Exibindo saberes de ${name}`);
+      showAppToast('Filtrando saberes de ' + name);
     }
 
-    function focusSearchInput() {
-      const input = document.getElementById('search-input');
-      input.focus();
+    function toggleSearch() {
+      const container = document.getElementById('search-bar-container');
+      container.classList.toggle('hidden');
+      if (!container.classList.contains('hidden')) {
+        document.getElementById('search-input').focus();
+      }
     }
 
     function handleSearchInput(e) {
-      if (e.key === 'Enter') executeSearch();
-    }
-
-    function executeSearch() {
-      const val = document.getElementById('search-input').value.trim();
-      if (val) {
-        showAppToast(`Buscando por: "${val}"`);
-      } else {
-        showAppToast('Digite uma palavra-chave para buscar saberes.');
+      if (e.key === 'Enter') {
+        executeSearch();
       }
     }
 
-    function handleCreateSaber(e) {
-      e.preventDefault();
-      const title = document.getElementById('new-saber-title').value.trim();
-      showAppToast(`Saber "${title}" publicado na praça!`);
+    function executeSearch() {
+      const q = document.getElementById('search-input').value.trim();
+      if (!q) {
+        showAppToast('Digite um termo para pesquisar');
+        return;
+      }
+      showAppToast('Buscando: ' + q);
+    }
+
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.add('hidden');
+    }
+
+    function publishSaber() {
+      const txt = document.getElementById('publish-text').value.trim();
+      if (!txt) {
+        showAppToast('Escreva algo para compartilhar');
+        return;
+      }
       closeModal('modal-publish');
+      document.getElementById('publish-text').value = '';
+      showAppToast('Saber cultivado na Praça Digital!');
     }
 
     function resetToHome() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      showAppToast('Início da Praça');
+      showAppToast('YBY versus • Praça Pública Digital');
     }
 
-    function openModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.classList.remove('hidden');
-    }
-
-    function closeModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.classList.add('hidden');
-    }
-
-    function showAppToast(text) {
+    function showAppToast(msg) {
       const toast = document.getElementById('app-toast');
-      document.getElementById('app-toast-text').innerText = text;
+      const text = document.getElementById('app-toast-text');
+      text.innerText = msg;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3200);
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2600);
     }
 
-    function safeCreateIcons() {
-      if (window.lucide && typeof window.lucide.createIcons === 'function') {
-        try { window.lucide.createIcons(); } catch (e) {}
-      }
-    }
-
-    function setupServiceWorkerSafe() {
-      if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').catch(() => {});
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      // Service worker registration
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('[SW] Falha:', err);
         });
       }
-    }
+    });
   </script>
 </body>
 </html>

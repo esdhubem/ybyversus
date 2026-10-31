@@ -116,28 +116,51 @@
       background: linear-gradient(135deg, rgba(255, 242, 214, 0.9) 0%, rgba(201, 151, 56, 0.7) 100%);
     }
 
-    /* Squircle Escuro 3D dos 8 Botões de Formato */
+    /* Squircle Escuro 3D dos 8 Botões com underglow dourado idêntico à captura */
     .dark-squircle-btn {
       position: relative;
-      width: 72px;
-      height: 68px;
-      border-radius: 20px;
-      background: #17212C;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      width: 76px;
+      height: 72px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #18222C 0%, #131B24 100%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1.5px solid rgba(229, 195, 132, 0.28);
+      box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.85), 0 4px 12px rgba(229, 195, 132, 0.18), inset 0 1px 1.5px rgba(255, 255, 255, 0.14), inset 0 -2px 3px rgba(229, 195, 132, 0.22);
+      transition: all 0.24s cubic-bezier(0.34, 1.56, 0.64, 1);
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .group:hover .dark-squircle-btn {
-      transform: translateY(-2px) scale(1.04);
-      border-color: rgba(229, 195, 132, 0.35);
-      box-shadow: 0 14px 26px -3px rgba(0, 0, 0, 0.65), 0 0 15px rgba(229, 195, 132, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px) scale(1.05);
+      border-color: rgba(229, 195, 132, 0.45);
+      border-bottom-color: rgba(229, 195, 132, 0.6);
+      box-shadow: 0 16px 30px -4px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 195, 132, 0.35), inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
     }
     .group:active .dark-squircle-btn {
-      transform: scale(0.95);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transform: scale(0.94);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Brilho Dourado Atmosférico das Postagens (A LUZ DO PRINT 2) */
+    .celestial-post-glow {
+      position: relative;
+      border-radius: 28px;
+      background: #141C25;
+      border: 1px solid rgba(229, 195, 132, 0.25);
+      box-shadow: 0 22px 45px -8px rgba(0, 0, 0, 0.95), 0 0 35px rgba(229, 195, 132, 0.35), 0 8px 24px rgba(212, 175, 55, 0.25);
+    }
+    .celestial-post-glow::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 10%;
+      right: 10%;
+      height: 14px;
+      background: radial-gradient(ellipse at center, rgba(229, 195, 132, 0.65) 0%, rgba(212, 175, 55, 0.3) 50%, transparent 80%);
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: -1;
     }
   </style>
 </head>
@@ -312,12 +335,12 @@
       <div class="space-y-3 pt-1 pb-1">
         <div class="grid grid-cols-4 gap-2.5 sm:gap-3">
           
-          <!-- 1. Saberes (Livro Aberto Dourado 3D) -->
+          <!-- 1. Saberes (Livro Aberto Dourado com páginas e lombada) -->
           <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-saberes" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-saberes-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
@@ -329,23 +352,23 @@
                     <stop offset="100%" stop-color="#A97E25"/>
                   </linearGradient>
                 </defs>
-                <path d="M7 13.5C12 11.5 18 11.5 24 15.5C30 11.5 36 11.5 41 13.5V34C36 32 30 32 24 36C18 32 12 32 7 34V13.5Z" fill="url(#g-saberes)" stroke="url(#g-saberes-edge)" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M24 15.5V36" stroke="#131B24" stroke-width="2" stroke-linecap="round"/>
-                <path d="M12 20C15 19 18 19 21 21" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
-                <path d="M27 21C30 19 33 19 36 20" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
-                <path d="M12 25C15 24 18 24 21 26" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
-                <path d="M27 26C30 24 33 24 36 25" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M8 12C13 10 18.5 10 24 14C29.5 10 35 10 40 12V34C35 32 29.5 32 24 35.5C18.5 32 13 32 8 34V12Z" fill="url(#g-saberes-gold)" stroke="url(#g-saberes-edge)" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M24 14V35.5" stroke="#121820" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M13 17C16 16 19 16 22 17.8" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M26 17.8C29 16 32 16 35 17" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M13 22C16 21 19 21 22 22.8" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M26 22.8C29 21 32 21 35 22" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Saberes</span>
           </button>
 
-          <!-- 2. Vídeos Curtos (Claquete Dourada + Pontos) -->
+          <!-- 2. Vídeos Curtos (Claquete de Cinema com Play vazado + 7 Pontos) -->
           <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-curtos" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-curtos-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
@@ -357,152 +380,150 @@
                     <stop offset="100%" stop-color="#A97E25"/>
                   </linearGradient>
                 </defs>
-                <rect x="8" y="18" width="32" height="20" rx="4" fill="url(#g-curtos)" stroke="url(#g-curtos-top)" stroke-width="1.2"/>
-                <path d="M8 12.5L40 9.5V16.5L8 16.5Z" fill="url(#g-curtos-top)"/>
-                <path d="M14 12L16.5 16.5M22 11.2L24.5 16.5M30 10.5L32.5 16.5" stroke="#131B24" stroke-width="2" stroke-linecap="round"/>
-                <polygon points="21,24 21,32 29,28" fill="#131B24"/>
+                <!-- Barra superior inclinada com dentes/faixas -->
+                <path d="M7 13.5L41 10.5V16.5L7 16.5Z" fill="url(#g-curtos-top)"/>
+                <path d="M13 13.5L15.5 16.5M21 12.8L23.5 16.5M29 12.1L31.5 16.5M37 11.4L39.5 16.5" stroke="#121820" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- Corpo retangular com play vazado central -->
+                <rect x="7" y="18" width="34" height="21" rx="4.5" fill="url(#g-curtos-gold)"/>
+                <path d="M21 23.5C21 22.7 21.9 22.2 22.6 22.6L29.2 26.6C29.8 27 29.8 28 29.2 28.4L22.6 32.4C21.9 32.8 21 32.3 21 31.5V23.5Z" fill="#121820"/>
               </svg>
             </div>
             <div class="flex flex-col items-center">
               <span class="text-[10.5px] font-semibold text-[#DDD3C5] tracking-tight leading-tight text-center">Videos<br>Curtos</span>
-              <span class="text-[7px] text-[#C79637] tracking-[2px] mt-0.5 font-bold">•••••</span>
+              <span class="text-[8px] text-[#E5C384] tracking-[2px] mt-0.5 font-bold">•••••••</span>
             </div>
           </button>
 
-          <!-- 3. Vídeos Longos (Play Triangular Dourado + Pontos) -->
+          <!-- 3. Vídeos Longos (Triângulo Play Vazado com Borda Grossa Dourada + 7 Pontos) -->
           <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-longos" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-longos-thick" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="30%" stop-color="#F5DCAB"/>
+                    <stop offset="70%" stop-color="#D7AA4E"/>
                     <stop offset="100%" stop-color="#9C7323"/>
                   </linearGradient>
-                  <linearGradient id="g-longos-rim" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FEF0D4"/>
-                    <stop offset="50%" stop-color="#E2B760"/>
-                    <stop offset="100%" stop-color="#A97E25"/>
-                  </linearGradient>
                 </defs>
-                <path d="M16 11.5C16 9.6 18.2 8.4 19.8 9.4L37 21.8C38.4 22.8 38.4 24.9 37 25.9L19.8 38.3C18.2 39.3 16 38.1 16 36.2V11.5Z" fill="url(#g-longos)" stroke="url(#g-longos-rim)" stroke-width="1.8"/>
+                <!-- Triângulo play vazado com contorno grosso e pontas arredondadas (como no print) -->
+                <path d="M15 11C15 8.7 17.5 7.3 19.5 8.4L39.5 20.4C41.5 21.6 41.5 24.4 39.5 25.6L19.5 37.6C17.5 38.7 15 37.3 15 35V11Z" fill="none" stroke="url(#g-longos-thick)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
               </svg>
             </div>
             <div class="flex flex-col items-center">
               <span class="text-[10.5px] font-semibold text-[#DDD3C5] tracking-tight leading-tight text-center">Videos<br>Longos</span>
-              <span class="text-[7px] text-[#C79637] tracking-[2px] mt-0.5 font-bold">•••••</span>
+              <span class="text-[8px] text-[#E5C384] tracking-[2px] mt-0.5 font-bold">•••••••</span>
             </div>
           </button>
 
-          <!-- 4. Música (Nota Musical Dourada) -->
+          <!-- 4. Música (Nota Musical Dupla Beamed Dourada) -->
           <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-musica" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-musica-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
                     <stop offset="100%" stop-color="#9C7323"/>
                   </linearGradient>
                 </defs>
-                <path d="M19 14V31.5C17.8 30.5 16 30 14 30C10.7 30 8 32.2 8 35C8 37.8 10.7 40 14 40C17.3 40 20 37.8 20 35V17L38 13V28.5C36.8 27.5 35 27 33 27C29.7 27 27 29.2 27 32C27 34.8 29.7 37 33 37C36.3 37 39 34.8 39 32V10L19 14Z" fill="url(#g-musica)"/>
+                <ellipse cx="14" cy="34" rx="5" ry="4" transform="rotate(-15 14 34)" fill="url(#g-musica-gold)"/>
+                <ellipse cx="33" cy="30" rx="5" ry="4" transform="rotate(-15 33 30)" fill="url(#g-musica-gold)"/>
+                <path d="M18 33V13L37 9V29" stroke="url(#g-musica-gold)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 13L37 9" stroke="url(#g-musica-gold)" stroke-width="5" stroke-linecap="round"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Música</span>
           </button>
 
-          <!-- 5. Podcasts (Headphones Dourados) -->
+          <!-- 5. Podcasts (Fones de Ouvido Over-Ear Dourados) -->
           <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-podcasts" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-podcasts-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
                     <stop offset="100%" stop-color="#9C7323"/>
                   </linearGradient>
                 </defs>
-                <path d="M10 24C10 16.3 16.3 10 24 10C31.7 10 38 16.3 38 24V32C38 35.3 35.3 38 32 38H30C28.9 38 28 37.1 28 36V28C28 26.9 28.9 26 30 26H34V24C34 18.5 29.5 14 24 14C18.5 14 14 18.5 14 24V26H18C19.1 26 20 26.9 20 28V36C20 37.1 19.1 38 18 38H16C12.7 38 10 35.3 10 32V24Z" fill="url(#g-podcasts)"/>
+                <path d="M10 24C10 15.5 16.3 9 24 9C31.7 9 38 15.5 38 24" stroke="url(#g-podcasts-gold)" stroke-width="3.5" stroke-linecap="round"/>
+                <rect x="7" y="22" width="6.5" height="15" rx="3.2" fill="url(#g-podcasts-gold)"/>
+                <rect x="8.5" y="25" width="2" height="9" rx="1" fill="#121820"/>
+                <rect x="34.5" y="22" width="6.5" height="15" rx="3.2" fill="url(#g-podcasts-gold)"/>
+                <rect x="37.5" y="25" width="2" height="9" rx="1" fill="#121820"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Podcasts</span>
           </button>
 
-          <!-- 6. Fórum (Balões de Conversa Dourados) -->
+          <!-- 6. Fórum (Balões de Conversa com Pontos Internos) -->
           <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-forum" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-forum-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
                     <stop offset="100%" stop-color="#9C7323"/>
                   </linearGradient>
-                  <linearGradient id="g-forum-sec" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FEF0D4"/>
-                    <stop offset="50%" stop-color="#E2B760"/>
-                    <stop offset="100%" stop-color="#A97E25"/>
-                  </linearGradient>
                 </defs>
-                <path d="M10 13C10 9.7 12.7 7 16 7H27C30.3 7 33 9.7 33 13V20C33 23.3 30.3 26 27 26H22L15 31V26H16C12.7 26 10 23.3 10 20V13Z" fill="url(#g-forum)"/>
-                <path d="M22 25C22.6 25 23.3 25.1 23.9 25.3C24.6 27.5 26.7 29 29.2 29H33L38 33.5V29C40.2 29 42 27.2 42 25V18C42 16 40.5 14.5 38.5 14.1V20C38.5 23.3 35.8 26 32.5 26H22V25Z" fill="url(#g-forum-sec)"/>
+                <path d="M9 13C9 9.7 12 7 16 7H26C30 7 33 9.7 33 13V21C33 24.3 30 27 26 27H20L13 32V27H16C12 27 9 24.3 9 21V13Z" fill="url(#g-forum-gold)"/>
+                <circle cx="16" cy="17" r="1.3" fill="#121820"/>
+                <circle cx="21" cy="17" r="1.3" fill="#121820"/>
+                <circle cx="26" cy="17" r="1.3" fill="#121820"/>
+                <path d="M25 24C25.5 24 26.2 24.1 27 24.4C28 26.5 30.2 28 32.8 28H35L39 32V28C41.2 28 43 26.2 43 24V18C43 15.8 41.5 14.1 39.5 13.8V19C39.5 22.3 36.8 25 33.5 25H25V24Z" fill="url(#g-forum-gold)"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Fórum</span>
           </button>
 
-          <!-- 7. Notícias (Tablet de Notícias Dourado) -->
+          <!-- 7. Notícias (Tablet de Notícias com Ícone Circular e 3 Linhas) -->
           <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-noticias" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-noticias-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
                     <stop offset="100%" stop-color="#9C7323"/>
                   </linearGradient>
-                  <linearGradient id="g-noticias-edge" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FEF0D4"/>
-                    <stop offset="50%" stop-color="#E2B760"/>
-                    <stop offset="100%" stop-color="#A97E25"/>
-                  </linearGradient>
                 </defs>
-                <rect x="9" y="10" width="30" height="28" rx="5" fill="url(#g-noticias)" stroke="url(#g-noticias-edge)" stroke-width="1.5"/>
-                <rect x="14" y="15" width="8" height="8" rx="1.5" fill="#131B24"/>
-                <rect x="25" y="16" width="9" height="2.2" rx="1" fill="#131B24"/>
-                <rect x="25" y="20" width="9" height="2.2" rx="1" fill="#131B24"/>
-                <rect x="14" y="26" width="20" height="2.2" rx="1" fill="#131B24"/>
-                <rect x="14" y="30" width="14" height="2.2" rx="1" fill="#131B24"/>
+                <rect x="8" y="9" width="32" height="28" rx="5" fill="url(#g-noticias-gold)"/>
+                <!-- Ícone circular/Q na esquerda -->
+                <rect x="12" y="13.5" width="9.5" height="9.5" rx="2" fill="#121820"/>
+                <circle cx="16.7" cy="18.2" r="2.8" stroke="url(#g-noticias-gold)" stroke-width="1.3"/>
+                <!-- 3 Linhas na direita -->
+                <rect x="24.5" y="14" width="11" height="2.2" rx="1.1" fill="#121820"/>
+                <rect x="24.5" y="18" width="11" height="2.2" rx="1.1" fill="#121820"/>
+                <!-- Linhas inferiores -->
+                <rect x="12" y="26" width="23.5" height="2.2" rx="1.1" fill="#121820"/>
+                <rect x="12" y="30.5" width="16" height="2.2" rx="1.1" fill="#121820"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Notícias</span>
           </button>
 
-          <!-- 8. Ao Vivo (Antena com Ondas Douradas) -->
+          <!-- 8. Ao Vivo (Antena Central com 3 Ondas Concêntricas nas Laterais) -->
           <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
                 <defs>
-                  <linearGradient id="g-aovivo" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="g-aovivo-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#FFF9ED"/>
                     <stop offset="25%" stop-color="#F5DCAB"/>
                     <stop offset="65%" stop-color="#D7AA4E"/>
                     <stop offset="100%" stop-color="#9C7323"/>
                   </linearGradient>
-                  <linearGradient id="g-aovivo-shine" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FEF0D4"/>
-                    <stop offset="50%" stop-color="#E2B760"/>
-                    <stop offset="100%" stop-color="#A97E25"/>
-                  </linearGradient>
                 </defs>
-                <circle cx="24" cy="24" r="3.5" fill="url(#g-aovivo-shine)"/>
-                <path d="M18 18C15 21 15 27 18 30M30 18C33 21 33 27 30 30" stroke="url(#g-aovivo)" stroke-width="2.6" stroke-linecap="round"/>
-                <path d="M13 13C8 18 8 30 13 35M35 13C40 18 40 30 35 35" stroke="url(#g-aovivo)" stroke-width="2.6" stroke-linecap="round"/>
+                <circle cx="24" cy="24" r="3.6" fill="url(#g-aovivo-gold)"/>
+                <path d="M19 19C16.5 21.5 16.5 26.5 19 29M29 19C31.5 21.5 31.5 26.5 29 29" stroke="url(#g-aovivo-gold)" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M15 15C11 19 11 29 15 33M33 15C37 19 37 29 33 33" stroke="url(#g-aovivo-gold)" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M11 11C5.5 16.5 5.5 31.5 11 37M37 11C42.5 16.5 42.5 31.5 37 37" stroke="url(#g-aovivo-gold)" stroke-width="2.6" stroke-linecap="round"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Ao Vivo</span>
@@ -512,10 +533,11 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- 5. CARD PRINCIPAL EM DESTAQUE (FOTO DAS ARARAS DO PRINT) -->
+      <!-- 5. CARD PRINCIPAL EM DESTAQUE (COM A LUZ DO PRINT 2)     -->
+      
       
       <!-- ======================================================== -->
-      <div id="main-featured-card" class="bg-[#18222C] rounded-[28px] p-3.5 shadow-[0_12px_28px_rgba(0,0,0,0.5)] border border-amber-500/15 space-y-3">
+      <div id="main-featured-card" class="celestial-post-glow p-3.5 space-y-3">
         
         <!-- Mídia em Destaque: Floresta e Araras -->
         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-black shadow-inner group">
@@ -525,14 +547,14 @@
           </video>
 
           <!-- Badge do Canto Superior Esquerdo: ● Saberes • Fediverso -->
-          <div id="card-origin-badge" class="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1.5 shadow-md border border-white/10">
-            <span class="w-2 h-2 rounded-full bg-[#E5C384]"></span>
+          <div id="card-origin-badge" class="absolute top-3 left-3 px-3.5 py-1.5 rounded-full bg-[#121921]/80 backdrop-blur-md text-[#F5E6C8] text-[11.5px] font-semibold flex items-center gap-2 shadow-lg border border-amber-400/30">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#E5C384] shadow-[0_0_8px_rgba(229,195,132,0.9)]"></span>
             <span>Saberes • Fediverso</span>
           </div>
 
           <!-- Botão do Canto Superior Direito: Três Pontos (•••) -->
-          <button onclick="showAppToast('Opções da mídia')" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white/90 flex items-center justify-center border border-white/10 hover:bg-black/80 transition-colors tap-active">
-            <i data-lucide="more-horizontal" class="w-4 h-4 text-white"></i>
+          <button onclick="showAppToast('Opções da mídia')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#121921]/80 backdrop-blur-md text-white/95 flex items-center justify-center border border-amber-400/30 shadow-lg hover:bg-black/90 transition-colors tap-active">
+            <i data-lucide="more-horizontal" class="w-4 h-4 text-[#F5E6C8]"></i>
           </button>
         </div>
 
@@ -576,7 +598,7 @@
       <!-- ======================================================== -->
       <!-- SEÇÃO: PLAYLISTS DE VÍDEOS LONGOS (SEM BOLHAS)          -->
       <!-- ======================================================== -->
-      <section id="long-playlists-section" class="bg-[#18222C] rounded-[28px] p-4 shadow-card border border-amber-500/15 space-y-3 hidden">
+      <section id="long-playlists-section" class="celestial-post-glow p-4 space-y-3 hidden">
         <div class="flex items-center justify-between pb-1 border-b border-slate-700/60">
           <div class="flex items-center gap-2">
             <i data-lucide="play-square" class="w-4 h-4 text-[#E5C384]"></i>
@@ -612,7 +634,7 @@
       <!-- ======================================================== -->
       <!-- 6. QUADRO DA CARTA ABERTA: O MANIFESTO DE NASCIMENTO     -->
       <!-- ======================================================== -->
-      <article id="post-card" class="bg-[#18222C] rounded-[28px] p-5 shadow-[0_12px_28px_rgba(0,0,0,0.5)] border border-amber-500/20 space-y-4">
+      <article id="post-card" class="celestial-post-glow p-5 space-y-4">
         
         <!-- Cabeçalho do Quadro: Autor Oficial, Data e Selo -->
         <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">

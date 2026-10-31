@@ -115,8 +115,26 @@
     }
 
     .tap-active:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
       transition: transform 0.1s ease;
+    }
+
+    /* Estilo dos cards de formato idênticos à imagem enviada */
+    .fmt-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      padding: 10px 4px 8px 4px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .fmt-tile:hover {
+      transform: translateY(-2px);
+    }
+    .fmt-tile:active {
+      transform: scale(0.94);
     }
   </style>
 </head>
@@ -226,31 +244,125 @@
         </div>
       </div>
 
-      <!-- 4. CARROSSEL DE ABAS DE FORMATO -->
-      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-        <button onclick="setActiveTab('curtos')" id="tab-curtos" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
-          Vídeos Curtos
-        </button>
+      <!-- ======================================================== -->
+      <!-- 4. OS 8 ÍCONES NO NOVO ESTILO (GRID 4x2 FIEL À IMAGEM)   -->
+      <!-- ======================================================== -->
+      <div class="space-y-1.5 pt-1">
+        <div class="grid grid-cols-4 gap-2.5">
+          
+          <!-- 1. Saberes (Livro Aberto 3D Verde) -->
+          <div onclick="setActiveTab('saberes')" class="fmt-tile bg-gradient-to-b from-[#EEFAF2] to-[#DCF7E5] border border-[#CEF3D8] shadow-[0_6px_16px_rgba(16,185,129,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <path d="M8 48 C20 44 28 46 32 52 C36 46 44 44 56 48 L56 16 C44 12 36 14 32 20 C28 14 20 12 8 16 Z" fill="#047857" />
+                <path d="M10 17 C20 13 28 15 31 20 L31 49 C28 44 20 42 10 46 Z" fill="#FFFFFF" />
+                <path d="M54 17 C44 13 36 15 33 20 L33 49 C36 44 44 42 54 46 Z" fill="#FFFFFF" />
+                <path d="M14 24 L27 22 M14 30 L27 28 M14 36 L25 34" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
+                <path d="M37 22 L50 24 M37 28 L50 30 M39 34 L50 36" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
+                <path d="M32 20 L32 52" stroke="#064E3B" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 mt-1">Saberes</span>
+          </div>
 
-        <button onclick="setActiveTab('longos')" id="tab-longos" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
-          Vídeos Longos
-        </button>
+          <!-- 2. Vídeos Curtos (Claquete 3D Azul/Índigo) -->
+          <div onclick="setActiveTab('curtos')" class="fmt-tile bg-gradient-to-b from-[#F2F1FE] to-[#E3E1FD] border border-[#D5D1FC] shadow-[0_6px_16px_rgba(99,102,241,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <rect x="8" y="24" width="48" height="32" rx="6" fill="#1E1B4B" />
+                <path d="M26 34 L42 40 L26 46 Z" fill="#FFFFFF" />
+                <path d="M8 12 L56 12 L56 22 L8 22 Z" fill="#4338CA" rx="3" />
+                <!-- Listras diagonais brancas da claquete -->
+                <path d="M16 12 L22 22 M28 12 L34 22 M40 12 L46 22" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="text-[10px] font-bold text-slate-800 mt-1 leading-tight text-center">Vídeos<br>Curtos</span>
+          </div>
 
-        <button onclick="setActiveTab('musica')" id="tab-musica" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
-          Música
-        </button>
+          <!-- 3. Vídeos Longos (Play 3D Laranja/Âmbar) -->
+          <div onclick="setActiveTab('longos')" class="fmt-tile bg-gradient-to-b from-[#FFF5EC] to-[#FFE7D4] border border-[#FFDCBE] shadow-[0_6px_16px_rgba(249,115,22,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <!-- Botão Triângulo Arredondado 3D Laranja -->
+                <path d="M18 14 C18 10 23 8 26 10 L52 28 C55 30 55 34 52 36 L26 54 C23 56 18 54 18 50 Z" fill="#F97316" />
+                <path d="M24 20 L44 32 L24 44 Z" fill="#FFFFFF" />
+              </svg>
+            </div>
+            <span class="text-[10px] font-bold text-slate-800 mt-1 leading-tight text-center">Vídeos<br>Longos</span>
+          </div>
 
-        <button onclick="setActiveTab('saberes')" id="tab-saberes" class="tab-btn active shrink-0 px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 border-b-2 border-emerald-600 tap-active">
-          Saberes
-        </button>
+          <!-- 4. Música (Nota Musical 3D Magenta/Rosa) -->
+          <div onclick="setActiveTab('musica')" class="fmt-tile bg-gradient-to-b from-[#FDF0F7] to-[#FCDCEE] border border-[#FACCE4] shadow-[0_6px_16px_rgba(236,72,153,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <path d="M26 12 L50 8 L50 36 C48 34 44 33 40 34 C33 36 29 41 31 46 C33 51 40 53 47 51 C52 49 55 45 55 40 L55 16 L29 20 L29 42 C27 40 23 39 19 40 C12 42 8 47 10 52 C12 57 19 59 26 57 C31 55 34 51 34 46 L34 16 Z" fill="#D946EF" />
+                <circle cx="20" cy="48" r="5" fill="#C026D3" />
+                <circle cx="41" cy="44" r="5" fill="#C026D3" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 mt-1">Música</span>
+          </div>
 
-        <button onclick="setActiveTab('podcasts')" id="tab-podcasts" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
-          Podcasts
-        </button>
+          <!-- 5. Podcasts (Fone de Ouvido 3D Azul) -->
+          <div onclick="setActiveTab('podcasts')" class="fmt-tile bg-gradient-to-b from-[#FDF3F1] to-[#FCE3DE] border border-[#FAD3CC] shadow-[0_6px_16px_rgba(239,68,68,0.10)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <!-- Arco do fone -->
+                <path d="M14 36 C14 20 22 12 32 12 C42 12 50 20 50 36" fill="none" stroke="#1E3A8A" stroke-width="5" stroke-linecap="round" />
+                <!-- Almofadas do fone -->
+                <rect x="8" y="32" width="10" height="20" rx="5" fill="#2563EB" />
+                <rect x="46" y="32" width="10" height="20" rx="5" fill="#2563EB" />
+                <rect x="11" y="36" width="4" height="12" rx="2" fill="#93C5FD" />
+                <rect x="49" y="36" width="4" height="12" rx="2" fill="#93C5FD" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 mt-1">Podcasts</span>
+          </div>
 
-        <button onclick="setActiveTab('forum')" id="tab-forum" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
-          Fórum
-        </button>
+          <!-- 6. Fórum (Balões de Diálogo 3D Ciano) -->
+          <div onclick="setActiveTab('forum')" class="fmt-tile bg-gradient-to-b from-[#EBFBFA] to-[#D3F7F5] border border-[#BFF3F0] shadow-[0_6px_16px_rgba(20,184,166,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <!-- Balão 1 -->
+                <path d="M12 28 C12 18 22 12 34 12 C46 12 52 18 52 28 C52 38 42 42 32 42 L22 48 L24 40 C16 38 12 34 12 28 Z" fill="#06B6D4" />
+                <circle cx="24" cy="27" r="2" fill="#FFFFFF" />
+                <circle cx="32" cy="27" r="2" fill="#FFFFFF" />
+                <circle cx="40" cy="27" r="2" fill="#FFFFFF" />
+                <!-- Balão 2 menor sobreposto -->
+                <path d="M36 34 C44 34 50 38 50 44 C50 48 46 51 42 52 L40 56 L36 53 C32 53 30 51 30 47 Z" fill="#0891B2" opacity="0.85" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 mt-1">Fórum</span>
+          </div>
+
+          <!-- 7. Notícias (Jornal / Tablet 3D Azul Real) -->
+          <div onclick="showAppToast('Exibindo Notícias da Praça')" class="fmt-tile bg-gradient-to-b from-[#EEF4FE] to-[#DCE8FC] border border-[#CBDEFA] shadow-[0_6px_16px_rgba(59,130,246,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <rect x="12" y="12" width="40" height="42" rx="6" fill="#1D4ED8" />
+                <rect x="16" y="16" width="32" height="12" rx="3" fill="#60A5FA" />
+                <circle cx="22" cy="22" r="3" fill="#FFFFFF" />
+                <path d="M18 34 L46 34 M18 40 L46 40 M18 46 L38 46" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 mt-1">Notícias</span>
+          </div>
+
+          <!-- 8. Ao Vivo (Antena de Transmissão 3D Lilás/Roxo) -->
+          <div onclick="showAppToast('Conectando à Live Comunitária')" class="fmt-tile bg-gradient-to-b from-[#FBF0FA] to-[#F6DAF3] border border-[#F0C5EB] shadow-[0_6px_16px_rgba(168,85,247,0.12)]">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
+                <circle cx="32" cy="32" r="5" fill="#9333EA" />
+                <path d="M22 22 C16 28 16 36 22 42" fill="none" stroke="#A855F7" stroke-width="4" stroke-linecap="round" />
+                <path d="M42 22 C48 28 48 36 42 42" fill="none" stroke="#A855F7" stroke-width="4" stroke-linecap="round" />
+                <path d="M16 16 C8 24 8 40 16 48" fill="none" stroke="#C084FC" stroke-width="3.5" stroke-linecap="round" />
+                <path d="M48 16 C56 24 56 40 48 48" fill="none" stroke="#C084FC" stroke-width="3.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 mt-1">Ao Vivo</span>
+          </div>
+
+        </div>
       </div>
 
       <!-- 5. CARD PRINCIPAL EM DESTAQUE (EXATAMENTE COMO NO SEU PRINT) -->
@@ -286,14 +398,14 @@
           <span id="card-duration" class="text-xs font-bold text-slate-500 font-mono">03:10</span>
         </div>
 
-        <!-- Linha de Ações: Contador 2450 💚, Botão Play Redondo Verde e Favoritos -->
+        <!-- Linha de Ações: Contador 2450 💚, Botão Play Redondo Verde Escuro e Favoritos -->
         <div class="flex items-center justify-between pt-1">
           <div class="flex items-center gap-1.5 text-xs font-bold text-slate-700">
             <span id="card-likes-count">2450</span>
             <span class="text-emerald-600 text-sm">💚</span>
           </div>
 
-          <!-- BOTÃO PLAY REDONDO VERDE ESCURO (EXATAMENTE COMO NA CAPTURA) -->
+          <!-- BOTÃO PLAY REDONDO VERDE ESCURO -->
           <button onclick="toggleMainPlay()" class="w-12 h-12 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shadow-float active:scale-95 transition-transform">
             <i data-lucide="play" id="main-play-icon" class="w-5 h-5 fill-current ml-0.5"></i>
           </button>
@@ -563,17 +675,6 @@
     function setActiveTab(tabKey) {
       currentTab = tabKey;
 
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active', 'bg-emerald-50', 'text-emerald-800', 'border-b-2', 'border-emerald-600', 'font-bold');
-        btn.classList.add('text-slate-500', 'font-semibold');
-      });
-
-      const activeBtn = document.getElementById(`tab-${tabKey}`);
-      if (activeBtn) {
-        activeBtn.classList.add('active', 'bg-emerald-50', 'text-emerald-800', 'border-b-2', 'border-emerald-600', 'font-bold');
-        activeBtn.classList.remove('text-slate-500', 'font-semibold');
-      }
-
       const data = FORMAT_ITEMS[tabKey] || FORMAT_ITEMS.saberes;
       document.getElementById('card-title').innerText = data.title;
       document.getElementById('card-format-tag').innerText = data.tag;
@@ -581,7 +682,7 @@
       cardLikes = data.likes;
       document.getElementById('card-likes-count').innerText = cardLikes;
 
-      showAppToast(`Exibindo formato: ${tabKey.toUpperCase()}`);
+      showAppToast(`Formato selecionado: ${tabKey.toUpperCase()}`);
     }
 
     function toggleMainPlay() {

@@ -1,11 +1,11 @@
 # YBY • Conectando Saberes e Vidas
 
 > **"Uma infraestrutura de circulação pública de conhecimentos, culturas, expressões e oportunidades."**  
-> *O conhecimento circula livremente na Praça Pública Digital.*
+> *Identidade visual em verde floresta e esmeralda com grade 4x2 de ícones 3D em degradê luminoso.*
 
 ---
 
-## 📱 Estrutura Visual Mantida & Consolidada
+## 📱 Estrutura Visual da Interface
 
 ```
 ┌──────────────────────────────────────────────┐
@@ -18,8 +18,8 @@
 │  (+) Seu saber  ◯ Benvinda  ◯ Tiago          │
 │  ◯ Mariana      ◯ Carlos                     │
 ├──────────────────────────────────────────────┤
-│  Vídeos Curtos  Vídeos Longos  Música        │
-│  [🌿 Saberes]   Podcasts       Fórum         │
+│  [📖 Saberes] [🎬 Curtos] [▶️ Longos] [🎵 Som] │
+│  [🎧 Podcast] [💬 Fórum]  [📰 Notícia][📡 Live]│
 ├──────────────────────────────────────────────┤
 │  ┌────────────────────────────────────────┐  │
 │  │ 🌿 Preparo da Espiral de Ervas e Solo  │  │
@@ -45,26 +45,22 @@
 
 ---
 
-## ✨ Modal: Distribuição Sem Bolhas
+## ✨ Os 8 Cards no Novo Estilo Gráfico (Grid 4x2)
 
-Ao tocar no ícone de brilho (`✨` / `✦`), abre-se o modal preservado:
-* **Título:** `✦ Distribuição Sem Bolhas`
-* **Descrição:** *"O YBY não prioriza vício por engajamento. A distribuição é aberta:"*
-* **Pílulas:**
-  * `25% Novidades` | `Recentes`
-  * `25% Diversidade` | `Autores plurais`
-  * `15% Fisher-Yates` | `Aleatório justo`
-* **Botão:** `Compreendido` (em verde floresta escuro).
+1. **Saberes:** Card verde menta com livro 3D aberto.
+2. **Vídeos Curtos:** Card lavanda com claquete 3D azul/índigo.
+3. **Vídeos Longos:** Card pêssego com botão triangular play 3D laranja.
+4. **Música:** Card rosa suave com nota musical 3D magenta.
+5. **Podcasts:** Card blush quente com headphone 3D azul escuro.
+6. **Fórum:** Card ciano suave com balões de conversa 3D sobrepostos.
+7. **Notícias:** Card azul celeste com tablet de notícias 3D.
+8. **Ao Vivo:** Card lilás suave com ondas de transmissão 3D.
 
 ---
 
-## 🚀 Como Executar Localmente
+## 🚀 Como Executar
 
-Inicie com o arquivo `.bat`:
-```powershell
-.\iniciar_ybyverso.bat
-```
-Ou via Node.js:
+Execute o servidor local:
 ```powershell
 node _serve.js
 ```

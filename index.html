@@ -118,6 +118,20 @@
       transform: scale(0.95);
       transition: transform 0.1s ease;
     }
+
+    /* Auréola Brilhante e Verde em volta das bolinhas das pessoas seguidas */
+    .glowing-green-halo {
+      position: relative;
+      border-radius: 9999px;
+      padding: 2.5px;
+      background: linear-gradient(135deg, #10B981 0%, #34D399 45%, #059669 100%);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.75), 0 0 18px rgba(52, 211, 153, 0.5), inset 0 0 4px rgba(255, 255, 255, 0.45);
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+    }
+    .group:hover .glowing-green-halo {
+      transform: scale(1.08);
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.95), 0 0 26px rgba(52, 211, 153, 0.75);
+    }
   </style>
 </head>
 <body class="bg-[#EAF6F0] min-h-screen flex items-center justify-center p-0 sm:p-4 overflow-hidden relative selection:bg-emerald-500 selection:text-white">
@@ -177,48 +191,48 @@
           <span>Pessoas que você segue</span>
         </div>
 
-        <div id="following-row" class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-1">
+        <div id="following-row" class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-2 px-1">
           <!-- 1. Seu saber (+) -->
-          <div onclick="openModal('modal-publish')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-sm group-hover:scale-105 transition-transform">
-              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
-              <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] border-2 border-white font-bold">
+          <div onclick="openModal('modal-publish')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
+            <div class="glowing-green-halo w-14 h-14">
+              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
+              <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] border-2 border-white font-bold shadow-sm">
                 +
               </div>
             </div>
-            <span class="text-[10px] font-semibold text-slate-600">Seu saber</span>
+            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Seu saber</span>
           </div>
 
           <!-- 2. Benvinda (Sol Ancestral) -->
-          <div onclick="filterByPerson('Dona Benvinda')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
-              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
+          <div onclick="filterByPerson('Dona Benvinda')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
+            <div class="glowing-green-halo w-14 h-14">
+              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
             </div>
-            <span class="text-[10px] font-semibold text-slate-600">Benvinda</span>
+            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Benvinda</span>
           </div>
 
           <!-- 3. Tiago (Mestre Tiago Agrofloresta) -->
-          <div onclick="filterByPerson('Mestre Tiago')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
-              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
+          <div onclick="filterByPerson('Mestre Tiago')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
+            <div class="glowing-green-halo w-14 h-14">
+              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
             </div>
-            <span class="text-[10px] font-semibold text-slate-600">Tiago</span>
+            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Tiago</span>
           </div>
 
           <!-- 4. Mariana (Mariana Artesã) -->
-          <div onclick="filterByPerson('Mariana Artesã')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
-              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
+          <div onclick="filterByPerson('Mariana Artesã')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
+            <div class="glowing-green-halo w-14 h-14">
+              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
             </div>
-            <span class="text-[10px] font-semibold text-slate-600">Mariana</span>
+            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Mariana</span>
           </div>
 
           <!-- 5. Carlos (Portal de Luz) -->
-          <div onclick="filterByPerson('Prof. Carlos')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
-              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
+          <div onclick="filterByPerson('Prof. Carlos')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
+            <div class="glowing-green-halo w-14 h-14">
+              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-white block">
             </div>
-            <span class="text-[10px] font-semibold text-slate-600">Carlos</span>
+            <span class="text-[10.5px] font-semibold text-slate-700 tracking-tight">Carlos</span>
           </div>
         </div>
       </div>

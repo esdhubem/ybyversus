@@ -775,13 +775,13 @@
   <!-- MODAIS COMPLETOS EM TEMA OBSIDIANA & OURO CELESTIAL       -->
   <!-- ======================================================== -->
 
-  <!-- MODAL: DISTRIBUIÇÃO SEM BOLHAS -->
+  <!-- MODAL: REDE SOBERANA & DISTRIBUIÇÃO SEM BOLHAS -->
   <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="bg-[#151D26] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
       <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-5 h-5 text-[#E5C384]"></i>
-          <h3 class="font-bold text-slate-100 text-sm">Distribuição Sem Bolhas</h3>
+          <i data-lucide="network" class="w-5 h-5 text-[#E5C384]"></i>
+          <h3 class="font-bold text-slate-100 text-sm">Rede Federada & Soberania</h3>
         </div>
         <button onclick="closeModal('modal-algoritmo')" class="text-slate-400 hover:text-white p-1">
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -789,25 +789,39 @@
       </div>
 
       <p class="text-xs text-slate-300 leading-relaxed">
-        O YBY versus não prioriza vício por engajamento. A distribuição é aberta:
+        O <strong class="text-[#E5C384]">YBY versus</strong> não prioriza vício por engajamento nem bolhas de retenção. A distribuição é soberana, aberta e transparente:
       </p>
 
       <div class="space-y-2 text-xs">
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-slate-700/60 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">25% Novidades</span>
           <span class="text-slate-400">Recentes</span>
         </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-slate-700/60 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">25% Diversidade</span>
           <span class="text-slate-400">Autores plurais</span>
         </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-slate-700/60 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">15% Fisher-Yates</span>
           <span class="text-slate-400">Aleatório justo</span>
         </div>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#101720] border border-amber-500/20 text-slate-300">
+          <span class="font-bold text-[#E5C384]">35% Seguindo</span>
+          <span class="text-slate-400">Pessoas que você segue</span>
+        </div>
       </div>
 
-      <button onclick="closeModal('modal-algoritmo')" class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
+      <div class="p-2.5 rounded-xl bg-[#0F161E] border border-slate-700/50 text-[11px] text-slate-400 space-y-1">
+        <div class="flex items-center gap-1.5 font-semibold text-slate-200">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#E5C384]"></i>
+          <span>Federação & Interoperabilidade</span>
+        </div>
+        <p class="text-slate-400 leading-tight">
+          Conectado ao protocolo aberto do Fediverso. Soberania total sobre seus dados e saberes, sem algoritmos predatórios de monetização.
+        </p>
+      </div>
+
+      <button onclick="closeModal('modal-algoritmo')" class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all shadow-md hover:brightness-110">
         Compreendido
       </button>
     </div>
@@ -834,7 +848,7 @@
           <i data-lucide="shield-check" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Política de Privacidade (LGPD)</span>
         </button>
-        <button onclick="showAppToast('Sincronização com o Fediverso ativa!'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#1A232D] flex items-center gap-2.5 tap-active text-slate-200">
+        <button onclick="openModal('modal-algoritmo'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#1A232D] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="network" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Rede Federada & Soberania</span>
         </button>

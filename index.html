@@ -747,54 +747,194 @@
 
   <!-- MODAL: TERMOS DE USO & CONDUTA -->
   <div id="modal-termos" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-white rounded-[28px] max-w-md w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-emerald-100">
-      <div class="px-5 py-4 bg-emerald-900 text-white flex items-center justify-between shrink-0">
+    <div class="bg-white rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-emerald-100">
+      
+      <!-- Cabeçalho do Modal -->
+      <div class="px-5 py-4 bg-emerald-900 text-white flex items-center justify-between shrink-0 shadow-sm">
         <div class="flex items-center gap-2">
           <i data-lucide="file-text" class="w-5 h-5 text-emerald-300"></i>
-          <span class="text-sm font-bold">Termos de Uso & Conduta</span>
+          <div>
+            <h3 class="text-sm font-bold leading-tight">Termos de Uso, Conduta & Soberania Digital</h3>
+            <span class="text-[10px] text-emerald-300">Versão 2.0 Oficial • Ecossistema Ybyversus</span>
+          </div>
         </div>
-        <button onclick="closeModal('modal-termos')" class="text-emerald-200 hover:text-white p-1">
+        <button onclick="closeModal('modal-termos')" class="text-emerald-200 hover:text-white p-1 tap-active">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
+
+      <!-- Conteúdo Integral com Rolagem Fluida -->
       <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-700 leading-relaxed">
-        <div class="p-3 bg-emerald-50 rounded-2xl border border-emerald-100">
-          <h4 class="font-bold text-emerald-900 mb-1">🌿 Manifesto de Princípios</h4>
-          <p class="text-[11px] text-slate-600">O Ybyversus é um ecossistema digital soberano, focado na dignidade humana, livre de algoritmos viciantes e propaganda partidária rasa.</p>
+        
+        <!-- Manifesto de Princípios -->
+        <div class="p-3.5 bg-gradient-to-br from-emerald-50 to-teal-50/50 rounded-2xl border border-emerald-100/90 space-y-1.5">
+          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+            <span>🌿</span>
+            <span>1. Manifesto de Princípios e Propósito</span>
+          </h4>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            O <strong>Ybyversus</strong> é um ecossistema digital soberano, minimalista e consagrado à dignidade humana. Acreditamos na liberdade de expressão exercida com ética, integridade, responsabilidade e discernimento. Acima de qualquer rótulo, ideologia, crença ou polarização, reconhecemos o homem e a mulher primariamente como <strong>seres humanos</strong>.
+          </p>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            Não somos um depósito comercial de atenções nem uma máquina de alimentar vícios algorítmicos. O Ybyversus foi concebido como uma <strong>Praça Pública Digital</strong>: um espaço de circulação livre, segura e elevada de conhecimentos, culturas, saberes ancestrais da Terra (<em>Yby</em>), artes e oportunidades legítimas de cooperação.
+          </p>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">🏛️ Política e Filosofia</h4>
-          <p>Conteúdos de caráter histórico, filosófico, ético e cidadão. Vedada a propaganda partidária, demagogia e ataques pessoais.</p>
+        <!-- 2. Diretrizes de Conduta -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-slate-900 text-xs border-b border-slate-100 pb-1 flex items-center gap-1.5">
+            <span>⚖️</span>
+            <span>2. Diretrizes de Conduta e Convivência</span>
+          </h4>
+
+          <!-- 2.1 Política -->
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
+              <span>🏛️</span> 2.1. Política, Filosofia e Cidadania Consciente
+            </h5>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Conteúdo Político Consciente:</strong> Apenas será aceito conteúdo de caráter histórico, filosófico, cidadão, educacional, ético e humano, independentemente de orientação política (seja de esquerda, de centro ou de direita).
+            </p>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Vedação Absoluta à Propaganda Partidária:</strong> Não há espaço no ecossistema para militância partidária rasa, demagogia eleitoreira, proselitismo político, brigas de torcida ideológica ou ataques de difamação pessoal a figuras públicas e cidadãos.
+            </p>
+          </div>
+
+          <!-- 2.2 Espiritualidade -->
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
+              <span>🕊️</span> 2.2. Espiritualidade Sadia e Respeito Universal
+            </h5>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Espiritualidade Pacificadora:</strong> Valorizamos o respeito irrestrito a todas as raças, credos, cosmovisões e tradições espirituais. A religiosidade no Ybyversus é compreendida como uma espiritualidade sadia, ancestral e pacificadora, cuja vocação é criar relações mútuas e pontes entre as culturas.
+            </p>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Vedação ao Proselitismo:</strong> Não são permitidos conteúdos no formato de propaganda religiosa, pregação impositiva, condenação espiritual de terceiros, imposição de dogmas ou captação e aliciamento de fiéis e adeptos.
+            </p>
+          </div>
+
+          <!-- 2.3 Astrologia e Tarot -->
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
+              <span>📜</span> 2.3. Astrologia, Tarot e Saberes Oraculares/Simbólicos
+            </h5>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Foco Educativo e Reflexivo:</strong> O estudo da Astrologia, do Tarot e dos saberes simbólicos é acolhido como linguagem legítima de autoconhecimento, educação arquetípica, filosofia e estudo profundo dos ciclos da vida e da psique.
+            </p>
+            <p class="text-[11.5px] text-rose-900 bg-rose-50 p-2 rounded-xl border border-rose-100 leading-relaxed">
+              <strong>Proibição Absoluta de Alarmismo e Fatalismo:</strong> São terminantemente proibidos conteúdos que façam previsões diretas de mortes, tragédias pessoais, acidentes, termos coercitivos de relacionamentos, ou qualquer modalidade de fatalismo, histeria e exploração do medo. Prever desgraças é uma violência psicológica que paralisa o indivíduo. O Ybyversus repudia integralmente o pânico psíquico.
+            </p>
+          </div>
+
+          <!-- 2.4 Saúde e Fitoterapia -->
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
+              <span>🌿</span> 2.4. Práticas Integrativas, Fitoterapia e Saúde
+            </h5>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Estilo de Vida e Prevenção:</strong> Valorizamos abordagens voltadas à prevenção, estilo de vida consciente, fitoterapia tradicional e bem-estar integral.
+            </p>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Respeito Institucional e Autonomia Científica:</strong> Respeitamos as regulamentações sanitárias vigentes (Anvisa e órgãos de saúde), promovendo o diálogo maduro com a medicina convencional. Não admitimos a censura dogmática ("ditadura da saúde"), tampouco o charlatanismo, curas milagrosas ilusórias ou desinformação de saúde.
+            </p>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              <strong>Capacitação de Criadores e Respeito Multidisciplinar:</strong> Criadores passam por alinhamento editorial ético. É proibido desqualificar ou difamar médicos, farmacêuticos ou terapeutas: a saúde é um esforço conjunto e colaborativo.
+            </p>
+          </div>
+
+          <!-- 2.5 Marketing Predatório -->
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+            <h5 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
+              <span>🚫</span> 2.5. Recusa do Marketing Agressivo e Predatório
+            </h5>
+            <p class="text-[11.5px] text-slate-600 leading-relaxed">
+              Vedadas técnicas de manipulação algorítmica, concorrência desleal, gatilhos de escassez artificial ou dinâmicas de elevar uns através do rebaixamento de outros. Priorizamos substância, tempo de reflexão e maturidade conceitual.
+            </p>
+          </div>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">🕊️ Espiritualidade e Saberes Simbólicos</h4>
-          <p>Espiritualidade sadia e respeito universal. Vedado o proselitismo, imposição de dogmas, e proibição estrita de alarmismo ou previsões fatalistas em Astrologia e Tarot.</p>
+        <!-- 3. Tolerância Zero -->
+        <div class="p-3.5 bg-rose-50/70 rounded-2xl border border-rose-100 space-y-1.5">
+          <h4 class="font-bold text-rose-950 text-xs flex items-center gap-1.5">
+            <span>🚨</span>
+            <span>3. Tolerância Zero contra Crimes, Abusos e Violência</span>
+          </h4>
+          <p class="text-[11px] text-rose-900">Banimento imediato e denúncia às autoridades competentes em casos de:</p>
+          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-700">
+            <li><strong>Proteção Infantil:</strong> Abuso, exploração sexual infantojuvenil, pedofilia ou aliciamento de menores.</li>
+            <li><strong>Proteção Animal e Biomas:</strong> Crueldade, maus-tratos ou exploração violenta da natureza e animais.</li>
+            <li><strong>Ódio e Discriminação:</strong> Racismo, nazismo, antissemitismo, machismo, homofobia, transfobia, xenofobia.</li>
+            <li><strong>Violência:</strong> Incitação ao suicídio, automutilação, atos terroristas, facções e armas ilegais.</li>
+            <li><strong>Privacidade:</strong> Exposição de dados pessoais (<em>doxxing</em>), perseguição (<em>stalking</em>) e difamação.</li>
+            <li><strong>Fake News:</strong> Propagação deliberada de mentiras comprovadamente lesivas.</li>
+          </ul>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">🌿 Saúde e Fitoterapia</h4>
-          <p>Foco no estilo de vida e prevenção integral. Respeito institucional às normas sanitárias e repúdio ao charlatanismo e milagres ilusórios.</p>
+        <!-- 4. Proteção contra Golpes, Jogos de Azar e Pornografia -->
+        <div class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200/70 space-y-2">
+          <h4 class="font-bold text-amber-950 text-xs flex items-center gap-1.5">
+            <span>🛡️</span>
+            <span>4. Proteção contra Golpes, Jogos de Azar e Pornografia</span>
+          </h4>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            <strong>Fim do "Link Livre do Nada":</strong> Não somos uma vitrine aberta para despejo de links anônimos. Todas as postagens passam por curadoria ou criadores previamente validados.
+          </p>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            <strong>Tolerância Zero a Jogos de Azar:</strong> Proibição estrita de cassinos, apostas esportivas (<em>bets</em>), "jogo do tigrinho", bingos virtuais ou esquemas de enriquecimento rápido e pirâmides.
+          </p>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            <strong>Vedação à Pornografia e Apologia à Prostituição:</strong> Sem apelo sexual vulgar ou mercantilização do corpo. Preserva-se integralmente o espaço sagrado da arte legítima, da pintura, da dança e da expressão corporal estética de valor humano.
+          </p>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">🚨 Tolerância Zero</h4>
-          <p>Proibição absoluta de crimes contra crianças, violência animal, discurso de ódio, discriminação, pornografia e jogos de azar ("bets/tigrinho").</p>
+        <!-- 5. Política de Portfólio, Autoria e Vendas -->
+        <div class="p-3.5 bg-emerald-50/60 rounded-2xl border border-emerald-100 space-y-2">
+          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+            <span>🛍️</span>
+            <span>5. Política de Portfólio, Autoria e Vendas Próprias</span>
+          </h4>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            <strong>Exclusividade de Produtos Próprios:</strong> Apenas criadores e terapeutas validados podem expor suas próprias obras (livros, e-books, músicas, atendimentos legítimos e cursos autorais).
+          </p>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            <strong>Proibição de Afiliados Externos:</strong> Proibida a inserção de links para páginas de afiliados de terceiros ou revendas genéricas. Quem compra no Ybyversus apoia diretamente o produtor autêntico, com total segurança contra fraudes.
+          </p>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">🛍️ Venda de Autoria Própria</h4>
-          <p>Exclusividade para criadores validados exporem suas próprias obras (livros, e-books, músicas, atendimentos legítimos). Vedados links de afiliados e anúncios de terceiros.</p>
+        <!-- 6. Equidade de Alcance -->
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
+            <span>⚖️</span> 6. Equidade de Alcance e Recusa da Elitização Financeira
+          </h4>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            <strong>Sem Impulsionamento Pago:</strong> O dinheiro não compra destaque nem alcance na praça. A distribuição é orgânica, aberta e justa (algoritmo soberano Fisher-Yates sem bolhas), garantindo igualdade de voz a mestres, estudantes e agricultores.
+          </p>
         </div>
 
-        <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-100 flex items-center justify-between">
-          <span>Canal Oficial: contato@praticasdeautoconhecimento.org</span>
+        <!-- 7 e 8. Propriedade Intelectual, Cumprimento Legal e Contato -->
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
+            <span>🏛️</span> 7. Propriedade Intelectual, Cumprimento Legal e Notificações
+          </h4>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            Respeito absoluto aos direitos autorais com créditos originais preservados e autonomia para transição ao Fediverso (PeerTube, Mastodon, Funkwhale).
+          </p>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            Atuação sob a Constituição Federal, Marco Civil da Internet (Lei 12.965/2014) e LGPD (Lei 13.709/2018). Resolução sempre pacífica, amigável e célere.
+          </p>
+          <div class="pt-1.5 border-t border-slate-200/70 text-[11px] font-semibold text-emerald-800 flex items-center justify-between">
+            <span>Canal Oficial de Atendimento:</span>
+            <code class="font-mono text-emerald-900">contato@praticasdeautoconhecimento.org</code>
+          </div>
         </div>
+
       </div>
-      <div class="p-3 bg-slate-50 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('modal-termos')" class="px-5 py-2 rounded-full bg-[#047857] text-white text-xs font-bold tap-active">
-          Compreendido
+
+      <!-- Rodapé do Modal -->
+      <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-medium">Ecossistema Ybyversus • Soberania & Ética</span>
+        <button onclick="closeModal('modal-termos')" class="px-5 py-2 rounded-full bg-[#047857] hover:bg-[#065F46] text-white text-xs font-bold tap-active transition-colors shadow-xs">
+          Compreendido e de Acordo
         </button>
       </div>
     </div>
@@ -802,44 +942,154 @@
 
   <!-- MODAL: POLÍTICA DE PRIVACIDADE (LGPD) -->
   <div id="modal-privacidade" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-white rounded-[28px] max-w-md w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-emerald-100">
-      <div class="px-5 py-4 bg-emerald-900 text-white flex items-center justify-between shrink-0">
+    <div class="bg-white rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-emerald-100">
+      
+      <!-- Cabeçalho do Modal -->
+      <div class="px-5 py-4 bg-emerald-900 text-white flex items-center justify-between shrink-0 shadow-sm">
         <div class="flex items-center gap-2">
           <i data-lucide="shield-check" class="w-5 h-5 text-emerald-300"></i>
-          <span class="text-sm font-bold">Política de Privacidade (LGPD)</span>
+          <div>
+            <h3 class="text-sm font-bold leading-tight">Política de Privacidade & Proteção de Dados</h3>
+            <span class="text-[10px] text-emerald-300">LGPD (Lei 13.709/2018) • Marco Civil (Lei 12.965/2014)</span>
+          </div>
         </div>
-        <button onclick="closeModal('modal-privacidade')" class="text-emerald-200 hover:text-white p-1">
+        <button onclick="closeModal('modal-privacidade')" class="text-emerald-200 hover:text-white p-1 tap-active">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
+
+      <!-- Conteúdo Integral com Rolagem Fluida -->
       <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-700 leading-relaxed">
-        <div class="p-3 bg-emerald-50 rounded-2xl border border-emerald-100">
-          <h4 class="font-bold text-emerald-900 mb-1">🛡️ Minimalismo e Soberania de Dados</h4>
-          <p class="text-[11px] text-slate-600">Não vendemos seus dados, não criamos perfis para publicidade e não usamos rastreadores invasivos de terceiros.</p>
+        
+        <!-- 1. Compromisso Fundamental -->
+        <div class="p-3.5 bg-gradient-to-br from-emerald-50 to-teal-50/50 rounded-2xl border border-emerald-100/90 space-y-1.5">
+          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+            <span>🛡️</span>
+            <span>1. Compromisso com a Privacidade e Soberania Digital</span>
+          </h4>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            O <strong>Ybyversus</strong> foi construído sob o princípio fundamental da <strong>Soberania Digital e do Minimalismo de Dados</strong>. A privacidade é um direito humano inalienável e não uma moeda de troca comercial.
+          </p>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            Nós <strong>não vendemos dados pessoais</strong>, <strong>não criamos perfis psicológicos ou comportamentais para leilão de anúncios</strong>, <strong>não utilizamos rastreadores espiões de terceiros</strong> e <strong>não aprisionamos a sua atenção</strong>.
+          </p>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">📋 Dados Coletados</h4>
-          <p>Apenas dados básicos fornecidos voluntariamente no perfil e registros essenciais para cumprimento do Marco Civil da Internet (Lei 12.965/2014).</p>
+        <!-- 2. Princípios Art 6 LGPD -->
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+            <span>📜</span>
+            <span>2. Princípios de Tratamento de Dados (Art. 6º da LGPD)</span>
+          </h4>
+          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-600 leading-relaxed">
+            <li><strong>Finalidade e Necessidade:</strong> Tratamento apenas do mínimo indispensável para operação técnica da Praça.</li>
+            <li><strong>Livre Acesso e Transparência:</strong> Consulta facilitada, clara e gratuita sobre todos os dados existentes.</li>
+            <li><strong>Segurança e Prevenção:</strong> Conexões seguras criptografadas (HTTPS/TLS) contra incidentes de segurança.</li>
+            <li><strong>Não Discriminação:</strong> Impossibilidade de uso de dados para fins punitivos, discriminatórios ou abusivos.</li>
+          </ul>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">⚖️ Seus Direitos (Art. 18 da LGPD)</h4>
-          <p>Você pode a qualquer momento acessar, corrigir, exportar ou solicitar a eliminação definitiva dos seus dados através do nosso canal oficial.</p>
+        <!-- 3. Tabela de Dados Coletados -->
+        <div class="space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+            <span>📋</span>
+            <span>3. Quais Dados Tratamos e Para Quais Finalidades</span>
+          </h4>
+          <div class="overflow-x-auto rounded-2xl border border-slate-200">
+            <table class="w-full text-[11px] text-left border-collapse">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2 border-b border-slate-200">Dado</th>
+                  <th class="p-2 border-b border-slate-200">Finalidade</th>
+                  <th class="p-2 border-b border-slate-200">Base Legal</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-600">
+                <tr>
+                  <td class="p-2 font-semibold text-slate-800">Perfil Público</td>
+                  <td class="p-2">Identificação na Praça Pública e autoria de saberes</td>
+                  <td class="p-2">Execução de Contrato (Art. 7º, V)</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-semibold text-slate-800">Saberes Publicados</td>
+                  <td class="p-2">Circulação livre de conhecimento entre os cidadãos</td>
+                  <td class="p-2">Consentimento (Art. 7º, I)</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-semibold text-slate-800">Logs de Acesso</td>
+                  <td class="p-2">Guarda obrigatória pelo Marco Civil (Art. 15)</td>
+                  <td class="p-2">Obrigação Legal (Art. 7º, II)</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-semibold text-slate-800">Cache Local PWA</td>
+                  <td class="p-2">Armazenamento no dispositivo para navegação rápida/offline</td>
+                  <td class="p-2">Necessidade Técnica</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <div>
-          <h4 class="font-bold text-slate-900 text-[12px] mb-1">🌐 Rede Federada (Fediverso)</h4>
-          <p>Publicações na praça circulam de forma pública em protocolos abertos e soberanos com preservação dos créditos de autoria.</p>
+        <!-- 4. O que Nós NÃO Fazemos -->
+        <div class="p-3.5 bg-rose-50/70 rounded-2xl border border-rose-100 space-y-1.5">
+          <h4 class="font-bold text-rose-950 text-xs flex items-center gap-1.5">
+            <span>🚫</span>
+            <span>4. O que Nós Rigorosamente NÃO Fazemos</span>
+          </h4>
+          <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-700">
+            <li><strong>❌ Sem Perfilamento Comercial:</strong> Não analisamos seu comportamento para vender anúncios.</li>
+            <li><strong>❌ Sem Venda de Dados:</strong> Seus dados jamais serão repassados a <em>data brokers</em> ou empresas de marketing.</li>
+            <li><strong>❌ Sem Pixels Espiões:</strong> Livre de códigos de rastreamento de monopólios publicitários.</li>
+            <li><strong>❌ Sem GPS Oculto:</strong> Não monitoramos sua localização geográfica por satélite.</li>
+          </ul>
         </div>
 
-        <div class="text-[11px] text-slate-500 pt-2 border-t border-slate-100 flex items-center justify-between">
-          <span>Encarregado DPO: contato@praticasdeautoconhecimento.org</span>
+        <!-- 5. Fediverso -->
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
+            <span>🌐</span> 5. Federação e Comunicação Descentralizada (Fediverso)
+          </h4>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            Publicações marcadas como públicas circulam em protocolos abertos e federados (ActivityPub, Mastodon, PeerTube, Funkwhale) com preservação irrestrita do crédito autoral e da soberania do criador.
+          </p>
         </div>
+
+        <!-- 6. Direitos do Titular (Art 18 LGPD) -->
+        <div class="p-3.5 bg-emerald-50/60 rounded-2xl border border-emerald-100 space-y-1.5">
+          <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+            <span>⚖️</span>
+            <span>6. Seus Direitos Fundamentais (Art. 18 da LGPD)</span>
+          </h4>
+          <p class="text-[11px] text-slate-600">Você pode exercer a qualquer momento, gratuitamente e de forma simplificada:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-700 pt-1">
+            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>1. Confirmação & Acesso:</strong> Saber e obter cópia dos dados tratados.</div>
+            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>2. Correção:</strong> Retificar dados incompletos ou inexatos.</div>
+            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>3. Eliminação Definitiva:</strong> Excluir seus dados pessoais e conta.</div>
+            <div class="p-2 bg-white rounded-xl border border-emerald-100/80"><strong>4. Portabilidade:</strong> Exportar seus saberes em formato aberto.</div>
+          </div>
+        </div>
+
+        <!-- 7 e 8. Segurança e Contato do DPO -->
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
+          <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1">
+            <span>🔒</span> 7. Segurança da Informação & Contato do Encarregado (DPO)
+          </h4>
+          <p class="text-[11.5px] text-slate-600 leading-relaxed">
+            Criptografia de ponta a ponta (HTTPS/TLS) e blindagem absoluta contra <em>doxxing</em>. Para qualquer solicitação legal ou exercício de direitos:
+          </p>
+          <div class="pt-1.5 border-t border-slate-200/70 text-[11px] font-semibold text-emerald-800 flex items-center justify-between">
+            <span>Encarregado DPO Oficial:</span>
+            <code class="font-mono text-emerald-900">contato@praticasdeautoconhecimento.org</code>
+          </div>
+        </div>
+
       </div>
-      <div class="p-3 bg-slate-50 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('modal-privacidade')" class="px-5 py-2 rounded-full bg-[#047857] text-white text-xs font-bold tap-active">
-          Fechar
+
+      <!-- Rodapé do Modal -->
+      <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-medium">Ybyversus • Privacidade Soberana</span>
+        <button onclick="closeModal('modal-privacidade')" class="px-5 py-2 rounded-full bg-[#047857] hover:bg-[#065F46] text-white text-xs font-bold tap-active transition-colors shadow-xs">
+          Entendido
         </button>
       </div>
     </div>

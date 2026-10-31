@@ -97,3 +97,4 @@ O Ybyverso recusa a lógica predatória das redes comerciais onde o dinheiro com
 
 * Caso algum conteúdo infrinja estes termos, comprovadamente veicule falsidades danosas à honra ou viole a lei, a moderação atuará com celeridade para a remoção pontual do material.
 * **Canal Oficial de Atendimento e Notificações:** `contato@praticasdeautoconhecimento.org`
+

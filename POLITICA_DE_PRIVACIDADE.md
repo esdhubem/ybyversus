@@ -84,3 +84,4 @@ Para esclarecer dúvidas, solicitar o exercício de qualquer direito previsto na
 
 * 📧 **E-mail Oficial:** `contato@praticasdeautoconhecimento.org`
 * 🌐 **Plataforma:** Ybyverso — Praça Pública Digital
+

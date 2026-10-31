@@ -1,8 +1,8 @@
 @echo off
 chcp 65001 > nul
-title Yby Verso • Praça Pública Digital
+title Ybyversus • Praça Pública Digital
 echo ========================================================
-echo   🌿 Yby Verso • Praça Pública Digital
+echo   🌿 Ybyversus • Praça Pública Digital
 echo   Uma infraestrutura de circulação pública de saberes
 echo ========================================================
 echo.

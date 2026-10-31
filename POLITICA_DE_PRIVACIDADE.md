@@ -1,4 +1,4 @@
-# 🛡️ Política de Privacidade e Proteção de Dados Pessoais — Ybyverso
+# 🛡️ Política de Privacidade e Proteção de Dados Pessoais — Ybyversus
 
 > **Versão:** 1.0 — Oficial  
 > **Data de Publicação:** Outubro de 2026  
@@ -9,7 +9,7 @@
 
 ## 1. Compromisso Fundamental com a Privacidade
 
-O **Ybyverso** foi construído sob o princípio da **Soberania Digital e do Minimalismo de Dados**. Acreditamos que a privacidade é um direito humano fundamental inalienável, e não uma moeda de troca comercial.
+O **Ybyversus** foi construído sob o princípio da **Soberania Digital e do Minimalismo de Dados**. Acreditamos que a privacidade é um direito humano fundamental inalienável, e não uma moeda de troca comercial.
 
 Nós **não vendemos dados**, **não criamos perfis psicológicos ou comportamentais para leilão de publicidade**, **não utilizamos rastreadores de terceiros** e **não aprisionamos a atenção do usuário com algoritmos viciantes**.
 
@@ -50,7 +50,7 @@ Para garantir a absoluta tranquilidade da comunidade:
 
 ## 5. Federação e Comunicação Descentralizada (Fediverso)
 
-Como o Ybyverso integra e dialoga com protocolos federados abertos (como ActivityPub, Mastodon, PeerTube e Funkwhale):
+Como o Ybyversus integra e dialoga com protocolos federados abertos (como ActivityPub, Mastodon, PeerTube e Funkwhale):
 
 * As publicações deliberadamente marcadas como **públicas** pelo usuário para circulação na rede federada podem ser distribuídas para outros servidores autorizados da federação, contendo a atribuição clara do autor.
 * Cabe ao usuário ter ciência de que postagens públicas na Praça Digital são destinadas à circulação aberta de conhecimento.
@@ -80,8 +80,8 @@ Você tem total controle sobre os seus dados pessoais. A qualquer momento, você
 
 Quaisquer atualizações significativas nesta política serão publicadas de forma visível e transparente na aplicação.
 
-Para esclarecer dúvidas, solicitar o exercício de qualquer direito previsto na LGPD ou enviar notificações formais sobre privacidade, entre em contato direto com a administração do Ybyverso:
+Para esclarecer dúvidas, solicitar o exercício de qualquer direito previsto na LGPD ou enviar notificações formais sobre privacidade, entre em contato direto com a administração do Ybyversus:
 
 * 📧 **E-mail Oficial:** `contato@praticasdeautoconhecimento.org`
-* 🌐 **Plataforma:** Ybyverso — Praça Pública Digital
+* 🌐 **Plataforma:** Ybyversus — Praça Pública Digital
 

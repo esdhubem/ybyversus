@@ -1,5 +1,5 @@
-// Service Worker - Yby Verso PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyverso-cache-v1.0';
+// Service Worker - Ybyversus PWA • Praça Pública Digital
+const CACHE_NAME = 'ybyversus-cache-v1.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -21,14 +21,14 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Yby Verso SW] Pré-armazenando recursos fundamentais da Praça Digital');
+      console.log('[Ybyversus SW] Pré-armazenando recursos fundamentais da Praça Digital');
       return Promise.all(
         ASSETS_TO_CACHE.map((url) =>
           fetch(new Request(url, { cache: 'reload' }))
             .then((res) => {
               if (res.ok) return cache.put(url, res);
             })
-            .catch((err) => console.warn('[Yby Verso SW] Falha ao pré-carregar:', url, err))
+            .catch((err) => console.warn('[Ybyversus SW] Falha ao pré-carregar:', url, err))
         )
       );
     })
@@ -42,7 +42,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
-            console.log('[Yby Verso SW] Limpando versão de cache obsoleta:', key);
+            console.log('[Ybyversus SW] Limpando versão de cache obsoleta:', key);
             return caches.delete(key);
           }
         })

@@ -1,7 +1,7 @@
 {
-  "id": "/ybygram-praca-digital",
-  "name": "YBYgram • Praça Pública Digital",
-  "short_name": "YBYgram",
+  "id": "/ybyversus-praca-digital",
+  "name": "Ybyversus • Praça Pública Digital",
+  "short_name": "Ybyversus",
   "description": "Rede agregadora de mídias e saberes da Praça Pública Digital organizada por 8 formatos e conectando saberes e vidas.",
   "start_url": "./index.html",
   "scope": "./",

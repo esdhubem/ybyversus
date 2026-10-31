@@ -381,10 +381,12 @@
           </video>
           <img id="featured-image-fallback" src="assets/card-mestres-terra.jpg" class="w-full h-full object-cover absolute inset-0 hidden">
 
-          <!-- Badge do Fediverso / Formato -->
-          <div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-bold flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            <span id="card-format-tag">Saberes • Mastodon</span>
+          <!-- Logomarca do Aplicativo de Origem -->
+          <div id="card-origin-badge" class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-800 text-[11px] font-bold flex items-center gap-1.5 shadow-md border border-white/60">
+            <span id="card-origin-icon" class="flex items-center">
+              <svg class="w-3.5 h-3.5 fill-[#563ACC]" viewBox="0 0 24 24"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.924 2.215 13.9 2 12.012 2h-.024c-1.888 0-4.912.215-6.472.956 0 0-2.843 1.271-2.843 5.61 0 .993-.019 2.18.049 3.466.232 4.383 1.543 8.656 6.012 9.055 2.146.19 4.108-.094 5.61-.486.077.568.106 1.096.082 1.574-.082 1.637-1.127 1.83-2.316 1.875-1.503.056-2.905-.36-2.905-.36l-.082 1.875s1.439.467 3.328.467c1.393 0 3.824-.316 4.283-3.084.234-1.42.274-3.66.274-5.228 0-1.286-.019-2.473-.049-3.466-.188-3.535-.747-7.25-6.287-7.25z"/></svg>
+            </span>
+            <span id="card-origin-name">Mastodon</span>
           </div>
 
           <!-- Três pontinhos no topo direito -->
@@ -436,9 +438,13 @@
           <div class="flex items-center gap-2.5">
             <img src="assets/dola-forest.jpg" class="w-9 h-9 rounded-full object-cover border border-emerald-100">
             <div>
-              <div class="flex items-center gap-1.5">
-                <span class="text-xs font-bold text-slate-900">Saberes</span>
-                <span class="text-[10px] text-emerald-600 font-semibold">• Terra Viva</span>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-900">Terra Viva</span>
+                <!-- Logo do aplicativo de origem -->
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/60 text-[10.5px] font-bold text-slate-700 shadow-xs">
+                  <svg class="w-3.5 h-3.5 fill-[#563ACC]" viewBox="0 0 24 24"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.924 2.215 13.9 2 12.012 2h-.024c-1.888 0-4.912.215-6.472.956 0 0-2.843 1.271-2.843 5.61 0 .993-.019 2.18.049 3.466.232 4.383 1.543 8.656 6.012 9.055 2.146.19 4.108-.094 5.61-.486.077.568.106 1.096.082 1.574-.082 1.637-1.127 1.83-2.316 1.875-1.503.056-2.905-.36-2.905-.36l-.082 1.875s1.439.467 3.328.467c1.393 0 3.824-.316 4.283-3.084.234-1.42.274-3.66.274-5.228 0-1.286-.019-2.473-.049-3.466-.188-3.535-.747-7.25-6.287-7.25z"/></svg>
+                  <span>Mastodon</span>
+                </span>
               </div>
               <span class="text-[10px] text-slate-400">Há 15 minutos</span>
             </div>
@@ -453,13 +459,13 @@
           O conhecimento circula livremente na Praça Pública Digital. Aqui não há leilão de atenção: as sementes da terra, a arte e o pensamento crítico encontram seu próprio tempo e voz entre os cidadãos.
         </p>
 
-        <!-- Indicadores de Mídia -->
-        <div class="flex items-center gap-2 text-[10px] font-semibold text-emerald-800 bg-emerald-50/70 p-2 rounded-xl">
-          <span>🎵 Música</span>
-          <span>/</span>
-          <span>📹 Vídeo</span>
-          <span>/</span>
-          <span>📝 Saber</span>
+        <!-- Logomarca do Aplicativo de Origem -->
+        <div class="flex items-center justify-between text-[11px] font-semibold text-slate-600 bg-slate-50 border border-slate-100/90 px-3 py-1.5 rounded-xl">
+          <span class="text-slate-400 font-medium">Publicação via</span>
+          <div class="flex items-center gap-1.5 font-bold text-slate-800">
+            <svg class="w-3.5 h-3.5 fill-[#563ACC]" viewBox="0 0 24 24"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.924 2.215 13.9 2 12.012 2h-.024c-1.888 0-4.912.215-6.472.956 0 0-2.843 1.271-2.843 5.61 0 .993-.019 2.18.049 3.466.232 4.383 1.543 8.656 6.012 9.055 2.146.19 4.108-.094 5.61-.486.077.568.106 1.096.082 1.574-.082 1.637-1.127 1.83-2.316 1.875-1.503.056-2.905-.36-2.905-.36l-.082 1.875s1.439.467 3.328.467c1.393 0 3.824-.316 4.283-3.084.234-1.42.274-3.66.274-5.228 0-1.286-.019-2.473-.049-3.466-.188-3.535-.747-7.25-6.287-7.25z"/></svg>
+            <span>Mastodon</span>
+          </div>
         </div>
 
         <!-- Linha de Interações: Comentários, Curtidas, Compartilhar -->
@@ -610,59 +616,86 @@
   <!-- JAVASCRIPT DO APP                                        -->
   <!-- ======================================================== -->
   <script>
+    const PLATFORMS = {
+      mastodon: {
+        name: 'Mastodon',
+        icon: '<svg class="w-3.5 h-3.5 fill-[#563ACC]" viewBox="0 0 24 24"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61C16.924 2.215 13.9 2 12.012 2h-.024c-1.888 0-4.912.215-6.472.956 0 0-2.843 1.271-2.843 5.61 0 .993-.019 2.18.049 3.466.232 4.383 1.543 8.656 6.012 9.055 2.146.19 4.108-.094 5.61-.486.077.568.106 1.096.082 1.574-.082 1.637-1.127 1.83-2.316 1.875-1.503.056-2.905-.36-2.905-.36l-.082 1.875s1.439.467 3.328.467c1.393 0 3.824-.316 4.283-3.084.234-1.42.274-3.66.274-5.228 0-1.286-.019-2.473-.049-3.466-.188-3.535-.747-7.25-6.287-7.25z"/></svg>'
+      },
+      loops: {
+        name: 'Loops',
+        icon: '<svg class="w-3.5 h-3.5 text-[#6366F1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>'
+      },
+      peertube: {
+        name: 'PeerTube',
+        icon: '<svg class="w-3.5 h-3.5 fill-[#F1680D]" viewBox="0 0 24 24"><polygon points="6 4 19 12 6 20"/></svg>'
+      },
+      funkwhale: {
+        name: 'Funkwhale',
+        icon: '<svg class="w-3.5 h-3.5 fill-[#E02653]" viewBox="0 0 24 24"><circle cx="6" cy="12" r="3"/><circle cx="12" cy="8" r="3"/><circle cx="12" cy="16" r="3"/><circle cx="18" cy="12" r="3"/></svg>'
+      },
+      lemmy: {
+        name: 'Lemmy',
+        icon: '<svg class="w-3.5 h-3.5 fill-[#00BC8C]" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path fill="#ffffff" d="M11 6h2v7h-2zm0 9h2v2h-2z"/></svg>'
+      },
+      owncast: {
+        name: 'Owncast',
+        icon: '<svg class="w-3.5 h-3.5 text-[#A855F7]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>'
+      }
+    };
+
     const FORMAT_ITEMS = {
       curtos: {
         title: 'Vídeo de exploração e colheita',
-        tag: 'Vídeos Curtos • Loops',
+        platform: 'loops',
         duration: '12:50',
         likes: 1240,
         videoUrl: 'assets/banner-arara.mp4'
       },
       longos: {
         title: 'Aula Completa: Agrofloresta e Recuperação de Nascentes',
-        tag: 'Vídeos Longos • PeerTube',
+        platform: 'peertube',
         duration: '45:18',
         likes: 3180,
         videoUrl: 'assets/banner-arara.mp4'
       },
       musica: {
         title: 'Canto das Águas e Flauta Pantaneira',
-        tag: 'Música • Funkwhale',
+        platform: 'funkwhale',
         duration: '04:22',
         likes: 890,
         videoUrl: 'assets/banner-arara.mp4'
       },
       saberes: {
         title: 'Preparo da Espiral de Ervas e Solo Vivo',
-        tag: 'Saberes • Mastodon',
+        platform: 'mastodon',
         duration: '03:10',
         likes: 2450,
         videoUrl: 'assets/banner-arara.mp4'
       },
       podcasts: {
         title: 'Vozes da Terra: Convivialidade na Era Digital',
-        tag: 'Podcast • Funkwhale',
+        platform: 'funkwhale',
         duration: '38:00',
         likes: 670,
         videoUrl: 'assets/banner-arara.mp4'
       },
       forum: {
         title: 'Debate: Como proteger sementes crioulas da contaminação?',
-        tag: 'Fórum • Lemmy',
+        platform: 'lemmy',
         duration: 'Roda viva',
         likes: 1540,
         videoUrl: 'assets/banner-arara.mp4'
       },
       noticias: {
         title: 'Boletim Agroecológico: Encontro das Águas e Saberes Tradicionais',
-        tag: 'Notícias • Mastodon',
+        platform: 'mastodon',
         duration: '02:40',
         likes: 1820,
         videoUrl: 'assets/banner-arara.mp4'
       },
       aovivo: {
         title: 'Ao Vivo: Transmissão da Assembléia das Comunidades e Mestres',
-        tag: 'Ao Vivo • Owncast',
+        platform: 'owncast',
         duration: 'AO VIVO',
         likes: 4210,
         videoUrl: 'assets/banner-arara.mp4'
@@ -678,7 +711,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       safeCreateIcons();
       setupServiceWorkerSafe();
-      updateTabButtonUI('saberes');
+      setActiveTab('saberes');
     });
 
     function updateTabButtonUI(activeKey) {
@@ -701,12 +734,18 @@
 
       const data = FORMAT_ITEMS[tabKey] || FORMAT_ITEMS.saberes;
       document.getElementById('card-title').innerText = data.title;
-      document.getElementById('card-format-tag').innerText = data.tag;
       document.getElementById('card-duration').innerText = data.duration;
       cardLikes = data.likes;
       document.getElementById('card-likes-count').innerText = cardLikes;
 
-      showAppToast(`Formato selecionado: ${data.tag}`);
+      // Atualiza com o logo e nome do aplicativo de origem
+      const p = PLATFORMS[data.platform] || PLATFORMS.mastodon;
+      const originIcon = document.getElementById('card-origin-icon');
+      const originName = document.getElementById('card-origin-name');
+      if (originIcon) originIcon.innerHTML = p.icon;
+      if (originName) originName.innerText = p.name;
+
+      showAppToast(`Origem: ${p.name}`);
     }
 
     function toggleMainPlay() {

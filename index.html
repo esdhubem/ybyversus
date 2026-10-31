@@ -132,6 +132,51 @@
       transform: scale(1.08);
       box-shadow: 0 0 14px rgba(16, 185, 129, 0.95), 0 0 26px rgba(52, 211, 153, 0.75);
     }
+
+    /* Sombra nos 8 botões de formato */
+    .fmt-icon-card {
+      position: relative;
+      width: 68px;
+      height: 64px;
+      border-radius: 20px;
+      background: #FFFFFF;
+      box-shadow: 0 8px 18px -2px rgba(15, 23, 42, 0.12), 0 3px 6px -1px rgba(15, 23, 42, 0.08);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .group:hover .fmt-icon-card {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 14px 24px -3px rgba(15, 23, 42, 0.18), 0 5px 10px -2px rgba(15, 23, 42, 0.10);
+    }
+    .group:active .fmt-icon-card {
+      transform: scale(0.95);
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.10);
+    }
+
+    /* Sombras temáticas destacadas com ambient glow */
+    .fmt-shadow-saberes {
+      box-shadow: 0 8px 20px -2px rgba(16, 185, 129, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-curtos {
+      box-shadow: 0 8px 20px -2px rgba(99, 102, 241, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-longos {
+      box-shadow: 0 8px 20px -2px rgba(245, 158, 11, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-musica {
+      box-shadow: 0 8px 20px -2px rgba(236, 72, 153, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-podcasts {
+      box-shadow: 0 8px 20px -2px rgba(244, 63, 94, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-forum {
+      box-shadow: 0 8px 20px -2px rgba(6, 182, 212, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-noticias {
+      box-shadow: 0 8px 20px -2px rgba(59, 130, 246, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
+    .fmt-shadow-aovivo {
+      box-shadow: 0 8px 20px -2px rgba(168, 85, 247, 0.32), 0 3px 7px -1px rgba(15, 23, 42, 0.10);
+    }
   </style>
 </head>
 <body class="bg-[#EAF6F0] min-h-screen flex items-center justify-center p-0 sm:p-4 overflow-hidden relative selection:bg-emerald-500 selection:text-white">
@@ -238,16 +283,15 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- 4. OS 8 ÍCONES NO ESTILO EXATO DA IMAGEM ENVIADA         -->
-      <!-- Grade 4x2 com os squircles 3D originais                  -->
+      <!-- 4. OS 8 ÍCONES COM SOMBRA ELEVADA (SQUIRCLES 3D)          -->
       <!-- ======================================================== -->
-      <div class="space-y-2 pt-1">
+      <div class="space-y-2 pt-1 pb-1">
         <div class="grid grid-cols-4 gap-2.5 sm:gap-3">
           
           <!-- 1. Saberes -->
           <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_saberes.png" alt="Saberes" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-saberes">
+              <img src="assets/fmt-icons/tile_saberes.png" alt="Saberes" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-emerald-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Saberes</span>
@@ -255,8 +299,8 @@
 
           <!-- 2. Vídeos Curtos -->
           <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_curtos.png" alt="Vídeos Curtos" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-curtos">
+              <img src="assets/fmt-icons/tile_curtos.png" alt="Vídeos Curtos" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-indigo-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[10.5px] font-semibold text-slate-800 tracking-tight leading-tight text-center">Vídeos<br>Curtos</span>
@@ -264,8 +308,8 @@
 
           <!-- 3. Vídeos Longos -->
           <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_longos.png" alt="Vídeos Longos" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-longos">
+              <img src="assets/fmt-icons/tile_longos.png" alt="Vídeos Longos" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-amber-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[10.5px] font-semibold text-slate-800 tracking-tight leading-tight text-center">Vídeos<br>Longos</span>
@@ -273,8 +317,8 @@
 
           <!-- 4. Música -->
           <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_musica.png" alt="Música" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-musica">
+              <img src="assets/fmt-icons/tile_musica.png" alt="Música" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-pink-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Música</span>
@@ -282,8 +326,8 @@
 
           <!-- 5. Podcasts -->
           <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_podcasts.png" alt="Podcasts" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-podcasts">
+              <img src="assets/fmt-icons/tile_podcasts.png" alt="Podcasts" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-rose-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Podcasts</span>
@@ -291,8 +335,8 @@
 
           <!-- 6. Fórum -->
           <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_forum.png" alt="Fórum" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-forum">
+              <img src="assets/fmt-icons/tile_forum.png" alt="Fórum" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-cyan-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Fórum</span>
@@ -300,8 +344,8 @@
 
           <!-- 7. Notícias -->
           <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_noticias.png" alt="Notícias" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-noticias">
+              <img src="assets/fmt-icons/tile_noticias.png" alt="Notícias" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-blue-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Notícias</span>
@@ -309,8 +353,8 @@
 
           <!-- 8. Ao Vivo -->
           <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
-              <img src="assets/fmt-icons/tile_aovivo.png" alt="Ao Vivo" class="w-full h-full object-contain">
+            <div class="fmt-icon-card fmt-shadow-aovivo">
+              <img src="assets/fmt-icons/tile_aovivo.png" alt="Ao Vivo" class="w-full h-full object-contain rounded-[20px]">
               <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-purple-500 opacity-0 transition-opacity"></div>
             </div>
             <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Ao Vivo</span>

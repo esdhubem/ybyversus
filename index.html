@@ -118,24 +118,6 @@
       transform: scale(0.95);
       transition: transform 0.1s ease;
     }
-
-    /* Estilo dos cards de formato idênticos à imagem enviada */
-    .fmt-tile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20px;
-      padding: 10px 4px 8px 4px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-    .fmt-tile:hover {
-      transform: translateY(-2px);
-    }
-    .fmt-tile:active {
-      transform: scale(0.94);
-    }
   </style>
 </head>
 <body class="bg-[#EAF6F0] min-h-screen flex items-center justify-center p-0 sm:p-4 overflow-hidden relative selection:bg-emerald-500 selection:text-white">
@@ -176,11 +158,11 @@
         <button onclick="focusSearchInput()" title="Pesquisar" class="p-1 hover:text-emerald-600 transition-colors tap-active">
           <i data-lucide="search" class="w-5 h-5"></i>
         </button>
-        <!-- Ícone Sparkle / Estrela Verde Soberano (indicado pela seta vermelha) -->
+        <!-- Ícone Sparkle / Estrela Verde Soberano -->
         <button onclick="openModal('modal-algoritmo')" title="Distribuição Sem Bolhas" class="p-1 hover:scale-110 transition-transform tap-active">
           <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
         </button>
-        <!-- Ícone Menu Duas Linhas "=" (indicado pela seta vermelha) -->
+        <!-- Ícone Menu Duas Linhas "=" -->
         <button onclick="openModal('modal-menu')" title="Mais opções" class="p-1 hover:text-emerald-600 transition-colors flex flex-col gap-1 items-center justify-center w-6 h-6 tap-active">
           <span class="w-4 h-0.5 bg-slate-700 rounded-full"></span>
           <span class="w-4 h-0.5 bg-slate-700 rounded-full"></span>
@@ -245,122 +227,83 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- 4. OS 8 ÍCONES NO NOVO ESTILO (GRID 4x2 FIEL À IMAGEM)   -->
+      <!-- 4. OS 8 ÍCONES NO ESTILO EXATO DA IMAGEM ENVIADA         -->
+      <!-- Grade 4x2 com os squircles 3D originais                  -->
       <!-- ======================================================== -->
-      <div class="space-y-1.5 pt-1">
-        <div class="grid grid-cols-4 gap-2.5">
+      <div class="space-y-2 pt-1">
+        <div class="grid grid-cols-4 gap-2.5 sm:gap-3">
           
-          <!-- 1. Saberes (Livro Aberto 3D Verde) -->
-          <div onclick="setActiveTab('saberes')" class="fmt-tile bg-gradient-to-b from-[#EEFAF2] to-[#DCF7E5] border border-[#CEF3D8] shadow-[0_6px_16px_rgba(16,185,129,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <path d="M8 48 C20 44 28 46 32 52 C36 46 44 44 56 48 L56 16 C44 12 36 14 32 20 C28 14 20 12 8 16 Z" fill="#047857" />
-                <path d="M10 17 C20 13 28 15 31 20 L31 49 C28 44 20 42 10 46 Z" fill="#FFFFFF" />
-                <path d="M54 17 C44 13 36 15 33 20 L33 49 C36 44 44 42 54 46 Z" fill="#FFFFFF" />
-                <path d="M14 24 L27 22 M14 30 L27 28 M14 36 L25 34" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
-                <path d="M37 22 L50 24 M37 28 L50 30 M39 34 L50 36" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
-                <path d="M32 20 L32 52" stroke="#064E3B" stroke-width="2" stroke-linecap="round" />
-              </svg>
+          <!-- 1. Saberes -->
+          <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_saberes.png" alt="Saberes" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-emerald-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[11px] font-bold text-slate-800 mt-1">Saberes</span>
-          </div>
+            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Saberes</span>
+          </button>
 
-          <!-- 2. Vídeos Curtos (Claquete 3D Azul/Índigo) -->
-          <div onclick="setActiveTab('curtos')" class="fmt-tile bg-gradient-to-b from-[#F2F1FE] to-[#E3E1FD] border border-[#D5D1FC] shadow-[0_6px_16px_rgba(99,102,241,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <rect x="8" y="24" width="48" height="32" rx="6" fill="#1E1B4B" />
-                <path d="M26 34 L42 40 L26 46 Z" fill="#FFFFFF" />
-                <path d="M8 12 L56 12 L56 22 L8 22 Z" fill="#4338CA" rx="3" />
-                <!-- Listras diagonais brancas da claquete -->
-                <path d="M16 12 L22 22 M28 12 L34 22 M40 12 L46 22" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-              </svg>
+          <!-- 2. Vídeos Curtos -->
+          <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_curtos.png" alt="Vídeos Curtos" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-indigo-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[10px] font-bold text-slate-800 mt-1 leading-tight text-center">Vídeos<br>Curtos</span>
-          </div>
+            <span class="text-[10.5px] font-semibold text-slate-800 tracking-tight leading-tight text-center">Vídeos<br>Curtos</span>
+          </button>
 
-          <!-- 3. Vídeos Longos (Play 3D Laranja/Âmbar) -->
-          <div onclick="setActiveTab('longos')" class="fmt-tile bg-gradient-to-b from-[#FFF5EC] to-[#FFE7D4] border border-[#FFDCBE] shadow-[0_6px_16px_rgba(249,115,22,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <!-- Botão Triângulo Arredondado 3D Laranja -->
-                <path d="M18 14 C18 10 23 8 26 10 L52 28 C55 30 55 34 52 36 L26 54 C23 56 18 54 18 50 Z" fill="#F97316" />
-                <path d="M24 20 L44 32 L24 44 Z" fill="#FFFFFF" />
-              </svg>
+          <!-- 3. Vídeos Longos -->
+          <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_longos.png" alt="Vídeos Longos" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-amber-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[10px] font-bold text-slate-800 mt-1 leading-tight text-center">Vídeos<br>Longos</span>
-          </div>
+            <span class="text-[10.5px] font-semibold text-slate-800 tracking-tight leading-tight text-center">Vídeos<br>Longos</span>
+          </button>
 
-          <!-- 4. Música (Nota Musical 3D Magenta/Rosa) -->
-          <div onclick="setActiveTab('musica')" class="fmt-tile bg-gradient-to-b from-[#FDF0F7] to-[#FCDCEE] border border-[#FACCE4] shadow-[0_6px_16px_rgba(236,72,153,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <path d="M26 12 L50 8 L50 36 C48 34 44 33 40 34 C33 36 29 41 31 46 C33 51 40 53 47 51 C52 49 55 45 55 40 L55 16 L29 20 L29 42 C27 40 23 39 19 40 C12 42 8 47 10 52 C12 57 19 59 26 57 C31 55 34 51 34 46 L34 16 Z" fill="#D946EF" />
-                <circle cx="20" cy="48" r="5" fill="#C026D3" />
-                <circle cx="41" cy="44" r="5" fill="#C026D3" />
-              </svg>
+          <!-- 4. Música -->
+          <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_musica.png" alt="Música" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-pink-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[11px] font-bold text-slate-800 mt-1">Música</span>
-          </div>
+            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Música</span>
+          </button>
 
-          <!-- 5. Podcasts (Fone de Ouvido 3D Azul) -->
-          <div onclick="setActiveTab('podcasts')" class="fmt-tile bg-gradient-to-b from-[#FDF3F1] to-[#FCE3DE] border border-[#FAD3CC] shadow-[0_6px_16px_rgba(239,68,68,0.10)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <!-- Arco do fone -->
-                <path d="M14 36 C14 20 22 12 32 12 C42 12 50 20 50 36" fill="none" stroke="#1E3A8A" stroke-width="5" stroke-linecap="round" />
-                <!-- Almofadas do fone -->
-                <rect x="8" y="32" width="10" height="20" rx="5" fill="#2563EB" />
-                <rect x="46" y="32" width="10" height="20" rx="5" fill="#2563EB" />
-                <rect x="11" y="36" width="4" height="12" rx="2" fill="#93C5FD" />
-                <rect x="49" y="36" width="4" height="12" rx="2" fill="#93C5FD" />
-              </svg>
+          <!-- 5. Podcasts -->
+          <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_podcasts.png" alt="Podcasts" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-rose-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[11px] font-bold text-slate-800 mt-1">Podcasts</span>
-          </div>
+            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Podcasts</span>
+          </button>
 
-          <!-- 6. Fórum (Balões de Diálogo 3D Ciano) -->
-          <div onclick="setActiveTab('forum')" class="fmt-tile bg-gradient-to-b from-[#EBFBFA] to-[#D3F7F5] border border-[#BFF3F0] shadow-[0_6px_16px_rgba(20,184,166,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <!-- Balão 1 -->
-                <path d="M12 28 C12 18 22 12 34 12 C46 12 52 18 52 28 C52 38 42 42 32 42 L22 48 L24 40 C16 38 12 34 12 28 Z" fill="#06B6D4" />
-                <circle cx="24" cy="27" r="2" fill="#FFFFFF" />
-                <circle cx="32" cy="27" r="2" fill="#FFFFFF" />
-                <circle cx="40" cy="27" r="2" fill="#FFFFFF" />
-                <!-- Balão 2 menor sobreposto -->
-                <path d="M36 34 C44 34 50 38 50 44 C50 48 46 51 42 52 L40 56 L36 53 C32 53 30 51 30 47 Z" fill="#0891B2" opacity="0.85" />
-              </svg>
+          <!-- 6. Fórum -->
+          <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_forum.png" alt="Fórum" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-cyan-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[11px] font-bold text-slate-800 mt-1">Fórum</span>
-          </div>
+            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Fórum</span>
+          </button>
 
-          <!-- 7. Notícias (Jornal / Tablet 3D Azul Real) -->
-          <div onclick="showAppToast('Exibindo Notícias da Praça')" class="fmt-tile bg-gradient-to-b from-[#EEF4FE] to-[#DCE8FC] border border-[#CBDEFA] shadow-[0_6px_16px_rgba(59,130,246,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <rect x="12" y="12" width="40" height="42" rx="6" fill="#1D4ED8" />
-                <rect x="16" y="16" width="32" height="12" rx="3" fill="#60A5FA" />
-                <circle cx="22" cy="22" r="3" fill="#FFFFFF" />
-                <path d="M18 34 L46 34 M18 40 L46 40 M18 46 L38 46" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
-              </svg>
+          <!-- 7. Notícias -->
+          <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_noticias.png" alt="Notícias" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-blue-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[11px] font-bold text-slate-800 mt-1">Notícias</span>
-          </div>
+            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Notícias</span>
+          </button>
 
-          <!-- 8. Ao Vivo (Antena de Transmissão 3D Lilás/Roxo) -->
-          <div onclick="showAppToast('Conectando à Live Comunitária')" class="fmt-tile bg-gradient-to-b from-[#FBF0FA] to-[#F6DAF3] border border-[#F0C5EB] shadow-[0_6px_16px_rgba(168,85,247,0.12)]">
-            <div class="w-10 h-10 flex items-center justify-center">
-              <svg viewBox="0 0 64 64" class="w-8 h-8 drop-shadow-sm">
-                <circle cx="32" cy="32" r="5" fill="#9333EA" />
-                <path d="M22 22 C16 28 16 36 22 42" fill="none" stroke="#A855F7" stroke-width="4" stroke-linecap="round" />
-                <path d="M42 22 C48 28 48 36 42 42" fill="none" stroke="#A855F7" stroke-width="4" stroke-linecap="round" />
-                <path d="M16 16 C8 24 8 40 16 48" fill="none" stroke="#C084FC" stroke-width="3.5" stroke-linecap="round" />
-                <path d="M48 16 C56 24 56 40 48 48" fill="none" stroke="#C084FC" stroke-width="3.5" stroke-linecap="round" />
-              </svg>
+          <!-- 8. Ao Vivo -->
+          <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
+            <div class="relative w-[68px] h-[64px] rounded-[20px] overflow-hidden drop-shadow-md group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
+              <img src="assets/fmt-icons/tile_aovivo.png" alt="Ao Vivo" class="w-full h-full object-contain">
+              <div class="active-indicator absolute inset-0 rounded-[20px] ring-2 ring-purple-500 opacity-0 transition-opacity"></div>
             </div>
-            <span class="text-[11px] font-bold text-slate-800 mt-1">Ao Vivo</span>
-          </div>
+            <span class="text-[11px] font-semibold text-slate-800 tracking-tight">Ao Vivo</span>
+          </button>
 
         </div>
       </div>
@@ -387,7 +330,7 @@
           </button>
         </div>
 
-        <!-- Título e Duração (Exatamente: "Preparo da Espiral de Ervas e Solo Vivo" • 03:10) -->
+        <!-- Título e Duração ("Preparo da Espiral de Ervas e Solo Vivo" • 03:10) -->
         <div class="flex items-center justify-between">
           <div>
             <h3 id="card-title" class="text-sm font-bold text-slate-900 leading-snug">
@@ -512,7 +455,7 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL: DISTRIBUIÇÃO SEM BOLHAS (EXATO COMO NO SEU PRINT) -->
+  <!-- MODAL: DISTRIBUIÇÃO SEM BOLHAS                           -->
   <!-- ======================================================== -->
   <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl text-xs border border-slate-100">
@@ -658,6 +601,20 @@
         duration: 'Roda viva',
         likes: 1540,
         videoUrl: 'assets/banner-arara.mp4'
+      },
+      noticias: {
+        title: 'Boletim Agroecológico: Encontro das Águas e Saberes Tradicionais',
+        tag: 'Notícias • Mastodon',
+        duration: '02:40',
+        likes: 1820,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
+      aovivo: {
+        title: 'Ao Vivo: Transmissão da Assembléia das Comunidades e Mestres',
+        tag: 'Ao Vivo • Owncast',
+        duration: 'AO VIVO',
+        likes: 4210,
+        videoUrl: 'assets/banner-arara.mp4'
       }
     };
 
@@ -670,10 +627,26 @@
     document.addEventListener('DOMContentLoaded', () => {
       safeCreateIcons();
       setupServiceWorkerSafe();
+      updateTabButtonUI('saberes');
     });
+
+    function updateTabButtonUI(activeKey) {
+      document.querySelectorAll('.fmt-tab-btn').forEach(btn => {
+        const ind = btn.querySelector('.active-indicator');
+        if (ind) ind.classList.add('opacity-0');
+        btn.classList.remove('scale-105');
+      });
+      const targetBtn = document.getElementById(`fmt-btn-${activeKey}`);
+      if (targetBtn) {
+        const ind = targetBtn.querySelector('.active-indicator');
+        if (ind) ind.classList.remove('opacity-0');
+        targetBtn.classList.add('scale-105');
+      }
+    }
 
     function setActiveTab(tabKey) {
       currentTab = tabKey;
+      updateTabButtonUI(tabKey);
 
       const data = FORMAT_ITEMS[tabKey] || FORMAT_ITEMS.saberes;
       document.getElementById('card-title').innerText = data.title;
@@ -682,7 +655,7 @@
       cardLikes = data.likes;
       document.getElementById('card-likes-count').innerText = cardLikes;
 
-      showAppToast(`Formato selecionado: ${tabKey.toUpperCase()}`);
+      showAppToast(`Formato selecionado: ${data.tag}`);
     }
 
     function toggleMainPlay() {

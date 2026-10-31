@@ -430,6 +430,62 @@
 
       </div>
 
+      <!-- PLAYLISTS SEM BOLHAS: VÍDEOS LONGOS -->
+      <section id="long-videos-playlists-section" class="bg-white rounded-[28px] p-4 shadow-card border border-emerald-50 space-y-3">
+        <!-- Cabeçalho das Playlists -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5 cursor-pointer" onclick="openModal('modal-algoritmo')">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <h3 class="text-xs font-bold text-slate-900 tracking-tight flex items-center gap-1.5">
+              <span>Playlists Sem Bolhas</span>
+              <span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold border border-emerald-100 flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3 h-3 text-emerald-600"></i>
+                Vídeos Longos
+              </span>
+            </h3>
+          </div>
+          <button onclick="openModal('modal-algoritmo')" title="Entenda o Algoritmo" class="text-[10px] font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-2 py-0.5 rounded-full transition-colors flex items-center gap-1">
+            <span>Critérios</span>
+            <i data-lucide="info" class="w-3 h-3"></i>
+          </button>
+        </div>
+
+        <!-- 4 Pílulas das Playlists: Recentes, Autores Plurais, Aleatório, Seguindo -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+          <!-- 1. Recentes -->
+          <button onclick="switchLongPlaylist('recentes')" id="pl-tab-recentes" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-[#047857] text-white shadow-xs flex items-center gap-1.5 tap-active">
+            <i data-lucide="clock" class="w-3 h-3"></i>
+            <span>Recentes</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-white/20 font-mono">25%</span>
+          </button>
+
+          <!-- 2. Autores Plurais -->
+          <button onclick="switchLongPlaylist('plurais')" id="pl-tab-plurais" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active">
+            <i data-lucide="users" class="w-3 h-3"></i>
+            <span>Autores Plurais</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-mono">25%</span>
+          </button>
+
+          <!-- 3. Aleatório (Fisher-Yates) -->
+          <button onclick="switchLongPlaylist('aleatorio')" id="pl-tab-aleatorio" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active">
+            <i data-lucide="shuffle" class="w-3 h-3"></i>
+            <span>Aleatório</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-mono">15%</span>
+          </button>
+
+          <!-- 4. Seguindo -->
+          <button onclick="switchLongPlaylist('seguindo')" id="pl-tab-seguindo" class="pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active">
+            <i data-lucide="heart" class="w-3 h-3"></i>
+            <span>Seguindo</span>
+          </button>
+        </div>
+
+        <!-- Lista Dinâmica de Vídeos da Playlist Selecionada -->
+        <div id="long-playlist-items" class="space-y-2 pt-1">
+          <!-- Gerado via renderLongPlaylist() -->
+        </div>
+      </section>
+
       <!-- 6. CARD DE POSTAGEM DE SABERES -->
       <article id="post-card" class="bg-white rounded-[28px] p-4 shadow-card border border-emerald-50 space-y-3">
         
@@ -809,6 +865,251 @@
       }
     };
 
+    // PLAYLISTS DA DISTRIBUIÇÃO SEM BOLHAS PARA VÍDEOS LONGOS
+    const LONG_VIDEO_PLAYLISTS = {
+      recentes: [
+        {
+          id: 'rec-1',
+          title: 'Aula Completa: Agrofloresta e Recuperação de Nascentes',
+          author: 'Mestre Tiago',
+          authorImg: 'assets/card-mestres-terra.jpg',
+          platform: 'peertube',
+          duration: '45:18',
+          likes: 3180,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'rec-2',
+          title: 'Oficina Prática de Construção com Terra Crua e Bambu',
+          author: 'Comunidade Yby',
+          authorImg: 'assets/dola-forest.jpg',
+          platform: 'peertube',
+          duration: '38:40',
+          likes: 1940,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'rec-3',
+          title: 'Física da Seiva e Ciclos Lunares na Agricultura Familiar',
+          author: 'Prof. Carlos',
+          authorImg: 'assets/card-portal-luz.jpg',
+          platform: 'peertube',
+          duration: '52:10',
+          likes: 2450,
+          videoUrl: 'assets/banner-arara.mp4'
+        }
+      ],
+      plurais: [
+        {
+          id: 'plu-1',
+          title: 'Cosmovisões Ancestrais e o Cuidado com a Mãe Terra',
+          author: 'Dona Benvinda',
+          authorImg: 'assets/card-sol-ancestral.jpg',
+          platform: 'peertube',
+          duration: '41:15',
+          likes: 4210,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'plu-2',
+          title: 'Tecelagem Tradicional e Filosofia das Cores Naturais',
+          author: 'Mariana Artesã',
+          authorImg: 'assets/card-floresta-sagrada.jpg',
+          platform: 'peertube',
+          duration: '29:50',
+          likes: 1870,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'plu-3',
+          title: 'Encontro dos Povos da Floresta e Defesa dos Rios Vivos',
+          author: 'Articulação dos Saberes',
+          authorImg: 'assets/card-mestres-terra.jpg',
+          platform: 'owncast',
+          duration: '1:14:20',
+          likes: 3890,
+          videoUrl: 'assets/banner-arara.mp4'
+        }
+      ],
+      aleatorio: [
+        {
+          id: 'ale-1',
+          title: 'Manejo de Abelhas Nativas sem Ferrão (Meliponicultura)',
+          author: 'Seu Zé Meliponário',
+          authorImg: 'assets/dola-forest.jpg',
+          platform: 'peertube',
+          duration: '34:25',
+          likes: 2120,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'ale-2',
+          title: 'Fermentação Natural de Pães com Grãos e Trigo Ancestral',
+          author: 'Dona Benvinda',
+          authorImg: 'assets/card-sol-ancestral.jpg',
+          platform: 'peertube',
+          duration: '27:10',
+          likes: 1650,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'ale-3',
+          title: 'Transmissão Especial: Assembléia das Comunidades e Mestres',
+          author: 'Rede Soberana',
+          authorImg: 'assets/card-portal-luz.jpg',
+          platform: 'owncast',
+          duration: 'AO VIVO',
+          likes: 5120,
+          videoUrl: 'assets/banner-arara.mp4'
+        }
+      ],
+      seguindo: [
+        {
+          id: 'seg-1',
+          title: 'Manejo Prático de Agrofloresta Sintrópica de Primavera',
+          author: 'Mestre Tiago',
+          authorImg: 'assets/card-mestres-terra.jpg',
+          platform: 'peertube',
+          duration: '48:30',
+          likes: 3410,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'seg-2',
+          title: 'Ervas Protetoras e Banhos Aromáticos Tradicionais',
+          author: 'Dona Benvinda',
+          authorImg: 'assets/card-sol-ancestral.jpg',
+          platform: 'peertube',
+          duration: '31:40',
+          likes: 2890,
+          videoUrl: 'assets/banner-arara.mp4'
+        },
+        {
+          id: 'seg-3',
+          title: 'Curso Completo: Astronomia Popular e Calendário dos Ciclos',
+          author: 'Prof. Carlos',
+          authorImg: 'assets/card-portal-luz.jpg',
+          platform: 'peertube',
+          duration: '59:15',
+          likes: 3620,
+          videoUrl: 'assets/banner-arara.mp4'
+        }
+      ]
+    };
+
+    let currentLongPlaylist = 'recentes';
+
+    function switchLongPlaylist(key) {
+      currentLongPlaylist = key;
+      // Atualiza abas
+      ['recentes', 'plurais', 'aleatorio', 'seguindo'].forEach(k => {
+        const btn = document.getElementById(`pl-tab-${k}`);
+        if (!btn) return;
+        if (k === key) {
+          btn.className = 'pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-[#047857] text-white shadow-xs flex items-center gap-1.5 tap-active';
+        } else {
+          btn.className = 'pl-tab-btn px-3 py-1.5 rounded-full text-[11px] font-bold shrink-0 transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1.5 tap-active';
+        }
+      });
+
+      renderLongPlaylist(key);
+
+      const labels = {
+        recentes: 'Novidades Recentes (25%)',
+        plurais: 'Autores Plurais (25%)',
+        aleatorio: 'Aleatório Justo / Fisher-Yates (15%)',
+        seguindo: 'Pessoas que você segue'
+      };
+      showAppToast(`Playlist: ${labels[key]}`);
+    }
+
+    function renderLongPlaylist(key) {
+      const container = document.getElementById('long-playlist-items');
+      if (!container) return;
+
+      let list = LONG_VIDEO_PLAYLISTS[key] || LONG_VIDEO_PLAYLISTS.recentes;
+
+      // Se for aleatório, faz um shuffle Fisher-Yates genuíno!
+      if (key === 'aleatorio') {
+        list = [...list];
+        for (let i = list.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [list[i], list[j]] = [list[j], list[i]];
+        }
+      }
+
+      container.innerHTML = list.map(item => {
+        const p = PLATFORMS[item.platform] || PLATFORMS.peertube;
+        return `
+          <div onclick="playVideoFromPlaylist('${item.id}', '${key}')" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-emerald-50/70 border border-slate-100 cursor-pointer transition-all tap-active group">
+            <div class="relative w-24 h-16 rounded-xl overflow-hidden bg-slate-900 shrink-0 shadow-xs">
+              <img src="${item.authorImg}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+              <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/75 text-[9px] font-bold text-white font-mono">
+                ${item.duration}
+              </span>
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 flex items-center justify-center transition-colors">
+                <div class="w-6 h-6 rounded-full bg-[#047857]/90 text-white flex items-center justify-center shadow-xs">
+                  <i data-lucide="play" class="w-3 h-3 fill-current ml-0.5"></i>
+                </div>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-xs font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-emerald-800 transition-colors">
+                ${item.title}
+              </h4>
+              <div class="flex items-center justify-between mt-1 text-[10px] text-slate-500">
+                <div class="flex items-center gap-1.5">
+                  <img src="${item.authorImg}" class="w-3.5 h-3.5 rounded-full object-cover">
+                  <span class="font-medium text-slate-700 truncate">${item.author}</span>
+                </div>
+                <span class="inline-flex items-center gap-1 text-[9.5px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-md">
+                  ${p.icon}
+                  <span>${p.name}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      safeCreateIcons();
+    }
+
+    function playVideoFromPlaylist(videoId, playlistKey) {
+      const list = LONG_VIDEO_PLAYLISTS[playlistKey] || LONG_VIDEO_PLAYLISTS.recentes;
+      const item = list.find(v => v.id === videoId);
+      if (!item) return;
+
+      document.getElementById('card-title').innerText = item.title;
+      document.getElementById('card-duration').innerText = item.duration;
+      cardLikes = item.likes;
+      document.getElementById('card-likes-count').innerText = cardLikes;
+
+      const p = PLATFORMS[item.platform] || PLATFORMS.peertube;
+      const originIcon = document.getElementById('card-origin-icon');
+      const originName = document.getElementById('card-origin-name');
+      if (originIcon) originIcon.innerHTML = p.icon;
+      if (originName) originName.innerText = p.name;
+
+      const vid = document.getElementById('featured-video-player');
+      if (vid) {
+        vid.currentTime = 0;
+        vid.play().catch(() => {});
+        isMainPlaying = true;
+        const icon = document.getElementById('main-play-icon');
+        if (icon) icon.setAttribute('data-lucide', 'pause');
+      }
+
+      // Rola suavemente até o player
+      const card = document.getElementById('main-featured-card');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      safeCreateIcons();
+      showAppToast(`Reproduzindo: ${item.title.substring(0, 32)}...`);
+    }
+
     let currentTab = 'saberes';
     let currentFeedOrder = 'aleatorios';
     let isMainPlaying = false;
@@ -819,6 +1120,7 @@
       safeCreateIcons();
       setupServiceWorkerSafe();
       setActiveTab('saberes');
+      renderLongPlaylist('recentes');
     });
 
     function updateTabButtonUI(activeKey) {
@@ -844,6 +1146,16 @@
       document.getElementById('card-duration').innerText = data.duration;
       cardLikes = data.likes;
       document.getElementById('card-likes-count').innerText = cardLikes;
+
+      // Se for Vídeos Longos, ativa a seção de playlists
+      if (tabKey === 'longos') {
+        const plSec = document.getElementById('long-videos-playlists-section');
+        if (plSec) {
+          plSec.classList.add('ring-2', 'ring-emerald-400');
+          setTimeout(() => plSec.classList.remove('ring-2', 'ring-emerald-400'), 1500);
+          plSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
 
       // Atualiza com o logo e nome do aplicativo de origem
       const p = PLATFORMS[data.platform] || PLATFORMS.mastodon;

@@ -1,5 +1,5 @@
-// Service Worker - YBYgram PWA • Rede Soberana
-const CACHE_NAME = 'ybygram-cache-v32';
+// Service Worker - Yby Verso PWA • Praça Pública Digital
+const CACHE_NAME = 'ybyverso-cache-v1.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -7,7 +7,13 @@ const ASSETS_TO_CACHE = [
   './icons/icon.svg',
   './assets/logo-arara.png',
   './assets/arara-original.jpg',
-  './assets/login-araras.jpg'
+  './assets/login-araras.jpg',
+  './assets/card-floresta-sagrada.jpg',
+  './assets/card-mestres-terra.jpg',
+  './assets/card-portal-luz.jpg',
+  './assets/card-sol-ancestral.jpg',
+  './assets/dola-forest.jpg',
+  './assets/hero-forest.jpg'
 ];
 
 // Instalação do Service Worker
@@ -15,26 +21,28 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[YBYgram SW] Pré-armazenando shell da aplicação');
+      console.log('[Yby Verso SW] Pré-armazenando recursos fundamentais da Praça Digital');
       return Promise.all(
         ASSETS_TO_CACHE.map((url) =>
-          fetch(new Request(url, { cache: 'reload' })).then((res) => {
-            if (res.ok) return cache.put(url, res);
-          })
+          fetch(new Request(url, { cache: 'reload' }))
+            .then((res) => {
+              if (res.ok) return cache.put(url, res);
+            })
+            .catch((err) => console.warn('[Yby Verso SW] Falha ao pré-carregar:', url, err))
         )
       );
     })
   );
 });
 
-// Ativação e limpeza imediata de caches antigos
+// Ativação e limpeza de caches antigos
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
-            console.log('[YBYgram SW] Removendo cache legado:', key);
+            console.log('[Yby Verso SW] Limpando versão de cache obsoleta:', key);
             return caches.delete(key);
           }
         })
@@ -43,19 +51,18 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Interceptação com estratégia Network-First para sempre exibir a versão mais recente
+// Interceptação com estratégia Network-First com Fallback elegante para offline
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
 
-  // Não intercepta chamadas de mídia de terceiros ou streaming de vídeo (.mp4 / Range)
+  // Não interceptar streamings de mídia de grande porte ou CDNs de terceiros com range
   if (
     event.request.headers.get('range') ||
     url.pathname.endsWith('.mp4') ||
-    url.origin.includes('odysee.com') ||
     url.origin.includes('youtube.com') ||
-    url.origin.includes('unsplash.com')
+    url.origin.includes('peertube')
   ) {
     return;
   }

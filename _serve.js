@@ -83,5 +83,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`YBYgram PWA rodando em http://localhost:${PORT}`);
+  console.log(`🌿 Yby Verso • Praça Pública Digital rodando em http://localhost:${PORT}`);
+  console.log(`📱 PWA pronto para instalação e teste nos navegadores móveis e desktop.`);
 });

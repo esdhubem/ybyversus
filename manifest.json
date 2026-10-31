@@ -1,17 +1,17 @@
 {
-  "id": "/ybygram",
-  "name": "YBYgram • Rede Soberana",
+  "id": "/ybygram-praca-digital",
+  "name": "YBYgram • Praça Pública Digital",
   "short_name": "YBYgram",
-  "description": "YBYgram • Rede Soberana | Algoritmos Amigáveis: Fluxo Cronológico de Oportunidade",
+  "description": "Rede agregadora de mídias e saberes da Praça Pública Digital organizada por 8 formatos e conectando saberes e vidas.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#031412",
-  "theme_color": "#072e27",
+  "orientation": "portrait-primary",
+  "background_color": "#FBF9F6",
+  "theme_color": "#FFFFFF",
   "lang": "pt-BR",
   "dir": "ltr",
-  "categories": ["social", "education", "lifestyle", "news"],
+  "categories": ["social", "entertainment", "music", "news", "education"],
   "icons": [
     {
       "src": "assets/logo-arara.png",
@@ -24,28 +24,41 @@
       "sizes": "192x192 512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
   "shortcuts": [
     {
-      "name": "Faça sua Postagem",
-      "short_name": "Postar",
-      "description": "Partilhe um saber, semente ou relato na comunidade",
-      "url": "./index.html?action=post",
-      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
-    },
-    {
-      "name": "Descobrir Aleatório",
-      "short_name": "Descobrir",
-      "description": "Embaralhar conteúdos atemporais via Fisher-Yates",
-      "url": "./index.html?feed=random",
-      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
-    },
-    {
-      "name": "Saberes da Terra",
+      "name": "Saberes",
       "short_name": "Saberes",
-      "description": "Acesse os saberes agroecológicos e tradicionais",
+      "description": "Textos, imagens e reflexões",
       "url": "./index.html?tab=saberes",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Vídeos Curtos",
+      "short_name": "Curtos",
+      "description": "Vídeos rápidos da terra",
+      "url": "./index.html?tab=curtos",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Vídeos Longos",
+      "short_name": "Aulas",
+      "description": "Documentários e aulas",
+      "url": "./index.html?tab=longos",
+      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Música",
+      "short_name": "Música",
+      "description": "Álbuns e faixas sonoras",
+      "url": "./index.html?tab=musica",
       "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
     }
   ],

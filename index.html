@@ -189,24 +189,7 @@
   </div>
 
   <!-- Definições Globais SVG para Gradientes Dourados 3D -->
-  <svg width="0" height="0" class="absolute hidden">
-    <defs>
-      <!-- Gradiente Dourado 3D Primário -->
-      <linearGradient id="gold3d" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#FFF9EC"/>
-        <stop offset="25%" stop-color="#F4DFB3"/>
-        <stop offset="60%" stop-color="#D7AA4E"/>
-        <stop offset="100%" stop-color="#996E1D"/>
-      </linearGradient>
-
-      <!-- Gradiente Dourado Shimmering Secundário -->
-      <linearGradient id="goldShine" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#FEF0D4"/>
-        <stop offset="50%" stop-color="#DFB45E"/>
-        <stop offset="100%" stop-color="#A97E25"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  
 
   <!-- ======================================================== -->
   <!-- MOLDURA DO SMARTPHONE (EXATAMENTE COMO NO SEU PRINT)     -->
@@ -329,16 +312,29 @@
       <div class="space-y-3 pt-1 pb-1">
         <div class="grid grid-cols-4 gap-2.5 sm:gap-3">
           
-          <!-- 1. Saberes (Livro Aberto Dourado) -->
+          <!-- 1. Saberes (Livro Aberto Dourado 3D) -->
           <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Páginas do Livro com Gradiente Dourado 3D -->
-                <path d="M7 14C12 12 18 12 24 16C30 12 36 12 41 14V34C36 32 30 32 24 36C18 32 12 32 7 34V14Z" fill="url(#gold3d)" stroke="url(#goldShine)" stroke-width="1.8" stroke-linejoin="round"/>
-                <!-- Vincos Internos do Livro -->
-                <path d="M24 16V36" stroke="#17212C" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M12 20C15 19 18 19 21 21" stroke="#17212C" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M27 21C30 19 33 19 36 20" stroke="#17212C" stroke-width="1.2" stroke-linecap="round"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-saberes" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                  <linearGradient id="g-saberes-edge" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEECC9"/>
+                    <stop offset="50%" stop-color="#DFB45E"/>
+                    <stop offset="100%" stop-color="#A97E25"/>
+                  </linearGradient>
+                </defs>
+                <path d="M7 13.5C12 11.5 18 11.5 24 15.5C30 11.5 36 11.5 41 13.5V34C36 32 30 32 24 36C18 32 12 32 7 34V13.5Z" fill="url(#g-saberes)" stroke="url(#g-saberes-edge)" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M24 15.5V36" stroke="#131B24" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 20C15 19 18 19 21 21" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M27 21C30 19 33 19 36 20" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M12 25C15 24 18 24 21 26" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M27 26C30 24 33 24 36 25" stroke="#131B24" stroke-width="1.3" stroke-linecap="round"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Saberes</span>
@@ -347,13 +343,24 @@
           <!-- 2. Vídeos Curtos (Claquete Dourada + Pontos) -->
           <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <rect x="8" y="18" width="32" height="20" rx="3.5" fill="url(#gold3d)"/>
-                <!-- Parte Superior Inclinada da Claquete -->
-                <path d="M8 12L40 9.5V16L8 16Z" fill="url(#goldShine)"/>
-                <path d="M14 11.5L16.5 16M22 10.8L24.5 16M30 10.2L32.5 16" stroke="#17212C" stroke-width="1.8" stroke-linecap="round"/>
-                <!-- Símbolo Play Central -->
-                <polygon points="21,24 21,32 29,28" fill="#17212C"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-curtos" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                  <linearGradient id="g-curtos-top" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEF0D4"/>
+                    <stop offset="50%" stop-color="#E2B760"/>
+                    <stop offset="100%" stop-color="#A97E25"/>
+                  </linearGradient>
+                </defs>
+                <rect x="8" y="18" width="32" height="20" rx="4" fill="url(#g-curtos)" stroke="url(#g-curtos-top)" stroke-width="1.2"/>
+                <path d="M8 12.5L40 9.5V16.5L8 16.5Z" fill="url(#g-curtos-top)"/>
+                <path d="M14 12L16.5 16.5M22 11.2L24.5 16.5M30 10.5L32.5 16.5" stroke="#131B24" stroke-width="2" stroke-linecap="round"/>
+                <polygon points="21,24 21,32 29,28" fill="#131B24"/>
               </svg>
             </div>
             <div class="flex flex-col items-center">
@@ -365,9 +372,21 @@
           <!-- 3. Vídeos Longos (Play Triangular Dourado + Pontos) -->
           <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Triângulo Play Arredondado Dourado do Mockup -->
-                <path d="M16 12C16 10.2 18 9.1 19.5 10L36.5 22C37.8 22.9 37.8 24.8 36.5 25.7L19.5 37.7C18 38.6 16 37.5 16 35.7V12Z" fill="url(#gold3d)" stroke="url(#goldShine)" stroke-width="1.5"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-longos" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                  <linearGradient id="g-longos-rim" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEF0D4"/>
+                    <stop offset="50%" stop-color="#E2B760"/>
+                    <stop offset="100%" stop-color="#A97E25"/>
+                  </linearGradient>
+                </defs>
+                <path d="M16 11.5C16 9.6 18.2 8.4 19.8 9.4L37 21.8C38.4 22.8 38.4 24.9 37 25.9L19.8 38.3C18.2 39.3 16 38.1 16 36.2V11.5Z" fill="url(#g-longos)" stroke="url(#g-longos-rim)" stroke-width="1.8"/>
               </svg>
             </div>
             <div class="flex flex-col items-center">
@@ -379,9 +398,16 @@
           <!-- 4. Música (Nota Musical Dourada) -->
           <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Nota Musical Dupla em Ouro 3D -->
-                <path d="M19 14V31.5C17.8 30.5 16 30 14 30C10.7 30 8 32.2 8 35C8 37.8 10.7 40 14 40C17.3 40 20 37.8 20 35V17L38 13V28.5C36.8 27.5 35 27 33 27C29.7 27 27 29.2 27 32C27 34.8 29.7 37 33 37C36.3 37 39 34.8 39 32V10L19 14Z" fill="url(#gold3d)"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-musica" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                </defs>
+                <path d="M19 14V31.5C17.8 30.5 16 30 14 30C10.7 30 8 32.2 8 35C8 37.8 10.7 40 14 40C17.3 40 20 37.8 20 35V17L38 13V28.5C36.8 27.5 35 27 33 27C29.7 27 27 29.2 27 32C27 34.8 29.7 37 33 37C36.3 37 39 34.8 39 32V10L19 14Z" fill="url(#g-musica)"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Música</span>
@@ -390,9 +416,16 @@
           <!-- 5. Podcasts (Headphones Dourados) -->
           <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Headphone em Ouro 3D -->
-                <path d="M10 24C10 16.3 16.3 10 24 10C31.7 10 38 16.3 38 24V32C38 35.3 35.3 38 32 38H30C28.9 38 28 37.1 28 36V28C28 26.9 28.9 26 30 26H34V24C34 18.5 29.5 14 24 14C18.5 14 14 18.5 14 24V26H18C19.1 26 20 26.9 20 28V36C20 37.1 19.1 38 18 38H16C12.7 38 10 35.3 10 32V24Z" fill="url(#gold3d)"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-podcasts" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                </defs>
+                <path d="M10 24C10 16.3 16.3 10 24 10C31.7 10 38 16.3 38 24V32C38 35.3 35.3 38 32 38H30C28.9 38 28 37.1 28 36V28C28 26.9 28.9 26 30 26H34V24C34 18.5 29.5 14 24 14C18.5 14 14 18.5 14 24V26H18C19.1 26 20 26.9 20 28V36C20 37.1 19.1 38 18 38H16C12.7 38 10 35.3 10 32V24Z" fill="url(#g-podcasts)"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Podcasts</span>
@@ -401,11 +434,22 @@
           <!-- 6. Fórum (Balões de Conversa Dourados) -->
           <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Balão Principal -->
-                <path d="M11 14C11 10.7 13.7 8 17 8H27C30.3 8 33 10.7 33 14V21C33 24.3 30.3 27 27 27H22L16 31V27H17C13.7 27 11 24.3 11 21V14Z" fill="url(#gold3d)"/>
-                <!-- Balão Secundário Sobreposto -->
-                <path d="M22 25C22.6 25 23.3 25.1 23.9 25.3C24.6 27.5 26.7 29 29.2 29H33L37 33V29C39.2 29 41 27.2 41 25V19C41 17.1 39.7 15.6 38 15.2V21C38 23.8 35.8 26 33 26H22V25Z" fill="url(#goldShine)"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-forum" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                  <linearGradient id="g-forum-sec" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEF0D4"/>
+                    <stop offset="50%" stop-color="#E2B760"/>
+                    <stop offset="100%" stop-color="#A97E25"/>
+                  </linearGradient>
+                </defs>
+                <path d="M10 13C10 9.7 12.7 7 16 7H27C30.3 7 33 9.7 33 13V20C33 23.3 30.3 26 27 26H22L15 31V26H16C12.7 26 10 23.3 10 20V13Z" fill="url(#g-forum)"/>
+                <path d="M22 25C22.6 25 23.3 25.1 23.9 25.3C24.6 27.5 26.7 29 29.2 29H33L38 33.5V29C40.2 29 42 27.2 42 25V18C42 16 40.5 14.5 38.5 14.1V20C38.5 23.3 35.8 26 32.5 26H22V25Z" fill="url(#g-forum-sec)"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Fórum</span>
@@ -414,14 +458,26 @@
           <!-- 7. Notícias (Tablet de Notícias Dourado) -->
           <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Tablet com linhas e bloco de foto -->
-                <rect x="9" y="10" width="30" height="28" rx="5" fill="url(#gold3d)" stroke="url(#goldShine)" stroke-width="1.5"/>
-                <rect x="14" y="15" width="8" height="8" rx="1.5" fill="#17212C"/>
-                <rect x="25" y="16" width="9" height="2.2" rx="1" fill="#17212C"/>
-                <rect x="25" y="20" width="9" height="2.2" rx="1" fill="#17212C"/>
-                <rect x="14" y="26" width="20" height="2.2" rx="1" fill="#17212C"/>
-                <rect x="14" y="30" width="14" height="2.2" rx="1" fill="#17212C"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-noticias" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                  <linearGradient id="g-noticias-edge" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEF0D4"/>
+                    <stop offset="50%" stop-color="#E2B760"/>
+                    <stop offset="100%" stop-color="#A97E25"/>
+                  </linearGradient>
+                </defs>
+                <rect x="9" y="10" width="30" height="28" rx="5" fill="url(#g-noticias)" stroke="url(#g-noticias-edge)" stroke-width="1.5"/>
+                <rect x="14" y="15" width="8" height="8" rx="1.5" fill="#131B24"/>
+                <rect x="25" y="16" width="9" height="2.2" rx="1" fill="#131B24"/>
+                <rect x="25" y="20" width="9" height="2.2" rx="1" fill="#131B24"/>
+                <rect x="14" y="26" width="20" height="2.2" rx="1" fill="#131B24"/>
+                <rect x="14" y="30" width="14" height="2.2" rx="1" fill="#131B24"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Notícias</span>
@@ -430,12 +486,23 @@
           <!-- 8. Ao Vivo (Antena com Ondas Douradas) -->
           <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
             <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-9 h-9" fill="none">
-                <!-- Ponto Central -->
-                <circle cx="24" cy="24" r="3.5" fill="url(#goldShine)"/>
-                <!-- Ondas de Sinal -->
-                <path d="M18 18C15 21 15 27 18 30M30 18C33 21 33 27 30 30" stroke="url(#gold3d)" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M13 13C8 18 8 30 13 35M35 13C40 18 40 30 35 35" stroke="url(#gold3d)" stroke-width="2.5" stroke-linecap="round"/>
+              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" fill="none">
+                <defs>
+                  <linearGradient id="g-aovivo" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF9ED"/>
+                    <stop offset="25%" stop-color="#F5DCAB"/>
+                    <stop offset="65%" stop-color="#D7AA4E"/>
+                    <stop offset="100%" stop-color="#9C7323"/>
+                  </linearGradient>
+                  <linearGradient id="g-aovivo-shine" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEF0D4"/>
+                    <stop offset="50%" stop-color="#E2B760"/>
+                    <stop offset="100%" stop-color="#A97E25"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="24" cy="24" r="3.5" fill="url(#g-aovivo-shine)"/>
+                <path d="M18 18C15 21 15 27 18 30M30 18C33 21 33 27 30 30" stroke="url(#g-aovivo)" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M13 13C8 18 8 30 13 35M35 13C40 18 40 30 35 35" stroke="url(#g-aovivo)" stroke-width="2.6" stroke-linecap="round"/>
               </svg>
             </div>
             <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Ao Vivo</span>
@@ -445,13 +512,14 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- 5. CARD PRINCIPAL EM DESTAQUE (EXATAMENTE COMO NO PRINT) -->
+      <!-- 5. CARD PRINCIPAL EM DESTAQUE (FOTO DAS ARARAS DO PRINT) -->
+      
       <!-- ======================================================== -->
       <div id="main-featured-card" class="bg-[#18222C] rounded-[28px] p-3.5 shadow-[0_12px_28px_rgba(0,0,0,0.5)] border border-amber-500/15 space-y-3">
         
         <!-- Mídia em Destaque: Floresta e Araras -->
         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-black shadow-inner group">
-          <img id="featured-image-fallback" src="assets/dola-forest.jpg" class="w-full h-full object-cover">
+          <img id="featured-image-fallback" src="assets/hero-macaw.jpg" class="w-full h-full object-cover">
           <video id="featured-video-player" playsinline loop class="w-full h-full object-cover absolute inset-0 hidden">
             <source src="assets/banner-arara.mp4" type="video/mp4">
           </video>

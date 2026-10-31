@@ -202,19 +202,27 @@
       </div>
     </div>
 
-    <!-- 2. CABEÇALHO DO APLICATIVO (YBY + ÍCONES: BUSCA, SPARKLE E MENU =) -->
-    <header class="px-6 pt-2 pb-2 bg-white flex items-center justify-between shrink-0">
-      <div>
-        <div class="flex items-center cursor-pointer" onclick="resetToHome()">
-          <span class="text-2xl font-black tracking-tight text-[#064E3B]">YBY</span>
+    <!-- 2. CABEÇALHO DO APLICATIVO COM BUSCADOR INTEGRADO -->
+    <header class="px-5 pt-2.5 pb-2 bg-white flex items-center gap-2.5 shrink-0 border-b border-emerald-50/70">
+      <!-- Marca YBY -->
+      <div class="cursor-pointer shrink-0" onclick="resetToHome()">
+        <span class="text-2xl font-black tracking-tight text-[#064E3B]">YBY</span>
+      </div>
+
+      <!-- Barra de Pesquisa no Topo -->
+      <div class="flex-1 min-w-0">
+        <div class="relative flex items-center bg-[#F3F8F5] rounded-full p-1 pl-3.5 border border-emerald-100/90 shadow-xs focus-within:ring-2 focus-within:ring-emerald-500/30 focus-within:bg-white transition-all">
+          <input type="text" id="search-input" onkeyup="handleSearchInput(event)" placeholder="Pesquisar saberes..." class="w-full text-xs text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none">
+          
+          <!-- Botão Redondo Verde de Busca -->
+          <button onclick="executeSearch()" title="Buscar" class="w-7 h-7 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shrink-0 shadow-xs active:scale-95 transition-transform tap-active">
+            <i data-lucide="search" class="w-3.5 h-3.5"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Ícones da Direita: Busca 🔍, Sparkle Verde ✨ (abre modal), Menu Duas Linhas = -->
-      <div class="flex items-center gap-3 text-slate-700">
-        <button onclick="focusSearchInput()" title="Pesquisar" class="p-1 hover:text-emerald-600 transition-colors tap-active">
-          <i data-lucide="search" class="w-5 h-5"></i>
-        </button>
+      <!-- Ícones da Direita: Sparkle Verde ✨ (abre modal), Menu Duas Linhas = -->
+      <div class="flex items-center gap-1.5 text-slate-700 shrink-0">
         <!-- Ícone Sparkle / Estrela Verde Soberano -->
         <button onclick="openModal('modal-algoritmo')" title="Distribuição Sem Bolhas" class="p-1 hover:scale-110 transition-transform tap-active">
           <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
@@ -473,18 +481,6 @@
         </div>
 
       </article>
-
-      <!-- 7. BARRA DE PESQUISA ESTILO PÍLULA (COM BOTÃO REDONDO VERDE) -->
-      <div class="pt-1">
-        <div class="relative flex items-center bg-white rounded-full p-1 pl-4 shadow-card border border-emerald-100">
-          <input type="text" id="search-input" onkeyup="handleSearchInput(event)" placeholder="Pesquisar saberes..." class="w-full text-xs text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none">
-          
-          <!-- Botão Redondo Verde de Busca -->
-          <button onclick="executeSearch()" class="w-10 h-10 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shrink-0 shadow-sm active:scale-95 transition-transform tap-active">
-            <i data-lucide="search" class="w-4 h-4"></i>
-          </button>
-        </div>
-      </div>
 
       <!-- 8. TOGGLE INFERIOR: RECENTES vs ALEATÓRIOS -->
       <div class="pt-2 flex items-center justify-between px-2">

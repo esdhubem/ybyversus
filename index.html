@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>YBYgram • Praça Pública Digital</title>
-  <meta name="description" content="YBYgram: Praça Pública Digital conectando saberes, culturas e oportunidades.">
+  <title>YBY • Conectando Saberes e Vidas</title>
+  <meta name="description" content="YBY: Praça Pública Digital conectando saberes, culturas e vidas.">
 
   <!-- PWA Manifest & Suporte Mobile -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#047857">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="YBYgram">
+  <meta name="apple-mobile-web-app-title" content="YBY">
   <link rel="icon" type="image/png" href="assets/logo-arara.png">
   <link rel="apple-touch-icon" href="assets/logo-arara.png">
 
-  <!-- Fontes Google: Plus Jakarta Sans -->
+  <!-- Tipografia Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -31,25 +31,24 @@
         extend: {
           colors: {
             yby: {
-              purple: '#7C3AED',
-              purpleLight: '#EDE9FE',
-              green: '#10B981',
-              greenDark: '#047857',
-              greenLight: '#E8F5E9',
-              gold: '#F59E0B',
-              bgLight: '#FBF9F6',
+              primary: '#047857',
+              primaryHover: '#065F46',
+              mint: '#10B981',
+              neon: '#34D399',
+              dark: '#064E3B',
+              night: '#022C22',
+              bgLight: '#EAF6F0',
               card: '#FFFFFF',
-              border: '#F0ECE4'
+              borderLight: '#E1EFE7'
             }
           },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
           },
           boxShadow: {
-            'card': '0 8px 24px -4px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02)',
-            'float': '0 12px 28px -6px rgba(124, 58, 237, 0.35)',
-            'floatGreen': '0 12px 28px -6px rgba(16, 185, 129, 0.35)',
-            'phone': '0 25px 60px -15px rgba(0, 0, 0, 0.15)'
+            'card': '0 8px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02)',
+            'float': '0 12px 28px -6px rgba(4, 120, 87, 0.35)',
+            'phone': '0 25px 60px -15px rgba(6, 78, 59, 0.22)'
           }
         }
       }
@@ -72,6 +71,40 @@
       scrollbar-width: none;
     }
 
+    /* Formas orgânicas fluidas verdes idênticas ao mockup */
+    .bg-blob-1 {
+      position: absolute;
+      top: -80px;
+      left: -100px;
+      width: 420px;
+      height: 420px;
+      border-radius: 48% 52% 68% 32% / 42% 58% 42% 58%;
+      background: linear-gradient(135deg, #10B981 0%, #059669 60%, #047857 100%);
+      opacity: 0.85;
+      filter: blur(40px);
+      z-index: 0;
+      animation: floatSlow 12s ease-in-out infinite alternate;
+    }
+
+    .bg-blob-2 {
+      position: absolute;
+      bottom: -100px;
+      right: -80px;
+      width: 450px;
+      height: 450px;
+      border-radius: 63% 37% 54% 46% / 48% 62% 38% 52%;
+      background: linear-gradient(135deg, #34D399 0%, #059669 50%, #064E3B 100%);
+      opacity: 0.8;
+      filter: blur(45px);
+      z-index: 0;
+      animation: floatSlow 15s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(30px) rotate(15deg); }
+    }
+
     .app-screen-scroll {
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
@@ -81,644 +114,586 @@
       display: none;
     }
 
-    /* Animação suave para cliques */
     .tap-active:active {
       transform: scale(0.96);
       transition: transform 0.1s ease;
     }
   </style>
 </head>
-<body class="bg-[#F3ECE4] min-h-screen flex items-center justify-center p-0 sm:p-4 overflow-hidden relative">
+<body class="bg-[#EAF6F0] min-h-screen flex items-center justify-center p-0 sm:p-4 overflow-hidden relative selection:bg-emerald-500 selection:text-white">
+
+  <!-- Formas orgânicas verdes no fundo da tela -->
+  <div class="bg-blob-1 pointer-events-none"></div>
+  <div class="bg-blob-2 pointer-events-none"></div>
 
   <!-- ======================================================== -->
-  <!-- MOLDURA DO SMARTPHONE (DESIGN EXATO DA IMAGEM)           -->
+  <!-- MOLDURA DO SMARTPHONE (EXATAMENTE COMO NA CAPTURA)       -->
   <!-- ======================================================== -->
-  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[420px] sm:h-[890px] sm:max-h-[96vh] bg-white sm:rounded-[44px] shadow-phone flex flex-col overflow-hidden border-0 sm:border-[8px] sm:border-white transition-all">
+  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[95vh] bg-white sm:rounded-[44px] shadow-phone flex flex-col overflow-hidden border-0 sm:border-[9px] sm:border-white transition-all">
     
-    <!-- 1. STATUS BAR ANDROID/iOS (21:38 / Bateria / Wifi) -->
+    <!-- 1. STATUS BAR NATIVA (9:41, Sinal, Wifi, Bateria) -->
     <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-slate-800 shrink-0 select-none bg-white">
-      <span class="tracking-tight text-[13px] font-bold">21:38</span>
-      <div class="flex items-center gap-2 text-slate-700">
-        <i data-lucide="bell" class="w-3.5 h-3.5"></i>
+      <span class="tracking-tight text-[13px]">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-800">
+        <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
         <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
-        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
-        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-700 p-0.5 flex items-center justify-end">
-          <div class="h-full w-full bg-slate-700 rounded-xs"></div>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-800 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-800 rounded-xs"></div>
         </div>
       </div>
     </div>
 
-    <!-- 2. CABEÇALHO DO APLICATIVO (LOGO FLOR DE LÓTUS + ÍCONES DESTACADOS) -->
-    <header class="px-5 pt-1.5 pb-2.5 bg-white flex items-center justify-between shrink-0 border-b border-slate-50">
-      
-      <!-- Logo Lótus Multicolorida + YBYgram -->
-      <div class="flex items-center gap-2.5 cursor-pointer" onclick="resetToHome()">
-        <div class="w-10 h-10 flex items-center justify-center shrink-0">
-          <!-- Ícone Flor de Lótus Multicolorida Fiel à Imagem -->
-          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-sm">
-            <!-- Pétalas Central e Laterais em Gradientes Vibrantes -->
-            <path d="M50 15 C45 35 35 55 50 82 C65 55 55 35 50 15 Z" fill="#84CC16" />
-            <path d="M50 82 C35 70 20 50 25 35 C38 42 45 60 50 82 Z" fill="#EAB308" />
-            <path d="M50 82 C65 70 80 50 75 35 C62 42 55 60 50 82 Z" fill="#F97316" />
-            <path d="M50 82 C28 78 10 65 10 50 C24 48 38 65 50 82 Z" fill="#A855F7" />
-            <path d="M50 82 C72 78 90 65 90 50 C76 48 62 65 50 82 Z" fill="#EC4899" />
-            <!-- Base Folhas Verdes -->
-            <path d="M25 82 C35 88 65 88 75 82 C60 92 40 92 25 82 Z" fill="#10B981" />
-          </svg>
+    <!-- 2. CABEÇALHO DO APLICATIVO (YBY 🌿 + ÍCONES: BUSCA, SPARKLE E MENU =) -->
+    <header class="px-6 pt-2 pb-2 bg-white flex items-center justify-between shrink-0">
+      <div>
+        <div class="flex items-center gap-1.5 cursor-pointer" onclick="resetToHome()">
+          <span class="text-2xl font-black tracking-tight text-[#064E3B]">YBY</span>
+          <span class="text-lg">🌿</span>
         </div>
-        <div class="leading-tight">
-          <div class="flex items-center gap-1">
-            <span class="text-xl font-black tracking-tight text-slate-900 font-sans">YBYgram</span>
-          </div>
-          <p class="text-[11px] font-semibold text-slate-500">Praça Pública Digital</p>
-        </div>
+        <p class="text-[11px] font-semibold text-slate-400 -mt-0.5">Conectando Saberes e Vidas</p>
       </div>
 
-      <!-- Ícones à Direita (com os ícones solicitados com setas vermelhas!) -->
-      <div class="flex items-center gap-2.5 text-slate-700">
-        <!-- Ícone Busca -->
-        <button onclick="openModal('modal-search')" class="p-1 hover:text-emerald-600 transition-colors tap-active" title="Pesquisar">
+      <!-- Ícones da Direita: Busca 🔍, Sparkle Verde ✨ (abre modal), Menu Duas Linhas = -->
+      <div class="flex items-center gap-3 text-slate-700">
+        <button onclick="focusSearchInput()" title="Pesquisar" class="p-1 hover:text-emerald-600 transition-colors tap-active">
           <i data-lucide="search" class="w-5 h-5"></i>
         </button>
-
-        <!-- Ícone Estrela / Sparkle Soberano (indicado com seta vermelha!) -->
-        <button onclick="openModal('modal-algoritmo')" class="p-1 hover:text-emerald-600 transition-colors tap-active" title="Algoritmo Amigável Sem Bolhas">
+        <!-- Ícone Sparkle / Estrela Verde Soberano (indicado pela seta vermelha) -->
+        <button onclick="openModal('modal-algoritmo')" title="Distribuição Sem Bolhas" class="p-1 hover:scale-110 transition-transform tap-active">
           <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
         </button>
-
-        <!-- Ícone Menu Duas Linhas "=" (indicado com seta vermelha!) -->
-        <button onclick="openModal('modal-menu')" class="p-1 hover:text-emerald-600 transition-colors tap-active flex flex-col gap-1 items-center justify-center w-6 h-6" title="Menu da Praça">
-          <span class="w-4 h-0.5 bg-slate-800 rounded-full"></span>
-          <span class="w-4 h-0.5 bg-slate-800 rounded-full"></span>
-        </button>
-
-        <!-- Sino com Notificação (3) -->
-        <button onclick="showAppToast('3 novas interações na Praça!')" class="relative p-1 hover:text-emerald-600 transition-colors tap-active" title="Notificações">
-          <i data-lucide="bell" class="w-5 h-5"></i>
-          <span class="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center border-2 border-white">
-            3
-          </span>
-        </button>
-
-        <!-- Avatar do Usuário -->
-        <button onclick="openModal('modal-profile')" class="relative w-8 h-8 rounded-full overflow-hidden border-2 border-emerald-500 shadow-xs tap-active">
-          <img src="assets/dola-forest.jpg" class="w-full h-full object-cover">
+        <!-- Ícone Menu Duas Linhas "=" (indicado pela seta vermelha) -->
+        <button onclick="openModal('modal-menu')" title="Mais opções" class="p-1 hover:text-emerald-600 transition-colors flex flex-col gap-1 items-center justify-center w-6 h-6 tap-active">
+          <span class="w-4 h-0.5 bg-slate-700 rounded-full"></span>
+          <span class="w-4 h-0.5 bg-slate-700 rounded-full"></span>
         </button>
       </div>
-
     </header>
 
     <!-- 3. ÁREA DE SCROLL DO APP -->
-    <main class="flex-1 app-screen-scroll px-4 pt-2.5 pb-6 space-y-4 bg-white">
-
-      <!-- BANNER SUPERIOR: "O CONHECIMENTO CIRCULA LIVREMENTE." -->
-      <div onclick="openModal('modal-algoritmo')" class="bg-[#F0F7EB] hover:bg-[#E8F3E0] border border-[#DEECCF] rounded-2xl p-2.5 px-3.5 flex items-center justify-between cursor-pointer transition-colors tap-active">
-        <div class="flex items-center gap-2 text-xs font-semibold text-[#2E6838]">
-          <span class="text-base">🍃</span>
-          <span>O conhecimento circula livremente.</span>
-        </div>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-[#4A8554]"></i>
-      </div>
+    <main class="flex-1 app-screen-scroll px-5 pb-6 space-y-4">
 
       <!-- SEÇÃO: PESSOAS QUE VOCÊ SEGUE (STORIES/AVATARES COM ANEL VERDE) -->
-      <div class="space-y-1.5">
-        <div class="text-[12px] font-bold text-slate-700 flex items-center gap-1.5 px-1">
+      <div class="space-y-2 pt-1">
+        <div class="text-[12px] font-bold text-slate-700 flex items-center gap-1.5">
           <span class="text-emerald-600">🌿</span>
           <span>Pessoas que você segue</span>
         </div>
 
-        <div class="flex items-center gap-3 overflow-x-auto no-scrollbar py-1 px-1">
+        <div id="following-row" class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-1">
           <!-- 1. Seu saber (+) -->
           <div onclick="openModal('modal-publish')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="relative w-14 h-14 rounded-full p-0.5 border-2 border-emerald-500 shadow-xs group-hover:scale-105 transition-transform">
-              <img src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover">
+            <div class="relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-sm group-hover:scale-105 transition-transform">
+              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
               <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] border-2 border-white font-bold">
                 +
               </div>
             </div>
-            <span class="text-[11px] font-semibold text-slate-700">Seu saber</span>
+            <span class="text-[10px] font-semibold text-slate-600">Seu saber</span>
           </div>
 
-          <!-- 2. Benvinda (Avatar Sol Ancestral) -->
-          <div onclick="filterByAuthor('Dona Benvinda')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 border-2 border-emerald-500 shadow-xs group-hover:scale-105 transition-transform">
-              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover">
+          <!-- 2. Benvinda (Sol Ancestral) -->
+          <div onclick="filterByPerson('Dona Benvinda')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
+            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
+              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
             </div>
-            <span class="text-[11px] font-semibold text-slate-700">Benvinda</span>
+            <span class="text-[10px] font-semibold text-slate-600">Benvinda</span>
           </div>
 
           <!-- 3. Tiago (Mestre Tiago Agrofloresta) -->
-          <div onclick="filterByAuthor('Mestre Tiago')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 border-2 border-emerald-500 shadow-xs group-hover:scale-105 transition-transform">
-              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover">
+          <div onclick="filterByPerson('Mestre Tiago')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
+            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
+              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
             </div>
-            <span class="text-[11px] font-semibold text-slate-700">Tiago</span>
+            <span class="text-[10px] font-semibold text-slate-600">Tiago</span>
           </div>
 
           <!-- 4. Mariana (Mariana Artesã) -->
-          <div onclick="filterByAuthor('Mariana Artesã')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 border-2 border-emerald-500 shadow-xs group-hover:scale-105 transition-transform">
-              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover">
+          <div onclick="filterByPerson('Mariana Artesã')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
+            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
+              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
             </div>
-            <span class="text-[11px] font-semibold text-slate-700">Mariana</span>
+            <span class="text-[10px] font-semibold text-slate-600">Mariana</span>
           </div>
 
           <!-- 5. Carlos (Portal de Luz) -->
-          <div onclick="filterByAuthor('Prof. Carlos')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
-            <div class="w-14 h-14 rounded-full p-0.5 border-2 border-emerald-500 shadow-xs group-hover:scale-105 transition-transform">
-              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover">
+          <div onclick="filterByPerson('Prof. Carlos')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group tap-active">
+            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-600 shadow-sm group-hover:scale-105 transition-transform">
+              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-2 border-white">
             </div>
-            <span class="text-[11px] font-semibold text-slate-700">Carlos</span>
+            <span class="text-[10px] font-semibold text-slate-600">Carlos</span>
           </div>
         </div>
       </div>
 
-      <!-- 4. OS 8 CARDS DE FORMATO (GRID 4x2 FIEL À IMAGEM) -->
-      <div class="grid grid-cols-4 gap-2.5 pt-1">
-        
-        <!-- 1. Saberes (Verde) -->
-        <button onclick="selectFormatCategory('saberes')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#E8F8EE] to-[#D5F2DF] border border-[#C6EDD3] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-emerald-600">
-            <i data-lucide="book-open" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[11px] font-bold text-slate-800">Saberes</span>
+      <!-- 4. CARROSSEL DE ABAS DE FORMATO -->
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+        <button onclick="setActiveTab('curtos')" id="tab-curtos" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
+          Vídeos Curtos
         </button>
 
-        <!-- 2. Vídeos Curtos (Azul/Roxo Claquete) -->
-        <button onclick="selectFormatCategory('curtos')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#EBF2FE] to-[#D8E6FD] border border-[#C9DCFD] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-indigo-600">
-            <i data-lucide="clapperboard" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[10px] font-bold text-slate-800 leading-tight text-center">Vídeos<br>Curtos</span>
+        <button onclick="setActiveTab('longos')" id="tab-longos" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
+          Vídeos Longos
         </button>
 
-        <!-- 3. Vídeos Longos (Laranja Play) -->
-        <button onclick="selectFormatCategory('longos')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#FEF4E8] to-[#FCE8D1] border border-[#F9DCBD] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-amber-600">
-            <i data-lucide="play-square" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[10px] font-bold text-slate-800 leading-tight text-center">Vídeos<br>Longos</span>
+        <button onclick="setActiveTab('musica')" id="tab-musica" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
+          Música
         </button>
 
-        <!-- 4. Música (Rosa Nota Musical) -->
-        <button onclick="selectFormatCategory('musica')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#FCEAF3] to-[#F9D7E8] border border-[#F6C6DD] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-pink-600">
-            <i data-lucide="music" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[11px] font-bold text-slate-800">Música</span>
+        <button onclick="setActiveTab('saberes')" id="tab-saberes" class="tab-btn active shrink-0 px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 border-b-2 border-emerald-600 tap-active">
+          Saberes
         </button>
 
-        <!-- 5. Podcasts (Azul Fone) -->
-        <button onclick="selectFormatCategory('podcasts')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#EBF6FE] to-[#D5EDFD] border border-[#C2E4FD] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-sky-600">
-            <i data-lucide="headphones" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[11px] font-bold text-slate-800">Podcasts</span>
+        <button onclick="setActiveTab('podcasts')" id="tab-podcasts" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
+          Podcasts
         </button>
 
-        <!-- 6. Fórum (Ciano Balões de Diálogo) -->
-        <button onclick="selectFormatCategory('forum')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#E7FAF9] to-[#D0F5F4] border border-[#BAEFEF] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-teal-600">
-            <i data-lucide="messages-square" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[11px] font-bold text-slate-800">Fórum</span>
-        </button>
-
-        <!-- 7. Notícias (Azul Jornal) -->
-        <button onclick="selectFormatCategory('noticias')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#EDF2FE] to-[#D8E3FD] border border-[#C5D6FD] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-blue-600">
-            <i data-lucide="newspaper" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[11px] font-bold text-slate-800">Notícias</span>
-        </button>
-
-        <!-- 8. Ao Vivo (Roxo Sinal/Antena) -->
-        <button onclick="selectFormatCategory('aovivo')" class="format-card flex flex-col items-center justify-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F7EDFE] to-[#EFDAFD] border border-[#E6C6FD] hover:shadow-md transition-all tap-active">
-          <div class="w-9 h-9 rounded-xl bg-white shadow-xs flex items-center justify-center mb-1 text-purple-600">
-            <i data-lucide="radio" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[11px] font-bold text-slate-800">Ao Vivo</span>
-        </button>
-
-      </div>
-
-      <!-- 5. SUB-NAVEGAÇÃO EM PÍLULAS: PRAÇA / DESCOBRIR / EVENTOS / LOJA -->
-      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-1">
-        <button onclick="selectSubNav('praca')" id="subnav-praca" class="subnav-pill active px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-[#581C87] text-white flex items-center gap-1.5 shadow-xs tap-active">
-          <i data-lucide="users" class="w-3.5 h-3.5"></i>
-          <span>Praça</span>
-        </button>
-
-        <button onclick="selectSubNav('descobrir')" id="subnav-descobrir" class="subnav-pill px-4 py-2 rounded-2xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center gap-1.5 tap-active">
-          <i data-lucide="compass" class="w-3.5 h-3.5"></i>
-          <span>Descobrir</span>
-        </button>
-
-        <button onclick="selectSubNav('eventos')" id="subnav-eventos" class="subnav-pill px-4 py-2 rounded-2xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center gap-1.5 tap-active">
-          <i data-lucide="calendar" class="w-3.5 h-3.5 text-purple-600"></i>
-          <span>Eventos</span>
-        </button>
-
-        <button onclick="selectSubNav('loja')" id="subnav-loja" class="subnav-pill px-4 py-2 rounded-2xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center gap-1.5 tap-active">
-          <i data-lucide="shopping-bag" class="w-3.5 h-3.5 text-purple-700"></i>
-          <span>Loja</span>
+        <button onclick="setActiveTab('forum')" id="tab-forum" class="tab-btn shrink-0 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-800 transition-all tap-active">
+          Fórum
         </button>
       </div>
 
-      <!-- 6. FEED DE CARDS (EXATAMENTE COMO NA FOTO) -->
-      <div id="feed-container" class="space-y-4 pt-1">
+      <!-- 5. CARD PRINCIPAL EM DESTAQUE (EXATAMENTE COMO NO SEU PRINT) -->
+      <div id="main-featured-card" class="bg-white rounded-[28px] p-4 shadow-card border border-emerald-50 space-y-3">
         
-        <!-- CARD 1: RAÍZES DO SABER (PLANTAS MEDICINAIS) -->
-        <article class="bg-white rounded-[24px] p-4 shadow-card border border-slate-100 space-y-3">
+        <!-- Mídia em Destaque -->
+        <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-black shadow-sm group">
+          <video id="featured-video-player" playsinline loop class="w-full h-full object-cover">
+            <source src="assets/banner-arara.mp4" type="video/mp4">
+          </video>
+          <img id="featured-image-fallback" src="assets/card-mestres-terra.jpg" class="w-full h-full object-cover absolute inset-0 hidden">
+
+          <!-- Badge do Fediverso / Formato -->
+          <div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-bold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span id="card-format-tag">Saberes • Mastodon</span>
+          </div>
+
+          <!-- Três pontinhos no topo direito -->
+          <button class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center">
+            <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Título e Duração (Exatamente: "Preparo da Espiral de Ervas e Solo Vivo" • 03:10) -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 id="card-title" class="text-sm font-bold text-slate-900 leading-snug">
+              Preparo da Espiral de Ervas e Solo Vivo
+            </h3>
+            <p id="card-subtitle" class="text-[11px] text-slate-400 font-medium">Visualizações comunitárias</p>
+          </div>
+          <span id="card-duration" class="text-xs font-bold text-slate-500 font-mono">03:10</span>
+        </div>
+
+        <!-- Linha de Ações: Contador 2450 💚, Botão Play Redondo Verde e Favoritos -->
+        <div class="flex items-center justify-between pt-1">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-slate-700">
+            <span id="card-likes-count">2450</span>
+            <span class="text-emerald-600 text-sm">💚</span>
+          </div>
+
+          <!-- BOTÃO PLAY REDONDO VERDE ESCURO (EXATAMENTE COMO NA CAPTURA) -->
+          <button onclick="toggleMainPlay()" class="w-12 h-12 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shadow-float active:scale-95 transition-transform">
+            <i data-lucide="play" id="main-play-icon" class="w-5 h-5 fill-current ml-0.5"></i>
+          </button>
+
+          <div class="flex items-center gap-3 text-slate-400">
+            <button onclick="toggleCardHeart()" class="hover:text-emerald-600 transition-colors tap-active">
+              <i data-lucide="heart" id="card-heart-icon" class="w-5 h-5"></i>
+            </button>
+            <button onclick="showAppToast('Salvo no seu Acervo Pessoal!')" class="hover:text-emerald-600 transition-colors tap-active">
+              <i data-lucide="bookmark" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6. CARD DE POSTAGEM DE SABERES -->
+      <article id="post-card" class="bg-white rounded-[28px] p-4 shadow-card border border-emerald-50 space-y-3">
+        
+        <!-- Autor e Opções -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <img src="assets/dola-forest.jpg" class="w-9 h-9 rounded-full object-cover border border-emerald-100">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-bold text-slate-900">Saberes</span>
+                <span class="text-[10px] text-emerald-600 font-semibold">• Terra Viva</span>
+              </div>
+              <span class="text-[10px] text-slate-400">Há 15 minutos</span>
+            </div>
+          </div>
+          <button class="text-slate-400 hover:text-slate-600">
+            <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Texto da Postagem -->
+        <p class="text-xs text-slate-700 leading-relaxed font-normal">
+          O conhecimento circula livremente na Praça Pública Digital. Aqui não há leilão de atenção: as sementes da terra, a arte e o pensamento crítico encontram seu próprio tempo e voz entre os cidadãos.
+        </p>
+
+        <!-- Indicadores de Mídia -->
+        <div class="flex items-center gap-2 text-[10px] font-semibold text-emerald-800 bg-emerald-50/70 p-2 rounded-xl">
+          <span>🎵 Música</span>
+          <span>/</span>
+          <span>📹 Vídeo</span>
+          <span>/</span>
+          <span>📝 Saber</span>
+        </div>
+
+        <!-- Linha de Interações: Comentários, Curtidas, Compartilhar -->
+        <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-xs text-slate-500 font-semibold">
+          <button onclick="showAppToast('Diálogo aberto com a comunidade!')" class="flex items-center gap-1.5 hover:text-emerald-600 transition-colors tap-active">
+            <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+            <span>12</span>
+          </button>
+
+          <button onclick="supportMainPost()" class="flex items-center gap-1.5 hover:text-emerald-600 transition-colors tap-active">
+            <i data-lucide="heart" class="w-4 h-4 text-emerald-600"></i>
+            <span id="post-likes-count">48</span>
+          </button>
+
+          <button onclick="shareMainPost()" class="flex items-center gap-1.5 hover:text-emerald-600 transition-colors tap-active">
+            <i data-lucide="share-2" class="w-4 h-4 text-emerald-600"></i>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+
+      </article>
+
+      <!-- 7. BARRA DE PESQUISA ESTILO PÍLULA (COM BOTÃO REDONDO VERDE) -->
+      <div class="pt-1">
+        <div class="relative flex items-center bg-white rounded-full p-1 pl-4 shadow-card border border-emerald-100">
+          <input type="text" id="search-input" onkeyup="handleSearchInput(event)" placeholder="Pesquisar saberes..." class="w-full text-xs text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none">
           
-          <!-- Topo do Card -->
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-              <img src="assets/hero-forest.jpg" class="w-10 h-10 rounded-full object-cover border border-emerald-200">
-              <div>
-                <h4 class="text-xs font-bold text-slate-900">Raízes do Saber</h4>
-                <p class="text-[10px] text-slate-400 font-medium">há 22 min</p>
-              </div>
-            </div>
-            <button class="text-slate-400 hover:text-slate-600 p-1">
-              <i data-lucide="more-vertical" class="w-4 h-4"></i>
-            </button>
-          </div>
+          <!-- Botão Redondo Verde de Busca -->
+          <button onclick="executeSearch()" class="w-10 h-10 rounded-full bg-[#047857] hover:bg-[#065F46] text-white flex items-center justify-center shrink-0 shadow-sm active:scale-95 transition-transform tap-active">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
 
-          <!-- Legenda -->
-          <p class="text-xs text-slate-800 leading-relaxed font-normal">
-            As plantas medicinais e seus usos ancestrais. Um saber que atravessa gerações 🌿
-          </p>
+      <!-- 8. TOGGLE INFERIOR: RECENTES vs ALEATÓRIOS -->
+      <div class="pt-2 flex items-center justify-between px-2">
+        <button onclick="setFeedOrder('recentes')" id="btn-recentes" class="text-xs font-semibold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5 tap-active">
+          <span id="radio-recentes" class="w-3.5 h-3.5 rounded-full border border-slate-400 flex items-center justify-center"></span>
+          <span>Recentes</span>
+        </button>
 
-          <!-- Imagem de Destaque -->
-          <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xs">
-            <img src="assets/card-sol-ancestral.jpg" class="w-full h-full object-cover">
-          </div>
-
-          <!-- Ações do Rodapé -->
-          <div class="flex items-center justify-between pt-1 border-t border-slate-50 text-xs font-semibold text-slate-600">
-            <button onclick="toggleCardLike(this, 128)" class="flex items-center gap-1.5 hover:text-red-500 transition-colors tap-active">
-              <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
-              <span class="count">128</span>
-            </button>
-
-            <button onclick="openModal('modal-comments')" class="flex items-center gap-1.5 hover:text-slate-900 transition-colors tap-active">
-              <i data-lucide="message-square" class="w-4 h-4 text-slate-500"></i>
-              <span>24</span>
-            </button>
-
-            <button onclick="sharePost('As plantas medicinais e seus usos ancestrais')" class="flex items-center gap-1.5 hover:text-slate-900 transition-colors tap-active">
-              <i data-lucide="share-2" class="w-4 h-4 text-slate-500"></i>
-              <span>Compartilhar</span>
-            </button>
-
-            <button onclick="toggleBookmark(this)" class="p-1 text-slate-400 hover:text-slate-700 transition-colors tap-active">
-              <i data-lucide="bookmark" class="w-4 h-4"></i>
-            </button>
-          </div>
-
-        </article>
-
-        <!-- CARD 2: NATUREZA VIVA (PERMACULTURA NA PRÁTICA COM VÍDEO) -->
-        <article class="bg-white rounded-[24px] p-4 shadow-card border border-slate-100 space-y-3">
-          
-          <!-- Topo do Card -->
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-              <img src="assets/logo-arara.png" class="w-10 h-10 rounded-full object-cover border border-emerald-200 p-0.5 bg-emerald-50">
-              <div>
-                <h4 class="text-xs font-bold text-slate-900">Natureza Viva</h4>
-                <p class="text-[10px] text-slate-400 font-medium">há 1 h</p>
-              </div>
-            </div>
-            <button class="text-slate-400 hover:text-slate-600 p-1">
-              <i data-lucide="more-vertical" class="w-4 h-4"></i>
-            </button>
-          </div>
-
-          <!-- Legenda -->
-          <p class="text-xs text-slate-800 leading-relaxed font-normal">
-            Permacultura na prática! 🌱
-          </p>
-
-          <!-- Vídeo / Player de Mídia -->
-          <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-black shadow-xs group">
-            <video id="feed-video-player" playsinline loop class="w-full h-full object-cover">
-              <source src="assets/banner-arara.mp4" type="video/mp4">
-            </video>
-            
-            <!-- Botão Play Central -->
-            <button onclick="toggleFeedVideoPlay()" class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-              <div class="w-12 h-12 rounded-full bg-white/90 text-slate-900 flex items-center justify-center shadow-md tap-active">
-                <i data-lucide="play" id="feed-play-icon" class="w-5 h-5 fill-current ml-0.5"></i>
-              </div>
-            </button>
-
-            <!-- Badge de Duração 0:58 -->
-            <div class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-white text-[10px] font-mono font-bold flex items-center gap-1">
-              <i data-lucide="clock" class="w-3 h-3"></i>
-              <span>0:58</span>
-            </div>
-          </div>
-
-          <!-- Ações do Rodapé -->
-          <div class="flex items-center justify-between pt-1 border-t border-slate-50 text-xs font-semibold text-slate-600">
-            <button onclick="toggleCardLike(this, 245)" class="flex items-center gap-1.5 hover:text-red-500 transition-colors tap-active">
-              <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
-              <span class="count">245</span>
-            </button>
-
-            <button onclick="openModal('modal-comments')" class="flex items-center gap-1.5 hover:text-slate-900 transition-colors tap-active">
-              <i data-lucide="message-square" class="w-4 h-4 text-slate-500"></i>
-              <span>38</span>
-            </button>
-
-            <button onclick="sharePost('Permacultura na prática!')" class="flex items-center gap-1.5 hover:text-slate-900 transition-colors tap-active">
-              <i data-lucide="share-2" class="w-4 h-4 text-slate-500"></i>
-              <span>Compartilhar</span>
-            </button>
-
-            <button onclick="toggleBookmark(this)" class="p-1 text-slate-400 hover:text-slate-700 transition-colors tap-active">
-              <i data-lucide="bookmark" class="w-4 h-4"></i>
-            </button>
-          </div>
-
-        </article>
-
+        <!-- BOTÃO PÍLULA VERDE ALEATÓRIOS -->
+        <button onclick="setFeedOrder('aleatorios')" id="btn-aleatorios" class="px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 text-white font-bold text-xs shadow-float active:scale-95 transition-all flex items-center gap-1.5 tap-active">
+          <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+          <span>Aleatórios</span>
+        </button>
       </div>
 
     </main>
 
-    <!-- 7. BARRA DE NAVEGAÇÃO INFERIOR NATIVA (FIEL AO DESIGN DA IMAGEM) -->
-    <nav class="h-16 px-6 bg-white border-t border-slate-100 flex items-center justify-between shrink-0 select-none z-30">
-      
-      <!-- 1. Início (Ativo com traço roxo) -->
-      <button onclick="selectBottomNav('inicio')" id="bnav-inicio" class="bnav-item flex flex-col items-center gap-0.5 text-[#581C87] font-bold tap-active">
-        <i data-lucide="home" class="w-5 h-5"></i>
-        <span class="text-[10px]">Início</span>
-        <span class="w-5 h-0.5 bg-[#581C87] rounded-full mt-0.5"></span>
-      </button>
-
-      <!-- 2. Descobrir -->
-      <button onclick="selectBottomNav('descobrir')" id="bnav-descobrir" class="bnav-item flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-700 font-semibold tap-active">
-        <i data-lucide="compass" class="w-5 h-5"></i>
-        <span class="text-[10px]">Descobrir</span>
-      </button>
-
-      <!-- 3. Botão Central Roxo / Gradiente (+) -->
-      <button onclick="openModal('modal-publish')" class="relative -mt-5 w-12 h-12 rounded-full bg-gradient-to-tr from-[#6D28D9] via-[#7C3AED] to-[#A855F7] text-white flex items-center justify-center shadow-float hover:scale-105 active:scale-95 transition-transform" title="Criar nova publicação">
-        <i data-lucide="plus" class="w-6 h-6 stroke-[2.5]"></i>
-      </button>
-
-      <!-- 4. Acervo -->
-      <button onclick="selectBottomNav('acervo')" id="bnav-acervo" class="bnav-item flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-700 font-semibold tap-active">
-        <i data-lucide="book-marked" class="w-5 h-5"></i>
-        <span class="text-[10px]">Acervo</span>
-      </button>
-
-      <!-- 5. Perfil -->
-      <button onclick="selectBottomNav('perfil')" id="bnav-perfil" class="bnav-item flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-700 font-semibold tap-active">
-        <i data-lucide="user" class="w-5 h-5"></i>
-        <span class="text-[10px]">Perfil</span>
-      </button>
-
-    </nav>
+    <!-- 9. HOME INDICATOR BAR DO SMARTPHONE (LINHA INFERIOR) -->
+    <div class="h-5 bg-white flex items-center justify-center pb-1 shrink-0 select-none">
+      <div class="w-32 h-1 bg-slate-300 rounded-full"></div>
+    </div>
 
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL / DIALOGS                                          -->
+  <!-- MODAL: DISTRIBUIÇÃO SEM BOLHAS (EXATO COMO NO SEU PRINT) -->
   <!-- ======================================================== -->
+  <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl text-xs border border-slate-100">
+      
+      <!-- Topo: ✦ Distribuição Sem Bolhas + Botão Fechar X -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2 font-bold text-[#064E3B] text-sm">
+          <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
+          <span>Distribuição Sem Bolhas</span>
+        </div>
+        <button onclick="closeModal('modal-algoritmo')" class="text-slate-400 hover:text-slate-700 p-1 tap-active">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
 
-  <!-- Modal: Publicar Novo Saber -->
+      <!-- Texto explicativo -->
+      <p class="text-slate-600 text-[12px] leading-relaxed">
+        O YBY não prioriza vício por engajamento. A distribuição é aberta:
+      </p>
+
+      <!-- As 3 Pílulas em Verde Claro da Imagem -->
+      <div class="space-y-2 font-mono text-[11px]">
+        <div class="p-2.5 px-3 rounded-xl bg-[#E8F8EE] text-[#064E3B] flex justify-between items-center font-semibold border border-[#D5F2DF]">
+          <span>25% Novidades</span>
+          <span class="text-slate-600 font-sans">Recentes</span>
+        </div>
+        <div class="p-2.5 px-3 rounded-xl bg-[#E8F8EE] text-[#064E3B] flex justify-between items-center font-semibold border border-[#D5F2DF]">
+          <span>25% Diversidade</span>
+          <span class="text-slate-600 font-sans">Autores plurais</span>
+        </div>
+        <div class="p-2.5 px-3 rounded-xl bg-[#E8F8EE] text-[#064E3B] flex justify-between items-center font-semibold border border-[#D5F2DF]">
+          <span>15% Fisher-Yates</span>
+          <span class="text-slate-600 font-sans">Aleatório justo</span>
+        </div>
+      </div>
+
+      <!-- Botão Verde Escuro "Compreendido" -->
+      <button onclick="closeModal('modal-algoritmo')" class="w-full py-3 rounded-full bg-[#047857] hover:bg-[#065F46] text-white font-bold text-xs shadow-md tap-active">
+        Compreendido
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MODAL: PUBLICAR NOVO SABER -->
   <div id="modal-publish" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white rounded-t-[32px] sm:rounded-3xl max-w-sm w-full p-5 space-y-4 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-        <h3 class="text-sm font-bold text-slate-900">Partilhar Saber na Praça</h3>
+        <h3 class="text-sm font-bold text-slate-800">Partilhar Novo Saber</h3>
         <button onclick="closeModal('modal-publish')" class="p-1 text-slate-400 hover:text-slate-600">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <form onsubmit="handleNewPublication(event)" class="space-y-3">
+      <form onsubmit="handleCreateSaber(event)" class="space-y-3">
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 mb-1">Título do Saber</label>
-          <input type="text" id="pub-title-input" required placeholder="Ex: Preparo de adubo orgânico vivo" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-purple-600">
+          <label class="block text-[11px] font-bold text-slate-600 mb-1">Título do Saber</label>
+          <input type="text" id="new-saber-title" required placeholder="Ex: Manejo agroecológico e compostagem" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">
         </div>
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 mb-1">Conteúdo</label>
-          <textarea id="pub-text-input" required rows="3" placeholder="Escreva sua experiência, receita tradicional ou reflexão..." class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-purple-600"></textarea>
+          <label class="block text-[11px] font-bold text-slate-600 mb-1">Texto / Instruções</label>
+          <textarea id="new-saber-text" required rows="3" placeholder="Escreva seu relato, receita ou aprendizado..." class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500"></textarea>
         </div>
-        <button type="submit" class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#6D28D9] to-[#8B5CF6] text-white font-bold text-xs shadow-md tap-active">
-          Publicar Agora
+        <button type="submit" class="w-full py-2.5 rounded-full bg-[#047857] hover:bg-[#065F46] text-white font-bold text-xs shadow-md tap-active">
+          Publicar na Praça
         </button>
       </form>
     </div>
   </div>
 
-  <!-- Modal: Transparência Algorítmica -->
-  <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-5 space-y-3 shadow-2xl text-xs">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-        <div class="flex items-center gap-1.5 font-bold text-emerald-800">
-          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
-          <span>O Conhecimento Circula Livremente</span>
-        </div>
-        <button onclick="closeModal('modal-algoritmo')" class="text-slate-400">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <p class="text-slate-600 text-[11px] leading-relaxed">
-        No YBYgram não há leilão de dados nem algoritmo aditivo de retenção. Os saberes circulam com regras abertas e justas para toda a comunidade.
-      </p>
-      <div class="space-y-1.5 font-mono text-[10px]">
-        <div class="p-2 rounded-xl bg-emerald-50 text-emerald-900 flex justify-between">
-          <span>25% Novidades</span>
-          <span>Recentes</span>
-        </div>
-        <div class="p-2 rounded-xl bg-emerald-50 text-emerald-900 flex justify-between">
-          <span>25% Diversidade</span>
-          <span>Autores plurais</span>
-        </div>
-        <div class="p-2 rounded-xl bg-emerald-50 text-emerald-900 flex justify-between">
-          <span>15% Fisher-Yates</span>
-          <span>Aleatório justo</span>
-        </div>
-      </div>
-      <button onclick="closeModal('modal-algoritmo')" class="w-full py-2 rounded-full bg-emerald-700 text-white font-bold tap-active">Compreendido</button>
-    </div>
-  </div>
-
-  <!-- Modal: Busca -->
-  <div id="modal-search" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-5 space-y-3 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-        <span class="text-xs font-bold text-slate-800">Pesquisar na Praça</span>
-        <button onclick="closeModal('modal-search')" class="text-slate-400">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <div class="relative">
-        <input type="text" id="search-modal-input" placeholder="Buscar por assunto, planta, vídeo..." class="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-purple-600">
-      </div>
-      <button onclick="showAppToast('Buscando saberes...'); closeModal('modal-search')" class="w-full py-2 rounded-full bg-[#6D28D9] text-white font-bold text-xs tap-active">Pesquisar</button>
-    </div>
-  </div>
-
-  <!-- Modal: Menu -->
+  <!-- MODAL DE MENU -->
   <div id="modal-menu" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xs w-full p-5 space-y-3 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-        <span class="text-xs font-bold text-slate-800">Menu YBYgram</span>
+        <span class="text-xs font-bold text-slate-800">Opções da Praça</span>
         <button onclick="closeModal('modal-menu')" class="text-slate-400">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
       <div class="space-y-2 text-xs font-semibold text-slate-700">
-        <button onclick="openModal('modal-publish'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-slate-100 flex items-center gap-2 tap-active">
-          <i data-lucide="plus-circle" class="w-4 h-4 text-purple-600"></i> Publicar Saber
+        <button onclick="openModal('modal-publish'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active">
+          <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-600"></i> Publicar Saber
         </button>
-        <button onclick="showAppToast('Acervo comunitário aberto!'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-slate-100 flex items-center gap-2 tap-active">
-          <i data-lucide="book-marked" class="w-4 h-4 text-emerald-600"></i> Memória Coletiva
+        <button onclick="openModal('modal-algoritmo'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i> Distribuição Sem Bolhas
         </button>
-        <button onclick="showAppToast('Feira comunitária aberta!'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-slate-100 flex items-center gap-2 tap-active">
-          <i data-lucide="shopping-bag" class="w-4 h-4 text-amber-600"></i> Feira Solidária
+        <button onclick="showAppToast('Acervo comunitário aberto!'); closeModal('modal-menu')" class="w-full text-left p-2 rounded-xl hover:bg-emerald-50 flex items-center gap-2 tap-active">
+          <i data-lucide="library" class="w-4 h-4 text-emerald-600"></i> Memória & Acervo
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Toast de Notificação -->
-  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-bold shadow-xl flex items-center gap-2 hidden transition-all">
-    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
-    <span id="app-toast-text">Ação concluída!</span>
+  <!-- TOAST DE AVISO -->
+  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#064E3B] text-white text-xs font-bold shadow-xl flex items-center gap-2 hidden transition-all">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-300"></i>
+    <span id="app-toast-text">Ação concluída com sucesso!</span>
   </div>
 
   <!-- ======================================================== -->
-  <!-- JAVASCRIPT DO NOVO DESIGN                               -->
+  <!-- JAVASCRIPT DO APP                                        -->
   <!-- ======================================================== -->
   <script>
+    const FORMAT_ITEMS = {
+      curtos: {
+        title: 'Vídeo de exploração e colheita',
+        tag: 'Vídeos Curtos • Loops',
+        duration: '12:50',
+        likes: 1240,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
+      longos: {
+        title: 'Aula Completa: Agrofloresta e Recuperação de Nascentes',
+        tag: 'Vídeos Longos • PeerTube',
+        duration: '45:18',
+        likes: 3180,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
+      musica: {
+        title: 'Canto das Águas e Flauta Pantaneira',
+        tag: 'Música • Funkwhale',
+        duration: '04:22',
+        likes: 890,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
+      saberes: {
+        title: 'Preparo da Espiral de Ervas e Solo Vivo',
+        tag: 'Saberes • Mastodon',
+        duration: '03:10',
+        likes: 2450,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
+      podcasts: {
+        title: 'Vozes da Terra: Convivialidade na Era Digital',
+        tag: 'Podcast • Funkwhale',
+        duration: '38:00',
+        likes: 670,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
+      forum: {
+        title: 'Debate: Como proteger sementes crioulas da contaminação?',
+        tag: 'Fórum • Lemmy',
+        duration: 'Roda viva',
+        likes: 1540,
+        videoUrl: 'assets/banner-arara.mp4'
+      }
+    };
+
+    let currentTab = 'saberes';
+    let currentFeedOrder = 'aleatorios';
+    let isMainPlaying = false;
+    let cardLikes = 2450;
+    let postLikes = 48;
+
     document.addEventListener('DOMContentLoaded', () => {
       safeCreateIcons();
       setupServiceWorkerSafe();
     });
 
-    // Categoria dos 8 cards
-    function selectFormatCategory(cat) {
-      showAppToast(`Formato selecionado: ${cat.toUpperCase()}`);
-    }
+    function setActiveTab(tabKey) {
+      currentTab = tabKey;
 
-    // Sub-navegação (Praça, Descobrir, Eventos, Loja)
-    function selectSubNav(tab) {
-      document.querySelectorAll('.subnav-pill').forEach(btn => {
-        btn.classList.remove('active', 'bg-[#581C87]', 'text-white');
-        btn.classList.add('bg-slate-100', 'text-slate-700');
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-emerald-50', 'text-emerald-800', 'border-b-2', 'border-emerald-600', 'font-bold');
+        btn.classList.add('text-slate-500', 'font-semibold');
       });
 
-      const activeBtn = document.getElementById(`subnav-${tab}`);
+      const activeBtn = document.getElementById(`tab-${tabKey}`);
       if (activeBtn) {
-        activeBtn.classList.add('active', 'bg-[#581C87]', 'text-white');
-        activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+        activeBtn.classList.add('active', 'bg-emerald-50', 'text-emerald-800', 'border-b-2', 'border-emerald-600', 'font-bold');
+        activeBtn.classList.remove('text-slate-500', 'font-semibold');
       }
 
-      showAppToast(`Exibindo: ${tab.toUpperCase()}`);
+      const data = FORMAT_ITEMS[tabKey] || FORMAT_ITEMS.saberes;
+      document.getElementById('card-title').innerText = data.title;
+      document.getElementById('card-format-tag').innerText = data.tag;
+      document.getElementById('card-duration').innerText = data.duration;
+      cardLikes = data.likes;
+      document.getElementById('card-likes-count').innerText = cardLikes;
+
+      showAppToast(`Exibindo formato: ${tabKey.toUpperCase()}`);
     }
 
-    // Bottom Navigation Bar
-    function selectBottomNav(tab) {
-      document.querySelectorAll('.bnav-item').forEach(btn => {
-        btn.classList.remove('text-[#581C87]', 'font-bold');
-        btn.classList.add('text-slate-400', 'font-semibold');
-        const underline = btn.querySelector('.bg-\\[\\#581C87\\]');
-        if (underline) underline.remove();
-      });
+    function toggleMainPlay() {
+      const vid = document.getElementById('featured-video-player');
+      const icon = document.getElementById('main-play-icon');
 
-      const activeBtn = document.getElementById(`bnav-${tab}`);
-      if (activeBtn) {
-        activeBtn.classList.add('text-[#581C87]', 'font-bold');
-        activeBtn.classList.remove('text-slate-400', 'font-semibold');
-        const span = document.createElement('span');
-        span.className = 'w-5 h-0.5 bg-[#581C87] rounded-full mt-0.5';
-        activeBtn.appendChild(span);
-      }
-
-      showAppToast(`Navegando para: ${tab.toUpperCase()}`);
-    }
-
-    // Curtir card
-    function toggleCardLike(btn, defaultCount) {
-      const icon = btn.querySelector('svg') || btn.querySelector('i');
-      const countEl = btn.querySelector('.count');
-      let count = parseInt(countEl.innerText) || defaultCount;
-
-      if (btn.classList.contains('liked')) {
-        btn.classList.remove('liked');
-        countEl.innerText = count - 1;
-      } else {
-        btn.classList.add('liked');
-        countEl.innerText = count + 1;
-        showAppToast('Apoiado na praça!');
-      }
-    }
-
-    // Salvar no acervo
-    function toggleBookmark(btn) {
-      showAppToast('Guardado no seu Acervo!');
-    }
-
-    // Compartilhar
-    function sharePost(title) {
-      if (navigator.share) {
-        navigator.share({
-          title: 'YBYgram • Praça Pública Digital',
-          text: title,
-          url: window.location.href
-        }).catch(() => {});
-      } else {
-        navigator.clipboard.writeText(window.location.href);
-        showAppToast('Link copiado para compartilhar!');
-      }
-    }
-
-    // Play vídeo
-    let isVideoPlaying = false;
-    function toggleFeedVideoPlay() {
-      const vid = document.getElementById('feed-video-player');
-      const icon = document.getElementById('feed-play-icon');
       if (vid.paused) {
         vid.play().catch(() => {});
-        isVideoPlaying = true;
+        isMainPlaying = true;
         icon.setAttribute('data-lucide', 'pause');
-        showAppToast('Reproduzindo vídeo da praça...');
+        showAppToast('Reproduzindo na praça...');
       } else {
         vid.pause();
-        isVideoPlaying = false;
+        isMainPlaying = false;
         icon.setAttribute('data-lucide', 'play');
         showAppToast('Pausado');
       }
       safeCreateIcons();
     }
 
-    // Filtro por pessoa
-    function filterByAuthor(author) {
-      showAppToast(`Filtrando saberes de: ${author}`);
+    function toggleCardHeart() {
+      const icon = document.getElementById('card-heart-icon');
+      const countEl = document.getElementById('card-likes-count');
+      if (icon.classList.contains('text-emerald-600')) {
+        icon.classList.remove('text-emerald-600', 'fill-current');
+        cardLikes--;
+      } else {
+        icon.classList.add('text-emerald-600', 'fill-current');
+        cardLikes++;
+        showAppToast('Apoiado com carinho!');
+      }
+      countEl.innerText = cardLikes;
     }
 
-    // Resetar
+    function supportMainPost() {
+      postLikes++;
+      document.getElementById('post-likes-count').innerText = postLikes;
+      showAppToast('Saber apoiado!');
+    }
+
+    function shareMainPost() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'YBY • Conectando Saberes e Vidas',
+          text: 'Confira este saber na Praça Pública Digital do YBY!',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        showAppToast('Link copiado para a área de transferência!');
+      }
+    }
+
+    function setFeedOrder(order) {
+      currentFeedOrder = order;
+
+      const btnRecentes = document.getElementById('btn-recentes');
+      const btnAleatorios = document.getElementById('btn-aleatorios');
+      const radioRecentes = document.getElementById('radio-recentes');
+
+      if (order === 'aleatorios') {
+        btnAleatorios.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 text-white font-bold text-xs shadow-float active:scale-95 transition-all flex items-center gap-1.5';
+        btnAleatorios.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i><span>Aleatórios</span>';
+
+        btnRecentes.className = 'text-xs font-semibold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5';
+        radioRecentes.innerHTML = '';
+        showAppToast('Embaralhamento justo Fisher-Yates ativado!');
+      } else {
+        btnRecentes.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 text-white font-bold text-xs shadow-float active:scale-95 transition-all flex items-center gap-1.5';
+        btnRecentes.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i><span>Recentes</span>';
+
+        btnAleatorios.className = 'text-xs font-semibold text-slate-500 hover:text-slate-800 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5';
+        btnAleatorios.innerHTML = '<span>Aleatórios</span>';
+        showAppToast('Ordem cronológica das novidades ativada!');
+      }
+      safeCreateIcons();
+    }
+
+    function filterByPerson(name) {
+      showAppToast(`Exibindo saberes de ${name}`);
+    }
+
+    function focusSearchInput() {
+      const input = document.getElementById('search-input');
+      input.focus();
+    }
+
+    function handleSearchInput(e) {
+      if (e.key === 'Enter') executeSearch();
+    }
+
+    function executeSearch() {
+      const val = document.getElementById('search-input').value.trim();
+      if (val) {
+        showAppToast(`Buscando por: "${val}"`);
+      } else {
+        showAppToast('Digite uma palavra-chave para buscar saberes.');
+      }
+    }
+
+    function handleCreateSaber(e) {
+      e.preventDefault();
+      const title = document.getElementById('new-saber-title').value.trim();
+      showAppToast(`Saber "${title}" publicado na praça!`);
+      closeModal('modal-publish');
+    }
+
     function resetToHome() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       showAppToast('Início da Praça');
     }
 
-    // Criar publicação
-    function handleNewPublication(e) {
-      e.preventDefault();
-      const title = document.getElementById('pub-title-input').value.trim();
-      showAppToast(`Saber "${title}" publicado na Praça!`);
-      closeModal('modal-publish');
-    }
-
-    // Utilitários de Modais e Toasts
     function openModal(id) {
       const modal = document.getElementById(id);
       if (modal) modal.classList.remove('hidden');
@@ -733,7 +708,7 @@
       const toast = document.getElementById('app-toast');
       document.getElementById('app-toast-text').innerText = text;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3000);
+      setTimeout(() => toast.classList.add('hidden'), 3200);
     }
 
     function safeCreateIcons() {

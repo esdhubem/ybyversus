@@ -1,76 +1,70 @@
-# YBYgram • Praça Pública Digital
+# YBY • Conectando Saberes e Vidas
 
-> **"Conectando Saberes e Vidas: O conhecimento circula livremente."**  
-> *Rede agregadora de mídias e saberes da Praça Pública Digital em formato nativo de aplicativo.*
+> **"Uma infraestrutura de circulação pública de conhecimentos, culturas, expressões e oportunidades."**  
+> *O conhecimento circula livremente na Praça Pública Digital.*
 
 ---
 
-## 📱 Estrutura Visual do Aplicativo
+## 📱 Estrutura Visual Mantida & Consolidada
 
 ```
 ┌──────────────────────────────────────────────┐
-│  21:38                            🔔 📶 🔋   │
+│  9:41                             📶 🛜 🔋   │
 ├──────────────────────────────────────────────┤
-│  🌸 YBYgram                       🔍 ✨ = 🔔 │
-│  Praça Pública Digital                       │
-├──────────────────────────────────────────────┤
-│  🍃 O conhecimento circula livremente.      >│
+│  YBY 🌿                          🔍 ✨ ═     │
+│  Conectando Saberes e Vidas                  │
 ├──────────────────────────────────────────────┤
 │  🌿 Pessoas que você segue                   │
-│  (+)  ◯ Benvinda  ◯ Tiago  ◯ Mariana  ◯ Carlos│
+│  (+) Seu saber  ◯ Benvinda  ◯ Tiago          │
+│  ◯ Mariana      ◯ Carlos                     │
 ├──────────────────────────────────────────────┤
-│  [📖 Saberes] [🎬 Curtos] [▶️ Longos] [🎵 Som] │
-│  [🎧 Podcast] [💬 Fórum]  [📰 Notícia][📡 Live]│
-├──────────────────────────────────────────────┤
-│  (👥 Praça)  (🧭 Descobrir) (📅 Eventos) (🛍️) │
+│  Vídeos Curtos  Vídeos Longos  Música        │
+│  [🌿 Saberes]   Podcasts       Fórum         │
 ├──────────────────────────────────────────────┤
 │  ┌────────────────────────────────────────┐  │
-│  │ 🌿 Raízes do Saber              ...    │  │
-│  │ As plantas medicinais e seus usos...   │  │
-│  │ [ Imagem: Ervas e Almofariz ao Sol ]   │  │
-│  │ ❤️ 128    💬 24   ↗️ Compartilhar   🔖 │  │
+│  │ 🌿 Preparo da Espiral de Ervas e Solo  │  │
+│  │    Vivo                          03:10 │  │
+│  │ Visualizações comunitárias             │  │
+│  │ 2450 💚         ( ▶ )          🤍 🔖   │  │
 │  └────────────────────────────────────────┘  │
 │                                              │
 │  ┌────────────────────────────────────────┐  │
-│  │ 🌱 Natureza Viva                ...    │  │
-│  │ Permacultura na prática!        ⏱ 0:58 │  │
-│  │ [ Vídeo: Agrofloresta ( ▶ ) ]          │  │
-│  │ ❤️ 245    💬 38   ↗️ Compartilhar   🔖 │  │
+│  │ 👤 Saberes • Terra Viva                │  │
+│  │ "O conhecimento circula livremente..." │  │
+│  │ 🎵 Música  /  📹 Vídeo  /  📝 Saber   │  │
+│  │ 💬 12          ❤️ 48        ↗️ Compartilhar│
 │  └────────────────────────────────────────┘  │
-├──────────────────────────────────────────────┤
-│  🏠 Início  🧭 Descobrir  (+)  📚 Acervo  👤 │
+│                                              │
+│  ┌────────────────────────────────────────┐  │
+│  │ 🔍 Pesquisar saberes...          ( 🔍 )│  │
+│  └────────────────────────────────────────┘  │
+│                                              │
+│      ◯ Recentes           ✅ [Aleatórios]   │
 └──────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🎨 Elementos Principais do Novo Design
+## ✨ Modal: Distribuição Sem Bolhas
 
-1. **Cabeçalho:**
-   * Logo estilizada em flor de lótus multicolorida com pétalas vibrantes.
-   * Ícones superiores com acesso rápido: Busca (`🔍`), Algoritmo Amigável (`✨`), Menu de duas linhas (`=`), Notificações (`🔔 3`) e avatar do usuário.
-2. **Faixa Manifesto:**
-   * `🍃 O conhecimento circula livremente. >`
-3. **Pessoas que Você Segue:**
-   * Carrossel de avatares com anéis em verde esmeralda: seu saber (`+`), Benvinda, Tiago, Mariana e Carlos.
-4. **Grid 4x2 dos 8 Formatos:**
-   * Cards arredondados com ícones destacados para Saberes, Vídeos Curtos, Vídeos Longos, Música, Podcasts, Fórum, Notícias e Ao Vivo.
-5. **Sub-Navegação em Pílulas:**
-   * Pílulas para Praça, Descobrir, Eventos e Loja.
-6. **Feed de Saberes:**
-   * Cards detalhados com imagens, player de vídeo embutido, curtidas, comentários, compartilhamento e salvamento no acervo.
-7. **Barra Inferior:**
-   * Navegação fixa com indicador ativo em traço roxo e botão central flutuante `(+)` para partilha imediata.
+Ao tocar no ícone de brilho (`✨` / `✦`), abre-se o modal preservado:
+* **Título:** `✦ Distribuição Sem Bolhas`
+* **Descrição:** *"O YBY não prioriza vício por engajamento. A distribuição é aberta:"*
+* **Pílulas:**
+  * `25% Novidades` | `Recentes`
+  * `25% Diversidade` | `Autores plurais`
+  * `15% Fisher-Yates` | `Aleatório justo`
+* **Botão:** `Compreendido` (em verde floresta escuro).
 
 ---
 
 ## 🚀 Como Executar Localmente
 
-Inicie o servidor ou use o arquivo `.bat`:
+Inicie com o arquivo `.bat`:
 ```powershell
 .\iniciar_ybyverso.bat
 ```
-Ou via Node:
+Ou via Node.js:
 ```powershell
 node _serve.js
 ```

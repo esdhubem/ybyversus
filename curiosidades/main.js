@@ -5,6 +5,7 @@
 import { getMoonDetails, getNextMoonPhases, getCelestialEvents, getSolsticesAndEquinoxes } from './astronomy.js';
 import { fetchWeatherData, searchCities, convertWindSpeed } from './weather.js';
 import { fetchMarineData, findNearestPort, fetchTideData, renderTideChartSvg } from './marine.js';
+import { renderSolarSystemSection } from './solar_system_ui.js';
 import { generateDailyCuriosity } from './curiosities.js';
 import { renderMoonSvg, renderCompassSvg, renderHourlyForecast, renderDailyForecast, renderSkeleton } from './ui.js';
 import { 
@@ -423,25 +424,8 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
       </div>
     </section>
 
-    <!-- ATRIBUIÇÃO OFICIAL OBRIGATÓRIA NO RODAPÉ -->
-    <footer class="pt-4 pb-8 text-center text-[11px] text-slate-400 space-y-1.5 border-t border-[#163524]">
-      <p class="leading-relaxed">
-        Dados de clima, vento e ondas: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" class="text-[#E5C384] hover:underline">Open-Meteo</a> (CC BY 4.0).
-      </p>
-      <p class="leading-relaxed">
-        Marés: <span class="text-slate-300 font-medium">Marinha do Brasil (DHN/CHM)</span>.
-      </p>
-      <p class="text-[10px] text-slate-500 pt-1">
-        YBY versus • Praça Pública Digital • Conhecimento Livre & Astronomia Soberana
-      </p>
-    </footer>
-  `;
-
-  // Recria os ícones Lucide
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-}
+    <!-- 5. SEÇÃO: MINI ATLAS DO SISTEMA SOLAR & HORA NA LUA (FASE 3) -->
+    ${renderSolarSystemSection()}
 
     <!-- ATRIBUIÇÃO OFICIAL OBRIGATÓRIA NO RODAPÉ -->
     <footer class="pt-4 pb-8 text-center text-[11px] text-slate-400 space-y-1.5 border-t border-[#163524]">

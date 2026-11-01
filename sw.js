@@ -1,5 +1,5 @@
 // Service Worker - Ybyversus PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyversus-cache-v1.1';
+const CACHE_NAME = 'ybyversus-cache-v1.2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -7,10 +7,16 @@ const ASSETS_TO_CACHE = [
   './curiosidades/main.js',
   './curiosidades/astronomy.js',
   './curiosidades/weather.js',
+  './curiosidades/marine.js',
+  './curiosidades/solar_system.js',
+  './curiosidades/solar_system_ui.js',
+  './curiosidades/lunar_time.js',
   './curiosidades/curiosities.js',
   './curiosidades/ui.js',
   './curiosidades/storage.js',
   './curiosidades/suncalc.js',
+  './data/mares/porto-do-rio-de-janeiro.json',
+  './data/mares/porto-de-santos.json',
   './manifest.json',
   './icons/icon.svg',
   './assets/logo-arara.png',

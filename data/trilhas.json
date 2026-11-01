@@ -1,53 +1,9 @@
 [
   {
-    "id": "decolonial-01",
-    "eixo": "agro",
-    "titulo": "O pensamento decolonial: análise, desafios e perspectivas",
-    "autores": "Pesquisa Acadêmica",
-    "veiculo": "Academia.edu",
-    "ano": "2024",
-    "idioma": "Português",
-    "tipoPublicacao": "Artigo de Pesquisa",
-    "porQueLer": "Aprofunda as raízes epistêmicas e os horizontes libertadores do pensamento decolonial latino-americano.",
-    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-    "imagem": "assets/artigos/pensamento-decolonial-thumb.png"
-  },
-  {
-    "id": "etno-01",
-    "eixo": "etno",
-    "titulo": "Plantas Medicinais e Conhecimento Tradicional no Brasil Central",
-    "autores": "Silva, M. A.; Santos, R. C.",
-    "veiculo": "Revista de Etnobiologia",
-    "ano": "2024",
-    "idioma": "Português",
-    "tipoPublicacao": "Artigo de Pesquisa",
-    "porQueLer": "Documenta saberes botânicos preservados por comunidades sem intervenção mercantil.",
-    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-    "imagem": "assets/card-floresta-sagrada.jpg"
-  },
-  {
-    "id": "etno-02",
-    "eixo": "etno",
-    "titulo": "Etnobotânica e Justiça Territorial: Diálogos com Saberes Locais",
-    "autores": "Albuquerque, U. P.; Costa, J. T.",
-    "veiculo": "Simpósio Latino-Americano",
-    "ano": "2023",
-    "idioma": "Português",
-    "tipoPublicacao": "Revisão Crítica",
-    "porQueLer": "Discute critérios metodológicos para respeitar a soberania dos povos sobre seus saberes.",
-    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-    "imagem": "assets/card-sol-ancestral.jpg"
-  },
-  {
     "id": "saude-01",
     "eixo": "saude",
     "titulo": "Práticas Integrativas e Complementares no Cuidado Comunitário",
-    "autores": "Mendonça, E. K.; Ferreira, A. P.",
-    "veiculo": "Cadernos de Saúde Coletiva",
-    "ano": "2024",
-    "idioma": "Português",
-    "tipoPublicacao": "Estudo Qualitativo",
-    "porQueLer": "Analisa hortos comunitários e rodas de cuidado na atenção primária territorial.",
+    "tipoPublicacao": "Artigo de Pesquisa",
     "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
     "imagem": "assets/card-mestres-terra.jpg"
   },
@@ -55,52 +11,112 @@
     "id": "saude-02",
     "eixo": "saude",
     "titulo": "Hortas Medicinais Comunitárias e Saúde Emancipatória",
-    "autores": "Carvalho, L. F.; Souza, G. M.",
-    "veiculo": "Extensão e Tecnologias Sociais",
-    "ano": "2023",
-    "idioma": "Português",
     "tipoPublicacao": "Relato de Experiência",
-    "porQueLer": "Metodologia participativa de cultivo de espécies nativas em territórios populares.",
     "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
     "imagem": "assets/card-portal-luz.jpg"
   },
   {
-    "id": "agro-02",
+    "id": "etno-01",
+    "eixo": "etno",
+    "titulo": "Plantas Medicinais e Conhecimento Tradicional no Brasil Central",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-floresta-sagrada.jpg"
+  },
+  {
+    "id": "etno-02",
+    "eixo": "etno",
+    "titulo": "Etnobotânica e Justiça Territorial: Diálogos com Saberes Locais",
+    "tipoPublicacao": "Revisão Crítica",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-sol-ancestral.jpg"
+  },
+  {
+    "id": "agro-01",
     "eixo": "agro",
     "titulo": "Agroecologia, Circuitos Curtos e Soberania Alimentar Popular",
-    "autores": "Perez, N. D.; Lima, H. C.",
-    "veiculo": "Revista de Ecologia Social",
-    "ano": "2024",
-    "idioma": "Português",
     "tipoPublicacao": "Análise de Política",
-    "porQueLer": "Feiras comunitárias e arranjos solidários contra a mercantilização da alimentação.",
     "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
     "imagem": "assets/dola-forest.jpg"
+  },
+  {
+    "id": "agro-02",
+    "eixo": "agro",
+    "titulo": "Agroflorestas Sucessionais e Soberania Alimentar na Mata Atlântica",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/rainforest-bg.jpg"
+  },
+  {
+    "id": "saberes-01",
+    "eixo": "saberes",
+    "titulo": "Antropologia dos Saberes Tradicionais e Memória Oral Comunitária",
+    "tipoPublicacao": "Estudo Qualitativo",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-sol-ancestral.jpg"
+  },
+  {
+    "id": "educacao-01",
+    "eixo": "educacao",
+    "titulo": "O pensamento decolonial: análise, desafios e perspectivas",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/artigos/pensamento-decolonial-thumb.png"
+  },
+  {
+    "id": "educacao-02",
+    "eixo": "educacao",
+    "titulo": "Educação das Relações Étnico-Raciais: Desafios das Leis 10.639 e 11.645",
+    "tipoPublicacao": "Revisão Crítica",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/hero-forest.jpg"
+  },
+  {
+    "id": "filosofia-01",
+    "eixo": "filosofia",
+    "titulo": "Filosofias Ameríndias e Cosmologias do Bem Viver",
+    "tipoPublicacao": "Capítulo de Livro",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-portal-luz.jpg"
+  },
+  {
+    "id": "artes-01",
+    "eixo": "artes",
+    "titulo": "Línguas Indígenas, Poéticas Ancestrais e Música de Reexistência",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/rainforest-bg.jpg"
+  },
+  {
+    "id": "tecnologia-01",
+    "eixo": "tecnologia",
+    "titulo": "Soberania Tecnológica, Redes Comunitárias e Protocolos Abertos",
+    "tipoPublicacao": "Análise Técnica",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/hero-forest.jpg"
   },
   {
     "id": "genero-01",
     "eixo": "genero",
     "titulo": "Guardiãs das Sementes: Mulheres, Biodiversidade e Bens Comuns",
-    "autores": "Moura, C. B.; Ribeiro, D. S.",
-    "veiculo": "Dossiê Ecologias Decoloniais",
-    "ano": "2024",
-    "idioma": "Português",
     "tipoPublicacao": "Capítulo de Livro",
-    "porQueLer": "A preservação de variedades crioulas e a soberania da terra pelas mãos femininas.",
     "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-    "imagem": "assets/hero-forest.jpg"
+    "imagem": "assets/card-floresta-sagrada.jpg"
   },
   {
     "id": "genero-02",
     "eixo": "genero",
     "titulo": "Economia Feminista, Educação Popular e Quintais Produtivos",
-    "autores": "Araújo, P. M.; Freitas, S. L.",
-    "veiculo": "Estudos Interseccionais",
-    "ano": "2023",
-    "idioma": "Português",
     "tipoPublicacao": "Estudo Qualitativo",
-    "porQueLer": "Autonomia econômica de agricultoras a partir da gestão comunitária dos quintais.",
     "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-    "imagem": "assets/rainforest-bg.jpg"
+    "imagem": "assets/card-mestres-terra.jpg"
+  },
+  {
+    "id": "astronomia-01",
+    "eixo": "astronomia",
+    "titulo": "Arqueoastronomia e Cosmologia Física dos Céus do Sul",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/cosmic-sky.jpg"
   }
 ]

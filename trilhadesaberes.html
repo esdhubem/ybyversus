@@ -148,6 +148,15 @@
       transform: translateY(-2px);
     }
 
+    /* Ocultar barra de rolagem */
+    .scrollbar-none {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+
     /* Foco acessível */
     button:focus-visible, a:focus-visible {
       outline: 2px solid #E5C384;
@@ -242,25 +251,50 @@
 
       <!-- TEMAS: ACESSO RÁPIDO APENAS COM ÍCONE E TÍTULO (SEM QUADRADOS) -->
       <div class="px-1 pt-1 pb-1">
-        <div class="mb-2">
+        <div class="mb-2 flex items-center justify-between">
           <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Temas</span>
+          <span class="text-[10px] text-[#E5C384]/70 font-medium">Deslize para ver todos 👉</span>
         </div>
-        <div class="grid grid-cols-4 gap-1 text-center">
-          <button type="button" onclick="scrollToPlaylist('etno')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
-            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌱</span>
-            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Etnofarmacologia</span>
-          </button>
-          <button type="button" onclick="scrollToPlaylist('saude')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
+        <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none select-none">
+          <button type="button" onclick="scrollToPlaylist('saude')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
             <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🏥</span>
-            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Saúde Coletiva & PICS</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Saúde Coletiva (PICS)</span>
           </button>
-          <button type="button" onclick="scrollToPlaylist('agro')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
-            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌍</span>
-            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Agroecologia</span>
+          <button type="button" onclick="scrollToPlaylist('etno')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌱</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Plantas Medicinais & Etnobotânica</span>
           </button>
-          <button type="button" onclick="scrollToPlaylist('genero')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
+          <button type="button" onclick="scrollToPlaylist('agro')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌾</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Agroecologia & Soberania</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('saberes')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🏺</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Saberes Tradicionais & História</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('educacao')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📚</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Educação & Decolonialidade</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('filosofia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🕯️</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Filosofias & Cosmologias</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('artes')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🎨</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Línguas, Artes & Música</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('tecnologia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">💻</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Tecnologia & Soberania</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('genero')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
             <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">⚖️</span>
-            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Gênero & Justiça</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Gênero & Justiça Social</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('astronomia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🔭</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Astronomia & Cosmologia</span>
           </button>
         </div>
       </div>
@@ -269,33 +303,12 @@
       <!-- SEÇÕES DINÂMICAS PREENCHIDAS VIA /data/trilhas.json     -->
       <!-- ======================================================== -->
       
-      <!-- SEÇÃO 1: ETNOFARMACOLOGIA -->
-      <section id="etno" class="pt-2">
-        <div class="mb-2 px-1 flex items-center justify-between">
-          <div>
-            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-              <span>🌱</span> Etnofarmacologia & Saberes Ancestrais
-            </h3>
-            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-              Pesquisas e documentações sobre conhecimento botânico tradicional.
-            </p>
-          </div>
-          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
-            <span>Arraste</span>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-          </div>
-        </div>
-        <div class="playlist-scroll" id="container-etno">
-          <!-- Renderizado via script -->
-        </div>
-      </section>
-
-      <!-- SEÇÃO 2: SAÚDE COLETIVA & PICS -->
+      <!-- TEMA 1: SAÚDE COLETIVA & PICS -->
       <section id="saude" class="pt-2">
         <div class="mb-2 px-1 flex items-center justify-between">
           <div>
             <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-              <span>🏥</span> Saúde Coletiva & PICS
+              <span>🏥</span> Saúde Coletiva e Práticas Integrativas (PICS)
             </h3>
             <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
               Estudos sobre práticas integrativas e cuidado básico territorial.
@@ -311,15 +324,36 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 3: AGROECOLOGIA & DECOLONIALIDADE -->
+      <!-- TEMA 2: PLANTAS MEDICINAIS & ETNOBOTÂNICA -->
+      <section id="etno" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🌱</span> Plantas Medicinais, Etnofarmacologia e Etnobotânica
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Pesquisas e documentações sobre conhecimento botânico tradicional.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-etno">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 3: AGROECOLOGIA & SOBERANIA ALIMENTAR -->
       <section id="agro" class="pt-2">
         <div class="mb-2 px-1 flex items-center justify-between">
           <div>
             <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-              <span>🌍</span> Agroecologia & Pensamento Decolonial
+              <span>🌾</span> Agroecologia e Soberania Alimentar
             </h3>
             <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-              Sistemas agroalimentares, soberania e relações decoloniais com a terra.
+              Sistemas agroalimentares, soberania e relações comunitárias com a terra.
             </p>
           </div>
           <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
@@ -332,15 +366,120 @@
         </div>
       </section>
 
-      <!-- SEÇÃO 4: GÊNERO & JUSTIÇA SOCIAL -->
+      <!-- TEMA 4: SABERES TRADICIONAIS, ANTROPOLOGIA, HISTÓRIA E SOCIOLOGIA -->
+      <section id="saberes" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🏺</span> Saberes Tradicionais, Antropologia, História e Sociologia
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Memória oral, epistemologias comunitárias e preservação de identidades.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-saberes">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 5: EDUCAÇÃO E DECOLONIALIDADE -->
+      <section id="educacao" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>📚</span> Educação e Decolonialidade
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Educação (Leis 10.639/03 e 11.645/08) e Ciências Humanas emancipatórias.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-educacao">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 6: FILOSOFIAS E COSMOLOGIAS -->
+      <section id="filosofia" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🕯️</span> Filosofias e Cosmologias
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Filosofia, Ciências da Religião e Teologia sob a ótica do Bem Viver.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-filosofia">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 7: LÍNGUAS, ARTES E MÚSICA -->
+      <section id="artes" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🎨</span> Línguas, Artes e Música
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Letras, Linguística, Expressões Visuais, Artes Cênicas e Música.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-artes">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 8: TECNOLOGIA, SOBERANIA E DESCENTRALIZAÇÃO -->
+      <section id="tecnologia" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>💻</span> Tecnologia, Soberania e Descentralização
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Ciência da Computação, Engenharias, Ciências Sociais Aplicadas e Ciência Política.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-tecnologia">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 9: GÊNERO E JUSTIÇA SOCIAL -->
       <section id="genero" class="pt-2">
         <div class="mb-2 px-1 flex items-center justify-between">
           <div>
             <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-              <span>⚖️</span> Gênero & Justiça Social
+              <span>⚖️</span> Gênero e Justiça Social
             </h3>
             <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-              Mulheres na conservação da sociobiodiversidade e economia solidária.
+              Sociologia, Antropologia, Interdisciplinar e Mulheres na Defesa dos Territórios.
             </p>
           </div>
           <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
@@ -349,6 +488,27 @@
           </div>
         </div>
         <div class="playlist-scroll" id="container-genero">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 10: ASTRONOMIA E COSMOLOGIA FÍSICA -->
+      <section id="astronomia" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🔭</span> Astronomia e Cosmologia Física
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Física, Astronomia observacional e o estudo do universo.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+        <div class="playlist-scroll" id="container-astronomia">
           <!-- Renderizado via script -->
         </div>
       </section>
@@ -471,12 +631,20 @@
     // Dados embutidos de contingência imediata caso fetch tenha atraso ou bloqueio
     const TRILHAS_FALLBACK = [
       {
-        "id": "decolonial-01",
-        "eixo": "agro",
-        "titulo": "O pensamento decolonial: análise, desafios e perspectivas",
+        "id": "saude-01",
+        "eixo": "saude",
+        "titulo": "Práticas Integrativas e Complementares no Cuidado Comunitário",
         "tipoPublicacao": "Artigo de Pesquisa",
         "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-        "imagem": "assets/artigos/pensamento-decolonial-thumb.png"
+        "imagem": "assets/card-mestres-terra.jpg"
+      },
+      {
+        "id": "saude-02",
+        "eixo": "saude",
+        "titulo": "Hortas Medicinais Comunitárias e Saúde Emancipatória",
+        "tipoPublicacao": "Relato de Experiência",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/card-portal-luz.jpg"
       },
       {
         "id": "etno-01",
@@ -495,23 +663,7 @@
         "imagem": "assets/card-sol-ancestral.jpg"
       },
       {
-        "id": "saude-01",
-        "eixo": "saude",
-        "titulo": "Práticas Integrativas e Complementares no Cuidado Comunitário",
-        "tipoPublicacao": "Estudo Qualitativo",
-        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-        "imagem": "assets/card-mestres-terra.jpg"
-      },
-      {
-        "id": "saude-02",
-        "eixo": "saude",
-        "titulo": "Hortas Medicinais Comunitárias e Saúde Emancipatória",
-        "tipoPublicacao": "Relato de Experiência",
-        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-        "imagem": "assets/card-portal-luz.jpg"
-      },
-      {
-        "id": "agro-02",
+        "id": "agro-01",
         "eixo": "agro",
         "titulo": "Agroecologia, Circuitos Curtos e Soberania Alimentar Popular",
         "tipoPublicacao": "Análise de Política",
@@ -519,12 +671,68 @@
         "imagem": "assets/dola-forest.jpg"
       },
       {
+        "id": "agro-02",
+        "eixo": "agro",
+        "titulo": "Agroflorestas Sucessionais e Soberania Alimentar na Mata Atlântica",
+        "tipoPublicacao": "Artigo de Pesquisa",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/rainforest-bg.jpg"
+      },
+      {
+        "id": "saberes-01",
+        "eixo": "saberes",
+        "titulo": "Antropologia dos Saberes Tradicionais e Memória Oral Comunitária",
+        "tipoPublicacao": "Estudo Qualitativo",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/card-sol-ancestral.jpg"
+      },
+      {
+        "id": "educacao-01",
+        "eixo": "educacao",
+        "titulo": "O pensamento decolonial: análise, desafios e perspectivas",
+        "tipoPublicacao": "Artigo de Pesquisa",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/artigos/pensamento-decolonial-thumb.png"
+      },
+      {
+        "id": "educacao-02",
+        "eixo": "educacao",
+        "titulo": "Educação das Relações Étnico-Raciais: Desafios das Leis 10.639 e 11.645",
+        "tipoPublicacao": "Revisão Crítica",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/hero-forest.jpg"
+      },
+      {
+        "id": "filosofia-01",
+        "eixo": "filosofia",
+        "titulo": "Filosofias Ameríndias e Cosmologias do Bem Viver",
+        "tipoPublicacao": "Capítulo de Livro",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/card-portal-luz.jpg"
+      },
+      {
+        "id": "artes-01",
+        "eixo": "artes",
+        "titulo": "Línguas Indígenas, Poéticas Ancestrais e Música de Reexistência",
+        "tipoPublicacao": "Artigo de Pesquisa",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/rainforest-bg.jpg"
+      },
+      {
+        "id": "tecnologia-01",
+        "eixo": "tecnologia",
+        "titulo": "Soberania Tecnológica, Redes Comunitárias e Protocolos Abertos",
+        "tipoPublicacao": "Análise Técnica",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/hero-forest.jpg"
+      },
+      {
         "id": "genero-01",
         "eixo": "genero",
         "titulo": "Guardiãs das Sementes: Mulheres, Biodiversidade e Bens Comuns",
         "tipoPublicacao": "Capítulo de Livro",
         "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-        "imagem": "assets/hero-forest.jpg"
+        "imagem": "assets/card-floresta-sagrada.jpg"
       },
       {
         "id": "genero-02",
@@ -532,7 +740,15 @@
         "titulo": "Economia Feminista, Educação Popular e Quintais Produtivos",
         "tipoPublicacao": "Estudo Qualitativo",
         "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
-        "imagem": "assets/rainforest-bg.jpg"
+        "imagem": "assets/card-mestres-terra.jpg"
+      },
+      {
+        "id": "astronomia-01",
+        "eixo": "astronomia",
+        "titulo": "Arqueoastronomia e Cosmologia Física dos Céus do Sul",
+        "tipoPublicacao": "Artigo de Pesquisa",
+        "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+        "imagem": "assets/cosmic-sky.jpg"
       }
     ];
 
@@ -552,10 +768,16 @@
     function distributeCards(data) {
       const list = Array.isArray(data) && data.length > 0 ? data : TRILHAS_FALLBACK;
       const containers = {
-        etno: document.getElementById('container-etno'),
         saude: document.getElementById('container-saude'),
+        etno: document.getElementById('container-etno'),
         agro: document.getElementById('container-agro'),
-        genero: document.getElementById('container-genero')
+        saberes: document.getElementById('container-saberes'),
+        educacao: document.getElementById('container-educacao'),
+        filosofia: document.getElementById('container-filosofia'),
+        artes: document.getElementById('container-artes'),
+        tecnologia: document.getElementById('container-tecnologia'),
+        genero: document.getElementById('container-genero'),
+        astronomia: document.getElementById('container-astronomia')
       };
 
       // Limpa containers e ativa mouse drag

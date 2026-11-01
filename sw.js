@@ -1,10 +1,11 @@
 // Service Worker - Ybyversus PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyversus-cache-v3.1';
+const CACHE_NAME = 'ybyversus-cache-v3.2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './trilhadesaberes.html',
   './data/trilhas.json',
+  './assets/artigos/pensamento-decolonial-thumb.png',
   'https://cdn.jsdelivr.net/npm/chart.js',
   './bemviver.html',
   './previsaotempoastros.html',

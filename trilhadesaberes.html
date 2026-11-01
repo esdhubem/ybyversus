@@ -85,23 +85,31 @@
       transition: transform 0.1s ease;
     }
 
-    /* Cards de Artigos Científicos */
+    /* Banner/Card de Divulgação de Artigos - Design Visual Minimalista */
     .research-card {
-      flex: 0 0 295px;
+      flex: 0 0 calc(100% - 38px);
+      max-width: 350px;
+      min-width: 295px;
       scroll-snap-align: start;
-      background: rgba(9, 28, 54, 0.92);
-      border-radius: 18px;
+      background: #020726;
+      border-radius: 22px;
       overflow: hidden;
-      border: 1px solid rgba(229, 195, 132, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(11, 27, 82, 0.5);
       display: flex;
-      flex-direction: column;
-      transition: all 0.3s ease;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 14px;
+      transition: all 0.25s ease;
+      position: relative;
     }
     .research-card:hover {
-      border-color: rgba(229, 195, 132, 0.6);
+      border-color: rgba(229, 195, 132, 0.35);
       transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
     }
 
     .playlist-scroll {
@@ -112,6 +120,12 @@
       padding: 6px 4px 16px;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      user-select: none;
+    }
+    .playlist-scroll.is-dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
     }
     .playlist-scroll::-webkit-scrollbar {
       display: none;
@@ -262,13 +276,19 @@
       
       <!-- SEÇÃO 1: ETNOFARMACOLOGIA -->
       <section id="etno" class="pt-2">
-        <div class="mb-2 px-1">
-          <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-            <span>🌱</span> Etnofarmacologia & Saberes Ancestrais
-          </h3>
-          <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Pesquisas e documentações sobre conhecimento tradicional botânico.
-          </p>
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🌱</span> Etnofarmacologia & Saberes Ancestrais
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Pesquisas e documentações sobre conhecimento botânico tradicional.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
         </div>
         <div class="playlist-scroll" id="container-etno">
           <!-- Renderizado via script -->
@@ -277,13 +297,19 @@
 
       <!-- SEÇÃO 2: SAÚDE COLETIVA & PICS -->
       <section id="saude" class="pt-2">
-        <div class="mb-2 px-1">
-          <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-            <span>🏥</span> Saúde Coletiva & PICS
-          </h3>
-          <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Estudos sobre práticas integrativas e cuidado básico territorial.
-          </p>
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🏥</span> Saúde Coletiva & PICS
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Estudos sobre práticas integrativas e cuidado básico territorial.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
         </div>
         <div class="playlist-scroll" id="container-saude">
           <!-- Renderizado via script -->
@@ -292,13 +318,19 @@
 
       <!-- SEÇÃO 3: AGROECOLOGIA & DECOLONIALIDADE -->
       <section id="agro" class="pt-2">
-        <div class="mb-2 px-1">
-          <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-            <span>🌍</span> Agroecologia & Decolonialidade
-          </h3>
-          <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Sistemas agroalimentares, soberania e relações comunitárias com a terra.
-          </p>
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🌍</span> Agroecologia & Pensamento Decolonial
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Sistemas agroalimentares, soberania e relações decoloniais com a terra.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
         </div>
         <div class="playlist-scroll" id="container-agro">
           <!-- Renderizado via script -->
@@ -307,13 +339,19 @@
 
       <!-- SEÇÃO 4: GÊNERO & JUSTIÇA SOCIAL -->
       <section id="genero" class="pt-2">
-        <div class="mb-2 px-1">
-          <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-            <span>⚖️</span> Gênero & Justiça Social
-          </h3>
-          <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Mulheres na conservação da sociobiodiversidade e economia solidária.
-          </p>
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>⚖️</span> Gênero & Justiça Social
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Mulheres na conservação da sociobiodiversidade e economia solidária.
+            </p>
+          </div>
+          <div class="flex items-center gap-1 text-[10px] text-[#E5C384]/70 font-semibold shrink-0 bg-[#091c36] px-2 py-0.5 rounded-full border border-[#142C4E]">
+            <span>Arraste</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
         </div>
         <div class="playlist-scroll" id="container-genero">
           <!-- Renderizado via script -->
@@ -360,72 +398,79 @@
 
   <!-- SCRIPT DE CARREGAMENTO LOCAL DINÂMICO & NAVEGAÇÃO -->
   <script>
-    // Ícones vetoriais SVG locais por tipo de publicação para zero requisições a terceiros
-    function getTipoPublicacaoBadge(tipo) {
-      const cores = {
-        'artigo de pesquisa': 'bg-blue-950/80 text-blue-300 border-blue-500/30',
-        'revisão': 'bg-purple-950/80 text-purple-300 border-purple-500/30',
-        'estudo qualitativo': 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30',
-        'análise de política': 'bg-amber-950/80 text-amber-300 border-amber-500/30',
-        'relato de experiência': 'bg-cyan-950/80 text-cyan-300 border-cyan-500/30',
-        'tese ou dissertação': 'bg-indigo-950/80 text-indigo-300 border-indigo-500/30',
-        'capítulo de livro': 'bg-rose-950/80 text-rose-300 border-rose-500/30',
-        'preprint': 'bg-slate-800 text-slate-300 border-slate-600',
-        'divulgação': 'bg-teal-950/80 text-teal-300 border-teal-500/30'
-      };
-      const estilo = cores[tipo] || 'bg-slate-800 text-slate-300 border-slate-600';
-      return `<span class="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-md border ${estilo}">${tipo}</span>`;
-    }
-
     function renderCard(item) {
-      const doiHtml = item.doi ? `<span class="text-[10px] text-slate-400 block mt-0.5">DOI: ${item.doi}</span>` : '';
-      const isIlustrativo = item.ilustrativo === 'sim' || item.ilustrativo === true;
+      const tipo = (item.tipoPublicacao || 'Artigo de Pesquisa').toUpperCase();
+      const imgUrl = item.imagem || 'assets/artigos/pensamento-decolonial-thumb.png';
+      const linkUrl = item.url || '#';
+      const targetAttr = linkUrl === '#' ? '' : 'target="_blank" rel="noopener noreferrer"';
+      const clickHandler = linkUrl === '#' ? 'onclick="event.preventDefault(); alert(\'Este link será disponibilizado em breve na íntegra.\');"' : '';
 
       return `
         <article class="research-card">
-          <!-- Cabeçalho do Card: Selo Ilustrativo e Tipo de Publicação -->
-          <div class="bg-[#040E1E] px-3.5 py-2.5 border-b border-[#142C4E] flex items-center justify-between gap-1 flex-wrap">
-            ${isIlustrativo ? '<span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-wider rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40">EXEMPLO ILUSTRATIVO</span>' : ''}
-            ${getTipoPublicacaoBadge(item.tipoPublicacao)}
+          <!-- Coluna Esquerda: Badge e Título -->
+          <div class="flex-1 flex flex-col justify-between pr-2 min-w-0">
+            <div>
+              <span class="inline-block px-3 py-1 text-[9.5px] font-black uppercase tracking-wider rounded-full bg-[#0b1b4f] text-[#6ea8fe] border border-[#1b3584]/60 shadow-sm">
+                ${tipo}
+              </span>
+            </div>
+            
+            <h4 class="font-bold text-white text-[15px] sm:text-[16px] leading-snug mt-3 mb-1 line-clamp-3 select-none">
+              ${item.titulo}
+            </h4>
           </div>
 
-          <!-- Corpo do Card -->
-          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h4 class="font-brand text-xs font-bold text-[#FFF6E5] leading-snug line-clamp-2">
-                ${item.titulo}
-              </h4>
-              <p class="text-[11px] text-slate-300 mt-1">
-                <strong>Autores:</strong> ${item.autores}
-              </p>
-              <p class="text-[10px] text-[#A1C1B0] mt-0.5">
-                ${item.veiculo} • <strong>${item.ano}</strong> • Idioma: ${item.idioma}
-              </p>
-              ${doiHtml}
+          <!-- Coluna Direita: Imagem Temática e Botão 'Ler na Fonte' -->
+          <div class="w-[122px] shrink-0 flex flex-col items-center justify-between gap-2.5">
+            <div class="w-full h-[96px] rounded-xl overflow-hidden shadow-md border border-white/10 bg-[#091c36]">
+              <img src="${imgUrl}" alt="${item.titulo}" class="w-full h-full object-cover select-none pointer-events-none" loading="lazy" onerror="this.src='assets/card-floresta-sagrada.jpg'">
             </div>
-
-            <!-- Frase curta da curadora (porQueLer) -->
-            <div class="bg-[#030A16]/80 p-2.5 rounded-xl border border-[#142C4E]/60">
-              <span class="text-[10px] font-bold text-[#E5C384] uppercase tracking-wider block mb-0.5">Por que ler:</span>
-              <p class="text-[11px] text-slate-200 leading-relaxed italic">
-                "${item.porQueLer}"
-              </p>
-            </div>
-
-            <!-- Rodapé do Card com Botão 'Ler na fonte' (sem terceiros) -->
-            <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-              <span class="text-[10px] text-slate-400 font-medium">Link acadêmico</span>
-              <a href="${item.url}" ${item.url === '#' ? 'onclick="event.preventDefault(); alert(\'Este é um exemplo ilustrativo de demonstração. Em breve o link direto oficial será ativado.\');"' : 'target="_blank" rel="noopener noreferrer"'}
-                 title="Ler na fonte original"
-                 aria-label="Ler publicação na fonte original: ${item.titulo}"
-                 class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white text-[11px] font-bold shadow-md hover:brightness-110 transition-all flex items-center gap-1.5 tap-active">
-                <span>Ler na fonte</span>
-                <i data-lucide="external-link" class="w-3 h-3"></i>
-              </a>
-            </div>
+            
+            <a href="${linkUrl}" 
+               ${targetAttr}
+               ${clickHandler}
+               title="Ler publicação na íntegra"
+               class="w-full text-center py-2 px-1 rounded-full bg-[#c2db1d] hover:bg-[#b0c714] active:scale-95 text-[#0a1505] font-black text-xs shadow-md transition-transform duration-150 block tracking-wide tap-active select-none">
+              Ler na Fonte
+            </a>
           </div>
         </article>
       `;
+    }
+
+    // Habilitar drag horizontal suave com mouse (desktop) e toque (mobile)
+    function enableMouseDragScroll(element) {
+      if (!element) return;
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      element.addEventListener('mousedown', (e) => {
+        // Se clicar diretamente no link 'Ler na Fonte', não interrompe o clique
+        if (e.target.tagName === 'A' || e.target.closest('a')) return;
+        isDown = true;
+        element.classList.add('is-dragging');
+        startX = e.pageX - element.offsetLeft;
+        scrollLeft = element.scrollLeft;
+      });
+
+      element.addEventListener('mouseleave', () => {
+        isDown = false;
+        element.classList.remove('is-dragging');
+      });
+
+      element.addEventListener('mouseup', () => {
+        isDown = false;
+        element.classList.remove('is-dragging');
+      });
+
+      element.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - element.offsetLeft;
+        const walk = (x - startX) * 1.6;
+        element.scrollLeft = scrollLeft - walk;
+      });
     }
 
     // Carregamento dinâmico a partir de /data/trilhas.json
@@ -449,7 +494,12 @@
       };
 
       // Limpa containers
-      Object.values(containers).forEach(c => { if (c) c.innerHTML = ''; });
+      Object.values(containers).forEach(c => { 
+        if (c) {
+          c.innerHTML = ''; 
+          enableMouseDragScroll(c);
+        }
+      });
 
       // Popula itens
       data.forEach(item => {
@@ -460,6 +510,10 @@
       });
 
       // Recria ícones Lucide
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
       if (window.lucide) {
         lucide.createIcons();
       }

@@ -292,10 +292,10 @@
     <!-- 2. CABEÇALHO DO APLICATIVO (Logo YBY versus + 🔍 ✨ =) -->
     <header class="px-6 pt-2 pb-3 bg-[#030A16]/85 backdrop-blur-md border-b border-[#142C4E]/50 flex items-center justify-between shrink-0">
       
-      <!-- Marca: YBY versus (Suporta Logo PNG ou Tipografia Dourada 3D) -->
-      <div class="cursor-pointer shrink-0 flex items-center gap-2" onclick="resetToHome()">
-        <img id="app-brand-logo" src="assets/logo-ybyversus.png" alt="YBY versus" class="h-9 max-w-[160px] object-contain hidden" onload="this.classList.remove('hidden'); const t = document.getElementById('brand-text-logo'); if (t) t.classList.add('hidden')" onerror="this.style.display='none'; const t = document.getElementById('brand-text-logo'); if (t) t.classList.remove('hidden')">
-        <span id="brand-text-logo" class="font-brand text-[23px] font-extrabold tracking-tight gold-gradient-text drop-shadow-[0_2px_10px_rgba(229,195,132,0.25)]">
+      <!-- Marca: YBY versus (Logo Oficial Dourada com Mandala em Alta Resolução) -->
+      <div class="cursor-pointer shrink-0 flex items-center" onclick="resetToHome()" title="YBY versus • Início">
+        <img id="app-brand-logo" src="assets/logo-ybyversus.png" alt="YBY versus" class="h-10 sm:h-11 w-auto max-w-[150px] object-contain drop-shadow-[0_2px_14px_rgba(229,195,132,0.45)] hover:scale-105 active:scale-95 transition-transform" onerror="this.style.display='none'; document.getElementById('brand-text-fallback').style.display='block';">
+        <span id="brand-text-fallback" style="display: none;" class="font-brand text-[23px] font-extrabold tracking-tight gold-gradient-text drop-shadow-[0_2px_10px_rgba(229,195,132,0.25)]">
           YBY versus
         </span>
       </div>

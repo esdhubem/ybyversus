@@ -58,6 +58,17 @@
 
 ---
 
+## 🌍 Por trás de Yby Versus: O movimento que nos conecta
+
+Nossos passos ganham força quando entendemos de onde viemos e para onde estamos nos movendo. O nome do nosso ecossistema nasce do encontro poético entre dois mundos, duas línguas e uma única verdade: **nada permanece estático**.
+
+- **Yby**, no Tupi-Guarani, é a nossa raiz. Significa a Terra sob nossos pés, o solo sagrado, a ancestralidade e a base de tudo o que construímos.
+- **Versus**, em sua essência latina original (da raiz *vertere*), não significa rivalidade, mas sim movimento. É o ato de virar, transformar e mudar de direção.
+
+Ao unir esses dois horizontes, damos vida a um conceito poderoso: **Yby Versus é o movimento constante do nosso planeta**. Significa, em nossa própria tradução de mundo, que **a Terra gira**. Ela gira para renovar ciclos, para transformar realidades e para nos lembrar de que a evolução é inevitável. Nós somos a força que acompanha esse giro.
+
+---
+
 ## 🚀 Como Executar
 
 Execute o servidor local:

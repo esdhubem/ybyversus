@@ -10,6 +10,20 @@
 
 Hoje, 31 de outubro de 2026, o **Ybyversus** nasce oficialmente como um espaço soberano, ético, minimalista e seguro. Nascemos com um propósito claro e inegociável: resgatar a dignidade humana nas redes digitais, conectar a sabedoria ancestral da Terra (*Yby*) à imensidão do cosmos e oferecer um refúgio real de estudo, reflexão e respeito à vida, longe do ruído, da polarização e do mercantilismo agressivo.
 
+---
+
+### 🌍 Por trás de Yby Versus: O movimento que nos conecta
+
+Nossos passos ganham força quando entendemos de onde viemos e para onde estamos nos movendo. O nome do nosso ecossistema nasce do encontro poético entre dois mundos, duas línguas e uma única verdade: nada permanece estático.
+
+**Yby**, no Tupi-Guarani, é a nossa raiz. Significa a Terra sob nossos pés, o solo sagrado, a ancestralidade e a base de tudo o que construímos.
+
+**Versus**, em sua essência latina original (da raiz *vertere*), não significa rivalidade, mas sim movimento. É o ato de virar, transformar e mudar de direção.
+
+Ao unir esses dois horizontes, damos vida a um conceito poderoso: **Yby Versus é o movimento constante do nosso planeta**. Significa, em nossa própria tradução de mundo, que **a Terra gira**. Ela gira para renovar ciclos, para transformar realidades e para nos lembrar de que a evolução é inevitável. Nós somos a força que acompanha esse giro.
+
+---
+
 A nossa essência e o nosso compromisso com cada um de vocês sustentam-se sobre pilares firmes de convivência, construídos para unir a profundidade, a responsabilidade coletiva e a liberdade criativa:
 
 ---

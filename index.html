@@ -729,11 +729,11 @@
         <span class="text-[10px] font-bold tracking-tight mt-0.5">Praça</span>
       </button>
 
-      <!-- Descobrir -->
-      <button onclick="selectBottomNav('descobrir')" id="nav-btn-descobrir" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="compass" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Descobrir</span>
-      </button>
+      <!-- Tempo (Curiosidades: Céu, Mar e Tempo) -->
+      <a href="curiosidades.html" id="nav-btn-tempo" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+        <i data-lucide="cloud-sun" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
+      </a>
 
       <!-- Botão Central Elevado (+) Cultivar Saber -->
       <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
@@ -830,10 +830,6 @@
       </div>
 
       <div class="space-y-1 text-xs">
-        <a href="curiosidades.html" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
-          <i data-lucide="sparkles" class="w-4 h-4 text-[#E5C384]"></i>
-          <span>Curiosidades: Céu, Mar e Tempo</span>
-        </a>
         <button onclick="openModal('modal-manifesto'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="scroll" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Carta Aberta (Manifesto de Nascimento)</span>
@@ -2411,7 +2407,7 @@
     }
 
     function selectBottomNav(tab) {
-      const tabs = ['praca', 'descobrir', 'acervo', 'presenca'];
+      const tabs = ['praca', 'tempo', 'acervo', 'presenca'];
       tabs.forEach(t => {
         const el = document.getElementById('nav-btn-' + t);
         if (el) {
@@ -2427,9 +2423,8 @@
         const container = document.querySelector('.app-screen-scroll');
         if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
         showAppToast('Praça Pública • Saberes da Terra');
-      } else if (tab === 'descobrir') {
-        toggleSearch();
-        showAppToast('Descobrir saberes comunitários e autores');
+      } else if (tab === 'tempo') {
+        window.location.href = 'curiosidades.html';
       } else if (tab === 'acervo') {
         showAppToast('Seu Acervo: Saberes, Áudios e Leituras salvas');
       } else if (tab === 'presenca') {

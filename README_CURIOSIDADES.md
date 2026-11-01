@@ -1,4 +1,4 @@
-# 🌌 Curiosidades: Céu, Mar e Tempo • YBY versus
+# 🌌 Curiosidades: Tempo, Mar e Céu • YBY versus
 
 Guia técnico, documentação das fontes científicas, limites de uso das APIs e instruções para manutenção de marés e corpos celestes.
 

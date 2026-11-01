@@ -1,5 +1,5 @@
 /**
- * Orquestrador Principal da Página Curiosidades: Céu, Mar e Tempo
+ * Orquestrador Principal da Página Curiosidades: Tempo, Mar e Céu
  */
 
 import { getMoonDetails, getNextMoonPhases, getCelestialEvents, getSolsticesAndEquinoxes } from './astronomy.js';

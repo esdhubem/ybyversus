@@ -326,203 +326,51 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- 4. OS 8 ÍCONES DOURADOS EM SQUIRCLES ESCUROS 3D          -->
+      <!-- 4. BOTÕES DE CATEGORIAS E FORMATOS (MINIMALISTA DOURADO) -->
       <!-- ======================================================== -->
-      <div class="space-y-3 pt-1 pb-1">
-        <div class="grid grid-cols-4 gap-2.5 sm:gap-3">
+      <div class="py-3 sm:py-5">
+        <div class="grid grid-cols-3 gap-y-7 sm:gap-y-8 gap-x-2">
           
-          <!-- 1. Saberes (Livro Aberto Dourado com páginas e lombada) -->
-          <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-saberes-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                  <linearGradient id="g-saberes-edge" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FEECC9"/>
-                    <stop offset="50%" stop-color="#DFB45E"/>
-                    <stop offset="100%" stop-color="#A97E25"/>
-                  </linearGradient>
-                </defs>
-                <path d="M8 12C13 10 18.5 10 24 14C29.5 10 35 10 40 12V34C35 32 29.5 32 24 35.5C18.5 32 13 32 8 34V12Z" fill="url(#g-saberes-gold)" stroke="url(#g-saberes-edge)" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M24 14V35.5" stroke="#121820" stroke-width="2.2" stroke-linecap="round"/>
-                <path d="M13 17C16 16 19 16 22 17.8" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
-                <path d="M26 17.8C29 16 32 16 35 17" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
-                <path d="M13 22C16 21 19 21 22 22.8" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
-                <path d="M26 22.8C29 21 32 21 35 22" stroke="#121820" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Saberes</span>
+          <!-- 1. Saberes -->
+          <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="book-open" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Saberes</span>
           </button>
 
-          <!-- 2. Vídeos Curtos (Claquete de Cinema com Play vazado + 7 Pontos) -->
-          <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-curtos-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                  <linearGradient id="g-curtos-top" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FEF0D4"/>
-                    <stop offset="50%" stop-color="#E2B760"/>
-                    <stop offset="100%" stop-color="#A97E25"/>
-                  </linearGradient>
-                </defs>
-                <!-- Barra superior inclinada com dentes/faixas -->
-                <path d="M7 13.5L41 10.5V16.5L7 16.5Z" fill="url(#g-curtos-top)"/>
-                <path d="M13 13.5L15.5 16.5M21 12.8L23.5 16.5M29 12.1L31.5 16.5M37 11.4L39.5 16.5" stroke="#121820" stroke-width="2.2" stroke-linecap="round"/>
-                <!-- Corpo retangular com play vazado central -->
-                <rect x="7" y="18" width="34" height="21" rx="4.5" fill="url(#g-curtos-gold)"/>
-                <path d="M21 23.5C21 22.7 21.9 22.2 22.6 22.6L29.2 26.6C29.8 27 29.8 28 29.2 28.4L22.6 32.4C21.9 32.8 21 32.3 21 31.5V23.5Z" fill="#121820"/>
-              </svg>
-            </div>
-            <div class="flex flex-col items-center">
-              <span class="text-[10.5px] font-semibold text-[#DDD3C5] tracking-tight leading-tight text-center">Videos<br>Curtos</span>
-              <span class="text-[8px] text-[#E5C384] tracking-[2px] mt-0.5 font-bold">•••••••</span>
-            </div>
+          <!-- 2. Vídeos -->
+          <button id="fmt-btn-videos" onclick="setActiveTab('videos')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="clapperboard" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Vídeos</span>
           </button>
 
-          <!-- 3. Vídeos Longos (Triângulo Play Vazado com Borda Grossa Dourada + 7 Pontos) -->
-          <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-longos-thick" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="30%" stop-color="#F5DCAB"/>
-                    <stop offset="70%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                </defs>
-                <!-- Triângulo play vazado com contorno grosso e pontas arredondadas (como no print) -->
-                <path d="M15 11C15 8.7 17.5 7.3 19.5 8.4L39.5 20.4C41.5 21.6 41.5 24.4 39.5 25.6L19.5 37.6C17.5 38.7 15 37.3 15 35V11Z" fill="none" stroke="url(#g-longos-thick)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="flex flex-col items-center">
-              <span class="text-[10.5px] font-semibold text-[#DDD3C5] tracking-tight leading-tight text-center">Videos<br>Longos</span>
-              <span class="text-[8px] text-[#E5C384] tracking-[2px] mt-0.5 font-bold">•••••••</span>
-            </div>
+          <!-- 3. Música -->
+          <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="music" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Música</span>
           </button>
 
-          <!-- 4. Música (Nota Musical Dupla Beamed Dourada) -->
-          <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-musica-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="14" cy="34" rx="5" ry="4" transform="rotate(-15 14 34)" fill="url(#g-musica-gold)"/>
-                <ellipse cx="33" cy="30" rx="5" ry="4" transform="rotate(-15 33 30)" fill="url(#g-musica-gold)"/>
-                <path d="M18 33V13L37 9V29" stroke="url(#g-musica-gold)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M18 13L37 9" stroke="url(#g-musica-gold)" stroke-width="5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Música</span>
+          <!-- 4. Podcasts -->
+          <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="headphones" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Podcasts</span>
           </button>
 
-          <!-- 5. Podcasts (Fones de Ouvido Over-Ear Dourados) -->
-          <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-podcasts-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                </defs>
-                <path d="M10 24C10 15.5 16.3 9 24 9C31.7 9 38 15.5 38 24" stroke="url(#g-podcasts-gold)" stroke-width="3.5" stroke-linecap="round"/>
-                <rect x="7" y="22" width="6.5" height="15" rx="3.2" fill="url(#g-podcasts-gold)"/>
-                <rect x="8.5" y="25" width="2" height="9" rx="1" fill="#121820"/>
-                <rect x="34.5" y="22" width="6.5" height="15" rx="3.2" fill="url(#g-podcasts-gold)"/>
-                <rect x="37.5" y="25" width="2" height="9" rx="1" fill="#121820"/>
-              </svg>
-            </div>
-            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Podcasts</span>
+          <!-- 5. Fórum -->
+          <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="message-circle" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Fórum</span>
           </button>
 
-          <!-- 6. Fórum (Balões de Conversa com Pontos Internos) -->
-          <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-forum-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                </defs>
-                <path d="M9 13C9 9.7 12 7 16 7H26C30 7 33 9.7 33 13V21C33 24.3 30 27 26 27H20L13 32V27H16C12 27 9 24.3 9 21V13Z" fill="url(#g-forum-gold)"/>
-                <circle cx="16" cy="17" r="1.3" fill="#121820"/>
-                <circle cx="21" cy="17" r="1.3" fill="#121820"/>
-                <circle cx="26" cy="17" r="1.3" fill="#121820"/>
-                <path d="M25 24C25.5 24 26.2 24.1 27 24.4C28 26.5 30.2 28 32.8 28H35L39 32V28C41.2 28 43 26.2 43 24V18C43 15.8 41.5 14.1 39.5 13.8V19C39.5 22.3 36.8 25 33.5 25H25V24Z" fill="url(#g-forum-gold)"/>
-              </svg>
-            </div>
-            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Fórum</span>
+          <!-- 6. Notícias -->
+          <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="newspaper" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Notícias</span>
           </button>
 
-          <!-- 7. Notícias (Tablet de Notícias com Ícone Circular e 3 Linhas) -->
-          <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-noticias-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                </defs>
-                <rect x="8" y="9" width="32" height="28" rx="5" fill="url(#g-noticias-gold)"/>
-                <!-- Ícone circular/Q na esquerda -->
-                <rect x="12" y="13.5" width="9.5" height="9.5" rx="2" fill="#121820"/>
-                <circle cx="16.7" cy="18.2" r="2.8" stroke="url(#g-noticias-gold)" stroke-width="1.3"/>
-                <!-- 3 Linhas na direita -->
-                <rect x="24.5" y="14" width="11" height="2.2" rx="1.1" fill="#121820"/>
-                <rect x="24.5" y="18" width="11" height="2.2" rx="1.1" fill="#121820"/>
-                <!-- Linhas inferiores -->
-                <rect x="12" y="26" width="23.5" height="2.2" rx="1.1" fill="#121820"/>
-                <rect x="12" y="30.5" width="16" height="2.2" rx="1.1" fill="#121820"/>
-              </svg>
-            </div>
-            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Notícias</span>
-          </button>
-
-          <!-- 8. Ao Vivo (Antena Central com 3 Ondas Concêntricas nas Laterais) -->
-          <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center gap-1.5 group tap-active focus:outline-none transition-all">
-            <div class="dark-squircle-btn">
-              <svg viewBox="0 0 48 48" class="w-10 h-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" fill="none">
-                <defs>
-                  <linearGradient id="g-aovivo-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFF9ED"/>
-                    <stop offset="25%" stop-color="#F5DCAB"/>
-                    <stop offset="65%" stop-color="#D7AA4E"/>
-                    <stop offset="100%" stop-color="#9C7323"/>
-                  </linearGradient>
-                </defs>
-                <circle cx="24" cy="24" r="3.6" fill="url(#g-aovivo-gold)"/>
-                <path d="M19 19C16.5 21.5 16.5 26.5 19 29M29 19C31.5 21.5 31.5 26.5 29 29" stroke="url(#g-aovivo-gold)" stroke-width="2.6" stroke-linecap="round"/>
-                <path d="M15 15C11 19 11 29 15 33M33 15C37 19 37 29 33 33" stroke="url(#g-aovivo-gold)" stroke-width="2.6" stroke-linecap="round"/>
-                <path d="M11 11C5.5 16.5 5.5 31.5 11 37M37 11C42.5 16.5 42.5 31.5 37 37" stroke="url(#g-aovivo-gold)" stroke-width="2.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <span class="text-[11px] font-semibold text-[#DDD3C5] tracking-tight">Ao Vivo</span>
+          <!-- 7. Ao Vivo -->
+          <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center justify-center gap-2 group tap-active focus:outline-none transition-all py-1">
+            <i data-lucide="radio" class="w-10 h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
+            <span class="text-xs sm:text-[13px] font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors">Ao Vivo</span>
           </button>
 
         </div>
@@ -1715,6 +1563,13 @@
     };
 
     const FORMAT_ITEMS = {
+      videos: {
+        title: 'Vozes e Imagens: Saberes Tradicionais e Agrofloresta',
+        platform: 'peertube',
+        duration: '15:20',
+        likes: 3450,
+        videoUrl: 'assets/banner-arara.mp4'
+      },
       curtos: {
         title: 'Vídeo de exploração e colheita',
         platform: 'loops',
@@ -1970,7 +1825,7 @@
       }
 
       const shortSection = document.getElementById('short-videos-section');
-      if (tab === 'curtos') {
+      if (tab === 'curtos' || tab === 'videos') {
         if (shortSection) {
           shortSection.classList.remove('hidden');
           if (window.initFeedMixerUI) {

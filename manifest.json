@@ -7,11 +7,17 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#040D08",
-  "theme_color": "#07160F",
+  "background_color": "#0f2027",
+  "theme_color": "#0f2027",
   "lang": "pt-BR",
   "dir": "ltr",
-  "categories": ["social", "entertainment", "music", "news", "education"],
+  "categories": [
+    "social",
+    "entertainment",
+    "music",
+    "news",
+    "education"
+  ],
   "icons": [
     {
       "src": "assets/logo-arara.png",
@@ -34,32 +40,64 @@
   ],
   "shortcuts": [
     {
+      "name": "Bem Viver & Saberes",
+      "short_name": "Bem Viver",
+      "description": "Radar do Bem Viver Decolonial e Trilhas de Pesquisa Científica",
+      "url": "./trilhadesaberes.html",
+      "icons": [
+        {
+          "src": "icons/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
       "name": "Saberes",
       "short_name": "Saberes",
       "description": "Textos, imagens e reflexões",
       "url": "./index.html?tab=saberes",
-      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "icons/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Vídeos Curtos",
       "short_name": "Curtos",
       "description": "Vídeos rápidos da terra",
       "url": "./index.html?tab=curtos",
-      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "icons/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Vídeos Longos",
       "short_name": "Aulas",
       "description": "Documentários e aulas",
       "url": "./index.html?tab=longos",
-      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "icons/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Música",
       "short_name": "Música",
       "description": "Álbuns e faixas sonoras",
       "url": "./index.html?tab=musica",
-      "icons": [{ "src": "icons/icon.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "icons/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
   "prefer_related_applications": false

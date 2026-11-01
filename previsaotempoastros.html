@@ -10,7 +10,7 @@
 
   <!-- PWA Manifest & Suporte Mobile -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#07160F">
+  <meta name="theme-color" content="#040E1E">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -36,9 +36,9 @@
             sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
-            ybyDark: '#07160F',
-            ybyCard: '#0B2016',
-            ybyBorder: '#163524',
+            ybyDark: '#040E1E',
+            ybyCard: '#07172F',
+            ybyBorder: '#132B4F',
             goldLight: '#FFF6E5',
             goldMain: '#E5C384',
             goldDark: '#C79637',
@@ -159,7 +159,7 @@
   <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#193C29]/70 transition-all">
 
     <!-- 1. STATUS BAR NATIVA -->
-    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#07160F]">
+    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#040E1E]">
       <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
       <div class="flex items-center gap-1.5 text-slate-200">
         <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
@@ -171,10 +171,10 @@
     </header>
 
     <!-- 2. CABEÇALHO DA PÁGINA (VOLTAR + TÍTULO + SELETOR DE CIDADE) -->
-    <nav aria-label="Cabeçalho Tempo, Mar e Céu" class="px-5 pt-2 pb-3 bg-[#07160F] border-b border-[#163524] flex items-center justify-between shrink-0 gap-2">
+    <nav aria-label="Cabeçalho Tempo, Mar e Céu" class="px-5 pt-2 pb-3 bg-[#040E1E] border-b border-[#132B4F] flex items-center justify-between shrink-0 gap-2">
       <div class="flex items-center gap-3">
         <!-- Botão Voltar para Praça Pública -->
-        <a href="index.html" title="Voltar para a Praça Pública" aria-label="Voltar para a Praça Pública" class="w-10 h-10 rounded-full bg-[#0B2016] border border-[#163524] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
+        <a href="index.html" title="Voltar para a Praça Pública" aria-label="Voltar para a Praça Pública" class="w-10 h-10 rounded-full bg-[#07172F] border border-[#132B4F] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
           <i data-lucide="arrow-left" class="w-5 h-5 stroke-[2]"></i>
         </a>
         <div>
@@ -184,17 +184,17 @@
       </div>
 
       <!-- Botão Alterar Localização (Alvo de toque ≥ 44px) -->
-      <button onclick="window.toggleLocationModal()" title="Alterar localidade" aria-label="Alterar localidade de consulta" class="px-3 py-1.5 min-h-[44px] rounded-full bg-[#0B2016] border border-[#163524] hover:border-amber-500/40 text-xs text-[#E5C384] flex items-center gap-1.5 tap-active shrink-0">
+      <button onclick="window.toggleLocationModal()" title="Alterar localidade" aria-label="Alterar localidade de consulta" class="px-3 py-1.5 min-h-[44px] rounded-full bg-[#07172F] border border-[#132B4F] hover:border-amber-500/40 text-xs text-[#E5C384] flex items-center gap-1.5 tap-active shrink-0">
         <i data-lucide="map-pin" class="w-4 h-4 text-[#1E9E64]"></i>
         <span id="location-name" class="font-semibold max-w-[100px] truncate text-slate-200">São Paulo</span>
       </button>
     </nav>
 
     <!-- Barra de Atalhos de Cidades Favoritas -->
-    <div class="px-5 py-2 bg-[#05120C] border-b border-[#163524] flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
+    <div class="px-5 py-2 bg-[#05120C] border-b border-[#132B4F] flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
       <span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold shrink-0">Favoritos:</span>
       <div id="favorites-chips" class="flex items-center gap-1.5"></div>
-      <button onclick="window.saveCurrentAsFavorite()" title="Salvar cidade atual nos favoritos" aria-label="Salvar localização atual nos favoritos" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#0B2016] text-[#E5C384] hover:text-white border border-[#163524] whitespace-nowrap min-h-[38px] flex items-center gap-1 shrink-0 tap-active">
+      <button onclick="window.saveCurrentAsFavorite()" title="Salvar cidade atual nos favoritos" aria-label="Salvar localização atual nos favoritos" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#07172F] text-[#E5C384] hover:text-white border border-[#132B4F] whitespace-nowrap min-h-[38px] flex items-center gap-1 shrink-0 tap-active">
         <i data-lucide="bookmark-plus" class="w-3.5 h-3.5"></i>
         <span>Salvar</span>
       </button>
@@ -206,7 +206,7 @@
     </main>
 
     <!-- 4. RODAPÉ FIXO UNIFICADO (MESMO PADRÃO DA PRAÇA) -->
-    <footer class="shrink-0 z-30 bg-[#07160F] border-t border-[#163524] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
+    <footer class="shrink-0 z-30 bg-[#040E1E] border-t border-[#132B4F] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
       <!-- Praça -->
       <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active min-h-[44px]">
         <i data-lucide="layout-grid" class="w-5 h-5"></i>
@@ -221,8 +221,8 @@
 
       <!-- Botão Central (+) -->
       <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
-        <a href="index.html" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#126843] via-[#1E935E] to-[#2DC47F] text-white flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_16px_rgba(20,130,80,0.55),0_0_12px_rgba(229,195,132,0.35)] active:scale-95 hover:scale-105 transition-all tap-active">
-          <i data-lucide="plus" class="w-6 h-6 stroke-[3] text-white"></i>
+        <a href="index.html" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85),0_0_18px_rgba(199,150,55,0.7)] active:scale-95 hover:scale-105 transition-all tap-active">
+          <i data-lucide="plus" class="w-6 h-6 stroke-[3.5] text-[#1A1204]"></i>
         </a>
       </div>
 
@@ -245,8 +245,8 @@
   <!-- MODAL: BUSCA DE CIDADE & LOCALIZAÇÃO (PRIVACIDADE TOTAL) -->
   <!-- ======================================================== -->
   <div id="modal-location" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-loc-title">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4 max-h-[85vh] flex flex-col">
-      <div class="flex items-center justify-between pb-2 border-b border-[#163524] shrink-0">
+    <div class="bg-[#061428] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-2 border-b border-[#132B4F] shrink-0">
         <div class="flex items-center gap-2">
           <i data-lucide="map-pin" class="w-5 h-5 text-[#E5C384]"></i>
           <h2 id="modal-loc-title" class="font-bold text-slate-100 text-sm">Escolher Localidade</h2>
@@ -257,7 +257,7 @@
       </div>
 
       <!-- Botão GPS Explícito com Consentimento -->
-      <button onclick="window.useGpsLocation()" class="w-full p-3 rounded-2xl bg-[#06120C] border border-amber-500/30 hover:border-amber-400 flex items-center justify-center gap-2 text-xs font-bold text-[#E5C384] tap-active min-h-[44px]">
+      <button onclick="window.useGpsLocation()" class="w-full p-3 rounded-2xl bg-[#030A17] border border-amber-500/30 hover:border-amber-400 flex items-center justify-center gap-2 text-xs font-bold text-[#E5C384] tap-active min-h-[44px]">
         <i data-lucide="crosshair" class="w-4 h-4 text-[#1E9E64]"></i>
         <span>Usar minha localização atual (GPS)</span>
       </button>
@@ -269,7 +269,7 @@
       <!-- Campo de Pesquisa Textual -->
       <div class="space-y-1 shrink-0">
         <label for="city-search-input" class="text-[11px] font-bold text-slate-300">Buscar por nome da cidade:</label>
-        <div class="relative flex items-center bg-[#06120C] rounded-2xl p-2 pl-3.5 border border-[#163524] focus-within:ring-2 focus-within:ring-amber-500/40">
+        <div class="relative flex items-center bg-[#030A17] rounded-2xl p-2 pl-3.5 border border-[#132B4F] focus-within:ring-2 focus-within:ring-amber-500/40">
           <input type="text" id="city-search-input" oninput="window.searchCityInput(event)" placeholder="Ex: Salvador, Rio de Janeiro, Brasília..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-transparent focus:outline-none min-h-[30px]">
           <i data-lucide="search" class="w-4 h-4 text-slate-400 shrink-0 mr-1"></i>
         </div>
@@ -278,14 +278,14 @@
       <!-- Lista de Resultados de Busca -->
       <div id="search-results" class="flex-1 overflow-y-auto space-y-2 max-h-52 pr-1"></div>
 
-      <button onclick="window.toggleLocationModal()" class="w-full py-2.5 rounded-full bg-[#10261D] text-slate-300 hover:text-white text-xs font-semibold tap-active min-h-[44px] shrink-0">
+      <button onclick="window.toggleLocationModal()" class="w-full py-2.5 rounded-full bg-[#0C2242] text-slate-300 hover:text-white text-xs font-semibold tap-active min-h-[44px] shrink-0">
         Fechar
       </button>
     </div>
   </div>
 
   <!-- TOAST DE AVISO -->
-  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#0B2016] text-[#E5C384] text-xs font-bold shadow-xl border border-amber-500/30 flex items-center gap-2 hidden transition-all" role="status" aria-live="polite">
+  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#07172F] text-[#E5C384] text-xs font-bold shadow-xl border border-amber-500/30 flex items-center gap-2 hidden transition-all" role="status" aria-live="polite">
     <i data-lucide="check-circle" class="w-4 h-4 text-[#E5C384]"></i>
     <span id="app-toast-text">Ação concluída com sucesso!</span>
   </div>

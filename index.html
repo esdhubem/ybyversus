@@ -8,7 +8,7 @@
 
   <!-- PWA Manifest & Suporte Mobile -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#07160F">
+  <meta name="theme-color" content="#040E1E">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -34,9 +34,9 @@
             sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
-            ybyDark: '#07160F',
-            ybyCard: '#0B2016',
-            ybyBorder: '#163524',
+            ybyDark: '#040E1E',
+            ybyCard: '#07172F',
+            ybyBorder: '#132B4F',
             goldLight: '#FFF6E5',
             goldMain: '#E5C384',
             goldDark: '#C79637',
@@ -204,7 +204,7 @@
     .celestial-post-glow {
       position: relative;
       border-radius: 28px;
-      background: #0C2117;
+      background: linear-gradient(180deg, #091C36 0%, #06152B 100%);
       border: 1px solid rgba(229, 195, 132, 0.25);
       box-shadow: 0 22px 45px -8px rgba(0, 0, 0, 0.95), 0 0 35px rgba(229, 195, 132, 0.35), 0 8px 24px rgba(212, 175, 55, 0.25);
     }
@@ -316,8 +316,8 @@
     </header>
 
     <!-- Barra de Pesquisa Expansível (Ativada pela Lupa) -->
-    <div id="search-bar-container" class="hidden px-5 pb-3 bg-[#07160F] border-b border-[#163524]/60 transition-all">
-      <div class="relative flex items-center bg-[#0D251A] rounded-full p-1 pl-3.5 border border-amber-500/20 shadow-xs focus-within:ring-2 focus-within:ring-amber-500/30">
+    <div id="search-bar-container" class="hidden px-5 pb-3 bg-[#040E1E] border-b border-[#132B4F]/60 transition-all">
+      <div class="relative flex items-center bg-[#0A1F3D] rounded-full p-1 pl-3.5 border border-amber-500/20 shadow-xs focus-within:ring-2 focus-within:ring-amber-500/30">
         <input type="text" id="search-input" onkeyup="handleSearchInput(event)" placeholder="Pesquisar saberes, mestres ou temas..." class="w-full text-xs text-slate-100 placeholder-slate-400 bg-transparent focus:outline-none">
         <button onclick="executeSearch()" title="Buscar" class="w-7 h-7 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black flex items-center justify-center shrink-0 shadow-xs active:scale-95 transition-transform tap-active font-bold">
           <i data-lucide="search" class="w-3.5 h-3.5 stroke-[2.5]"></i>
@@ -341,8 +341,8 @@
           <!-- 1. Seu saber (+) -->
           <div onclick="openModal('modal-publish')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
             <div class="subtle-gold-ring w-14 h-14">
-              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#07160F] block">
-              <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-[#C79637] text-black flex items-center justify-center text-[10px] border-2 border-[#07160F] font-bold shadow-sm">
+              <img id="header-avatar" src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#040E1E] block">
+              <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-[#C79637] text-black flex items-center justify-center text-[10px] border-2 border-[#040E1E] font-bold shadow-sm">
                 +
               </div>
             </div>
@@ -352,7 +352,7 @@
           <!-- 2. Benvinda (Sol Ancestral) -->
           <div onclick="filterByPerson('Dona Benvinda')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
             <div class="subtle-gold-ring w-14 h-14">
-              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#07160F] block">
+              <img src="assets/card-sol-ancestral.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#040E1E] block">
             </div>
             <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Benvinda</span>
           </div>
@@ -360,7 +360,7 @@
           <!-- 3. Tiago (COM A AURÉOLA BRILHANTE DOURADA DO PRINT) -->
           <div onclick="filterByPerson('Mestre Tiago')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
             <div class="glowing-gold-halo w-14 h-14">
-              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#07160F] block">
+              <img src="assets/card-mestres-terra.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#040E1E] block">
             </div>
             <span class="text-[10.5px] font-bold text-[#FFF6E5] tracking-tight drop-shadow-[0_0_8px_rgba(229,195,132,0.8)]">Tiago</span>
           </div>
@@ -368,7 +368,7 @@
           <!-- 4. Mariana (Mariana Artesã) -->
           <div onclick="filterByPerson('Mariana Artesã')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
             <div class="subtle-gold-ring w-14 h-14">
-              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#07160F] block">
+              <img src="assets/card-floresta-sagrada.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#040E1E] block">
             </div>
             <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Mariana</span>
           </div>
@@ -376,7 +376,7 @@
           <!-- 5. Carlos (Portal de Luz) -->
           <div onclick="filterByPerson('Prof. Carlos')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active">
             <div class="subtle-gold-ring w-14 h-14">
-              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#07160F] block">
+              <img src="assets/card-portal-luz.jpg" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#040E1E] block">
             </div>
             <span class="text-[10.5px] font-medium text-[#E0D6C8] tracking-tight">Carlos</span>
           </div>
@@ -463,13 +463,13 @@
           </video>
 
           <!-- Badge do Canto Superior Esquerdo: ● Saberes • Fediverso -->
-          <div id="card-origin-badge" class="absolute top-3 left-3 px-3.5 py-1.5 rounded-full bg-[#081810]/80 backdrop-blur-md text-[#F5E6C8] text-[11.5px] font-semibold flex items-center gap-2 shadow-lg border border-amber-400/30">
+          <div id="card-origin-badge" class="absolute top-3 left-3 px-3.5 py-1.5 rounded-full bg-[#06162E]/80 backdrop-blur-md text-[#F5E6C8] text-[11.5px] font-semibold flex items-center gap-2 shadow-lg border border-amber-400/30">
             <span class="w-2.5 h-2.5 rounded-full bg-[#E5C384] shadow-[0_0_8px_rgba(229,195,132,0.9)]"></span>
             <span>Saberes • Fediverso</span>
           </div>
 
           <!-- Botão do Canto Superior Direito: Três Pontos (•••) -->
-          <button onclick="showAppToast('Opções da mídia')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#081810]/80 backdrop-blur-md text-white/95 flex items-center justify-center border border-amber-400/30 shadow-lg hover:bg-black/90 transition-colors tap-active">
+          <button onclick="showAppToast('Opções da mídia')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#06162E]/80 backdrop-blur-md text-white/95 flex items-center justify-center border border-amber-400/30 shadow-lg hover:bg-black/90 transition-colors tap-active">
             <i data-lucide="more-horizontal" class="w-4 h-4 text-[#F5E6C8]"></i>
           </button>
         </div>
@@ -539,13 +539,13 @@
           <button id="pl-tab-recentes" onclick="switchLongPlaylist('recentes')" class="px-3 py-1.5 rounded-full text-[11px] font-bold bg-[#E5C384] text-black shadow-xs tap-active transition-all shrink-0">
             Recentes
           </button>
-          <button id="pl-tab-plurais" onclick="switchLongPlaylist('plurais')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#07160F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
+          <button id="pl-tab-plurais" onclick="switchLongPlaylist('plurais')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#040E1E] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
             Autores Plurais
           </button>
-          <button id="pl-tab-aleatorio" onclick="switchLongPlaylist('aleatorio')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#07160F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
+          <button id="pl-tab-aleatorio" onclick="switchLongPlaylist('aleatorio')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#040E1E] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
             Aleatório
           </button>
-          <button id="pl-tab-seguindo" onclick="switchLongPlaylist('seguindo')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#07160F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
+          <button id="pl-tab-seguindo" onclick="switchLongPlaylist('seguindo')" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#040E1E] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0">
             Seguindo
           </button>
         </div>
@@ -589,7 +589,7 @@
         <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
           <div class="flex items-center gap-2.5">
             <div class="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-[#FFF2D6] via-[#EAC784] to-[#C99738] shadow-sm shrink-0">
-              <img src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-2 border-[#07160F]">
+              <img src="assets/dola-forest.jpg" class="w-full h-full rounded-full object-cover border-2 border-[#040E1E]">
             </div>
             <div>
               <div class="flex items-center gap-1.5 flex-wrap">
@@ -619,7 +619,7 @@
         </div>
 
         <!-- Mensagem de Abertura -->
-        <div class="p-3.5 rounded-2xl bg-[#07160F] border border-amber-500/20 text-xs text-slate-200 leading-relaxed font-normal">
+        <div class="p-3.5 rounded-2xl bg-[#040E1E] border border-amber-500/20 text-xs text-slate-200 leading-relaxed font-normal">
           <p class="font-bold text-[#E5C384] mb-1.5 text-xs">Querida Comunidade e Compartilhantes da Praça Pública,</p>
           <p class="text-slate-300">
             Hoje, <strong>31 de outubro de 2026</strong>, o <strong>YBY versus</strong> nasce oficialmente como um espaço soberano, ético, minimalista e seguro. Nascemos com um propósito claro e inegociável: resgatar a dignidade humana nas redes digitais, conectar a sabedoria ancestral da Terra (<em>Yby</em>) à imensidão do cosmos e oferecer um refúgio real de estudo, reflexão e respeito à vida, longe do ruído, da polarização e do mercantilismo agressivo.
@@ -627,7 +627,7 @@
         </div>
 
         <!-- Por trás de Yby Versus: O movimento que nos conecta -->
-        <div class="p-3.5 rounded-2xl bg-[#0E261A] border border-amber-500/30 space-y-2">
+        <div class="p-3.5 rounded-2xl bg-[#071933] border border-amber-500/30 space-y-2">
           <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
             <span>🌍</span>
             <span>Por trás de Yby Versus: O movimento que nos conecta</span>
@@ -648,7 +648,7 @@
         <div class="space-y-2.5 text-xs text-slate-300">
           
           <!-- Pilar 1 -->
-          <div class="p-3 rounded-2xl bg-[#07160F] border border-slate-700/70 space-y-1">
+          <div class="p-3 rounded-2xl bg-[#040E1E] border border-slate-700/70 space-y-1">
             <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🌿</span>
               <span>A Essência do Cuidado e da Responsabilidade Coletiva</span>
@@ -659,7 +659,7 @@
           </div>
 
           <!-- Pilar 2 -->
-          <div class="p-3 rounded-2xl bg-[#07160F] border border-slate-700/70 space-y-1">
+          <div class="p-3 rounded-2xl bg-[#040E1E] border border-slate-700/70 space-y-1">
             <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🏛️</span>
               <span>O Rigor com a Verdade e a Segurança Institucional</span>
@@ -670,7 +670,7 @@
           </div>
 
           <!-- Pilar 3 -->
-          <div class="p-3 rounded-2xl bg-[#07160F] border border-slate-700/70 space-y-1">
+          <div class="p-3 rounded-2xl bg-[#040E1E] border border-slate-700/70 space-y-1">
             <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🛡️</span>
               <span>A Soberania, a Justiça e a Proteção dos Vulneráveis</span>
@@ -681,7 +681,7 @@
           </div>
 
           <!-- Pilar 4 -->
-          <div class="p-3 rounded-2xl bg-[#07160F] border border-slate-700/70 space-y-1">
+          <div class="p-3 rounded-2xl bg-[#040E1E] border border-slate-700/70 space-y-1">
             <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🎨</span>
               <span>A Expressão Criativa, a Arte e o Conhecimento Vivo</span>
@@ -692,7 +692,7 @@
           </div>
 
           <!-- Pilar 5 -->
-          <div class="p-3 rounded-2xl bg-[#07160F] border border-slate-700/70 space-y-1">
+          <div class="p-3 rounded-2xl bg-[#040E1E] border border-slate-700/70 space-y-1">
             <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🤝</span>
               <span>O Reconhecimento dos Desafios e o Nosso Compromisso Pacífero</span>
@@ -705,7 +705,7 @@
         </div>
 
         <!-- Convite de Honra Final e Assinatura -->
-        <div class="p-3.5 bg-gradient-to-r from-[#0E241A] to-[#081810] rounded-2xl text-white space-y-2 border border-amber-500/25 shadow-sm">
+        <div class="p-3.5 bg-gradient-to-r from-[#0E241A] to-[#06162E] rounded-2xl text-white space-y-2 border border-amber-500/25 shadow-sm">
           <p class="text-[11.5px] leading-relaxed text-[#F3E2C4] italic">
             "A terra é firme sob nossos pés, e o horizonte é amplo diante de nós. Seja bem-vindo(a) a este ecossistema."
           </p>
@@ -755,8 +755,8 @@
 
       <!-- Botão Central Elevado (+) Cultivar Saber -->
       <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
-        <button onclick="openModal('modal-publish')" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#126843] via-[#1E935E] to-[#2DC47F] text-white flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_16px_rgba(20,130,80,0.55),0_0_12px_rgba(229,195,132,0.35)] active:scale-95 hover:scale-105 transition-all tap-active">
-          <i data-lucide="plus" class="w-6 h-6 stroke-[3] text-white"></i>
+        <button onclick="openModal('modal-publish')" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85),0_0_18px_rgba(199,150,55,0.7)] active:scale-95 hover:scale-105 transition-all tap-active">
+          <i data-lucide="plus" class="w-6 h-6 stroke-[3.5] text-[#1A1204]"></i>
         </button>
       </div>
 
@@ -781,7 +781,7 @@
 
   <!-- MODAL: DISTRIBUIÇÃO JUSTA SEM BOLHAS & SOBERANIA -->
   <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
+    <div class="bg-[#061428] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
       <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
           <i data-lucide="network" class="w-5 h-5 text-[#E5C384]"></i>
@@ -797,23 +797,23 @@
       </p>
 
       <div class="space-y-2 text-xs">
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#030A17] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">25% Novidades</span>
           <span class="text-slate-400">Recentes</span>
         </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#030A17] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">25% Vozes Plurais</span>
           <span class="text-slate-400">Diferentes alcances</span>
         </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#030A17] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">20% Diversidade Temática</span>
           <span class="text-slate-400">Fora da sua bolha</span>
         </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#030A17] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">15% Novos Integrantes</span>
           <span class="text-slate-400">Descoberta inicial</span>
         </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-slate-300">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#030A17] border border-amber-500/20 text-slate-300">
           <span class="font-bold text-[#E5C384]">15% Sorteio Justo</span>
           <span class="text-slate-400">Sorteio imparcial</span>
         </div>
@@ -837,7 +837,7 @@
 
   <!-- MODAL: MENU DE OPÇÕES -->
   <div id="modal-menu" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
+    <div class="bg-[#061428] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4">
       <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
           <span class="font-brand text-sm font-bold text-[#E5C384]">YBY versus</span>
@@ -848,29 +848,29 @@
       </div>
 
       <div class="space-y-1 text-xs">
-        <button onclick="openModal('modal-manifesto'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
+        <button onclick="openModal('modal-manifesto'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="scroll" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Carta Aberta (Manifesto de Nascimento)</span>
         </button>
-        <button onclick="openModal('modal-termos'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
+        <button onclick="openModal('modal-termos'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="file-text" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Termos de Uso & Conduta</span>
         </button>
-        <button onclick="openModal('modal-privacidade'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
+        <button onclick="openModal('modal-privacidade'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="shield-check" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Política de Privacidade (LGPD)</span>
         </button>
-        <button onclick="openModal('modal-direitos-recados'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
+        <button onclick="openModal('modal-direitos-recados'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="shield-alert" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Direitos Autorais, Terceiros & Recados</span>
         </button>
-        <button onclick="openModal('modal-algoritmo'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#10261D] flex items-center gap-2.5 tap-active text-slate-200">
+        <button onclick="openModal('modal-algoritmo'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="network" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Distribuição Justa & Soberania</span>
         </button>
       </div>
 
-      <button onclick="closeModal('modal-menu')" class="w-full py-2 rounded-full bg-[#10261D] text-slate-300 hover:text-white text-xs font-semibold tap-active">
+      <button onclick="closeModal('modal-menu')" class="w-full py-2 rounded-full bg-[#0C2242] text-slate-300 hover:text-white text-xs font-semibold tap-active">
         Fechar
       </button>
     </div>
@@ -878,10 +878,10 @@
 
   <!-- MODAL: CARTA ABERTA / MANIFESTO DE NASCIMENTO (COMPLETO) -->
   <div id="modal-manifesto" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
+    <div class="bg-[#061428] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
       
       <!-- Cabeçalho -->
-      <div class="px-5 py-4 bg-[#06120C] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
+      <div class="px-5 py-4 bg-[#030A17] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
           <i data-lucide="scroll" class="w-5 h-5 text-[#E5C384]"></i>
           <div>
@@ -898,7 +898,7 @@
       <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed custom-scrollbar">
         
         <!-- Identificação Oficial -->
-        <div class="p-3.5 bg-[#06120C] rounded-2xl border border-amber-500/20 space-y-1">
+        <div class="p-3.5 bg-[#030A17] rounded-2xl border border-amber-500/20 space-y-1">
           <div class="flex items-center justify-between flex-wrap text-[11px] text-[#E5C384] font-medium">
             <span><strong>De:</strong> Ecossistema YBY versus</span>
             <span><strong>Fundação:</strong> 31 de Outubro de 2026</span>
@@ -920,7 +920,7 @@
         </div>
 
         <!-- Por trás de Yby Versus: O movimento que nos conecta -->
-        <div class="p-4 bg-[#0E261A] rounded-2xl border border-amber-500/30 space-y-2.5">
+        <div class="p-4 bg-[#071933] rounded-2xl border border-amber-500/30 space-y-2.5">
           <h5 class="font-bold text-[#E5C384] text-xs sm:text-sm flex items-center gap-1.5">
             <span>🌍</span>
             <span>Por trás de Yby Versus: O movimento que nos conecta</span>
@@ -943,7 +943,7 @@
 
         <!-- Pilares -->
         <div class="space-y-3">
-          <div class="p-3.5 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <div class="p-3.5 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
             <h5 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🌿</span>
               <span>A Essência do Cuidado e da Responsabilidade Coletiva</span>
@@ -953,7 +953,7 @@
             </p>
           </div>
 
-          <div class="p-3.5 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <div class="p-3.5 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
             <h5 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🏛️</span>
               <span>O Rigor com a Verdade e a Segurança Institucional</span>
@@ -963,7 +963,7 @@
             </p>
           </div>
 
-          <div class="p-3.5 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <div class="p-3.5 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
             <h5 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🛡️</span>
               <span>A Soberania, a Justiça e a Proteção dos Vulneráveis</span>
@@ -973,7 +973,7 @@
             </p>
           </div>
 
-          <div class="p-3.5 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <div class="p-3.5 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
             <h5 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🎨</span>
               <span>A Expressão Criativa, a Arte e o Conhecimento Vivo</span>
@@ -983,7 +983,7 @@
             </p>
           </div>
 
-          <div class="p-3.5 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+          <div class="p-3.5 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
             <h5 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🤝</span>
               <span>O Reconhecimento dos Desafios e o Nosso Compromisso Pacífero</span>
@@ -1000,7 +1000,7 @@
           </div>
 
           <!-- Convite de Honra -->
-          <div class="p-3.5 bg-gradient-to-r from-[#0E241A] to-[#081810] rounded-2xl text-white space-y-2 border border-amber-500/25 shadow-sm">
+          <div class="p-3.5 bg-gradient-to-r from-[#0E241A] to-[#06162E] rounded-2xl text-white space-y-2 border border-amber-500/25 shadow-sm">
             <h5 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
               <span>🌟</span>
               <span>O Nosso Convite de Honra</span>
@@ -1021,8 +1021,8 @@
       </div>
 
       <!-- Rodapé do Modal -->
-      <div class="p-3 bg-[#06120C] border-t border-slate-700/60 flex items-center justify-between gap-2 shrink-0">
-        <button onclick="shareMainPost()" class="px-4 py-2 rounded-full bg-[#10261D] text-[#E5C384] text-xs font-semibold hover:text-white transition-all tap-active flex items-center gap-1.5">
+      <div class="p-3 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between gap-2 shrink-0">
+        <button onclick="shareMainPost()" class="px-4 py-2 rounded-full bg-[#0C2242] text-[#E5C384] text-xs font-semibold hover:text-white transition-all tap-active flex items-center gap-1.5">
           <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
           <span>Compartilhar</span>
         </button>
@@ -1036,10 +1036,10 @@
 
   <!-- MODAL: TERMOS DE USO & CONDUTA (COMPLETO) -->
   <div id="modal-termos" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
+    <div class="bg-[#061428] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
       
       <!-- Cabeçalho -->
-      <div class="px-5 py-4 bg-[#06120C] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
+      <div class="px-5 py-4 bg-[#030A17] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
           <i data-lucide="file-text" class="w-5 h-5 text-[#E5C384]"></i>
           <div>
@@ -1055,7 +1055,7 @@
       <!-- Conteúdo Integral -->
       <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed">
         
-        <div class="p-3.5 bg-[#06120C] rounded-2xl border border-amber-500/20 space-y-1.5">
+        <div class="p-3.5 bg-[#030A17] rounded-2xl border border-amber-500/20 space-y-1.5">
           <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
             <span>🌿</span>
             <span>1. Manifesto de Princípios e Propósito</span>
@@ -1071,35 +1071,35 @@
             <span>2. Diretrizes de Conduta e Convivência</span>
           </h4>
 
-          <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
+          <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1">
             <h5 class="font-bold text-[#E5C384] text-xs">🏛️ 2.1. Política, Filosofia e Cidadania Consciente</h5>
             <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Apenas conteúdo histórico, filosófico, cidadão, educacional, ético e humano. Vedação absoluta à militância partidária rasa, demagogia e ataques pessoais.
             </p>
           </div>
 
-          <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
+          <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1">
             <h5 class="font-bold text-[#E5C384] text-xs">🕊️ 2.2. Espiritualidade Sadia e Respeito Universal</h5>
             <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Espiritualidade ancestral e pacificadora que constrói pontes. Vedação a proselitismo, pregação impositiva, condenações e captação de fiéis.
             </p>
           </div>
 
-          <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
+          <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1">
             <h5 class="font-bold text-[#E5C384] text-xs">📜 2.3. Astrologia, Tarot e Saberes Oraculares/Simbólicos</h5>
             <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Foco educativo e de compreensão de ciclos. <strong>Proibição absoluta de alarmismo e fatalismo:</strong> vedadas previsões diretas de mortes, tragédias, desgraças ou exploração do medo.
             </p>
           </div>
 
-          <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
+          <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1">
             <h5 class="font-bold text-[#E5C384] text-xs">🌿 2.4. Práticas Integrativas, Fitoterapia e Saúde</h5>
             <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Foco em estilo de vida e prevenção integral. Respeito às normas sanitárias (Anvisa), sem charlatanismo. Capacitação de criadores e respeito aos profissionais de saúde.
             </p>
           </div>
 
-          <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
+          <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1">
             <h5 class="font-bold text-[#E5C384] text-xs">🚫 2.5. Recusa do Marketing Agressivo e Predatório</h5>
             <p class="text-[11.5px] text-slate-400 leading-relaxed">
               Vedadas técnicas de manipulação algorítmica, concorrência desleal e escassez fabricada.
@@ -1119,21 +1119,21 @@
           </p>
         </div>
 
-        <div class="p-3.5 bg-[#06120C] rounded-2xl border border-amber-500/20 space-y-1.5">
+        <div class="p-3.5 bg-[#030A17] rounded-2xl border border-amber-500/20 space-y-1.5">
           <h4 class="font-bold text-[#E5C384] text-xs">🛍️ 5. Política de Portfólio, Autoria e Vendas Próprias</h4>
           <p class="text-[11.5px] text-slate-300 leading-relaxed">
             Apenas para obras de autoria direta do criador (livros, e-books, músicas, atendimentos legítimos). Vedados links de afiliados externos e revenda de terceiros.
           </p>
         </div>
 
-        <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
+        <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1">
           <h4 class="font-bold text-[#E5C384] text-xs">⚖️ 6. Equidade de Alcance e Sem Impulsionamento Pago</h4>
           <p class="text-[11.5px] text-slate-400 leading-relaxed">
             O dinheiro não compra alcance. Distribuição aberta e justa por cotas equilibradas e sorteio imparcial sem bolhas.
           </p>
         </div>
 
-        <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+        <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
           <h4 class="font-bold text-[#E5C384] text-xs">🏛️ 7. Notificações e Canal Oficial</h4>
           <p class="text-[11.5px] text-slate-400 leading-relaxed">
             Marco Civil da Internet (Lei 12.965/2014) e LGPD (Lei 13.709/2018).
@@ -1147,7 +1147,7 @@
       </div>
 
       <!-- Rodapé -->
-      <div class="p-3 bg-[#06120C] border-t border-slate-700/60 flex items-center justify-between">
+      <div class="p-3 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between">
         <span class="text-[10px] text-slate-400 font-medium">YBY versus • Soberania & Ética</span>
         <button onclick="closeModal('modal-termos')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
           Compreendido e de Acordo
@@ -1158,10 +1158,10 @@
 
   <!-- MODAL: POLÍTICA DE PRIVACIDADE (LGPD) (COMPLETO) -->
   <div id="modal-privacidade" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
+    <div class="bg-[#061428] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
       
       <!-- Cabeçalho -->
-      <div class="px-5 py-4 bg-[#06120C] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
+      <div class="px-5 py-4 bg-[#030A17] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
           <i data-lucide="shield-check" class="w-5 h-5 text-[#E5C384]"></i>
           <div>
@@ -1177,7 +1177,7 @@
       <!-- Conteúdo Integral -->
       <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed">
         
-        <div class="p-3.5 bg-[#06120C] rounded-2xl border border-amber-500/20 space-y-1.5">
+        <div class="p-3.5 bg-[#030A17] rounded-2xl border border-amber-500/20 space-y-1.5">
           <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5">
             <span>🛡️</span>
             <span>1. Compromisso com a Privacidade e Soberania Digital</span>
@@ -1187,7 +1187,7 @@
           </p>
         </div>
 
-        <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+        <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
           <h4 class="font-bold text-slate-100 text-xs">📋 2. Quais Dados Tratamos</h4>
           <div class="space-y-1 text-[11px] text-slate-400">
             <p>• <strong>Perfil Público:</strong> Nome público, foto e minibiografia voluntária.</p>
@@ -1207,12 +1207,12 @@
           </ul>
         </div>
 
-        <div class="p-3.5 bg-[#06120C] rounded-2xl border border-amber-500/20 space-y-1.5">
+        <div class="p-3.5 bg-[#030A17] rounded-2xl border border-amber-500/20 space-y-1.5">
           <h4 class="font-bold text-[#E5C384] text-xs">⚖️ 4. Seus Direitos (Art. 18 da LGPD)</h4>
           <p class="text-[11px] text-slate-400">Acesso, retificação, exclusão definitiva, portabilidade e revogação de consentimento a qualquer instante.</p>
         </div>
 
-        <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1.5">
+        <div class="p-3 bg-[#030A17] rounded-2xl border border-slate-700/70 space-y-1.5">
           <h4 class="font-bold text-slate-100 text-xs">🔒 5. Contato do Encarregado (DPO)</h4>
           <p class="text-[11.5px] text-slate-400 leading-relaxed">Conexões criptografadas (HTTPS/TLS) e blindagem contra vazamentos.</p>
           <div class="pt-1.5 border-t border-slate-700 text-[11px] font-semibold text-[#E5C384] flex items-center justify-between">
@@ -1224,7 +1224,7 @@
       </div>
 
       <!-- Rodapé -->
-      <div class="p-3 bg-[#06120C] border-t border-slate-700/60 flex items-center justify-between">
+      <div class="p-3 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between">
         <span class="text-[10px] text-slate-400 font-medium">YBY versus • Privacidade Soberana</span>
         <button onclick="closeModal('modal-privacidade')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
           Entendido
@@ -1235,10 +1235,10 @@
 
   <!-- MODAL: DIREITOS AUTORAIS, CONTEÚDO DE TERCEIROS E RECADOS (NOVO) -->
   <div id="modal-direitos-recados" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5" role="dialog" aria-modal="true" aria-labelledby="modal-direitos-title">
-    <div class="bg-[#0A1C14] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
+    <div class="bg-[#061428] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
       
       <!-- Cabeçalho -->
-      <div class="px-5 py-4 bg-[#06120C] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
+      <div class="px-5 py-4 bg-[#030A17] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2">
           <i data-lucide="shield-alert" class="w-5 h-5 text-[#E5C384]"></i>
           <div>
@@ -1420,7 +1420,7 @@
         </section>
 
         <!-- Textos curtos de interface -->
-        <div class="p-3.5 bg-[#06120C] rounded-2xl border border-amber-500/20 space-y-2 text-[10.5px]">
+        <div class="p-3.5 bg-[#030A17] rounded-2xl border border-amber-500/20 space-y-2 text-[10.5px]">
           <span class="font-bold text-[#E5C384] block">Textos de Interface Integrados:</span>
           <div>
             <strong class="text-white">Tela de Recados:</strong>
@@ -1435,7 +1435,7 @@
       </div>
 
       <!-- Rodapé da Modal -->
-      <div class="p-3 bg-[#06120C] border-t border-slate-700/60 flex items-center justify-between">
+      <div class="p-3 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between">
         <span class="text-[10px] text-slate-400 font-medium">YBY versus • Direitos Autorais & Recados</span>
         <button onclick="closeModal('modal-direitos-recados')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
           Compreendido
@@ -1447,10 +1447,10 @@
 
   <!-- MODAL: PUBLICAÇÃO POR LINK EXTERNO (NOVO PADRÃO YBYVERSUS) -->
   <div id="modal-publish" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-publish-title">
-    <div class="bg-[#0A1C14] rounded-[32px] max-w-md w-full max-h-[92vh] flex flex-col shadow-2xl border border-amber-500/25 overflow-hidden my-auto">
+    <div class="bg-[#061428] rounded-[32px] max-w-md w-full max-h-[92vh] flex flex-col shadow-2xl border border-amber-500/25 overflow-hidden my-auto">
       
       <!-- Cabeçalho idêntico ao modelo de referência -->
-      <div class="px-5 py-4 bg-[#06120C] flex items-center justify-between shrink-0 border-b border-slate-700/60">
+      <div class="px-5 py-4 bg-[#030A17] flex items-center justify-between shrink-0 border-b border-slate-700/60">
         <div class="flex items-center gap-2.5">
           <div class="w-10 h-10 rounded-full bg-[#102B1E] border border-emerald-500/30 flex items-center justify-center text-[#E5C384] shrink-0">
             <i data-lucide="link-2" class="w-5 h-5"></i>
@@ -1460,7 +1460,7 @@
             <span class="text-[10px] text-[#A1C1B0]">Vídeos Curtos, Aulas Longas e Áudios Autorais</span>
           </div>
         </div>
-        <button onclick="closeModal('modal-publish')" class="w-8 h-8 rounded-full bg-[#10261D] text-slate-400 hover:text-white flex items-center justify-center tap-active">
+        <button onclick="closeModal('modal-publish')" class="w-8 h-8 rounded-full bg-[#0C2242] text-slate-400 hover:text-white flex items-center justify-center tap-active">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -1469,7 +1469,7 @@
       <div class="p-5 overflow-y-auto space-y-4 text-xs text-slate-200 custom-scrollbar flex-1">
         
         <!-- Card Informativo com Ícone de Claquete -->
-        <div class="p-3.5 rounded-2xl bg-[#0E261A] border border-emerald-500/30 flex items-start gap-3 shadow-xs">
+        <div class="p-3.5 rounded-2xl bg-[#071933] border border-amber-500/30 flex items-start gap-3 shadow-xs">
           <div class="w-8 h-8 rounded-xl bg-[#163827] flex items-center justify-center text-[#E5C384] shrink-0 mt-0.5">
             <i data-lucide="clapperboard" class="w-4 h-4"></i>
           </div>
@@ -1491,7 +1491,7 @@
             <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
               <i data-lucide="link" class="w-4 h-4"></i>
             </div>
-            <input type="url" id="publish-link-url" oninput="autoDetectPlatform(this.value)" placeholder="https://..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] pl-10 pr-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 transition-colors">
+            <input type="url" id="publish-link-url" oninput="autoDetectPlatform(this.value)" placeholder="https://..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#030A17] pl-10 pr-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 transition-colors">
           </div>
         </div>
 
@@ -1499,7 +1499,7 @@
         <div class="space-y-1.5">
           <label for="publish-platform-select" class="font-bold text-[#FFF6E5] text-xs">2. Plataforma de Origem <span class="text-amber-400">*</span></label>
           <div class="relative">
-            <select id="publish-platform-select" class="w-full text-xs text-slate-100 bg-[#06120C] px-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 appearance-none cursor-pointer">
+            <select id="publish-platform-select" class="w-full text-xs text-slate-100 bg-[#030A17] px-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 appearance-none cursor-pointer">
               <option value="" disabled selected>Selecione a plataforma de origem...</option>
               <option value="youtube">YouTube (Vídeos & Shorts)</option>
               <option value="instagram">Instagram (Reels & Posts)</option>
@@ -1522,21 +1522,21 @@
           <div class="grid grid-cols-3 gap-2">
             
             <!-- Curto -->
-            <button type="button" onclick="selectPublishFormat('curto')" id="fmt-card-curto" class="p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#06120C] border-[#163524] text-slate-300">
+            <button type="button" onclick="selectPublishFormat('curto')" id="fmt-card-curto" class="p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#030A17] border-[#132B4F] text-slate-300">
               <i data-lucide="clapperboard" class="w-5 h-5 text-[#E5C384]"></i>
               <span class="font-bold text-[11px] block leading-none">Curto</span>
               <span class="text-[9px] text-slate-400 leading-none">9:16 (Pílula)</span>
             </button>
 
             <!-- Longo (Padrão Selecionado Inicial) -->
-            <button type="button" onclick="selectPublishFormat('longo')" id="fmt-card-longo" class="p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#FFF6E5] border-amber-500 text-[#07160F] shadow-sm">
-              <i data-lucide="tv" class="w-5 h-5 text-[#07160F]"></i>
-              <span class="font-bold text-[11px] block leading-none text-[#07160F]">Longo</span>
+            <button type="button" onclick="selectPublishFormat('longo')" id="fmt-card-longo" class="p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#FFF6E5] border-amber-500 text-[#040E1E] shadow-sm">
+              <i data-lucide="tv" class="w-5 h-5 text-[#040E1E]"></i>
+              <span class="font-bold text-[11px] block leading-none text-[#040E1E]">Longo</span>
               <span class="text-[9px] text-slate-600 leading-none">16:9 (Vitrine)</span>
             </button>
 
             <!-- Música -->
-            <button type="button" onclick="selectPublishFormat('musica')" id="fmt-card-musica" class="p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#06120C] border-[#163524] text-slate-300">
+            <button type="button" onclick="selectPublishFormat('musica')" id="fmt-card-musica" class="p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#030A17] border-[#132B4F] text-slate-300">
               <i data-lucide="music" class="w-5 h-5 text-[#E5C384]"></i>
               <span class="font-bold text-[11px] block leading-none">Música</span>
               <span class="text-[9px] text-slate-400 leading-none">Áudio / Canto</span>
@@ -1554,7 +1554,7 @@
         <!-- 4. Título / Legenda da publicação -->
         <div class="space-y-1.5">
           <label for="publish-title-input" class="font-bold text-[#FFF6E5] text-xs">4. Título / Legenda da publicação <span class="text-amber-400">*</span></label>
-          <input type="text" id="publish-title-input" placeholder="Ex: Multiplicação de enxame de abelha jataí..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] px-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 transition-colors">
+          <input type="text" id="publish-title-input" placeholder="Ex: Multiplicação de enxame de abelha jataí..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#030A17] px-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 transition-colors">
         </div>
 
         <!-- 5. REGRA DE AUTORIA PARA VÍDEOS POR LINK (OBRIGATÓRIO) -->
@@ -1575,12 +1575,12 @@
             </label>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <label class="flex items-center gap-2.5 p-3 rounded-2xl border border-slate-700 bg-[#06120C] hover:border-amber-500/50 cursor-pointer transition-all">
+              <label class="flex items-center gap-2.5 p-3 rounded-2xl border border-slate-700 bg-[#030A17] hover:border-amber-500/50 cursor-pointer transition-all">
                 <input type="radio" name="video_authorship_choice" value="meu_video" onchange="handleAuthorshipChange(this.value)" class="w-4 h-4 accent-[#1E9E64]">
                 <span class="text-xs font-semibold text-white">É meu vídeo autoral</span>
               </label>
 
-              <label class="flex items-center gap-2.5 p-3 rounded-2xl border border-slate-700 bg-[#06120C] hover:border-amber-500/50 cursor-pointer transition-all">
+              <label class="flex items-center gap-2.5 p-3 rounded-2xl border border-slate-700 bg-[#030A17] hover:border-amber-500/50 cursor-pointer transition-all">
                 <input type="radio" name="video_authorship_choice" value="creative_commons" onchange="handleAuthorshipChange(this.value)" class="w-4 h-4 accent-[#1E9E64]">
                 <span class="text-xs font-semibold text-white">Vídeo com licença Creative Commons</span>
               </label>
@@ -1597,7 +1597,7 @@
             <!-- Tipo de licença (apenas CC BY, CC BY-SA ou CC0) -->
             <div class="space-y-1">
               <label for="publish-cc-license" class="text-[11px] font-semibold text-slate-200">Tipo de Licença Permitida <span class="text-amber-400">*</span></label>
-              <select id="publish-cc-license" class="w-full text-xs text-slate-100 bg-[#06120C] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60 cursor-pointer">
+              <select id="publish-cc-license" class="w-full text-xs text-slate-100 bg-[#030A17] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60 cursor-pointer">
                 <option value="" disabled selected>Selecione a licença permitida...</option>
                 <option value="CC BY">CC BY (Atribuição requerida)</option>
                 <option value="CC BY-SA">CC BY-SA (Atribuição + Compartilha Igual)</option>
@@ -1608,19 +1608,19 @@
             <!-- Nome do autor original -->
             <div class="space-y-1">
               <label for="publish-cc-author" class="text-[11px] font-semibold text-slate-200">Nome do Autor Original <span class="text-amber-400">*</span></label>
-              <input type="text" id="publish-cc-author" placeholder="Ex: Dra. Ana Guajajara / Coletivo Terra Viva" class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60">
+              <input type="text" id="publish-cc-author" placeholder="Ex: Dra. Ana Guajajara / Coletivo Terra Viva" class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#030A17] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60">
             </div>
 
             <!-- Link da fonte onde a licença é indicada -->
             <div class="space-y-1">
               <label for="publish-cc-source" class="text-[11px] font-semibold text-slate-200">Link da Fonte Oficial (comprovando a licença) <span class="text-amber-400">*</span></label>
-              <input type="url" id="publish-cc-source" placeholder="https://..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60">
+              <input type="url" id="publish-cc-source" placeholder="https://..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#030A17] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60">
             </div>
           </div>
         </div>
 
         <!-- Bloco de Diretrizes Éticas Antes de Publicar -->
-        <div class="p-3.5 rounded-2xl bg-[#06120C] border border-amber-500/30 space-y-2 text-[11px] text-slate-300">
+        <div class="p-3.5 rounded-2xl bg-[#030A17] border border-amber-500/30 space-y-2 text-[11px] text-slate-300">
           <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
             <span>📢</span>
             <span>Antes de publicar:</span>
@@ -1654,7 +1654,7 @@
       </div>
 
       <!-- Rodapé com Ações -->
-      <div class="p-4 bg-[#06120C] border-t border-slate-700/60 flex items-center justify-between gap-3 shrink-0">
+      <div class="p-4 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between gap-3 shrink-0">
         <span class="text-[10px] text-slate-400">Distribuição justa sem taxas</span>
         <button onclick="submitLinkPublication()" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] hover:brightness-110 text-black text-xs font-bold tap-active transition-all shadow-md">
           Publicar Link
@@ -1665,7 +1665,7 @@
   </div>
 
   <!-- TOAST DE AVISO -->
-  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#0B2016] text-[#E5C384] text-xs font-bold shadow-xl border border-amber-500/30 flex items-center gap-2 hidden transition-all">
+  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#07172F] text-[#E5C384] text-xs font-bold shadow-xl border border-amber-500/30 flex items-center gap-2 hidden transition-all">
     <i data-lucide="check-circle" class="w-4 h-4 text-[#E5C384]"></i>
     <span id="app-toast-text">Ação concluída com sucesso!</span>
   </div>
@@ -1880,7 +1880,7 @@
         if (t === type) {
           btn.className = 'px-3 py-1.5 rounded-full text-[11px] font-bold bg-[#E5C384] text-black shadow-xs tap-active transition-all shrink-0';
         } else {
-          btn.className = 'px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#07160F] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0';
+          btn.className = 'px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#040E1E] text-slate-300 hover:text-white border border-slate-700 tap-active transition-all shrink-0';
         }
       });
       renderLongPlaylistItems();
@@ -1895,7 +1895,7 @@
       list.forEach((item, index) => {
         const plat = PLATFORMS[item.platform] || PLATFORMS.peertube;
         html += `
-          <div onclick="playPlaylistItem('${item.title}', '${item.duration}', '${item.image}', '${item.platform}')" class="flex items-center gap-3 p-2 rounded-2xl bg-[#07160F] hover:bg-[#0C2218] border border-slate-700/60 cursor-pointer tap-active transition-all group">
+          <div onclick="playPlaylistItem('${item.title}', '${item.duration}', '${item.image}', '${item.platform}')" class="flex items-center gap-3 p-2 rounded-2xl bg-[#040E1E] hover:bg-[#0C2218] border border-slate-700/60 cursor-pointer tap-active transition-all group">
             <div class="relative w-20 h-14 rounded-xl overflow-hidden shrink-0 bg-black">
               <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
               <span class="absolute bottom-1 right-1 px-1.5 py-0.2 rounded bg-black/80 text-[9.5px] font-bold text-white">
@@ -2139,15 +2139,15 @@
         const btn = document.getElementById('fmt-card-' + f);
         if (!btn) return;
         if (f === fmt) {
-          btn.className = 'p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#FFF6E5] border-amber-500 text-[#07160F] shadow-sm';
+          btn.className = 'p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#FFF6E5] border-amber-500 text-[#040E1E] shadow-sm';
           const title = btn.querySelector('span:nth-of-type(1)');
-          if (title) title.className = 'font-bold text-[11px] block leading-none text-[#07160F]';
+          if (title) title.className = 'font-bold text-[11px] block leading-none text-[#040E1E]';
           const sub = btn.querySelector('span:nth-of-type(2)');
           if (sub) sub.className = 'text-[9px] text-slate-600 leading-none';
           const icon = btn.querySelector('i');
-          if (icon) icon.className = 'w-5 h-5 text-[#07160F]';
+          if (icon) icon.className = 'w-5 h-5 text-[#040E1E]';
         } else {
-          btn.className = 'p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#06120C] border-[#163524] text-slate-300';
+          btn.className = 'p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 transition-all tap-active bg-[#030A17] border-[#132B4F] text-slate-300';
           const title = btn.querySelector('span:nth-of-type(1)');
           if (title) title.className = 'font-bold text-[11px] block leading-none';
           const sub = btn.querySelector('span:nth-of-type(2)');

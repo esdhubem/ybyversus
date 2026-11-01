@@ -120,7 +120,7 @@ export function renderFeedItemCard(item) {
   }[item.motivo] || 'text-slate-300 bg-slate-700/20 border-slate-700/40';
 
   return `
-    <article class="feed-item rounded-3xl bg-[#0B2016] border border-[#163524] overflow-hidden space-y-3 p-4 transition-all" data-item-id="${item.id}">
+    <article class="feed-item rounded-3xl bg-[#07172F] border border-[#132B4F] overflow-hidden space-y-3 p-4 transition-all" data-item-id="${item.id}">
       <!-- Cabeçalho do Criador + Transparência -->
       <div class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-2.5">
@@ -144,7 +144,7 @@ export function renderFeedItemCard(item) {
       </div>
 
       <!-- Mídia / Thumbnail -->
-      <div class="relative aspect-video rounded-2xl overflow-hidden bg-[#06120C] border border-[#163524]">
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-[#030A17] border border-[#132B4F]">
         <img src="${item.thumbnailUrl || 'assets/hero-forest.jpg'}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.src='assets/hero-forest.jpg'">
         <div class="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-xs text-[10px] font-bold text-slate-200">
           ${item.duration ? `${item.duration}s` : 'Vídeo'}
@@ -157,7 +157,7 @@ export function renderFeedItemCard(item) {
         
         <!-- Atribuição de Creative Commons (se aplicável) -->
         ${item.autoria === 'creative_commons' || item.licenca ? `
-          <div class="p-2 rounded-xl bg-[#06120C] border border-slate-700/60 flex items-center justify-between text-[10px] text-slate-300 flex-wrap gap-1">
+          <div class="p-2 rounded-xl bg-[#030A17] border border-slate-700/60 flex items-center justify-between text-[10px] text-slate-300 flex-wrap gap-1">
             <div class="flex items-center gap-1.5">
               <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-bold border border-emerald-500/30">${item.licenca || 'CC BY'}</span>
               <span>Autor: <strong>${item.autor || creator.name}</strong></span>
@@ -199,7 +199,7 @@ if (typeof window !== 'undefined') {
         modalEl.setAttribute('role', 'dialog');
         modalEl.setAttribute('aria-modal', 'true');
         modalEl.innerHTML = `
-          <div class="bg-[#0A1C14] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/30 space-y-3 text-slate-200">
+          <div class="bg-[#061428] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/30 space-y-3 text-slate-200">
             <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
               <div class="flex items-center gap-2">
                 <span class="text-base">⚖️</span>
@@ -212,7 +212,7 @@ if (typeof window !== 'undefined') {
             
             <div class="space-y-2 text-xs">
               <p class="text-slate-300 leading-relaxed" id="modal-why-text"></p>
-              <div class="p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-[11px] text-[#E5C384]">
+              <div class="p-2.5 rounded-xl bg-[#030A17] border border-amber-500/20 text-[11px] text-[#E5C384]">
                 Este item ocupa uma cota garantida pelo <strong>YBY versus</strong>. Nenhuma empresa pagou para impulsionar este conteúdo e nenhum perfil de vício foi usado.
               </div>
             </div>

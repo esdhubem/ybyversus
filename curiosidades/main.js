@@ -386,9 +386,23 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
           `).join('')}
         </div>
       </div>
+    </section>
+
+    <!-- 4. SEÇÃO: MINI ATLAS DO SISTEMA SOLAR & HORA NA LUA (LOGO APÓS A LUA) -->
+    ${renderSolarSystemSection()}
+
+    <!-- 5. SEÇÃO: CICLOS DO ANO: ESTAÇÕES & ECLIPSES -->
+    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">✨</span>
+          <h2 class="text-sm font-bold text-[#FFF6E5]">Estações & Próximos Eclipses</h2>
+        </div>
+        <span class="text-[10px] text-[#A1C1B0]">Calendário Cósmico</span>
+      </div>
 
       <!-- Solstícios e Equinócios do Ano -->
-      <div class="space-y-2 pt-2 border-t border-[#163524]">
+      <div class="space-y-2">
         <div class="flex items-center justify-between">
           <h4 class="text-xs font-bold text-slate-300">Estações: Solstícios e Equinócios (${new Date().getFullYear()})</h4>
           <span class="text-[10px] text-[#E5C384]">Hemisfério Sul</span>
@@ -409,9 +423,6 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
       <!-- Eclipses Lunares e Solares com Visibilidade no Brasil -->
       ${renderEclipsesSection()}
     </section>
-
-    <!-- 4. SEÇÃO: MINI ATLAS DO SISTEMA SOLAR & HORA NA LUA (FASE 3) -->
-    ${renderSolarSystemSection()}
 
     <!-- 5. CARTÃO CURIOSIDADE DO DIA (FECHAMENTO EDUCATIVO) -->
     <section class="p-5 rounded-3xl bg-gradient-to-br from-[#0C2117] to-[#07160F] border border-amber-500/25 shadow-xl space-y-2 relative overflow-hidden">

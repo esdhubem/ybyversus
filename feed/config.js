@@ -143,3 +143,4 @@ export function validateConfig(config = feedMixConfig) {
   }
   return true;
 }
+

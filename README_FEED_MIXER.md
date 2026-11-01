@@ -113,3 +113,4 @@ node tests/test_feed_mixer.js
 * **Deduplicação:** 0 itens repetidos na mesma sessão;
 * **Segurança e Moderação:** Itens ocultos/denunciados nunca chegam ao feed.
 * **Total:** **22 passaram, 0 falharam.**
+

@@ -198,3 +198,4 @@ console.log(`\n========================================`);
 console.log(`RESULTADO FINAL DOS TESTES: ${passed} passaram, ${failed} falharam.`);
 
 if (failed > 0) process.exit(1);
+

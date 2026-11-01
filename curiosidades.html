@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <title>Curiosidades: Céu, Mar e Tempo • YBY versus</title>
+  <meta name="description" content="Consulta soberana de dados astronômicos, marés, ventos, ondas e clima no ecossistema YBY versus.">
+
+  <!-- Acessibilidade: NÃO bloqueia zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- PWA Manifest & Suporte Mobile -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#07160F">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="YBY versus">
+  <link rel="icon" type="image/png" href="assets/logo-arara.png">
+  <link rel="apple-touch-icon" href="assets/logo-arara.png">
+
+  <!-- Tipografias: Outfit + Plus Jakarta Sans + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            brand: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            ybyDark: '#07160F',
+            ybyCard: '#0B2016',
+            ybyBorder: '#163524',
+            goldLight: '#FFF6E5',
+            goldMain: '#E5C384',
+            goldDark: '#C79637',
+            goldDeep: '#8E6B1D'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      background-color: #040D08;
+    }
+
+    .font-brand {
+      font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .app-screen-scroll {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .app-screen-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .app-screen-scroll::-webkit-scrollbar-track {
+      background: rgba(7, 22, 15, 0.4);
+    }
+    .app-screen-scroll::-webkit-scrollbar-thumb {
+      background: rgba(229, 195, 132, 0.35);
+      border-radius: 9999px;
+    }
+
+    .tap-active:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease;
+    }
+
+    /* Foco acessível WCAG AA */
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 2px solid #E5C384;
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#040D08] text-slate-100 min-h-screen flex items-center justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
+
+  <!-- ======================================================== -->
+  <!-- FUNDO CÓSMICO CELESTIAL (ÓRBITAS DOURADAS & ESTRELAS)    -->
+  <!-- ======================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center" aria-hidden="true">
+    <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-40" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+      <circle cx="300" cy="300" r="240" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="300" cy="300" r="160" stroke="#E5C384" stroke-width="1.5" opacity="0.7"/>
+      <circle cx="460" cy="300" r="9" fill="#E5C384" filter="drop-shadow(0 0 12px rgba(229,195,132,0.8))"/>
+    </svg>
+
+    <svg class="absolute -bottom-36 -left-36 w-[600px] h-[600px] opacity-40" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="260" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+      <circle cx="300" cy="300" r="210" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="390" cy="300" r="7" fill="#E5C384"/>
+    </svg>
+
+    <!-- Estrelas Shimmering -->
+    <span class="absolute top-12 left-12 text-[#E5C384] text-xl opacity-80 animate-pulse">✦</span>
+    <span class="absolute top-28 left-48 text-[#FBF0D9] text-xs opacity-60">✦</span>
+    <span class="absolute top-20 right-28 text-[#FBF0D9] text-lg opacity-85 animate-pulse">✦</span>
+    <span class="absolute bottom-20 left-24 text-[#E5C384] text-lg opacity-80 animate-pulse">✦</span>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MOLDURA DO SMARTPHONE (DESIGN SYSTEM DO YBY VERSUS)      -->
+  <!-- ======================================================== -->
+  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] bg-[#07160F] sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#193C29]/70 transition-all">
+
+    <!-- 1. STATUS BAR NATIVA -->
+    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#07160F]">
+      <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-200">
+        <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-200 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-200 rounded-xs"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO DA PÁGINA (VOLTAR + TÍTULO + SELETOR DE CIDADE) -->
+    <nav aria-label="Cabeçalho Curiosidades" class="px-5 pt-2 pb-3 bg-[#07160F] border-b border-[#163524] flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-3">
+        <!-- Botão Voltar para Praça Pública -->
+        <a href="index.html" title="Voltar para a Praça Pública" aria-label="Voltar para a Praça Pública" class="w-10 h-10 rounded-full bg-[#0B2016] border border-[#163524] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
+          <i data-lucide="arrow-left" class="w-5 h-5 stroke-[2]"></i>
+        </a>
+        <div>
+          <h1 class="font-brand text-base font-bold text-[#FFF6E5] leading-tight">Céu, Mar e Tempo</h1>
+          <span class="text-[10px] text-[#A1C1B0]">Curiosidades & Astronomia</span>
+        </div>
+      </div>
+
+      <!-- Botão Alterar Localização (Alvo de toque ≥ 44px) -->
+      <button onclick="window.toggleLocationModal()" title="Alterar localidade" aria-label="Alterar localidade de consulta" class="px-3 py-1.5 min-h-[44px] rounded-full bg-[#0B2016] border border-[#163524] hover:border-amber-500/40 text-xs text-[#E5C384] flex items-center gap-1.5 tap-active shrink-0">
+        <i data-lucide="map-pin" class="w-4 h-4 text-[#1E9E64]"></i>
+        <span id="location-name" class="font-semibold max-w-[100px] truncate text-slate-200">São Paulo</span>
+      </button>
+    </nav>
+
+    <!-- Barra de Atalhos de Cidades Favoritas -->
+    <div class="px-5 py-2 bg-[#05120C] border-b border-[#163524] flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
+      <span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold shrink-0">Favoritos:</span>
+      <div id="favorites-chips" class="flex items-center gap-1.5"></div>
+      <button onclick="window.saveCurrentAsFavorite()" title="Salvar cidade atual nos favoritos" aria-label="Salvar localização atual nos favoritos" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#0B2016] text-[#E5C384] hover:text-white border border-[#163524] whitespace-nowrap min-h-[38px] flex items-center gap-1 shrink-0 tap-active">
+        <i data-lucide="bookmark-plus" class="w-3.5 h-3.5"></i>
+        <span>Salvar</span>
+      </button>
+    </div>
+
+    <!-- 3. ÁREA DE CONTEÚDO SCROLLÁVEL -->
+    <main class="flex-1 app-screen-scroll px-5 py-4 space-y-4" id="curiosidades-content" tabindex="0" aria-label="Conteúdo de astronomia e clima">
+      <!-- Carregado via JS -->
+    </main>
+
+    <!-- 4. RODAPÉ FIXO UNIFICADO (MESMO PADRÃO DA PRAÇA) -->
+    <footer class="shrink-0 z-30 bg-[#07160F] border-t border-[#163524] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
+      <!-- Praça -->
+      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active min-h-[44px]">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
+      </a>
+
+      <!-- Descobrir (Ativo nesta página) -->
+      <div class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active min-h-[44px]">
+        <i data-lucide="compass" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold tracking-tight mt-0.5">Descobrir</span>
+      </div>
+
+      <!-- Botão Central (+) -->
+      <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
+        <a href="index.html" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#126843] via-[#1E935E] to-[#2DC47F] text-white flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_16px_rgba(20,130,80,0.55),0_0_12px_rgba(229,195,132,0.35)] active:scale-95 hover:scale-105 transition-all tap-active">
+          <i data-lucide="plus" class="w-6 h-6 stroke-[3] text-white"></i>
+        </a>
+      </div>
+
+      <!-- Acervo -->
+      <button onclick="window.showToast?.('Seu Acervo de Saberes Salvos')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active min-h-[44px]">
+        <i data-lucide="bookmark" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Acervo</span>
+      </button>
+
+      <!-- Presença -->
+      <button onclick="window.showToast?.('Presença Soberana • Perfil')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active min-h-[44px]">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Presença</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: BUSCA DE CIDADE & LOCALIZAÇÃO (PRIVACIDADE TOTAL) -->
+  <!-- ======================================================== -->
+  <div id="modal-location" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-loc-title">
+    <div class="bg-[#0A1C14] rounded-[28px] max-w-sm w-full p-5 shadow-2xl border border-amber-500/25 space-y-4 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-2 border-b border-[#163524] shrink-0">
+        <div class="flex items-center gap-2">
+          <i data-lucide="map-pin" class="w-5 h-5 text-[#E5C384]"></i>
+          <h2 id="modal-loc-title" class="font-bold text-slate-100 text-sm">Escolher Localidade</h2>
+        </div>
+        <button onclick="window.toggleLocationModal()" aria-label="Fechar" class="text-slate-400 hover:text-white p-2 min-h-[44px] min-w-[44px] flex items-center justify-center">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Botão GPS Explícito com Consentimento -->
+      <button onclick="window.useGpsLocation()" class="w-full p-3 rounded-2xl bg-[#06120C] border border-amber-500/30 hover:border-amber-400 flex items-center justify-center gap-2 text-xs font-bold text-[#E5C384] tap-active min-h-[44px]">
+        <i data-lucide="crosshair" class="w-4 h-4 text-[#1E9E64]"></i>
+        <span>Usar minha localização atual (GPS)</span>
+      </button>
+
+      <p class="text-[10.5px] text-slate-400 leading-tight">
+        🛡️ <strong>Privacidade YBY:</strong> As coordenadas são arredondadas para 2 casas decimais e nenhum histórico é enviado a qualquer servidor.
+      </p>
+
+      <!-- Campo de Pesquisa Textual -->
+      <div class="space-y-1 shrink-0">
+        <label for="city-search-input" class="text-[11px] font-bold text-slate-300">Buscar por nome da cidade:</label>
+        <div class="relative flex items-center bg-[#06120C] rounded-2xl p-2 pl-3.5 border border-[#163524] focus-within:ring-2 focus-within:ring-amber-500/40">
+          <input type="text" id="city-search-input" oninput="window.searchCityInput(event)" placeholder="Ex: Salvador, Rio de Janeiro, Brasília..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-transparent focus:outline-none min-h-[30px]">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 shrink-0 mr-1"></i>
+        </div>
+      </div>
+
+      <!-- Lista de Resultados de Busca -->
+      <div id="search-results" class="flex-1 overflow-y-auto space-y-2 max-h-52 pr-1"></div>
+
+      <button onclick="window.toggleLocationModal()" class="w-full py-2.5 rounded-full bg-[#10261D] text-slate-300 hover:text-white text-xs font-semibold tap-active min-h-[44px] shrink-0">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST DE AVISO -->
+  <div id="app-toast" class="fixed top-12 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#0B2016] text-[#E5C384] text-xs font-bold shadow-xl border border-amber-500/30 flex items-center gap-2 hidden transition-all" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-[#E5C384]"></i>
+    <span id="app-toast-text">Ação concluída com sucesso!</span>
+  </div>
+
+  <!-- Módulo ES Inicializador -->
+  <script type="module">
+    import { initCuriosidades } from './curiosidades/main.js';
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      initCuriosidades();
+    });
+  </script>
+</body>
+</html>

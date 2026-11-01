@@ -628,6 +628,30 @@
       </section>
 
       <!-- ======================================================== -->
+      <!-- SEÇÃO: FEED DE VÍDEOS CURTOS (DISTRIBUIÇÃO JUSTA 25/25/20/15/15) -->
+      <!-- ======================================================== -->
+      <section id="short-videos-section" class="celestial-post-glow p-4 space-y-3 hidden">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-700/60">
+          <div class="flex items-center gap-2">
+            <i data-lucide="clapperboard" class="w-4 h-4 text-[#E5C384]"></i>
+            <h3 class="text-xs font-bold text-slate-100 tracking-tight">Vídeos Curtos • Distribuição Justa</h3>
+          </div>
+          <button onclick="openModal('modal-algoritmo')" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-[#2DC47F] font-semibold border border-emerald-500/30 flex items-center gap-1 tap-active" title="Ver regras das 5 cotas equitativas">
+            <span>⚖️ Cotas Sem Bolhas</span>
+          </button>
+        </div>
+
+        <p class="text-[11px] text-slate-400">
+          Feed contínuo organizado por cotas transparentes: 25% Novidades, 25% Vozes Plurais, 20% Fora da Bolha, 15% Novos Integrantes e 15% Sorteio Imparcial.
+        </p>
+
+        <!-- Container dinâmico com Infinite Scroll -->
+        <div id="short-videos-feed-container" class="space-y-3 pt-1">
+          <!-- Renderizado pelo feed/ui.js -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
       <!-- 6. QUADRO DA CARTA ABERTA: O MANIFESTO DE NASCIMENTO     -->
       <!-- ======================================================== -->
       <article id="post-card" class="celestial-post-glow p-5 space-y-4">
@@ -843,8 +867,8 @@
           <span class="text-slate-400">Descoberta inicial</span>
         </div>
         <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#06120C] border border-amber-500/20 text-slate-300">
-          <span class="font-bold text-[#E5C384]">15% Fisher-Yates</span>
-          <span class="text-slate-400">Sorteio justo</span>
+          <span class="font-bold text-[#E5C384]">15% Sorteio Justo</span>
+          <span class="text-slate-400">Sorteio imparcial</span>
         </div>
       </div>
 
@@ -854,7 +878,7 @@
           <span>Federação & Soberania Digital</span>
         </div>
         <p class="text-slate-400 leading-tight">
-          Conectado ao protocolo aberto do Fediverso. A visibilidade nasce do valor comunitário e da presença orgânica, sem algoritmos de vício ou leilão financeiro.
+          Inspirado nos princípios do Fediverso. A visibilidade nasce do valor comunitário e da presença orgânica, sem algoritmos de vício ou leilão financeiro.
         </p>
       </div>
 
@@ -1139,7 +1163,7 @@
         <div class="p-3 bg-[#06120C] rounded-2xl border border-slate-700/70 space-y-1">
           <h4 class="font-bold text-[#E5C384] text-xs">⚖️ 6. Equidade de Alcance e Sem Impulsionamento Pago</h4>
           <p class="text-[11.5px] text-slate-400 leading-relaxed">
-            O dinheiro não compra alcance. Distribuição aberta e justa pelo algoritmo Fisher-Yates sem bolhas.
+            O dinheiro não compra alcance. Distribuição aberta e justa por cotas equilibradas e sorteio imparcial sem bolhas.
           </p>
         </div>
 
@@ -1561,6 +1585,18 @@
         if (longSection) longSection.classList.add('hidden');
       }
 
+      const shortSection = document.getElementById('short-videos-section');
+      if (tab === 'curtos') {
+        if (shortSection) {
+          shortSection.classList.remove('hidden');
+          if (window.initFeedMixerUI) {
+            window.initFeedMixerUI('short-videos-feed-container', 'videos_curtos');
+          }
+        }
+      } else {
+        if (shortSection) shortSection.classList.add('hidden');
+      }
+
       const item = FORMAT_ITEMS[tab] || FORMAT_ITEMS.saberes;
       document.getElementById('featured-title').innerText = item.title;
       document.getElementById('featured-duration').innerText = item.duration;
@@ -1753,6 +1789,10 @@
         });
       }
     });
+  </script>
+  <script type="module">
+    import { initFeedMixerUI } from './feed/ui.js';
+    window.initFeedMixerUI = initFeedMixerUI;
   </script>
 </body>
 </html>

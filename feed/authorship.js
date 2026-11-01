@@ -145,3 +145,4 @@ export async function verifyCreativeCommonsLicense(url, platform) {
     checkedAt: new Date().toISOString()
   };
 }
+

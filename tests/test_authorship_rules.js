@@ -116,3 +116,4 @@ verifyCreativeCommonsLicense('https://youtube.com/watch?v=123', 'youtube').then(
   console.log(`RESULTADO AUTORIA: ${passed} passaram, ${failed} falharam.`);
   if (failed > 0) process.exit(1);
 });
+

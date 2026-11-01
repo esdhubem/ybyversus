@@ -45,16 +45,20 @@
 
 ---
 
-## ✨ Os 8 Cards no Novo Estilo Gráfico (Grid 4x2)
+## ✨ Os 8 Botões de Categorias (Grade Minimalista Dourada 4x2)
 
-1. **Saberes:** Card verde menta com livro 3D aberto.
-2. **Vídeos Curtos:** Card lavanda com claquete 3D azul/índigo.
-3. **Vídeos Longos:** Card pêssego com botão triangular play 3D laranja.
-4. **Música:** Card rosa suave com nota musical 3D magenta.
-5. **Podcasts:** Card blush quente com headphone 3D azul escuro.
-6. **Fórum:** Card ciano suave com balões de conversa 3D sobrepostos.
-7. **Notícias:** Card azul celeste com tablet de notícias 3D.
-8. **Ao Vivo:** Card lilás suave com ondas de transmissão 3D.
+Sem caixas ou delimitadores em volta, apenas o ícone de linha vazada e o nome em tom dourado ancestral (`#E5C384`):
+
+- **Linha 1:**
+  1. **Saberes:** Livro aberto.
+  2. **Vídeos Curtos:** Claquete de vídeo (ao lado dos vídeos longos).
+  3. **Vídeos Longos:** Ícone de TV/monitor (ao lado dos vídeos curtos).
+  4. **Música:** Nota musical dupla.
+- **Linha 2:**
+  5. **Podcasts:** Fone de ouvido.
+  6. **Fórum:** Balão de diálogo.
+  7. **Notícias:** Folha de jornal.
+  8. **Ao Vivo:** Ondas de transmissão de rádio (ao lado das notícias).
 
 ---
 

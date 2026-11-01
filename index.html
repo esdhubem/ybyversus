@@ -437,6 +437,15 @@
           </div>
         </div>
 
+        <!-- Proteção Ética de Autoria -->
+        <div class="pt-1.5 border-t border-slate-700/40 flex items-center justify-between text-[10px]">
+          <span class="text-slate-400">Licença e Autoria Verificada</span>
+          <button onclick="reportUnauthorizedVideo('featured-post-main', document.getElementById('featured-title').innerText)" class="text-amber-400/80 hover:text-amber-300 flex items-center gap-1 transition-colors tap-active font-medium" title="Oculta imediatamente e notifica a moderação">
+            <i data-lucide="shield-alert" class="w-3 h-3 text-amber-400"></i>
+            <span>Este vídeo é meu e não autorizei</span>
+          </button>
+        </div>
+
       </div>
 
       <!-- ======================================================== -->
@@ -1480,6 +1489,68 @@
           <input type="text" id="publish-title-input" placeholder="Ex: Multiplicação de enxame de abelha jataí..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] px-3.5 py-3 rounded-2xl border border-slate-700/70 focus:outline-none focus:border-amber-500/60 transition-colors">
         </div>
 
+        <!-- 5. REGRA DE AUTORIA PARA VÍDEOS POR LINK (OBRIGATÓRIO) -->
+        <div id="publish-video-authorship-block" class="space-y-3 pt-1">
+          <!-- Texto da regra exibido antes de publicar -->
+          <div class="p-3 rounded-2xl bg-[#091D13] border border-amber-500/30 flex items-start gap-2.5 text-xs text-[#E5C384]">
+            <i data-lucide="scale" class="w-4 h-4 text-[#E5C384] shrink-0 mt-0.5"></i>
+            <span class="text-[11.5px] leading-relaxed font-medium">
+              "Publique vídeos que são seus ou que têm licença Creative Commons, com crédito ao autor."
+            </span>
+          </div>
+
+          <!-- Seletor de Autoria Obrigatória -->
+          <div class="space-y-2">
+            <label class="font-bold text-[#FFF6E5] text-xs flex items-center justify-between">
+              <span>Autoria do Vídeo <span class="text-amber-400">*</span></span>
+              <span class="text-[10px] text-amber-400 font-semibold">Escolha obrigatória</span>
+            </label>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2.5 p-3 rounded-2xl border border-slate-700 bg-[#06120C] hover:border-amber-500/50 cursor-pointer transition-all">
+                <input type="radio" name="video_authorship_choice" value="meu_video" onchange="handleAuthorshipChange(this.value)" class="w-4 h-4 accent-[#1E9E64]">
+                <span class="text-xs font-semibold text-white">É meu vídeo autoral</span>
+              </label>
+
+              <label class="flex items-center gap-2.5 p-3 rounded-2xl border border-slate-700 bg-[#06120C] hover:border-amber-500/50 cursor-pointer transition-all">
+                <input type="radio" name="video_authorship_choice" value="creative_commons" onchange="handleAuthorshipChange(this.value)" class="w-4 h-4 accent-[#1E9E64]">
+                <span class="text-xs font-semibold text-white">Vídeo com licença Creative Commons</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Campos Condicionais de Creative Commons (se escolher opção 2) -->
+          <div id="publish-cc-fields-container" class="hidden p-3.5 rounded-2xl bg-[#071910] border border-emerald-500/40 space-y-3">
+            <div class="text-[11px] font-bold text-[#E5C384] flex items-center gap-1.5 pb-1 border-b border-slate-700/60">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+              <span>Dados de Atribuição e Licença (CC)</span>
+            </div>
+
+            <!-- Tipo de licença (apenas CC BY, CC BY-SA ou CC0) -->
+            <div class="space-y-1">
+              <label for="publish-cc-license" class="text-[11px] font-semibold text-slate-200">Tipo de Licença Permitida <span class="text-amber-400">*</span></label>
+              <select id="publish-cc-license" class="w-full text-xs text-slate-100 bg-[#06120C] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60 cursor-pointer">
+                <option value="" disabled selected>Selecione a licença permitida...</option>
+                <option value="CC BY">CC BY (Atribuição requerida)</option>
+                <option value="CC BY-SA">CC BY-SA (Atribuição + Compartilha Igual)</option>
+                <option value="CC0">CC0 (Domínio Público / Livre de direitos)</option>
+              </select>
+            </div>
+
+            <!-- Nome do autor original -->
+            <div class="space-y-1">
+              <label for="publish-cc-author" class="text-[11px] font-semibold text-slate-200">Nome do Autor Original <span class="text-amber-400">*</span></label>
+              <input type="text" id="publish-cc-author" placeholder="Ex: Dra. Ana Guajajara / Coletivo Terra Viva" class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60">
+            </div>
+
+            <!-- Link da fonte onde a licença é indicada -->
+            <div class="space-y-1">
+              <label for="publish-cc-source" class="text-[11px] font-semibold text-slate-200">Link da Fonte Oficial (comprovando a licença) <span class="text-amber-400">*</span></label>
+              <input type="url" id="publish-cc-source" placeholder="https://..." class="w-full text-xs text-slate-100 placeholder-slate-500 bg-[#06120C] px-3.5 py-2.5 rounded-xl border border-slate-700 focus:border-amber-500/60">
+            </div>
+          </div>
+        </div>
+
         <!-- Bloco de Diretrizes Éticas Antes de Publicar -->
         <div class="p-3.5 rounded-2xl bg-[#06120C] border border-amber-500/30 space-y-2 text-[11px] text-slate-300">
           <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
@@ -1966,6 +2037,19 @@
     }
 
     let selectedPublishFormat = 'longo';
+    let selectedAuthorship = null;
+
+    function handleAuthorshipChange(val) {
+      selectedAuthorship = val;
+      const ccFields = document.getElementById('publish-cc-fields-container');
+      if (!ccFields) return;
+      if (val === 'creative_commons') {
+        ccFields.classList.remove('hidden');
+      } else {
+        ccFields.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
 
     function selectPublishFormat(fmt) {
       selectedPublishFormat = fmt;
@@ -2009,6 +2093,17 @@
       if (destLabel && config[fmt]) {
         destLabel.innerHTML = `<span>✓ Destino automático:</span> <span class="underline">${config[fmt].dest}</span>`;
       }
+
+      // Bloco de autoria de vídeo é obrigatório para vídeos (curtos ou longos)
+      const videoBlock = document.getElementById('publish-video-authorship-block');
+      if (videoBlock) {
+        if (fmt === 'curto' || fmt === 'longo') {
+          videoBlock.classList.remove('hidden');
+        } else {
+          videoBlock.classList.add('hidden');
+        }
+      }
+
       lucide.createIcons();
     }
 
@@ -2072,23 +2167,126 @@
         return;
       }
 
+      const isVideo = selectedPublishFormat === 'curto' || selectedPublishFormat === 'longo';
+      let authorshipData = {
+        autoria: 'livre',
+        licenca: null,
+        autor: null,
+        fonte: null,
+        statusAnalise: 'aprovado',
+        destaqueFeed: true
+      };
+
+      // Validação estrita de autoria para vídeos
+      if (isVideo) {
+        if (!selectedAuthorship) {
+          showAppToast('Escolha se o vídeo é seu ou Creative Commons');
+          const block = document.getElementById('publish-video-authorship-block');
+          if (block) block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        if (selectedAuthorship === 'creative_commons') {
+          const licSelect = document.getElementById('publish-cc-license');
+          const authorInput = document.getElementById('publish-cc-author');
+          const sourceInput = document.getElementById('publish-cc-source');
+
+          const license = licSelect ? licSelect.value : '';
+          const author = authorInput ? authorInput.value.trim() : '';
+          const source = sourceInput ? sourceInput.value.trim() : '';
+
+          const allowedLic = ['CC BY', 'CC BY-SA', 'CC0'];
+          if (!license || !allowedLic.includes(license)) {
+            showAppToast('Selecione uma licença válida: CC BY, CC BY-SA ou CC0');
+            if (licSelect) licSelect.focus();
+            return;
+          }
+
+          if (!author || author.length < 2) {
+            showAppToast('Informe o nome do autor original do vídeo');
+            if (authorInput) authorInput.focus();
+            return;
+          }
+
+          if (!source || (!source.startsWith('http://') && !source.startsWith('https://'))) {
+            showAppToast('Informe o link da fonte onde a licença é indicada');
+            if (sourceInput) sourceInput.focus();
+            return;
+          }
+
+          authorshipData = {
+            autoria: 'creative_commons',
+            licenca: license,
+            autor: author,
+            fonte: source,
+            statusAnalise: 'aprovado',
+            destaqueFeed: true
+          };
+        } else if (selectedAuthorship === 'meu_video') {
+          // Compara os dados do embed/link com as contas do perfil do usuário
+          let userProfile = null;
+          try {
+            userProfile = JSON.parse(localStorage.getItem('yby_user_profile') || 'null');
+          } catch (e) {}
+
+          if (!userProfile) {
+            userProfile = {
+              name: 'Guardião da Terra',
+              handle: '@guardiao',
+              linkedAccounts: ['https://youtube.com/@guardiao', 'https://instagram.com/guardiao']
+            };
+            localStorage.setItem('yby_user_profile', JSON.stringify(userProfile));
+          }
+
+          const linked = userProfile.linkedAccounts || [];
+          const lowerUrl = url.toLowerCase();
+          const isChannelMatched = linked.some(acc => {
+            const cleanAcc = acc.toLowerCase().replace(/https?:\/\//, '').replace(/www\./, '').replace(/\/$/, '');
+            return cleanAcc && lowerUrl.includes(cleanAcc);
+          });
+
+          if (isChannelMatched) {
+            authorshipData = {
+              autoria: 'meu_video',
+              licenca: 'Autoral',
+              autor: userProfile.name,
+              fonte: null,
+              statusAnalise: 'aprovado',
+              destaqueFeed: true
+            };
+          } else {
+            authorshipData = {
+              autoria: 'meu_video',
+              licenca: 'Autoral (Em Verificação)',
+              autor: userProfile.name,
+              fonte: null,
+              statusAnalise: 'em_analise',
+              destaqueFeed: false,
+              avisoAnalise: 'Canal não vinculado ao perfil. Vídeo em análise ética pela moderação.'
+            };
+          }
+        }
+      }
+
       if (!agreeCheck || !agreeCheck.checked) {
         showAppToast('Confirme a autoria e concorde com os termos éticos');
         agreeCheck.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
-      // Salva publicação no localStorage para persistência da demonstração
+      // Salva publicação no localStorage com modelo completo de autoria e status
       try {
         const savedPosts = JSON.parse(localStorage.getItem('yby_external_links') || '[]');
-        savedPosts.unshift({
+        const newPost = {
           id: 'link_' + Date.now(),
           url,
           platform,
           format: selectedPublishFormat,
           title,
+          ...authorshipData,
           createdAt: new Date().toISOString()
-        });
+        };
+        savedPosts.unshift(newPost);
         localStorage.setItem('yby_external_links', JSON.stringify(savedPosts));
       } catch (e) {
         console.warn('Storage error:', e);
@@ -2099,10 +2297,44 @@
       if (platformSelect) platformSelect.selectedIndex = 0;
       if (titleInput) titleInput.value = '';
       if (agreeCheck) agreeCheck.checked = false;
+      const ccFields = document.getElementById('publish-cc-fields-container');
+      if (ccFields) ccFields.classList.add('hidden');
+      const authorRadios = document.getElementsByName('video_authorship_choice');
+      authorRadios.forEach(r => r.checked = false);
+      selectedAuthorship = null;
 
       closeModal('modal-publish');
-      showAppToast('Link publicado com sucesso na Praça Digital! 🌱');
+
+      if (authorshipData.statusAnalise === 'em_analise') {
+        showAppToast('Vídeo enviado! Em análise ética antes do destaque no feed.');
+      } else {
+        showAppToast('Link publicado com sucesso na Praça Digital! 🌱');
+      }
     }
+
+    function reportUnauthorizedVideo(postId, postTitle) {
+      try {
+        const el = document.getElementById(postId) || document.querySelector(`[data-item-id="${postId}"]`);
+        if (el) {
+          el.style.opacity = '0.2';
+          el.style.pointerEvents = 'none';
+          setTimeout(() => el.remove(), 250);
+        }
+        const reports = JSON.parse(localStorage.getItem('yby_moderation_reports') || '[]');
+        reports.unshift({
+          id: 'rep_' + Date.now(),
+          postId,
+          postTitle: postTitle ? decodeURIComponent(postTitle) : 'Vídeo denunciado',
+          reason: 'Este vídeo é meu e não autorizei',
+          timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('yby_moderation_reports', JSON.stringify(reports));
+      } catch(e) {
+        console.warn('Erro ao salvar relatório:', e);
+      }
+      showAppToast('Vídeo ocultado imediatamente para análise da moderação.');
+    }
+    window.reportUnauthorizedVideo = reportUnauthorizedVideo;
 
     function publishSaber() {
       submitLinkPublication();

@@ -152,12 +152,32 @@ export function renderFeedItemCard(item) {
       </div>
 
       <!-- Título & Tag Temática -->
-      <div class="space-y-1">
+      <div class="space-y-1.5">
         <h3 class="text-xs font-bold text-[#FFF6E5] leading-snug">${item.title}</h3>
+        
+        <!-- Atribuição de Creative Commons (se aplicável) -->
+        ${item.autoria === 'creative_commons' || item.licenca ? `
+          <div class="p-2 rounded-xl bg-[#06120C] border border-slate-700/60 flex items-center justify-between text-[10px] text-slate-300 flex-wrap gap-1">
+            <div class="flex items-center gap-1.5">
+              <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-bold border border-emerald-500/30">${item.licenca || 'CC BY'}</span>
+              <span>Autor: <strong>${item.autor || creator.name}</strong></span>
+            </div>
+            ${item.fonte ? `<a href="${item.fonte}" target="_blank" rel="noopener noreferrer" class="text-[#E5C384] hover:underline flex items-center gap-0.5">Fonte <i data-lucide="external-link" class="w-2.5 h-2.5"></i></a>` : ''}
+          </div>
+        ` : ''}
+
         <div class="flex items-center justify-between pt-1">
           <span class="text-[10px] text-[#A1C1B0] uppercase tracking-wider">#${item.theme || 'cultura'}</span>
           <button onclick="window.hideOrFlagFeedItem('${item.id}')" class="text-slate-500 hover:text-slate-300 p-1 text-[10px]" title="Ocultar item">
             <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Botão: Este vídeo é meu e não autorizei -->
+        <div class="pt-1.5 border-t border-slate-700/40 flex items-center justify-between">
+          <button onclick="window.reportUnauthorizedVideo('${item.id}', '${encodeURIComponent(item.title)}')" class="text-[10px] text-amber-400/80 hover:text-amber-300 flex items-center gap-1 transition-colors tap-active" title="Ocultar imediatamente para análise ética da moderação">
+            <i data-lucide="shield-alert" class="w-3 h-3 text-amber-400"></i>
+            <span>Este vídeo é meu e não autorizei</span>
           </button>
         </div>
       </div>
@@ -228,6 +248,32 @@ if (typeof window !== 'undefined') {
       card.style.opacity = '0.3';
       card.style.pointerEvents = 'none';
       setTimeout(() => card.remove(), 250);
+    }
+  };
+
+  window.reportUnauthorizedVideo = (itemId, itemTitle) => {
+    LocalPrivacyStore.hideItem(itemId);
+    const card = document.querySelector(`[data-item-id="${itemId}"]`) || document.getElementById(itemId);
+    if (card) {
+      card.style.opacity = '0.2';
+      card.style.pointerEvents = 'none';
+      setTimeout(() => card.remove(), 250);
+    }
+    try {
+      const reports = JSON.parse(localStorage.getItem('yby_moderation_reports') || '[]');
+      reports.unshift({
+        id: 'rep_' + Date.now(),
+        itemId,
+        title: itemTitle ? decodeURIComponent(itemTitle) : 'Vídeo não autorizado',
+        reason: 'Reivindicação: Este vídeo é meu e não autorizei',
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem('yby_moderation_reports', JSON.stringify(reports));
+    } catch (e) {
+      console.warn('Erro ao salvar relatório de moderação:', e);
+    }
+    if (typeof window.showAppToast === 'function') {
+      window.showAppToast('Vídeo ocultado imediatamente para análise ética da moderação.');
     }
   };
 }

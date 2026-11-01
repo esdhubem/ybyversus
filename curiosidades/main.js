@@ -214,25 +214,115 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
   contentArea.innerHTML = `
     ${cacheNotice}
 
-    <!-- 1. CARTÃO CURIOSIDADE DO DIA -->
-    <section class="p-5 rounded-3xl bg-gradient-to-br from-[#0C2117] to-[#07160F] border border-amber-500/25 shadow-xl space-y-2 relative overflow-hidden">
-      <div class="flex items-center justify-between pb-1 border-b border-[#163524]">
-        <div class="flex items-center gap-1.5 text-xs font-bold text-[#E5C384]">
-          <span>✨</span>
-          <span>Curiosidade do Dia: Céu & Ritmos</span>
+    <!-- 1. SEÇÃO: CLIMA E VENTO (EM PRIMEIRO LUGAR) -->
+    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">🌤️</span>
+          <h2 class="text-sm font-bold text-[#FFF6E5]">Clima e Vento</h2>
         </div>
-        <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#163524] text-[#A1C1B0]">${curiosities[0].tag}</span>
+        <!-- Seletor de Unidade de Vento -->
+        <div class="flex items-center bg-[#06120C] rounded-full p-0.5 border border-[#163524]">
+          <button onclick="window.changeWindUnit('kmh')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kmh' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">km/h</button>
+          <button onclick="window.changeWindUnit('kt')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kt' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">nós</button>
+          <button onclick="window.changeWindUnit('ms')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'ms' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">m/s</button>
+        </div>
       </div>
-      <h3 class="text-sm font-bold text-[#FFF6E5]">${curiosities[0].title}</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">${curiosities[0].text}</p>
-      ${curiosities[0].isTradition ? `
-        <span class="inline-block mt-1 text-[10px] text-amber-400/90 italic font-semibold">
-          ⚠️ ${curiosities[0].disclaimer}
-        </span>
-      ` : ''}
+
+      <!-- Resumo Principal do Clima Atual -->
+      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 flex items-center justify-between">
+        <div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-extrabold text-[#FFF6E5]">${current.temp}°C</span>
+            <span class="text-xs text-slate-400">Sensação: ${current.feelsLike}°C</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs font-semibold text-[#E5C384] mt-1">
+            <span>${current.wmo.emoji}</span>
+            <span>${current.wmo.label}</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-slate-300 mt-2">
+            <span>💧 Umidade: <strong>${current.humidity}%</strong></span>
+            <span>🌧️ Chuva: <strong>${current.rainProb}%</strong></span>
+          </div>
+        </div>
+
+        <!-- Rosa dos Ventos com Agulha -->
+        <div class="shrink-0 flex flex-col items-center">
+          ${renderCompassSvg(current.windDirection, `${windInfo.value} ${windInfo.unit}`)}
+          <span class="text-[10px] font-semibold text-[#A1C1B0] mt-1">${windInfo.value} ${windInfo.unit} (${current.compass.pt})</span>
+        </div>
+      </div>
+
+      <!-- Índice UV com Barra Colorida -->
+      <div class="p-3.5 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-200">Índice Ultravioleta (UV)</span>
+          <span class="font-bold px-2 py-0.5 rounded-full text-[10px] text-black" style="background-color: ${current.uvClass.color};">
+            ${current.uv} • ${current.uvClass.text}
+          </span>
+        </div>
+        <p class="text-[11px] text-slate-400">${current.uvClass.advice}</p>
+      </div>
+
+      <!-- Previsão Horária (Próximas 12h) -->
+      <div class="space-y-2">
+        <h3 class="text-xs font-bold text-slate-300">Previsão Hora a Hora</h3>
+        ${renderHourlyForecast(weather.hourly, unit)}
+      </div>
+
+      <!-- Tendência dos Próximos 7 Dias -->
+      <div class="space-y-2">
+        <h3 class="text-xs font-bold text-slate-300">Próximos 7 Dias</h3>
+        ${renderDailyForecast(weather.daily)}
+      </div>
     </section>
 
-    <!-- 2. SEÇÃO: CÉU DE HOJE (LUA & SOL) -->
+    <!-- 2. SEÇÃO: MAR, ONDAS E MARÉS -->
+    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">🌊</span>
+          <h2 class="text-sm font-bold text-[#FFF6E5]">Mar, Ondas e Marés</h2>
+        </div>
+        <span class="text-[10px] text-[#A1C1B0]">Litoral Brasileiro</span>
+      </div>
+
+      <!-- AVISO FIXO OBRIGATÓRIO DE SEGURANÇA -->
+      <div class="p-3.5 rounded-2xl bg-[#0F1D16] border border-amber-500/30 text-[11px] text-[#F3E2C4] leading-relaxed flex items-start gap-2.5 shadow-xs">
+        <span class="text-base leading-none shrink-0 mt-0.5">⚠️</span>
+        <p>
+          <strong>Aviso de Segurança:</strong> Previsões para curiosidade e informação. Não use para navegação, pesca embarcada, banhos de mar ou decisões de segurança. Consulte os órgãos oficiais (Marinha do Brasil, Defesa Civil, INMET).
+        </p>
+      </div>
+
+      <!-- Ondas e Ondulação -->
+      <div class="space-y-2">
+        <h3 class="text-xs font-bold text-slate-300">Condições do Mar (Open-Meteo Marine)</h3>
+        ${marineBlock}
+      </div>
+
+      <!-- Tábuas de Marés da Marinha -->
+      <div class="space-y-2 pt-2 border-t border-[#163524]">
+        <h3 class="text-xs font-bold text-slate-300">Tábua de Marés do Dia (Portos do Brasil)</h3>
+        ${tideBlock}
+      </div>
+
+      <!-- Explicação Educativa: Marés de Sizígia e Quadratura -->
+      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 space-y-2 text-xs text-slate-300 leading-relaxed">
+        <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
+          <span>🪐</span>
+          <span>Por que a maré sobe mais na Lua Nova e Cheia?</span>
+        </div>
+        <p>
+          <strong>Marés de Sizígia:</strong> Durante as fases de <em>Lua Nova</em> e <em>Lua Cheia</em>, a Terra, a Lua e o Sol encontram-se em alinhamento quase perfeito. Suas forças gravitacionais somam-se sobre as massas oceânicas, gerando marés de grande amplitude — com preamares (marés altas) mais elevadas e baixa-mares mais baixas.
+        </p>
+        <p class="pt-1 text-[11px] text-slate-400">
+          <strong>Marés de Quadratura:</strong> Nos quartos <em>Crescente</em> e <em>Minguante</em>, o Sol e a Lua formam um ângulo reto de 90° em relação à Terra. Suas atrações gravitacionais atuam perpendicularmente e se atenuam, resultando em menor variação no nível do mar.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. SEÇÃO: CÉU DE HOJE (LUA & SOL) -->
     <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
@@ -320,116 +410,26 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
       ${renderEclipsesSection()}
     </section>
 
-    <!-- 3. SEÇÃO: CLIMA E VENTO -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="text-base">🌤️</span>
-          <h2 class="text-sm font-bold text-[#FFF6E5]">Clima e Vento</h2>
-        </div>
-        <!-- Seletor de Unidade de Vento -->
-        <div class="flex items-center bg-[#06120C] rounded-full p-0.5 border border-[#163524]">
-          <button onclick="window.changeWindUnit('kmh')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kmh' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">km/h</button>
-          <button onclick="window.changeWindUnit('kt')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kt' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">nós</button>
-          <button onclick="window.changeWindUnit('ms')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'ms' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">m/s</button>
-        </div>
-      </div>
-
-      <!-- Resumo Principal do Clima Atual -->
-      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 flex items-center justify-between">
-        <div>
-          <div class="flex items-baseline gap-2">
-            <span class="text-3xl font-extrabold text-[#FFF6E5]">${current.temp}°C</span>
-            <span class="text-xs text-slate-400">Sensação: ${current.feelsLike}°C</span>
-          </div>
-          <div class="flex items-center gap-1.5 text-xs font-semibold text-[#E5C384] mt-1">
-            <span>${current.wmo.emoji}</span>
-            <span>${current.wmo.label}</span>
-          </div>
-          <div class="flex items-center gap-3 text-xs text-slate-300 mt-2">
-            <span>💧 Umidade: <strong>${current.humidity}%</strong></span>
-            <span>🌧️ Chuva: <strong>${current.rainProb}%</strong></span>
-          </div>
-        </div>
-
-        <!-- Rosa dos Ventos com Agulha -->
-        <div class="shrink-0 flex flex-col items-center">
-          ${renderCompassSvg(current.windDirection, `${windInfo.value} ${windInfo.unit}`)}
-          <span class="text-[10px] font-semibold text-[#A1C1B0] mt-1">${windInfo.value} ${windInfo.unit} (${current.compass.pt})</span>
-        </div>
-      </div>
-
-      <!-- Índice UV com Barra Colorida -->
-      <div class="p-3.5 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1.5 text-xs">
-        <div class="flex items-center justify-between">
-          <span class="font-bold text-slate-200">Índice Ultravioleta (UV)</span>
-          <span class="font-bold px-2 py-0.5 rounded-full text-[10px] text-black" style="background-color: ${current.uvClass.color};">
-            ${current.uv} • ${current.uvClass.text}
-          </span>
-        </div>
-        <p class="text-[11px] text-slate-400">${current.uvClass.advice}</p>
-      </div>
-
-      <!-- Previsão Horária (Próximas 12h) -->
-      <div class="space-y-2">
-        <h3 class="text-xs font-bold text-slate-300">Previsão Hora a Hora</h3>
-        ${renderHourlyForecast(weather.hourly, unit)}
-      </div>
-
-      <!-- Tendência dos Próximos 7 Dias -->
-      <div class="space-y-2">
-        <h3 class="text-xs font-bold text-slate-300">Próximos 7 Dias</h3>
-        ${renderDailyForecast(weather.daily)}
-      </div>
-    </section>
-
-    <!-- 4. SEÇÃO: MAR, ONDAS E MARÉS (FASE 2) -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="text-base">🌊</span>
-          <h2 class="text-sm font-bold text-[#FFF6E5]">Mar, Ondas e Marés</h2>
-        </div>
-        <span class="text-[10px] text-[#A1C1B0]">Litoral Brasileiro</span>
-      </div>
-
-      <!-- AVISO FIXO OBRIGATÓRIO DE SEGURANÇA -->
-      <div class="p-3.5 rounded-2xl bg-[#0F1D16] border border-amber-500/30 text-[11px] text-[#F3E2C4] leading-relaxed flex items-start gap-2.5 shadow-xs">
-        <span class="text-base leading-none shrink-0 mt-0.5">⚠️</span>
-        <p>
-          <strong>Aviso de Segurança:</strong> Previsões para curiosidade e informação. Não use para navegação, pesca embarcada, banhos de mar ou decisões de segurança. Consulte os órgãos oficiais (Marinha do Brasil, Defesa Civil, INMET).
-        </p>
-      </div>
-
-      <!-- Ondas e Ondulação -->
-      <div class="space-y-2">
-        <h3 class="text-xs font-bold text-slate-300">Condições do Mar (Open-Meteo Marine)</h3>
-        ${marineBlock}
-      </div>
-
-      <!-- Tábuas de Marés da Marinha -->
-      <div class="space-y-2 pt-2 border-t border-[#163524]">
-        <h3 class="text-xs font-bold text-slate-300">Tábua de Marés do Dia (Portos do Brasil)</h3>
-        ${tideBlock}
-      </div>
-
-      <!-- Explicação Educativa: Marés de Sizígia e Quadratura -->
-      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 space-y-2 text-xs text-slate-300 leading-relaxed">
-        <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
-          <span>🪐</span>
-          <span>Por que a maré sobe mais na Lua Nova e Cheia?</span>
-        </div>
-        <p>
-          <strong>Marés de Sizígia:</strong> Durante as fases de <em>Lua Nova</em> e <em>Lua Cheia</em>, a Terra, a Lua e o Sol encontram-se em alinhamento quase perfeito. Suas forças gravitacionais somam-se sobre as massas oceânicas, gerando marés de grande amplitude — com preamares (marés altas) mais elevadas e baixa-mares mais baixas.
-        </p>
-        <p class="pt-1 text-[11px] text-slate-400">
-          <strong>Marés de Quadratura:</strong> Nos quartos <em>Crescente</em> e <em>Minguante</em>, o Sol e a Lua formam um ângulo reto de 90° em relação à Terra. Suas atrações gravitacionais atuam perpendicularmente e se atenuam, resultando em menor variação no nível do mar.
-        </p>
-      </div>
-    </section>
-
-    <!-- 5. SEÇÃO: MINI ATLAS DO SISTEMA SOLAR & HORA NA LUA (FASE 3) -->
+    <!-- 4. SEÇÃO: MINI ATLAS DO SISTEMA SOLAR & HORA NA LUA (FASE 3) -->
     ${renderSolarSystemSection()}
+
+    <!-- 5. CARTÃO CURIOSIDADE DO DIA (FECHAMENTO EDUCATIVO) -->
+    <section class="p-5 rounded-3xl bg-gradient-to-br from-[#0C2117] to-[#07160F] border border-amber-500/25 shadow-xl space-y-2 relative overflow-hidden">
+      <div class="flex items-center justify-between pb-1 border-b border-[#163524]">
+        <div class="flex items-center gap-1.5 text-xs font-bold text-[#E5C384]">
+          <span>✨</span>
+          <span>Curiosidade do Dia: Céu & Ritmos</span>
+        </div>
+        <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#163524] text-[#A1C1B0]">${curiosities[0].tag}</span>
+      </div>
+      <h3 class="text-sm font-bold text-[#FFF6E5]">${curiosities[0].title}</h3>
+      <p class="text-xs text-slate-300 leading-relaxed">${curiosities[0].text}</p>
+      ${curiosities[0].isTradition ? `
+        <span class="inline-block mt-1 text-[10px] text-amber-400/90 italic font-semibold">
+          ⚠️ ${curiosities[0].disclaimer}
+        </span>
+      ` : ''}
+    </section>
 
     <!-- ATRIBUIÇÃO OFICIAL OBRIGATÓRIA NO RODAPÉ -->
     <footer class="pt-4 pb-8 text-center text-[11px] text-slate-400 space-y-1.5 border-t border-[#163524]">

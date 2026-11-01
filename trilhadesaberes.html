@@ -299,6 +299,16 @@
         </div>
       </div>
 
+      <!-- BARRA DE PESQUISA (PESQUISADOR DE ARTIGOS & TEMAS) -->
+      <div class="px-1 pt-1 pb-1">
+        <div class="relative flex items-center bg-[#0A1F3D] rounded-full p-1 pl-4 border border-amber-500/20 shadow-xs focus-within:ring-2 focus-within:ring-amber-500/30">
+          <input type="text" id="trilhas-search-input" onkeyup="handleTrilhasSearch(event)" oninput="handleTrilhasSearch(event)" placeholder="Pesquisar saberes, mestres ou temas..." class="w-full text-xs text-slate-100 placeholder-slate-400 bg-transparent focus:outline-none">
+          <button onclick="executeTrilhasSearch()" title="Buscar artigos e saberes" class="w-8 h-8 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black flex items-center justify-center shrink-0 shadow-xs active:scale-95 transition-transform tap-active font-bold cursor-pointer">
+            <i data-lucide="search" class="w-4 h-4 stroke-[2.5]"></i>
+          </button>
+        </div>
+      </div>
+
       <!-- ======================================================== -->
       <!-- SEÇÕES DINÂMICAS PREENCHIDAS VIA /data/trilhas.json     -->
       <!-- ======================================================== -->
@@ -752,21 +762,46 @@
       }
     ];
 
+    let currentTrilhasData = TRILHAS_FALLBACK;
+
     // Carregamento dinâmico a partir de /data/trilhas.json com fallback instantâneo
     async function loadTrilhasData() {
       try {
         const response = await fetch('./data/trilhas.json');
         if (!response.ok) throw new Error('Falha HTTP: ' + response.status);
         const data = await response.json();
+        currentTrilhasData = data;
         distributeCards(data);
       } catch (err) {
         console.warn('[Trilha de Saberes] Usando dados embutidos de contingência:', err);
+        currentTrilhasData = TRILHAS_FALLBACK;
         distributeCards(TRILHAS_FALLBACK);
       }
     }
 
-    function distributeCards(data) {
-      const list = Array.isArray(data) && data.length > 0 ? data : TRILHAS_FALLBACK;
+    function handleTrilhasSearch(event) {
+      if (event && event.key === 'Enter') {
+        executeTrilhasSearch();
+        return;
+      }
+      applyTrilhasFilter(document.getElementById('trilhas-search-input').value);
+    }
+
+    function executeTrilhasSearch() {
+      const input = document.getElementById('trilhas-search-input');
+      const query = input ? input.value : '';
+      applyTrilhasFilter(query);
+      if (query && query.trim()) {
+        const firstVisible = document.querySelector('section:not(.hidden)');
+        if (firstVisible) {
+          firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    function applyTrilhasFilter(query) {
+      const q = (query || '').toLowerCase().trim();
+      const list = currentTrilhasData || TRILHAS_FALLBACK;
       const containers = {
         saude: document.getElementById('container-saude'),
         etno: document.getElementById('container-etno'),
@@ -780,26 +815,50 @@
         astronomia: document.getElementById('container-astronomia')
       };
 
-      // Limpa containers e ativa mouse drag
-      Object.values(containers).forEach(c => { 
-        if (c) {
-          c.innerHTML = ''; 
-          enableMouseDragScroll(c);
-        }
+      // Reseta e limpa containers
+      Object.keys(containers).forEach(key => {
+        const c = containers[key];
+        const sec = document.getElementById(key);
+        if (c) c.innerHTML = '';
+        if (sec) sec.classList.remove('hidden');
       });
 
-      // Popula itens
+      const counts = {};
       list.forEach(item => {
-        const c = containers[item.eixo];
-        if (c) {
-          c.innerHTML += renderCard(item);
+        const match = !q || 
+                      (item.titulo && item.titulo.toLowerCase().includes(q)) || 
+                      (item.tipoPublicacao && item.tipoPublicacao.toLowerCase().includes(q)) ||
+                      (item.eixo && item.eixo.toLowerCase().includes(q));
+        if (match) {
+          const c = containers[item.eixo];
+          if (c) {
+            c.innerHTML += renderCard(item);
+            counts[item.eixo] = (counts[item.eixo] || 0) + 1;
+          }
         }
       });
 
-      // Recria ícones Lucide
+      // Se houver busca e alguma seção não tiver correspondência, oculta ela temporariamente
+      if (q) {
+        Object.keys(containers).forEach(key => {
+          const sec = document.getElementById(key);
+          if (sec && !counts[key]) {
+            sec.classList.add('hidden');
+          }
+        });
+      }
+
+      // Re-habilita drag e ícones Lucide
+      Object.values(containers).forEach(c => {
+        if (c) enableMouseDragScroll(c);
+      });
       if (window.lucide) {
         lucide.createIcons();
       }
+    }
+
+    function distributeCards(data) {
+      applyTrilhasFilter(document.getElementById('trilhas-search-input')?.value || '');
     }
 
     // Rolagem suave até a playlist selecionada

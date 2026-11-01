@@ -1,5 +1,5 @@
 // Service Worker - Ybyversus PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyversus-cache-v2.3';
+const CACHE_NAME = 'ybyversus-cache-v2.4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -38,7 +38,9 @@ const ASSETS_TO_CACHE = [
   './assets/card-portal-luz.jpg',
   './assets/card-sol-ancestral.jpg',
   './assets/dola-forest.jpg',
-  './assets/hero-forest.jpg'
+  './assets/hero-forest.jpg',
+  './assets/cosmic-sky.jpg',
+  './assets/logo-ybyversus.png'
 ];
 
 // Instalação do Service Worker

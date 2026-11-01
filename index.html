@@ -53,7 +53,24 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
       -webkit-user-select: none;
-      background-color: #040D08;
+      background-color: #020712;
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(18, 48, 92, 0.5) 0%, rgba(2, 7, 18, 0.95) 75%),
+        url('assets/cosmic-sky.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Fundo Céu Cósmico Azul Escuro do Aplicativo */
+    .app-cosmic-bg {
+      background-color: #030A16;
+      background-image: 
+        linear-gradient(180deg, rgba(3, 10, 22, 0.72) 0%, rgba(4, 14, 30, 0.65) 45%, rgba(2, 7, 16, 0.85) 100%),
+        url('assets/cosmic-sky.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
     }
 
     .font-brand, .font-luxury-serif {
@@ -256,12 +273,12 @@
   
 
   <!-- ======================================================== -->
-  <!-- MOLDURA DO SMARTPHONE (EXATAMENTE COMO NO SEU PRINT)     -->
+  <!-- MOLDURA DO SMARTPHONE (DESIGN SYSTEM DO YBY VERSUS)      -->
   <!-- ======================================================== -->
-  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] bg-[#07160F] sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#193C29]/70 transition-all">
+  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_50px_rgba(20,55,110,0.35)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#1E3B66]/60 transition-all">
     
     <!-- 1. STATUS BAR NATIVA (9:41, Sinal, Wifi, Bateria) -->
-    <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#07160F]">
+    <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]/80 backdrop-blur-md">
       <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
       <div class="flex items-center gap-1.5 text-slate-200">
         <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
@@ -272,12 +289,13 @@
       </div>
     </div>
 
-    <!-- 2. CABEÇALHO DO APLICATIVO (YBY versus + 🔍 ✨ =) -->
-    <header class="px-6 pt-2 pb-3 bg-[#07160F] flex items-center justify-between shrink-0">
+    <!-- 2. CABEÇALHO DO APLICATIVO (Logo YBY versus + 🔍 ✨ =) -->
+    <header class="px-6 pt-2 pb-3 bg-[#030A16]/85 backdrop-blur-md border-b border-[#142C4E]/50 flex items-center justify-between shrink-0">
       
-      <!-- Marca: YBY versus (Tipografia Moderna Popular - Outfit / Jakarta) -->
-      <div class="cursor-pointer shrink-0" onclick="resetToHome()">
-        <span class="font-brand text-[23px] font-extrabold tracking-tight gold-gradient-text drop-shadow-[0_2px_10px_rgba(229,195,132,0.25)]">
+      <!-- Marca: YBY versus (Suporta Logo PNG ou Tipografia Dourada 3D) -->
+      <div class="cursor-pointer shrink-0 flex items-center gap-2" onclick="resetToHome()">
+        <img id="app-brand-logo" src="assets/logo-ybyversus.png" alt="YBY versus" class="h-9 max-w-[160px] object-contain hidden" onload="this.classList.remove('hidden'); const t = document.getElementById('brand-text-logo'); if (t) t.classList.add('hidden')" onerror="this.style.display='none'; const t = document.getElementById('brand-text-logo'); if (t) t.classList.remove('hidden')">
+        <span id="brand-text-logo" class="font-brand text-[23px] font-extrabold tracking-tight gold-gradient-text drop-shadow-[0_2px_10px_rgba(229,195,132,0.25)]">
           YBY versus
         </span>
       </div>
@@ -722,7 +740,7 @@
     <!-- ======================================================== -->
     <!-- 4. RODAPÉ FIXO (BOTTOM NAVIGATION BAR)                    -->
     <!-- ======================================================== -->
-    <nav class="shrink-0 z-30 bg-[#07160F] border-t border-[#163524] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
+    <nav class="shrink-0 z-30 bg-[#030A16]/90 backdrop-blur-md border-t border-[#142C4E] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
       <!-- Praça -->
       <button onclick="selectBottomNav('praca')" id="nav-btn-praca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-100 transition-colors tap-active group">
         <i data-lucide="layout-grid" class="w-5 h-5"></i>

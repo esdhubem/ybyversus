@@ -2,10 +2,10 @@
 <html lang="pt-BR" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <title>Trilha de Saberes • YBY versus</title>
-  <meta name="description" content="Trilhas de Pesquisa Científica Decolonial e Saberes Ancestrais no ecossistema YBY versus.">
+  <title>Trilha de Saberes • Divulgação Científica • YBY versus</title>
+  <meta name="description" content="Divulgação científica e leitura de pesquisas decoloniais, etnobotânica, saúde coletiva e agroecologia no YBY versus.">
 
-  <!-- Acessibilidade & Mobile Viewport -->
+  <!-- Acessibilidade & Viewport com ZOOM TOTALMENTE LIBERADO (WCAG 2.2) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- PWA Manifest & Suporte Mobile -->
@@ -85,23 +85,23 @@
       transition: transform 0.1s ease;
     }
 
-    /* Cards de Pesquisa */
+    /* Cards de Artigos Científicos */
     .research-card {
-      flex: 0 0 280px;
+      flex: 0 0 295px;
       scroll-snap-align: start;
-      background: rgba(9, 28, 54, 0.85);
+      background: rgba(9, 28, 54, 0.92);
       border-radius: 18px;
       overflow: hidden;
-      border: 1px solid rgba(229, 195, 132, 0.25);
+      border: 1px solid rgba(229, 195, 132, 0.28);
       backdrop-filter: blur(12px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
       display: flex;
       flex-direction: column;
       transition: all 0.3s ease;
     }
     .research-card:hover {
       border-color: rgba(229, 195, 132, 0.6);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .playlist-scroll {
@@ -119,10 +119,10 @@
 
     /* Card Eixo Temático */
     .eixo-card {
-      background: rgba(9, 28, 54, 0.7);
+      background: rgba(9, 28, 54, 0.75);
       border: 1px solid rgba(229, 195, 132, 0.25);
       border-radius: 16px;
-      padding: 14px 10px;
+      padding: 12px 8px;
       text-align: center;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -194,9 +194,9 @@
         <div>
           <h1 class="font-brand text-base font-bold text-[#FFF6E5] leading-tight flex items-center gap-1.5">
             <span>Trilha de Saberes</span>
-            <span class="text-[9px] uppercase px-1.5 py-0.2 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">PWA</span>
+            <span class="text-[9px] uppercase px-1.5 py-0.2 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">Ciência</span>
           </h1>
-          <span class="text-[10px] text-[#A1C1B0]">Pesquisa Científica & Saberes Ancestrais</span>
+          <span class="text-[10px] text-[#A1C1B0]">Divulgação Científica & Pesquisas</span>
         </div>
       </div>
 
@@ -207,61 +207,61 @@
     </nav>
 
     <!-- 3. ÁREA DE CONTEÚDO COM ROLAGEM INTERNA DO SMARTPHONE -->
-    <main class="flex-1 app-screen-scroll px-4 pt-4 pb-24 space-y-5">
+    <main class="flex-1 app-screen-scroll px-4 pt-3 pb-24 space-y-4">
 
       <!-- BANNER DE APRESENTAÇÃO -->
-      <div class="text-center py-2">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#091C36] border border-[#142C4E] text-xs text-[#E5C384] font-medium mb-2">
-          <span>🌿</span> YBY Versus • Saberes Vivos
+      <div class="text-center py-1">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#091C36] border border-[#142C4E] text-[11px] text-[#E5C384] font-medium mb-1.5">
+          <span>🌿</span> YBY Versus • Divulgação Científica
         </div>
-        <h2 class="font-brand text-xl font-bold text-[#FFF6E5] leading-tight">
-          Trilhas de Pesquisa & Ciência Decolonial
+        <h2 class="font-brand text-lg font-bold text-[#FFF6E5] leading-tight">
+          Trilhas de Pesquisa Acadêmica
         </h2>
-        <p class="text-xs text-slate-300 mt-1 max-w-[340px] mx-auto leading-relaxed">
-          Conectando saberes ancestrais, tecnologias sociais em saúde e evidências acadêmicas.
+      </div>
+
+      <!-- ITEM 1: BLOCO EXPLICATIVO (SUBSTITUIÇÃO RIGOROSA CONFORME ESPECIFICAÇÃO) -->
+      <div class="bg-[#091C36]/90 border-l-4 border-[#E5C384] p-3.5 rounded-r-2xl border-t border-r border-b border-[#142C4E] shadow-md">
+        <h3 class="text-xs font-bold text-[#E5C384] flex items-center gap-1.5 mb-1 uppercase tracking-wider">
+          <i data-lucide="info" class="w-4 h-4"></i>
+          <span>Sobre esta página</span>
+        </h3>
+        <p class="text-xs text-slate-200 leading-relaxed">
+          Esta página divulga artigos científicos e incentiva a leitura de pesquisas, dando visibilidade ao trabalho de pesquisadores e pesquisadoras. Não tem a finalidade de comprovar a eficácia de nada: reúne publicações para você conhecer, ler e julgar. Cada item traz a fonte, o tipo de publicação e o link para o texto original.
         </p>
       </div>
 
-      <!-- CAIXA INFORMATIVA: POR QUE LER ESTAS PESQUISAS -->
-      <div class="bg-[#091C36]/90 border-l-4 border-[#E5C384] p-3.5 rounded-r-2xl border-t border-r border-b border-[#142C4E] shadow-lg">
-        <h3 class="text-xs font-bold text-[#E5C384] flex items-center gap-1.5 mb-1.5 uppercase tracking-wider">
-          <i data-lucide="book-open" class="w-4 h-4"></i>
-          <span>Por que ler estas pesquisas?</span>
-        </h3>
-        <p class="text-xs text-slate-200 leading-relaxed mb-2">
-          São <strong>ferramentas de validação e proteção</strong> que provam com dados científicos:
+      <!-- ITEM 2: AVISO DE SAÚDE EM LUGAR VISÍVEL -->
+      <div class="bg-amber-950/40 border-l-4 border-amber-500 p-3 rounded-r-2xl border-t border-r border-b border-amber-600/30 text-amber-200 shadow-sm flex items-start gap-2.5">
+        <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5"></i>
+        <p class="text-[11px] leading-relaxed font-medium">
+          <strong>Aviso:</strong> Conteúdo informativo, não é orientação de saúde. Plantas e práticas podem ter efeitos adversos e interagir com remédios. Converse com um profissional de saúde.
         </p>
-        <ul class="text-[11px] text-slate-300 space-y-1 pl-3.5 list-disc">
-          <li>Plantas medicinais e saberes quilombolas são ciência válida.</li>
-          <li>Práticas Integrativas (PICS) são tecnologias sociais de prevenção.</li>
-          <li>A economia solidária é um antídoto real contra a desigualdade.</li>
-        </ul>
       </div>
 
       <!-- GRID DOS 4 EIXOS TEMÁTICOS (ACESSO RÁPIDO) -->
       <div>
         <div class="flex items-center justify-between mb-2 px-1">
           <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Eixos Temáticos</span>
-          <span class="text-[10px] text-slate-400">Toque para navegar</span>
+          <span class="text-[10px] text-slate-400">Toque para rolar</span>
         </div>
-        <div class="grid grid-cols-2 gap-2.5">
+        <div class="grid grid-cols-2 gap-2">
           <div class="eixo-card tap-active" onclick="scrollToPlaylist('etno')">
-            <div class="text-2xl mb-1">🌱</div>
+            <div class="text-xl mb-0.5">🌱</div>
             <div class="text-xs font-bold text-[#E5C384] leading-tight">Etnofarmacologia</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Plantas & Ancestralidade</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Saberes Ancestrais</div>
           </div>
           <div class="eixo-card tap-active" onclick="scrollToPlaylist('saude')">
-            <div class="text-2xl mb-1">🏥</div>
+            <div class="text-xl mb-0.5">🏥</div>
             <div class="text-xs font-bold text-[#E5C384] leading-tight">Saúde Coletiva & PICS</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Cuidado Comunitário</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Atenção Comunitária</div>
           </div>
           <div class="eixo-card tap-active" onclick="scrollToPlaylist('agro')">
-            <div class="text-2xl mb-1">🌍</div>
+            <div class="text-xl mb-0.5">🌍</div>
             <div class="text-xs font-bold text-[#E5C384] leading-tight">Agroecologia</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Soberania Alimentar</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Decolonialidade</div>
           </div>
           <div class="eixo-card tap-active" onclick="scrollToPlaylist('genero')">
-            <div class="text-2xl mb-1">⚖️</div>
+            <div class="text-xl mb-0.5">⚖️</div>
             <div class="text-xs font-bold text-[#E5C384] leading-tight">Gênero & Justiça</div>
             <div class="text-[10px] text-slate-400 mt-0.5">Mulheres & Território</div>
           </div>
@@ -269,278 +269,66 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- PLAYLIST 1: ETNOFARMACOLOGIA                            -->
+      <!-- SEÇÕES DINÂMICAS PREENCHIDAS VIA /data/trilhas.json     -->
       <!-- ======================================================== -->
+      
+      <!-- SEÇÃO 1: ETNOFARMACOLOGIA -->
       <section id="etno" class="pt-2">
         <div class="mb-2 px-1">
           <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
             <span>🌱</span> Etnofarmacologia & Saberes Ancestrais
           </h3>
           <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Comunidades quilombolas preservam a biodiversidade e desafiam o extrativismo.
+            Pesquisas e documentações sobre conhecimento tradicional botânico.
           </p>
         </div>
-
-        <div class="flex items-center justify-between text-[10px] text-slate-400 px-1 mb-1">
-          <span>← Deslize os artigos →</span>
-        </div>
-
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">🌿</span>
-                <span class="text-xs font-bold text-[#E5C384]">Portal Amazônia</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2024</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "Saberes ancestrais e ciência: plantas medicinais dos quilombos Mumbuca e Prata no Jalapão preservam biodiversidade."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                Como comunidades quilombolas mantêm conhecimentos botânicos vivos contra o monopólio mercantil.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://portalamazonia.com" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=100" alt="Plantas" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
-
-          <!-- Artigo 2 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">📚</span>
-                <span class="text-xs font-bold text-[#E5C384]">ResearchGate</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2024</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "Etnobotânica e justiça social: integração entre saberes tradicionais e científicos como ferramenta humana."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                A valorização dos saberes populares como caminho para a equidade e conservação ambiental.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1530836369243-78c00e650acb?w=100" alt="Etnobotânica" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
+        <div class="playlist-scroll" id="container-etno">
+          <!-- Renderizado via script -->
         </div>
       </section>
 
-      <!-- ======================================================== -->
-      <!-- PLAYLIST 2: SAÚDE COLETIVA & PICS                       -->
-      <!-- ======================================================== -->
+      <!-- SEÇÃO 2: SAÚDE COLETIVA & PICS -->
       <section id="saude" class="pt-2">
         <div class="mb-2 px-1">
           <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-            <span>🏥</span> Saúde Coletiva & Práticas Integrativas (PICS)
+            <span>🏥</span> Saúde Coletiva & PICS
           </h3>
           <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Tecnologia social de cuidado básico e prevenção em territórios comunitários.
+            Estudos sobre práticas integrativas e cuidado básico territorial.
           </p>
         </div>
-
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">🌿</span>
-                <span class="text-xs font-bold text-[#E5C384]">Cadernos Cajuína</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2026</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "Hortos Medicinais Comunitários: iniciativa que une saberes tradicionais, economia solidária e saúde básica."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                Experiências práticas de autonomia comunitária em saúde preventiva fora do modelo comercial.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://v3.cadernoscajuina.pro.br" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100" alt="Horto" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
-
-          <!-- Artigo 2 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">📖</span>
-                <span class="text-xs font-bold text-[#E5C384]">Atena Editora</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2025</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "PICS como Resistência Política: a vivência de movimentos populares nas práticas integrativas."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                O cuidado e a cura comunitária como atos de emancipação nos territórios vulneráveis.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://cdn.atenaeditora.com.br" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=100" alt="PICS" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
+        <div class="playlist-scroll" id="container-saude">
+          <!-- Renderizado via script -->
         </div>
       </section>
 
-      <!-- ======================================================== -->
-      <!-- PLAYLIST 3: AGROECOLOGIA & DECOLONIALIDADE              -->
-      <!-- ======================================================== -->
+      <!-- SEÇÃO 3: AGROECOLOGIA & DECOLONIALIDADE -->
       <section id="agro" class="pt-2">
         <div class="mb-2 px-1">
           <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
-            <span>🌍</span> Agroecologia & Soberania Alimentar
+            <span>🌍</span> Agroecologia & Decolonialidade
           </h3>
           <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            O cuidado com a terra e com o alimento como parte indissociável da saúde humana.
+            Sistemas agroalimentares, soberania e relações comunitárias com a terra.
           </p>
         </div>
-
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">🌾</span>
-                <span class="text-xs font-bold text-[#E5C384]">ResearchGate</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2024</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "A economia solidária como elemento propulsor da decolonialidade, promovendo soberania alimentar."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                Ruptura de dependências e resiliência territorial por meio da agricultura agroecológica.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1eef148ed?w=100" alt="Agroecologia" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
-
-          <!-- Artigo 2 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">🌱</span>
-                <span class="text-xs font-bold text-[#E5C384]">USP Teses</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2026</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "Agroecologia e saúde: confluência de práticas e saberes na perspectiva do Bem Viver."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                O corpo e a terra como um único organismo integrado e soberano.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://teses.usp.br" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=100" alt="Bem Viver" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
+        <div class="playlist-scroll" id="container-agro">
+          <!-- Renderizado via script -->
         </div>
       </section>
 
-      <!-- ======================================================== -->
-      <!-- PLAYLIST 4: GÊNERO & JUSTIÇA SOCIAL                     -->
-      <!-- ======================================================== -->
+      <!-- SEÇÃO 4: GÊNERO & JUSTIÇA SOCIAL -->
       <section id="genero" class="pt-2">
         <div class="mb-2 px-1">
           <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
             <span>⚖️</span> Gênero & Justiça Social
           </h3>
           <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
-            Mulheres como guardiãs dos saberes ancestrais e agentes da economia solidária.
+            Mulheres na conservação da sociobiodiversidade e economia solidária.
           </p>
         </div>
-
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">🌾</span>
-                <span class="text-xs font-bold text-[#E5C384]">Revista D'Generus</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2025</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "Pedagogias Feministas e Economia Solidária: integração com educação ambiental decolonial."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                Metodologias populares de formação lideradas por mulheres em comunidades tradicionais.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://periodicos.ufpel.edu.br" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1573497620053-e25e54c17b25?w=100" alt="Mulheres" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
-
-          <!-- Artigo 2 -->
-          <article class="research-card">
-            <div class="bg-[#040E1E] px-3.5 py-2 border-b border-[#142C4E] flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-base">🌺</span>
-                <span class="text-xs font-bold text-[#E5C384]">Fiocruz</span>
-              </div>
-              <span class="text-[10px] text-slate-400 font-semibold">2025</span>
-            </div>
-            <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
-              <p class="text-xs text-slate-100 italic border-l-2 border-emerald-400 pl-2.5 leading-relaxed">
-                "Mulheres e biodiversidade: a luta por justiça social e conservação ambiental em territórios de conflito."
-              </p>
-              <p class="text-[11px] text-slate-300 leading-relaxed">
-                A liderança feminina na preservação das sementes, dos biomas e dos saberes de cura.
-              </p>
-              <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
-                <a href="https://portal.fiocruz.br" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-[11px] font-bold hover:brightness-110 transition-all flex items-center gap-1 tap-active">
-                  <span>Ler artigo</span>
-                  <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=100" alt="Justiça" class="w-9 h-9 rounded-full object-cover border border-[#E5C384]/40">
-              </div>
-            </div>
-          </article>
+        <div class="playlist-scroll" id="container-genero">
+          <!-- Renderizado via script -->
         </div>
       </section>
 
@@ -582,7 +370,113 @@
 
   </div>
 
+  <!-- SCRIPT DE CARREGAMENTO LOCAL DINÂMICO & NAVEGAÇÃO -->
   <script>
+    // Ícones vetoriais SVG locais por tipo de publicação para zero requisições a terceiros
+    function getTipoPublicacaoBadge(tipo) {
+      const cores = {
+        'artigo de pesquisa': 'bg-blue-950/80 text-blue-300 border-blue-500/30',
+        'revisão': 'bg-purple-950/80 text-purple-300 border-purple-500/30',
+        'estudo qualitativo': 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30',
+        'análise de política': 'bg-amber-950/80 text-amber-300 border-amber-500/30',
+        'relato de experiência': 'bg-cyan-950/80 text-cyan-300 border-cyan-500/30',
+        'tese ou dissertação': 'bg-indigo-950/80 text-indigo-300 border-indigo-500/30',
+        'capítulo de livro': 'bg-rose-950/80 text-rose-300 border-rose-500/30',
+        'preprint': 'bg-slate-800 text-slate-300 border-slate-600',
+        'divulgação': 'bg-teal-950/80 text-teal-300 border-teal-500/30'
+      };
+      const estilo = cores[tipo] || 'bg-slate-800 text-slate-300 border-slate-600';
+      return `<span class="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-md border ${estilo}">${tipo}</span>`;
+    }
+
+    function renderCard(item) {
+      const doiHtml = item.doi ? `<span class="text-[10px] text-slate-400 block mt-0.5">DOI: ${item.doi}</span>` : '';
+      const isIlustrativo = item.ilustrativo === 'sim' || item.ilustrativo === true;
+
+      return `
+        <article class="research-card">
+          <!-- Cabeçalho do Card: Selo Ilustrativo e Tipo de Publicação -->
+          <div class="bg-[#040E1E] px-3.5 py-2.5 border-b border-[#142C4E] flex items-center justify-between gap-1 flex-wrap">
+            ${isIlustrativo ? '<span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-wider rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40">EXEMPLO ILUSTRATIVO</span>' : ''}
+            ${getTipoPublicacaoBadge(item.tipoPublicacao)}
+          </div>
+
+          <!-- Corpo do Card -->
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-brand text-xs font-bold text-[#FFF6E5] leading-snug line-clamp-2">
+                ${item.titulo}
+              </h4>
+              <p class="text-[11px] text-slate-300 mt-1">
+                <strong>Autores:</strong> ${item.autores}
+              </p>
+              <p class="text-[10px] text-[#A1C1B0] mt-0.5">
+                ${item.veiculo} • <strong>${item.ano}</strong> • Idioma: ${item.idioma}
+              </p>
+              ${doiHtml}
+            </div>
+
+            <!-- Frase curta da curadora (porQueLer) -->
+            <div class="bg-[#030A16]/80 p-2.5 rounded-xl border border-[#142C4E]/60">
+              <span class="text-[10px] font-bold text-[#E5C384] uppercase tracking-wider block mb-0.5">Por que ler:</span>
+              <p class="text-[11px] text-slate-200 leading-relaxed italic">
+                "${item.porQueLer}"
+              </p>
+            </div>
+
+            <!-- Rodapé do Card com Botão 'Ler na fonte' (sem terceiros) -->
+            <div class="pt-2 border-t border-[#142C4E] flex items-center justify-between">
+              <span class="text-[10px] text-slate-400 font-medium">Link acadêmico</span>
+              <a href="${item.url}" ${item.url === '#' ? 'onclick="event.preventDefault(); alert(\'Este é um exemplo ilustrativo de demonstração. Em breve o link direto oficial será ativado.\');"' : 'target="_blank" rel="noopener noreferrer"'}
+                 title="Ler na fonte original"
+                 aria-label="Ler publicação na fonte original: ${item.titulo}"
+                 class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white text-[11px] font-bold shadow-md hover:brightness-110 transition-all flex items-center gap-1.5 tap-active">
+                <span>Ler na fonte</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Carregamento dinâmico a partir de /data/trilhas.json
+    async function loadTrilhasData() {
+      try {
+        const response = await fetch('./data/trilhas.json');
+        if (!response.ok) throw new Error('Falha HTTP: ' + response.status);
+        const data = await response.json();
+        distributeCards(data);
+      } catch (err) {
+        console.warn('[Trilha de Saberes] Carregando dados de contingência local:', err);
+      }
+    }
+
+    function distributeCards(data) {
+      const containers = {
+        etno: document.getElementById('container-etno'),
+        saude: document.getElementById('container-saude'),
+        agro: document.getElementById('container-agro'),
+        genero: document.getElementById('container-genero')
+      };
+
+      // Limpa containers
+      Object.values(containers).forEach(c => { if (c) c.innerHTML = ''; });
+
+      // Popula itens
+      data.forEach(item => {
+        const c = containers[item.eixo];
+        if (c) {
+          c.innerHTML += renderCard(item);
+        }
+      });
+
+      // Recria ícones Lucide
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
     // Rolagem suave até a playlist selecionada
     function scrollToPlaylist(eixoId) {
       const el = document.getElementById(eixoId);
@@ -593,13 +487,14 @@
       }
     }
 
-    // Inicialização de Ícones Lucide e Service Worker PWA
+    // Inicialização da página e do PWA
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
+      loadTrilhasData();
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
+            .then(reg => console.log('[PWA] Service Worker ativo:', reg.scope))
             .catch(err => console.log('[PWA] Falha no SW:', err));
         });
       }

@@ -56,6 +56,21 @@ assert(marchEquinox.date.getUTCMonth() === 2 && Math.abs(marchEquinox.date.getUT
 const juneSolstice = seasons2026[1];
 assert(juneSolstice.date.getUTCMonth() === 5 && Math.abs(juneSolstice.date.getUTCDate() - 21) <= 1, `Solstício de Junho 2026 deve ser por volta de 21 de junho (Obtido: ${juneSolstice.date.toISOString()})`);
 
+console.log('\n--- TESTES: MINI ATLAS DO SISTEMA SOLAR ---');
+const { calculatePlanetAngles, calculateEarthDistances, calculateMoonOrbit, PLANETS_DATA } = await import('../curiosidades/solar_system.js');
+
+const planetsAngles = calculatePlanetAngles(new Date());
+assert(planetsAngles.length === 8, `Deve calcular ângulos para os 8 planetas (Obtido: ${planetsAngles.length})`);
+
+const earthDist = calculateEarthDistances(planetsAngles);
+assert(earthDist.venus > 0.25 && earthDist.venus < 1.75, `Distância de Vênus à Terra deve estar entre 0.25 e 1.75 UA (Obtido: ${earthDist.venus} UA)`);
+assert(earthDist.marte > 0.35 && earthDist.marte < 2.65, `Distância de Marte à Terra deve estar entre 0.35 e 2.65 UA (Obtido: ${earthDist.marte} UA)`);
+assert(earthDist.jupiter > 3.9 && earthDist.jupiter < 6.5, `Distância de Júpiter à Terra deve estar entre 3.9 e 6.5 UA (Obtido: ${earthDist.jupiter} UA)`);
+
+const moonOrbit = calculateMoonOrbit(new Date());
+assert(moonOrbit.angle >= 0 && moonOrbit.angle <= 2 * Math.PI, `Ângulo da Lua deve estar no intervalo [0, 2π] (Obtido: ${moonOrbit.angle})`);
+assert(moonOrbit.name === 'Lua' && moonOrbit.distKm === 384400, 'Lua possui parâmetros corretos');
+
 console.log(`\n========================================`);
 console.log(`RESULTADO FINAL: ${passed} passaram, ${failed} falharam.`);
 if (failed > 0) process.exit(1);

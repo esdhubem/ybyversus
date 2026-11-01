@@ -1,5 +1,5 @@
 // Service Worker - Ybyversus PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyversus-cache-v1.3';
+const CACHE_NAME = 'ybyversus-cache-v1.4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

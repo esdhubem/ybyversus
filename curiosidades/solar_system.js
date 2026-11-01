@@ -110,3 +110,40 @@ export function calculatePlanetAngles(date = new Date()) {
   });
 }
 
+/**
+ * Calcula a distância euclidiana de cada planeta em relação à Terra (em Unidades Astronômicas - UA) hoje
+ */
+export function calculateEarthDistances(planetsWithAngles) {
+  const earth = planetsWithAngles.find(p => p.id === 'terra');
+  if (!earth) return {};
+
+  const earthX = earth.distAU * Math.cos(earth.angle);
+  const earthY = earth.distAU * Math.sin(earth.angle);
+
+  const distances = {};
+  planetsWithAngles.forEach(p => {
+    if (p.id === 'terra') return;
+    const px = p.distAU * Math.cos(p.angle);
+    const py = p.distAU * Math.sin(p.angle);
+    const dist = Math.hypot(px - earthX, py - earthY);
+    distances[p.id] = parseFloat(dist.toFixed(2));
+  });
+
+  return distances;
+}
+
+/**
+ * Calcula a posição da Lua em torno da Terra
+ */
+export function calculateMoonOrbit(date = new Date()) {
+  const J2000 = new Date('2000-01-01T12:00:00Z').getTime();
+  const diffDays = (date.getTime() - J2000) / (1000 * 60 * 60 * 24);
+  const moonPeriodDays = 27.321661; // Período sideral da Lua
+  const angle = (2 * Math.PI * (diffDays / moonPeriodDays)) % (2 * Math.PI);
+  return {
+    angle: angle < 0 ? angle + 2 * Math.PI : angle,
+    distKm: 384400,
+    name: 'Lua'
+  };
+}
+

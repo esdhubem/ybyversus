@@ -37,3 +37,4 @@ console.log(`\n========================================`);
 console.log(`RESULTADO ECLIPSES: ${passed} passaram, ${failed} falharam.`);
 
 if (failed > 0) process.exit(1);
+

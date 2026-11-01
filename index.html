@@ -307,10 +307,17 @@
           <i data-lucide="search" class="w-5 h-5 stroke-[2]"></i>
         </button>
 
-        <!-- Ícone Menu Duas Linhas "=" -->
-        <button onclick="openModal('modal-menu')" title="Mais opções" class="p-1 hover:text-white transition-colors flex flex-col gap-1 items-center justify-center w-6 h-6 tap-active">
-          <span class="w-5 h-[2px] bg-[#E5C384] rounded-full"></span>
-          <span class="w-5 h-[2px] bg-[#E5C384] rounded-full"></span>
+        <!-- Símbolo Maia 13 (Três pontos e duas barras) - Menu de Opções -->
+        <button onclick="openModal('modal-menu')" title="Mais opções • Símbolo Maia 13" aria-label="Abrir Menu de Opções" class="p-1 text-[#E5C384] hover:text-white transition-all flex items-center justify-center w-7 h-7 tap-active group">
+          <svg class="w-5 h-5 drop-shadow-[0_0_6px_rgba(229,195,132,0.4)] group-hover:drop-shadow-[0_0_10px_rgba(229,195,132,0.9)] transition-all" viewBox="0 0 24 24" fill="currentColor">
+            <!-- 3 Pontos Superiores -->
+            <circle cx="5" cy="4.5" r="2.2" />
+            <circle cx="12" cy="4.5" r="2.2" />
+            <circle cx="19" cy="4.5" r="2.2" />
+            <!-- Duas Barras Horizontais -->
+            <rect x="2" y="9.5" width="20" height="3.2" rx="1.6" />
+            <rect x="2" y="15.8" width="20" height="3.2" rx="1.6" />
+          </svg>
         </button>
       </div>
     </header>

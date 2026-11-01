@@ -771,6 +771,42 @@
 
     </main>
 
+    <!-- ======================================================== -->
+    <!-- 4. RODAPÉ FIXO (BOTTOM NAVIGATION BAR)                    -->
+    <!-- ======================================================== -->
+    <nav class="shrink-0 z-30 bg-[#07160F] border-t border-[#163524] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
+      <!-- Praça -->
+      <button onclick="selectBottomNav('praca')" id="nav-btn-praca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-100 transition-colors tap-active group">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold tracking-tight mt-0.5">Praça</span>
+      </button>
+
+      <!-- Descobrir -->
+      <button onclick="selectBottomNav('descobrir')" id="nav-btn-descobrir" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+        <i data-lucide="compass" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Descobrir</span>
+      </button>
+
+      <!-- Botão Central Elevado (+) Cultivar Saber -->
+      <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
+        <button onclick="openModal('modal-publish')" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#126843] via-[#1E935E] to-[#2DC47F] text-white flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_16px_rgba(20,130,80,0.55),0_0_12px_rgba(229,195,132,0.35)] active:scale-95 hover:scale-105 transition-all tap-active">
+          <i data-lucide="plus" class="w-6 h-6 stroke-[3] text-white"></i>
+        </button>
+      </div>
+
+      <!-- Acervo -->
+      <button onclick="selectBottomNav('acervo')" id="nav-btn-acervo" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+        <i data-lucide="bookmark" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Acervo</span>
+      </button>
+
+      <!-- Presença -->
+      <button onclick="selectBottomNav('presenca')" id="nav-btn-presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold tracking-tight mt-0.5">Presença</span>
+      </button>
+    </nav>
+
   </div>
 
   <!-- ======================================================== -->
@@ -1680,6 +1716,33 @@
       window._toastTimeout = setTimeout(() => {
         toast.classList.add('hidden');
       }, 2600);
+    }
+
+    function selectBottomNav(tab) {
+      const tabs = ['praca', 'descobrir', 'acervo', 'presenca'];
+      tabs.forEach(t => {
+        const el = document.getElementById('nav-btn-' + t);
+        if (el) {
+          if (t === tab) {
+            el.className = 'flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group';
+          } else {
+            el.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group';
+          }
+        }
+      });
+
+      if (tab === 'praca') {
+        const container = document.querySelector('.app-screen-scroll');
+        if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
+        showAppToast('Praça Pública • Saberes da Terra');
+      } else if (tab === 'descobrir') {
+        toggleSearch();
+        showAppToast('Descobrir saberes comunitários e autores');
+      } else if (tab === 'acervo') {
+        showAppToast('Seu Acervo: Saberes, Áudios e Leituras salvas');
+      } else if (tab === 'presenca') {
+        showAppToast('Presença Soberana • Espaço do Guardião');
+      }
     }
 
     window.addEventListener('DOMContentLoaded', () => {

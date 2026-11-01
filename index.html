@@ -729,8 +729,8 @@
         <span class="text-[10px] font-bold tracking-tight mt-0.5">Praça</span>
       </button>
 
-      <!-- Tempo (Curiosidades: Tempo, Mar e Céu) -->
-      <a href="curiosidades.html" id="nav-btn-tempo" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+      <!-- Tempo (Previsão: Tempo, Mar e Céu) -->
+      <a href="previsaotempoastrononia.html" id="nav-btn-tempo" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
         <i data-lucide="cloud-sun" class="w-5 h-5"></i>
         <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
       </a>
@@ -2424,7 +2424,7 @@
         if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
         showAppToast('Praça Pública • Saberes da Terra');
       } else if (tab === 'tempo') {
-        window.location.href = 'curiosidades.html';
+        window.location.href = 'previsaotempoastrononia.html';
       } else if (tab === 'acervo') {
         showAppToast('Seu Acervo: Saberes, Áudios e Leituras salvas');
       } else if (tab === 'presenca') {

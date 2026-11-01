@@ -6,6 +6,7 @@ import { getMoonDetails, getNextMoonPhases, getCelestialEvents, getSolsticesAndE
 import { fetchWeatherData, searchCities, convertWindSpeed } from './weather.js';
 import { fetchMarineData, findNearestPort, fetchTideData, renderTideChartSvg } from './marine.js';
 import { renderSolarSystemSection } from './solar_system_ui.js';
+import { renderEclipsesSection } from './eclipses.js';
 import { generateDailyCuriosity } from './curiosities.js';
 import { renderMoonSvg, renderCompassSvg, renderHourlyForecast, renderDailyForecast, renderSkeleton } from './ui.js';
 import { 
@@ -314,6 +315,9 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
           `).join('')}
         </div>
       </div>
+
+      <!-- Eclipses Lunares e Solares com Visibilidade no Brasil -->
+      ${renderEclipsesSection()}
     </section>
 
     <!-- 3. SEÇÃO: CLIMA E VENTO -->

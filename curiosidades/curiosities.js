@@ -63,3 +63,4 @@ function formatTime(date) {
     minute: '2-digit'
   }).format(date);
 }
+

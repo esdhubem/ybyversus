@@ -181,3 +181,4 @@ export async function searchCities(query) {
     return [];
   }
 }
+

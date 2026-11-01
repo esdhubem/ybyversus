@@ -161,3 +161,4 @@ export function setCachedData(key, data, ttlMinutes = 45) {
     console.warn('[YBY Cache] Armazenamento cheio ou desabilitado:', e);
   }
 }
+

@@ -64,3 +64,4 @@ const result = {
 const outPath = path.join('data', 'mares', `${portoId}.json`);
 fs.writeFileSync(outPath, JSON.stringify(result, null, 2), 'utf8');
 console.log(`✅ Sucesso! Arquivo gerado em: ${outPath} (${Object.keys(dias).length} dias importados)`);
+

@@ -201,3 +201,4 @@ window.selectPlanet = (planetId) => {
     }
   }
 };
+

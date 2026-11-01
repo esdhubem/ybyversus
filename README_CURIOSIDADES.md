@@ -10,6 +10,7 @@ Guia técnico, documentação das fontes científicas, limites de uso das APIs e
 | :--- | :--- | :--- | :--- |
 | **Céu de Hoje & Fases da Lua** | Algoritmos de Jean Meeus e Vladimir Agafonkin (SunCalc) | **Licença MIT** | **100% Local no Navegador** (sem requisições externas) |
 | **Solstícios e Equinócios** | *Astronomical Algorithms* (Jean Meeus) | Domínio público / Uso livre | **100% Local no Navegador** |
+| **Próximos Eclipses** | NASA GSFC Eclipse Web Site (Fred Espenak) | Dados Públicos Oficiais Científicos | Catálogo local com visibilidade para o Brasil e horário de Brasília |
 | **Clima, UV e Vento** | [Open-Meteo Weather API](https://open-meteo.com/) | **CC BY 4.0** | Gratuito, sem chave, uso não comercial |
 | **Ondas e Ondulação (Swell)** | [Open-Meteo Marine API](https://open-meteo.com/en/docs/marine-weather-api) | **CC BY 4.0** | Gratuito, sem chave, uso não comercial |
 | **Busca de Cidades** | [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api) | **CC BY 4.0** | Gratuito, sem chave |
@@ -72,6 +73,7 @@ As tábuas de marés da Marinha do Brasil não possuem API aberta pública cont�
 Para rodar os testes unitários de cálculo astronômico (fases da Lua, equinócios, solstícios e eventos solares):
 ```bash
 node tests/test_astronomy.js
+node tests/test_eclipses.js
 ```
 
 Para validar a integridade de todos os arquivos de tábuas de maré:
@@ -89,3 +91,4 @@ node tools/validate_tides.js
 - [x] **Privacidade:** Coordenadas com precisão reduzida (2 casas decimais), sem cookies, sem rastreadores, 100% estático.
 - [x] **Aviso Fixo de Segurança:** Alerta visível na seção costeira orientando a consulta aos órgãos oficiais (Marinha do Brasil, Defesa Civil, INMET).
 - [x] **Atribuição Visível:** Créditos a Open-Meteo (CC BY 4.0) e Marinha do Brasil (DHN/CHM) fixados no rodapé da página.
+

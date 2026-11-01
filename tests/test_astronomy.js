@@ -59,3 +59,4 @@ assert(juneSolstice.date.getUTCMonth() === 5 && Math.abs(juneSolstice.date.getUT
 console.log(`\n========================================`);
 console.log(`RESULTADO FINAL: ${passed} passaram, ${failed} falharam.`);
 if (failed > 0) process.exit(1);
+

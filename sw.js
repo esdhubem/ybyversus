@@ -1,11 +1,12 @@
 // Service Worker - Ybyversus PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyversus-cache-v1.2';
+const CACHE_NAME = 'ybyversus-cache-v1.3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './curiosidades.html',
   './curiosidades/main.js',
   './curiosidades/astronomy.js',
+  './curiosidades/eclipses.js',
   './curiosidades/weather.js',
   './curiosidades/marine.js',
   './curiosidades/solar_system.js',

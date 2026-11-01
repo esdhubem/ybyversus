@@ -101,3 +101,4 @@ if (allValid) {
   console.error('\n❌ Existem erros nos arquivos de marés.\n');
   process.exit(1);
 }
+

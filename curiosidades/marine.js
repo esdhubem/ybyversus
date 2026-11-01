@@ -230,3 +230,4 @@ export function renderTideChartSvg(medicoes) {
     </div>
   `;
 }
+

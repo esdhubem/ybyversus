@@ -240,33 +240,28 @@
         </p>
       </div>
 
-      <!-- GRID DOS 4 EIXOS TEMÁTICOS (ACESSO RÁPIDO) -->
-      <div>
-        <div class="flex items-center justify-between mb-2 px-1">
-          <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Eixos Temáticos</span>
-          <span class="text-[10px] text-slate-400">Toque para rolar</span>
+      <!-- TEMAS: ACESSO RÁPIDO APENAS COM ÍCONE E TÍTULO (SEM QUADRADOS) -->
+      <div class="px-1 pt-1 pb-1">
+        <div class="mb-2">
+          <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Temas</span>
         </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div class="eixo-card tap-active" onclick="scrollToPlaylist('etno')">
-            <div class="text-xl mb-0.5">🌱</div>
-            <div class="text-xs font-bold text-[#E5C384] leading-tight">Etnofarmacologia</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Saberes Ancestrais</div>
-          </div>
-          <div class="eixo-card tap-active" onclick="scrollToPlaylist('saude')">
-            <div class="text-xl mb-0.5">🏥</div>
-            <div class="text-xs font-bold text-[#E5C384] leading-tight">Saúde Coletiva & PICS</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Atenção Comunitária</div>
-          </div>
-          <div class="eixo-card tap-active" onclick="scrollToPlaylist('agro')">
-            <div class="text-xl mb-0.5">🌍</div>
-            <div class="text-xs font-bold text-[#E5C384] leading-tight">Agroecologia</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Decolonialidade</div>
-          </div>
-          <div class="eixo-card tap-active" onclick="scrollToPlaylist('genero')">
-            <div class="text-xl mb-0.5">⚖️</div>
-            <div class="text-xs font-bold text-[#E5C384] leading-tight">Gênero & Justiça</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Mulheres & Território</div>
-          </div>
+        <div class="grid grid-cols-4 gap-1 text-center">
+          <button type="button" onclick="scrollToPlaylist('etno')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌱</span>
+            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Etnofarmacologia</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('saude')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🏥</span>
+            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Saúde Coletiva & PICS</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('agro')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌍</span>
+            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Agroecologia</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('genero')" class="flex flex-col items-center justify-start p-1 group tap-active hover:opacity-85 transition-all cursor-pointer">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">⚖️</span>
+            <span class="text-[11px] font-bold text-[#E5C384] leading-tight">Gênero & Justiça</span>
+          </button>
         </div>
       </div>
 

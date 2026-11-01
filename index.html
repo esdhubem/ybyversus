@@ -117,30 +117,70 @@
       background: linear-gradient(135deg, rgba(255, 242, 214, 0.9) 0%, rgba(201, 151, 56, 0.7) 100%);
     }
 
-    /* Squircle Escuro 3D dos 8 Botões com underglow dourado idêntico à captura */
-    .dark-squircle-btn {
+    /* Efeito de Luz Amarela/Dourada ao Passar o Mouse nos Ícones */
+    .fmt-tab-btn {
       position: relative;
-      width: 76px;
-      height: 72px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, #0B2016 0%, #091A11 100%);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-bottom: 1.5px solid rgba(229, 195, 132, 0.28);
-      box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.85), 0 4px 12px rgba(229, 195, 132, 0.18), inset 0 1px 1.5px rgba(255, 255, 255, 0.14), inset 0 -2px 3px rgba(229, 195, 132, 0.22);
-      transition: all 0.24s cubic-bezier(0.34, 1.56, 0.64, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 20px;
+      transition: all 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .group:hover .dark-squircle-btn {
-      transform: translateY(-2px) scale(1.05);
-      border-color: rgba(229, 195, 132, 0.45);
-      border-bottom-color: rgba(229, 195, 132, 0.6);
-      box-shadow: 0 16px 30px -4px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 195, 132, 0.35), inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+
+    /* Halo luminoso amarelo-dourado que surge atrás do ícone ao passar o mouse */
+    .fmt-tab-btn .icon-halo {
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.6);
+      width: 52px;
+      height: 52px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255, 235, 140, 0.9) 0%, rgba(234, 199, 132, 0.55) 45%, rgba(201, 151, 56, 0.25) 70%, transparent 80%);
+      filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 0;
     }
-    .group:active .dark-squircle-btn {
+
+    /* Ícone e texto com transições e posições relativas */
+    .fmt-tab-btn i,
+    .fmt-tab-btn svg {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease, color 0.25s ease;
+    }
+
+    .fmt-tab-btn span {
+      position: relative;
+      z-index: 1;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    /* Ao passar o mouse, focar ou tocar: surge a luz amarela radiante idêntica ao card inferior */
+    .fmt-tab-btn:hover .icon-halo,
+    .fmt-tab-btn:focus .icon-halo,
+    .fmt-tab-btn:active .icon-halo,
+    .fmt-tab-btn.active .icon-halo {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.35);
+    }
+
+    .fmt-tab-btn:hover i,
+    .fmt-tab-btn:hover svg,
+    .fmt-tab-btn:focus i,
+    .fmt-tab-btn:focus svg {
+      color: #FFF9ED;
+      transform: translateY(-3px) scale(1.14);
+      filter: drop-shadow(0 0 12px rgba(255, 232, 140, 0.95)) drop-shadow(0 0 24px rgba(234, 199, 132, 0.8));
+    }
+
+    .fmt-tab-btn:hover span,
+    .fmt-tab-btn:focus span {
+      color: #FFF9ED;
+      text-shadow: 0 0 10px rgba(255, 232, 140, 0.9), 0 0 20px rgba(234, 199, 132, 0.6);
+    }
+
+    .fmt-tab-btn:active {
       transform: scale(0.94);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
     /* Brilho Dourado Atmosférico das Postagens (A LUZ DO PRINT 2) */
@@ -333,50 +373,58 @@
           
           <!-- 1. Saberes -->
           <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="book-open" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Saberes</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="book-open" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Saberes</span>
           </button>
 
           <!-- 2. Vídeos Curtos (ao lado dos vídeos longos) -->
           <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="clapperboard" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Vídeos<br>Curtos</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="clapperboard" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Vídeos<br>Curtos</span>
           </button>
 
           <!-- 3. Vídeos Longos (ao lado dos vídeos curtos) -->
           <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="tv" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Vídeos<br>Longos</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="tv" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Vídeos<br>Longos</span>
           </button>
 
           <!-- 4. Música -->
           <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="music" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Música</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="music" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Música</span>
           </button>
 
           <!-- 5. Podcasts -->
           <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="headphones" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Podcasts</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="headphones" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Podcasts</span>
           </button>
 
           <!-- 6. Fórum -->
           <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="message-circle" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Fórum</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="message-circle" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Fórum</span>
           </button>
 
           <!-- 7. Notícias -->
           <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="newspaper" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Notícias</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="newspaper" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Notícias</span>
           </button>
 
           <!-- 8. Ao Vivo (ao lado das notícias) -->
           <button id="fmt-btn-aovivo" onclick="setActiveTab('aovivo')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
-            <i data-lucide="radio" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-110 group-active:scale-95 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight group-hover:text-white transition-colors text-center leading-tight">Ao Vivo</span>
+            <div class="icon-halo"></div>
+            <i data-lucide="radio" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Ao Vivo</span>
           </button>
 
         </div>

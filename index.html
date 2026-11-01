@@ -864,6 +864,10 @@
           <i data-lucide="shield-alert" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Direitos Autorais, Terceiros & Recados</span>
         </button>
+        <button onclick="openModal('modal-fediverso-musical'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
+          <i data-lucide="music-2" class="w-4 h-4 text-[#E5C384]"></i>
+          <span>Direitos Autorais: Fediverso & Música</span>
+        </button>
         <button onclick="openModal('modal-algoritmo'); closeModal('modal-menu')" class="w-full text-left p-2.5 rounded-xl hover:bg-[#0C2242] flex items-center gap-2.5 tap-active text-slate-200">
           <i data-lucide="network" class="w-4 h-4 text-[#E5C384]"></i>
           <span>Distribuição Justa & Soberania</span>
@@ -1438,6 +1442,167 @@
       <div class="p-3 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between">
         <span class="text-[10px] text-slate-400 font-medium">YBY versus • Direitos Autorais & Recados</span>
         <button onclick="closeModal('modal-direitos-recados')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
+          Compreendido
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: TERMOS DE USO E POLÍTICA DE DIREITOS AUTORAIS (FEDIVERSO & MÚSICA) -->
+  <div id="modal-fediverso-musical" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-5" role="dialog" aria-modal="true" aria-labelledby="modal-fediverso-title">
+    <div class="bg-[#061428] rounded-[28px] max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-amber-500/25">
+      
+      <!-- Cabeçalho -->
+      <div class="px-5 py-4 bg-[#030A17] text-white flex items-center justify-between shrink-0 border-b border-slate-700/60">
+        <div class="flex items-center gap-2">
+          <i data-lucide="music-2" class="w-5 h-5 text-[#E5C384]"></i>
+          <div>
+            <h3 id="modal-fediverso-title" class="text-sm font-bold text-slate-100">Direitos Autorais: Fediverso & Música</h3>
+            <span class="text-[10px] text-[#E5C384]">Termos de Uso e Política de Conteúdo Musical</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="termos_fediverso_musica.html" target="_blank" title="Abrir página completa" class="text-slate-400 hover:text-white p-1 tap-active text-xs">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+          <button onclick="closeModal('modal-fediverso-musical')" class="text-slate-400 hover:text-white p-1 tap-active">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Conteúdo do Documento com Scroll -->
+      <div class="p-5 overflow-y-auto app-screen-scroll text-xs space-y-4 text-slate-300 leading-relaxed">
+        
+        <div class="p-4 rounded-2xl bg-[#071933]/90 border border-amber-500/35 space-y-2">
+          <div class="flex items-center gap-2 text-[#E5C384] font-bold text-xs">
+            <span>✨</span>
+            <span>Rede Social & Reprodutor Descentralizado</span>
+          </div>
+          <p class="text-[11.5px] text-slate-200">
+            Bem-vindo(a) à nossa plataforma! Somos uma rede social e reprodutor descentralizado operado no <strong>Fediverso</strong> por meio de protocolos abertos (como ActivityPub). Nosso compromisso é com a promoção da cultura livre, a autonomia dos artistas, a descentralização tecnológica e a ética decolonial.
+          </p>
+          <p class="text-[11px] text-[#E5C384] font-medium pt-1 border-t border-amber-500/20">
+            Para manter este ecossistema seguro, justo e transparente para toda a comunidade de criadores, estabelecemos abaixo o que <strong>fazemos</strong>, o que <strong>não fazemos</strong> e as <strong>regras estritas sobre publicação de conteúdo</strong>.
+          </p>
+        </div>
+
+        <!-- 1. O Que Fazemos -->
+        <section class="p-3.5 rounded-2xl bg-[#040E1E] border border-[#142C4E] space-y-2">
+          <h4 class="font-bold text-emerald-400 text-xs flex items-center gap-1.5 pb-1 border-b border-[#142C4E]">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span>1. O Que Fazemos (Nossa Operação)</span>
+          </h4>
+          <ul class="space-y-2 text-[11px] text-slate-300">
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-400 font-bold shrink-0">•</span>
+              <div><strong>Interoperabilidade Federada:</strong> Atuamos como um nó/cliente dentro do Fediverso, permitindo que usuários e criadores compartilhem, descubram e interajam com faixas musicais e conteúdos de áudio distribuídos na rede descentralizada.</div>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-400 font-bold shrink-0">•</span>
+              <div><strong>Suporte a Embeds e Links Oficiais:</strong> Permitimos a incorporação (<em>embed</em>) e reprodução de conteúdos de áudio provenientes de players oficiais externos (como SoundCloud, Funkwhale ou instâncias federadas), desde que disponibilizados publicamente pelos próprios provedores originais com a opção de compartilhamento ativada.</div>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-400 font-bold shrink-0">•</span>
+              <div><strong>Valorização da Autoria Independente:</strong> Incentivamos o compartilhamento de obras autorais diretas, músicas registradas sob licenças livres (como <em>Creative Commons</em>) e faixas federadas nativamente com autorização prévia e expressa dos criadores.</div>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-400 font-bold shrink-0">•</span>
+              <div><strong>Respeito às Mídias de Origem:</strong> Não extraímos os metadados nem alteramos a autoria dos conteúdos exibidos; garantimos sempre a atribuição direta ao perfil e à instância do autor original.</div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 2. O Que NÃO Fazemos -->
+        <section class="p-3.5 rounded-2xl bg-[#040E1E] border border-[#142C4E] space-y-2">
+          <h4 class="font-bold text-rose-400 text-xs flex items-center gap-1.5 pb-1 border-b border-[#142C4E]">
+            <i data-lucide="x-circle" class="w-4 h-4"></i>
+            <span>2. O Que NÃO Fazemos (Nossas Limitações)</span>
+          </h4>
+          <ul class="space-y-2 text-[11px] text-slate-300">
+            <li class="flex items-start gap-1.5">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <div><strong>NÃO somos uma gravadora ou distribuidora comercial centralizada:</strong> Não mantemos nem vendemos um catálogo comercial fechado de grandes gravadoras corporativas (<em>Majors</em>).</div>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <div><strong>NÃO hospedamos arquivos de áudio não autorizados:</strong> Não fazemos <em>download</em>, armazenamento local em nossos servidores ou redistribuição de arquivos MP3/WAV/FLAC cuja autoria ou licença de exibição não pertença ao usuário que realizou a postagem.</div>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <div><strong>NÃO comercializamos ou monetizamos a propriedade alheia:</strong> Não cobramos assinaturas nem vendemos acesso a músicas de terceiros sem contrato ou permissão expressa.</div>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-rose-400 font-bold shrink-0">✕</span>
+              <div><strong>NÃO nos responsabilizamos por instâncias externas:</strong> Como parte de uma rede federada descentralizada, não exercemos controle técnico sobre servidores de terceiros no Fediverso, mas moderamos rigidamente a exibição desses conteúdos dentro da nossa própria interface/instância.</div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 3. Regra de Ouro -->
+        <section class="p-3.5 rounded-2xl bg-[#061428] border border-amber-500/40 space-y-2.5">
+          <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5 pb-1 border-b border-amber-500/20">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+            <span>3. Regra de Ouro: Publicação de Links e Conteúdo Musical</span>
+          </h4>
+          <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[11px] text-[#FFF2D6]">
+            🛡️ <strong>Tolerância Zero para Pirataria e Reprodução Não Autorizada</strong> para proteger direitos morais e patrimoniais de compositores, intérpretes e produtores.
+          </div>
+          <div>
+            <span class="text-[11px] font-bold text-rose-300 block mb-1 uppercase tracking-wide">É estritamente PROIBIDO:</span>
+            <ol class="space-y-1.5 text-[11px] text-slate-300 list-decimal list-inside pl-1">
+              <li>Publicar, incorporar (<em>embed</em>), colar links, transmitir ou compartilhar qualquer faixa musical, álbum ou amostra de áudio sem que você seja o <strong>efetivo autor/titular dos direitos</strong> OU sem que possua a <strong>permissão prévia e por escrito</strong> do detentor dos direitos.</li>
+              <li>Utilizar encurtadores de links para mascarar fontes piratas, arquivos de download ilegal (Google Drive, Mega, Torrent, etc.) ou transmissões clandestinas.</li>
+              <li>Postar obras de terceiros alegando autoria própria (<em>falsidade ideológica de autoria</em>).</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 4. Consequências da Violação -->
+        <section class="p-3.5 rounded-2xl bg-[#040E1E] border border-[#142C4E] space-y-2">
+          <h4 class="font-bold text-rose-400 text-xs flex items-center gap-1.5 pb-1 border-b border-[#142C4E]">
+            <i data-lucide="shield-x" class="w-4 h-4"></i>
+            <span>4. Consequências da Violação (Sanções e Medidas Legais)</span>
+          </h4>
+          <p class="text-[10.5px] text-slate-400">Diante do descumprimento comprovado ou da denúncia de violação:</p>
+          <div class="space-y-1.5 text-[11px] text-slate-300">
+            <div class="p-2 rounded-xl bg-rose-500/10 border border-rose-500/25">
+              <strong>🚫 Banimento Imediato e Definitivo:</strong> A conta do usuário infrator será permanentemente suspensa/banida da nossa instância, sem aviso prévio e sem possibilidade de reativação.
+            </div>
+            <div class="p-2 rounded-xl bg-amber-500/10 border border-amber-500/25">
+              <strong>🌐 Bloqueio de Instância (Domain Block):</strong> Caso a violação venha repetidamente de uma instância federada externa, o nó de origem será bloqueado em nossa rede.
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-slate-700/70 space-y-1 text-[10.5px]">
+              <strong class="text-amber-300">⚖️ Encaminhamento Legal (Lei nº 9.610/98):</strong>
+              <p class="text-slate-400">1. Preservação dos registros de acesso (IP, data, hora e metadados da postagem).<br>2. Notificação às autoridades competentes e órgãos de proteção aos direitos autorais.<br>3. Repasse dos dados de identificação às autoridades judiciais para tomada de medidas cíveis e criminais cabíveis.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Denúncias de Infração -->
+        <section class="p-3.5 rounded-2xl bg-[#071933]/90 border border-amber-500/30 space-y-2">
+          <h4 class="font-bold text-[#E5C384] text-xs flex items-center gap-1.5 pb-1 border-b border-amber-500/20">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>5. Denúncias de Infração (DMCA / Takedown)</span>
+          </h4>
+          <p class="text-[11px] text-slate-300 leading-relaxed">
+            Se você é artista, compositor ou detentor de direitos e identificou um link ou publicação em nossa interface que viola seus direitos autorais, envie uma notificação de remoção com os links e a comprovação de autoria para o nosso canal de moderação:
+          </p>
+          <div class="p-2 rounded-xl bg-[#030A17] border border-amber-500/20 text-center font-mono text-[10.5px] text-[#FFF6E5]">
+            contato@praticasdeautoconhecimento.org
+          </div>
+          <p class="text-[10px] text-emerald-400 font-semibold text-center">
+            ⚡ O conteúdo apontado será removido de nossa interface preventivamente em até 24 horas.
+          </p>
+        </section>
+
+      </div>
+
+      <!-- Rodapé da Modal -->
+      <div class="p-3 bg-[#030A17] border-t border-slate-700/60 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-medium">YBY versus • Fediverso & Música</span>
+        <button onclick="closeModal('modal-fediverso-musical')" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active transition-all">
           Compreendido
         </button>
       </div>

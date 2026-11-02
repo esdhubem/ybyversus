@@ -277,6 +277,98 @@
             .synthesis-content { grid-template-columns: 1fr; }
             .synthesis-section { padding: 25px; }
         }
+
+        /* Estilos específicos para a Seção Manifesto */
+        .manifesto-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifesto-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .manifesto-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .manifesto-content h2 {
+            color: var(--text);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            border: none;
+        }
+        
+        .manifesto-content h2::after {
+            display: none;
+        }
+
+        .manifesto-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .manifesto-text .lead {
+            font-size: 1.2em;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .manifesto-text p {
+            color: var(--text-muted);
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 20px 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .highlight-box p {
+            color: var(--text);
+            font-size: 1.15em;
+            font-style: italic;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .manifesto-text .conclusion {
+            text-align: center;
+            color: var(--text);
+            font-size: 1.1em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .manifesto-section { padding: 30px 20px; }
+            .manifesto-text .lead { font-size: 1.1em; }
+            .highlight-box p { font-size: 1.05em; }
+        }
     </style>
 </head>
 <body>
@@ -289,6 +381,36 @@
     <header>
         <h1>🌍 Das Ideologias ao Bem Viver</h1>
         <p>Para construir o futuro, precisamos entender o passado e o presente. Aprofunde sobre as diferentes filosofias que moldaram o mundo e reflita como podemos integrar o melhor delas em uma evolução de sistema humano.</p>
+
+        <!-- SEÇÃO INTRODUTÓRIA: A FILOSOFIA COMO ALMA DA SOCIEDADE -->
+        <section class="manifesto-section">
+            <div class="manifesto-content">
+                <div class="manifesto-icon">🧭</div>
+                <h2>Antes de Medir o Progresso, Precisamos Entender o que o Move</h2>
+                
+                <div class="manifesto-text">
+                    <p class="lead">
+                        Para que haja progresso humano genuíno, é preciso haver ordem. E a verdadeira ordem só emerge quando conhecemos nossas raízes e a forma como a sociedade opera.
+                    </p>
+                    
+                    <p>
+                        O que move uma sociedade em todas as esferas da vida não são apenas números, leis ou mercados, mas o <strong>sistema filosófico</strong> no qual ela está imersa. A filosofia funciona como um regulador invisível: ela almeja propósitos, alinha diretrizes e estabelece políticas públicas. 
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <p>"Por trás de toda política, existe uma filosofia. A filosofia econômica e ideológica é a 'alma do negócio' de um país e do mundo."</p>
+                    </div>
+                    
+                    <p>
+                        É essa "alma" que decide se uma nação medirá seu sucesso pelo acúmulo infinito de riqueza (como no PIB) ou pelo equilíbrio harmônico entre as pessoas e a natureza (como no Bem Viver e no Ubuntu). 
+                    </p>
+                    
+                    <p class="conclusion">
+                        <strong>Antes de julgarmos os números, vamos compreender as almas que os geram.</strong> Explore abaixo as diferentes filosofias que moldaram e ainda moldam o nosso mundo.
+                    </p>
+                </div>
+            </div>
+        </section>
     </header>
 
     <!-- 1. AS FILOSOFIAS -->

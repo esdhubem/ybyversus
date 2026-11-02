@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <title>🌿 Quiz do Bem Viver | YBY VersuS</title>
+  <meta name="description" content="Quiz do Bem Viver: Avalie seu equilíbrio pessoal fundamentado nos indicadores da ONU Beyond GDP e na Carta da ONU.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#040E1E">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js Local (com Fallback CDN) -->
+  <script src="assets/vendor/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #020813;
+      color: #F1F5F9;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .font-brand {
+      font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .quiz-step {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .quiz-step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .results-container {
+      display: none;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .results-container.active {
+      display: block;
+    }
+
+    /* Sliders personalizados */
+    input[type="range"] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #E5C384;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(229, 195, 132, 0.6);
+      transition: transform 0.15s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover,
+    input[type="range"]::-webkit-slider-thumb:active {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body class="bg-[#020813] text-slate-100 min-h-screen flex justify-center selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- MOLDURA MOBILE APP (max-w-[420px]) -->
+  <div class="w-full max-w-[420px] min-h-screen bg-[#030914] flex flex-col shadow-2xl relative border-x border-slate-800/60 pb-20">
+
+    <!-- Top Bar / Header do App -->
+    <header class="sticky top-0 z-40 bg-[#030914]/90 backdrop-blur-md border-b border-white/5 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="bemviver.html" class="w-9 h-9 rounded-full bg-[#081B35] border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-800 active:scale-95 transition" aria-label="Voltar para Economia do Bem Viver">
+          <i data-lucide="arrow-left" class="w-4 h-4 text-[#E5C384]"></i>
+        </a>
+        <div>
+          <h1 class="font-brand text-xs sm:text-sm font-bold text-slate-100 flex items-center gap-1.5">
+            <span>Quiz do Bem Viver</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-[#E5C384] font-semibold border border-amber-500/30">Autoavaliação</span>
+          </h1>
+          <p class="text-[10px] text-slate-400">Equilíbrio Pessoal • Além do PIB</p>
+        </div>
+      </div>
+
+      <a href="bemviver.html" class="text-[10.5px] font-semibold text-[#E5C384] hover:underline flex items-center gap-1">
+        <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+        <span>Painel</span>
+      </a>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 p-4 space-y-4">
+
+      <!-- Apresentação Breve -->
+      <section class="p-3.5 rounded-2xl bg-gradient-to-br from-[#071933] to-[#030C1A] border border-amber-500/30 text-xs text-slate-300 space-y-1.5">
+        <p class="text-[11.5px] text-slate-200 leading-relaxed text-justify">
+          Descubra seu equilíbrio pessoal entre o coletivo, a natureza e o próprio ser, e receba um plano de ação personalizado.
+        </p>
+        <div class="pt-1 flex items-center gap-1.5 text-[9.5px] text-[#E5C384] font-medium">
+          <i data-lucide="award" class="w-3.5 h-3.5 shrink-0"></i>
+          <span>Fundamentado no Relatório Beyond GDP e na Carta da ONU</span>
+        </div>
+      </section>
+
+      <!-- Barra de Progresso -->
+      <div id="progressContainer" class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden border border-white/5">
+        <div id="progressFill" class="bg-gradient-to-r from-emerald-500 to-[#E5C384] h-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <!-- Container Dinâmico das Perguntas -->
+      <div id="quizContainer"></div>
+
+      <!-- Container de Resultados (Oculto até terminar) -->
+      <div id="resultsContainer" class="results-container space-y-4">
+
+        <!-- Pontuação Geral -->
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-emerald-500/30 text-center space-y-2">
+          <span class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block">Seu Índice de Bem Viver</span>
+          <div id="finalScore" class="font-brand text-3xl font-extrabold text-emerald-400">0.0/10</div>
+          <p id="scoreMessage" class="text-xs text-slate-300 leading-relaxed max-w-xs mx-auto"></p>
+        </div>
+
+        <!-- Gráfico Radar -->
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-white/10 space-y-2">
+          <h3 class="font-brand text-xs font-bold text-[#E5C384] uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="radar" class="w-4 h-4"></i>
+            <span>Seu Radar de Equilíbrio</span>
+          </h3>
+          <div class="relative h-[280px] w-full flex items-center justify-center">
+            <canvas id="resultsRadar"></canvas>
+          </div>
+        </div>
+
+        <!-- Plano de Ação Personalizado -->
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-amber-500/30 space-y-3">
+          <div class="space-y-0.5">
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <i data-lucide="target" class="w-4 h-4"></i>
+              <span>Seu Plano de Ação Personalizado</span>
+            </h3>
+            <p class="text-[10.5px] text-slate-400">
+              Identificamos suas 3 áreas prioritárias para crescimento com ações fundamentadas na ONU:
+            </p>
+          </div>
+
+          <div id="tipsContainer" class="space-y-2.5"></div>
+        </div>
+
+        <!-- Botões de Ação Final -->
+        <div class="space-y-2 pt-2">
+          <button type="button" onclick="shareResults()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-[#d4af37] text-slate-950 font-bold text-xs flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition shadow-md">
+            <span>🐘 Compartilhar resultado no Fediverso</span>
+          </button>
+
+          <button type="button" onclick="restartQuiz()" class="w-full py-2.5 px-4 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs border border-white/10 flex items-center justify-center gap-1.5 hover:bg-slate-700 active:scale-[0.98] transition">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Refazer o Quiz</span>
+          </button>
+
+          <a href="bemviver.html" class="w-full py-2.5 px-4 rounded-xl bg-[#040D1A] text-[#A1C1B0] font-medium text-xs border border-white/5 flex items-center justify-center gap-1.5 hover:text-white transition">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+            <span>Voltar aos Indicadores Oficiais</span>
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Banco de dados das perguntas fundamentado nos 9 eixos e documentos da ONU
+    const questions = [
+      {
+        axis: "Natureza & Sustentabilidade",
+        question: "Com que frequência você se conecta com a natureza e pratica hábitos sustentáveis?",
+        desc: "A ONU destaca o 'Respeito ao Planeta' como princípio fundamental. Isso inclui tempo ao ar livre e redução da pegada ecológica.",
+        tips: [
+          "Dedique 30 minutos por semana a um parque ou área verde. A natureza restaura o capital humano e mental.",
+          "Adote um hábito de consumo circular: conserte, doe ou recicle antes de descartar.",
+          "Conecte-se com a origem dos seus alimentos, priorizando produtores locais e sazonais."
+        ],
+        unSource: "Relatório Beyond GDP: Respeito aos limites planetários e capital natural."
+      },
+      {
+        axis: "Comunidade (Ubuntu)",
+        question: "Quão presente é a sua rede de apoio mútuo e sua participação na comunidade?",
+        desc: "O bem-estar é coletivo. A Carta da ONU enfatiza 'viver em paz, uns com os outros, como bons vizinhos'.",
+        tips: [
+          "Ofereça ajuda prática a um vizinho ou amigo sem esperar nada em troca esta semana.",
+          "Participe de um grupo comunitário, banco de tempo ou economia solidária local.",
+          "Pratique a escuta ativa: dedique 15 minutos para ouvir genuinamente alguém da sua família."
+        ],
+        unSource: "Relatório Beyond GDP: Coesão social como motor de resiliência e bem-estar."
+      },
+      {
+        axis: "Ócio Criativo",
+        question: "Você reserva tempo para lazer e hobbies sem a pressão de 'ser produtivo'?",
+        desc: "O trabalho não define seu valor. O ócio é essencial para a saúde mental e a criatividade humana.",
+        tips: [
+          "Agende 2 horas de 'não-fazer' na sua semana. Sem telas, sem obrigações.",
+          "Resgate um hobby antigo que você abandonou por 'falta de tempo'.",
+          "Estabeleça limites rígidos entre horário de trabalho/estudo e tempo pessoal."
+        ],
+        unSource: "Relatório Beyond GDP: Condições materiais e trabalho digno incluem equilíbrio vida-trabalho."
+      },
+      {
+        axis: "Consumo Consciente",
+        question: "Suas compras atendem necessidades reais ou são impulsos guiados pelo marketing?",
+        desc: "O consumo excessivo gera degradação ambiental e insatisfação subjetiva.",
+        tips: [
+          "Aplique a regra das 48h: espere dois dias antes de comprar qualquer item não essencial.",
+          "Priorize mercados locais, feiras e pequenos empreendedores da sua região.",
+          "Faça um inventário do que você já tem antes de adquirir algo novo."
+        ],
+        unSource: "Relatório Beyond GDP: Condições materiais como base para escolha e agência, não acumulação."
+      },
+      {
+        axis: "Equilíbrio Emocional",
+        question: "Como você avalia seu autocuidado, saúde mental e paz interior?",
+        desc: "A dignidade humana (Carta da ONU) começa pelo respeito ao próprio corpo e mente.",
+        tips: [
+          "Estabeleça uma rotina de sono regular (7-8 horas). O sono é a base da saúde pública.",
+          "Pratique 10 minutos de respiração consciente ou meditação diária.",
+          "Não hesite em buscar apoio psicológico. Cuidar da mente é tão vital quanto cuidar do corpo."
+        ],
+        unSource: "Carta da ONU: Fé na dignidade e no valor do ser humano."
+      },
+      {
+        axis: "Receptividade & Inclusão",
+        question: "Como você lida com pessoas diferentes de você (cultura, origem, orientação, identidade)?",
+        desc: "O 'Falso Ubuntu' exclui. O verdadeiro acolhe. A ONU combate toda forma de discriminação.",
+        tips: [
+          "Observe seus julgamentos internos. Questione estereótipos sobre nordestinos, indígenas, negros ou LGBTQIA+.",
+          "Diversifique suas fontes de informação: siga criadores de conteúdo de grupos marginalizados.",
+          "Intervenha com respeito quando presenciar uma piada ou comentário preconceituoso."
+        ],
+        unSource: "Carta da ONU: Respeito aos direitos humanos sem distinção de raça, sexo, língua ou religião."
+      },
+      {
+        axis: "Educação & Saberes",
+        question: "Você busca aprender continuamente, valorizando tanto a ciência quanto os saberes tradicionais?",
+        desc: "A educação fortalece a autonomia e a participação cívica.",
+        tips: [
+          "Leia ou assista a um conteúdo sobre a história e cultura dos povos originários do seu território.",
+          "Aprenda uma habilidade prática nova (plantar, cozinhar, consertar) fora do ambiente digital.",
+          "Compartilhe um conhecimento que você possui com alguém da sua comunidade."
+        ],
+        unSource: "Relatório Beyond GDP: Educação como suporte à participação cívica e adaptação."
+      },
+      {
+        axis: "Saúde Coletiva",
+        question: "Você cuida da sua saúde física de forma preventiva e acessa serviços comunitários?",
+        desc: "A saúde é um direito humano e um pilar do desenvolvimento sustentável.",
+        tips: [
+          "Faça um check-up preventivo anual, mesmo que se sinta bem.",
+          "Incorpore Práticas Integrativas (plantas medicinais, alongamento) ao seu dia a dia.",
+          "Apoie e utilize os serviços de saúde pública da sua região, fortalecendo o sistema coletivo."
+        ],
+        unSource: "Relatório Beyond GDP: Saúde como componente central do capital humano e qualidade de vida."
+      },
+      {
+        axis: "Autonomia",
+        question: "Você sente que tem liberdade para fazer escolhas alinhadas aos seus verdadeiros valores?",
+        desc: "O desenvolvimento humano é, em essência, a expansão das liberdades reais que as pessoas desfrutam.",
+        tips: [
+          "Escreva seus 3 valores inegociáveis. Suas ações da última semana refletiram isso?",
+          "Diga 'não' a um compromisso que drena sua energia sem trazer propósito.",
+          "Dedique tempo para refletir sobre seu propósito de vida, sem a pressão de metas financeiras."
+        ],
+        unSource: "Relatório Beyond GDP: Capacidade de exercer escolha e agência na própria vida."
+      }
+    ];
+
+    let currentStep = 0;
+    let scores = new Array(questions.length).fill(5);
+    let radarChartInstance = null;
+
+    function initQuiz() {
+      renderQuestion();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderQuestion() {
+      const container = document.getElementById('quizContainer');
+      const q = questions[currentStep];
+      const progress = ((currentStep) / questions.length) * 100;
+      
+      document.getElementById('progressFill').style.width = `${progress}%`;
+
+      container.innerHTML = `
+        <div class="quiz-step active">
+          <div class="p-4 rounded-2xl bg-[#06152B] border border-amber-500/25 space-y-3">
+            <div class="flex items-center justify-between text-[10px] text-[#E5C384] font-bold uppercase tracking-wider">
+              <span>Dimensão ${currentStep + 1} de ${questions.length}</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#030A17] border border-white/5 text-slate-300">${q.axis}</span>
+            </div>
+
+            <h2 class="font-brand text-sm sm:text-base font-bold text-slate-100 leading-snug">
+              ${q.question}
+            </h2>
+
+            <p class="text-[11px] text-slate-300 leading-relaxed italic bg-[#030A17] p-2.5 rounded-xl border border-white/5">
+              ${q.desc}
+            </p>
+
+            <div class="pt-2 space-y-2">
+              <div class="flex justify-between text-[10px] text-slate-400 font-medium">
+                <span>0 • Precisa melhorar</span>
+                <span>5 • Equilibrado</span>
+                <span>10 • Excelente</span>
+              </div>
+              <input type="range" min="0" max="10" value="${scores[currentStep]}" oninput="updateScore(this.value)">
+              <div class="text-center font-brand font-black text-2xl text-[#E5C384]" id="currentScore">
+                ${scores[currentStep]}
+              </div>
+            </div>
+
+            <button type="button" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-[#d4af37] text-slate-950 font-bold text-xs hover:brightness-110 active:scale-[0.98] transition shadow-md mt-2 flex items-center justify-center gap-1.5" onclick="nextQuestion()">
+              <span>${currentStep === questions.length - 1 ? 'Ver Meu Resultado 🌿' : 'Próxima Dimensão'}</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `;
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function updateScore(value) {
+      scores[currentStep] = parseInt(value, 10);
+      document.getElementById('currentScore').textContent = value;
+    }
+
+    function nextQuestion() {
+      if (currentStep < questions.length - 1) {
+        currentStep++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quizContainer').style.display = 'none';
+      document.getElementById('progressContainer').style.display = 'none';
+      document.getElementById('resultsContainer').classList.add('active');
+
+      const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+      document.getElementById('finalScore').textContent = `${avg}/10`;
+
+      let message = "";
+      if (avg >= 8) message = "🌟 Excelente! Você vive em forte alinhamento com os princípios do Bem Viver. Continue inspirando outros!";
+      else if (avg >= 6) message = "🌱 Bom equilíbrio! Você está no caminho certo, mas há espaços valiosos para aprofundar sua conexão com o todo.";
+      else if (avg >= 4) message = "Atenção: Alguns desequilíbrios importantes foram identificados. O plano de ação abaixo é seu mapa para o crescimento.";
+      else message = "Seu bem-estar integral precisa de atenção. Pequenos passos diários, guiados pelo plano abaixo, farão grande diferença.";
+      
+      document.getElementById('scoreMessage').textContent = message;
+
+      renderRadarChart();
+      generateActionPlan();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderRadarChart() {
+      const ctx = document.getElementById('resultsRadar').getContext('2d');
+      if (radarChartInstance) radarChartInstance.destroy();
+
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: questions.map(q => q.axis),
+          datasets: [{
+            label: 'Seu Bem Viver',
+            data: scores,
+            backgroundColor: 'rgba(229, 195, 132, 0.25)',
+            borderColor: '#E5C384',
+            borderWidth: 2,
+            pointBackgroundColor: '#FFF6E5',
+            pointBorderColor: '#8E6B1D',
+            pointRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              beginAtZero: true,
+              max: 10,
+              ticks: { stepSize: 2, color: '#94A3B8', backdropColor: 'transparent', font: { size: 9 } },
+              grid: { color: 'rgba(255,255,255,0.08)' },
+              angleLines: { color: 'rgba(255,255,255,0.08)' },
+              pointLabels: {
+                color: '#E2E8F0',
+                font: { size: 9.5, weight: 'bold' }
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    }
+
+    function generateActionPlan() {
+      const indexedScores = scores.map((score, index) => ({ score, index }));
+      indexedScores.sort((a, b) => a.score - b.score);
+      const lowest3 = indexedScores.slice(0, 3);
+
+      const tipsContainer = document.getElementById('tipsContainer');
+      tipsContainer.innerHTML = '';
+
+      lowest3.forEach(item => {
+        const q = questions[item.index];
+        const randomTip = q.tips[Math.floor(Math.random() * q.tips.length)];
+        
+        const tipCard = document.createElement('div');
+        tipCard.className = 'p-3 rounded-xl bg-[#030A17] border-l-2 border-amber-400 text-xs space-y-1.5';
+        tipCard.innerHTML = `
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-[#E5C384] text-[11.5px]">${q.axis}</h4>
+            <span class="text-[9.5px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-semibold">${item.score}/10</span>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-relaxed"><strong>Ação recomendada:</strong> ${randomTip}</p>
+          <div class="text-[9.5px] text-slate-400 italic pt-0.5">📜 ${q.unSource}</div>
+        `;
+        tipsContainer.appendChild(tipCard);
+      });
+    }
+
+    function shareResults() {
+      const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+      const text = `🌿 Fiz o Quiz do Bem Viver e meu índice foi ${avg}/10!\n\nDescobri que o progresso vai além do PIB e mede o que realmente importa: natureza, comunidade, equidade e paz interior.\n\nFaça o seu no YBY VersuS! #BemViver #BeyondGDP #TekoPora #Ubuntu`;
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Mensagem copiada para a área de transferência! Pronta para colar no Fediverso:\n\n" + text);
+        }).catch(() => {
+          alert("Mensagem pronta para o Fediverso:\n\n" + text);
+        });
+      } else {
+        alert("Mensagem pronta para o Fediverso:\n\n" + text);
+      }
+    }
+
+    function restartQuiz() {
+      currentStep = 0;
+      scores = new Array(questions.length).fill(5);
+      document.getElementById('resultsContainer').classList.remove('active');
+      document.getElementById('quizContainer').style.display = 'block';
+      document.getElementById('progressContainer').style.display = 'block';
+      initQuiz();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initQuiz();
+    });
+  </script>
+
+</body>
+</html>

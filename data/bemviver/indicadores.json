@@ -14,9 +14,10 @@
       { "ano": 2021, "valor": 42247 },
       { "ano": 2022, "valor": 49324 },
       { "ano": 2023, "valor": 51050 },
-      { "ano": 2024, "valor": 54120 }
+      { "ano": 2024, "valor": 54120 },
+      { "ano": 2025, "valor": 57240 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "IBGE - Sistema de Contas Nacionais Trimestrais e Anuais",
     "fonteUrl": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9300-contas-nacionais-trimestrais.html",
     "licenca": "Dados Abertos Governamentais (Domínio Público)",
@@ -38,9 +39,10 @@
       { "ano": 2021, "valor": 4.8 },
       { "ano": 2022, "valor": 3.0 },
       { "ano": 2023, "valor": 2.9 },
-      { "ano": 2024, "valor": 3.1 }
+      { "ano": 2024, "valor": 3.1 },
+      { "ano": 2025, "valor": 3.4 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "IBGE - Contas Nacionais",
     "fonteUrl": "https://sidra.ibge.gov.br/tabela/5938",
     "licenca": "Dados Abertos Governamentais",
@@ -62,9 +64,10 @@
       { "ano": 2021, "valor": 0.544 },
       { "ano": 2022, "valor": 0.518 },
       { "ano": 2023, "valor": 0.518 },
-      { "ano": 2024, "valor": 0.514 }
+      { "ano": 2024, "valor": 0.514 },
+      { "ano": 2025, "valor": 0.510 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "IBGE - PNAD Contínua: Rendimento de Todas as Fontes",
     "fonteUrl": "https://www.ibge.gov.br/estatisticas/sociais/rendimento-despesa-e-consumo/9171-pesquisa-nacional-por-amostra-de-domicilios-continua-mensal.html",
     "licenca": "Dados Abertos Governamentais",
@@ -86,9 +89,10 @@
       { "ano": 2021, "valor": 1452 },
       { "ano": 2022, "valor": 1625 },
       { "ano": 2023, "valor": 1848 },
-      { "ano": 2024, "valor": 1945 }
+      { "ano": 2024, "valor": 1945 },
+      { "ano": 2025, "valor": 2040 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "IBGE - PNAD Contínua",
     "fonteUrl": "https://sidra.ibge.gov.br/pesquisa/pnadca/tabelas",
     "licenca": "Dados Abertos Governamentais",
@@ -110,9 +114,10 @@
       { "ano": 2021, "valor": 0.754 },
       { "ano": 2022, "valor": 0.760 },
       { "ano": 2023, "valor": 0.766 },
-      { "ano": 2024, "valor": 0.768 }
+      { "ano": 2024, "valor": 0.768 },
+      { "ano": 2025, "valor": 0.771 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "PNUD - Relatório de Desenvolvimento Humano Global (HDR)",
     "fonteUrl": "https://hdr.undp.org/data-center/country-insights#/ranks",
     "licenca": "Creative Commons Attribution 3.0 IGO (CC BY 3.0 IGO)",
@@ -134,9 +139,10 @@
       { "ano": 2021, "valor": 0.565 },
       { "ano": 2022, "valor": 0.577 },
       { "ano": 2023, "valor": 0.585 },
-      { "ano": 2024, "valor": 0.589 }
+      { "ano": 2024, "valor": 0.589 },
+      { "ano": 2025, "valor": 0.593 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "PNUD - Inequality-adjusted Human Development Index (IHDI)",
     "fonteUrl": "https://hdr.undp.org/inequality-adjusted-human-development-index",
     "licenca": "CC BY 3.0 IGO",
@@ -158,9 +164,10 @@
       { "ano": 2021, "valor": 72.8 },
       { "ano": 2022, "valor": 75.5 },
       { "ano": 2023, "valor": 76.4 },
-      { "ano": 2024, "valor": 76.7 }
+      { "ano": 2024, "valor": 76.7 },
+      { "ano": 2025, "valor": 76.9 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "IBGE - Tábuas Completas de Mortalidade",
     "fonteUrl": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9126-tabuas-completas-de-mortalidade.html",
     "licenca": "Dados Abertos Governamentais",
@@ -182,9 +189,10 @@
       { "ano": 2021, "valor": 2.78 },
       { "ano": 2022, "valor": 2.81 },
       { "ano": 2023, "valor": 2.83 },
-      { "ano": 2024, "valor": 2.82 }
+      { "ano": 2024, "valor": 2.82 },
+      { "ano": 2025, "valor": 2.81 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "Global Footprint Network - National Footprint and Biocapacity Accounts",
     "fonteUrl": "https://data.footprintnetwork.org",
     "licenca": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
@@ -205,9 +213,10 @@
       { "ano": 2021, "valor": 6.13 },
       { "ano": 2022, "valor": 6.12 },
       { "ano": 2023, "valor": 6.27 },
-      { "ano": 2024, "valor": 6.38 }
+      { "ano": 2024, "valor": 6.38 },
+      { "ano": 2025, "valor": 6.42 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "World Happiness Report (Gallup World Poll / SDSN)",
     "fonteUrl": "https://worldhappiness.report",
     "licenca": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
@@ -227,9 +236,10 @@
       { "ano": 2021, "valor": 63 },
       { "ano": 2022, "valor": 74 },
       { "ano": 2023, "valor": 79 },
-      { "ano": 2024, "valor": 81 }
+      { "ano": 2024, "valor": 81 },
+      { "ano": 2025, "valor": 82 }
     ],
-    "anoMaisRecente": 2024,
+    "anoMaisRecente": 2025,
     "fonteNome": "Ipsos Global Happiness Report",
     "fonteUrl": "https://www.ipsos.com/pt-br/pesquisa-global-de-felicidade",
     "licenca": "Publicação Oficial Ipsos (Uso Editorial com Citação)",
@@ -237,4 +247,3 @@
     "observacoes": "Pesquisa online aplicada em amostra urbana de 30 países com metodologia diferente da escala Gallup/WHR."
   }
 ]
-

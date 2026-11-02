@@ -205,12 +205,20 @@
             <span>Painel de Controle</span>
           </span>
           
-          <!-- Botão de Normalização (Base 100) -->
-          <label class="inline-flex items-center gap-2 cursor-pointer select-none text-[11px] text-slate-200">
-            <input type="checkbox" id="toggle-normalizacao" onchange="handleControlesChange()" class="sr-only peer">
-            <div class="w-8 h-4 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-amber-500 relative"></div>
-            <span class="font-medium">Normalizar (Base 100)</span>
-          </label>
+          <!-- Botão de Comparar Variação -->
+          <div class="flex items-center gap-1.5">
+            <label class="inline-flex items-center gap-2 cursor-pointer select-none text-[11px] text-slate-200">
+              <input type="checkbox" id="toggle-normalizacao" onchange="handleControlesChange()" class="sr-only peer">
+              <div class="w-8 h-4 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-amber-500 relative"></div>
+              <span class="font-medium">Comparar variação (ano inicial = 100)</span>
+            </label>
+            <button type="button" onclick="toggleAjudaComparar()" class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white text-[10px] font-bold shrink-0 transition" title="Ajuda sobre a comparação" aria-label="Ajuda sobre a comparação">?</button>
+          </div>
+        </div>
+
+        <!-- Caixa de Ajuda do Comparar Variação -->
+        <div id="ajuda-comparar-box" class="hidden p-3 rounded-xl bg-[#030A17] border border-white/10 text-[11px] text-slate-300 leading-relaxed">
+          <p>A chave é uma ferramenta para comparar indicadores que têm unidades diferentes no mesmo gráfico. Os indicadores da página são medidos de jeitos diferentes: o PIB em reais, a desigualdade (Gini) em uma escala de 0 a 1, a expectativa de vida em anos. qual indicador cresceu mais ou menos, sem se preocupar com a unidade. Com a chave desligada, você vê os valores reais de cada um. Ligue para comparar quanto cada indicador subiu ou desceu desde o ano inicial, mesmo que tenham unidades diferentes. O ano inicial vira 100. Desligue para ver os valores reais.</p>
         </div>
 
         <!-- Filtro por Intervalo de Anos -->
@@ -222,6 +230,7 @@
               <option value="2019">2019</option>
               <option value="2020">2020</option>
               <option value="2021">2021</option>
+              <option value="2022">2022</option>
             </select>
           </div>
           <div>
@@ -230,7 +239,8 @@
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2023">2023</option>
-              <option value="2024" selected>2024</option>
+              <option value="2024">2024</option>
+              <option value="2025" selected>2025</option>
             </select>
           </div>
         </div>
@@ -533,7 +543,7 @@
 
         container.innerHTML = '';
         filtrados.forEach(ind => {
-          const cardHtml = criarCardIndicador(ind, normalizar);
+          const cardHtml = criarCardIndicador(ind, normalizar, anoInicio);
           container.insertAdjacentHTML('beforeend', cardHtml);
         });
 
@@ -552,13 +562,20 @@
       }
     }
 
-    function criarCardIndicador(item, normalizar) {
+    window.toggleAjudaComparar = function() {
+      const box = document.getElementById('ajuda-comparar-box');
+      if (box) {
+        box.classList.toggle('hidden');
+      }
+    };
+
+    function criarCardIndicador(item, normalizar, anoInicio) {
       const valorRecente = item.serieFiltrada.length > 0 
         ? item.serieFiltrada[item.serieFiltrada.length - 1].valor 
         : 'S/D';
 
       const valorFormatado = typeof valorRecente === 'number'
-        ? (normalizar ? valorRecente.toFixed(1) + ' (Índice Base)' : valorRecente.toLocaleString('pt-BR') + ' ' + item.unidade)
+        ? (normalizar ? valorRecente.toFixed(1) + ' (Base 100)' : valorRecente.toLocaleString('pt-BR') + ' ' + item.unidade)
         : valorRecente;
 
       const anosTabela = item.serieFiltrada.map(pt => `
@@ -589,12 +606,17 @@
 
           <!-- Gráfico -->
           <div class="chart-wrapper">
-            <canvas id="chart-${item.id}" role="img" aria-label="Gráfico de linha de ${item.nome} de ${item.anoMaisRecente}"></canvas>
+            <canvas id="chart-${item.id}" role="img" aria-label="Gráfico de linha de ${item.nome}"></canvas>
           </div>
+          ${normalizar ? `
+            <p class="text-[11px] text-[#E5C384] text-center font-medium pt-1">
+              Mostrando a variação desde ${anoInicio}. Mudar o ano inicial muda a comparação.
+            </p>
+          ` : ''}
 
-          <!-- O Que Este Número Não Mede (Obrigatório) -->
-          <div class="p-2.5 rounded-xl bg-[#030A17] border-l-2 border-amber-400 text-[10.5px] leading-relaxed">
-            <span class="font-bold text-[#E5C384] block mb-0.5">⚠️ O que este número não mede:</span>
+          <!-- O Que Este Número Não Mede -->
+          <div class="p-2.5 rounded-xl bg-[#030A17] border-l-2 border-amber-400/50 text-[10.5px] leading-relaxed">
+            <span class="font-bold text-[#E5C384] block mb-0.5">O que este número não mede:</span>
             <span class="text-slate-300">${item.oQueNaoMede}</span>
           </div>
 
@@ -671,7 +693,7 @@
                 label: function(context) {
                   const val = context.raw;
                   return normalizar 
-                    ? `Índice Base 100: ${val}` 
+                    ? `Variação (Base 100): ${val}` 
                     : `${val.toLocaleString('pt-BR')} ${item.unidade}`;
                 }
               }

@@ -225,6 +225,42 @@
       pointer-events: none;
       z-index: -1;
     }
+  
+    /* Fixação Universal da Moldura e Barra de Rodapé YBY VersuS */
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+    }
+    @media (max-width: 639px) {
+      html, body {
+        overflow: hidden;
+      }
+    }
+    #phone-container {
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 640px) {
+      body {
+        overflow: auto;
+      }
+      #phone-container {
+        height: 870px;
+        max-height: 96vh;
+      }
+    }
+    .app-screen-scroll {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
   </style>
 </head>
 
@@ -280,7 +316,7 @@
   <!-- ======================================================== -->
   <!-- MOLDURA DO SMARTPHONE (DESIGN SYSTEM DO YBY VERSUS)      -->
   <!-- ======================================================== -->
-  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_50px_rgba(20,55,110,0.35)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#1E3B66]/60 transition-all">
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_50px_rgba(20,55,110,0.35)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#1E3B66]/60 transition-all">
     
     <!-- 1. STATUS BAR NATIVA (9:41, Sinal, Wifi, Bateria) -->
     <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]/80 backdrop-blur-md">
@@ -338,7 +374,7 @@
     </div>
 
     <!-- 3. ÁREA DE SCROLL DO APP -->
-    <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4">
+    <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4 min-h-0">
 
       <!-- ======================================================== -->
       <!-- SEÇÃO: PESSOAS QUE VOCÊ SEGUE (COM AURÉOLA DE TIAGO)     -->

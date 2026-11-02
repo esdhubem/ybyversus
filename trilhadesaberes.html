@@ -162,6 +162,42 @@
       outline: 2px solid #E5C384;
       outline-offset: 2px;
     }
+  
+    /* Fixação Universal da Moldura e Barra de Rodapé YBY VersuS */
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+    }
+    @media (max-width: 639px) {
+      html, body {
+        overflow: hidden;
+      }
+    }
+    #phone-container {
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 640px) {
+      body {
+        overflow: auto;
+      }
+      #phone-container {
+        height: 870px;
+        max-height: 96vh;
+      }
+    }
+    .app-screen-scroll {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
   </style>
 </head>
 
@@ -193,7 +229,7 @@
   <!-- ======================================================== -->
   <!-- MOLDURA DO SMARTPHONE (CARA DE APLICATIVO NATIVO)        -->
   <!-- ======================================================== -->
-  <div id="phone-container" class="relative z-10 w-full h-full sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#142C4E] transition-all">
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#142C4E] transition-all">
 
     <!-- 1. STATUS BAR DO CELULAR -->
     <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]">
@@ -230,7 +266,7 @@
     </nav>
 
     <!-- 3. ÁREA DE CONTEÚDO COM ROLAGEM INTERNA DO SMARTPHONE -->
-    <main class="flex-1 app-screen-scroll px-4 pt-3 pb-24 space-y-4">
+    <main class="flex-1 app-screen-scroll px-4 pt-3 pb-24 space-y-4 min-h-0">
 
       <!-- BANNER DE APRESENTAÇÃO -->
       <div class="text-center py-1">

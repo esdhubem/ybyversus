@@ -1555,24 +1555,40 @@
 
       document.getElementById('regionTitle').textContent = `Região ${data.name}`;
       document.getElementById('regionStats').innerHTML = `
-        <div class="grid grid-cols-2 gap-2 text-center pt-1">
-          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
-            <span class="text-[9.5px] text-slate-400 block">PIB per capita</span>
-            <span class="text-xs font-bold text-[#E5C384]">${data.pib} mil R$</span>
-          </div>
-          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
-            <span class="text-[9.5px] text-slate-400 block">Índice Progresso (IPS)</span>
-            <span class="text-xs font-bold text-cyan-400">${data.ips} / 10</span>
-          </div>
-          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
-            <span class="text-[9.5px] text-slate-400 block">Gini (Desigualdade)</span>
-            <span class="text-xs font-bold text-amber-300">${data.gini}</span>
-          </div>
-          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
-            <span class="text-[9.5px] text-slate-400 block">Receptividade</span>
-            <span class="text-xs font-bold text-emerald-400">${data.receptividade} / 10</span>
-          </div>
+        <div class="overflow-x-auto rounded-xl border border-[#132B4F] bg-[#030A17]">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-[#132B4F] bg-[#07172F] text-[10px] font-bold">
+                <th class="py-2 px-2.5 text-slate-300">Indicador Regional</th>
+                <th class="py-2 px-2 text-right text-[#E5C384]">Valor Regional</th>
+                <th class="py-2 px-2.5 text-right text-slate-400">Contexto</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-[11px]">
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-1.5 px-2.5 text-slate-200 font-medium">PIB per capita</td>
+                <td class="py-1.5 px-2 text-right font-bold text-[#E5C384] font-mono">${data.pib} mil R$</td>
+                <td class="py-1.5 px-2.5 text-right text-slate-400 text-[10px]">IBGE Regional</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-1.5 px-2.5 text-slate-200 font-medium">Progresso Social (IPS)</td>
+                <td class="py-1.5 px-2 text-right font-bold text-cyan-400 font-mono">${data.ips} / 10</td>
+                <td class="py-1.5 px-2.5 text-right text-slate-400 text-[10px]">IPS Brasil</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-1.5 px-2.5 text-slate-200 font-medium">Desigualdade (Gini)</td>
+                <td class="py-1.5 px-2 text-right font-bold text-amber-300 font-mono">${data.gini}</td>
+                <td class="py-1.5 px-2.5 text-right text-slate-400 text-[10px]">0 = igual / 1 = desigual</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-1.5 px-2.5 text-slate-200 font-medium">Receptividade Comunitária</td>
+                <td class="py-1.5 px-2 text-right font-bold text-emerald-400 font-mono">${data.receptividade} / 10</td>
+                <td class="py-1.5 px-2.5 text-right text-slate-400 text-[10px]">Ubuntu & Acolhimento</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
         <div class="pt-2 text-[10.5px] text-slate-300 space-y-1">
           <p><strong>Perspectiva:</strong> ${data.filosofia}</p>
           <p class="text-slate-400"><strong>Desafios prioritários:</strong> ${data.barreiras.join(' • ')}</p>
@@ -1651,19 +1667,141 @@
 
       const avgC = (country.scores.reduce((a, b) => a + b, 0) / 9).toFixed(1);
       const avgBr = (br.scores.reduce((a, b) => a + b, 0) / 9).toFixed(1);
+      const diffAvg = (avgC - avgBr).toFixed(1);
+      const diffSign = diffAvg > 0 ? '+' : '';
+      const diffColor = diffAvg > 0 ? 'text-cyan-400' : (diffAvg < 0 ? 'text-amber-400' : 'text-slate-300');
+      const pibRatio = (country.pib / br.pib).toFixed(1);
 
-      let insight = `<strong>${country.name}</strong> vs. <strong>Brasil</strong>:<br>`;
-      insight += `• Média Bem Viver: <strong>${avgC}</strong> vs. <strong>${avgBr}</strong><br>`;
-      insight += `• PIB per capita: <strong>US$ ${country.pib} mil</strong> vs. <strong>US$ ${br.pib} mil</strong><br>`;
+      // Linhas detalhadas das 9 dimensões
+      const rowsDimensoes = DIMENSIONS_9.map((dim, idx) => {
+        const sc = country.scores[idx];
+        const sb = br.scores[idx];
+        const diff = (sc - sb).toFixed(1);
+        const sign = diff > 0 ? '+' : '';
+        const dColor = diff > 0 ? 'text-cyan-400' : (diff < 0 ? 'text-amber-300' : 'text-slate-400');
+        return `
+          <tr class="border-b border-white/5 hover:bg-white/[0.02]">
+            <td class="py-1 px-2 text-slate-300 text-[10.5px]">${dim}</td>
+            <td class="py-1 px-2 text-right font-bold text-[#38BDF8] text-[10.5px]">${sc.toFixed(1)}</td>
+            <td class="py-1 px-2 text-right font-bold text-[#E5C384] text-[10.5px]">${sb.toFixed(1)}</td>
+            <td class="py-1 px-2 text-right font-semibold ${dColor} text-[10px]">${sign}${diff}</td>
+          </tr>
+        `;
+      }).join('');
 
+      // Construção da Tabela Comparativa Estruturada
+      let tableHtml = `
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+            <span class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+              <span>📊 Tabela Comparativa:</span>
+              <span class="text-[#38BDF8]">${country.name}</span>
+              <span class="text-slate-400">vs.</span>
+              <span class="text-[#E5C384]">Brasil</span>
+            </span>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-[#132B4F] bg-[#030A17]">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-[#132B4F] bg-[#07172F] text-[10px] font-bold">
+                  <th class="py-2 px-2.5 text-slate-300">Indicador Geral</th>
+                  <th class="py-2 px-2 text-right text-[#38BDF8]">${country.name}</th>
+                  <th class="py-2 px-2 text-right text-[#E5C384]">Brasil</th>
+                  <th class="py-2 px-2.5 text-right text-slate-300">Comparação</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5 text-[11px]">
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-2 px-2.5 text-slate-200 font-medium">Média Bem Viver</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#38BDF8]">${avgC} / 10</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#E5C384]">${avgBr} / 10</td>
+                  <td class="py-2 px-2.5 text-right font-semibold ${diffColor}">${diffSign}${diffAvg}</td>
+                </tr>
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-2 px-2.5 text-slate-200 font-medium">PIB per capita</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#38BDF8]">US$ ${country.pib}k</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#E5C384]">US$ ${br.pib}k</td>
+                  <td class="py-2 px-2.5 text-right font-semibold text-slate-300">${pibRatio}x</td>
+                </tr>
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-2 px-2.5 text-slate-200 font-medium">Progresso Social (IPS)</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#38BDF8]">${country.ips.toFixed(1)}</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#E5C384]">${br.ips.toFixed(1)}</td>
+                  <td class="py-2 px-2.5 text-right font-semibold text-slate-300">${(country.ips - br.ips) > 0 ? '+' : ''}${(country.ips - br.ips).toFixed(1)}</td>
+                </tr>
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-2 px-2.5 text-slate-200 font-medium">Happy Planet Index (HPI)</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#38BDF8]">${country.hpi}</td>
+                  <td class="py-2 px-2 text-right font-bold text-[#E5C384]">${br.hpi}</td>
+                  <td class="py-2 px-2.5 text-right font-semibold text-slate-300">${(country.hpi - br.hpi) > 0 ? '+' : ''}${(country.hpi - br.hpi).toFixed(0)} pts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Detalhamento Expansível das 9 Dimensões -->
+          <details class="group bg-[#030A17] border border-[#132B4F] rounded-xl overflow-hidden">
+            <summary class="px-3 py-2 text-[11px] font-bold text-[#E5C384] cursor-pointer hover:bg-white/5 flex items-center justify-between select-none">
+              <span>Ver Tabela das 9 Dimensões Detalhadas</span>
+              <span class="text-xs transition-transform group-open:rotate-180">▼</span>
+            </summary>
+            <div class="p-2 pt-0 border-t border-[#132B4F]/50">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-white/10 text-[9.5px] font-bold text-slate-400">
+                    <th class="py-1 px-2">Dimensão</th>
+                    <th class="py-1 px-2 text-right text-[#38BDF8]">${country.name}</th>
+                    <th class="py-1 px-2 text-right text-[#E5C384]">Brasil</th>
+                    <th class="py-1 px-2 text-right">Dif.</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                  ${rowsDimensoes}
+                </tbody>
+              </table>
+            </div>
+          </details>
+      `;
+
+      // Análise de Paradoxo / Destaque
       if (country.pib > br.pib * 2 && Math.abs(avgC - avgBr) < 1) {
-        insight += `<span class="text-amber-300 font-bold block pt-1">⚠️ Paradoxo: PIB ${Math.round(country.pib / br.pib)}x maior, mas bem-estar comunitário similar!</span>`;
+        tableHtml += `
+          <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs leading-relaxed space-y-0.5">
+            <div class="font-bold flex items-center gap-1.5 text-[#E5C384]">
+              <span>⚠️</span>
+              <span>Paradoxo do Crescimento Material</span>
+            </div>
+            <p class="text-[11px] text-slate-200">
+              A <strong>${country.name}</strong> possui PIB per capita <strong>${pibRatio}x maior</strong> que o do Brasil, mas a média de bem-estar comunitário é praticamente idêntica (${avgC} vs ${avgBr}). Isso evidencia que o crescimento do PIB sozinho não produz proporcionalmente mais felicidade e coesão social.
+            </p>
+          </div>
+        `;
       } else if (avgC > avgBr && country.pib <= br.pib * 1.5) {
-        insight += `<span class="text-emerald-400 font-bold block pt-1">🌿 Destaque: Mais bem-estar e sustentabilidade com menor pressão material.</span>`;
+        tableHtml += `
+          <div class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs leading-relaxed space-y-0.5">
+            <div class="font-bold flex items-center gap-1.5 text-emerald-400">
+              <span>🌿</span>
+              <span>Destaque de Eficiência Social & Ambiental</span>
+            </div>
+            <p class="text-[11px] text-slate-200">
+              A <strong>${country.name}</strong> atinge maior nível de Bem Viver (${avgC}) com menor pressão material e pegada ecológica, confirmando as teses de <em>Beyond GDP</em> da ONU sobre sustentabilidade e harmonia comunitária.
+            </p>
+          </div>
+        `;
+      } else {
+        tableHtml += `
+          <div class="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-cyan-200 text-xs leading-relaxed">
+            <span class="font-bold">💡 Síntese Comparativa:</span>
+            <span class="text-[11px] text-slate-200 block pt-0.5">Observe no radar acima quais dimensões específicas distanciam ou aproximam as duas realidades sociais.</span>
+          </div>
+        `;
       }
 
+      tableHtml += '</div>';
+
       const insEl = document.getElementById('countryInsight');
-      insEl.innerHTML = insight;
+      insEl.innerHTML = tableHtml;
       insEl.classList.remove('hidden');
     }
 
@@ -1735,14 +1873,59 @@
 
       const pibVar = (((data.pib / base.pib) - 1) * 100).toFixed(1);
       const ipsVar = (((data.ips / base.ips) - 1) * 100).toFixed(1);
+      const happyDiff = (data.happiness - base.happiness).toFixed(1);
 
-      let text = `Em <strong>${year}</strong>, o PIB variou <strong>${pibVar}%</strong> em relação a 2010. O Índice de Progresso Social variou <strong>${ipsVar}%</strong>, enquanto a percepção média de felicidade ficou em <strong>${data.happiness}/10</strong>.`;
+      let tableHtml = `
+        <div class="space-y-2.5">
+          <div class="overflow-x-auto rounded-xl border border-[#132B4F] bg-[#030A17]">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-[#132B4F] bg-[#07172F] text-[10px] font-bold">
+                  <th class="py-2 px-2.5 text-slate-300">Indicador</th>
+                  <th class="py-2 px-2 text-right text-slate-400">2010 (Base)</th>
+                  <th class="py-2 px-2 text-right text-[#E5C384]">${year}</th>
+                  <th class="py-2 px-2.5 text-right text-slate-300">Variação</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5 text-[11px]">
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-1.5 px-2.5 text-slate-200 font-medium">PIB (Base 100)</td>
+                  <td class="py-1.5 px-2 text-right font-mono text-slate-400">100</td>
+                  <td class="py-1.5 px-2 text-right font-bold text-[#E5C384] font-mono">${data.pib}</td>
+                  <td class="py-1.5 px-2.5 text-right font-semibold ${pibVar >= 0 ? 'text-amber-300' : 'text-red-400'}">${pibVar >= 0 ? '+' : ''}${pibVar}%</td>
+                </tr>
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-1.5 px-2.5 text-slate-200 font-medium">Progresso Social (IPS)</td>
+                  <td class="py-1.5 px-2 text-right font-mono text-slate-400">${base.ips.toFixed(1)}</td>
+                  <td class="py-1.5 px-2 text-right font-bold text-cyan-400 font-mono">${data.ips.toFixed(1)}</td>
+                  <td class="py-1.5 px-2.5 text-right font-semibold ${ipsVar >= 0 ? 'text-cyan-300' : 'text-red-400'}">${ipsVar >= 0 ? '+' : ''}${ipsVar}%</td>
+                </tr>
+                <tr class="hover:bg-white/[0.02]">
+                  <td class="py-1.5 px-2.5 text-slate-200 font-medium">Felicidade Média</td>
+                  <td class="py-1.5 px-2 text-right font-mono text-slate-400">${base.happiness.toFixed(1)}</td>
+                  <td class="py-1.5 px-2 text-right font-bold text-emerald-400 font-mono">${data.happiness.toFixed(1)}</td>
+                  <td class="py-1.5 px-2.5 text-right font-semibold ${happyDiff >= 0 ? 'text-emerald-300' : 'text-red-400'}">${happyDiff >= 0 ? '+' : ''}${happyDiff} pts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="text-[11px] text-slate-300 leading-relaxed">
+            Em <strong>${year}</strong>, o PIB variou <strong>${pibVar >= 0 ? '+' : ''}${pibVar}%</strong> em relação a 2010. O Índice de Progresso Social variou <strong>${ipsVar >= 0 ? '+' : ''}${ipsVar}%</strong>, enquanto a percepção média de felicidade ficou em <strong>${data.happiness}/10</strong>.
+          </div>
+      `;
 
       if (data.pib > base.pib * 1.05 && data.ips < base.ips + 0.2) {
-        text += `<br><span class="text-amber-400 font-bold">⚠️ Descompasso: O crescimento do PIB não se traduziu em salto proporcional no bem-estar comunitário.</span>`;
+        tableHtml += `
+          <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs">
+            <strong>⚠️ Descompasso Histórico:</strong> O crescimento do PIB neste período não se converteu em avanço equivalente no bem-estar comunitário.
+          </div>
+        `;
       }
 
-      document.getElementById('temporalText').innerHTML = text;
+      tableHtml += '</div>';
+
+      document.getElementById('temporalText').innerHTML = tableHtml;
     }
 
     function exportData() {

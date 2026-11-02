@@ -147,7 +147,7 @@ export function renderEclipsesSection() {
     const iconEmoji = ecl.tipo === 'solar' ? '☀️' : '🌑';
 
     return `
-      <div class="rounded-2xl bg-[#06120C] border border-[#163524] overflow-hidden transition-all">
+      <div class="rounded-2xl bg-[#040E1E] border border-[#132B4F] overflow-hidden transition-all">
         <!-- Linha Principal Clicável -->
         <button onclick="window.toggleEclipseDetail('${ecl.id}')" class="w-full p-3.5 text-left flex items-center justify-between gap-2 hover:bg-[#0A1A12] transition-colors tap-active min-h-[52px]">
           <div class="space-y-1 pr-2">
@@ -169,14 +169,14 @@ export function renderEclipsesSection() {
         </button>
 
         <!-- Detalhes Expansíveis -->
-        <div id="detail-${ecl.id}" class="hidden px-4 pb-3 pt-1 border-t border-[#163524]/60 space-y-2 text-xs text-slate-300 bg-[#040D08]/80">
+        <div id="detail-${ecl.id}" class="hidden px-4 pb-3 pt-1 border-t border-[#132B4F]/60 space-y-2 text-xs text-slate-300 bg-[#020813]/80">
           <p class="text-[11px] leading-relaxed text-slate-300">
             ${ecl.detalhes}
           </p>
           <div class="text-[10.5px] text-slate-400">
             <strong>Onde no planeta:</strong> ${ecl.regiao}
           </div>
-          <div class="p-2 rounded-xl bg-[#081810] border border-amber-500/20 text-[10px] text-[#E5C384] flex items-start gap-1.5">
+          <div class="p-2 rounded-xl bg-[#07172F] border border-amber-500/20 text-[10px] text-[#E5C384] flex items-start gap-1.5">
             <span>👁️</span>
             <span>${ecl.dicaSeguranca}</span>
           </div>
@@ -187,11 +187,11 @@ export function renderEclipsesSection() {
 
   return `
     <!-- SEÇÃO: PRÓXIMOS ECLIPSES -->
-    <div class="space-y-2.5 pt-3 border-t border-[#163524]">
+    <div class="space-y-2.5 pt-3 border-t border-[#132B4F]">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Próximos Eclipses</span>
-          <span class="text-[10px] px-2 py-0.2 rounded-full bg-[#163524] text-[#A1C1B0]">NASA GSFC</span>
+          <span class="text-[10px] px-2 py-0.2 rounded-full bg-[#132B4F] text-[#94B8DB]">NASA GSFC</span>
         </div>
         <span class="text-[10px] text-[#E5C384]">Visibilidade no Brasil</span>
       </div>

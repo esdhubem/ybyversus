@@ -47,9 +47,9 @@ export function renderMoonSvg(moon) {
     <svg viewBox="0 0 96 96" class="w-20 h-20 filter drop-shadow-[0_0_12px_rgba(229,195,132,0.4)]" aria-label="Fase atual da Lua: ${moon.name}, ${moon.percentage}% iluminada" role="img">
       <!-- Fundo do disco lunar não iluminado (cinza escuro texturizado) -->
       <circle cx="${cx}" cy="${cy}" r="${r}" fill="#0A1610" stroke="rgba(229, 195, 132, 0.35)" stroke-width="1.5"/>
-      <circle cx="${cx - 8}" cy="${cy - 6}" r="6" fill="#060F0B" opacity="0.4"/>
-      <circle cx="${cx + 12}" cy="${cy + 8}" r="8" fill="#060F0B" opacity="0.3"/>
-      <circle cx="${cx - 4}" cy="${cy + 14}" r="5" fill="#060F0B" opacity="0.35"/>
+      <circle cx="${cx - 8}" cy="${cy - 6}" r="6" fill="#030A17" opacity="0.4"/>
+      <circle cx="${cx + 12}" cy="${cy + 8}" r="8" fill="#030A17" opacity="0.3"/>
+      <circle cx="${cx - 4}" cy="${cy + 14}" r="5" fill="#030A17" opacity="0.35"/>
       
       <!-- Porção Iluminada (dourado luminoso lunar) -->
       ${pathData ? `<path d="${pathData}" fill="#FFF4D4" filter="drop-shadow(0 0 6px rgba(255,244,212,0.6))"/>` : ''}
@@ -64,26 +64,26 @@ export function renderCompassSvg(degrees, speedStr) {
       <!-- Mostrador circular da Rosa dos Ventos -->
       <svg viewBox="0 0 120 120" class="w-full h-full">
         <!-- Anel externo -->
-        <circle cx="60" cy="60" r="54" fill="#06120C" stroke="#163524" stroke-width="2"/>
+        <circle cx="60" cy="60" r="54" fill="#040E1E" stroke="#132B4F" stroke-width="2"/>
         <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(229, 195, 132, 0.2)" stroke-dasharray="2 3"/>
 
         <!-- Pontos Cardeais: N, L, S, O (Oeste em português do Brasil) -->
         <text x="60" y="18" fill="#E5C384" font-size="10" font-weight="bold" text-anchor="middle">N</text>
-        <text x="104" y="63" fill="#A1C1B0" font-size="9" font-weight="600" text-anchor="middle">L</text>
-        <text x="60" y="110" fill="#A1C1B0" font-size="9" font-weight="600" text-anchor="middle">S</text>
-        <text x="16" y="63" fill="#A1C1B0" font-size="9" font-weight="600" text-anchor="middle">O</text>
+        <text x="104" y="63" fill="#94B8DB" font-size="9" font-weight="600" text-anchor="middle">L</text>
+        <text x="60" y="110" fill="#94B8DB" font-size="9" font-weight="600" text-anchor="middle">S</text>
+        <text x="16" y="63" fill="#94B8DB" font-size="9" font-weight="600" text-anchor="middle">O</text>
 
         <!-- Agulha giratória apontando na direção do vento -->
         <g transform="rotate(${deg} 60 60)">
           <!-- Ponta da agulha (dourada) -->
           <polygon points="60,20 66,60 60,54" fill="#E5C384" filter="drop-shadow(0 0 4px rgba(229,195,132,0.8))"/>
           <!-- Cauda da agulha (escura/esmeralda) -->
-          <polygon points="60,100 66,60 60,66" fill="#1E9E64"/>
+          <polygon points="60,100 66,60 60,66" fill="#1C4E8A"/>
           <!-- Lado oposto para efeito 3D -->
           <polygon points="60,20 54,60 60,54" fill="#FFF2D6"/>
-          <polygon points="60,100 54,60 60,66" fill="#0E5E3D"/>
+          <polygon points="60,100 54,60 60,66" fill="#133560"/>
           <!-- Ponto central de fixação -->
-          <circle cx="60" cy="60" r="4" fill="#E5C384" stroke="#040D08" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="4" fill="#E5C384" stroke="#020813" stroke-width="1.5"/>
         </g>
       </svg>
       <div class="absolute -bottom-5 text-center">
@@ -102,14 +102,14 @@ export function renderHourlyForecast(hourly, unit = 'kmh') {
     const wind = convertWindSpeed(h.windSpeed, unit);
 
     return `
-      <div class="min-w-[68px] p-2 rounded-2xl bg-[#06120C] border border-[#163524] flex flex-col items-center justify-between text-center shrink-0">
+      <div class="min-w-[68px] p-2 rounded-2xl bg-[#040E1E] border border-[#132B4F] flex flex-col items-center justify-between text-center shrink-0">
         <span class="text-[10px] text-slate-400 font-medium">${hourStr}</span>
         <span class="text-sm font-bold text-[#FFF6E5] my-1">${h.temp}°</span>
         <div class="flex items-center gap-0.5 text-[9.5px] text-cyan-400 font-semibold" title="Probabilidade de Chuva">
           <span>💧</span>
           <span>${h.rainProb}%</span>
         </div>
-        <div class="text-[9px] text-[#A1C1B0] mt-1 flex items-center gap-0.5" title="Vento: ${wind.value} ${wind.unit}">
+        <div class="text-[9px] text-[#94B8DB] mt-1 flex items-center gap-0.5" title="Vento: ${wind.value} ${wind.unit}">
           <span>💨</span>
           <span>${Math.round(wind.value)}</span>
         </div>
@@ -150,7 +150,7 @@ export function renderDailyForecast(daily) {
     const dateFormatted = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit' }).format(dateObj);
 
     return `
-      <div class="flex items-center justify-between p-2.5 rounded-2xl bg-[#06120C] border border-[#163524] text-xs">
+      <div class="flex items-center justify-between p-2.5 rounded-2xl bg-[#040E1E] border border-[#132B4F] text-xs">
         <div class="flex items-center gap-2 w-28">
           <span class="font-bold text-[#E5C384]">${dayLabel}</span>
           <span class="text-[10px] text-slate-400">${dateFormatted}</span>
@@ -176,11 +176,11 @@ export function renderDailyForecast(daily) {
 export function renderSkeleton() {
   return `
     <div class="space-y-4 animate-pulse">
-      <div class="p-4 rounded-3xl bg-[#0B2016] border border-[#163524] h-48 flex items-center justify-center text-slate-500 text-xs">
+      <div class="p-4 rounded-3xl bg-[#06152B] border border-[#132B4F] h-48 flex items-center justify-center text-slate-500 text-xs">
         <span class="text-[#E5C384]">Sincronizando com as órbitas e a atmosfera...</span>
       </div>
-      <div class="p-4 rounded-3xl bg-[#0B2016] border border-[#163524] h-36"></div>
-      <div class="p-4 rounded-3xl bg-[#0B2016] border border-[#163524] h-48"></div>
+      <div class="p-4 rounded-3xl bg-[#06152B] border border-[#132B4F] h-36"></div>
+      <div class="p-4 rounded-3xl bg-[#06152B] border border-[#132B4F] h-48"></div>
     </div>
   `;
 }

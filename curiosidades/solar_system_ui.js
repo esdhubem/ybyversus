@@ -46,29 +46,29 @@ export function renderSolarSystemSection() {
 
   return `
     <!-- 5. SEÇÃO: MINI ATLAS DO SISTEMA SOLAR (FASE 3) -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4" id="atlas-solar-section">
+    <section class="p-5 rounded-3xl bg-[#06152B] border border-[#132B4F] space-y-4" id="atlas-solar-section">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="text-base">🪐</span>
           <div>
             <h2 class="text-sm font-bold text-[#FFF6E5]">Mini Atlas do Sistema Solar</h2>
-            <div class="text-[10px] text-[#A1C1B0]">Posições orbitais em tempo real (Equações de Kepler)</div>
+            <div class="text-[10px] text-[#94B8DB]">Posições orbitais em tempo real (Equações de Kepler)</div>
           </div>
         </div>
         
         <!-- Alternância de Escala: Tamanho Relativo vs Distância Relativa -->
-        <div class="flex items-center bg-[#06120C] rounded-full p-0.5 border border-[#163524]">
-          <button onclick="window.switchAtlasMode('tamanho')" id="btn-atlas-tamanho" class="px-2.5 py-1 rounded-full text-[10px] font-bold ${currentAtlasMode === 'tamanho' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'} tap-active">
+        <div class="flex items-center bg-[#040E1E] rounded-full p-0.5 border border-[#132B4F]">
+          <button onclick="window.switchAtlasMode('tamanho')" id="btn-atlas-tamanho" class="px-2.5 py-1 rounded-full text-[10px] font-bold ${currentAtlasMode === 'tamanho' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'} tap-active">
             Tamanho
           </button>
-          <button onclick="window.switchAtlasMode('distancia')" id="btn-atlas-distancia" class="px-2.5 py-1 rounded-full text-[10px] font-bold ${currentAtlasMode === 'distancia' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'} tap-active">
+          <button onclick="window.switchAtlasMode('distancia')" id="btn-atlas-distancia" class="px-2.5 py-1 rounded-full text-[10px] font-bold ${currentAtlasMode === 'distancia' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'} tap-active">
             Distância
           </button>
         </div>
       </div>
 
       <!-- Frase Educativa: Distâncias Reais em UA hoje -->
-      <div class="p-3 rounded-2xl bg-[#06120C]/90 border border-[#163524] text-[11px] leading-relaxed text-slate-300">
+      <div class="p-3 rounded-2xl bg-[#040E1E]/90 border border-[#132B4F] text-[11px] leading-relaxed text-slate-300">
         <div class="flex items-center gap-1.5 text-[#E5C384] font-bold mb-1">
           <span class="text-xs">🛰️</span>
           <span>Distâncias da Terra Hoje (1 UA ≈ 149,6 milhões de km):</span>
@@ -83,32 +83,32 @@ export function renderSolarSystemSection() {
       </p>
 
       <!-- Visualizador do Atlas em SVG 2D -->
-      <div class="relative w-full aspect-square max-h-[350px] rounded-2xl bg-[#030906] border border-[#163524] flex items-center justify-center overflow-hidden p-2 shadow-inner">
+      <div class="relative w-full aspect-square max-h-[350px] rounded-2xl bg-[#020718] border border-[#132B4F] flex items-center justify-center overflow-hidden p-2 shadow-inner">
         ${renderSolarMapSvg(planets, currentAtlasMode, moon)}
       </div>
 
       <!-- Ficha Técnica do Planeta Selecionado -->
-      <div id="planet-card" class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 space-y-2 text-xs">
+      <div id="planet-card" class="p-4 rounded-2xl bg-[#040E1E] border border-amber-500/20 space-y-2 text-xs">
         ${renderPlanetDetails(selectedPlanet, earthDistances[selectedPlanet.id])}
       </div>
 
       <!-- 6. CARTÃO EDUCATIVO: HORA NA LUA (LTC) -->
-      <div class="p-4 rounded-2xl bg-gradient-to-br from-[#0C2117] to-[#07160F] border border-amber-500/25 space-y-3">
-        <div class="flex items-center justify-between pb-1 border-b border-[#163524]">
+      <div class="p-4 rounded-2xl bg-gradient-to-br from-[#071933] to-[#030C1A] border border-amber-500/25 space-y-3">
+        <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
           <div class="flex items-center gap-1.5 font-bold text-[#E5C384] text-xs">
             <span>⏱️</span>
             <span>${lunarInfo.title}</span>
           </div>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#163524] text-[#A1C1B0]">Relatividade Geral</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#132B4F] text-[#94B8DB]">Relatividade Geral</span>
         </div>
 
         <div class="text-[11.5px] text-slate-300 space-y-2 leading-relaxed">
           <p>${lunarInfo.scientificExplanation}</p>
           
-          <div class="p-3 rounded-xl bg-[#06120C] border border-amber-500/20 text-[#FFF6E5]">
+          <div class="p-3 rounded-xl bg-[#040E1E] border border-amber-500/20 text-[#FFF6E5]">
             <span class="text-[10px] uppercase font-bold text-[#E5C384] block mb-0.5">Dado Científico Verificado:</span>
             <p class="text-[11px] text-slate-200">${lunarInfo.verifiedNumber}</p>
-            <p class="text-[10.5px] text-[#A1C1B0] pt-1 mt-1 border-t border-slate-700/60">
+            <p class="text-[10.5px] text-[#94B8DB] pt-1 mt-1 border-t border-slate-700/60">
               Hoje, um relógio na Lua acumulou aproximadamente <strong>+${lunarInfo.driftToday} µs</strong> de avanço em relação a um relógio em solo terrestre.
             </p>
           </div>
@@ -117,7 +117,7 @@ export function renderSolarSystemSection() {
         </div>
 
         <!-- Fontes Oficiais Citadas -->
-        <div class="pt-2 border-t border-[#163524] text-[9.5px] text-slate-500 space-y-0.5">
+        <div class="pt-2 border-t border-[#132B4F] text-[9.5px] text-slate-500 space-y-0.5">
           <span class="font-bold text-slate-400 block">Fontes Verificadas:</span>
           ${lunarInfo.sources.map(s => `<div>• ${s}</div>`).join('')}
         </div>
@@ -258,7 +258,7 @@ export function renderPlanetDetails(planet, distFromEarth) {
     : (planet.id === 'terra' ? '<span class="text-[10px] text-[#2DC47F] font-bold block">Você está aqui 🌍</span>' : '');
 
   return `
-    <div class="flex items-center justify-between pb-1.5 border-b border-[#163524]">
+    <div class="flex items-center justify-between pb-1.5 border-b border-[#132B4F]">
       <div class="flex items-center gap-2">
         <span class="w-3.5 h-3.5 rounded-full inline-block" style="background-color: ${planet.color};"></span>
         <h3 class="text-sm font-bold text-[#FFF6E5]">${planet.name}</h3>
@@ -276,7 +276,7 @@ export function renderPlanetDetails(planet, distFromEarth) {
       <div>Duração do Dia: <strong class="text-white">${Math.abs(planet.rotationHours)} h</strong></div>
     </div>
 
-    <p class="text-[11px] text-slate-400 italic pt-1 border-t border-[#163524]/60">
+    <p class="text-[11px] text-slate-400 italic pt-1 border-t border-[#132B4F]/60">
       "${planet.curiosity}"
     </p>
   `;
@@ -297,8 +297,8 @@ if (typeof window !== 'undefined') {
       const btnTam = document.getElementById('btn-atlas-tamanho');
       const btnDist = document.getElementById('btn-atlas-distancia');
       if (btnTam && btnDist) {
-        btnTam.className = `px-2.5 py-1 rounded-full text-[10px] font-bold ${mode === 'tamanho' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'} tap-active`;
-        btnDist.className = `px-2.5 py-1 rounded-full text-[10px] font-bold ${mode === 'distancia' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'} tap-active`;
+        btnTam.className = `px-2.5 py-1 rounded-full text-[10px] font-bold ${mode === 'tamanho' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'} tap-active`;
+        btnDist.className = `px-2.5 py-1 rounded-full text-[10px] font-bold ${mode === 'distancia' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'} tap-active`;
       }
     }
   };

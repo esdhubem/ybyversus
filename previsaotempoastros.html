@@ -163,7 +163,7 @@
   </style>
 </head>
 
-<body class="bg-[#040D08] text-slate-100 min-h-screen flex items-center justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
+<body class="bg-[#020813] text-slate-100 min-h-screen flex items-center justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
 
   <!-- ======================================================== -->
   <!-- FUNDO CÓSMICO CELESTIAL (ÓRBITAS DOURADAS & ESTRELAS)    -->
@@ -192,7 +192,7 @@
   <!-- ======================================================== -->
   <!-- MOLDURA DO SMARTPHONE (DESIGN SYSTEM DO YBY VERSUS)      -->
   <!-- ======================================================== -->
-  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#193C29]/70 transition-all">
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#132B4F]/70 transition-all">
 
     <!-- 1. STATUS BAR NATIVA -->
     <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#040E1E]">
@@ -215,19 +215,19 @@
         </a>
         <div>
           <h1 class="font-brand text-base font-bold text-[#FFF6E5] leading-tight">Tempo, Mar e Céu</h1>
-          <span class="text-[10px] text-[#A1C1B0]">Previsão: Tempo, Marés e Astros</span>
+          <span class="text-[10px] text-[#94B8DB]">Previsão: Tempo, Marés e Astros</span>
         </div>
       </div>
 
       <!-- Botão Alterar Localização (Alvo de toque ≥ 44px) -->
       <button onclick="window.toggleLocationModal()" title="Alterar localidade" aria-label="Alterar localidade de consulta" class="px-3 py-1.5 min-h-[44px] rounded-full bg-[#07172F] border border-[#132B4F] hover:border-amber-500/40 text-xs text-[#E5C384] flex items-center gap-1.5 tap-active shrink-0">
-        <i data-lucide="map-pin" class="w-4 h-4 text-[#1E9E64]"></i>
+        <i data-lucide="map-pin" class="w-4 h-4 text-[#1C4E8A]"></i>
         <span id="location-name" class="font-semibold max-w-[100px] truncate text-slate-200">São Paulo</span>
       </button>
     </nav>
 
     <!-- Barra de Atalhos de Cidades Favoritas -->
-    <div class="px-5 py-2 bg-[#05120C] border-b border-[#132B4F] flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
+    <div class="px-5 py-2 bg-[#040E1E] border-b border-[#132B4F] flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
       <span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold shrink-0">Favoritos:</span>
       <div id="favorites-chips" class="flex items-center gap-1.5"></div>
       <button onclick="window.saveCurrentAsFavorite()" title="Salvar cidade atual nos favoritos" aria-label="Salvar localização atual nos favoritos" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#07172F] text-[#E5C384] hover:text-white border border-[#132B4F] whitespace-nowrap min-h-[38px] flex items-center gap-1 shrink-0 tap-active">
@@ -294,7 +294,7 @@
 
       <!-- Botão GPS Explícito com Consentimento -->
       <button onclick="window.useGpsLocation()" class="w-full p-3 rounded-2xl bg-[#030A17] border border-amber-500/30 hover:border-amber-400 flex items-center justify-center gap-2 text-xs font-bold text-[#E5C384] tap-active min-h-[44px]">
-        <i data-lucide="crosshair" class="w-4 h-4 text-[#1E9E64]"></i>
+        <i data-lucide="crosshair" class="w-4 h-4 text-[#1C4E8A]"></i>
         <span>Usar minha localização atual (GPS)</span>
       </button>
 

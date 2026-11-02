@@ -54,7 +54,7 @@ function renderFavoritesBar() {
         class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all tap-active flex items-center gap-1.5 border min-h-[38px] ${
           isSelected 
             ? 'bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black border-amber-400 font-bold shadow-xs' 
-            : 'bg-[#06120C] text-slate-300 hover:text-white border-[#163524]'
+            : 'bg-[#040E1E] text-slate-300 hover:text-white border-[#132B4F]'
         }">
         <span>${f.name}</span>
       </button>
@@ -109,7 +109,7 @@ export async function loadDataForLocation(location, forceRefresh = false) {
     console.error('[YBY Curiosidades] Erro ao carregar dados:', err);
     if (contentArea) {
       contentArea.innerHTML = `
-        <div class="p-6 rounded-3xl bg-[#0B2016] border border-red-500/30 text-center space-y-3">
+        <div class="p-6 rounded-3xl bg-[#06152B] border border-red-500/30 text-center space-y-3">
           <p class="text-sm font-bold text-red-400">Não foi possível carregar os dados de clima.</p>
           <p class="text-xs text-slate-400">Verifique sua conexão à internet e tente novamente.</p>
           <button onclick="window.retryLoad()" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black text-xs font-bold tap-active min-h-[44px]">
@@ -132,7 +132,7 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
   let cacheNotice = '';
   if (weather.isFromCache) {
     cacheNotice = `
-      <div class="p-2.5 rounded-2xl bg-[#06120C] border border-amber-500/20 text-[11px] text-[#E5C384] flex items-center justify-between">
+      <div class="p-2.5 rounded-2xl bg-[#040E1E] border border-amber-500/20 text-[11px] text-[#E5C384] flex items-center justify-between">
         <div class="flex items-center gap-1.5">
           <span>🕒</span>
           <span>Dados em cache de <strong>${weather.cachedAt}</strong></span>
@@ -149,24 +149,24 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
   if (marine && marine.isCoast && marine.current) {
     marineBlock = `
       <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-3 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1">
+        <div class="p-3 rounded-2xl bg-[#040E1E] border border-[#132B4F] space-y-1">
           <span class="text-[10px] text-slate-400 uppercase font-bold block">Ondas (Superfície)</span>
           <div class="text-lg font-bold text-[#FFF6E5]">${marine.current.waveHeight !== null ? marine.current.waveHeight + ' m' : '—'}</div>
           <div class="text-[11px] text-slate-300">Período: <strong>${marine.current.wavePeriod || '—'}s</strong></div>
-          <div class="text-[10px] text-[#A1C1B0]">Direção: ${marine.current.waveDirection || '—'}°</div>
+          <div class="text-[10px] text-[#94B8DB]">Direção: ${marine.current.waveDirection || '—'}°</div>
         </div>
 
-        <div class="p-3 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1">
+        <div class="p-3 rounded-2xl bg-[#040E1E] border border-[#132B4F] space-y-1">
           <span class="text-[10px] text-slate-400 uppercase font-bold block">Ondulação (Swell)</span>
           <div class="text-lg font-bold text-[#E5C384]">${marine.current.swellHeight !== null ? marine.current.swellHeight + ' m' : '—'}</div>
           <div class="text-[11px] text-slate-300">Período: <strong>${marine.current.swellPeriod || '—'}s</strong></div>
-          <div class="text-[10px] text-[#A1C1B0]">Direção: ${marine.current.swellDirection || '—'}°</div>
+          <div class="text-[10px] text-[#94B8DB]">Direção: ${marine.current.swellDirection || '—'}°</div>
         </div>
       </div>
     `;
   } else {
     marineBlock = `
-      <div class="p-3 rounded-2xl bg-[#06120C] border border-[#163524] text-xs text-slate-400 text-center">
+      <div class="p-3 rounded-2xl bg-[#040E1E] border border-[#132B4F] text-xs text-slate-400 text-center">
         <span>📍 Localidade sem dados marítimos diretos (região interiorana ou continental).</span>
       </div>
     `;
@@ -182,7 +182,7 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
             <strong class="text-[#FFF6E5] block">${tide.nomePorto} (${tide.estado})</strong>
             <span class="text-[10px] text-[#E5C384]">${tide.fonte}</span>
           </div>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#163524] text-[#A1C1B0]">Oficial DHN</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#132B4F] text-[#94B8DB]">Oficial DHN</span>
         </div>
 
         <!-- Gráfico de Maré 24h -->
@@ -191,8 +191,8 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
         <!-- Lista de Preamar e Baixa-mar -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
           ${tide.medicoes.map(m => `
-            <div class="p-2 rounded-2xl bg-[#06120C] border border-[#163524] text-center">
-              <span class="text-[10px] uppercase font-bold ${m.tipo === 'preamar' ? 'text-[#E5C384]' : 'text-[#1E9E64]'}">
+            <div class="p-2 rounded-2xl bg-[#040E1E] border border-[#132B4F] text-center">
+              <span class="text-[10px] uppercase font-bold ${m.tipo === 'preamar' ? 'text-[#E5C384]' : 'text-[#1C4E8A]'}">
                 ${m.tipo === 'preamar' ? '⬆️ Preamar' : '⬇️ Baixa-mar'}
               </span>
               <div class="text-xs font-bold text-[#FFF6E5] mt-0.5">${m.altura} m</div>
@@ -204,7 +204,7 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     `;
   } else {
     tideBlock = `
-      <div class="p-3.5 rounded-2xl bg-[#06120C] border border-[#163524] text-xs text-slate-400 text-center space-y-1">
+      <div class="p-3.5 rounded-2xl bg-[#040E1E] border border-[#132B4F] text-xs text-slate-400 text-center space-y-1">
         <p class="italic text-slate-300">"${tide ? tide.message : 'dados ainda não disponíveis para este porto'}"</p>
         <p class="text-[10.5px] text-slate-500">As tábuas oficiais são adicionadas gradualmente a partir dos dados abertos da Marinha do Brasil.</p>
       </div>
@@ -215,22 +215,22 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     ${cacheNotice}
 
     <!-- 1. SEÇÃO: CLIMA E VENTO (EM PRIMEIRO LUGAR) -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+    <section class="p-5 rounded-3xl bg-[#06152B] border border-[#132B4F] space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="text-base">🌤️</span>
           <h2 class="text-sm font-bold text-[#FFF6E5]">Clima e Vento</h2>
         </div>
         <!-- Seletor de Unidade de Vento -->
-        <div class="flex items-center bg-[#06120C] rounded-full p-0.5 border border-[#163524]">
-          <button onclick="window.changeWindUnit('kmh')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kmh' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">km/h</button>
-          <button onclick="window.changeWindUnit('kt')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kt' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">nós</button>
-          <button onclick="window.changeWindUnit('ms')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'ms' ? 'bg-[#1E9E64] text-white' : 'text-slate-400 hover:text-white'}">m/s</button>
+        <div class="flex items-center bg-[#040E1E] rounded-full p-0.5 border border-[#132B4F]">
+          <button onclick="window.changeWindUnit('kmh')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kmh' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'}">km/h</button>
+          <button onclick="window.changeWindUnit('kt')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'kt' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'}">nós</button>
+          <button onclick="window.changeWindUnit('ms')" class="px-2 py-0.5 rounded-full text-[10px] font-bold ${unit === 'ms' ? 'bg-[#1C4E8A] text-white' : 'text-slate-400 hover:text-white'}">m/s</button>
         </div>
       </div>
 
       <!-- Resumo Principal do Clima Atual -->
-      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 flex items-center justify-between">
+      <div class="p-4 rounded-2xl bg-[#040E1E] border border-amber-500/20 flex items-center justify-between">
         <div>
           <div class="flex items-baseline gap-2">
             <span class="text-3xl font-extrabold text-[#FFF6E5]">${current.temp}°C</span>
@@ -249,12 +249,12 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
         <!-- Rosa dos Ventos com Agulha -->
         <div class="shrink-0 flex flex-col items-center">
           ${renderCompassSvg(current.windDirection, `${windInfo.value} ${windInfo.unit}`)}
-          <span class="text-[10px] font-semibold text-[#A1C1B0] mt-1">${windInfo.value} ${windInfo.unit} (${current.compass.pt})</span>
+          <span class="text-[10px] font-semibold text-[#94B8DB] mt-1">${windInfo.value} ${windInfo.unit} (${current.compass.pt})</span>
         </div>
       </div>
 
       <!-- Índice UV com Barra Colorida -->
-      <div class="p-3.5 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1.5 text-xs">
+      <div class="p-3.5 rounded-2xl bg-[#040E1E] border border-[#132B4F] space-y-1.5 text-xs">
         <div class="flex items-center justify-between">
           <span class="font-bold text-slate-200">Índice Ultravioleta (UV)</span>
           <span class="font-bold px-2 py-0.5 rounded-full text-[10px] text-black" style="background-color: ${current.uvClass.color};">
@@ -278,13 +278,13 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     </section>
 
     <!-- 2. SEÇÃO: MAR, ONDAS E MARÉS -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+    <section class="p-5 rounded-3xl bg-[#06152B] border border-[#132B4F] space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="text-base">🌊</span>
           <h2 class="text-sm font-bold text-[#FFF6E5]">Mar, Ondas e Marés</h2>
         </div>
-        <span class="text-[10px] text-[#A1C1B0]">Litoral Brasileiro</span>
+        <span class="text-[10px] text-[#94B8DB]">Litoral Brasileiro</span>
       </div>
 
       <!-- AVISO FIXO OBRIGATÓRIO DE SEGURANÇA -->
@@ -302,13 +302,13 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
       </div>
 
       <!-- Tábuas de Marés da Marinha -->
-      <div class="space-y-2 pt-2 border-t border-[#163524]">
+      <div class="space-y-2 pt-2 border-t border-[#132B4F]">
         <h3 class="text-xs font-bold text-slate-300">Tábua de Marés do Dia (Portos do Brasil)</h3>
         ${tideBlock}
       </div>
 
       <!-- Explicação Educativa: Marés de Sizígia e Quadratura -->
-      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 space-y-2 text-xs text-slate-300 leading-relaxed">
+      <div class="p-4 rounded-2xl bg-[#040E1E] border border-amber-500/20 space-y-2 text-xs text-slate-300 leading-relaxed">
         <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
           <span>🪐</span>
           <span>Por que a maré sobe mais na Lua Nova e Cheia?</span>
@@ -323,7 +323,7 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     </section>
 
     <!-- 3. SEÇÃO: CÉU DE HOJE (LUA & SOL) -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+    <section class="p-5 rounded-3xl bg-[#06152B] border border-[#132B4F] space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="text-base">🌙</span>
@@ -333,12 +333,12 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
       </div>
 
       <!-- Fase da Lua Destaque -->
-      <div class="p-4 rounded-2xl bg-[#06120C] border border-amber-500/20 flex items-center justify-between gap-4">
+      <div class="p-4 rounded-2xl bg-[#040E1E] border border-amber-500/20 flex items-center justify-between gap-4">
         <div class="space-y-1">
           <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Fase da Lua</span>
           <h3 class="text-lg font-bold text-[#E5C384]">${moon.name}</h3>
           <p class="text-xs text-slate-300">Iluminação: <strong class="text-white">${moon.percentage}%</strong></p>
-          <p class="text-[11px] text-[#A1C1B0]">Ciclo Lunar: ${Math.round(moon.phase * 29.53)}º dia</p>
+          <p class="text-[11px] text-[#94B8DB]">Ciclo Lunar: ${Math.round(moon.phase * 29.53)}º dia</p>
         </div>
         <div class="shrink-0 flex items-center justify-center">
           ${renderMoonSvg(moon)}
@@ -347,7 +347,7 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
 
       <!-- Nascer e Pôr do Sol e da Lua -->
       <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-3 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1">
+        <div class="p-3 rounded-2xl bg-[#040E1E] border border-[#132B4F] space-y-1">
           <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
             <span>☀️</span>
             <span>Sol</span>
@@ -356,11 +356,11 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
             <div>Nascer: <strong>${formatTime(celestial.sunrise)}</strong></div>
             <div>Zênite: <strong>${formatTime(celestial.solarNoon)}</strong></div>
             <div>Pôr: <strong>${formatTime(celestial.sunset)}</strong></div>
-            <div class="text-[10px] text-[#A1C1B0] pt-1">Duração do dia: ${celestial.dayLength.formatted}</div>
+            <div class="text-[10px] text-[#94B8DB] pt-1">Duração do dia: ${celestial.dayLength.formatted}</div>
           </div>
         </div>
 
-        <div class="p-3 rounded-2xl bg-[#06120C] border border-[#163524] space-y-1">
+        <div class="p-3 rounded-2xl bg-[#040E1E] border border-[#132B4F] space-y-1">
           <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
             <span>🌔</span>
             <span>Lua</span>
@@ -374,11 +374,11 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
       </div>
 
       <!-- Próximas 4 Fases Principais da Lua -->
-      <div class="space-y-2 pt-2 border-t border-[#163524]">
+      <div class="space-y-2 pt-2 border-t border-[#132B4F]">
         <h4 class="text-xs font-bold text-slate-300">Próximas Fases Lunares</h4>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
           ${nextPhases.map(p => `
-            <div class="p-2.5 rounded-2xl bg-[#06120C] border border-[#163524] text-center">
+            <div class="p-2.5 rounded-2xl bg-[#040E1E] border border-[#132B4F] text-center">
               <span class="text-lg">${p.emoji}</span>
               <div class="text-[11px] font-bold text-[#FFF6E5] mt-0.5">${p.name}</div>
               <div class="text-[10px] text-[#E5C384]">${formatDate(p.date)}</div>
@@ -392,13 +392,13 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     ${renderSolarSystemSection()}
 
     <!-- 5. SEÇÃO: CICLOS DO ANO: ESTAÇÕES & ECLIPSES -->
-    <section class="p-5 rounded-3xl bg-[#0B2016] border border-[#163524] space-y-4">
+    <section class="p-5 rounded-3xl bg-[#06152B] border border-[#132B4F] space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="text-base">✨</span>
           <h2 class="text-sm font-bold text-[#FFF6E5]">Estações & Próximos Eclipses</h2>
         </div>
-        <span class="text-[10px] text-[#A1C1B0]">Calendário Cósmico</span>
+        <span class="text-[10px] text-[#94B8DB]">Calendário Cósmico</span>
       </div>
 
       <!-- Solstícios e Equinócios do Ano -->
@@ -409,10 +409,10 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
           ${seasons.map(s => `
-            <div class="p-2.5 rounded-2xl bg-[#06120C] border border-[#163524] flex items-center justify-between">
+            <div class="p-2.5 rounded-2xl bg-[#040E1E] border border-[#132B4F] flex items-center justify-between">
               <div>
                 <span class="font-bold text-[#FFF6E5] block">${s.name}</span>
-                <span class="text-[10px] text-[#A1C1B0]">${s.hemisphereSouth}</span>
+                <span class="text-[10px] text-[#94B8DB]">${s.hemisphereSouth}</span>
               </div>
               <span class="text-[11px] font-semibold text-[#E5C384] text-right">${formatDateWithHour(s.date)}</span>
             </div>
@@ -425,13 +425,13 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     </section>
 
     <!-- 5. CARTÃO CURIOSIDADE DO DIA (FECHAMENTO EDUCATIVO) -->
-    <section class="p-5 rounded-3xl bg-gradient-to-br from-[#0C2117] to-[#07160F] border border-amber-500/25 shadow-xl space-y-2 relative overflow-hidden">
-      <div class="flex items-center justify-between pb-1 border-b border-[#163524]">
+    <section class="p-5 rounded-3xl bg-gradient-to-br from-[#071933] to-[#030C1A] border border-amber-500/25 shadow-xl space-y-2 relative overflow-hidden">
+      <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
         <div class="flex items-center gap-1.5 text-xs font-bold text-[#E5C384]">
           <span>✨</span>
           <span>Curiosidade do Dia: Céu & Ritmos</span>
         </div>
-        <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#163524] text-[#A1C1B0]">${curiosities[0].tag}</span>
+        <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#132B4F] text-[#94B8DB]">${curiosities[0].tag}</span>
       </div>
       <h3 class="text-sm font-bold text-[#FFF6E5]">${curiosities[0].title}</h3>
       <p class="text-xs text-slate-300 leading-relaxed">${curiosities[0].text}</p>
@@ -443,7 +443,7 @@ function renderFullView({ moon, celestial, nextPhases, seasons, weather, marine,
     </section>
 
     <!-- ATRIBUIÇÃO OFICIAL OBRIGATÓRIA NO RODAPÉ -->
-    <footer class="pt-4 pb-8 text-center text-[11px] text-slate-400 space-y-1.5 border-t border-[#163524]">
+    <footer class="pt-4 pb-8 text-center text-[11px] text-slate-400 space-y-1.5 border-t border-[#132B4F]">
       <p class="leading-relaxed">
         Dados de clima, vento e ondas: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" class="text-[#E5C384] hover:underline">Open-Meteo</a> (CC BY 4.0).
       </p>
@@ -561,7 +561,7 @@ function setupEventListeners() {
 
     resultsContainer.innerHTML = results.map(r => `
       <button onclick="window.selectFromSearch(${r.lat}, ${r.lon}, '${r.name.replace(/'/g, "\\'")}', '${r.state.replace(/'/g, "\\'")}')" 
-        class="w-full text-left p-3 rounded-2xl bg-[#06120C] hover:bg-[#10261D] border border-[#163524] text-xs text-slate-200 flex items-center justify-between tap-active min-h-[44px]">
+        class="w-full text-left p-3 rounded-2xl bg-[#040E1E] hover:bg-[#0A2244] border border-[#132B4F] text-xs text-slate-200 flex items-center justify-between tap-active min-h-[44px]">
         <div>
           <strong class="text-[#FFF6E5]">${r.name}</strong>
           <span class="text-slate-400 text-[11px] block">${r.state ? r.state + ', ' : ''}${r.country}</span>

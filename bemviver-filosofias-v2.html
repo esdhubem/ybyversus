@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofias e o Futuro do Bem Viver (Versão 2) | YBY Versus</title>
+    <style>
+        :root {
+            --bg-dark: #0f2027;
+            --bg-mid: #203a43;
+            --bg-light: #2c5364;
+            --accent: #d4af37;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --text: #f4f1ea;
+            --text-muted: #b0b8c1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid), var(--bg-light));
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .back-nav {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateX(-2px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        header h1 { font-size: 2.5em; color: var(--accent); margin-bottom: 15px; }
+        header p { color: var(--text-muted); font-size: 1.15em; max-width: 700px; margin: 0 auto; }
+
+        /* Seção de Introdução */
+        .intro-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 50px;
+        }
+        .intro-box h2 { color: var(--accent); margin-bottom: 20px; font-size: 1.6em; }
+        .intro-box p { margin-bottom: 15px; color: var(--text); }
+        .intro-box ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-muted); }
+        .intro-box li { margin-bottom: 8px; }
+
+        /* Títulos de Grupo */
+        .group-title {
+            text-align: center;
+            font-size: 2em;
+            color: var(--text);
+            margin: 60px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .group-title span { color: var(--accent); }
+
+        /* Grid de Cartões */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .philosophy-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.09);
+        }
+
+        .card-header { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        .card-header h3 { color: var(--accent); font-size: 1.4em; margin-bottom: 10px; }
+        .card-desc { font-style: italic; color: var(--text-muted); font-size: 0.95em; line-height: 1.5; }
+
+        .card-section { margin-bottom: 15px; }
+        .card-section h4 { 
+            font-size: 0.9em; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 8px; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .h-defend { color: var(--success); }
+        .h-critic { color: var(--warning); }
+        .h-sources { color: var(--accent); }
+
+        .card-section ul { margin-left: 18px; color: var(--text); font-size: 0.95em; }
+        .card-section li { margin-bottom: 8px; }
+
+        .sources-list { 
+            font-size: 0.85em; 
+            color: var(--text-muted); 
+            background: rgba(0,0,0,0.2); 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-top: auto; 
+        }
+        .sources-list p { margin-bottom: 6px; line-height: 1.4; }
+        .sources-list a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+        .sources-list a:hover { color: #fff; border-bottom-style: solid; }
+
+        /* Seção Síntese */
+        .synthesis-section {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.15), rgba(212, 175, 55, 0.1));
+            border: 2px solid var(--success);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .synthesis-section::before {
+            content: '🌿';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.05;
+        }
+        .synthesis-section h2 { color: var(--success); font-size: 2em; margin-bottom: 20px; }
+        .synthesis-section p { font-size: 1.1em; margin-bottom: 15px; color: var(--text); }
+        .synthesis-highlight {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .synthesis-section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back-nav">
+        <a href="bemviver.html" class="btn-back">← Voltar para Economia do Bem Viver</a>
+    </div>
+
+    <header>
+        <h1>🌍 Das Ideologias ao Bem Viver</h1>
+        <p>Para construir o futuro, precisamos entender o passado e o presente. Explore as diferentes filosofias que moldaram o mundo.</p>
+    </header>
+
+    <!-- INTRODUÇÃO -->
+    <div class="intro-box">
+        <h2>📖 Como ler esta seção</h2>
+        <p>Os quadros a seguir mostram sistemas, modelos e filosofias que têm grande influência nas sociedades de hoje. Eles não formam uma escala do melhor ao pior, nem um ranking: são retratos de jeitos diferentes de organizar a vida em comum.</p>
+        <p>Eles estão em três grupos porque são coisas de natureza diferente:</p>
+        <ul>
+            <li><strong>Ideologias e sistemas econômicos:</strong> ideias sobre como organizar a economia, como o capitalismo e o socialismo.</li>
+            <li><strong>Modelos de países:</strong> jeitos concretos com que cada país combina mercado, Estado e sociedade. Nenhum país é "puro". Os países nórdicos, por exemplo, são economias de mercado com um forte Estado de bem-estar.</li>
+            <li><strong>Filosofias de vida:</strong> visões de mundo sobre o que é viver bem, vindas de povos e tradições específicas, que não devem ser reduzidas a uma só categoria.</li>
+        </ul>
+        <p>Em cada quadro você encontra o que seus defensores dizem, o que seus críticos dizem e as fontes, para conferir e formar a sua própria opinião. A perspectiva desta página aparece apenas na <strong>Síntese</strong>, no fim, e é uma proposta nossa, não um consenso.</p>
+    </div>
+
+    <!-- GRUPO 1 -->
+    <h2 class="group-title">Grupo 1: <span>Ideologias e Sistemas Econômicos</span></h2>
+    <div class="cards-grid">
+        <!-- Capitalismo -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Capitalismo</h3>
+                <p class="card-desc">Sistema baseado em propriedade privada, mercados e busca de lucro, com graus muito diferentes de intervenção do Estado conforme o país.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Valorizam a inovação, a eficiência e a iniciativa, defendendo que mercados livres ampliam a liberdade e a prosperidade.</li>
+                    <li>Apontam a queda da pobreza extrema no mundo: segundo o Banco Mundial, de cerca de 38% da população em 1990 para cerca de 8,5% em 2024 (critério de US$ 2,15 por dia).</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Desigualdade: Thomas Piketty argumenta que, quando o retorno do capital supera o crescimento da economia, a riqueza tende a se concentrar.</li>
+                    <li>Custos ambientais: O Relatório Stern (2006) descreveu a mudança do clima como a maior falha de mercado já vista.</li>
+                    <li>O Banco Mundial (2024) aponta que a redução da pobreza quase parou nos últimos anos e, pelo critério de US$ 6,85 por dia, o número de pessoas pobres mudou pouco desde 1990.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Banco Mundial, <em>Poverty, Prosperity, and Planet Report 2024</em></p>
+                <p>• Thomas Piketty, <em>O capital no século XXI</em> (2013)</p>
+                <p>• Nicholas Stern, <em>The Economics of Climate Change: The Stern Review</em> (2006)</p>
+                <p>• Adam Smith, <em>A riqueza das nações</em> (1776); Milton Friedman, <em>Capitalismo e liberdade</em> (1962)</p>
+            </div>
+        </div>
+
+        <!-- Socialismo -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Socialismo e Comunismo Clássicos</h3>
+                <p class="card-desc">Propõem a propriedade coletiva ou social dos meios de produção e mais planejamento da economia para reduzir as desigualdades de classe.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Igualdade material, serviços universais e participação dos trabalhadores nas decisões econômicas.</li>
+                    <li>Erik Olin Wright propõe "utopias reais": cooperativas, democracia econômica e renda básica como alternativas que já existem em parte.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Ludwig von Mises (1920) sustenta que, sem preços de mercado, o planejamento central não consegue calcular custos e recursos.</li>
+                    <li>Friedrich Hayek (1944) alerta que o planejamento central tende a concentrar poder político.</li>
+                    <li>Críticos citam experiências históricas em que partidos únicos restringiram liberdades e a economia sofreu com escassez (analisado por János Kornai).</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Karl Marx e Friedrich Engels, <em>Manifesto Comunista</em> (1848)</p>
+                <p>• Erik Olin Wright, <em>Envisioning Real Utopias</em> (Verso, 2010)</p>
+                <p>• Ludwig von Mises, texto sobre o cálculo econômico na comunidade socialista (1920)</p>
+                <p>• Friedrich Hayek, <em>O caminho da servidão</em> (1944)</p>
+                <p>• János Kornai, <em>The Socialist System</em> (Princeton University Press, 1992)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRUPO 2 -->
+    <h2 class="group-title">Grupo 2: <span>Modelos de Países</span></h2>
+    <div class="cards-grid">
+        <!-- China -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>China (Socialismo de Mercado)</h3>
+                <p class="card-desc">Estado dirigido pelo Partido Comunista, combinando mercado, grandes empresas estatais e forte planejamento ("socialismo com características chinesas").</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Segundo o Banco Mundial, desde 1978 o crescimento do PIB teve média acima de 9% ao ano e quase 800 milhões de pessoas saíram da pobreza extrema.</li>
+                    <li>Estudo conjunto do Banco Mundial e do Conselho de Estado da China afirma que a velocidade e a escala dessa redução da pobreza não têm precedentes históricos.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>A Freedom House classifica a China como "não livre", citando repressão à dissidência e às liberdades civis.</li>
+                    <li>Analistas afirmam que a linha de pobreza extrema usada nessas contas é muito baixa e não mostra a situação de quem continua pobre por critérios mais altos.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Banco Mundial, <em>China: contexto do país</em></p>
+                <p>• Banco Mundial e Conselho de Estado da China, <em>Four Decades of Poverty Reduction in China</em> (2022)</p>
+                <p>• Freedom House, <em>Freedom in the World</em></p>
+            </div>
+        </div>
+
+        <!-- Rússia -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Rússia (Capitalismo de Estado)</h3>
+                <p class="card-desc">Economia de mercado em que o Estado e grandes grupos ligados a ele dominam setores estratégicos, com forte dependência da exportação de petróleo e gás.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>O governo destaca a soberania em setores estratégicos, a estabilidade macroeconômica e a recuperação do país depois da crise dos anos 1990.</li>
+                    <li>O modelo inclui uma política fiscal e monetária conservadora para garantir estabilidade.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Anders Åslund descreve um "capitalismo de compadrio", no qual as rendas da energia ficam concentradas em círculos próximos ao poder, gerando estagnação.</li>
+                    <li>A Freedom House classifica a Rússia como "não livre".</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Anders Åslund, <em>Russia's Crony Capitalism</em> (Yale University Press, 2019)</p>
+                <p>• Freedom House, <em>Freedom in the World</em></p>
+            </div>
+        </div>
+
+        <!-- Países Nórdicos -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Países Nórdicos (Modelo Nórdico)</h3>
+                <p class="card-desc">Economias de mercado abertas e competitivas, combinadas com um forte Estado de bem-estar, serviços públicos universais e impostos elevados.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Segurança social, saúde e educação universais, alta confiança entre as pessoas e baixa desigualdade.</li>
+                    <li>Descritos como um Estado de bem-estar ampliado dentro de uma economia de mercado bem-sucedida.</li>
+                    <li>Costumam aparecer entre os primeiros em rankings de felicidade e de desenvolvimento humano.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Há críticos do modelo até na Dinamarca, questionando a sustentabilidade fiscal a longo prazo.</li>
+                    <li>A classificação é discutida: chamar o modelo de "socialista" é um erro, pois é uma economia de mercado; para outros, o que ele faz na prática se alinha ao socialismo democrático.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• The Copenhagen Post, "No socialists under the mattress, says Danish PM" (2015)</p>
+                <p>• CNN, reportagem sobre Bernie Sanders e a Dinamarca (2016)</p>
+                <p>• World Happiness Report e Relatório de Desenvolvimento Humano do PNUD</p>
+            </div>
+        </div>
+
+        <!-- Japão -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Japão</h3>
+                <p class="card-desc">Economia de mercado avançada com ética de relações. <em>Sanpo yoshi</em> ("bom para quem compra, vende e a sociedade") e <em>ikigai</em> (busca de sentido).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Alta longevidade, segurança comunitária e valores que buscam equilibrar lucro, sociedade e propósito de vida.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>O governo é obrigado por lei a publicar um Livro Branco sobre mortes e adoecimento por excesso de trabalho (<em>karoshi</em>). Pedidos de indenização por problemas de saúde mental ligados ao trabalho atingiram recordes recentes.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Ministério da Saúde do Japão, <em>White Paper on Measures to Prevent Karoshi</em></p>
+                <p>• The Japan Times, reportagens sobre <em>karoshi</em></p>
+                <p>• Mieko Kamiya, <em>Ikigai-ni-tsuite</em> (1966)</p>
+            </div>
+        </div>
+
+        <!-- Costa Rica -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Costa Rica</h3>
+                <p class="card-desc">Democracia que aboliu o exército em 1948 e investiu em saúde e educação, com uma matriz elétrica quase toda renovável.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Cerca de 99% da eletricidade vem de fontes renováveis e cerca de 25% do território é área protegida.</li>
+                    <li>Já esteve no topo do Happy Planet Index em algumas edições.</li>
+                    <li>A OCDE reconhece o progresso econômico, com expectativa de vida no nível médio da organização e saúde quase universal.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>A OCDE aponta informalidade em torno de 45%, desemprego alto e um sistema tributário que pouco reduz a desigualdade.</li>
+                    <li>Especialistas criticam o Happy Planet Index por não considerar educação, renda, acesso à água e taxa de pobreza.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• OCDE, <em>OECD Economic Surveys: Costa Rica</em> (2023/2025)</p>
+                <p>• Happy Planet Index, página da Costa Rica</p>
+                <p>• GreenMe, análise sobre o índice de felicidade do país (2016)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRUPO 3 -->
+    <h2 class="group-title">Grupo 3: <span>Filosofias de Vida</span></h2>
+    <div class="cards-grid">
+        <!-- Ubuntu -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Ubuntu (África Austral)</h3>
+                <p class="card-desc">Filosofia relacional resumida em "eu sou porque nós somos": a pessoa se realiza nas relações com os outros, com ênfase na dignidade e reconciliação.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Desmond Tutu usou o ubuntu para pensar a reconciliação na África do Sul pós-apartheid.</li>
+                    <li>O filósofo Thaddeus Metz defende que o ubuntu pode ser tratado como uma teoria moral séria e que sua aplicação política está apenas começando.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Bernard Matolino e Wenceslaus Kwindingwi (2013) argumentam que a promoção do ubuntu na África do Sul pós-apartheid é um projeto de elites e que seus ideais seriam adequados a uma época pré-moderna.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Matolino e Kwindingwi, "The end of ubuntu" (2013)</p>
+                <p>• Thaddeus Metz, "Just the beginning for ubuntu: reply..." (2014)</p>
+                <p>• Jonathan Chimakonam, sobre o debate Matolino-Kwindingwi-Metz (2016)</p>
+                <p>• Desmond Tutu, <em>No Future Without Forgiveness</em> (1999)</p>
+            </div>
+        </div>
+
+        <!-- Sumak Kawsay -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Bem Viver / Sumak Kawsay</h3>
+                <p class="card-desc">Expressão quíchua ligada à convivência harmônica entre as pessoas e a natureza (Pachamama). Incorporada a debates e textos constitucionais de países andinos.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Alberto Acosta propõe o Bem Viver como uma oportunidade para imaginar outros mundos além da ideia de desenvolvimento como crescimento.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Hidalgo-Capitán e Cubillo-Guevara (2014) mostram seis debates abertos sobre o sumak kawsay: significado, tradução, origem e relação com o desenvolvimento.</li>
+                    <li>Andreu Viola Recasens (2014) analisa a tensão entre discursos "pachamamistas" e políticas desenvolvimentistas nos Andes.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Hidalgo-Capitán e Cubillo-Guevara, "Seis debates abiertos sobre el sumak kawsay" (2014)</p>
+                <p>• Viola Recasens, "Discursos 'pachamamistas' versus políticas desarrollistas..." (2014)</p>
+                <p>• Alberto Acosta, <em>O Bem Viver: uma oportunidade para imaginar outros mundos</em> (2016)</p>
+            </div>
+        </div>
+
+        <!-- Teko Porã -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Teko Porã (Povo Guarani)</h3>
+                <p class="card-desc">Expressa um "bom modo de ser e um bom estado de vida". Está ligada ao território (<em>tekoha</em>): sem o lugar onde viver, falta o modo de ser.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Xavier Albó descreve o bem viver dos Guarani e a importância da terra e da autoridade de baixo perfil nas comunidades.</li>
+                    <li>Margot Bremer apresenta o Teko Porã como o caminho das belas palavras do povo Guarani e como resistência ancestral.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ Desafios e cuidados</h4>
+                <ul>
+                    <li>Estudos observam que Teko Porã costuma ser traduzido depressa por "bem viver" e confundido com "viver bem" no sentido de acumulação, mas expressa o sentido Mbya Guarani de uma forma boa e bela de existir no território.</li>
+                    <li>Trata-se da dificuldade de praticar esse modo de ser em tempos sombrios e de pressão sobre os territórios tradicionais.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Xavier Albó, "Os Guarani e seu Bem Viver", IHU Unisinos (2015)</p>
+                <p>• Margot Bremer, "Teko Porã e o caminho das belas palavras...", IHU Unisinos (2024)</p>
+                <p>• Psicologia USP, v. 31, e180070 (2020)</p>
+                <p>• Bartomeu Melià, "Teko porã: formas do bom viver guarani, memória e futuro"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SÍNTESE -->
+    <div class="synthesis-section">
+        <h2>🌿 A Síntese: Uma Proposta de Futuro</h2>
+        <p><em>Os quadros acima descrevem. A Síntese propõe.</em></p>
+        <p>A partir daqui, esta página apresenta uma proposta própria, inspirada nos quadros acima. É uma perspectiva, não um consenso.</p>
+        <div class="synthesis-highlight">
+            <p>Não se trata de "voltar ao passado" ou de abolir toda a tecnologia e o mercado. Trata-se de uma <strong>evolução sistêmica</strong>. O capitalismo é excelente em inovação e geração de recursos (o "motor"), mas ele precisa ser guiado pela bússola do Bem Viver e do Ubuntu (equidade, sustentabilidade e direitos humanos).</p>
+            <p>Um Sistema Social do Bem Viver usa a eficiência do mercado, mas dentro de limites rígidos definidos pela sociedade e pela ecologia, medindo o progresso não apenas pelo PIB, mas pela saúde planetária, coesão social e dignidade humana, conforme recomendado pelo relatório <em>Beyond GDP</em> da ONU.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

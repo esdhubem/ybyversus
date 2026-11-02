@@ -73,6 +73,17 @@ Ao unir esses dois horizontes, damos vida a um conceito poderoso: **Yby Versus �
 
 ---
 
+## 📜 Documentos Institucionais, Ética & Pesquisa
+
+- **[O Manifesto YBY VersuS: O Giro que Transforma a Terra (Eixos de Pesquisa)](MANIFESTO_TEMAS_PESQUISA.md)** (Página: [`manifesto_temas_pesquisa.html`](manifesto_temas_pesquisa.html))
+- **[Carta Aberta ao Público: O Manifesto de Nascimento](CARTA_ABERTA_MANIFESTO.md)**
+- **[Termos de Uso, Conduta & Soberania Digital](TERMOS_DE_USO_E_CONDUTA.md)**
+- **[Política de Privacidade & Proteção de Dados (LGPD)](POLITICA_DE_PRIVACIDADE.md)**
+- **[Direitos Autorais, Terceiros & Recados](termos_direitos_recados.html)**
+- **[Direitos Autorais: Fediverso & Música](termos_fediverso_musica.html)**
+
+---
+
 ## 🚀 Como Executar
 
 Execute o servidor local:

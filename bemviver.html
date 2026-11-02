@@ -1,387 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="h-full">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>YBY Versus: Bem Viver e Saberes</title>
-<meta name="description" content="Conectando saberes ancestrais, ciência decolonial e práticas de Bem Viver em trilhas de conhecimento e pesquisa.">
+  <meta charset="UTF-8">
+  <title>Economia do Bem Viver: Indicadores Além do PIB • YBY VersuS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Economia do Bem Viver: indicadores além do PIB com fontes oficiais (IBGE, ONU, PNUD, Global Footprint Network). Um espaço aberto para debate, dados e reflexão.">
 
-<!-- PWA Manifest & Suporte Mobile -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f2027">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- PWA Manifest & Suporte Mobile -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#030A17">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" href="assets/logo-arara.png">
 
-<!-- Fontes Google -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Tailwind CSS & Lucide Icons -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-    background-image: radial-gradient(circle at 50% 15%, rgba(15, 32, 39, 0.75) 0%, rgba(2, 8, 19, 0.98) 100%), url('assets/cosmic-sky.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #f4f1ea;
-    min-height: 100vh;
-    padding: 0;
-    line-height: 1.6;
-  }
+  <!-- Tailwind CSS & Lucide Icons (Local/Fallback Seguro) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   
-  .header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .header h1 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.9em;
-    color: #d4af37;
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-  .header p {
-    color: #cbd5e1;
-    font-size: 0.95em;
-    max-width: 680px;
-    margin: 0 auto;
-  }
+  <!-- Chart.js Hospedado Localmente (Zero Dependência de CDN Externa) -->
+  <script src="assets/vendor/chart.umd.min.js"></script>
 
-  /* SISTEMA DE ABAS */
-  .tab-nav {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    background: rgba(6, 21, 43, 0.85);
-    border: 1px solid rgba(212,175,55,0.3);
-    color: #94a3b8;
-    padding: 11px 24px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: bold;
-    transition: all 0.3s;
-    backdrop-filter: blur(10px);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .tab-btn:hover {
-    background: rgba(212,175,55,0.15);
-    color: #d4af37;
-    border-color: #d4af37;
-    transform: translateY(-1px);
-  }
-  .tab-btn.active {
-    background: linear-gradient(135deg, #d4af37, #f4d03f);
-    color: #0f2027;
-    border-color: #d4af37;
-    box-shadow: 0 4px 15px rgba(212,175,55,0.4);
-  }
-
-  .tab-content {
-    display: none;
-    max-width: 900px;
-    margin: 0 auto;
-    animation: fadeIn 0.4s ease-in-out;
-  }
-  .tab-content.active {
-    display: block;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* CAIXAS DE EXPLICAÇÃO */
-  .info-box {
-    background: rgba(6, 21, 43, 0.85);
-    border-left: 4px solid #d4af37;
-    padding: 20px;
-    border-radius: 0 16px 16px 0;
-    margin-bottom: 25px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  }
-  .info-box h3 {
-    color: #d4af37;
-    margin-bottom: 10px;
-    font-size: 1.15em;
-    font-weight: 700;
-  }
-  .info-box p, .info-box li {
-    color: #e2e8f0;
-    font-size: 0.95em;
-    margin-bottom: 8px;
-  }
-  .info-box ul { padding-left: 20px; }
-
-  /* GRÁFICO RADAR */
-  .chart-container {
-    position: relative;
-    width: 100%;
-    max-width: 620px;
-    margin: 0 auto 25px auto;
-    background: rgba(6, 21, 43, 0.88);
-    border-radius: 20px;
-    padding: 22px;
-    border: 1px solid rgba(212,175,55,0.35);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  }
-
-  .alert-box {
-    padding: 20px;
-    background: rgba(231, 76, 60, 0.18);
-    border-left: 4px solid #e74c3c;
-    border-radius: 10px;
-    color: #fca5a5;
-    font-size: 0.95em;
-    display: none;
-    max-width: 620px;
-    margin: 0 auto 25px auto;
-    border-top: 1px solid rgba(231, 76, 60, 0.3);
-    border-right: 1px solid rgba(231, 76, 60, 0.3);
-    border-bottom: 1px solid rgba(231, 76, 60, 0.3);
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.2);
-  }
-  .alert-box strong { 
-    color: #fff; 
-    display: block; 
-    margin-bottom: 5px; 
-    font-size: 1.05em; 
-  }
-
-  /* PLAYLISTS - NOVO FORMATO */
-  .playlist-section {
-    margin-bottom: 45px;
-  }
-  
-  .playlist-header {
-    margin-bottom: 20px;
-    padding: 0 5px;
-  }
-  
-  .playlist-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.4em;
-    color: #d4af37;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-  }
-  
-  .playlist-description {
-    color: #cbd5e1;
-    font-size: 0.95em;
-    line-height: 1.55;
-  }
-
-  .playlist-scroll {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 10px 5px 30px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .playlist-scroll::-webkit-scrollbar { 
-    display: none; 
-  }
-
-  /* CARD ESTILO NOTÍCIA/POST */
-  .article-card {
-    flex: 0 0 340px;
-    scroll-snap-align: start;
-    background: rgba(10, 26, 51, 0.92);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.12);
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-  }
-  
-  .article-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.6);
-    border-color: rgba(212,175,55,0.45);
-  }
-
-  .article-source {
-    background: rgba(212,175,55,0.15);
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .source-icon {
-    width: 32px;
-    height: 32px;
-    background: linear-gradient(135deg, #d4af37, #f4d03f);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    box-shadow: 0 2px 8px rgba(212,175,55,0.4);
-  }
-  
-  .source-name {
-    font-weight: bold;
-    color: #d4af37;
-    font-size: 0.95em;
-  }
-  
-  .source-time {
-    margin-left: auto;
-    color: #94a3b8;
-    font-size: 0.8em;
-    font-weight: 600;
-  }
-
-  .article-content {
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .article-quote {
-    font-size: 1.05em;
-    line-height: 1.6;
-    color: #f4f1ea;
-    margin-bottom: 15px;
-    font-style: italic;
-    border-left: 3px solid #27ae60;
-    padding-left: 15px;
-  }
-  
-  .article-desc {
-    color: #cbd5e1;
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    flex: 1;
-  }
-
-  .article-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  
-  .article-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, #27ae60, #2ecc71);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9em;
-    transition: all 0.3s;
-    box-shadow: 0 3px 12px rgba(39, 174, 96, 0.35);
-  }
-  
-  .article-link:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(39, 174, 96, 0.5);
-  }
-  
-  .article-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(212,175,55,0.4);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  }
-
-  .scroll-indicator {
-    text-align: center;
-    color: #94a3b8;
-    font-size: 0.85em;
-    margin-top: -15px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-weight: 500;
-  }
-  
-  .scroll-indicator::before,
-  .scroll-indicator::after {
-    content: '←';
-    animation: bounce 1.5s infinite;
-  }
-  
-  .scroll-indicator::after {
-    content: '→';
-    animation-delay: 0.5s;
-  }
-  
-  @keyframes bounce {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-5px); }
-  }
-
-  /* GRID DE EIXOS */
-  .eixos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  .eixo-card {
-    background: rgba(6, 21, 43, 0.85);
-    border: 1px solid rgba(212,175,55,0.3);
-    border-radius: 16px;
-    padding: 20px 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    backdrop-filter: blur(10px);
-  }
-  .eixo-card:hover {
-    transform: translateY(-3px);
-    background: rgba(212,175,55,0.18);
-    border-color: #d4af37;
-    box-shadow: 0 8px 20px rgba(212,175,55,0.25);
-  }
-  .eixo-icon { font-size: 2em; margin-bottom: 8px; }
-  .eixo-title { font-size: 0.9em; font-weight: bold; color: #d4af37; line-height: 1.3; }
+  <style>
+    /* Tipografia e Paleta Cósmica YBY VersuS */
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #020813;
+      color: #E2E8F0;
+      margin: 0;
+      padding: 0;
+    }
+    .font-brand {
+      letter-spacing: -0.02em;
+    }
 
     /* Fixação Universal da Moldura e Barra de Rodapé YBY VersuS */
     html, body {
@@ -416,524 +67,698 @@
       min-height: 0 !important;
       overflow-y: auto !important;
       -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none;
+    }
+    .app-screen-scroll::-webkit-scrollbar {
+      display: none;
     }
 
+    /* Acessibilidade WCAG AA: Foco Visível & Alvos de Toque */
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid #E5C384 !important;
+      outline-offset: 3px !important;
+    }
+    .tap-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .tap-active:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease;
+    }
+
+    /* Cartões Temáticos de Indicador */
+    .indicator-card {
+      background: #06152B;
+      border: 1px solid rgba(229, 195, 132, 0.22);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .indicator-card:hover {
+      border-color: rgba(229, 195, 132, 0.45);
+    }
+
+    /* Gráfico Contêiner Acessível */
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 210px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    /* Suporte a preferências de movimento reduzido */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
-<body class="flex flex-col min-h-screen antialiased selection:bg-[#d4af37]/30 selection:text-white">
+<body class="bg-[#020813] text-slate-100 flex items-center justify-center p-0 sm:p-6 overflow-hidden sm:overflow-auto relative selection:bg-amber-500 selection:text-black">
 
-  <!-- CABEÇALHO SOBERANO YBY VERSUS -->
-  <header class="w-full sticky top-0 z-40 bg-[#030A16]/90 backdrop-blur-md border-b border-[#142C4E] px-4 py-3 flex items-center justify-between shadow-lg">
-    <div class="flex items-center gap-3">
-      <a href="index.html" title="Voltar para a Praça Pública" aria-label="Voltar para a Praça Pública" class="w-10 h-10 rounded-full bg-[#07172F] border border-[#132B4F] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-[#E5C384]/50 transition-all shrink-0">
-        <i data-lucide="arrow-left" class="w-5 h-5"></i>
-      </a>
-      <div>
+  <!-- ======================================================== -->
+  <!-- FUNDO CÓSMICO EXTERNO (DESKTOP)                          -->
+  <!-- ======================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center" aria-hidden="true">
+    <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-35" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+      <circle cx="300" cy="300" r="220" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+    </svg>
+    <svg class="absolute -bottom-36 -left-36 w-[600px] h-[600px] opacity-35" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="250" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+    </svg>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MOLDURA DO SMARTPHONE (CARA DE APLICATIVO NATIVO)        -->
+  <!-- ======================================================== -->
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[420px] sm:h-[870px] sm:max-h-[96vh] bg-[#040E1E] sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#142C4E]">
+
+    <!-- 1. STATUS BAR DO CELULAR -->
+    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]">
+      <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-200" aria-label="Sinal de rede e bateria cheios">
+        <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-200 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-200 rounded-xs"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO DO APLICATIVO COM BOTÃO VOLTAR -->
+    <nav aria-label="Navegação superior da página" class="px-4 pt-2 pb-3 bg-[#030A17] border-b border-[#132B4F] flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <!-- Voltar para a Praça -->
+        <a href="index.html" title="Voltar para a Praça Pública" aria-label="Voltar para a Praça Pública" class="w-10 h-10 rounded-full bg-[#07172F] border border-[#132B4F] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
+          <i data-lucide="arrow-left" class="w-5 h-5 stroke-[2.2]"></i>
+        </a>
+        <div class="truncate">
+          <h1 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5] truncate leading-tight">
+            Economia do Bem Viver
+          </h1>
+          <span class="text-[9.5px] text-[#A1C1B0] block">Indicadores além do PIB • Fontes Oficiais</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 shrink-0">
+        <a href="trilhadesaberes.html" class="px-2.5 py-1.5 rounded-full bg-[#07172F] border border-[#132B4F] text-[10.5px] text-[#E5C384] hover:text-white flex items-center gap-1 tap-active" title="Ir para Trilha de Saberes">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Saberes</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- 3. ÁREA DE CONTEÚDO COM ROLAGEM INTERNA PERFEITA -->
+    <main class="flex-1 min-h-0 app-screen-scroll px-4 pt-3 pb-8 space-y-4" tabindex="0" aria-label="Conteúdo dos indicadores de Bem Viver">
+
+      <!-- ======================================================== -->
+      <!-- TEXTO DE ABERTURA OBRIGATÓRIO (TRANSPARÊNCIA EDITORIAL) -->
+      <!-- ======================================================== -->
+      <section aria-label="Aviso de perspectiva editorial" class="p-3.5 rounded-2xl bg-gradient-to-br from-[#071933] to-[#030C1A] border border-amber-500/30 text-xs leading-relaxed text-slate-200 shadow-sm space-y-1.5">
+        <div class="flex items-center gap-2 text-[#E5C384] font-bold text-[11.5px]">
+          <i data-lucide="info" class="w-4 h-4 text-[#E5C384] shrink-0"></i>
+          <span>Aviso sobre esta perspectiva</span>
+        </div>
+        <p class="text-[11.5px] text-slate-300 leading-relaxed text-justify">
+          Esta página apresenta uma perspectiva: a de que a economia deve ser avaliada também pela qualidade de vida das pessoas, e não só pelo PIB. Não é uma posição oficial nem um consenso científico. Os dados vêm de fontes oficiais (IBGE, ONU e outras), sempre com ano e link. Existem outras visões, e elas também são bem-vindas aqui.
+        </p>
+        <div class="pt-1 flex items-center justify-between text-[10px] text-slate-400">
+          <span>Última atualização: <strong>Novembro de 2026</strong></span>
+          <span class="text-[#E5C384]">Dados históricos consolidados</span>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- CONTROLES GLOBAIS: NORMALIZAÇÃO, ANOS E FILTRO DE BLOCOS -->
+      <!-- ======================================================== -->
+      <section aria-label="Controles de visualização de dados" class="p-3.5 rounded-2xl bg-[#06152B] border border-white/5 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <span class="text-xs font-bold text-[#E5C384] uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+            <span>Painel de Controle</span>
+          </span>
+          
+          <!-- Botão de Normalização (Base 100) -->
+          <label class="inline-flex items-center gap-2 cursor-pointer select-none text-[11px] text-slate-200">
+            <input type="checkbox" id="toggle-normalizacao" onchange="handleControlesChange()" class="sr-only peer">
+            <div class="w-8 h-4 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-amber-500 relative"></div>
+            <span class="font-medium">Normalizar (Base 100)</span>
+          </label>
+        </div>
+
+        <!-- Filtro por Intervalo de Anos -->
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div>
+            <label for="select-ano-inicio" class="block text-[10px] text-slate-400 font-medium mb-1">Ano Inicial</label>
+            <select id="select-ano-inicio" onchange="handleControlesChange()" class="w-full bg-[#030A17] text-slate-200 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs focus:ring-1 focus:ring-[#E5C384]">
+              <option value="2018" selected>2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-ano-fim" class="block text-[10px] text-slate-400 font-medium mb-1">Ano Final</label>
+            <select id="select-ano-fim" onchange="handleControlesChange()" class="w-full bg-[#030A17] text-slate-200 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs focus:ring-1 focus:ring-[#E5C384]">
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024" selected>2024</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filtro Rápido de Blocos -->
+        <div class="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none select-none text-[10.5px]">
+          <button type="button" onclick="filterBloco('todos', this)" class="bloco-btn px-3 py-1 rounded-full bg-[#0B203E] text-[#E5C384] border border-amber-500/40 font-bold shrink-0 tap-active">Todos</button>
+          <button type="button" onclick="filterBloco('economia', this)" class="bloco-btn px-3 py-1 rounded-full bg-[#040D1A] text-slate-300 border border-white/5 font-medium shrink-0 tap-active">1. Economia</button>
+          <button type="button" onclick="filterBloco('distribuicao', this)" class="bloco-btn px-3 py-1 rounded-full bg-[#040D1A] text-slate-300 border border-white/5 font-medium shrink-0 tap-active">2. Distribuição</button>
+          <button type="button" onclick="filterBloco('pessoas', this)" class="bloco-btn px-3 py-1 rounded-full bg-[#040D1A] text-slate-300 border border-white/5 font-medium shrink-0 tap-active">3. Pessoas</button>
+          <button type="button" onclick="filterBloco('ambiente', this)" class="bloco-btn px-3 py-1 rounded-full bg-[#040D1A] text-slate-300 border border-white/5 font-medium shrink-0 tap-active">4. Ambiente</button>
+          <button type="button" onclick="filterBloco('percepcao', this)" class="bloco-btn px-3 py-1 rounded-full bg-[#040D1A] text-slate-300 border border-white/5 font-medium shrink-0 tap-active">5. Percepção</button>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- LISTA DINÂMICA DE CARTÕES DOS INDICADORES                -->
+      <!-- ======================================================== -->
+      <section id="indicators-container" aria-label="Lista de indicadores econômicos e socioambientais" class="space-y-4">
+        <!-- Preenchido via IndicadoresRepository -->
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SEÇÃO 6: O QUE A ONU ESTÁ PROPONDO ("BEYOND GDP")        -->
+      <!-- ======================================================== -->
+      <section aria-label="Proposta Beyond GDP da ONU" class="p-4 rounded-2xl bg-[#06152B] border border-amber-500/25 space-y-2.5">
         <div class="flex items-center gap-2">
-          <h1 class="font-bold text-[#FFF6E5] text-base sm:text-lg leading-tight">🌿 Trilha de Saberes</h1>
-          <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">PWA</span>
+          <span class="text-xl">🌐</span>
+          <div>
+            <h2 class="font-brand text-xs sm:text-sm font-bold text-[#E5C384] leading-tight">
+              O que a ONU está propondo: "Além do PIB"
+            </h2>
+            <span class="text-[9.5px] text-amber-300/80 font-semibold uppercase tracking-wider">
+              Proposta em Discussão (Maio de 2026)
+            </span>
+          </div>
         </div>
-        <p class="text-xs text-slate-400">Bem Viver, Ciência Decolonial & Saberes</p>
-      </div>
-    </div>
 
-    <div class="flex items-center gap-2">
-      <a href="index.html" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1e8449] to-[#27ae60] text-white text-xs font-semibold hover:brightness-110 transition-all flex items-center gap-1">
-        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-        <span>Praça</span>
-      </a>
-    </div>
-  </header>
+        <p class="text-[11.5px] text-slate-300 leading-relaxed text-justify">
+          O Grupo de Especialistas de Alto Nível do Secretário-Geral da Organização das Nações Unidas apresentou um relatório recomendando uma estrutura global para ir além do Produto Interno Bruto. A iniciativa propõe um <strong>painel de 31 indicadores universais</strong> divididos em bem-estar humano, sustentabilidade ambiental e estabilidade sistêmica futura.
+        </p>
 
-  <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
-  <main class="w-full max-w-5xl mx-auto px-4 py-8 pb-32">
+        <div class="p-3 bg-[#030A17] rounded-xl border border-amber-500/20 text-[11px] text-slate-300 space-y-1">
+          <p><strong>Nota Institucional:</strong> Esta é uma <em>proposta em debate técnico e diplomático</em> pelos Estados-membros das Nações Unidas no âmbito do Pacto para o Futuro, e <strong>não</strong> uma métrica já formalmente adotada ou impositiva.</p>
+        </div>
 
-    <div class="header">
-      <h1>🌿 YBY Versus</h1>
-      <p>Conectando saberes ancestrais, ciência decolonial e práticas de Bem Viver.</p>
-    </div>
+        <div class="pt-1">
+          <a href="https://www.un.org/development/desa/dspd/beyond-gdp.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-[#E5C384] hover:text-white font-bold underline tap-active">
+            <span>Acessar documento e proposta oficial na ONU</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </section>
 
-    <!-- NAVEGAÇÃO POR ABAS -->
-    <div class="tab-nav">
-      <button class="tab-btn active" onclick="openTab('radar', this)">📊 O Radar do Bem Viver</button>
-      <button class="tab-btn" onclick="openTab('pesquisas', this)">📚 Trilhas de Pesquisa</button>
-    </div>
+      <!-- ======================================================== -->
+      <!-- SEÇÃO 7: O QUE É O BEM VIVER (ORIGENS E DISTINÇÕES)      -->
+      <!-- ======================================================== -->
+      <section aria-label="Conceito do Bem Viver" class="p-4 rounded-2xl bg-[#06152B] border border-white/10 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🌿</span>
+            <h2 class="font-brand text-xs sm:text-sm font-bold text-slate-100">
+              O que é o Bem Viver?
+            </h2>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-amber-500/15 text-[#E5C384] text-[9px] font-bold border border-amber-500/30">
+            RASCUNHO PARA CURADORIA
+          </span>
+        </div>
 
-    <!-- ABA 1: RADAR -->
-    <div id="radar" class="tab-content active">
+        <p class="text-[11.5px] text-slate-300 leading-relaxed text-justify">
+          O <strong>Bem Viver</strong> (ou <em>Buen Vivir</em> / <em>Sumak Kawsay</em>) tem raiz filosófica nas tradições dos povos originários andinos (Quechua e Kichwa), estruturando-se na convivência harmônica e de reciprocidade entre as pessoas e a natureza (<em>Pachamama</em>).
+        </p>
+
+        <p class="text-[11.5px] text-slate-300 leading-relaxed text-justify">
+          Existem cosmologias afins em outros continentes e territórios, mas que possuem raízes próprias e não devem ser reduzidas a uma única categoria homogênea:
+        </p>
+
+        <div class="space-y-2 text-[11px] text-slate-300 pl-2 border-l-2 border-[#E5C384]">
+          <p>• <strong>Teko Porã (Povo Guarani):</strong> O viver bem e belo, fundado no equilíbrio espiritual, na partilha comunitária e no respeito à palavra sagrada da floresta.</p>
+          <p>• <strong>Ubuntu (África Austral):</strong> Filosofia relacional expressa em <em>"eu sou porque nós somos"</em>, assentada no reconhecimento mútuo, na comunidade e na reconciliação coletiva.</p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-[#030A17] text-[10.5px] text-slate-400">
+          ⚠️ <em>Nenhum desses conceitos deve ser transformado em pontuação arbitrária ou índice numérico simplificado. Este texto é um rascunho sujeito a revisão da curadoria comunitária.</em>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SEÇÃO 8: OUTROS OLHARES (PERSPECTIVAS EM DEBATE)        -->
+      <!-- ======================================================== -->
+      <section aria-label="Outros olhares e argumentos plurais" class="p-4 rounded-2xl bg-[#06152B] border border-white/10 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">⚖️</span>
+            <h2 class="font-brand text-xs sm:text-sm font-bold text-slate-100">
+              Outros Olhares: Argumentos e Críticas
+            </h2>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 text-[9px] font-bold border border-slate-700">
+            RASCUNHO NEUTRO
+          </span>
+        </div>
+
+        <div class="space-y-2.5 text-[11.5px] text-slate-300">
+          <div class="p-3 rounded-xl bg-[#030A17] border border-white/5">
+            <h3 class="font-bold text-[#E5C384] text-xs mb-1">A) Defesa do PIB como medida primária</h3>
+            <p class="leading-relaxed text-justify">
+              Defensores da centralidade do PIB argumentam que ele é a métrica mais consistente, internacionalmente padronizada e diretamente correlacionada à arrecadação pública que financia hospitais, escolas e infraestrutura. O foco no crescimento econômico contínuo é apontado por economistas tradicionais como condição indispensável para a erradicação rápida da pobreza material.
+            </p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[#030A17] border border-white/5">
+            <h3 class="font-bold text-[#E5C384] text-xs mb-1">B) Limites e críticas aos índices alternativos</h3>
+            <p class="leading-relaxed text-justify">
+              Críticos de índices compostos (como o IDH ou índices de felicidade) destacam que a escolha dos pesos dados a cada dimensão costuma ser arbitrária e subjetiva. Além disso, a heterogeneidade metodológica entre países dificulta comparações temporais estáveis e pode sofrer influência de visões ideológicas particulares.
+            </p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[#030A17] border border-white/5">
+            <h3 class="font-bold text-[#E5C384] text-xs mb-1">C) Questionamentos ao conceito de Bem Viver</h3>
+            <p class="leading-relaxed text-justify">
+              Aponta-se a dificuldade de traduzir o Bem Viver em diretrizes operacionais de política fiscal e monetária para sociedades urbanas complexas e industrializadas, além do risco de idealização de realidades tradicionais sem respostas práticas para gargalos de produtividade moderna.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SEÇÃO 9: ÁREA DE DEBATE (PERGUNTA DA SEMANA)             -->
+      <!-- ======================================================== -->
+      <section aria-label="Espaço de debate e pergunta da semana" class="p-4 rounded-2xl bg-gradient-to-b from-[#081B35] to-[#040E1E] border border-amber-500/30 space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">💬</span>
+          <div>
+            <h2 class="font-brand text-xs sm:text-sm font-bold text-[#E5C384] leading-tight">
+              Pergunta da Semana na Praça
+            </h2>
+            <span class="text-[9.5px] text-slate-400">Diálogo aberto entre cidadãos e pesquisadores</span>
+          </div>
+        </div>
+
+        <div class="p-3.5 bg-[#030A17] rounded-xl border border-amber-500/20 text-center space-y-1">
+          <p class="text-xs sm:text-[13px] font-bold text-slate-100">
+            "Além da renda e do PIB, o que não pode faltar no painel de indicadores prioritários do nosso país?"
+          </p>
+        </div>
+
+        <!-- Regras Éticas de Convivência -->
+        <div class="text-[10.5px] text-slate-400 space-y-1 bg-[#020711] p-2.5 rounded-xl border border-white/5">
+          <p class="font-bold text-[#E5C384]">Regras de Convivência da Praça:</p>
+          <p>• Respeito à dignidade de todas as pessoas e aos saberes plurais.</p>
+          <p>• Proibido discurso de ódio, ofensas e dados inventados.</p>
+        </div>
+
+        <!-- Formulário Desativado (Aguardando Backend) -->
+        <div class="p-3 bg-[#020711]/80 rounded-xl border border-slate-700/60 text-center space-y-2">
+          <textarea disabled placeholder="Escreva sua reflexão (área desativada até a integração segura com banco de dados)..." class="w-full bg-[#040D1B] text-slate-500 p-2 text-xs rounded-lg border border-slate-800 resize-none h-16 cursor-not-allowed opacity-60"></textarea>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] text-amber-400/90 font-medium">🔒 Comentários em breve</span>
+            <button disabled class="px-4 py-1.5 rounded-full bg-slate-800 text-slate-500 text-xs font-bold cursor-not-allowed opacity-60">
+              Enviar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rodapé Institucional -->
+      <footer class="pt-4 pb-2 text-center space-y-2 border-t border-slate-800/80">
+        <div class="flex items-center justify-center gap-2 flex-wrap text-[10.5px] text-slate-400">
+          <a href="MANIFESTO_TEMAS_PESQUISA.md" target="_blank" class="hover:text-[#E5C384] underline">Manifesto</a>
+          <span>•</span>
+          <a href="CARTA_ABERTA_MANIFESTO.md" target="_blank" class="hover:text-[#E5C384] underline">Carta Aberta</a>
+          <span>•</span>
+          <a href="TERMOS_DE_USO_E_CONDUTA.md" target="_blank" class="hover:text-[#E5C384] underline">Termos</a>
+          <span>•</span>
+          <a href="POLITICA_DE_PRIVACIDADE.md" target="_blank" class="hover:text-[#E5C384] underline">Privacidade</a>
+        </div>
+        <p class="text-[9.5px] text-slate-500">
+          © 2026 Ecossistema YBY VersuS • Democratização e Rigor Metodológico da Informação
+        </p>
+      </footer>
+
+    </main>
+
+    <!-- 4. RODAPÉ FIXO DO APLICATIVO COM BOTÃO ECO BEM VIVER NA POSIÇÃO DA SETA -->
+    <nav class="shrink-0 z-40 bg-[#030A16]/95 backdrop-blur-md border-t border-[#142C4E] px-2 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.8)]" aria-label="Navegação principal inferior">
       
-      <div class="info-box">
-        <h3>💡 Como ler este gráfico?</h3>
-        <p>Índices tradicionais (como o PIB) medem apenas dinheiro. Este radar avalia <strong>9 dimensões reais da vida</strong>:</p>
-        <ul>
-          <li><strong>Material:</strong> Soberania Alimentar, Sustentabilidade e Economia Solidária.</li>
-          <li><strong>Social:</strong> Saúde Coletiva (PICS), Educação (saberes tradicionais) e Coesão Comunitária.</li>
-          <li><strong>Justiça:</strong> Receptividade, Equidade Racial/Gênero e Autonomia.</li>
-        </ul>
-      </div>
-
-      <div class="chart-container">
-        <canvas id="radar9Eixos"></canvas>
-      </div>
-
-      <div id="alertBox" class="alert-box">
-        <strong>⚠️ Paradoxo Detectado: O "Falso Ubuntu"</strong>
-        Esta região possui alta "Coesão Comunitária" (8.5), mas baixíssima "Receptividade & Inclusão" (3.0). Isso indica tribalismo excludente.
-      </div>
-
-      <div class="info-box" style="border-left-color: #e74c3c;">
-        <h3>🔍 Por que expor esse paradoxo?</h3>
-        <p>Muitas comunidades se orgulham de serem "unidas", mas essa união muitas vezes exclui nordestinos, indígenas ou populações negras. O verdadeiro <strong>Ubuntu</strong> não faz distinção.</p>
-      </div>
-    </div>
-
-    <!-- ABA 2: PESQUISAS -->
-    <div id="pesquisas" class="tab-content">
-      
-      <div class="info-box">
-        <h3>📖 Por que ler estas pesquisas?</h3>
-        <p>Estas não são apenas "teorias acadêmicas". São <strong>ferramentas de validação e proteção</strong>. Cada artigo abaixo prova, com dados científicos, que:</p>
-        <ul>
-          <li>Plantas medicinais e saberes de quilombolas são ciência válida.</li>
-          <li>Práticas Integrativas são tecnologias sociais de prevenção em saúde.</li>
-          <li>A economia solidária é um antídoto real contra a desigualdade.</li>
-        </ul>
-      </div>
-
-      <div class="eixos-grid">
-        <div class="eixo-card" onclick="scrollToPlaylist('etno')">
-          <div class="eixo-icon">🌱</div>
-          <div class="eixo-title">Etnofarmacologia & Saberes Ancestrais</div>
-        </div>
-        <div class="eixo-card" onclick="scrollToPlaylist('saude')">
-          <div class="eixo-icon">🏥</div>
-          <div class="eixo-title">Saúde Coletiva & PICS</div>
-        </div>
-        <div class="eixo-card" onclick="scrollToPlaylist('agro')">
-          <div class="eixo-icon">🌍</div>
-          <div class="eixo-title">Agroecologia & Decolonialidade</div>
-        </div>
-        <div class="eixo-card" onclick="scrollToPlaylist('genero')">
-          <div class="eixo-icon">⚖️</div>
-          <div class="eixo-title">Gênero & Justiça Social</div>
-        </div>
-      </div>
-
-      <!-- PLAYLIST 1: ETNOFARMACOLOGIA -->
-      <div class="playlist-section" id="etno">
-        <div class="playlist-header">
-          <h2 class="playlist-title">🌱 Etnofarmacologia & Saberes Ancestrais</h2>
-          <p class="playlist-description">
-            <strong>Tema:</strong> Saberes ancestrais e ciência: plantas medicinais de comunidades tradicionais.<br>
-            <strong>Conexão:</strong> Estudos mostram que a integração entre saberes tradicionais e científicos é fundamental para a justiça social e o desenvolvimento humano. Pesquisas documentam como comunidades quilombolas mantêm a biodiversidade e o uso terapêutico de plantas, desafiando a lógica da indústria farmacêutica extrativista.
-          </p>
-        </div>
-        <div class="scroll-indicator">Arraste para ver mais artigos</div>
-        
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🌿</div>
-              <div class="source-name">Portal Amazônia</div>
-              <div class="source-time">2024</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Saberes ancestrais e ciência: plantas medicinais dos quilombos Mumbuca e Prata no Jalapão preservam biodiversidade e desafiam a indústria farmacêutica."
-              </div>
-              <div class="article-desc">
-                Como comunidades quilombolas preservam conhecimentos tradicionais sobre plantas medicinais e resistem ao extrativismo.
-              </div>
-              <div class="article-footer">
-                <a href="https://portalamazonia.com" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=100" alt="Plantas" class="article-image">
-              </div>
-            </div>
-          </div>
-
-          <!-- Artigo 2 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">📚</div>
-              <div class="source-name">ResearchGate</div>
-              <div class="source-time">2024</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Etnobotânica e justiça social: a integração entre saberes tradicionais e científicos como ferramenta de desenvolvimento humano."
-              </div>
-              <div class="article-desc">
-                A valorização dos saberes tradicionais como caminho para equidade e preservação da biodiversidade brasileira.
-              </div>
-              <div class="article-footer">
-                <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1530836369243-78c00e650acb?w=100" alt="Etnobotânica" class="article-image">
-              </div>
-            </div>
-          </div>
-
-          <!-- Artigo 3 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🔬</div>
-              <div class="source-name">SciELO Brasil</div>
-              <div class="source-time">2024</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Biodiversidade e saberes tradicionais: o papel insubstituível das comunidades na conservação ambiental."
-              </div>
-              <div class="article-desc">
-                Análise do papel das comunidades tradicionais na preservação da biodiversidade e conhecimentos ancestrais.
-              </div>
-              <div class="article-footer">
-                <a href="https://www.scielo.br" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=100" alt="Biodiversidade" class="article-image">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYLIST 2: SAÚDE COLETIVA -->
-      <div class="playlist-section" id="saude">
-        <div class="playlist-header">
-          <h2 class="playlist-title">🏥 Saúde Coletiva & PICS</h2>
-          <p class="playlist-description">
-            <strong>Tema:</strong> Práticas Integrativas e Complementares em Saúde (PICS) como tecnologia social em territórios vulneráveis.<br>
-            <strong>Conexão:</strong> Iniciativas comunitárias que unem saberes tradicionais, economia solidária e cuidado com a saúde básica são reconhecidas como ferramentas de justiça social e fortalecimento da autonomia local.
-          </p>
-        </div>
-        <div class="scroll-indicator">Arraste para ver mais artigos</div>
-        
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🌿</div>
-              <div class="source-name">Cadernos Cajuína</div>
-              <div class="source-time">2026</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Implantação de Horto Medicinal no Assentamento de Santo: iniciativa comunitária que une saberes tradicionais, economia solidária e cuidado com a saúde básica."
-              </div>
-              <div class="article-desc">
-                Como hortos medicinais comunitários promovem autonomia e prevenção em saúde fora do modelo mercantilizado.
-              </div>
-              <div class="article-footer">
-                <a href="https://v3.cadernoscajuina.pro.br" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100" alt="Horto" class="article-image">
-              </div>
-            </div>
-          </div>
-
-          <!-- Artigo 2 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">📖</div>
-              <div class="source-name">Atena Editora</div>
-              <div class="source-time">2025</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Vivências dos movimentos populares nas práticas: PICS como resistência política e ato de cuidado em territórios vulneráveis."
-              </div>
-              <div class="article-desc">
-                A vivência de movimentos populares nas Práticas Integrativas e Complementares como resistência e cuidado.
-              </div>
-              <div class="article-footer">
-                <a href="https://cdn.atenaeditora.com.br" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=100" alt="PICS" class="article-image">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYLIST 3: AGROECOLOGIA -->
-      <div class="playlist-section" id="agro">
-        <div class="playlist-header">
-          <h2 class="playlist-title">🌍 Agroecologia & Decolonialidade</h2>
-          <p class="playlist-description">
-            <strong>Tema:</strong> Economia solidária promovendo soberania alimentar e resiliência territorial.<br>
-            <strong>Conexão:</strong> A agroecologia e a saúde coletiva convergem na perspectiva decolonial do "Bem Viver", reconhecendo o sistema alimentar e o cuidado com a terra como partes indissociáveis da saúde humana.
-          </p>
-        </div>
-        <div class="scroll-indicator">Arraste para ver mais artigos</div>
-        
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🌾</div>
-              <div class="source-name">ResearchGate</div>
-              <div class="source-time">2024</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "A economia solidária como elemento propulsor da decolonialidade das relações, promovendo soberania alimentar e resiliência territorial."
-              </div>
-              <div class="article-desc">
-                Como a economia solidária quebra dependências externas e promove autonomia alimentar nos territórios.
-              </div>
-              <div class="article-footer">
-                <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1eef148ed?w=100" alt="Agroecologia" class="article-image">
-              </div>
-            </div>
-          </div>
-
-          <!-- Artigo 2 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🌱</div>
-              <div class="source-name">USP Teses</div>
-              <div class="source-time">2026</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Agroecologia e saúde: confluência de práticas e saberes na perspectiva decolonial do Bem Viver."
-              </div>
-              <div class="article-desc">
-                Agroecologia e saúde coletiva na perspectiva decolonial: o cuidado com a terra é indissociável do cuidado com o corpo.
-              </div>
-              <div class="article-footer">
-                <a href="https://teses.usp.br" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=100" alt="Bem Viver" class="article-image">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLAYLIST 4: GÊNERO E JUSTIÇA -->
-      <div class="playlist-section" id="genero">
-        <div class="playlist-header">
-          <h2 class="playlist-title">⚖️ Gênero & Justiça Social</h2>
-          <p class="playlist-description">
-            <strong>Tema:</strong> Mulheres como guardiãs dos saberes e agentes da economia solidária.<br>
-            <strong>Conexão:</strong> Pesquisas apontam que a valorização dos saberes tradicionais e da biodiversidade no Brasil está intrinsecamente ligada à luta por justiça social e conservação ambiental, muitas vezes liderada por mulheres em territórios de conflito.
-          </p>
-        </div>
-        <div class="scroll-indicator">Arraste para ver mais artigos</div>
-        
-        <div class="playlist-scroll">
-          <!-- Artigo 1 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🌾</div>
-              <div class="source-name">Revista D'Generus</div>
-              <div class="source-time">2025</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "A educação ambiental, educação popular e gênero: integração entre pedagogias feministas, economia solidária e educação ambiental sob perspectiva decolonial."
-              </div>
-              <div class="article-desc">
-                Como pedagogias feministas integram economia solidária e educação ambiental em uma perspectiva decolonial.
-              </div>
-              <div class="article-footer">
-                <a href="https://periodicos.ufpel.edu.br" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1573497620053-e25e54c17b25?w=100" alt="Mulheres" class="article-image">
-              </div>
-            </div>
-          </div>
-
-          <!-- Artigo 2 -->
-          <div class="article-card">
-            <div class="article-source">
-              <div class="source-icon">🌺</div>
-              <div class="source-name">Fiocruz</div>
-              <div class="source-time">2025</div>
-            </div>
-            <div class="article-content">
-              <div class="article-quote">
-                "Mulheres e biodiversidade: a luta por justiça social e conservação ambiental liderada por mulheres em territórios de conflito."
-              </div>
-              <div class="article-desc">
-                O papel das mulheres como guardiãs dos saberes tradicionais e agentes de transformação socioambiental.
-              </div>
-              <div class="article-footer">
-                <a href="https://portal.fiocruz.br" target="_blank" rel="noopener noreferrer" class="article-link">
-                  Ler artigo completo →
-                </a>
-                <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=100" alt="Justiça" class="article-image">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- RODAPÉ FIXO DO APLICATIVO -->
-  <footer class="fixed bottom-0 left-0 right-0 z-50">
-    <nav class="max-w-md mx-auto bg-[#030A16]/95 backdrop-blur-md border-t border-[#142C4E] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.8)]">
-      
-      <!-- Praça -->
+      <!-- 1. Praça -->
       <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="layout-grid" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
+        <i data-lucide="layout-grid" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Praça</span>
       </a>
 
-      <!-- Tempo (Previsão: Tempo, Mar e Céu) -->
+      <!-- 2. Tempo -->
       <a href="previsaotempoastros.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="cloud-sun" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
+        <i data-lucide="cloud-sun" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Tempo</span>
       </a>
 
-      <!-- Botão Central (+) -->
-      <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
-        <a href="index.html" title="Cultivar Saber na Praça" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85),0_0_18px_rgba(199,150,55,0.7)] active:scale-95 hover:scale-105 transition-all tap-active">
-          <i data-lucide="plus" class="w-6 h-6 stroke-[3.5] text-[#1A1204]"></i>
+      <!-- 3. Botão Central (+) -->
+      <div class="relative -top-3 px-1 flex flex-col items-center shrink-0">
+        <a href="index.html" title="Cultivar Saber na Praça" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85)] active:scale-95 transition-all tap-active">
+          <i data-lucide="plus" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[3.5] text-[#1A1204]"></i>
         </a>
       </div>
 
-      <!-- Trilha de Saberes (Ativo!) -->
-      <a href="trilhadesaberes.html" class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group">
-        <i data-lucide="compass" class="w-5 h-5 text-[#E5C384]"></i>
-        <span class="text-[10px] font-bold text-[#E5C384] tracking-tight mt-0.5 whitespace-nowrap">Saberes</span>
+      <!-- 4. Acervo -->
+      <a href="index.html?tab=saberes" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+        <i data-lucide="bookmark" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Acervo</span>
       </a>
 
-      <!-- Presença -->
+      <!-- 5. ECO BEM VIVER (ONDE APONTA A SETA DO USUÁRIO!) -->
+      <a href="bemviver.html" class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group font-bold" aria-current="page" title="Eco Bem Viver: Além do PIB">
+        <i data-lucide="leaf" class="w-4 h-4 sm:w-5 sm:h-5 text-[#E5C384] stroke-[2.2]"></i>
+        <span class="text-[9.5px] font-bold tracking-tight mt-0.5 text-[#E5C384]">Eco BemViver</span>
+      </a>
+
+      <!-- 6. Presença -->
       <a href="index.html#presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="user" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Presença</span>
+        <i data-lucide="user" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Presença</span>
       </a>
+
     </nav>
-  </footer>
 
-  <script>
-    // LÓGICA DAS ABAS
-    function openTab(tabName, btnElement) {
-      const contents = document.querySelectorAll('.tab-content');
-      contents.forEach(content => content.classList.remove('active'));
-      
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      
-      document.getElementById(tabName).classList.add('active');
-      btnElement.classList.add('active');
-    }
+  </div>
 
-    // ROLAGEM SUAVE
-    function scrollToPlaylist(eixoId) {
-      const element = document.getElementById(eixoId);
-      if (!element) return;
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      element.style.transform = 'scale(1.02)';
-      element.style.transition = 'transform 0.3s';
-      setTimeout(() => { element.style.transform = 'scale(1)'; }, 300);
-    }
+  <!-- ======================================================== -->
+  <!-- MODAL: COMO CITAR INDICADOR                              -->
+  <!-- ======================================================== -->
+  <div id="modal-como-citar" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-citar-title">
+    <div class="bg-[#06152B] border border-amber-500/30 rounded-2xl max-w-sm w-full p-4 space-y-3 shadow-2xl">
+      <div class="flex items-center justify-between pb-2 border-b border-white/10">
+        <h3 id="modal-citar-title" class="text-xs font-bold text-[#E5C384] flex items-center gap-1.5">
+          <i data-lucide="quote" class="w-4 h-4"></i>
+          <span>Como Citar este Indicador</span>
+        </h3>
+        <button onclick="fecharModalCitar()" class="text-slate-400 hover:text-white p-1" aria-label="Fechar janela">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
 
-    // GRÁFICO RADAR
-    const ctx = document.getElementById('radar9Eixos').getContext('2d');
+      <div class="space-y-2 text-[11px] text-slate-300">
+        <div>
+          <span class="font-bold text-slate-200 block text-[10px] uppercase tracking-wider">Padrão ABNT:</span>
+          <p id="citar-abnt" class="p-2 bg-[#020813] rounded-lg border border-white/5 select-all font-mono text-[10px] leading-relaxed"></p>
+        </div>
+        <div>
+          <span class="font-bold text-slate-200 block text-[10px] uppercase tracking-wider">Padrão APA:</span>
+          <p id="citar-apa" class="p-2 bg-[#020813] rounded-lg border border-white/5 select-all font-mono text-[10px] leading-relaxed"></p>
+        </div>
+      </div>
 
-    const DIMENSIONS = [
-      'Soberania Alimentar', 'Sustentabilidade Ecológica', 'Economia Solidária',
-      'Saúde Coletiva & PICS', 'Educação & Saberes', 'Coesão Comunitária',
-      'Receptividade & Inclusão', 'Equidade Racial/Gênero', 'Autonomia & Bem-estar'
-    ];
+      <button onclick="copiarCitacao()" class="w-full py-2 bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black font-bold text-xs rounded-xl tap-active">
+        Copiar Referência
+      </button>
+    </div>
+  </div>
 
-    const dadosRegiaoExemplo = [7.5, 6.0, 5.5, 7.0, 6.5, 8.5, 3.0, 4.0, 6.0];
-    const dadosRegiaoIdeal = [8.0, 8.5, 7.5, 8.0, 8.0, 8.0, 8.5, 8.0, 8.0];
+  <!-- ======================================================== -->
+  <!-- SCRIPT DE EXECUÇÃO: REPOSITORY, GRÁFICOS & ACESSIBILIDADE -->
+  <!-- ======================================================== -->
+  <script type="module">
+    import { IndicadoresRepository } from './data/bemviver/repository.js';
 
-    const radarChart = new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: DIMENSIONS,
-        datasets: [
-          {
-            label: 'Região Exemplo (Paradoxal)',
-            data: dadosRegiaoExemplo,
-            backgroundColor: 'rgba(231, 76, 60, 0.25)', 
-            borderColor: '#e74c3c',
-            borderWidth: 2,
-            pointBackgroundColor: '#e74c3c',
-            pointRadius: 4
-          },
-          {
-            label: 'Ideal de Bem Viver',
-            data: dadosRegiaoIdeal,
-            backgroundColor: 'rgba(39, 174, 96, 0.2)', 
-            borderColor: '#27ae60',
-            borderWidth: 2,
-            borderDash: [5, 5],
-            pointBackgroundColor: '#27ae60',
-            pointRadius: 4
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-          r: {
-            beginAtZero: true, max: 10,
-            ticks: { stepSize: 2, color: '#94a3b8', backdropColor: 'transparent', font: { size: 10 } },
-            grid: { color: 'rgba(255, 255, 255, 0.12)' },
-            angleLines: { color: 'rgba(255, 255, 255, 0.12)' },
-            pointLabels: { font: { size: 11, weight: 'bold' }, color: '#d4af37', padding: 10 }
-          }
-        },
-        plugins: {
-          legend: { position: 'bottom', labels: { color: '#f4f1ea', font: { size: 12 }, padding: 18 } }
-        }
-      }
-    });
+    const repository = new IndicadoresRepository();
+    let currentFilterBloco = 'todos';
+    let chartInstances = {};
 
-    // DETECÇÃO DE PARADOXO
-    const coesao = dadosRegiaoExemplo[5]; 
-    const receptividade = dadosRegiaoExemplo[6]; 
-    if (coesao >= 7.5 && receptividade <= 4.0) {
-      document.getElementById('alertBox').style.display = 'block';
-    }
-
-    // PWA Service Worker Registration & Lucide Icons
-    window.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(err => {
-          console.log('[SW] Falha:', err);
-        });
-      }
-    });
-  </script>
-
-  <script>
-    // Registro do Service Worker para funcionalidade PWA
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then((registration) => {
-            console.log('Service Worker registrado com sucesso:', registration.scope);
-          })
-          .catch((error) => {
-            console.log('Falha no registro do Service Worker:', error);
-          });
+    window.filterBloco = function(bloco, btn) {
+      currentFilterBloco = bloco;
+      document.querySelectorAll('.bloco-btn').forEach(b => {
+        b.className = 'bloco-btn px-3 py-1 rounded-full bg-[#040D1A] text-slate-300 border border-white/5 font-medium shrink-0 tap-active';
       });
+      if (btn) {
+        btn.className = 'bloco-btn px-3 py-1 rounded-full bg-[#0B203E] text-[#E5C384] border border-amber-500/40 font-bold shrink-0 tap-active';
+      }
+      renderizarIndicadores();
+    };
+
+    window.handleControlesChange = function() {
+      renderizarIndicadores();
+    };
+
+    async function renderizarIndicadores() {
+      const container = document.getElementById('indicators-container');
+      const anoInicio = parseInt(document.getElementById('select-ano-inicio').value, 10);
+      const anoFim = parseInt(document.getElementById('select-ano-fim').value, 10);
+      const normalizar = document.getElementById('toggle-normalizacao').checked;
+
+      // Limpa instâncias antigas de gráficos
+      Object.keys(chartInstances).forEach(id => {
+        if (chartInstances[id]) chartInstances[id].destroy();
+      });
+      chartInstances = {};
+
+      container.innerHTML = `
+        <div class="text-center py-6 text-xs text-slate-400">
+          <div class="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-amber-400 mb-2"></div>
+          <p>Carregando séries históricas oficiais...</p>
+        </div>
+      `;
+
+      try {
+        const indicadores = await repository.getFilteredSeries(anoInicio, anoFim, normalizar);
+        const filtrados = currentFilterBloco === 'todos' 
+          ? indicadores 
+          : indicadores.filter(i => i.bloco === currentFilterBloco);
+
+        if (filtrados.length === 0) {
+          container.innerHTML = `
+            <div class="p-6 text-center text-xs text-slate-400 bg-[#06152B] rounded-2xl border border-white/5">
+              Nenhum indicador encontrado para este filtro.
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = '';
+        filtrados.forEach(ind => {
+          const cardHtml = criarCardIndicador(ind, normalizar);
+          container.insertAdjacentHTML('beforeend', cardHtml);
+        });
+
+        // Inicializar cada gráfico Chart.js
+        filtrados.forEach(ind => {
+          inicializarGrafico(ind, normalizar);
+        });
+
+        if (window.lucide) lucide.createIcons();
+      } catch (err) {
+        container.innerHTML = `
+          <div class="p-4 rounded-xl bg-red-950/30 border border-red-500/30 text-xs text-red-300">
+            Falha ao carregar indicadores locais: ${err.message}.
+          </div>
+        `;
+      }
     }
+
+    function criarCardIndicador(item, normalizar) {
+      const valorRecente = item.serieFiltrada.length > 0 
+        ? item.serieFiltrada[item.serieFiltrada.length - 1].valor 
+        : 'S/D';
+
+      const valorFormatado = typeof valorRecente === 'number'
+        ? (normalizar ? valorRecente.toFixed(1) + ' (Índice Base)' : valorRecente.toLocaleString('pt-BR') + ' ' + item.unidade)
+        : valorRecente;
+
+      const anosTabela = item.serieFiltrada.map(pt => `
+        <tr class="border-b border-white/5">
+          <td class="py-1 text-slate-300 font-medium">${pt.ano}</td>
+          <td class="py-1 text-right text-[#E5C384] font-bold">${pt.valor.toLocaleString('pt-BR')}</td>
+        </tr>
+      `).join('');
+
+      return `
+        <article class="indicator-card space-y-3" aria-labelledby="title-${item.id}">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <span class="inline-block px-2 py-0.5 rounded-full bg-[#030A17] text-[#A1C1B0] text-[9px] font-bold uppercase tracking-wider border border-white/5 mb-1">
+                ${item.bloco.toUpperCase()} • ${item.periodicidade}
+              </span>
+              <h3 id="title-${item.id}" class="font-brand text-xs sm:text-sm font-bold text-slate-100 leading-snug">
+                ${item.nome}
+              </h3>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="text-[9.5px] text-slate-400 block">${item.anoMaisRecente}</span>
+              <span class="text-xs sm:text-sm font-black text-[#E5C384]">${valorFormatado}</span>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-300 leading-relaxed">${item.descricaoCurta}</p>
+
+          <!-- Gráfico -->
+          <div class="chart-wrapper">
+            <canvas id="chart-${item.id}" role="img" aria-label="Gráfico de linha de ${item.nome} de ${item.anoMaisRecente}"></canvas>
+          </div>
+
+          <!-- O Que Este Número Não Mede (Obrigatório) -->
+          <div class="p-2.5 rounded-xl bg-[#030A17] border-l-2 border-amber-400 text-[10.5px] leading-relaxed">
+            <span class="font-bold text-[#E5C384] block mb-0.5">⚠️ O que este número não mede:</span>
+            <span class="text-slate-300">${item.oQueNaoMede}</span>
+          </div>
+
+          <!-- Botões Acessíveis: Ver Tabela e Como Citar -->
+          <div class="flex items-center justify-between pt-1 border-t border-white/5 text-[10.5px]">
+            <button type="button" onclick="window.toggleTabela('${item.id}')" class="text-slate-400 hover:text-[#E5C384] font-semibold flex items-center gap-1 tap-active">
+              <i data-lucide="table" class="w-3.5 h-3.5"></i>
+              <span id="label-table-${item.id}">Ver Tabela</span>
+            </button>
+
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="window.abrirModalCitar('${item.id}')" class="text-slate-400 hover:text-[#E5C384] font-semibold flex items-center gap-1 tap-active" title="Como citar este indicador">
+                <i data-lucide="quote" class="w-3.5 h-3.5"></i>
+                <span>Como citar</span>
+              </button>
+
+              <a href="${item.fonteUrl}" target="_blank" rel="noopener noreferrer" class="text-[#A1C1B0] hover:text-white font-medium flex items-center gap-0.5" title="Acessar ${item.fonteNome}">
+                <span>Fonte Oficial</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tabela Alternativa Oculta -->
+          <div id="table-container-${item.id}" class="hidden p-3 bg-[#030A17] rounded-xl border border-white/5 overflow-x-auto text-[10.5px]">
+            <table class="w-full text-left border-collapse" aria-label="Tabela de dados para ${item.nome}">
+              <thead>
+                <tr class="border-b border-white/10 text-slate-400 text-[9.5px]">
+                  <th class="py-1">Ano</th>
+                  <th class="py-1 text-right">Valor (${item.unidade})</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${anosTabela}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      `;
+    }
+
+    function inicializarGrafico(item, normalizar) {
+      const ctx = document.getElementById(`chart-${item.id}`);
+      if (!ctx || item.serieFiltrada.length === 0) return;
+
+      const labels = item.serieFiltrada.map(pt => pt.ano.toString());
+      const data = item.serieFiltrada.map(pt => pt.valor);
+
+      const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: item.nome,
+            data: data,
+            borderColor: '#E5C384',
+            backgroundColor: 'rgba(229, 195, 132, 0.1)',
+            borderWidth: 2.5,
+            fill: true,
+            tension: 0.25,
+            pointBackgroundColor: '#FFF6E5',
+            pointBorderColor: '#8E6B1D',
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const val = context.raw;
+                  return normalizar 
+                    ? `Índice Base 100: ${val}` 
+                    : `${val.toLocaleString('pt-BR')} ${item.unidade}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(255, 255, 255, 0.05)' },
+              ticks: { color: '#94A3B8', font: { size: 10 } }
+            },
+            y: {
+              grid: { color: 'rgba(255, 255, 255, 0.05)' },
+              ticks: { 
+                color: '#94A3B8', 
+                font: { size: 10 },
+                callback: function(v) {
+                  return v >= 1000 ? (v / 1000).toFixed(0) + 'k' : v;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      chartInstances[item.id] = chart;
+    }
+
+    window.toggleTabela = function(id) {
+      const tbl = document.getElementById(`table-container-${id}`);
+      const lbl = document.getElementById(`label-table-${id}`);
+      if (tbl.classList.contains('hidden')) {
+        tbl.classList.remove('hidden');
+        lbl.innerText = 'Ocultar Tabela';
+      } else {
+        tbl.classList.add('hidden');
+        lbl.innerText = 'Ver Tabela';
+      }
+    };
+
+    window.abrirModalCitar = async function(id) {
+      const item = await repository.getById(id);
+      if (!item) return;
+
+      const abnt = `${item.fonteNome.toUpperCase()}. ${item.nome} (${item.anoMaisRecente}). Disponível em: <${item.fonteUrl}>. Acesso em: 01 nov. 2026.`;
+      const apa = `${item.fonteNome} (${item.anoMaisRecente}). ${item.nome}. Obtido em ${item.fonteUrl}`;
+
+      document.getElementById('citar-abnt').innerText = abnt;
+      document.getElementById('citar-apa').innerText = apa;
+      document.getElementById('modal-como-citar').classList.remove('hidden');
+    };
+
+    window.fecharModalCitar = function() {
+      document.getElementById('modal-como-citar').classList.add('hidden');
+    };
+
+    window.copiarCitacao = function() {
+      const text = document.getElementById('citar-abnt').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Referência ABNT copiada para a área de transferência!');
+        fecharModalCitar();
+      });
+    };
+
+    // Inicialização ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+      renderizarIndicadores();
+    });
   </script>
 </body>
 </html>
-

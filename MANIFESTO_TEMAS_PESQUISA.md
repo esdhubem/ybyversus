@@ -51,3 +51,4 @@ Selecionar esses temas é escolher fazer parte da transição para um novo parad
 
 ### Seja bem-vindo ao novo giro da Terra.
 **YBY VersuS • Ciência, Ancestralidade e Soberania Comunitária**
+

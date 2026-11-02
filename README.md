@@ -45,20 +45,18 @@
 
 ---
 
-## ✨ Os 8 Botões de Categorias (Grade Minimalista Dourada 4x2)
+## ✨ Os 8 Formatos da Praça (Carrossel Horizontal Deslizante)
 
-Sem caixas ou delimitadores em volta, com ícone colorido expressivo, halo celestial ao passar o mouse e o nome em tom dourado ancestral (`#E5C384`):
+Em fila única com rolagem horizontal suave (*swipe* no celular e arraste com mouse no desktop), ícones coloridos expressivos, halo celestial ao passar o mouse e texto dourado ancestral (`#E5C384`):
 
-- **Linha 1:**
-  1. **Saberes:** 📖 Livro aberto.
-  2. **Vídeos Curtos:** 🎬 Claquete de vídeo.
-  3. **Vídeos Longos:** 📺 Televisor clássico.
-  4. **Música:** 🎵 Nota musical.
-- **Linha 2:**
-  5. **Podcasts:** 🎧 Fone de ouvido.
-  6. **Fórum:** 💬 Balão de diálogo.
-  7. **Notícias:** 📰 Folha de jornal.
-  8. **Trilha de Saberes:** 🧭 Bússola cósmica.
+1. **Saberes:** 📖 Livro aberto.
+2. **Vídeos Curtos:** 🎬 Claquete de cinema.
+3. **Vídeos Longos:** 📺 Televisor clássico.
+4. **Música:** 🎵 Nota musical.
+5. **Podcasts:** 🎧 Fone de ouvido.
+6. **Fórum:** 💬 Balão de diálogo.
+7. **Notícias:** 📰 Folha de jornal.
+8. **Trilha de Saberes:** 🧭 Bússola cósmica.
 
 ---
 

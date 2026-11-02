@@ -160,7 +160,8 @@
 
     /* Ícone e texto com transições e posições relativas */
     .fmt-tab-btn i,
-    .fmt-tab-btn svg {
+    .fmt-tab-btn svg,
+    .fmt-tab-btn .fmt-icon {
       position: relative;
       z-index: 1;
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease, color 0.25s ease;
@@ -184,9 +185,11 @@
     .fmt-tab-btn:hover i,
     .fmt-tab-btn:hover svg,
     .fmt-tab-btn:focus i,
-    .fmt-tab-btn:focus svg {
+    .fmt-tab-btn:focus svg,
+    .fmt-tab-btn:hover .fmt-icon,
+    .fmt-tab-btn:focus .fmt-icon {
       color: #FFF9ED;
-      transform: translateY(-3px) scale(1.14);
+      transform: translateY(-3px) scale(1.15);
       filter: drop-shadow(0 0 12px rgba(255, 232, 140, 0.95)) drop-shadow(0 0 24px rgba(234, 199, 132, 0.8));
     }
 
@@ -397,59 +400,59 @@
         <div class="grid grid-cols-4 gap-y-6 sm:gap-y-7 gap-x-1 sm:gap-x-2">
           
           <!-- 1. Saberes -->
-          <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-saberes" onclick="setActiveTab('saberes')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="book-open" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">📖</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Saberes</span>
           </button>
 
           <!-- 2. Vídeos Curtos (ao lado dos vídeos longos) -->
-          <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-curtos" onclick="setActiveTab('curtos')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="clapperboard" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">🎬</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Vídeos<br>Curtos</span>
           </button>
 
           <!-- 3. Vídeos Longos (ao lado dos vídeos curtos) -->
-          <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-longos" onclick="setActiveTab('longos')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="tv" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">📺</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Vídeos<br>Longos</span>
           </button>
 
           <!-- 4. Música -->
-          <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-musica" onclick="setActiveTab('musica')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="music" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">🎵</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Música</span>
           </button>
 
           <!-- 5. Podcasts -->
-          <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-podcasts" onclick="setActiveTab('podcasts')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="headphones" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">🎧</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Podcasts</span>
           </button>
 
           <!-- 6. Fórum -->
-          <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-forum" onclick="setActiveTab('forum')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="message-circle" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">💬</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Fórum</span>
           </button>
 
           <!-- 7. Notícias -->
-          <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <button id="fmt-btn-noticias" onclick="setActiveTab('noticias')" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="newspaper" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6]"></i>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">📰</span>
             <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Notícias</span>
           </button>
 
           <!-- 8. Trilha de Saberes (no lugar de Ao Vivo) -->
-          <a href="trilhadesaberes.html" id="fmt-btn-trilha" title="Trilha de Saberes e Bem Viver" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px]">
+          <a href="trilhadesaberes.html" id="fmt-btn-trilha" title="Trilha de Saberes e Bem Viver" class="fmt-tab-btn flex flex-col items-center justify-start gap-1.5 group tap-active focus:outline-none transition-all py-1 min-h-[72px] cursor-pointer">
             <div class="icon-halo"></div>
-            <i data-lucide="compass" class="w-9 h-9 sm:w-10 sm:h-10 text-[#E5C384] stroke-[1.6] group-hover:scale-105 transition-transform"></i>
-            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Trilha de Saberes</span>
+            <span class="fmt-icon text-3xl sm:text-4xl select-none leading-none">🧭</span>
+            <span class="text-[11px] sm:text-xs font-semibold text-[#E5C384] tracking-tight text-center leading-tight">Trilha de<br>Saberes</span>
           </a>
 
         </div>

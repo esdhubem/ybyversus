@@ -47,18 +47,18 @@
 
 ## ✨ Os 8 Botões de Categorias (Grade Minimalista Dourada 4x2)
 
-Sem caixas ou delimitadores em volta, apenas o ícone de linha vazada e o nome em tom dourado ancestral (`#E5C384`):
+Sem caixas ou delimitadores em volta, com ícone colorido expressivo, halo celestial ao passar o mouse e o nome em tom dourado ancestral (`#E5C384`):
 
 - **Linha 1:**
-  1. **Saberes:** Livro aberto.
-  2. **Vídeos Curtos:** Claquete de vídeo (ao lado dos vídeos longos).
-  3. **Vídeos Longos:** Ícone de TV/monitor (ao lado dos vídeos curtos).
-  4. **Música:** Nota musical dupla.
+  1. **Saberes:** 📖 Livro aberto.
+  2. **Vídeos Curtos:** 🎬 Claquete de vídeo.
+  3. **Vídeos Longos:** 📺 Televisor clássico.
+  4. **Música:** 🎵 Nota musical.
 - **Linha 2:**
-  5. **Podcasts:** Fone de ouvido.
-  6. **Fórum:** Balão de diálogo.
-  7. **Notícias:** Folha de jornal.
-  8. **Ao Vivo:** Ondas de transmissão de rádio (ao lado das notícias).
+  5. **Podcasts:** 🎧 Fone de ouvido.
+  6. **Fórum:** 💬 Balão de diálogo.
+  7. **Notícias:** 📰 Folha de jornal.
+  8. **Trilha de Saberes:** 🧭 Bússola cósmica.
 
 ---
 

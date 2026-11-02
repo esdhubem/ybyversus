@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Filosofias e o Futuro do Bem Viver | YBY Versus</title>
+    <style>
+        :root {
+            --bg-dark: #0f2027;
+            --bg-mid: #203a43;
+            --bg-light: #2c5364;
+            --accent: #d4af37;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --text: #f4f1ea;
+            --text-muted: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid), var(--bg-light));
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .back-nav {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateX(-2px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: var(--accent);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--success);
+            border-radius: 2px;
+        }
+
+        /* GRID DE FILOSOFIAS */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .philosophy-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .philosophy-card h3 {
+            color: var(--text);
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .philosophy-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .tag-capital { background: rgba(243, 156, 18, 0.2); color: #f39c12; }
+        .tag-state { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        .tag-holistic { background: rgba(39, 174, 96, 0.2); color: #27ae60; }
+
+        /* SEÇÃO DE VÍDEOS */
+        .video-section {
+            margin-bottom: 60px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 40px 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        /* SEÇÃO DA SÍNTESE (O FUTURO) */
+        .synthesis-section {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(212, 175, 55, 0.1));
+            border: 2px solid var(--success);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .synthesis-section::before {
+            content: '🌿';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.05;
+        }
+
+        .synthesis-section h2 {
+            color: var(--success);
+            text-align: left;
+        }
+        .synthesis-section h2::after { left: 0; transform: none; }
+
+        .synthesis-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .synthesis-text h3 {
+            color: var(--accent);
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .synthesis-text p {
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .synthesis-text ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .synthesis-text li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .synthesis-text li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .un-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: var(--accent);
+            margin-top: 20px;
+            border: 1px solid var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            .synthesis-content { grid-template-columns: 1fr; }
+            .synthesis-section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back-nav">
+        <a href="bemviver.html" class="btn-back">← Voltar para Economia do Bem Viver</a>
+    </div>
+
+    <header>
+        <h1>🌍 Das Ideologias ao Bem Viver</h1>
+        <p>Para construir o futuro, precisamos entender o passado e o presente. Explore as diferentes filosofias que moldaram o mundo e descubra como podemos integrar o melhor delas em um novo sistema social.</p>
+    </header>
+
+    <!-- 1. AS FILOSOFIAS -->
+    <h2>O Espectro dos Sistemas Socioeconômicos</h2>
+    <div class="philosophy-grid">
+        <div class="philosophy-card">
+            <h3>🏛️ Capitalismo Ocidental</h3>
+            <span class="tag tag-capital">Foco: Crescimento</span>
+            <p>Baseado na propriedade privada, livre mercado e acumulação de capital. Mede o sucesso principalmente pelo PIB. <br><strong>Crítica:</strong> Gera desigualdade estrutural, externaliza custos ambientais e trata a natureza como mero recurso extrativista.</p>
+        </div>
+
+        <div class="philosophy-card">
+            <h3>☭ Socialismo / Comunismo Clássico</h3>
+            <span class="tag tag-state">Foco: Igualdade Material</span>
+            <p>Propõe a propriedade coletiva dos meios de produção e planejamento central para eliminar classes sociais. <br><strong>Crítica:</strong> Historicamente, muitas vezes sacrificou liberdades individuais, eficiência econômica e, em vários casos, também degradou o meio ambiente em nome do desenvolvimento industrial forçado.</p>
+        </div>
+
+        <div class="philosophy-card">
+            <h3>🇨🇳 Sistema Chinês (Socialismo de Mercado)</h3>
+            <span class="tag tag-state">Foco: Controle + Mercado</span>
+            <p>Combina um rígido controle político centralizado do Partido Comunista com mecanismos de mercado agressivos e capitalismo de Estado para gerar crescimento rápido.</p>
+        </div>
+
+        <div class="philosophy-card">
+            <h3>🇷🇺 Sistema Russo (Capitalismo de Estado)</h3>
+            <span class="tag tag-capital">Foco: Oligarquia + Estado</span>
+            <p>Economia de mercado dominada por grandes conglomerados estatais ou oligarcas intimamente ligados ao poder político, com alta dependência de commodities (petróleo/gás).</p>
+        </div>
+
+        <div class="philosophy-card">
+            <h3>🤝 Ubuntu (África Austral)</h3>
+            <span class="tag tag-holistic">Foco: Interdependência</span>
+            <p>"Eu sou porque nós somos". O sucesso não é individual, mas coletivo. Prioriza a compaixão, a dignidade humana compartilhada, a reconciliação e o cuidado comunitário acima do acúmulo material.</p>
+        </div>
+
+        <div class="philosophy-card">
+            <h3>🌿 Bem Viver / Sumak Kawsay / Teko Porã</h3>
+            <span class="tag tag-holistic">Foco: Harmonia Integral</span>
+            <p>Filosofia indígena andina e guarani. O ser humano é <em>parte</em> da natureza (Pachamama), não seu dono. O tempo é cíclico, não linear. O objetivo não é "ter mais", mas "viver em plenitude" em equilíbrio com a comunidade e o planeta.</p>
+        </div>
+    </div>
+
+    <!-- 2. VIDEOTECA EMBUTIDA -->
+    <div class="video-section">
+        <h2>🎬 Videoteca: Entendendo na Prática</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Assista aos vídeos abaixo sem sair desta página. Clique no play para aprofundar seu conhecimento.</p>
+        
+        <div class="video-grid">
+            <div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/KaQSIvWV7wo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="video-caption">A crítica ao crescimento infinito e a busca por novos paradigmas.</p>
+            </div>
+            <div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/rXvmZM03X40" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="video-caption">O conceito de Bem Viver e a relação com a natureza e a comunidade.</p>
+            </div>
+            <div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/4-YhtPiCgMA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="video-caption">Alternativas econômicas e a valorização dos saberes locais e tradicionais.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. A SÍNTESE: O SISTEMA SOCIAL DO BEM VIVER -->
+    <div class="synthesis-section">
+        <h2>🚀 A Síntese: Um Sistema Social do Bem Viver</h2>
+        <p style="color: var(--text); margin-bottom: 25px; font-size: 1.1em;">
+            Não se trata de "voltar ao passado" ou de abolir toda a tecnologia e o mercado. Trata-se de uma <strong>evolução sistêmica</strong>. Como podemos criar um sistema onde o <em>Capitalismo</em> e o <em>Bem Viver</em> interagem de forma saudável?
+        </p>
+
+        <div class="synthesis-content">
+            <div class="synthesis-text">
+                <h3>🔧 O Mercado como Motor, não como Bússola</h3>
+                <p>O capitalismo é excelente em <strong>inovação, eficiência e geração de recursos</strong>. O Bem Viver é excelente em definir <strong>para que</strong> esses recursos devem ser usados. Na síntese, o mercado opera, mas dentro de limites rígidos definidos pela sociedade e pela ecologia.</p>
+                
+                <h3>📊 Além do PIB (Beyond GDP)</h3>
+                <p>Conforme o relatório de 2026 do Grupo de Especialistas da ONU, o progresso é medido por um painel multidimensional: direitos humanos, coesão social, saúde planetária e equidade. O lucro das empresas é "penalizado" se degradar o capital natural ou social.</p>
+
+                <h3>🌱 Pilares da Interação Saudável:</h3>
+                <ul>
+                    <li><strong>Economia Regenerativa:</strong> Empresas não apenas "reduzem danos", mas regeneram o meio ambiente e as comunidades onde operam.</li>
+                    <li><strong>Democracia Econômica:</strong> Forte presença de cooperativas, economia solidária e participação comunitária nas decisões locais (Orçamento Participativo).</li>
+                    <li><strong>Valorização do Cuidado:</strong> O trabalho de cuidado (muitas vezes feito por mulheres e não remunerado) é reconhecido como pilar central da economia, apoiado por políticas públicas.</li>
+                    <li><strong>Renda e Proteção:</strong> Mecanismos como Renda Básica Universal ou dividendos da natureza garantem que ninguém fique para trás, permitindo que as pessoas escolham trabalhos com propósito, não apenas por sobrevivência.</li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.3); padding: 30px; border-radius: 16px; border: 1px solid var(--accent);">
+                <h3 style="color: var(--accent); text-align: center; margin-bottom: 20px;">A Metáfora do Carro 🚗</h3>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">
+                    Imagine a sociedade como um carro em uma viagem.
+                </p>
+                <div style="margin-bottom: 15px; padding: 15px; background: rgba(243, 156, 18, 0.1); border-radius: 8px; border-left: 3px solid var(--warning);">
+                    <strong style="color: var(--warning);">O Capitalismo é o Motor:</strong><br>
+                    Fornece a energia, a velocidade e a inovação para nos mover. Mas um motor sem direção é perigoso e consome tudo no caminho.
+                </div>
+                <div style="padding: 15px; background: rgba(39, 174, 96, 0.1); border-radius: 8px; border-left: 3px solid var(--success);">
+                    <strong style="color: var(--success);">O Bem Viver é o Volante e o Mapa:</strong><br>
+                    Define o destino (equidade, sustentabilidade), os limites de velocidade (limites planetários) e garante que todos os passageiros estejam seguros e confortáveis.
+                </div>
+                <div class="un-badge" style="width: 100%; justify-content: center; margin-top: 20px;">
+                    📜 Alinhado aos Princípios Fundamentais da Carta da ONU e ao Relatório Beyond GDP (2026)
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,1287 +1,1092 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="h-full">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Radar do Bem Viver Decolonial - Medindo o que realmente importa além do PIB">
-    <meta property="og:title" content="🌿 Radar do Bem Viver - Teko Porã & Ubuntu">
-    <meta property="og:description" content="9 dimensões para medir progresso real: soberania alimentar, sustentabilidade, equidade e receptividade">
-    <meta property="og:type" content="website">
-    <title>🌿 Radar do Bem Viver Decolonial | Teko Porã & Ubuntu</title>
-    
-    <!-- Chart.js Local (Privacidade e Offline) com Fallback CDN -->
-    <script src="assets/vendor/chart.umd.min.js"></script>
-    <script>
-      if (typeof Chart === 'undefined') {
-        document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+  <meta charset="UTF-8">
+  <title>🌿 Radar do Bem Viver Decolonial • YBY versus</title>
+  <meta name="description" content="Radar do Bem Viver Decolonial: Teko Porã, Ubuntu e indicadores além do PIB em formato mobile.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#040E1E">
+
+  <!-- Tailwind CSS CDN para renderização perfeita de classes mobile -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js Local (com Fallback CDN) -->
+  <script src="assets/vendor/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #020813;
+      color: #F1F5F9;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .font-brand {
+      font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .app-screen-scroll {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .app-screen-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .app-screen-scroll::-webkit-scrollbar-track {
+      background: rgba(7, 22, 15, 0.4);
+    }
+    .app-screen-scroll::-webkit-scrollbar-thumb {
+      background: rgba(229, 195, 132, 0.35);
+      border-radius: 9999px;
+    }
+
+    .tap-active:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease;
+    }
+
+    /* Gráfico Contêiner Acessível e Responsivo */
+    .chart-container-box {
+      position: relative;
+      width: 100%;
+      height: 310px;
+      margin: 8px 0;
+    }
+
+    /* Sliders personalizados */
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #E5C384;
+      border: 2px solid #040E1E;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(229, 195, 132, 0.8);
+    }
+
+    /* Regiões do mapa SVG */
+    .map-region {
+      cursor: pointer;
+      transition: all 0.25s ease;
+      stroke: #132B4F;
+      stroke-width: 2;
+    }
+    .map-region:hover {
+      filter: brightness(1.3);
+      stroke: #E5C384;
+      stroke-width: 2.5;
+    }
+    .map-region.selected {
+      stroke: #E5C384;
+      stroke-width: 3.5;
+      filter: drop-shadow(0 0 8px rgba(229, 195, 132, 0.6));
+    }
+
+    /* Foco acessível WCAG */
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid #E5C384;
+      outline-offset: 2px;
+    }
+
+    /* Moldura Universal YBY VersuS */
+    html, body {
+      height: 100%;
+      height: 100dvh;
+    }
+    @media (max-width: 639px) {
+      html, body {
+        overflow: hidden;
       }
-    </script>
-    
-    <style>
-        :root {
-            --primary: #1e5631;
-            --secondary: #27ae60;
-            --accent: #d4af37;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-            --bg-dark: #0f2027;
-            --bg-light: #f4f1ea;
-            --text: #2c3e50;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #203a43 50%, #2c5364 100%);
-            color: var(--bg-light);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        /* Barra de Retorno Rápido (Discreta para navegação) */
-        .top-bar-nav {
-            background: rgba(15, 32, 39, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            font-size: 0.9em;
-        }
-        .top-bar-nav a {
-            color: var(--accent);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        .top-bar-nav a:hover {
-            color: #fff;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, rgba(30,86,49,0.95), rgba(39,174,96,0.9));
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        
-        header h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        header p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.95;
-        }
-        
-        /* Navegação */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 30px 20px;
-            flex-wrap: wrap;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-        }
-        
-        .tab-btn {
-            padding: 15px 30px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--secondary);
-            color: var(--bg-light);
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-        }
-        
-        .tab-btn:hover {
-            background: rgba(39,174,96,0.3);
-            transform: translateY(-2px);
-        }
-        
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: var(--bg-dark);
-            border-color: var(--accent);
-            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
-        }
-        
-        /* Container Principal */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        
-        .section.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Cards */
-        .card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(212,175,55,0.3);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        }
-        
-        .card h2 {
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card h3 {
-            color: var(--secondary);
-            margin: 20px 0 10px;
-        }
-        
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        /* Sliders */
-        .slider-container {
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .slider-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--accent);
-        }
-        
-        input[type="range"] {
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.2);
-            outline: none;
-            -webkit-appearance: none;
-        }
-        
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--secondary);
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        
-        /* Gráficos */
-        .chart-wrapper {
-            position: relative;
-            height: 400px;
-            margin: 20px 0;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 20px;
-        }
-        
-        /* Alertas */
-        .alert-box {
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 5px solid;
-            animation: slideIn 0.5s;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        .alert-warning {
-            background: rgba(243,156,18,0.15);
-            border-color: var(--warning);
-            color: #f5b7b1;
-        }
-        
-        .alert-danger {
-            background: rgba(231,76,60,0.15);
-            border-color: var(--danger);
-            color: #f5b7b1;
-        }
-        
-        .alert-success {
-            background: rgba(39,174,96,0.15);
-            border-color: var(--secondary);
-            color: #2ecc71;
-        }
-        
-        /* Botões */
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 10px 5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: var(--bg-dark);
-        }
-        
-        .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: var(--bg-light);
-            border: 2px solid var(--accent);
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        
-        /* Mapa SVG */
-        .map-container {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        svg {
-            width: 100%;
-            height: auto;
-        }
-        
-        .region, .country {
-            cursor: pointer;
-            transition: all 0.3s;
-            stroke: #fff;
-            stroke-width: 2;
-        }
-        
-        .region:hover, .country:hover {
-            opacity: 0.8;
-            stroke-width: 3;
-            filter: brightness(1.2);
-        }
-        
-        .region.selected, .country.selected {
-            stroke: var(--accent);
-            stroke-width: 4;
-            filter: brightness(1.3);
-        }
-        
-        /* Estatísticas */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .stat-item {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(212,175,55,0.3);
-        }
-        
-        .stat-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--accent);
-        }
-        
-        .stat-label {
-            font-size: 0.9em;
-            color: var(--bg-light);
-            opacity: 0.8;
-        }
-        
-        /* Tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: help;
-            border-bottom: 2px dotted var(--accent);
-        }
-        
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 300px;
-            background-color: var(--bg-dark);
-            color: var(--bg-light);
-            text-align: left;
-            border-radius: 8px;
-            padding: 12px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -150px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            border: 1px solid var(--accent);
-            font-size: 0.9em;
-        }
-        
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        /* Responsivo */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2em; }
-            .nav-tabs { flex-direction: column; align-items: center; }
-            .tab-btn { width: 100%; max-width: 300px; }
-            .grid { grid-template-columns: 1fr; }
-        }
-        
-        /* Loading */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: var(--accent);
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Info Boxes */
-        .info-box {
-            background: rgba(212,175,55,0.1);
-            border-left: 4px solid var(--accent);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 12px 12px 0;
-        }
-        
-        .info-box h4 {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        /* Timeline Slider */
-        .timeline-container {
-            background: rgba(0,0,0,0.3);
-            padding: 30px;
-            border-radius: 16px;
-            margin: 20px 0;
-        }
-        
-        .year-display {
-            text-align: center;
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-    </style>
+    }
+    #phone-container {
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 640px) {
+      body {
+        overflow: auto;
+      }
+      #phone-container {
+        height: 870px;
+        max-height: 96vh;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="bg-[#020813] text-slate-100 flex items-center justify-center p-0 sm:p-6 overflow-hidden sm:overflow-auto relative selection:bg-amber-500 selection:text-black">
 
-<div class="top-bar-nav">
-    <a href="bemviver.html" title="Comparar com a versão Indicadores Oficiais Além do PIB">
-        ← Comparar com a outra versão (Indicadores Oficiais Além do PIB)
-    </a>
-    <span style="opacity: 0.7; font-size: 0.85em;">Página Experimental de Comparação</span>
-</div>
+  <!-- ======================================================== -->
+  <!-- FUNDO CÓSMICO EXTERNO (DESKTOP)                          -->
+  <!-- ======================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center" aria-hidden="true">
+    <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-35" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+      <circle cx="300" cy="300" r="220" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+    </svg>
+    <svg class="absolute -bottom-36 -left-36 w-[600px] h-[600px] opacity-35" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="250" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+    </svg>
+  </div>
 
-<header>
-    <h1>🌿 Radar do Bem Viver Decolonial</h1>
-    <p>Teko Porã • Ubuntu • Sumak Kawsay<br>
-    Medindo o que realmente importa além do PIB - em alinhamento com os Objetivos de Desenvolvimento Sustentável da ONU</p>
-</header>
+  <!-- ======================================================== -->
+  <!-- MOLDURA DO SMARTPHONE (LARGURA EXATA DE APLICATIVO)     -->
+  <!-- ======================================================== -->
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[420px] sm:h-[870px] sm:max-h-[96vh] bg-[#040E1E] sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#142C4E]">
 
-<nav class="nav-tabs">
-    <button class="tab-btn active" onclick="showSection('calculadora', event)">🧮 Calculadora Pessoal</button>
-    <button class="tab-btn" onclick="showSection('radar9', event)">📊 Radar 9 Eixos</button>
-    <button class="tab-btn" onclick="showSection('brasil', event)">🇧🇷 Brasil por Regiões</button>
-    <button class="tab-btn" onclick="showSection('mundo', event)">🌍 Comparação Mundial</button>
-    <button class="tab-btn" onclick="showSection('temporal', event)">⏳ Evolução Temporal</button>
-</nav>
-
-<div class="container">
-
-    <!-- SEÇÃO 1: CALCULADORA PESSOAL -->
-    <section id="calculadora" class="section active">
-        <div class="card">
-            <h2>🧮 Calculadora Teko Porã / Ubuntu</h2>
-            <p style="margin-bottom: 20px; opacity: 0.9;">
-                Avalie seu equilíbrio pessoal entre o coletivo, a natureza e o próprio ser. 
-                Baseado nos princípios do <strong>Teko Porã</strong> (Bem Viver Guarani) e 
-                <strong>Ubuntu</strong> ("Eu sou porque nós somos").
-            </p>
-            
-            <div class="grid">
-                <div>
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>🌳 Conexão com a Natureza</span>
-                            <span id="val1">5</span>
-                        </div>
-                        <input type="range" min="0" max="10" value="5" id="slider1" oninput="updatePersonalChart()">
-                        <small style="opacity: 0.7;">Tempo ao ar livre, contato com a terra</small>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>🤝 Apoio Mútuo (Ubuntu)</span>
-                            <span id="val2">5</span>
-                        </div>
-                        <input type="range" min="0" max="10" value="5" id="slider2" oninput="updatePersonalChart()">
-                        <small style="opacity: 0.7;">Ajudei/fui ajudado pela comunidade</small>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>🎨 Ócio Criativo</span>
-                            <span id="val3">5</span>
-                        </div>
-                        <input type="range" min="0" max="10" value="5" id="slider3" oninput="updatePersonalChart()">
-                        <small style="opacity: 0.7;">Tempo sem produtividade capitalista</small>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>🍎 Consumo Consciente</span>
-                            <span id="val4">5</span>
-                        </div>
-                        <input type="range" min="0" max="10" value="5" id="slider4" oninput="updatePersonalChart()">
-                        <small style="opacity: 0.7;">Comprei apenas o necessário/local</small>
-                    </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>🧘 Equilíbrio Emocional</span>
-                            <span id="val5">5</span>
-                        </div>
-                        <input type="range" min="0" max="10" value="5" id="slider5" oninput="updatePersonalChart()">
-                        <small style="opacity: 0.7;">Paz interior e espiritualidade</small>
-                    </div>
-                </div>
-                
-                <div class="chart-wrapper">
-                    <canvas id="personalRadar"></canvas>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn btn-primary" onclick="sharePersonal()">
-                    🐘 Compartilhar no Fediverso #BemViver
-                </button>
-                <button class="btn btn-secondary" onclick="generateOGImage()">
-                    🖼️ Gerar Card OpenGraph
-                </button>
-            </div>
-            
-            <div id="personalResult" style="margin-top: 20px;"></div>
+    <!-- 1. STATUS BAR DO CELULAR -->
+    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]">
+      <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-200" aria-label="Sinal de rede e bateria cheios">
+        <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-200 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-200 rounded-xs"></div>
         </div>
-        
-        <div class="info-box">
-            <h4>📖 Fundamentação Teórica</h4>
-            <p>
-                Esta calculadora integra conceitos de:
-            </p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
-                <li><strong>Teko Porã</strong> (Guarani): Bem viver como equilíbrio comunitário e ecológico</li>
-                <li><strong>Ubuntu</strong> (África Austral): "Eu sou porque nós somos" - interdependência</li>
-                <li><strong>FIB</strong> (Butão): Felicidade Interna Bruta - 9 dimensões do bem-estar</li>
-                <li><strong>ODS da ONU</strong>: Objetivos de Desenvolvimento Sustentável</li>
-            </ul>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO SUPERIOR DO APP -->
+    <nav aria-label="Cabeçalho do Radar" class="px-4 pt-2 pb-3 bg-[#030A17] border-b border-[#132B4F] flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <!-- Voltar para a página padrão de Bem Viver -->
+        <a href="bemviver.html" title="Voltar e comparar com os Indicadores Oficiais" class="w-9 h-9 rounded-full bg-[#07172F] border border-[#132B4F] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
+          <i data-lucide="arrow-left" class="w-4 h-4 stroke-[2.2]"></i>
+        </a>
+        <div class="truncate">
+          <h1 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5] truncate leading-tight flex items-center gap-1.5">
+            <span>Radar do Bem Viver</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-amber-500/15 text-[#E5C384] border border-amber-500/30">Extra</span>
+          </h1>
+          <span class="text-[9.5px] text-[#94B8DB] block">Teko Porã • Ubuntu • Sumak Kawsay</span>
         </div>
-    </section>
+      </div>
 
-    <!-- SEÇÃO 2: RADAR 9 EIXOS -->
-    <section id="radar9" class="section">
-        <div class="card">
-            <h2>📊 Radar do Bem Viver - 9 Dimensões</h2>
-            <p style="margin-bottom: 20px;">
-                Baseado no relatório da ONU "Beyond GDP" (2026) e nos princípios do desenvolvimento sustentável.
-                Este radar expõe contradições entre coesão interna e inclusão externa.
-            </p>
-            
-            <div class="info-box">
-                <h4>🎯 Os 9 Eixos (Agrupados em 3 Dimensões)</h4>
-                <div class="grid" style="margin-top: 15px;">
-                    <div>
-                        <h5 style="color: var(--secondary); margin-bottom: 10px;">Material & Territorial</h5>
-                        <ul style="margin-left: 20px;">
-                            <li>Soberania Alimentar</li>
-                            <li>Sustentabilidade Ecológica</li>
-                            <li>Economia Solidária</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 style="color: #3498db; margin-bottom: 10px;">Social & Política</h5>
-                        <ul style="margin-left: 20px;">
-                            <li>Saúde Coletiva & PICS</li>
-                            <li>Educação & Saberes</li>
-                            <li>Coesão Comunitária</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 style="color: #9b59b6; margin-bottom: 10px;">Justiça & Equidade</h5>
-                        <ul style="margin-left: 20px;">
-                            <li>Receptividade & Inclusão</li>
-                            <li>Equidade Racial/Gênero</li>
-                            <li>Autonomia & Bem-estar</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chart-wrapper" style="height: 500px;">
-                <canvas id="radar9Chart"></canvas>
-            </div>
-            
-            <div id="paradoxAlert" class="alert-box alert-danger" style="display: none;">
-                <strong>⚠️ PARADOXO DETECTADO: Falso Ubuntu</strong><br>
-                Alta coesão interna (<span id="coesaoVal">8.5</span>) mas baixíssima receptividade (<span id="receptVal">3.0</span>).<br>
-                Isso indica tribalismo excludente, não verdadeiro Bem Viver. O "nós" não inclui todos.
-            </div>
-            
-            <div class="stat-grid" style="margin-top: 20px;">
-                <div class="stat-item">
-                    <div class="stat-value" id="scoreTotal">6.4</div>
-                    <div class="stat-label">Média Geral</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="scoreRecept">4.2</div>
-                    <div class="stat-label">Índice de Receptividade</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="scoreEquity">5.8</div>
-                    <div class="stat-label">Equidade</div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn btn-primary" onclick="compareRegions()">
-                    🔄 Comparar com Outras Regiões
-                </button>
-                <button class="btn btn-secondary" onclick="exportData()">
-                    📥 Exportar Dados (JSON)
-                </button>
-            </div>
-        </div>
-    </section>
+      <div class="flex items-center gap-1 shrink-0">
+        <a href="bemviver.html" class="px-2.5 py-1 rounded-full bg-[#07172F] border border-[#132B4F] text-[10.5px] text-[#E5C384] hover:text-white flex items-center gap-1 tap-active" title="Ver outra versão com séries históricas">
+          <i data-lucide="split" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>Oficial</span>
+        </a>
+      </div>
+    </nav>
 
-    <!-- SEÇÃO 3: BRASIL POR REGIÕES -->
-    <section id="brasil" class="section">
-        <div class="card">
-            <h2>🇧🇷 Brasil por Regiões - Análise Comparativa</h2>
-            <p>Clique em uma região para ver seus indicadores de Bem Viver vs. PIB</p>
-            
-            <div class="map-container">
-                <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Norte -->
-                    <path class="region" data-region="norte" fill="#1e8449" 
-                          d="M 100 80 L 350 60 L 400 200 L 300 280 L 150 260 Z"/>
-                    <text x="240" y="170" fill="white" font-size="16" font-weight="bold" text-anchor="middle">NORTE</text>
-                    
-                    <!-- Nordeste -->
-                    <path class="region" data-region="nordeste" fill="#d35400"
-                          d="M 400 200 L 580 180 L 620 320 L 520 380 L 420 340 Z"/>
-                    <text x="510" y="290" fill="white" font-size="16" font-weight="bold" text-anchor="middle">NORDESTE</text>
-                    
-                    <!-- Centro-Oeste -->
-                    <path class="region" data-region="centro-oeste" fill="#f39c12"
-                          d="M 300 280 L 420 340 L 400 420 L 320 400 Z"/>
-                    <text x="360" y="360" fill="white" font-size="14" font-weight="bold" text-anchor="middle">C-OESTE</text>
-                    
-                    <!-- Sudeste -->
-                    <path class="region" data-region="sudeste" fill="#c0392b"
-                          d="M 420 340 L 520 380 L 540 460 L 460 480 L 400 420 Z"/>
-                    <text x="470" y="430" fill="white" font-size="14" font-weight="bold" text-anchor="middle">SUDESTE</text>
-                    
-                    <!-- Sul -->
-                    <path class="region" data-region="sul" fill="#2874a6"
-                          d="M 320 400 L 400 420 L 460 480 L 420 540 L 340 520 Z"/>
-                    <text x="390" y="490" fill="white" font-size="14" font-weight="bold" text-anchor="middle">SUL</text>
-                </svg>
-                
-                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 20px; height: 20px; background: #1e8449; border-radius: 4px;"></div>
-                        <span>Norte</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 20px; height: 20px; background: #d35400; border-radius: 4px;"></div>
-                        <span>Nordeste</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 20px; height: 20px; background: #f39c12; border-radius: 4px;"></div>
-                        <span>Centro-Oeste</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 20px; height: 20px; background: #c0392b; border-radius: 4px;"></div>
-                        <span>Sudeste</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 20px; height: 20px; background: #2874a6; border-radius: 4px;"></div>
-                        <span>Sul</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="regionInfo" class="grid" style="margin-top: 20px;">
-                <div class="card" style="background: rgba(255,255,255,0.1);">
-                    <h3 id="regionTitle">Selecione uma região</h3>
-                    <div id="regionStats"></div>
-                </div>
-                <div class="chart-wrapper">
-                    <canvas id="regionRadar"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 4: COMPARAÇÃO MUNDIAL -->
-    <section id="mundo" class="section">
-        <div class="card">
-            <h2>🌍 Comparação Mundial - Brasil vs Outros Países</h2>
-            <p>Selecionados por ressonância filosófica e contraste pedagógico</p>
-            
-            <div class="info-box">
-                <h4>📋 Países Incluídos</h4>
-                <div class="grid" style="margin-top: 15px; font-size: 0.9em;">
-                    <div>
-                        <strong>América Latina:</strong> Costa Rica (HPI), Equador (Sumak Kawsay)
-                    </div>
-                    <div>
-                        <strong>Europa:</strong> Finlândia, Dinamarca (Felicidade)
-                    </div>
-                    <div>
-                        <strong>África:</strong> África do Sul (Ubuntu), Ruanda (Reconciliação)
-                    </div>
-                    <div>
-                        <strong>Ásia:</strong> Butão (FIB), Japão, Índia
-                    </div>
-                    <div>
-                        <strong>Oceania:</strong> Nova Zelândia (Wellbeing Budget)
-                    </div>
-                    <div>
-                        <strong>Outros:</strong> EUA, China, Arábia Saudita, Israel
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <select id="countrySelect" onchange="updateCountryComparison()" style="padding: 12px 20px; font-size: 1.1em; border-radius: 8px; border: 2px solid var(--accent); background: rgba(255,255,255,0.9); color: var(--text);">
-                    <option value="">Selecione um país para comparar...</option>
-                </select>
-            </div>
-            
-            <div class="chart-wrapper" style="height: 500px;">
-                <canvas id="countryRadar"></canvas>
-            </div>
-            
-            <div id="countryInsight" class="alert-box alert-success" style="display: none;"></div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 5: EVOLUÇÃO TEMPORAL -->
-    <section id="temporal" class="section">
-        <div class="card">
-            <h2>⏳ Evolução Temporal (2010-2025)</h2>
-            <p>Acompanhe a evolução dos indicadores ao longo do tempo e identifique paradoxos</p>
-            
-            <div class="timeline-container">
-                <div class="year-display" id="yearDisplay">2025</div>
-                <input type="range" min="2010" max="2025" value="2025" id="yearSlider" 
-                       oninput="updateTimeline()" style="width: 100%; height: 10px;">
-                <div style="display: flex; justify-content: space-between; margin-top: 10px; opacity: 0.7;">
-                    <span>2010</span>
-                    <span>2015</span>
-                    <span>2020</span>
-                    <span>2025</span>
-                </div>
-            </div>
-            
-            <div class="chart-wrapper" style="height: 400px;">
-                <canvas id="timelineChart"></canvas>
-            </div>
-            
-            <div id="temporalInsight" class="info-box">
-                <h4>📊 Paradoxo PIB vs. Bem Viver</h4>
-                <p id="temporalText">
-                    Movimente o slider para ver como o PIB cresceu enquanto indicadores de bem-estar estagnaram ou caíram.
-                </p>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<footer style="text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.3); margin-top: 40px; border-top: 2px solid var(--accent);">
-    <p style="margin-bottom: 10px;">
-        <strong>Radar do Bem Viver Decolonial</strong><br>
-        Teko Porã • Ubuntu • Sumak Kawsay • FIB
-    </p>
-    <p style="opacity: 0.7; font-size: 0.9em;">
-        Baseado nos relatórios da ONU "Beyond GDP" (2026) e nos Objetivos de Desenvolvimento Sustentável<br>
-        Integrado ao Fediverso via ActivityPub • Dados: IBGE, World Bank, IPS Brasil, World Happiness Report
-    </p>
-    <div style="margin-top: 20px;">
-        <button class="btn btn-secondary" onclick="shareApp()">
-            🐘 Compartilhar no Fediverso
-        </button>
-        <button class="btn btn-secondary" onclick="downloadReport()">
-            📥 Baixar Relatório (PDF)
-        </button>
+    <!-- 3. ABAS DESLIZANTES EM PÍLULAS COMPACTAS (FORMATO APP) -->
+    <div class="px-3 py-2 bg-[#030A16] border-b border-[#132B4F] flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
+      <button onclick="switchTab('calculadora', this)" id="tab-btn-calculadora" class="tab-btn px-3 py-1.5 rounded-full text-xs font-bold bg-[#E5C384] text-black shrink-0 tap-active transition-all shadow-xs">
+        🧮 Calculadora
+      </button>
+      <button onclick="switchTab('radar9', this)" id="tab-btn-radar9" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
+        📊 9 Dimensões
+      </button>
+      <button onclick="switchTab('brasil', this)" id="tab-btn-brasil" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
+        🇧🇷 Brasil
+      </button>
+      <button onclick="switchTab('mundo', this)" id="tab-btn-mundo" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
+        🌍 Mundo
+      </button>
+      <button onclick="switchTab('temporal', this)" id="tab-btn-temporal" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
+        ⏳ Evolução
+      </button>
     </div>
-</footer>
 
-<script>
-// ============ DADOS ============
-const DIMENSIONS_9 = [
-    'Soberania Alimentar',
-    'Sustentabilidade Ecológica',
-    'Economia Solidária',
-    'Saúde Coletiva & PICS',
-    'Educação & Saberes',
-    'Coesão Comunitária',
-    'Receptividade & Inclusão',
-    'Equidade Racial/Gênero',
-    'Autonomia & Bem-estar'
-];
+    <!-- 4. ÁREA DE CONTEÚDO ROLÁVEL (FORMATO SMARTPHONE) -->
+    <main class="flex-1 min-h-0 app-screen-scroll p-4 space-y-4">
 
-// Dados das regiões brasileiras (mockados baseados em dados reais aproximados)
-const BRASIL_DATA = {
-    'norte': {
+      <!-- ======================================================== -->
+      <!-- ABA 1: CALCULADORA PESSOAL                               -->
+      <!-- ======================================================== -->
+      <section id="sec-calculadora" class="tab-content space-y-3">
+        
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+          <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🧮</span>
+              <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Calculadora Teko Porã & Ubuntu</h2>
+            </div>
+            <span class="text-[10px] text-[#E5C384] font-semibold">Pessoal</span>
+          </div>
+
+          <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
+            Avalie seu equilíbrio pessoal entre o coletivo, a natureza e o próprio ser. Baseado no <strong>Teko Porã</strong> (Guarani) e <strong>Ubuntu</strong> (África austral: <em>"Eu sou porque nós somos"</em>).
+          </p>
+
+          <!-- Sliders Compactos -->
+          <div class="space-y-2.5 pt-1">
+            
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-[#E5C384]">
+                <span class="flex items-center gap-1.5">🌳 Conexão com a Natureza</span>
+                <span id="val1" class="text-white text-sm font-extrabold bg-[#07172F] px-2 py-0.2 rounded-full border border-amber-500/30">5</span>
+              </div>
+              <input type="range" min="0" max="10" value="5" id="slider1" oninput="updatePersonalChart()">
+              <p class="text-[10px] text-slate-400">Tempo ao ar livre, contato com a terra e ecologia</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-[#E5C384]">
+                <span class="flex items-center gap-1.5">🤝 Apoio Mútuo (Ubuntu)</span>
+                <span id="val2" class="text-white text-sm font-extrabold bg-[#07172F] px-2 py-0.2 rounded-full border border-amber-500/30">5</span>
+              </div>
+              <input type="range" min="0" max="10" value="5" id="slider2" oninput="updatePersonalChart()">
+              <p class="text-[10px] text-slate-400">Ajudei e fui acolhido pela comunidade</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-[#E5C384]">
+                <span class="flex items-center gap-1.5">🎨 Ócio Criativo</span>
+                <span id="val3" class="text-white text-sm font-extrabold bg-[#07172F] px-2 py-0.2 rounded-full border border-amber-500/30">5</span>
+              </div>
+              <input type="range" min="0" max="10" value="5" id="slider3" oninput="updatePersonalChart()">
+              <p class="text-[10px] text-slate-400">Tempo livre, arte e descanso restaurador</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-[#E5C384]">
+                <span class="flex items-center gap-1.5">🍎 Consumo Consciente</span>
+                <span id="val4" class="text-white text-sm font-extrabold bg-[#07172F] px-2 py-0.2 rounded-full border border-amber-500/30">5</span>
+              </div>
+              <input type="range" min="0" max="10" value="5" id="slider4" oninput="updatePersonalChart()">
+              <p class="text-[10px] text-slate-400">Comprei apenas o necessário de produtores locais</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-[#E5C384]">
+                <span class="flex items-center gap-1.5">🧘 Equilíbrio Emocional</span>
+                <span id="val5" class="text-white text-sm font-extrabold bg-[#07172F] px-2 py-0.2 rounded-full border border-amber-500/30">5</span>
+              </div>
+              <input type="range" min="0" max="10" value="5" id="slider5" oninput="updatePersonalChart()">
+              <p class="text-[10px] text-slate-400">Paz de espírito, serenidade e integração</p>
+            </div>
+
+          </div>
+
+          <!-- Gráfico de Teia Pessoal -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F] space-y-2">
+            <span class="text-xs font-bold text-[#FFF6E5] block text-center">Seu Diagrama de Equilíbrio</span>
+            <div class="chart-container-box">
+              <canvas id="personalRadar"></canvas>
+            </div>
+          </div>
+
+          <!-- Resultado / Diagnóstico -->
+          <div id="personalResult"></div>
+
+          <!-- Botões de Ação -->
+          <div class="pt-1 flex flex-col sm:flex-row gap-2">
+            <button onclick="sharePersonal()" class="flex-1 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black font-bold text-xs flex items-center justify-center gap-1.5 tap-active shadow-md">
+              <i data-lucide="share-2" class="w-4 h-4"></i>
+              <span>Compartilhar Resultado</span>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- ABA 2: RADAR 9 EIXOS                                     -->
+      <!-- ======================================================== -->
+      <section id="sec-radar9" class="tab-content hidden space-y-3">
+        
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+          <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+            <div class="flex items-center gap-2">
+              <span class="text-base">📊</span>
+              <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Radar do Bem Viver (9 Eixos)</h2>
+            </div>
+            <span class="text-[10px] text-cyan-400 font-semibold">Além do PIB</span>
+          </div>
+
+          <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
+            Estrutura inspirada nas propostas da ONU para além do PIB, cruzando soberania alimentar, saúde coletiva, inclusão e sustentabilidade.
+          </p>
+
+          <!-- Gráfico Radar 9 Eixos -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F] space-y-1">
+            <div class="chart-container-box" style="height: 330px;">
+              <canvas id="radar9Chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Alerta de Paradoxo / Falso Ubuntu -->
+          <div id="paradoxAlert" class="hidden p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-xs text-red-200 space-y-1">
+            <div class="flex items-center gap-1.5 font-bold text-red-400">
+              <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
+              <span>Paradoxo: Falso Ubuntu Detectado</span>
+            </div>
+            <p class="text-[10.5px] leading-relaxed text-slate-300">
+              Alta coesão interna (<span id="coesaoVal" class="font-bold text-white">8.5</span>), porém baixíssima receptividade (<span id="receptVal" class="font-bold text-white">3.0</span>). Isso indica risco de tribalismo excludente em vez de Bem Viver autêntico.
+            </p>
+          </div>
+
+          <!-- Métricas Resumo -->
+          <div class="grid grid-cols-3 gap-2 text-center pt-1">
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F]">
+              <span class="text-[10px] text-slate-400 block">Média Geral</span>
+              <span class="text-base font-extrabold text-[#E5C384]" id="scoreTotal">6.4</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F]">
+              <span class="text-[10px] text-slate-400 block">Receptividade</span>
+              <span class="text-base font-extrabold text-cyan-400" id="scoreRecept">4.2</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F]">
+              <span class="text-[10px] text-slate-400 block">Equidade</span>
+              <span class="text-base font-extrabold text-emerald-400" id="scoreEquity">5.8</span>
+            </div>
+          </div>
+
+          <!-- Botão Exportar -->
+          <button onclick="exportData()" class="w-full py-2.5 rounded-full bg-[#07172F] border border-[#132B4F] text-xs text-[#E5C384] hover:text-white font-bold flex items-center justify-center gap-1.5 tap-active">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Exportar Dados em JSON</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- ABA 3: BRASIL POR REGIÕES                                -->
+      <!-- ======================================================== -->
+      <section id="sec-brasil" class="tab-content hidden space-y-3">
+        
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+          <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🇧🇷</span>
+              <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Brasil por Regiões</h2>
+            </div>
+            <span class="text-[10px] text-[#94B8DB]">Toque na Região</span>
+          </div>
+
+          <p class="text-[11px] text-slate-300">
+            Selecione uma macrorregião no mapa ou nos botões abaixo para inspecionar os indicadores:
+          </p>
+
+          <!-- Mapa do Brasil SVG Redimensionável -->
+          <div class="p-2.5 rounded-2xl bg-[#030A17] border border-[#132B4F] flex flex-col items-center">
+            <svg viewBox="0 0 700 560" class="w-full max-h-[240px]">
+              <!-- Norte -->
+              <path class="map-region" data-region="norte" fill="#155E3D" 
+                    d="M 80 70 L 320 50 L 370 190 L 270 270 L 130 250 Z"/>
+              <text x="210" y="160" fill="white" font-size="22" font-weight="bold" text-anchor="middle">NORTE</text>
+              
+              <!-- Nordeste -->
+              <path class="map-region" data-region="nordeste" fill="#C25E00"
+                    d="M 370 190 L 550 170 L 590 310 L 490 370 L 390 330 Z"/>
+              <text x="480" y="275" fill="white" font-size="22" font-weight="bold" text-anchor="middle">NORDESTE</text>
+              
+              <!-- Centro-Oeste -->
+              <path class="map-region" data-region="centro-oeste" fill="#D97706"
+                    d="M 270 270 L 390 330 L 370 410 L 290 390 Z"/>
+              <text x="330" y="350" fill="white" font-size="20" font-weight="bold" text-anchor="middle">C-OESTE</text>
+              
+              <!-- Sudeste -->
+              <path class="map-region" data-region="sudeste" fill="#991B1B"
+                    d="M 390 330 L 490 370 L 510 450 L 430 470 L 370 410 Z"/>
+              <text x="440" y="420" fill="white" font-size="20" font-weight="bold" text-anchor="middle">SUDESTE</text>
+              
+              <!-- Sul -->
+              <path class="map-region" data-region="sul" fill="#1E40AF"
+                    d="M 290 390 L 370 410 L 430 470 L 390 530 L 310 510 Z"/>
+              <text x="360" y="475" fill="white" font-size="20" font-weight="bold" text-anchor="middle">SUL</text>
+            </svg>
+
+            <!-- Seletor em Pílulas para Toque Fácil -->
+            <div class="flex items-center justify-center gap-1.5 flex-wrap pt-2">
+              <button onclick="selectRegion('norte')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#155E3D] text-white tap-active">Norte</button>
+              <button onclick="selectRegion('nordeste')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#C25E00] text-white tap-active">Nordeste</button>
+              <button onclick="selectRegion('centro-oeste')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#D97706] text-white tap-active">Centro-Oeste</button>
+              <button onclick="selectRegion('sudeste')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#991B1B] text-white tap-active">Sudeste</button>
+              <button onclick="selectRegion('sul')" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#1E40AF] text-white tap-active">Sul</button>
+            </div>
+          </div>
+
+          <!-- Estatísticas da Região Selecionada -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F] space-y-2">
+            <h3 id="regionTitle" class="font-brand text-xs sm:text-sm font-bold text-[#E5C384]">Selecione uma região</h3>
+            <div id="regionStats"></div>
+          </div>
+
+          <!-- Radar da Região -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F]">
+            <span class="text-xs font-bold text-slate-300 block text-center mb-1">Perfil da Região</span>
+            <div class="chart-container-box">
+              <canvas id="regionRadar"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- ABA 4: COMPARAÇÃO MUNDIAL                                -->
+      <!-- ======================================================== -->
+      <section id="sec-mundo" class="tab-content hidden space-y-3">
+        
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+          <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+            <div class="flex items-center gap-2">
+              <span class="text-base">🌍</span>
+              <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Brasil vs. Outros Países</h2>
+            </div>
+            <span class="text-[10px] text-[#E5C384]">Contraste</span>
+          </div>
+
+          <p class="text-[11px] text-slate-300">
+            Compare o perfil do Brasil com nações de diferentes matrizes econômicas e culturais:
+          </p>
+
+          <!-- Seletor de País -->
+          <div class="space-y-1">
+            <label for="countrySelect" class="text-[10px] text-slate-400 font-bold block">Selecione o País de Comparação:</label>
+            <select id="countrySelect" onchange="updateCountryComparison()" class="w-full p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] text-xs font-semibold text-[#FFF6E5] focus:border-amber-400">
+              <option value="">Selecione um país...</option>
+            </select>
+          </div>
+
+          <!-- Legenda Visual Nítida -->
+          <div class="flex items-center justify-center gap-4 text-xs font-bold pt-1">
+            <div class="flex items-center gap-1.5 text-[#E5C384]">
+              <span class="w-3 h-3 rounded-full bg-[#E5C384] inline-block"></span>
+              <span>Brasil</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-[#38BDF8]">
+              <span class="w-3 h-3 rounded-full bg-[#38BDF8] inline-block"></span>
+              <span id="labelCountryName">País Comparado</span>
+            </div>
+          </div>
+
+          <!-- Gráfico Radar Mundial com Alto Contraste -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F]">
+            <div class="chart-container-box" style="height: 330px;">
+              <canvas id="countryRadar"></canvas>
+            </div>
+          </div>
+
+          <!-- Card de Insight / Paradoxo -->
+          <div id="countryInsight" class="hidden p-3 rounded-xl bg-[#081F3D] border border-cyan-500/30 text-xs text-cyan-200 leading-relaxed"></div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- ABA 5: EVOLUÇÃO TEMPORAL                                 -->
+      <!-- ======================================================== -->
+      <section id="sec-temporal" class="tab-content hidden space-y-3">
+        
+        <div class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+          <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+            <div class="flex items-center gap-2">
+              <span class="text-base">⏳</span>
+              <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Evolução Temporal (2010–2025)</h2>
+            </div>
+            <span class="text-[10px] text-amber-400 font-semibold">Série</span>
+          </div>
+
+          <!-- Mostrador do Ano Selecionado -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F] text-center space-y-1">
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest block font-bold">Ano Selecionado</span>
+            <div class="text-3xl font-extrabold text-[#E5C384]" id="yearDisplay">2025</div>
+            <input type="range" min="2010" max="2025" value="2025" id="yearSlider" oninput="updateTimeline()" class="mt-2">
+            <div class="flex justify-between text-[10px] text-slate-400 px-1 pt-1 font-semibold">
+              <span>2010</span>
+              <span>2015</span>
+              <span>2020</span>
+              <span>2025</span>
+            </div>
+          </div>
+
+          <!-- Gráfico Temporal de Linhas -->
+          <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F]">
+            <div class="chart-container-box">
+              <canvas id="timelineChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Insight do Ano -->
+          <div id="temporalInsight" class="p-3 rounded-xl bg-[#071933] border border-amber-500/30 text-xs text-slate-200 space-y-1 leading-relaxed">
+            <div class="flex items-center gap-1.5 font-bold text-[#E5C384]">
+              <i data-lucide="info" class="w-4 h-4 text-[#E5C384]"></i>
+              <span>Paradoxo PIB vs. Bem-Estar</span>
+            </div>
+            <p id="temporalText" class="text-[11px] text-slate-300"></p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- SCRIPT COMPLETO DE DADOS & GRÁFICOS COM ALTO CONTRASTE -->
+  <script>
+    // Inicializar ícones Lucide
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    const DIMENSIONS_9 = [
+      'Soberania Alimentar',
+      'Sustentabilidade',
+      'Economia Solidária',
+      'Saúde Coletiva',
+      'Educação & Saberes',
+      'Coesão Comunitária',
+      'Receptividade',
+      'Equidade Racial/Gênero',
+      'Autonomia & Bem-estar'
+    ];
+
+    const BRASIL_DATA = {
+      'norte': {
         name: 'Norte',
         pib: 28,
         ips: 5.2,
         gini: 0.55,
         hpi: 38,
-        happiness: 5.6,
         receptividade: 4.2,
         scores: [6, 8, 5, 6, 5, 7, 4, 5, 6],
         filosofia: 'Teko Porã (povos originários)',
-        barreiras: ['Xenofobia contra migrantes nordestinos', 'Baixa inclusão indígena', 'LGBTfobia estrutural']
-    },
-    'nordeste': {
+        barreiras: ['Pressão fundiária', 'Acesso a saneamento básico']
+      },
+      'nordeste': {
         name: 'Nordeste',
         pib: 22,
         ips: 4.8,
         gini: 0.54,
         hpi: 40,
-        happiness: 5.5,
         receptividade: 6.8,
         scores: [5, 7, 6, 5, 5, 9, 7, 6, 6],
         filosofia: 'Ubuntu (comunidade e resistência)',
-        barreiras: ['Desigualdade regional', 'Acesso limitado a serviços']
-    },
-    'centro-oeste': {
+        barreiras: ['Desigualdade histórica', 'Vulnerabilidade climática']
+      },
+      'centro-oeste': {
         name: 'Centro-Oeste',
         pib: 52,
         ips: 6.5,
         gini: 0.50,
         hpi: 32,
-        happiness: 6.1,
         receptividade: 5.5,
         scores: [7, 4, 7, 7, 7, 7, 5, 6, 7],
-        filosofia: 'Agronegócio vs. Cerrado',
-        barreiras: ['Conflitos fundiários', 'Impacto ambiental']
-    },
-    'sudeste': {
+        filosofia: 'Polo agroecológico vs monoculturas',
+        barreiras: ['Desmatamento do Cerrado', 'Concentração de terras']
+      },
+      'sudeste': {
         name: 'Sudeste',
         pib: 58,
         ips: 6.8,
         gini: 0.53,
         hpi: 28,
-        happiness: 6.0,
         receptividade: 5.2,
         scores: [6, 3, 6, 8, 8, 6, 5, 5, 6],
-        filosofia: 'Urbanização e desigualdade',
-        barreiras: ['Racismo estrutural', 'Violência urbana', 'Desigualdade extrema']
-    },
-    'sul': {
+        filosofia: 'Metropolização e desigualdade',
+        barreiras: ['Segregação urbana', 'Sobrecarga de tempo de deslocamento']
+      },
+      'sul': {
         name: 'Sul',
         pib: 48,
         ips: 7.2,
         gini: 0.46,
         hpi: 34,
-        happiness: 6.3,
         receptividade: 4.8,
         scores: [8, 5, 8, 8, 8, 8, 5, 6, 7],
-        filosofia: 'Cooperativismo',
-        barreiras: ['Preconceito contra nordestinos', 'Baixa diversidade']
-    }
-};
+        filosofia: 'Cooperativismo comunitário',
+        barreiras: ['Baixa diversidade', 'Desafios de acolhimento migrante']
+      }
+    };
 
-// Dados dos países (mockados baseados em dados reais)
-const COUNTRIES_DATA = {
-    'br': { name: 'Brasil', scores: [6, 5, 6, 7, 6, 7, 5, 5, 6], pib: 9, ips: 6.0, hpi: 31 },
-    'cr': { name: 'Costa Rica', scores: [7, 8, 7, 8, 7, 8, 8, 7, 7], pib: 13, ips: 7.0, hpi: 62 },
-    'ec': { name: 'Equador', scores: [7, 7, 7, 6, 6, 8, 7, 6, 6], pib: 6, ips: 5.5, hpi: 40 },
-    'fi': { name: 'Finlândia', scores: [8, 9, 8, 9, 9, 8, 9, 9, 9], pib: 52, ips: 8.8, hpi: 36 },
-    'dk': { name: 'Dinamarca', scores: [8, 9, 8, 9, 9, 8, 9, 9, 9], pib: 62, ips: 8.7, hpi: 35 },
-    'za': { name: 'África do Sul', scores: [5, 5, 5, 5, 5, 8, 6, 4, 5], pib: 6, ips: 4.5, hpi: 26 },
-    'rw': { name: 'Ruanda', scores: [6, 6, 7, 5, 5, 9, 7, 6, 5], pib: 1, ips: 4.2, hpi: 42 },
-    'bt': { name: 'Butão', scores: [7, 9, 6, 6, 6, 9, 8, 7, 8], pib: 3, ips: 5.0, hpi: 51 },
-    'jp': { name: 'Japão', scores: [7, 7, 7, 10, 9, 6, 5, 6, 4], pib: 34, ips: 8.2, hpi: 47 },
-    'in': { name: 'Índia', scores: [5, 4, 6, 5, 5, 8, 6, 4, 5], pib: 2.5, ips: 4.0, hpi: 36 },
-    'nz': { name: 'Nova Zelândia', scores: [8, 8, 8, 9, 8, 8, 9, 9, 8], pib: 43, ips: 8.3, hpi: 43 },
-    'us': { name: 'Estados Unidos', scores: [7, 4, 6, 8, 8, 6, 5, 5, 7], pib: 76, ips: 7.5, hpi: 24 },
-    'cn': { name: 'China', scores: [8, 4, 7, 7, 7, 7, 4, 5, 6], pib: 12, ips: 6.8, hpi: 28 },
-    'sa': { name: 'Arábia Saudita', scores: [6, 3, 7, 7, 6, 7, 4, 3, 6], pib: 23, ips: 6.2, hpi: 22 },
-    'il': { name: 'Israel', scores: [7, 5, 7, 8, 8, 7, 5, 6, 7], pib: 55, ips: 7.8, hpi: 30 }
-};
+    const COUNTRIES_DATA = {
+      'br': { name: 'Brasil', scores: [6, 5, 6, 7, 6, 7, 5, 5, 6], pib: 9, ips: 6.0, hpi: 31 },
+      'cr': { name: 'Costa Rica', scores: [7, 8, 7, 8, 7, 8, 8, 7, 7], pib: 13, ips: 7.0, hpi: 62 },
+      'ec': { name: 'Equador', scores: [7, 7, 7, 6, 6, 8, 7, 6, 6], pib: 6, ips: 5.5, hpi: 40 },
+      'fi': { name: 'Finlândia', scores: [8, 9, 8, 9, 9, 8, 9, 9, 9], pib: 52, ips: 8.8, hpi: 36 },
+      'dk': { name: 'Dinamarca', scores: [8, 9, 8, 9, 9, 8, 9, 9, 9], pib: 62, ips: 8.7, hpi: 35 },
+      'za': { name: 'África do Sul', scores: [5, 5, 5, 5, 5, 8, 6, 4, 5], pib: 6, ips: 4.5, hpi: 26 },
+      'rw': { name: 'Ruanda', scores: [6, 6, 7, 5, 5, 9, 7, 6, 5], pib: 1, ips: 4.2, hpi: 42 },
+      'bt': { name: 'Butão', scores: [7, 9, 6, 6, 6, 9, 8, 7, 8], pib: 3, ips: 5.0, hpi: 51 },
+      'jp': { name: 'Japão', scores: [7, 7, 7, 10, 9, 6, 5, 6, 4], pib: 34, ips: 8.2, hpi: 47 },
+      'in': { name: 'Índia', scores: [5, 4, 6, 5, 5, 8, 6, 4, 5], pib: 2.5, ips: 4.0, hpi: 36 },
+      'nz': { name: 'Nova Zelândia', scores: [8, 8, 8, 9, 8, 8, 9, 9, 8], pib: 43, ips: 8.3, hpi: 43 },
+      'us': { name: 'Estados Unidos', scores: [7, 4, 6, 8, 8, 6, 5, 5, 7], pib: 76, ips: 7.5, hpi: 24 },
+      'cn': { name: 'China', scores: [8, 4, 7, 7, 7, 7, 4, 5, 6], pib: 12, ips: 6.8, hpi: 28 },
+      'sa': { name: 'Arábia Saudita', scores: [6, 3, 7, 7, 6, 7, 4, 3, 6], pib: 23, ips: 6.2, hpi: 22 },
+      'il': { name: 'Israel', scores: [7, 5, 7, 8, 8, 7, 5, 6, 7], pib: 55, ips: 7.8, hpi: 30 }
+    };
 
-// Dados temporais (2010-2025)
-const TEMPORAL_DATA = {
-    2010: { pib: 100, ips: 5.8, gini: 0.53, happiness: 5.8 },
-    2012: { pib: 105, ips: 5.9, gini: 0.52, happiness: 5.9 },
-    2014: { pib: 108, ips: 6.0, gini: 0.51, happiness: 6.0 },
-    2016: { pib: 95, ips: 5.8, gini: 0.53, happiness: 5.5 },
-    2018: { pib: 98, ips: 5.9, gini: 0.53, happiness: 5.7 },
-    2020: { pib: 92, ips: 5.7, gini: 0.54, happiness: 5.4 },
-    2022: { pib: 102, ips: 6.0, gini: 0.53, happiness: 5.8 },
-    2024: { pib: 108, ips: 6.1, gini: 0.52, happiness: 6.0 },
-    2025: { pib: 110, ips: 6.2, gini: 0.52, happiness: 6.1 }
-};
+    const TEMPORAL_DATA = {
+      2010: { pib: 100, ips: 5.8, gini: 0.53, happiness: 5.8 },
+      2012: { pib: 105, ips: 5.9, gini: 0.52, happiness: 5.9 },
+      2014: { pib: 108, ips: 6.0, gini: 0.51, happiness: 6.0 },
+      2016: { pib: 95, ips: 5.8, gini: 0.53, happiness: 5.5 },
+      2018: { pib: 98, ips: 5.9, gini: 0.53, happiness: 5.7 },
+      2020: { pib: 92, ips: 5.7, gini: 0.54, happiness: 5.4 },
+      2022: { pib: 102, ips: 6.0, gini: 0.53, happiness: 5.8 },
+      2024: { pib: 108, ips: 6.1, gini: 0.52, happiness: 6.0 },
+      2025: { pib: 110, ips: 6.2, gini: 0.52, happiness: 6.1 }
+    };
 
-// ============ GRÁFICOS ============
-let personalChart, radar9Chart, regionChart, countryChart, timelineChart;
+    let personalChart, radar9Chart, regionChart, countryChart, timelineChart;
 
-// Inicialização
-window.onload = function() {
-    initPersonalChart();
-    initRadar9Chart();
-    initTimelineChart();
-    populateCountrySelect();
-    
-    // Configurar listeners do mapa
-    document.querySelectorAll('.region').forEach(r => {
+    // Configurações Globais de Tema dos Gráficos (Alto Contraste YBY VersuS)
+    const RADAR_OPTIONS = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 10,
+          ticks: {
+            display: false,
+            stepSize: 2
+          },
+          grid: {
+            color: 'rgba(229, 195, 132, 0.25)',
+            lineWidth: 1
+          },
+          angleLines: {
+            color: 'rgba(255, 255, 255, 0.15)',
+            lineWidth: 1
+          },
+          pointLabels: {
+            font: {
+              size: 9.5,
+              weight: 'bold',
+              family: "'Outfit', sans-serif"
+            },
+            color: '#FFF6E5'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    };
+
+    window.onload = function() {
+      initPersonalChart();
+      initRadar9Chart();
+      initTimelineChart();
+      populateCountrySelect();
+      selectRegion('nordeste');
+      updateTimeline();
+
+      // Listeners do mapa
+      document.querySelectorAll('.map-region').forEach(r => {
         r.addEventListener('click', () => selectRegion(r.dataset.region));
-    });
-};
+      });
+    };
 
-function showSection(sectionId, ev) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) targetSection.classList.add('active');
-    
-    const clickedBtn = (ev && ev.currentTarget) || (typeof event !== 'undefined' && event && event.target);
-    if (clickedBtn && clickedBtn.classList) {
-        clickedBtn.classList.add('active');
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.className = 'tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all';
+      });
+
+      const activeSection = document.getElementById('sec-' + tabId);
+      if (activeSection) activeSection.classList.remove('hidden');
+
+      if (btn) {
+        btn.className = 'tab-btn px-3 py-1.5 rounded-full text-xs font-bold bg-[#E5C384] text-black shrink-0 tap-active transition-all shadow-xs';
+      }
+
+      // Reajuste de gráficos ao trocar aba
+      setTimeout(() => {
+        if (tabId === 'radar9' && radar9Chart) radar9Chart.resize();
+        if (tabId === 'brasil' && regionChart) regionChart.resize();
+        if (tabId === 'mundo' && countryChart) countryChart.resize();
+        if (tabId === 'temporal' && timelineChart) timelineChart.resize();
+      }, 50);
     }
-}
 
-// Calculadora Pessoal
-function initPersonalChart() {
-    const ctx = document.getElementById('personalRadar').getContext('2d');
-    personalChart = new Chart(ctx, {
+    // 1. CALCULADORA PESSOAL
+    function initPersonalChart() {
+      const ctx = document.getElementById('personalRadar').getContext('2d');
+      personalChart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Natureza', 'Comunidade (Ubuntu)', 'Ócio Criativo', 'Consumo Consciente', 'Equilíbrio'],
-            datasets: [{
-                label: 'Meu Bem Viver',
-                data: [5, 5, 5, 5, 5],
-                backgroundColor: 'rgba(39, 174, 96, 0.2)',
-                borderColor: '#27ae60',
-                borderWidth: 2,
-                pointBackgroundColor: '#27ae60'
-            }]
+          labels: ['Natureza', 'Ubuntu', 'Ócio Criativo', 'Consumo', 'Equilíbrio'],
+          datasets: [{
+            label: 'Meu Bem Viver',
+            data: [5, 5, 5, 5, 5],
+            backgroundColor: 'rgba(229, 195, 132, 0.3)',
+            borderColor: '#E5C384',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#FFF6E5',
+            pointRadius: 4
+          }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                r: {
-                    beginAtZero: true,
-                    max: 10,
-                    ticks: { stepSize: 2 }
-                }
-            },
-            plugins: {
-                legend: { display: false }
-            }
-        }
-    });
-}
+        options: RADAR_OPTIONS
+      });
+      updatePersonalChart();
+    }
 
-function updatePersonalChart() {
-    const values = [
+    function updatePersonalChart() {
+      const vals = [
         document.getElementById('slider1').value,
         document.getElementById('slider2').value,
         document.getElementById('slider3').value,
         document.getElementById('slider4').value,
         document.getElementById('slider5').value
-    ];
-    
-    [1,2,3,4,5].forEach(i => document.getElementById('val'+i).textContent = values[i-1]);
-    
-    personalChart.data.datasets[0].data = values;
-    personalChart.update();
-    
-    const avg = (values.reduce((a,b) => a+parseInt(b), 0) / 5).toFixed(1);
-    document.getElementById('personalResult').innerHTML = `
-        <div class="alert-box alert-success">
-            <strong>🌿 Seu Índice de Bem Viver: ${avg}/10</strong><br>
-            ${getPersonalMessage(avg)}
-        </div>
-    `;
-}
+      ];
 
-function getPersonalMessage(avg) {
-    if (avg >= 8) return 'Excelente! Você vive em equilíbrio com a natureza e a comunidade. Teko Porã!';
-    if (avg >= 6) return 'Bom equilíbrio! Pequenos ajustes podem melhorar sua conexão comunitária.';
-    if (avg >= 4) return 'Atenção: Busque mais tempo na natureza e fortaleça laços comunitários.';
-    return 'Alerta: É necessário reequilibrar sua vida. Considere práticas integrativas e comunitárias.';
-}
+      [1, 2, 3, 4, 5].forEach(i => {
+        const el = document.getElementById('val' + i);
+        if (el) el.textContent = vals[i - 1];
+      });
 
-function sharePersonal() {
-    const values = [1,2,3,4,5].map(i => document.getElementById('slider'+i).value);
-    const avg = (values.reduce((a,b) => a+parseInt(b), 0) / 5).toFixed(1);
-    
-    const text = `🌿 Meu índice pessoal de Bem Viver: ${avg}/10!\n\n` +
-                 `🌳 Natureza: ${values[0]}/10\n🤝 Ubuntu: ${values[1]}/10\n` +
-                 `🎨 Ócio: ${values[2]}/10\n🍎 Consumo: ${values[3]}/10\n` +
-                 `🧘 Equilíbrio: ${values[4]}/10\n\n` +
-                 `Calcule o seu: #BemViver #TekoPora #EconomiaUbuntu`;
-    
-    alert('Mensagem pronta para postar no Fediverso:\n\n' + text);
-}
+      personalChart.data.datasets[0].data = vals;
+      personalChart.update();
 
-function generateOGImage() {
-    alert('🖼️ Em produção, isso geraria uma imagem dinâmica com o gráfico para OpenGraph!\n\nBackend usaria Puppeteer/Sharp para criar card rico.');
-}
+      const avg = (vals.reduce((a, b) => a + parseInt(b), 0) / 5).toFixed(1);
+      const resEl = document.getElementById('personalResult');
+      if (resEl) {
+        resEl.innerHTML = `
+          <div class="p-3 rounded-xl bg-[#030A17] border border-amber-500/30 text-xs space-y-1">
+            <div class="flex items-center justify-between font-bold text-[#E5C384]">
+              <span>Índice Teko Porã & Ubuntu:</span>
+              <span class="text-sm px-2 py-0.5 rounded-full bg-amber-500/20 text-[#FFF6E5]">${avg} / 10</span>
+            </div>
+            <p class="text-[11px] text-slate-300 pt-0.5">${getPersonalMessage(avg)}</p>
+          </div>
+        `;
+      }
+    }
 
-// Radar 9 Eixos
-function initRadar9Chart() {
-    const ctx = document.getElementById('radar9Chart').getContext('2d');
-    radar9Chart = new Chart(ctx, {
+    function getPersonalMessage(avg) {
+      if (avg >= 8) return 'Harmonia plena! Você vivencia o Teko Porã em conexão profunda com a comunidade e a Terra.';
+      if (avg >= 6) return 'Bom equilíbrio. Pequenos ajustes podem expandir seu descanso e relações comunitárias.';
+      if (avg >= 4) return 'Sobrecarga detectada. Busque mais tempo na natureza e fortaleça a interdependência mútua.';
+      return 'Alerta de desequilíbrio: Momento de desacelerar as pressões produtivistas e cultivar a regeneração interior.';
+    }
+
+    function sharePersonal() {
+      const vals = [1, 2, 3, 4, 5].map(i => document.getElementById('slider' + i).value);
+      const avg = (vals.reduce((a, b) => a + parseInt(b), 0) / 5).toFixed(1);
+      const text = `🌿 Meu índice Teko Porã & Ubuntu no YBY VersuS: ${avg}/10!\n\n🌳 Natureza: ${vals[0]}/10\n🤝 Ubuntu: ${vals[1]}/10\n🎨 Ócio Criativo: ${vals[2]}/10\n🍎 Consumo: ${vals[3]}/10\n🧘 Equilíbrio: ${vals[4]}/10\n\n#BemViver #TekoPora #YbyVersus`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text);
+        alert('Copiado para a área de transferência:\n\n' + text);
+      } else {
+        alert(text);
+      }
+    }
+
+    // 2. RADAR 9 EIXOS
+    function initRadar9Chart() {
+      const ctx = document.getElementById('radar9Chart').getContext('2d');
+      radar9Chart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: DIMENSIONS_9,
-            datasets: [
-                {
-                    label: 'Região Exemplo (Paradoxal)',
-                    data: [7.5, 6.0, 5.5, 7.0, 6.5, 8.5, 3.0, 4.0, 6.0],
-                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                    borderColor: '#e74c3c',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#e74c3c'
-                },
-                {
-                    label: 'Ideal de Bem Viver',
-                    data: [8.0, 8.5, 7.5, 8.0, 8.0, 8.0, 8.5, 8.0, 8.0],
-                    backgroundColor: 'rgba(39, 174, 96, 0.15)',
-                    borderColor: '#27ae60',
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    pointBackgroundColor: '#27ae60'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                r: {
-                    beginAtZero: true,
-                    max: 10,
-                    ticks: { stepSize: 2 },
-                    pointLabels: {
-                        font: { size: 11, weight: 'bold' },
-                        color: '#d4af37'
-                    }
-                }
+          labels: DIMENSIONS_9,
+          datasets: [
+            {
+              label: 'Exemplo de Região',
+              data: [7.5, 6.0, 5.5, 7.0, 6.5, 8.5, 3.0, 4.0, 6.0],
+              backgroundColor: 'rgba(56, 189, 248, 0.25)',
+              borderColor: '#38BDF8',
+              borderWidth: 2,
+              pointBackgroundColor: '#E0F2FE',
+              pointRadius: 3
+            },
+            {
+              label: 'Horizonte do Bem Viver',
+              data: [8.0, 8.5, 7.5, 8.0, 8.0, 8.0, 8.5, 8.0, 8.0],
+              backgroundColor: 'rgba(229, 195, 132, 0.15)',
+              borderColor: '#E5C384',
+              borderWidth: 2,
+              borderDash: [4, 4],
+              pointBackgroundColor: '#FFF6E5',
+              pointRadius: 3
             }
-        }
-    });
-    
-    checkParadox([7.5, 6.0, 5.5, 7.0, 6.5, 8.5, 3.0, 4.0, 6.0]);
-}
+          ]
+        },
+        options: RADAR_OPTIONS
+      });
 
-function checkParadox(scores) {
-    const coesao = scores[5];
-    const receptividade = scores[6];
-    
-    document.getElementById('coesaoVal').textContent = coesao;
-    document.getElementById('receptVal').textContent = receptividade;
-    
-    if (coesao >= 7.5 && receptividade <= 4.0) {
-        document.getElementById('paradoxAlert').style.display = 'block';
-    } else {
-        document.getElementById('paradoxAlert').style.display = 'none';
+      checkParadox([7.5, 6.0, 5.5, 7.0, 6.5, 8.5, 3.0, 4.0, 6.0]);
     }
-    
-    document.getElementById('scoreTotal').textContent = (scores.reduce((a,b)=>a+b,0)/9).toFixed(1);
-    document.getElementById('scoreRecept').textContent = receptividade.toFixed(1);
-    document.getElementById('scoreEquity').textContent = ((scores[6]+scores[7])/2).toFixed(1);
-}
 
-// Seleção de Região
-function selectRegion(regionKey) {
-    document.querySelectorAll('.region').forEach(r => r.classList.remove('selected'));
-    const selectedEl = document.querySelector(`[data-region="${regionKey}"]`);
-    if (selectedEl) selectedEl.classList.add('selected');
-    
-    const data = BRASIL_DATA[regionKey];
-    if (!data) return;
-    
-    document.getElementById('regionTitle').textContent = `🌿 ${data.name}`;
-    document.getElementById('regionStats').innerHTML = `
-        <div class="stat-grid">
-            <div class="stat-item"><div class="stat-value">${data.pib}</div><div class="stat-label">PIB per capita (mil US$)</div></div>
-            <div class="stat-item"><div class="stat-value">${data.ips}</div><div class="stat-label">IPS Brasil</div></div>
-            <div class="stat-item"><div class="stat-value">${data.gini}</div><div class="stat-label">Índice Gini</div></div>
-            <div class="stat-item"><div class="stat-value">${data.hpi}</div><div class="stat-label">Happy Planet Index</div></div>
-            <div class="stat-item"><div class="stat-value">${data.receptividade}</div><div class="stat-label">Receptividade</div></div>
+    function checkParadox(scores) {
+      const coesao = scores[5];
+      const receptividade = scores[6];
+      document.getElementById('coesaoVal').textContent = coesao;
+      document.getElementById('receptVal').textContent = receptividade;
+
+      const pAlert = document.getElementById('paradoxAlert');
+      if (coesao >= 7.5 && receptividade <= 4.0) {
+        pAlert.classList.remove('hidden');
+      } else {
+        pAlert.classList.add('hidden');
+      }
+
+      document.getElementById('scoreTotal').textContent = (scores.reduce((a, b) => a + b, 0) / 9).toFixed(1);
+      document.getElementById('scoreRecept').textContent = receptividade.toFixed(1);
+      document.getElementById('scoreEquity').textContent = ((scores[6] + scores[7]) / 2).toFixed(1);
+    }
+
+    // 3. BRASIL POR REGIÕES
+    function selectRegion(key) {
+      document.querySelectorAll('.map-region').forEach(r => r.classList.remove('selected'));
+      const el = document.querySelector(`[data-region="${key}"]`);
+      if (el) el.classList.add('selected');
+
+      const data = BRASIL_DATA[key];
+      if (!data) return;
+
+      document.getElementById('regionTitle').textContent = `Região ${data.name}`;
+      document.getElementById('regionStats').innerHTML = `
+        <div class="grid grid-cols-2 gap-2 text-center pt-1">
+          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
+            <span class="text-[9.5px] text-slate-400 block">PIB per capita</span>
+            <span class="text-xs font-bold text-[#E5C384]">${data.pib} mil R$</span>
+          </div>
+          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
+            <span class="text-[9.5px] text-slate-400 block">Índice Progresso (IPS)</span>
+            <span class="text-xs font-bold text-cyan-400">${data.ips} / 10</span>
+          </div>
+          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
+            <span class="text-[9.5px] text-slate-400 block">Gini (Desigualdade)</span>
+            <span class="text-xs font-bold text-amber-300">${data.gini}</span>
+          </div>
+          <div class="p-2 rounded-lg bg-[#07172F] border border-[#132B4F]">
+            <span class="text-[9.5px] text-slate-400 block">Receptividade</span>
+            <span class="text-xs font-bold text-emerald-400">${data.receptividade} / 10</span>
+          </div>
         </div>
-        <div class="info-box" style="margin-top: 15px;">
-            <strong>Filosofia local:</strong> ${data.filosofia}<br><br>
-            <strong>Barreiras identificadas:</strong><br>
-            ${data.barreiras.map(b => `• ${b}`).join('<br>')}
+        <div class="pt-2 text-[10.5px] text-slate-300 space-y-1">
+          <p><strong>Perspectiva:</strong> ${data.filosofia}</p>
+          <p class="text-slate-400"><strong>Desafios prioritários:</strong> ${data.barreiras.join(' • ')}</p>
         </div>
-    `;
-    
-    if (regionChart) regionChart.destroy();
-    const ctx = document.getElementById('regionRadar').getContext('2d');
-    regionChart = new Chart(ctx, {
+      `;
+
+      if (regionChart) regionChart.destroy();
+      const ctx = document.getElementById('regionRadar').getContext('2d');
+      regionChart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: DIMENSIONS_9,
-            datasets: [{
-                label: data.name,
-                data: data.scores,
-                backgroundColor: 'rgba(39, 174, 96, 0.25)',
-                borderColor: '#27ae60',
-                borderWidth: 2
-            }]
+          labels: DIMENSIONS_9,
+          datasets: [{
+            label: data.name,
+            data: data.scores,
+            backgroundColor: 'rgba(229, 195, 132, 0.25)',
+            borderColor: '#E5C384',
+            borderWidth: 2,
+            pointBackgroundColor: '#FFF6E5'
+          }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: { r: { beginAtZero: true, max: 10 } }
+        options: RADAR_OPTIONS
+      });
+    }
+
+    // 4. COMPARAÇÃO MUNDIAL
+    function populateCountrySelect() {
+      const sel = document.getElementById('countrySelect');
+      sel.innerHTML = '<option value="">Selecione um país para comparar...</option>';
+      Object.entries(COUNTRIES_DATA).forEach(([k, d]) => {
+        if (k !== 'br') {
+          const opt = document.createElement('option');
+          opt.value = k;
+          opt.textContent = `${d.name} (PIB: US$ ${d.pib}k | HPI: ${d.hpi})`;
+          sel.appendChild(opt);
         }
-    });
-    
-    checkParadox(data.scores);
-}
+      });
+      sel.value = 'cr'; // Costa Rica como padrão ilustrativo
+      updateCountryComparison();
+    }
 
-// Comparação Mundial
-function populateCountrySelect() {
-    const select = document.getElementById('countrySelect');
-    Object.entries(COUNTRIES_DATA).forEach(([key, data]) => {
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = `${data.name} (HPI: ${data.hpi})`;
-        select.appendChild(option);
-    });
-}
+    function updateCountryComparison() {
+      const key = document.getElementById('countrySelect').value || 'cr';
+      const country = COUNTRIES_DATA[key];
+      const br = COUNTRIES_DATA['br'];
 
-function updateCountryComparison() {
-    const key = document.getElementById('countrySelect').value;
-    if (!key) return;
-    
-    const country = COUNTRIES_DATA[key];
-    const brasil = COUNTRIES_DATA['br'];
-    
-    if (countryChart) countryChart.destroy();
-    
-    const ctx = document.getElementById('countryRadar').getContext('2d');
-    countryChart = new Chart(ctx, {
+      document.getElementById('labelCountryName').textContent = country.name;
+
+      if (countryChart) countryChart.destroy();
+      const ctx = document.getElementById('countryRadar').getContext('2d');
+      countryChart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: DIMENSIONS_9,
-            datasets: [
-                {
-                    label: country.name,
-                    data: country.scores,
-                    backgroundColor: 'rgba(41, 128, 185, 0.25)',
-                    borderColor: '#2980b9',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Brasil',
-                    data: brasil.scores,
-                    backgroundColor: 'rgba(39, 174, 96, 0.15)',
-                    borderColor: '#27ae60',
-                    borderWidth: 2,
-                    borderDash: [5,5]
-                }
-            ]
+          labels: DIMENSIONS_9,
+          datasets: [
+            {
+              label: 'Brasil',
+              data: br.scores,
+              backgroundColor: 'rgba(229, 195, 132, 0.2)',
+              borderColor: '#E5C384',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#FFF6E5'
+            },
+            {
+              label: country.name,
+              data: country.scores,
+              backgroundColor: 'rgba(56, 189, 248, 0.25)',
+              borderColor: '#38BDF8',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#38BDF8'
+            }
+          ]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-    });
-    
-    const avgCountry = country.scores.reduce((a,b)=>a+b,0)/9;
-    const avgBrasil = brasil.scores.reduce((a,b)=>a+b,0)/9;
-    
-    let insight = `<strong>${country.name}</strong> vs Brasil:<br>`;
-    insight += `Média Bem Viver: ${avgCountry.toFixed(1)} vs ${avgBrasil.toFixed(1)}<br>`;
-    insight += `PIB per capita: ${country.pib} vs ${brasil.pib} mil US$<br>`;
-    insight += `HPI: ${country.hpi} vs ${brasil.hpi}<br><br>`;
-    
-    if (country.pib > brasil.pib * 2 && Math.abs(avgCountry - avgBrasil) < 1) {
-        insight += '📊 <strong>PARADOXO:</strong> PIB muito maior mas bem-estar similar!';
-    } else if (avgCountry > avgBrasil && country.pib < brasil.pib) {
-        insight += '🌿 <strong>SUCESSO:</strong> Menos PIB, mais bem-estar! Modelo a estudar.';
-    }
-    
-    document.getElementById('countryInsight').innerHTML = insight;
-    document.getElementById('countryInsight').style.display = 'block';
-}
+        options: RADAR_OPTIONS
+      });
 
-// Timeline
-function initTimelineChart() {
-    const ctx = document.getElementById('timelineChart').getContext('2d');
-    timelineChart = new Chart(ctx, {
+      const avgC = (country.scores.reduce((a, b) => a + b, 0) / 9).toFixed(1);
+      const avgBr = (br.scores.reduce((a, b) => a + b, 0) / 9).toFixed(1);
+
+      let insight = `<strong>${country.name}</strong> vs. <strong>Brasil</strong>:<br>`;
+      insight += `• Média Bem Viver: <strong>${avgC}</strong> vs. <strong>${avgBr}</strong><br>`;
+      insight += `• PIB per capita: <strong>US$ ${country.pib} mil</strong> vs. <strong>US$ ${br.pib} mil</strong><br>`;
+
+      if (country.pib > br.pib * 2 && Math.abs(avgC - avgBr) < 1) {
+        insight += `<span class="text-amber-300 font-bold block pt-1">⚠️ Paradoxo: PIB ${Math.round(country.pib / br.pib)}x maior, mas bem-estar comunitário similar!</span>`;
+      } else if (avgC > avgBr && country.pib <= br.pib * 1.5) {
+        insight += `<span class="text-emerald-400 font-bold block pt-1">🌿 Destaque: Mais bem-estar e sustentabilidade com menor pressão material.</span>`;
+      }
+
+      const insEl = document.getElementById('countryInsight');
+      insEl.innerHTML = insight;
+      insEl.classList.remove('hidden');
+    }
+
+    // 5. EVOLUÇÃO TEMPORAL
+    function initTimelineChart() {
+      const ctx = document.getElementById('timelineChart').getContext('2d');
+      timelineChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Object.keys(TEMPORAL_DATA),
-            datasets: [
-                {
-                    label: 'PIB (base 100)',
-                    data: Object.values(TEMPORAL_DATA).map(d => d.pib),
-                    borderColor: '#f39c12',
-                    backgroundColor: 'rgba(243,156,18,0.1)',
-                    yAxisID: 'y'
-                },
-                {
-                    label: 'IPS Brasil',
-                    data: Object.values(TEMPORAL_DATA).map(d => d.ips * 10),
-                    borderColor: '#27ae60',
-                    yAxisID: 'y'
-                },
-                {
-                    label: 'Felicidade',
-                    data: Object.values(TEMPORAL_DATA).map(d => d.happiness * 10),
-                    borderColor: '#9b59b6',
-                    yAxisID: 'y'
-                }
-            ]
+          labels: Object.keys(TEMPORAL_DATA),
+          datasets: [
+            {
+              label: 'PIB (Base 100)',
+              data: Object.values(TEMPORAL_DATA).map(d => d.pib),
+              borderColor: '#E5C384',
+              backgroundColor: 'rgba(229, 195, 132, 0.1)',
+              borderWidth: 2.5,
+              tension: 0.3
+            },
+            {
+              label: 'Progresso Social (IPS x 10)',
+              data: Object.values(TEMPORAL_DATA).map(d => d.ips * 10),
+              borderColor: '#38BDF8',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              borderDash: [3, 3],
+              tension: 0.3
+            },
+            {
+              label: 'Felicidade x 10',
+              data: Object.values(TEMPORAL_DATA).map(d => d.happiness * 10),
+              borderColor: '#2DD4BF',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              tension: 0.3
+            }
+          ]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: { mode: 'index', intersect: false }
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              grid: { color: 'rgba(255, 255, 255, 0.08)' },
+              ticks: { color: '#94B8DB', font: { size: 9.5 } }
+            },
+            y: {
+              grid: { color: 'rgba(255, 255, 255, 0.08)' },
+              ticks: { color: '#94B8DB', font: { size: 9.5 } }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: '#FFF6E5',
+                font: { size: 10 }
+              }
+            }
+          }
         }
-    });
-}
-
-function updateTimeline() {
-    const year = document.getElementById('yearSlider').value;
-    document.getElementById('yearDisplay').textContent = year;
-    
-    const data = TEMPORAL_DATA[year];
-    const base = TEMPORAL_DATA[2010];
-    
-    let text = `<strong>${year}:</strong> `;
-    text += `PIB cresceu ${((data.pib/base.pib - 1) * 100).toFixed(1)}% desde 2010. `;
-    text += `IPS: ${data.ips} (variação: ${((data.ips/base.ips - 1) * 100).toFixed(1)}%). `;
-    text += `Felicidade: ${data.happiness}/10. `;
-    
-    if (data.pib > base.pib * 1.05 && data.ips < base.ips + 0.2) {
-        text += '<br><strong style="color: #e74c3c;">⚠️ PARADOXO:</strong> PIB cresceu mas bem-estar estagnou!';
-    } else if (data.happiness < base.happiness) {
-        text += '<br><strong style="color: #e74c3c;">⚠️ ALERTA:</strong> Felicidade caiu mesmo com crescimento econômico!';
-    } else {
-        text += '<br><strong style="color: #27ae60;">✓</strong> Crescimento alinhado com bem-estar.';
+      });
     }
-    
-    document.getElementById('temporalText').innerHTML = text;
-}
 
-// Utilitários
-function compareRegions() {
-    alert('📊 Em produção: isso abriria modal comparativo entre regiões selecionadas');
-}
+    function updateTimeline() {
+      const year = document.getElementById('yearSlider').value;
+      document.getElementById('yearDisplay').textContent = year;
+      const data = TEMPORAL_DATA[year];
+      const base = TEMPORAL_DATA[2010];
 
-function exportData() {
-    const data = {
-        timestamp: new Date().toISOString(),
-        dimensions: DIMENSIONS_9,
-        regions: BRASIL_DATA,
-        countries: COUNTRIES_DATA
-    };
-    
-    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'radar-bem-viver-data.json';
-    a.click();
-}
+      const pibVar = (((data.pib / base.pib) - 1) * 100).toFixed(1);
+      const ipsVar = (((data.ips / base.ips) - 1) * 100).toFixed(1);
 
-function shareApp() {
-    const text = '🌿 Conheça o Radar do Bem Viver Decolonial! Medindo progresso além do PIB com 9 dimensões: soberania alimentar, sustentabilidade, equidade e receptividade. #BemViver #BeyondGDP #TekoPora #Ubuntu';
-    alert('Pronto para compartilhar:\n\n' + text);
-}
+      let text = `Em <strong>${year}</strong>, o PIB variou <strong>${pibVar}%</strong> em relação a 2010. O Índice de Progresso Social variou <strong>${ipsVar}%</strong>, enquanto a percepção média de felicidade ficou em <strong>${data.happiness}/10</strong>.`;
 
-function downloadReport() {
-    alert('📥 Em produção: isso geraria PDF com gráficos e análise detalhada via jsPDF ou backend');
-}
-</script>
+      if (data.pib > base.pib * 1.05 && data.ips < base.ips + 0.2) {
+        text += `<br><span class="text-amber-400 font-bold">⚠️ Descompasso: O crescimento do PIB não se traduziu em salto proporcional no bem-estar comunitário.</span>`;
+      }
+
+      document.getElementById('temporalText').innerHTML = text;
+    }
+
+    function exportData() {
+      const d = {
+        dataColeta: new Date().toISOString(),
+        dimensoes: DIMENSIONS_9,
+        regioes: BRASIL_DATA,
+        paises: COUNTRIES_DATA
+      };
+      const blob = new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'radar-bem-viver-ybyversus.json';
+      a.click();
+    }
+  </script>
 
 </body>
 </html>

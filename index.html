@@ -64,9 +64,9 @@
 
     /* Fundo Céu Cósmico Azul Escuro do Aplicativo */
     .app-cosmic-bg {
-      background-color: #030A16;
+      background-color: #020712;
       background-image: 
-        linear-gradient(180deg, rgba(3, 10, 22, 0.45) 0%, rgba(3, 10, 22, 0.35) 50%, rgba(2, 6, 15, 0.75) 100%),
+        radial-gradient(circle at 50% 15%, rgba(18, 48, 92, 0.45) 0%, rgba(2, 7, 18, 0.92) 80%),
         url('assets/cosmic-sky.jpg');
       background-size: cover;
       background-position: center;
@@ -357,6 +357,29 @@
   <!-- MOLDURA DO SMARTPHONE (DESIGN SYSTEM DO YBY VERSUS)      -->
   <!-- ======================================================== -->
   <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_50px_rgba(20,55,110,0.35)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#1E3B66]/60 transition-all">
+
+    <!-- Fundo Cósmico Celestial Interno do Aplicativo (Órbitas Douradas & Estrelas) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <!-- Órbita Dourada Superior Direita -->
+      <svg class="absolute -top-12 -right-12 w-64 h-64 opacity-40" viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="130" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 5"/>
+        <circle cx="150" cy="150" r="100" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="150" cy="150" r="70" stroke="#D4AF37" stroke-width="0.8"/>
+        <circle cx="230" cy="150" r="5" fill="#E5C384" filter="drop-shadow(0 0 8px rgba(229,195,132,0.8))"/>
+      </svg>
+      <!-- Órbita Dourada Inferior Esquerda -->
+      <svg class="absolute -bottom-16 -left-16 w-72 h-72 opacity-40" viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="130" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+        <circle cx="150" cy="150" r="95" stroke="#E5C384" stroke-width="1.2"/>
+        <circle cx="195" cy="150" r="4" fill="#E5C384"/>
+      </svg>
+      <!-- Estrelas Douradas Cintilantes (✦) -->
+      <span class="absolute top-20 left-5 text-[#E5C384] text-xs opacity-70 animate-pulse">✦</span>
+      <span class="absolute top-40 right-6 text-[#FBF0D9] text-[10px] opacity-65">✦</span>
+      <span class="absolute top-80 left-8 text-[#E5C384] text-xs opacity-75">✦</span>
+      <span class="absolute bottom-32 right-8 text-[#FBF0D9] text-xs opacity-70 animate-pulse">✦</span>
+      <span class="absolute bottom-52 left-10 text-[#E5C384] text-[10px] opacity-50">✦</span>
+    </div>
     
     <!-- 1. STATUS BAR NATIVA (9:41, Sinal, Wifi, Bateria) -->
     <div class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]/80 backdrop-blur-md">
@@ -414,28 +437,7 @@
     </div>
 
     <!-- 3. ÁREA DE SCROLL DO APP -->
-    <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4 min-h-0">
-
-      <!-- ======================================================== -->
-      <!-- BANNER DE VÍDEO OFICIAL YBY VERSUS (INTEGRADO AO FUNDO)  -->
-      <!-- ======================================================== -->
-      <div id="top-video-banner-container" class="relative w-full overflow-hidden my-1 pointer-events-auto">
-        <div class="relative w-full aspect-[16/8] sm:aspect-video overflow-hidden rounded-2xl" style="-webkit-mask-image: radial-gradient(ellipse 95% 85% at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 95% 85% at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);">
-          <video id="top-banner-video" autoplay loop muted playsinline class="w-full h-full object-cover">
-            <source src="assets/banner-yby-versus.mp4" type="video/mp4">
-            <source src="https://player.odycdn.com/api/v3/streams/free/yby-versus-(1)/173098ac34e35db9706bf7df6ace889efa9cec1a/94ab17.mp4" type="video/mp4">
-          </video>
-          
-          <!-- Suave fusão com o fundo cósmico -->
-          <div class="absolute inset-0 bg-gradient-to-t from-[#030A16]/60 via-transparent to-[#030A16]/50 pointer-events-none"></div>
-
-          <!-- Botão Discreto de Som -->
-          <button onclick="toggleTopBannerAudio()" id="top-banner-audio-btn" title="Ativar/Desativar áudio" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-slate-300 hover:text-white text-[10.5px] font-medium border border-white/10 flex items-center gap-1.5 shadow-md active:scale-95 transition-all tap-active">
-            <i data-lucide="volume-x" id="top-banner-audio-icon" class="w-3.5 h-3.5"></i>
-            <span id="top-banner-audio-text">Mudo</span>
-          </button>
-        </div>
-      </div>
+    <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4 min-h-0 relative z-10">
 
       <!-- ======================================================== -->
       <!-- SEÇÃO: PESSOAS QUE VOCÊ SEGUE (COM AURÉOLA DE TIAGO)     -->

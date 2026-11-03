@@ -1534,6 +1534,240 @@
         }
     </style>
 
+    <!-- SEÇÃO: O COMPASSO DO PAÍS IDEAL -->
+    <style>
+        /* Container da Tabela (Responsividade) */
+        .compass-table-wrapper {
+            margin: 40px 0;
+            background: rgba(16, 26, 45, 0.75);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            overflow-x: auto;
+            position: relative;
+            backdrop-filter: blur(12px);
+        }
+
+        .compass-table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+        .compass-table-wrapper::-webkit-scrollbar-track {
+            background: rgba(10, 15, 29, 0.9);
+            border-radius: 0 0 16px 16px;
+        }
+        .compass-table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .compass-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+            font-family: inherit;
+        }
+
+        .compass-table thead th {
+            background: rgba(15, 23, 42, 0.95);
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+            padding: 20px 16px;
+            text-align: left;
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+        }
+
+        .compass-table tbody td {
+            padding: 18px 16px;
+            color: var(--text);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            vertical-align: top;
+            transition: background 0.2s ease;
+        }
+
+        .compass-table tbody tr:hover td {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .compass-table tbody td:first-child {
+            color: #fcd34d;
+            font-weight: 600;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .compass-table tbody td:last-child {
+            color: var(--text-muted);
+            font-style: italic;
+            border-left: 2px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .compass-title {
+            text-align: center;
+            margin: 60px auto 20px auto;
+        }
+        .compass-title h2 {
+            color: var(--accent);
+            font-size: 1.9em;
+            margin-bottom: 10px;
+        }
+        .compass-title p {
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .compass-table-wrapper {
+                border-radius: 12px;
+                margin: 20px -15px;
+                border-left: none;
+                border-right: none;
+            }
+            .compass-title h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+
+    <!-- TÍTULO DA SEÇÃO -->
+    <div class="compass-title">
+        <h2>🧭 O Compasso do País Ideal: O que aprendemos com o mundo</h2>
+        <p>Nenhum país é perfeito, mas cada um nos ensina um pedaço do caminho. Esta tabela sintetiza os melhores indicadores globais (baseados no relatório <em>Beyond GDP</em> da ONU, 2026) para imaginar como seria uma nação que verdadeiramente prioriza o Bem Viver.</p>
+    </div>
+
+    <!-- CONTAINER DA TABELA -->
+    <div class="compass-table-wrapper">
+        <table class="compass-table">
+            <thead>
+                <tr>
+                    <th>Dimensão do Bem Viver</th>
+                    <th>Indicador-Chave (ONU)</th>
+                    <th>O Valor "Ideal" (Meta)</th>
+                    <th>Quem mais se aproxima hoje?</th>
+                    <th>Conexão Filosófica / Decolonial</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. PAZ</td>
+                    <td>Mortes relacionadas a conflitos por 100 mil hab.</td>
+                    <td><strong>0</strong></td>
+                    <td>Islândia / Costa Rica</td>
+                    <td>Paz positiva (Carta da ONU): não apenas ausência de guerra, mas presença de justiça e condições para florescer.</td>
+                </tr>
+                <tr>
+                    <td>2. DIREITOS HUMANOS</td>
+                    <td>% da população que relatou discriminação/assédio</td>
+                    <td><strong>0%</strong></td>
+                    <td>Nova Zelândia / Canadá</td>
+                    <td>Respeito à dignidade inerente a todos, sem distinção de raça, gênero, origem ou credo.</td>
+                </tr>
+                <tr>
+                    <td>3. RESPEITO AO PLANETA</td>
+                    <td>Emissões de GEE per capita + Índice de Integridade da Biodiversidade</td>
+                    <td><strong>Zero Líquido + Alto</strong></td>
+                    <td>Butão / Costa Rica</td>
+                    <td>Pachamama / Teko Porã: A natureza não é recurso, é sujeito de direitos e base da vida.</td>
+                </tr>
+                <tr>
+                    <td>4. CONDIÇÕES MATERIAIS</td>
+                    <td>Renda disponível domiciliar per capita + Baixo subemprego</td>
+                    <td><strong>Digna + Pleno Emprego</strong></td>
+                    <td>Dinamarca / Suíça</td>
+                    <td>Garantia de que ninguém precise escolher entre sobreviver e ter dignidade (rejeição da miséria absoluta).</td>
+                </tr>
+                <tr>
+                    <td>5. SAÚDE</td>
+                    <td>Expectativa de vida saudável ao nascer</td>
+                    <td><strong>&gt; 75 anos</strong></td>
+                    <td>Japão / Coreia do Sul</td>
+                    <td>Saúde como direito universal e cuidado integral, não como mercadoria.</td>
+                </tr>
+                <tr>
+                    <td>6. EDUCAÇÃO</td>
+                    <td>% de jovens com proficiência mínima + habilidades digitais</td>
+                    <td><strong>100%</strong></td>
+                    <td>Finlândia / Estônia</td>
+                    <td>Educação para a autonomia, o pensamento crítico e a cidadania, não apenas para o mercado.</td>
+                </tr>
+                <tr>
+                    <td>7. SEGURANÇA</td>
+                    <td>Homicídios intencionais por 100 mil + % que se sente seguro à noite</td>
+                    <td><strong>Próximo de 0 + &gt;80%</strong></td>
+                    <td>Singapura / Japão</td>
+                    <td>Segurança pública comunitária, sem militarização ou necropolítica (ninguém é "deixado para morrer").</td>
+                </tr>
+                <tr>
+                    <td>8. BEM-ESTAR SUBJETIVO</td>
+                    <td>Satisfação com a vida (Escala Cantril)</td>
+                    <td><strong>&gt; 7.5 / 10</strong></td>
+                    <td>Finlândia / Dinamarca</td>
+                    <td>Reconhecimento de que o progresso é sentido e vivido, não apenas contabilizado em planilhas.</td>
+                </tr>
+                <tr>
+                    <td>9. COESÃO SOCIAL</td>
+                    <td>% de pessoas que confiam na maioria + Baixa solidão</td>
+                    <td><strong>Alta Confiança + Baixa</strong></td>
+                    <td>Noruega / Países Baixos</td>
+                    <td>Ubuntu: "Eu sou porque nós somos". Redes de apoio fortes e senso de pertencimento.</td>
+                </tr>
+                <tr>
+                    <td>10. QUALIDADE DAS INSTITUIÇÕES</td>
+                    <td>% satisfeito com a última experiência de serviços públicos</td>
+                    <td><strong>&gt; 80%</strong></td>
+                    <td>Uruguai / Estônia</td>
+                    <td>Estado a serviço do cidadão, com transparência, eficiência e combate à corrupção.</td>
+                </tr>
+                <tr>
+                    <td>11. EQUIDADE DE RIQUEZA</td>
+                    <td>Participação na riqueza do 1% mais rico + Índice de Gini</td>
+                    <td><strong>&lt; 20% + Gini &lt; 0.25</strong></td>
+                    <td>Eslovênia / Noruega</td>
+                    <td>Rejeição da concentração de poder. A riqueza deve circular e servir ao bem comum, não se acumular no topo.</td>
+                </tr>
+                <tr>
+                    <td>12. INCLUSÃO NO TRABALHO</td>
+                    <td>Rendimentos horários médios das mulheres como % dos dos homens</td>
+                    <td><strong>100% (Paridade Total)</strong></td>
+                    <td>Islândia / Bélgica</td>
+                    <td>Justiça de gênero como pilar central, não como "tema secundário" ou retórica.</td>
+                </tr>
+                <tr>
+                    <td>13. EQUIDADE REGIONAL</td>
+                    <td>% da população rural a 2 km de uma estrada em todas as estações</td>
+                    <td><strong>100%</strong></td>
+                    <td>Suíça / Áustria</td>
+                    <td>O campo e a periferia não são "esquecidos". O desenvolvimento é territorialmente justo.</td>
+                </tr>
+                <tr>
+                    <td>14. CAPITAL NATURAL</td>
+                    <td>Ativos ambientais (terra, água, solo) contabilizados e preservados (SEEA)</td>
+                    <td><strong>Crescimento Líquido</strong></td>
+                    <td>Butão / Nova Zelândia</td>
+                    <td>Sumak Kawsay: Deixar um legado ecológico melhor para as futuras gerações, não uma dívida.</td>
+                </tr>
+                <tr>
+                    <td>15. CAPITAL SOCIAL</td>
+                    <td>% da população que diz que a maioria das pessoas pode ser confiável</td>
+                    <td><strong>&gt; 60%</strong></td>
+                    <td>Dinamarca / Noruega</td>
+                    <td>A confiança mútua é a moeda mais valiosa e o alicerce de uma sociedade verdadeiramente saudável.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!-- SEÇÃO DA SÍNTESE -->
     <div class="synthesis-section">
         <h2>🌿 A Síntese: Uma Proposta de Futuro, Bem Viver Bem</h2>

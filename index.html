@@ -572,6 +572,39 @@
       </div>
 
       <!-- ======================================================== -->
+      <!-- BARRA DE PESQUISA & REDE DE POSTAGENS                    -->
+      <!-- ======================================================== -->
+      <div class="space-y-2 pt-1 pb-1">
+        <!-- BARRA DE PESQUISA DO FEED -->
+        <div class="relative flex items-center">
+          <i data-lucide="search" class="w-4 h-4 text-emerald-400 absolute left-3.5 pointer-events-none"></i>
+          <input 
+            type="text" 
+            id="saberes-search-input" 
+            oninput="filterSaberesPosts()" 
+            placeholder="Pesquisar publicações, saberes ou autores..." 
+            class="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-[#061428]/90 border border-emerald-500/30 text-xs text-slate-100 outline-none focus:ring-1 focus:ring-emerald-400 focus:border-transparent transition shadow-xs placeholder:text-slate-400"
+          >
+          <button id="clear-saberes-search-btn" onclick="clearSaberesSearch()" class="absolute right-3 text-slate-400 hover:text-white hidden tap-active">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- REDE DE POSTAGENS E POSTAGEM RÁPIDA -->
+        <div class="flex items-center justify-between px-1 pt-0.5">
+          <span class="text-[11.5px] uppercase tracking-wider font-extrabold text-emerald-300 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
+            <i data-lucide="feather" class="w-3.5 h-3.5 text-emerald-400"></i>
+            Rede de Postagens
+          </span>
+          <button onclick="openModal('modal-new-text-post')" class="text-[10.5px] font-bold text-emerald-950 bg-gradient-to-r from-emerald-200 via-teal-200 to-amber-200 hover:brightness-105 border border-emerald-300 px-3 py-1 rounded-full flex items-center gap-1.5 transition-all shadow-sm active:scale-95 tap-active" title="Criar Postagem Rápida no Feed de Saberes">
+            <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-emerald-800"></i>
+            <span>+ Postagem Rápida</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
       <!-- 5. CARD PRINCIPAL EM DESTAQUE (COM A LUZ DO PRINT 2)     -->
       
       
@@ -1036,6 +1069,44 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: POSTAGEM RÁPIDA / PUBLICAR SABER NO FEED          -->
+  <!-- ======================================================== -->
+  <div id="modal-new-text-post" class="fixed inset-0 bg-black/75 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-md transition-all">
+    <div class="bg-[#061428] w-full sm:max-w-[420px] rounded-[28px] p-5 space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl border border-amber-500/25">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
+        <div class="flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center text-sm font-bold border border-emerald-500/30">🪶</span>
+          <div>
+            <h3 class="text-sm font-bold text-slate-100">Publicar na Rede de Postagens</h3>
+            <p class="text-[10.5px] text-slate-400">Partilhe relatos, saberes, fotos e ensaios comunitários</p>
+          </div>
+        </div>
+        <button onclick="closeModal('modal-new-text-post')" class="text-slate-400 hover:text-white p-1 tap-active">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <textarea id="new-text-content" rows="4" placeholder="Escreva seu relato, sabedoria tradicional ou reflexão sobre autonomia..." class="w-full p-3 rounded-2xl bg-black/40 border border-slate-700/60 outline-none text-xs text-white focus:border-amber-400 resize-none placeholder:text-slate-500"></textarea>
+
+      <div class="space-y-1">
+        <label class="block text-xs font-bold text-slate-200 flex items-center gap-1">
+          <i data-lucide="image" class="w-3.5 h-3.5 text-[#E5C384]"></i> Foto ou Imagem (URL da imagem):
+        </label>
+        <input type="url" id="new-text-image" placeholder="Cole o link da foto (opcional)" class="w-full p-2.5 rounded-xl bg-black/40 border border-slate-700/60 text-xs text-white outline-none focus:border-amber-400 placeholder:text-slate-500">
+      </div>
+
+      <div class="space-y-1">
+        <label class="block text-xs font-bold text-slate-200">Comunidade ou Tag:</label>
+        <input type="text" id="new-text-tag" placeholder="Ex: Etnobotânica, Agroecologia, Saberes da Terra" class="w-full p-2.5 rounded-xl bg-black/40 border border-slate-700/60 text-xs text-white outline-none focus:border-amber-400 placeholder:text-slate-500">
+      </div>
+
+      <button onclick="submitNewTextPost()" class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] hover:brightness-110 text-black text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-md tap-active">
+        <i data-lucide="send" class="w-4 h-4"></i> Publicar na Rede de Postagens
+      </button>
     </div>
   </div>
 
@@ -4021,6 +4092,65 @@
       closeQuickNoteRecorder();
       renderConnectionsBar();
       showAppToast('Recado Rápido removido da sua Rede de Conexão.');
+    }
+
+    // ==========================================
+    // BUSCA DE SABERES & POSTAGEM RÁPIDA NO FEED
+    // ==========================================
+    function filterSaberesPosts() {
+      const input = document.getElementById('saberes-search-input');
+      const clearBtn = document.getElementById('clear-saberes-search-btn');
+      const query = (input?.value || '').trim().toLowerCase();
+      if (clearBtn) {
+        if (query) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      const cards = document.querySelectorAll('.celestial-post-glow, article.post-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (!query || text.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function clearSaberesSearch() {
+      const input = document.getElementById('saberes-search-input');
+      if (input) input.value = '';
+      filterSaberesPosts();
+    }
+
+    function submitNewTextPost() {
+      const content = document.getElementById('new-text-content')?.value.trim();
+      if (!content) {
+        showAppToast('Escreva algo para partilhar com a comunidade.');
+        return;
+      }
+      const img = document.getElementById('new-text-image')?.value.trim() || '';
+      const tag = document.getElementById('new-text-tag')?.value.trim() || 'Saberes';
+
+      try {
+        const stored = JSON.parse(localStorage.getItem('yby_external_links') || '[]');
+        stored.unshift({
+          url: '',
+          platform: 'mastodon',
+          format: 'saberes',
+          title: content,
+          img: img,
+          tag: tag,
+          autor_nome: 'Você',
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem('yby_external_links', JSON.stringify(stored));
+      } catch (e) {}
+
+      document.getElementById('new-text-content').value = '';
+      if (document.getElementById('new-text-image')) document.getElementById('new-text-image').value = '';
+      if (document.getElementById('new-text-tag')) document.getElementById('new-text-tag').value = '';
+      closeModal('modal-new-text-post');
+      showAppToast('🪶 Postagem publicada com sucesso na Rede de Postagens!');
     }
 
     window.addEventListener('DOMContentLoaded', () => {

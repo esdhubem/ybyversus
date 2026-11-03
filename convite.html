@@ -247,7 +247,120 @@
         .warning strong {
             color: #e74c3c;
         }
+
+        /* Estrutura do Mapa Mental do Fediverso */
+        .mindmap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            position: relative;
+            margin: 25px 0 20px 0;
+        }
+
+        .center-node {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #0f172a;
+            padding: 16px 28px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.25em;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            position: relative;
+            z-index: 2;
+            animation: pulseNode 2.5s ease-in-out infinite;
+            max-width: 320px;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes pulseNode {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .connector-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 10px 0 15px 0;
+            opacity: 0.5;
+        }
+
+        .branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            position: relative;
+        }
+
+        .branch {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .branch:hover {
+            transform: translateY(-5px);
+            border-color: var(--branch-color);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        .branch::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: var(--branch-color);
+            transform: translateX(-50%);
+        }
+
+        .branch-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .branch-title {
+            color: var(--branch-color);
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .branch-text {
+            color: #cbd5e1;
+            font-size: 0.92em;
+            line-height: 1.6;
+        }
+
+        .branch:nth-child(1) { --branch-color: #3b82f6; }
+        .branch:nth-child(2) { --branch-color: #27ae60; }
+        .branch:nth-child(3) { --branch-color: #f39c12; }
+        .branch:nth-child(4) { --branch-color: #a855f7; }
         
+        @media (max-width: 768px) {
+            .branches {
+                grid-template-columns: 1fr;
+            }
+            .branch::before {
+                display: none;
+            }
+            .center-node {
+                font-size: 1.1em;
+                padding: 14px 22px;
+            }
+        }
+
         @media (max-width: 600px) {
             .benefits-grid {
                 grid-template-columns: 1fr;
@@ -311,15 +424,53 @@
         <h2>🌐 O Que é o Fediverso?</h2>
         <p>O <strong>Fediverso</strong> (Universo Federado) é uma rede social descentralizada, construída sobre protocolos abertos onde diversas plataformas de conteúdo fazem parte, mas que funcionam diferente das conhecidas plataformas comerciais:</p>
         
-        <ul>
-            <li><strong>Não é controlado por uma única empresa</strong> — é uma rede de servidores independentes que se comunicam entre si</li>
-            <li><strong>Não monetiza seus dados</strong> — você não é o produto</li>
-            <li><strong>Não tem algoritmos de engajamento</strong> — sem manipulação da sua atenção, sem vício projetado</li>
-            <li><strong>É baseado em ética e soberania</strong> — você é dono do seu conteúdo e da sua audiência</li>
-        </ul>
+        <!-- Mapa Mental do Fediverso -->
+        <div class="mindmap">
+            <!-- Nó Central -->
+            <div class="center-node">
+                🌍 FEDIVERSO
+            </div>
+
+            <div class="connector-line"></div>
+
+            <!-- Ramos -->
+            <div class="branches">
+                <div class="branch">
+                    <span class="branch-icon">🏢</span>
+                    <div class="branch-title">Sem Dono Único</div>
+                    <div class="branch-text">
+                        Não é controlado por uma única empresa — é uma rede de servidores independentes que se comunicam entre si.
+                    </div>
+                </div>
+
+                <div class="branch">
+                    <span class="branch-icon">🔒</span>
+                    <div class="branch-title">Seus Dados São Seus</div>
+                    <div class="branch-text">
+                        Não monetiza seus dados — você não é o produto. Sua privacidade é respeitada por design.
+                    </div>
+                </div>
+
+                <div class="branch">
+                    <span class="branch-icon">🧠</span>
+                    <div class="branch-title">Sem Manipulação</div>
+                    <div class="branch-text">
+                        Não tem algoritmos de engajamento — sem manipulação da sua atenção, sem vício projetado.
+                    </div>
+                </div>
+
+                <div class="branch">
+                    <span class="branch-icon">⚖️</span>
+                    <div class="branch-title">Ética e Soberania</div>
+                    <div class="branch-text">
+                        É baseado em ética e soberania — você é dono do seu conteúdo e da sua audiência.
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="highlight-box">
-            <p><strong>Filosofia do Fediverso:</strong> É a internet que evita o foco da competição e ambição sem limites através de um espaço público, democrático, onde o conhecimento circula livremente de forma orgânica.</p>
+            <p><strong>🌱 Filosofia do Fediverso:</strong> É a internet que evita o foco da competição e ambição sem limites através de um espaço público, democrático, onde o conhecimento circula livremente de forma orgânica.</p>
         </div>
     </div>
 

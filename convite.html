@@ -308,32 +308,6 @@
         </ul>
     </div>
 
-    <div class="section" style="background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.3);">
-        <h2>✉️ Modelo de Mensagem para Convidar Criadores</h2>
-        <p>Você pode copiar e adaptar a mensagem abaixo para enviar diretamente a criadores de conteúdo que gostaria de trazer para o YBY Versus:</p>
-
-        <div id="textoConvite" style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 12px; padding: 25px; margin: 20px 0; line-height: 1.8;">
-            <p style="margin-bottom: 12px; color: var(--text-primary);">Olá, <strong>[Nome do Criador]</strong>!</p>
-            <p style="margin-bottom: 12px; color: var(--text-secondary);">Acompanho seu trabalho sobre <em>[mencione um tema específico do canal dele]</em> e acho fundamental.</p>
-            <p style="margin-bottom: 12px; color: var(--text-secondary);">Estou te convidando para conhecer o <strong>YBY Versus</strong>, um aplicativo no Fediverso (rede social descentralizada) criado para pensadores e criadores independentes.</p>
-            <p style="margin-bottom: 12px; color: var(--text-secondary);">Oferecemos um serviço similar aos &quot;bio-links&quot; e hubs de divulgação, mas com uma diferença radical: é 100% orgânico, gratuito e sem fins lucrativos. Não fazemos marketing predatório nem cobramos por publicidade.</p>
-            <p style="margin-bottom: 12px; color: var(--text-secondary);">Ao criar seu perfil, você pode centralizar os links dos seus vídeos e, ao publicar conosco, seu conteúdo é amplificado organicamente para outras redes do Fediverso, ajudando a aumentar suas visualizações nas plataformas de origem, mas sem a tirania dos algoritmos comerciais.</p>
-            <p style="margin-bottom: 16px; color: var(--text-secondary);">Gostaria de te dar as boas-vindas a esse universo. Veja mais detalhes aqui: <a href="https://esdhubem.github.io/ybyversus/convite.html" style="color: var(--accent); text-decoration: underline;">https://esdhubem.github.io/ybyversus/convite.html</a></p>
-            <p style="margin-bottom: 4px; color: var(--text-primary);">Um abraço,</p>
-            <p style="margin-bottom: 4px; color: var(--text-primary);"><strong>[Seu Nome]</strong></p>
-            <p style="color: var(--gold); font-size: 0.95em; font-weight: 500;">YBY Versus – Fediverso do Bem Viver</p>
-        </div>
-
-        <div class="center">
-            <button onclick="copiarMensagem()" id="btnCopiar" style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; padding: 12px 28px; border-radius: 25px; font-weight: bold; font-size: 1em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
-                📋 Copiar Modelo de Mensagem
-            </button>
-            <p id="feedbackCopiado" style="display: none; color: var(--green); margin-top: 10px; font-weight: bold;">
-                ✓ Mensagem copiada para a área de transferência!
-            </p>
-        </div>
-    </div>
-
     <div class="section">
         <h2>🚀 Como Começar</h2>
         <p>É simples, rápido e gratuito:</p>
@@ -373,33 +347,6 @@
         </p>
     </footer>
 </div>
-
-<script>
-function copiarMensagem() {
-    const texto = `Olá, [Nome do Criador]!
-Acompanho seu trabalho sobre [mencione um tema específico do canal dele] e acho fundamental.
-Estou te convidando para conhecer o YBY Versus, um aplicativo no Fediverso (rede social descentralizada) criado para pensadores e criadores independentes.
-Oferecemos um serviço similar aos "bio-links" e hubs de divulgação, mas com uma diferença radical: é 100% orgânico, gratuito e sem fins lucrativos. Não fazemos marketing predatório nem cobramos por publicidade.
-Ao criar seu perfil, você pode centralizar os links dos seus vídeos e, ao publicar conosco, seu conteúdo é amplificado organicamente para outras redes do Fediverso, ajudando a aumentar suas visualizações nas plataformas de origem, mas sem a tirania dos algoritmos comerciais.
-Gostaria de te dar as boas-vindas a esse universo. Veja mais detalhes aqui: https://esdhubem.github.io/ybyversus/convite.html
-Um abraço,
-[Seu Nome]
-YBY Versus – Fediverso do Bem Viver`;
-
-    navigator.clipboard.writeText(texto).then(() => {
-        const feedback = document.getElementById('feedbackCopiado');
-        const btn = document.getElementById('btnCopiar');
-        if (feedback) feedback.style.display = 'block';
-        if (btn) btn.textContent = '✓ Mensagem Copiada!';
-        setTimeout(() => {
-            if (feedback) feedback.style.display = 'none';
-            if (btn) btn.textContent = '📋 Copiar Modelo de Mensagem';
-        }, 3000);
-    }).catch(err => {
-        console.error('Erro ao copiar texto:', err);
-    });
-}
-</script>
 
 </body>
 </html>

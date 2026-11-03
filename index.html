@@ -440,11 +440,19 @@
     <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4 min-h-0 relative z-10">
 
       <!-- ======================================================== -->
-      <!-- SEÇÃO: PESSOAS QUE VOCÊ SEGUE (COM AURÉOLA DE TIAGO)     -->
+      <!-- SEÇÃO: REDE DE CONEXÃO & RECADO RÁPIDO                   -->
       <!-- ======================================================== -->
       <div class="space-y-2 pt-1">
-        <div class="text-[12px] font-semibold text-[#C9BEAF] tracking-wide">
-          <span>Pessoas que você segue</span>
+        <div class="flex items-center justify-between px-0.5">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
+            <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+            <span class="text-[11.5px] uppercase tracking-wider font-extrabold text-emerald-300">Rede de Conexão</span>
+          </div>
+          <button onclick="openQuickNoteRecorder()" class="text-[10.5px] font-bold text-emerald-950 bg-gradient-to-r from-[#a7f3d0] to-[#fef08a] hover:brightness-105 active:scale-95 px-3 py-1 rounded-full flex items-center gap-1.5 transition-all shadow-sm border border-emerald-300/40 tap-active" title="Gravar Recado Rápido de até 15 segundos (sem custo de servidor, expira em 24h)">
+            <i data-lucide="video" class="w-3.5 h-3.5 text-emerald-900"></i>
+            <span>+ Recado Rápido</span>
+          </button>
         </div>
 
         <div id="following-row" class="flex items-center gap-3 overflow-x-auto no-scrollbar py-2 px-0.5">
@@ -893,6 +901,143 @@
   <!-- ======================================================== -->
   <!-- MODAIS COMPLETOS EM TEMA OBSIDIANA & OURO CELESTIAL       -->
   <!-- ======================================================== -->
+
+  <!-- ======================================================== -->
+  <!-- MODAL: PLAYER DE RECADO RÁPIDO (ESTILO WHATSAPP CIRCULAR 1:1) -->
+  <!-- ======================================================== -->
+  <div id="modal-quick-note-player" onclick="if(event.target === this) closeQuickNotePlayer()" class="fixed inset-0 bg-black/60 z-[2000] hidden flex flex-col items-center justify-center p-4 backdrop-blur-md transition-all">
+    <div class="flex flex-col items-center gap-3 max-w-[360px] w-full relative" onclick="event.stopPropagation()">
+      <!-- BOLINHA CENTRAL CIRCULAR DE VÍDEO (1:1 com borda elegante e barra de progresso circular) -->
+      <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-2 flex items-center justify-center shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(229,195,132,0.3)]">
+        <!-- Seta de Navegação Manual: Recado Anterior -->
+        <button onclick="playPrevQuickNote()" 
+          class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#061428]/90 hover:bg-[#0C2242] text-[#E5C384] flex items-center justify-center shadow-xl border border-amber-500/30 transition active:scale-90 hover:scale-105 cursor-pointer backdrop-blur-md" 
+          title="Recado anterior">
+          <i data-lucide="chevron-left" class="w-5 h-5 text-[#E5C384]"></i>
+        </button>
+
+        <!-- Seta de Navegação Manual: Próximo Recado -->
+        <button onclick="playNextQuickNote()" 
+          class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#061428]/90 hover:bg-[#0C2242] text-[#E5C384] flex items-center justify-center shadow-xl border border-amber-500/30 transition active:scale-90 hover:scale-105 cursor-pointer backdrop-blur-md" 
+          title="Próximo recado">
+          <i data-lucide="chevron-right" class="w-5 h-5 text-[#E5C384]"></i>
+        </button>
+
+        <!-- Botão Fechar integrado na borda -->
+        <button onclick="closeQuickNotePlayer()" class="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-40 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#061428] hover:bg-[#0C2242] text-slate-300 hover:text-white flex items-center justify-center shadow-lg border border-amber-500/30 transition active:scale-90 hover:scale-105 cursor-pointer" title="Fechar Recado">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <!-- SVG com Anel de Progresso Circular contínuo de 15 segundos em loop -->
+        <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none z-30" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="47" stroke="rgba(255,255,255,0.2)" stroke-width="2.5" fill="transparent" />
+          <circle id="quick-note-circle-progress" cx="50" cy="50" r="47" stroke="#E5C384" stroke-width="3" stroke-linecap="round" fill="transparent" stroke-dasharray="295.3" stroke-dashoffset="295.3" class="transition-all duration-100" />
+        </svg>
+
+        <!-- Container do Vídeo / Áudio (Estritamente Circular) -->
+        <div class="w-full h-full rounded-full overflow-hidden relative border-4 border-amber-500/60 shadow-inner bg-neutral-950">
+          <div id="quick-note-player-media-container" class="w-full h-full flex items-center justify-center">
+            <!-- Conteúdo circular -->
+          </div>
+
+          <!-- Tag Discreta interna com Nome e Tempo -->
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 z-20 px-3 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/30 text-white flex items-center gap-1.5 shadow-sm">
+            <span id="quick-note-player-author" class="text-[10.5px] font-bold text-[#E5C384] tracking-tight"></span>
+            <span class="text-[8.5px] text-emerald-400 font-semibold">• 15s</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha Flutuante: Reação e Ações -->
+      <div class="flex flex-col items-center text-center gap-2 max-w-[320px] w-full z-40">
+        <!-- Reação e Botão de Ver Saber -->
+        <div class="flex items-center justify-center gap-2">
+          <!-- Ícone discreto de OK / Gostei com contador público -->
+          <button id="quick-note-like-btn" onclick="toggleQuickNoteLike()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#061428]/95 hover:bg-[#0C2242] text-slate-200 font-bold text-xs shadow-lg border border-amber-500/30 active:scale-95 transition cursor-pointer backdrop-blur-md" title="Confirmar recebimento / curtir recado">
+            <span id="quick-note-like-icon" class="text-sm">👍</span>
+            <span id="quick-note-likes-count" class="font-extrabold text-[#E5C384] text-xs">12</span>
+          </button>
+
+          <!-- Botão Ver Saber / Publicação do autor -->
+          <button id="quick-note-view-post-btn" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#061428]/95 hover:bg-[#0C2242] text-slate-200 font-bold text-xs shadow-lg border border-amber-500/30 active:scale-95 transition cursor-pointer backdrop-blur-md" title="Ver conteúdo do autor no feed">
+            <i data-lucide="file-text" class="w-3.5 h-3.5 text-[#E5C384]"></i>
+            <span>Ver Saber</span>
+          </button>
+        </div>
+
+        <!-- Legenda Flutuante -->
+        <div class="bg-[#061428]/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-amber-500/25 shadow-xl w-full">
+          <p id="quick-note-player-caption" class="text-[11px] text-slate-200 leading-snug line-clamp-3 font-normal"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: GRAVAR RECADO RÁPIDO (BOLINHA CIRCULAR ESTILO WHATSAPP 1:1) -->
+  <!-- ======================================================== -->
+  <div id="modal-quick-note-record" class="fixed inset-0 bg-black/80 z-[2000] hidden flex flex-col items-center justify-center p-4 backdrop-blur-md transition-all">
+    <!-- Botão Fechar -->
+    <button onclick="closeQuickNoteRecorder()" class="absolute top-5 right-5 z-50 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition cursor-pointer shadow-lg border border-white/20">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+
+    <div class="flex flex-col items-center gap-3.5 max-w-[340px] w-full">
+      <!-- Seletor Minimalista de Formato (Vídeo / Áudio) -->
+      <div class="flex rounded-full bg-[#061428] backdrop-blur-md p-1 text-[11px] font-bold border border-amber-500/30 text-white">
+        <button type="button" id="record-type-video-btn" onclick="selectRecordType('video')" class="px-3.5 py-1 rounded-full bg-emerald-600 text-white shadow-xs transition flex items-center gap-1">
+          <i data-lucide="video" class="w-3 h-3"></i> Vídeo
+        </button>
+        <button type="button" id="record-type-audio-btn" onclick="selectRecordType('audio')" class="px-3.5 py-1 rounded-full text-slate-300 hover:text-white transition flex items-center gap-1">
+          <i data-lucide="mic" class="w-3 h-3"></i> Voz
+        </button>
+      </div>
+
+      <!-- BOLINHA CENTRAL CIRCULAR DE GRAVAÇÃO (1:1) -->
+      <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-2 flex items-center justify-center shadow-[0_0_35px_rgba(0,0,0,0.8),0_0_20px_rgba(229,195,132,0.3)]">
+        <!-- SVG com Anel de Progresso de Gravação -->
+        <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none z-30" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="47" stroke="rgba(255,255,255,0.2)" stroke-width="2.5" fill="transparent" />
+          <circle id="record-circle-progress" cx="50" cy="50" r="47" stroke="#EF4444" stroke-width="3.5" stroke-linecap="round" fill="transparent" stroke-dasharray="295.3" stroke-dashoffset="295.3" class="transition-all duration-100" />
+        </svg>
+
+        <!-- Visor Circular da Câmera / Microfone -->
+        <div class="w-full h-full rounded-full overflow-hidden relative border-4 border-amber-500/60 shadow-inner bg-neutral-900 flex items-center justify-center">
+          <div id="record-preview-container" class="w-full h-full flex items-center justify-center">
+            <!-- Conteúdo da câmera frontal ou microfone -->
+          </div>
+
+          <!-- Timer sobreposto discreto na parte superior interna -->
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 z-20 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono font-bold flex items-center gap-1.5 border border-white/20">
+            <span id="record-status-dot" class="w-2 h-2 rounded-full bg-neutral-400"></span>
+            <span id="record-timer-text">00:15</span>
+          </div>
+
+          <!-- Botão Central de Gravar / Parar no interior inferior da bolinha -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1">
+            <button id="record-toggle-btn" onclick="toggleRecording()" class="w-12 h-12 rounded-full bg-red-500 hover:bg-red-600 border-2 border-white shadow-xl flex items-center justify-center text-white transition active:scale-95">
+              <div id="record-btn-icon" class="w-4 h-4 rounded-full bg-white"></div>
+            </button>
+            <span id="record-hint-text" class="text-[9px] text-white/90 font-bold drop-shadow">Toque p/ gravar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles Compactos Logo Abaixo da Bolinha -->
+      <div class="w-full bg-[#061428]/95 backdrop-blur-md p-3 rounded-2xl border border-amber-500/25 space-y-2 shadow-xl">
+        <input type="text" id="record-caption-input" placeholder="Escreva uma legenda rápida para o recado..." class="w-full p-2 rounded-xl bg-black/40 border border-slate-700/60 text-xs text-white outline-none focus:border-amber-400 placeholder:text-slate-400">
+        
+        <div class="flex items-center gap-2">
+          <button id="save-quick-note-btn" onclick="saveMyQuickNote()" class="flex-1 bg-gradient-to-r from-[#D8AC52] to-[#9C7323] hover:brightness-110 text-black py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 shadow-md">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i> Publicar Recado (24h)
+          </button>
+          <button id="delete-quick-note-btn" onclick="deleteMyQuickNote()" class="hidden px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-xl text-xs font-bold transition border border-red-500/30" title="Excluir recado">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL: DISTRIBUIÇÃO JUSTA SEM BOLHAS & SOBERANIA -->
   <div id="modal-algoritmo" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
@@ -2927,8 +3072,961 @@
       });
     }
 
+    // ==========================================
+    // RECADOS RÁPIDOS (QUICK NOTE / VIDEO STATUS)
+    // ==========================================
+    let CONNECTIONS_DATA = [
+      {
+        id: 'user_you',
+        author: 'Seu saber',
+        fullName: 'Você',
+        avatar: 'assets/dola-forest.jpg',
+        isCurrentUser: true,
+        postTarget: 'Você',
+        quickNote: null
+      },
+      {
+        id: 'benvinda',
+        author: 'Benvinda',
+        fullName: 'Dona Benvinda',
+        avatar: 'assets/card-sol-ancestral.jpg',
+        postTarget: 'Dona Benvinda',
+        quickNote: {
+          type: 'video',
+          timeAgo: 'Há 2h',
+          createdAt: Date.now() - (2 * 3600 * 1000),
+          caption: '🌿 Bom dia comunidade da terra! O extrato de guaçatonga e espinheira fresca já foi coado no orvalho da manhã. Muita saúde a todos!',
+          duration: 15,
+          likes: 18,
+          userLiked: false,
+          mediaUrl: ''
+        }
+      },
+      {
+        id: 'tiago',
+        author: 'Tiago',
+        fullName: 'Mestre Tiago',
+        avatar: 'assets/card-mestres-terra.jpg',
+        postTarget: 'Mestre Tiago',
+        quickNote: {
+          type: 'video',
+          timeAgo: 'Há 4h',
+          createdAt: Date.now() - (4 * 3600 * 1000),
+          caption: '🪵 Salve amigos! Selecionamos taquaras maduras na lua minguante. Quem quiser aprender o ponto de corte, chega na oficina às 16h!',
+          duration: 15,
+          likes: 24,
+          userLiked: false,
+          mediaUrl: ''
+        }
+      },
+      {
+        id: 'mariana',
+        author: 'Mariana',
+        fullName: 'Mariana Artesã',
+        avatar: 'assets/card-floresta-sagrada.jpg',
+        postTarget: 'Mariana Artesã',
+        quickNote: {
+          type: 'video',
+          timeAgo: 'Há 5h',
+          createdAt: Date.now() - (5 * 3600 * 1000),
+          caption: '🧵 Fibras naturais tingidas com urucum e sementes da floresta sagrada!',
+          duration: 15,
+          likes: 31,
+          userLiked: false,
+          mediaUrl: ''
+        }
+      },
+      {
+        id: 'carlos',
+        author: 'Carlos',
+        fullName: 'Prof. Carlos',
+        avatar: 'assets/card-portal-luz.jpg',
+        postTarget: 'Prof. Carlos',
+        quickNote: null
+      }
+    ];
+
+    function createProceduralQuickNoteVideo(cfg) {
+      return new Promise((resolve) => {
+        try {
+          if (typeof window === 'undefined' || typeof document === 'undefined') {
+            resolve(null);
+            return;
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = 120;
+          canvas.height = 120;
+          const ctx = canvas.getContext('2d');
+          if (!canvas.captureStream || typeof MediaRecorder === 'undefined') {
+            resolve(null);
+            return;
+          }
+
+          let mimeType = 'video/webm';
+          if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
+            mimeType = 'video/webm;codecs=vp9';
+          } else if (MediaRecorder.isTypeSupported('video/webm')) {
+            mimeType = 'video/webm';
+          } else if (MediaRecorder.isTypeSupported('video/mp4')) {
+            mimeType = 'video/mp4';
+          } else {
+            resolve(null);
+            return;
+          }
+
+          const stream = canvas.captureStream(20);
+          const recorder = new MediaRecorder(stream, { mimeType });
+          const chunks = [];
+          recorder.ondataavailable = e => { if (e.data && e.data.size > 0) chunks.push(e.data); };
+
+          let frame = 0;
+          const maxFrames = 24;
+          recorder.start();
+
+          const timer = setInterval(() => {
+            frame++;
+            const grad = ctx.createRadialGradient(60, 60, 5, 60, 60, 60);
+            grad.addColorStop(0, cfg.c1 || '#164e63');
+            grad.addColorStop(1, cfg.c2 || '#082f49');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 120, 120);
+
+            const pulse = Math.sin(frame * 0.28) * 6;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.28)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(60, 60, 36 + pulse, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.font = '32px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            const bounceY = Math.sin(frame * 0.32) * 4;
+            ctx.fillText(cfg.emoji || '🌿', 60, 52 + bounceY);
+
+            ctx.fillStyle = 'rgba(255,255,255,0.92)';
+            ctx.font = 'bold 9px sans-serif';
+            ctx.fillText(cfg.text || 'Saber Vivo', 60, 88);
+
+            if (frame >= maxFrames) {
+              clearInterval(timer);
+              try { recorder.stop(); } catch (err) { resolve(null); }
+            }
+          }, 50);
+
+          recorder.onstop = () => {
+            try {
+              const blob = new Blob(chunks, { type: mimeType });
+              const blobUrl = URL.createObjectURL(blob);
+              resolve(blobUrl);
+            } catch (err) {
+              resolve(null);
+            }
+          };
+
+          recorder.onerror = () => resolve(null);
+        } catch (e) {
+          resolve(null);
+        }
+      });
+    }
+
+    function initProceduralQuickNoteVideos() {
+      const videoConfigs = [
+        { id: 'benvinda', c1: '#1b4332', c2: '#081c15', emoji: '🌿', text: 'Ervas Vivas' },
+        { id: 'tiago', c1: '#78350f', c2: '#451a03', emoji: '🪵', text: 'Taquara Madura' },
+        { id: 'mariana', c1: '#9a3412', c2: '#431407', emoji: '🧵', text: 'Tear Sagrado' }
+      ];
+
+      videoConfigs.forEach(cfg => {
+        const conn = CONNECTIONS_DATA.find(c => c.id === cfg.id);
+        if (!conn || !conn.quickNote || conn.quickNote.mediaUrl) return;
+
+        createProceduralQuickNoteVideo(cfg).then(blobUrl => {
+          if (blobUrl) {
+            conn.quickNote.mediaUrl = blobUrl;
+            renderConnectionsBar();
+          }
+        });
+      });
+    }
+
+    function playQuickNoteChime(id) {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const freqs = { benvinda: 392, tiago: 440, mariana: 523.25, user_you: 493.88 };
+        const freq = freqs[id] || 440;
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, ctx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.9);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.9);
+      } catch (e) {}
+    }
+
+    function loadUserQuickNote() {
+      try {
+        const stored = localStorage.getItem('yby_user_quick_note');
+        if (stored) {
+          const note = JSON.parse(stored);
+          const now = Date.now();
+          if (note.expiresAt && now < note.expiresAt) {
+            const hoursLeft = Math.ceil((note.expiresAt - now) / (1000 * 60 * 60));
+            CONNECTIONS_DATA[0].quickNote = {
+              type: note.type || 'video',
+              timeAgo: `Expira em ${hoursLeft}h`,
+              createdAt: note.createdAt || (note.expiresAt ? note.expiresAt - (24 * 3600 * 1000) : now),
+              caption: note.caption || 'Recado de Você para a comunidade!',
+              duration: 15,
+              likes: typeof note.likes === 'number' ? note.likes : 12,
+              userLiked: !!note.userLiked,
+              mediaUrl: note.mediaUrl || CONNECTIONS_DATA[0].avatar
+            };
+          } else {
+            localStorage.removeItem('yby_user_quick_note');
+            CONNECTIONS_DATA[0].quickNote = null;
+          }
+        }
+      } catch (e) {
+        console.warn('Erro ao carregar recado do usuário:', e);
+      }
+    }
+
+    function renderConnectionsBar() {
+      loadUserQuickNote();
+      const container = document.getElementById('following-row');
+      if (!container) return;
+
+      const userItem = CONNECTIONS_DATA.find(c => c.isCurrentUser) || CONNECTIONS_DATA[0];
+      const otherConnections = CONNECTIONS_DATA.filter(c => !c.isCurrentUser);
+
+      const withActiveNotes = otherConnections
+        .filter(c => c.quickNote !== null)
+        .sort((a, b) => (b.quickNote.createdAt || 0) - (a.quickNote.createdAt || 0));
+
+      const withoutNotes = otherConnections.filter(c => c.quickNote === null);
+      const orderedList = [userItem, ...withActiveNotes, ...withoutNotes];
+
+      container.innerHTML = orderedList.map(conn => {
+        const hasQuickNote = !!conn.quickNote;
+        let ringClass = '';
+        let badgeIcon = '';
+
+        if (conn.isCurrentUser) {
+          if (hasQuickNote) {
+            ringClass = 'glowing-gold-halo w-14 h-14';
+            badgeIcon = '<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 border border-[#040E1E] flex items-center justify-center text-[8.5px] text-black font-black shadow-sm">🎬</span>';
+          } else {
+            ringClass = 'subtle-gold-ring w-14 h-14';
+            badgeIcon = '<div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-[#C79637] text-black flex items-center justify-center text-[10px] border-2 border-[#040E1E] font-bold shadow-sm">+</div>';
+          }
+        } else if (hasQuickNote) {
+          ringClass = conn.id === 'tiago' ? 'glowing-gold-halo w-14 h-14' : 'glowing-gold-halo w-14 h-14';
+          badgeIcon = '<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 border border-[#040E1E] flex items-center justify-center text-[8.5px] text-black font-black shadow-sm">🎬</span>';
+        } else {
+          ringClass = 'subtle-gold-ring w-14 h-14';
+        }
+
+        const titleHint = conn.isCurrentUser
+          ? (hasQuickNote ? 'Seu Recado Rápido está ativo! Clique para ver' : 'Clique para gravar seu Recado Rápido (até 15s)')
+          : (hasQuickNote ? `Assistir Recado Rápido de ${conn.author} (${conn.quickNote.timeAgo})` : `Ver saberes de ${conn.author}`);
+
+        return `
+          <div onclick="handleConnectionClick('${conn.id}')" class="flex flex-col items-center gap-1.5 shrink-0 cursor-pointer group tap-active" title="${titleHint}">
+            <div class="${ringClass}">
+              <img src="${conn.avatar}" class="w-full h-full rounded-full object-cover border-[1.5px] border-[#040E1E] block">
+              ${badgeIcon}
+            </div>
+            <span class="text-[10.5px] ${hasQuickNote ? 'font-bold text-[#FFF6E5] drop-shadow-[0_0_8px_rgba(229,195,132,0.8)]' : 'font-medium text-[#E0D6C8]'} tracking-tight">
+              ${conn.author}
+            </span>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function handleConnectionClick(connId) {
+      const conn = CONNECTIONS_DATA.find(c => c.id === connId);
+      if (!conn) return;
+
+      if (conn.isCurrentUser && !conn.quickNote) {
+        openQuickNoteRecorder();
+        return;
+      }
+
+      if (conn.quickNote) {
+        openQuickNotePlayer(conn.id);
+        return;
+      }
+
+      filterByPerson(conn.fullName || conn.author);
+    }
+
+    // ==========================================
+    // PLAYER DE RECADO RÁPIDO (SEQUÊNCIA AUTOMÁTICA & NAVEGAÇÃO)
+    // ==========================================
+    let quickNoteTimerInterval = null;
+    const QUICK_NOTE_DURATION = 15;
+    let currentPlayingQuickNoteConnId = null;
+
+    function getActiveQuickNotesList() {
+      return [...CONNECTIONS_DATA]
+        .filter(c => c.quickNote !== null)
+        .sort((a, b) => {
+          const tA = a.quickNote?.createdAt || (a.isCurrentUser ? Date.now() : 0);
+          const tB = b.quickNote?.createdAt || (b.isCurrentUser ? Date.now() : 0);
+          return tB - tA;
+        });
+    }
+
+    function playNextQuickNote() {
+      const activeList = getActiveQuickNotesList();
+      if (activeList.length === 0) {
+        closeQuickNotePlayer();
+        return;
+      }
+      const currentIndex = activeList.findIndex(c => c.id === currentPlayingQuickNoteConnId);
+      if (currentIndex === -1) {
+        openQuickNotePlayer(activeList[0].id);
+        return;
+      }
+      const nextIndex = (currentIndex + 1) % activeList.length;
+      openQuickNotePlayer(activeList[nextIndex].id);
+    }
+
+    function playPrevQuickNote() {
+      const activeList = getActiveQuickNotesList();
+      if (activeList.length === 0) {
+        closeQuickNotePlayer();
+        return;
+      }
+      const currentIndex = activeList.findIndex(c => c.id === currentPlayingQuickNoteConnId);
+      const prevIndex = (currentIndex - 1 + activeList.length) % activeList.length;
+      openQuickNotePlayer(activeList[prevIndex].id);
+    }
+
+    function updateQuickNoteLikeUI(quickNote) {
+      const likeBtn = document.getElementById('quick-note-like-btn');
+      const likeCountEl = document.getElementById('quick-note-likes-count');
+      const likeIconEl = document.getElementById('quick-note-like-icon');
+      const likes = typeof quickNote.likes === 'number' ? quickNote.likes : 12;
+      const isLiked = !!quickNote.userLiked;
+
+      if (likeCountEl) likeCountEl.innerText = likes;
+      if (likeIconEl) likeIconEl.innerText = '👍';
+
+      if (likeBtn) {
+        if (isLiked) {
+          likeBtn.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-600 text-white font-extrabold text-xs shadow-lg border border-emerald-400 active:scale-95 transition cursor-pointer backdrop-blur-md";
+        } else {
+          likeBtn.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#061428]/95 hover:bg-[#0C2242] text-slate-200 font-bold text-xs shadow-lg border border-amber-500/30 active:scale-95 transition cursor-pointer backdrop-blur-md";
+        }
+      }
+    }
+
+    function toggleQuickNoteLike() {
+      const conn = CONNECTIONS_DATA.find(c => c.id === currentPlayingQuickNoteConnId);
+      if (!conn || !conn.quickNote) return;
+
+      if (typeof conn.quickNote.likes !== 'number') conn.quickNote.likes = 12;
+
+      if (conn.quickNote.userLiked) {
+        conn.quickNote.likes = Math.max(0, conn.quickNote.likes - 1);
+        conn.quickNote.userLiked = false;
+        showAppToast('Confirmação de recebimento desfeita.');
+      } else {
+        conn.quickNote.likes = conn.quickNote.likes + 1;
+        conn.quickNote.userLiked = true;
+        showAppToast('👍 Recebimento comunitário confirmado com sucesso!');
+      }
+
+      updateQuickNoteLikeUI(conn.quickNote);
+
+      if (conn.isCurrentUser) {
+        try {
+          const stored = localStorage.getItem('yby_user_quick_note');
+          if (stored) {
+            const noteObj = JSON.parse(stored);
+            noteObj.likes = conn.quickNote.likes;
+            noteObj.userLiked = conn.quickNote.userLiked;
+            localStorage.setItem('yby_user_quick_note', JSON.stringify(noteObj));
+          }
+        } catch (e) {}
+      }
+    }
+
+    function openQuickNotePlayer(connId) {
+      const conn = CONNECTIONS_DATA.find(c => c.id === connId);
+      if (!conn || !conn.quickNote) return;
+
+      clearInterval(quickNoteTimerInterval);
+      const prevVideo = document.getElementById('quick-note-active-video');
+      const prevAudio = document.getElementById('quick-note-active-audio');
+      if (prevVideo) { prevVideo.pause(); prevVideo.src = ''; }
+      if (prevAudio) { prevAudio.pause(); prevAudio.src = ''; }
+
+      currentPlayingQuickNoteConnId = connId;
+
+      const modal = document.getElementById('modal-quick-note-player');
+      const authorEl = document.getElementById('quick-note-player-author');
+      const captionEl = document.getElementById('quick-note-player-caption');
+      const mediaContainer = document.getElementById('quick-note-player-media-container');
+      const viewPostBtn = document.getElementById('quick-note-view-post-btn');
+
+      if (authorEl) authorEl.innerText = conn.fullName || conn.author;
+      if (captionEl) {
+        captionEl.innerText = conn.quickNote.caption || 'Sem legenda informada.';
+        captionEl.title = conn.quickNote.caption || '';
+      }
+
+      updateQuickNoteLikeUI(conn.quickNote);
+
+      if (viewPostBtn) {
+        viewPostBtn.onclick = () => {
+          closeQuickNotePlayer();
+          filterByPerson(conn.fullName || conn.author);
+        };
+      }
+
+      if (mediaContainer) {
+        const mediaUrl = conn.quickNote.mediaUrl || '';
+        const isRealVideo = mediaUrl.startsWith('blob:') || 
+                            mediaUrl.startsWith('data:video') || 
+                            mediaUrl.endsWith('.mp4') || 
+                            mediaUrl.endsWith('.webm');
+
+        if (conn.quickNote.type === 'video' && isRealVideo) {
+          mediaContainer.innerHTML = `
+            <div class="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-black">
+              <video id="quick-note-active-video" 
+                     src="${mediaUrl}" 
+                     autoplay playsinline 
+                     class="w-full h-full object-cover"></video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 pointer-events-none"></div>
+            </div>
+          `;
+
+          const videoEl = document.getElementById('quick-note-active-video');
+          if (videoEl) {
+            videoEl.muted = false;
+            videoEl.play().catch(() => {
+              videoEl.muted = true;
+              videoEl.play();
+            });
+            videoEl.onended = () => {
+              clearInterval(quickNoteTimerInterval);
+              playNextQuickNote();
+            };
+          }
+        } else {
+          mediaContainer.innerHTML = `
+            <div class="relative w-full h-full rounded-full overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 via-[#0A1F3D] to-neutral-900 p-4">
+              ${mediaUrl && (mediaUrl.startsWith('data:audio') || mediaUrl.startsWith('blob:')) ? `<audio id="quick-note-active-audio" src="${mediaUrl}" autoplay></audio>` : ''}
+              <img src="${conn.avatar}" class="w-20 h-20 rounded-full object-cover border-2 border-amber-400 shadow-md mb-2">
+              <div class="flex items-center gap-1.5 h-8">
+                <span class="w-1 bg-amber-400 rounded-full animate-bounce" style="height: 24px; animation-delay: 0.1s;"></span>
+                <span class="w-1 bg-emerald-400 rounded-full animate-bounce" style="height: 16px; animation-delay: 0.3s;"></span>
+                <span class="w-1 bg-amber-300 rounded-full animate-bounce" style="height: 28px; animation-delay: 0.2s;"></span>
+                <span class="w-1 bg-emerald-300 rounded-full animate-bounce" style="height: 20px; animation-delay: 0.4s;"></span>
+                <span class="w-1 bg-amber-400 rounded-full animate-bounce" style="height: 26px; animation-delay: 0.15s;"></span>
+                <span class="w-1 bg-emerald-400 rounded-full animate-bounce" style="height: 14px; animation-delay: 0.35s;"></span>
+              </div>
+            </div>
+          `;
+
+          const audioEl = document.getElementById('quick-note-active-audio');
+          if (audioEl) {
+            audioEl.onended = () => {
+              clearInterval(quickNoteTimerInterval);
+              playNextQuickNote();
+            };
+          }
+        }
+      }
+
+      playQuickNoteChime(conn.id);
+      modal.classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+      startQuickNoteProgressBar();
+    }
+
+    function startQuickNoteProgressBar() {
+      clearInterval(quickNoteTimerInterval);
+      const circle = document.getElementById('quick-note-circle-progress');
+      const CIRCLE_LEN = 295.3;
+      if (circle) {
+        circle.style.transition = 'none';
+        circle.style.strokeDashoffset = CIRCLE_LEN;
+      }
+
+      const conn = CONNECTIONS_DATA.find(c => c.id === currentPlayingQuickNoteConnId);
+      const duration = (conn && conn.quickNote && conn.quickNote.duration) ? conn.quickNote.duration : QUICK_NOTE_DURATION;
+
+      const stepMs = 100;
+      const totalSteps = (duration * 1000) / stepMs;
+      let currentStep = 0;
+
+      setTimeout(() => {
+        if (circle) circle.style.transition = 'stroke-dashoffset 100ms linear';
+      }, 40);
+
+      quickNoteTimerInterval = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / totalSteps;
+        if (circle) {
+          circle.style.strokeDashoffset = (CIRCLE_LEN * (1 - Math.min(1, progress))).toFixed(1);
+        }
+
+        if (currentStep >= totalSteps) {
+          clearInterval(quickNoteTimerInterval);
+          playNextQuickNote();
+        }
+      }, stepMs);
+    }
+
+    function closeQuickNotePlayer() {
+      clearInterval(quickNoteTimerInterval);
+      const activeVideo = document.getElementById('quick-note-active-video');
+      const activeAudio = document.getElementById('quick-note-active-audio');
+      if (activeVideo) { activeVideo.pause(); activeVideo.src = ''; }
+      if (activeAudio) { activeAudio.pause(); activeAudio.src = ''; }
+
+      const circle = document.getElementById('quick-note-circle-progress');
+      if (circle) circle.style.strokeDashoffset = '295.3';
+      const modal = document.getElementById('modal-quick-note-player');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // ==========================================
+    // GRAVAÇÃO DE RECADO RÁPIDO COM MEDIADEVICES & MEDIARECORDER
+    // ==========================================
+    let mediaStream = null;
+    let mediaRecorder = null;
+    let recordedChunks = [];
+    let recordedBlob = null;
+    let recordedBlobUrl = null;
+    let recordedBase64 = null;
+    let isRecordingNow = false;
+    let isPreviewingRecorded = false;
+    let currentRecordType = 'video';
+    let recordTimerInterval = null;
+    let recordRemainingSeconds = 15;
+
+    function openQuickNoteRecorder() {
+      const modal = document.getElementById('modal-quick-note-record');
+      const deleteBtn = document.getElementById('delete-quick-note-btn');
+      const captionInput = document.getElementById('record-caption-input');
+
+      const userConn = CONNECTIONS_DATA[0];
+      if (userConn && userConn.quickNote) {
+        if (deleteBtn) deleteBtn.classList.remove('hidden');
+        if (captionInput) captionInput.value = userConn.quickNote.caption || '';
+      } else {
+        if (deleteBtn) deleteBtn.classList.add('hidden');
+        if (captionInput) captionInput.value = '';
+      }
+
+      resetRecordState();
+      selectRecordType('video');
+      modal.classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeQuickNoteRecorder() {
+      if (isRecordingNow) {
+        stopRecordingProcess();
+      }
+      stopMediaStream();
+      resetRecordState();
+      const modal = document.getElementById('modal-quick-note-record');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function selectRecordType(type) {
+      currentRecordType = type;
+      resetRecordState();
+
+      const videoBtn = document.getElementById('record-type-video-btn');
+      const audioBtn = document.getElementById('record-type-audio-btn');
+
+      if (type === 'video') {
+        if (videoBtn) videoBtn.className = 'px-3.5 py-1 rounded-full bg-emerald-600 text-white shadow-xs font-bold transition flex items-center gap-1';
+        if (audioBtn) audioBtn.className = 'px-3.5 py-1 rounded-full text-slate-300 hover:text-white font-bold transition flex items-center gap-1';
+      } else {
+        if (audioBtn) audioBtn.className = 'px-3.5 py-1 rounded-full bg-emerald-600 text-white shadow-xs font-bold transition flex items-center gap-1';
+        if (videoBtn) videoBtn.className = 'px-3.5 py-1 rounded-full text-slate-300 hover:text-white font-bold transition flex items-center gap-1';
+      }
+
+      initMediaStream(type);
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function initMediaStream(type) {
+      stopMediaStream();
+      const preview = document.getElementById('record-preview-container');
+      if (!preview) return;
+
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          throw new Error('Navegador não suporta getUserMedia ou requer HTTPS.');
+        }
+
+        if (type === 'video') {
+          preview.innerHTML = `
+            <div class="relative w-full h-full flex items-center justify-center bg-black">
+              <video id="record-live-video" autoplay playsinline muted class="w-full h-full object-cover"></video>
+              <div id="camera-loading-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white text-[11px] font-bold gap-1.5 z-10">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Iniciando câmera...</span>
+              </div>
+            </div>
+          `;
+
+          try {
+            mediaStream = await navigator.mediaDevices.getUserMedia({
+              video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } },
+              audio: true
+            });
+          } catch (errFacing) {
+            mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+          }
+
+          const videoEl = document.getElementById('record-live-video');
+          const loader = document.getElementById('camera-loading-overlay');
+          if (videoEl && mediaStream) {
+            videoEl.srcObject = mediaStream;
+            videoEl.onloadedmetadata = () => {
+              videoEl.play().catch(e => console.warn('Erro ao reproduzir live video:', e));
+              if (loader) loader.classList.add('hidden');
+            };
+          }
+        } else {
+          preview.innerHTML = `
+            <div class="relative w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 via-[#0A1F3D] to-neutral-900 p-4">
+              <div class="relative">
+                <img src="${CONNECTIONS_DATA[0].avatar}" class="w-20 h-20 rounded-full object-cover border-2 border-amber-400 shadow-xl">
+                <span class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-emerald-500 border border-[#040E1E] flex items-center justify-center text-xs">🎙️</span>
+              </div>
+              <div class="flex items-center gap-1.5 h-6 mt-3">
+                <span class="w-1 bg-amber-400 rounded-full animate-pulse" style="height: 14px;"></span>
+                <span class="w-1 bg-emerald-400 rounded-full animate-pulse" style="height: 22px; animation-delay: 0.2s;"></span>
+                <span class="w-1 bg-amber-300 rounded-full animate-pulse" style="height: 16px; animation-delay: 0.1s;"></span>
+              </div>
+              <span class="text-[10px] text-amber-300 font-bold mt-1">Microfone Ativo</span>
+            </div>
+          `;
+
+          mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        }
+      } catch (err) {
+        console.warn('MediaDevices getUserMedia:', err);
+        renderVisualFallback(type);
+      }
+    }
+
+    function stopMediaStream() {
+      if (mediaStream) {
+        try {
+          mediaStream.getTracks().forEach(track => track.stop());
+        } catch (e) {
+          console.warn('Erro ao parar tracks:', e);
+        }
+        mediaStream = null;
+      }
+    }
+
+    function renderVisualFallback(type) {
+      const preview = document.getElementById('record-preview-container');
+      if (!preview) return;
+
+      if (type === 'video') {
+        preview.innerHTML = `
+          <div class="relative w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-neutral-800 to-neutral-900 p-4 text-center">
+            <img src="${CONNECTIONS_DATA[0].avatar}" class="w-24 h-24 rounded-full object-cover border-4 border-amber-400 shadow-xl">
+            <span class="text-[10px] text-white/90 font-bold mt-2 flex items-center justify-center gap-1">
+              <i data-lucide="camera" class="w-3 h-3 text-amber-400"></i> Simulação de Câmera
+            </span>
+          </div>
+        `;
+      } else {
+        preview.innerHTML = `
+          <div class="relative w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 via-[#0A1F3D] to-neutral-900 p-4 text-center">
+            <div class="w-16 h-16 rounded-full bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-2xl shadow-lg">
+              🎙️
+            </div>
+            <span class="text-[10px] text-amber-300 font-bold mt-2">Simulação de Voz</span>
+          </div>
+        `;
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function resetRecordState() {
+      isRecordingNow = false;
+      isPreviewingRecorded = false;
+      recordRemainingSeconds = 15;
+      clearInterval(recordTimerInterval);
+
+      const timerText = document.getElementById('record-timer-text');
+      const dot = document.getElementById('record-status-dot');
+      const btnIcon = document.getElementById('record-btn-icon');
+      const hint = document.getElementById('record-hint-text');
+      const recordCircle = document.getElementById('record-circle-progress');
+
+      if (timerText) timerText.innerText = '00:15';
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-neutral-400';
+      if (btnIcon) {
+        btnIcon.className = 'w-4 h-4 rounded-full bg-white';
+        btnIcon.innerHTML = '';
+      }
+      if (hint) hint.innerText = 'Toque p/ gravar';
+      if (recordCircle) recordCircle.style.strokeDashoffset = '295.3';
+    }
+
+    function toggleRecording() {
+      if (isPreviewingRecorded) {
+        retakeRecording();
+        return;
+      }
+      if (!isRecordingNow) {
+        startRecordingProcess();
+      } else {
+        stopRecordingProcess();
+      }
+    }
+
+    function startRecordingProcess() {
+      recordedChunks = [];
+      recordedBlob = null;
+      recordedBlobUrl = null;
+      recordedBase64 = null;
+
+      let options = {};
+      if (currentRecordType === 'video') {
+        if (typeof MediaRecorder !== 'undefined') {
+          if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus')) {
+            options = { mimeType: 'video/webm;codecs=vp9,opus' };
+          } else if (MediaRecorder.isTypeSupported('video/webm')) {
+            options = { mimeType: 'video/webm' };
+          } else if (MediaRecorder.isTypeSupported('video/mp4')) {
+            options = { mimeType: 'video/mp4' };
+          }
+        }
+      } else {
+        if (typeof MediaRecorder !== 'undefined') {
+          if (MediaRecorder.isTypeSupported('audio/webm')) {
+            options = { mimeType: 'audio/webm' };
+          } else if (MediaRecorder.isTypeSupported('audio/ogg')) {
+            options = { mimeType: 'audio/ogg' };
+          } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+            options = { mimeType: 'audio/mp4' };
+          }
+        }
+      }
+
+      try {
+        if (mediaStream && typeof MediaRecorder !== 'undefined') {
+          mediaRecorder = new MediaRecorder(mediaStream, options);
+          mediaRecorder.ondataavailable = (e) => {
+            if (e.data && e.data.size > 0) {
+              recordedChunks.push(e.data);
+            }
+          };
+          mediaRecorder.onstop = handleMediaRecorderStop;
+          mediaRecorder.start(250);
+        }
+      } catch (e) {
+        console.warn('MediaRecorder falhou:', e);
+      }
+
+      isRecordingNow = true;
+      recordRemainingSeconds = 15;
+      const dot = document.getElementById('record-status-dot');
+      const btnIcon = document.getElementById('record-btn-icon');
+      const hint = document.getElementById('record-hint-text');
+      const recordCircle = document.getElementById('record-circle-progress');
+      const CIRCLE_LEN = 295.3;
+
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
+      if (btnIcon) {
+        btnIcon.className = 'w-3.5 h-3.5 rounded-xs bg-white';
+        btnIcon.innerHTML = '';
+      }
+      if (hint) hint.innerText = 'Gravando... toque p/ parar';
+
+      clearInterval(recordTimerInterval);
+      recordTimerInterval = setInterval(() => {
+        recordRemainingSeconds--;
+        const timerText = document.getElementById('record-timer-text');
+        if (timerText) {
+          timerText.innerText = `00:${recordRemainingSeconds < 10 ? '0' : ''}${recordRemainingSeconds}`;
+        }
+        if (recordCircle) {
+          const elapsed = 15 - recordRemainingSeconds;
+          const progress = elapsed / 15;
+          recordCircle.style.strokeDashoffset = (CIRCLE_LEN * (1 - progress)).toFixed(1);
+        }
+        if (recordRemainingSeconds <= 0) {
+          stopRecordingProcess();
+          showAppToast('⏱️ Limite de 15 segundos atingido!');
+        }
+      }, 1000);
+    }
+
+    function stopRecordingProcess() {
+      clearInterval(recordTimerInterval);
+      if (!isRecordingNow) return;
+      isRecordingNow = false;
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        try {
+          mediaRecorder.stop();
+        } catch (e) {
+          console.warn('Erro ao parar MediaRecorder:', e);
+        }
+      } else {
+        handleMediaRecorderStop();
+      }
+    }
+
+    function handleMediaRecorderStop() {
+      stopMediaStream();
+      let mimeType = currentRecordType === 'video' ? 'video/webm' : 'audio/webm';
+      if (recordedChunks.length > 0) {
+        recordedBlob = new Blob(recordedChunks, { type: recordedChunks[0].type || mimeType });
+        recordedBlobUrl = URL.createObjectURL(recordedBlob);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          recordedBase64 = reader.result;
+        };
+        reader.readAsDataURL(recordedBlob);
+      }
+      showRecordingPreview();
+    }
+
+    function showRecordingPreview() {
+      isPreviewingRecorded = true;
+      const preview = document.getElementById('record-preview-container');
+      const dot = document.getElementById('record-status-dot');
+      const btnIcon = document.getElementById('record-btn-icon');
+      const hint = document.getElementById('record-hint-text');
+      const recordCircle = document.getElementById('record-circle-progress');
+
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+      if (btnIcon) {
+        btnIcon.className = 'w-4 h-4 rounded-full bg-white flex items-center justify-center text-[10px] text-red-600 font-black';
+        btnIcon.innerHTML = '↺';
+      }
+      if (hint) hint.innerText = 'Toque para regravar';
+      if (recordCircle) recordCircle.style.strokeDashoffset = '0';
+
+      if (preview) {
+        if (currentRecordType === 'video' && recordedBlobUrl) {
+          preview.innerHTML = `
+            <div class="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-black">
+              <video src="${recordedBlobUrl}" autoplay loop playsinline class="w-full h-full object-cover"></video>
+              <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-6">
+                <span class="text-[9px] text-emerald-300 font-bold bg-black/60 px-2.5 py-0.5 rounded-full border border-emerald-500/30">Pré-visualização (Loop)</span>
+              </div>
+            </div>
+          `;
+        } else if (currentRecordType === 'audio' && recordedBlobUrl) {
+          preview.innerHTML = `
+            <div class="relative w-full h-full rounded-full overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 via-[#0A1F3D] to-neutral-900 p-4">
+              <audio src="${recordedBlobUrl}" autoplay loop></audio>
+              <img src="${CONNECTIONS_DATA[0].avatar}" class="w-18 h-18 rounded-full object-cover border-2 border-amber-400 shadow-md mb-2">
+              <div class="flex items-center gap-1.5 h-6">
+                <span class="w-1 bg-amber-400 rounded-full animate-bounce" style="height: 18px;"></span>
+                <span class="w-1 bg-emerald-400 rounded-full animate-bounce" style="height: 24px; animation-delay: 0.2s;"></span>
+                <span class="w-1 bg-amber-300 rounded-full animate-bounce" style="height: 16px; animation-delay: 0.1s;"></span>
+              </div>
+              <span class="text-[9px] text-emerald-300 font-bold mt-1 bg-black/50 px-2 py-0.5 rounded-full">Prévia de Voz</span>
+            </div>
+          `;
+        } else {
+          preview.innerHTML = `
+            <div class="relative w-full h-full rounded-full overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-neutral-800 to-neutral-900">
+              <img src="${CONNECTIONS_DATA[0].avatar}" class="w-24 h-24 rounded-full object-cover border-4 border-amber-400 shadow-xl">
+              <span class="text-[10px] text-emerald-300 font-bold mt-2">✓ Pronto para publicar</span>
+            </div>
+          `;
+        }
+      }
+      showAppToast('✓ Gravação concluída! Confira a prévia antes de publicar.');
+    }
+
+    function retakeRecording() {
+      isPreviewingRecorded = false;
+      recordedChunks = [];
+      recordedBlob = null;
+      recordedBlobUrl = null;
+      recordedBase64 = null;
+      resetRecordState();
+      initMediaStream(currentRecordType);
+    }
+
+    function saveMyQuickNote() {
+      const caption = document.getElementById('record-caption-input')?.value.trim() || 'Partilha de momento consciente na comunidade.';
+      const finalMediaUrl = recordedBase64 || recordedBlobUrl || CONNECTIONS_DATA[0].avatar;
+
+      const newNote = {
+        type: currentRecordType,
+        caption: caption,
+        mediaUrl: finalMediaUrl,
+        hasRealMedia: !!(recordedBase64 || recordedBlobUrl),
+        createdAt: Date.now(),
+        expiresAt: Date.now() + (24 * 60 * 60 * 1000)
+      };
+
+      try {
+        localStorage.setItem('yby_user_quick_note', JSON.stringify(newNote));
+        showAppToast('🎙️ Seu Recado Rápido está ativo e visível na Rede de Conexão por 24h!');
+      } catch (e) {
+        try {
+          const compactNote = { ...newNote, mediaUrl: '' };
+          localStorage.setItem('yby_user_quick_note', JSON.stringify(compactNote));
+          showAppToast('🎙️ Recado Rápido salvo e ativo por 24h!');
+        } catch (err2) {
+          console.error(err2);
+        }
+      }
+
+      CONNECTIONS_DATA[0].quickNote = {
+        type: currentRecordType,
+        timeAgo: 'Agora mesmo',
+        createdAt: newNote.createdAt,
+        caption: caption,
+        duration: 15,
+        mediaUrl: finalMediaUrl
+      };
+
+      closeQuickNoteRecorder();
+      renderConnectionsBar();
+    }
+
+    function deleteMyQuickNote() {
+      localStorage.removeItem('yby_user_quick_note');
+      CONNECTIONS_DATA[0].quickNote = null;
+      closeQuickNoteRecorder();
+      renderConnectionsBar();
+      showAppToast('Recado Rápido removido da sua Rede de Conexão.');
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
+      renderConnectionsBar();
+      initProceduralQuickNoteVideos();
       enableMouseDragScroll(document.getElementById('format-icons-carousel'));
       enableMouseDragScroll(document.getElementById('following-row'));
       // Service worker registration

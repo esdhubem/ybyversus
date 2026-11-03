@@ -205,23 +205,39 @@
       transform: scale(0.94);
     }
 
-    /* Brilho Dourado Atmosférico das Postagens (A LUZ DO PRINT 2) */
+    /* Iluminação Verde Florescente Atrás das Postagens */
     .celestial-post-glow {
       position: relative;
       border-radius: 28px;
       background: linear-gradient(180deg, #091C36 0%, #06152B 100%);
-      border: 1px solid rgba(229, 195, 132, 0.25);
-      box-shadow: 0 22px 45px -8px rgba(0, 0, 0, 0.95), 0 0 35px rgba(229, 195, 132, 0.35), 0 8px 24px rgba(212, 175, 55, 0.25);
+      border: 1px solid rgba(74, 222, 128, 0.45);
+      box-shadow: 
+        0 22px 45px -8px rgba(0, 0, 0, 0.95), 
+        0 0 35px rgba(34, 197, 94, 0.5), 
+        0 0 70px rgba(74, 222, 128, 0.28), 
+        0 8px 24px rgba(34, 197, 94, 0.35);
+    }
+    .celestial-post-glow::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 12%;
+      right: 12%;
+      height: 14px;
+      background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.65) 0%, rgba(34, 197, 94, 0.3) 50%, transparent 80%);
+      filter: blur(10px);
+      pointer-events: none;
+      z-index: -1;
     }
     .celestial-post-glow::after {
       content: '';
       position: absolute;
-      bottom: -6px;
-      left: 10%;
-      right: 10%;
-      height: 14px;
-      background: radial-gradient(ellipse at center, rgba(229, 195, 132, 0.65) 0%, rgba(212, 175, 55, 0.3) 50%, transparent 80%);
-      filter: blur(8px);
+      bottom: -8px;
+      left: 8%;
+      right: 8%;
+      height: 18px;
+      background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.85) 0%, rgba(34, 197, 94, 0.5) 45%, transparent 80%);
+      filter: blur(12px);
       pointer-events: none;
       z-index: -1;
     }
@@ -233,21 +249,46 @@
       margin: 0;
       padding: 0;
     }
+    /* Enquadramento Perfeito em Mobile (Sem faixas no topo ou cortes no rodapé) */
     @media (max-width: 639px) {
       html, body {
         overflow: hidden;
+        width: 100%;
+        height: 100%;
+        height: 100dvh;
       }
-    }
-    #phone-container {
-      height: 100%;
-      height: 100dvh;
-      max-height: 100dvh;
-      display: flex;
-      flex-direction: column;
+      body {
+        display: block !important;
+        min-height: 100% !important;
+        min-height: 100dvh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      #phone-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        max-width: 100% !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .desktop-orbits-bg {
+        display: none !important;
+      }
     }
     @media (min-width: 640px) {
       body {
         overflow: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       #phone-container {
         height: 870px;
@@ -264,12 +305,12 @@
   </style>
 </head>
 
-<body class="bg-[#040D08] text-slate-100 min-h-screen flex items-center justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
+<body class="bg-[#040D08] text-slate-100 min-h-screen sm:flex sm:items-center sm:justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
 
   <!-- ======================================================== -->
   <!-- FUNDO CÓSMICO CELESTIAL (ÓRBITAS DOURADAS & ESTRELAS)    -->
   <!-- ======================================================== -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
+  <div class="desktop-orbits-bg fixed inset-0 pointer-events-none overflow-hidden z-0 hidden sm:flex items-center justify-center">
     
     <!-- Órbitas Douradas Superiores / Direita -->
     <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-45" viewBox="0 0 600 600" fill="none">
@@ -792,7 +833,7 @@
     <!-- ======================================================== -->
     <!-- 4. RODAPÉ FIXO (BOTTOM NAVIGATION BAR)                    -->
     <!-- ======================================================== -->
-    <nav class="shrink-0 z-30 bg-[#030A16]/90 backdrop-blur-md border-t border-[#142C4E] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.6)]">
+    <nav class="shrink-0 z-30 px-3 pt-2 pb-3.5 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_25px_rgba(20,10,5,0.85)]" style="background: linear-gradient(180deg, rgba(62, 34, 18, 0.98) 0%, rgba(36, 19, 10, 0.99) 100%); border-top: 1.5px solid rgba(199, 150, 55, 0.4); padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)); min-height: 68px;">
       <!-- Praça -->
       <button onclick="selectBottomNav('praca')" id="nav-btn-praca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-100 transition-colors tap-active group">
         <i data-lucide="layout-grid" class="w-5 h-5"></i>
@@ -805,10 +846,10 @@
         <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
       </a>
 
-      <!-- Botão Central Elevado (+) Cultivar Saber -->
-      <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
-        <button onclick="openModal('modal-publish')" title="Cultivar Saber" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85),0_0_18px_rgba(199,150,55,0.7)] active:scale-95 hover:scale-105 transition-all tap-active">
-          <i data-lucide="plus" class="w-6 h-6 stroke-[3.5] text-[#1A1204]"></i>
+      <!-- Botão Central Elevado (+) Cultivar Saber (Verde Florescente) -->
+      <div class="relative -top-5 px-2 flex flex-col items-center shrink-0">
+        <button onclick="openModal('modal-publish')" title="Cultivar Saber" class="w-13 h-13 rounded-full bg-gradient-to-tr from-[#15803d] via-[#22c55e] to-[#4ade80] text-[#052e16] flex items-center justify-center border-2 border-[#86efac] shadow-[0_4px_24px_rgba(34,197,94,0.95),0_0_22px_rgba(74,222,128,0.85)] active:scale-95 hover:scale-110 transition-all tap-active">
+          <i data-lucide="plus" class="w-7 h-7 stroke-[3.5] text-[#052e16]"></i>
         </button>
       </div>
 

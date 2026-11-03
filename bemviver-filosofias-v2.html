@@ -30,20 +30,67 @@
         
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: 
-                radial-gradient(circle at 15% 10%, rgba(30, 58, 110, 0.45) 0%, transparent 45%),
-                radial-gradient(circle at 85% 30%, rgba(56, 30, 85, 0.35) 0%, transparent 45%),
-                radial-gradient(circle at 50% 75%, rgba(16, 40, 70, 0.4) 0%, transparent 55%),
-                var(--bg-base);
+            background-color: #020712;
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(18, 48, 92, 0.45) 0%, rgba(2, 7, 18, 0.92) 80%),
+                url('assets/cosmic-sky.jpg');
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
             color: var(--text);
             line-height: 1.7;
             min-height: 100vh;
             padding: 20px;
             scroll-behavior: smooth;
+            position: relative;
         }
 
-        .container { max-width: 1140px; margin: 0 auto; position: relative; }
+        /* Fundo Cósmico Celestial (Órbitas Douradas & Estrelas) */
+        .fixed-cosmic-universe {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .orbit-svg {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+        .orbit-top-right {
+            top: -120px;
+            right: -120px;
+            width: 720px;
+            height: 720px;
+        }
+        .orbit-bottom-left {
+            bottom: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+        }
+        .star-point {
+            position: absolute;
+            color: #E5C384;
+            pointer-events: none;
+            opacity: 0.7;
+            user-select: none;
+        }
+        .star-1 { top: 10%; left: 8%; font-size: 1.4rem; animation: starPulse 3s infinite ease-in-out; }
+        .star-2 { top: 18%; right: 12%; font-size: 1.1rem; color: #FBF0D9; opacity: 0.85; animation: starPulse 4s infinite ease-in-out 1s; }
+        .star-3 { top: 38%; left: 4%; font-size: 0.9rem; opacity: 0.5; }
+        .star-4 { top: 55%; right: 6%; font-size: 1.3rem; color: #FBF0D9; animation: starPulse 3.5s infinite ease-in-out 0.5s; }
+        .star-5 { top: 75%; left: 10%; font-size: 1.2rem; animation: starPulse 4.5s infinite ease-in-out 2s; }
+        .star-6 { top: 88%; right: 15%; font-size: 0.85rem; opacity: 0.5; }
+        .star-7 { top: 28%; left: 22%; font-size: 0.75rem; color: #FBF0D9; opacity: 0.6; }
+
+        @keyframes starPulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 0.95; transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(229,195,132,0.8)); }
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; position: relative; z-index: 1; }
 
         .back-nav {
             margin-bottom: 25px;
@@ -614,6 +661,41 @@
     </style>
 </head>
 <body>
+
+    <!-- ======================================================== -->
+    <!-- FUNDO CÓSMICO CELESTIAL (ÓRBITAS DOURADAS & ESTRELAS)    -->
+    <!-- ======================================================== -->
+    <div class="fixed-cosmic-universe" aria-hidden="true">
+        <!-- Órbitas Douradas Superiores / Direita -->
+        <svg class="orbit-svg orbit-top-right" viewBox="0 0 600 600" fill="none">
+            <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+            <circle cx="300" cy="300" r="240" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="300" cy="300" r="200" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="8 8"/>
+            <circle cx="300" cy="300" r="160" stroke="#E5C384" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="300" cy="300" r="120" stroke="#D4AF37" stroke-width="0.8"/>
+            <circle cx="300" cy="300" r="70" stroke="#E5C384" stroke-width="1.2" stroke-dasharray="4 6"/>
+            <circle cx="460" cy="300" r="9" fill="#E5C384" filter="drop-shadow(0 0 12px rgba(229,195,132,0.8))"/>
+            <circle cx="160" cy="220" r="5" fill="#FBF0D9"/>
+        </svg>
+
+        <!-- Órbitas Douradas Inferiores / Esquerda -->
+        <svg class="orbit-svg orbit-bottom-left" viewBox="0 0 600 600" fill="none">
+            <circle cx="300" cy="300" r="260" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+            <circle cx="300" cy="300" r="210" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="300" cy="300" r="150" stroke="#D4AF37" stroke-width="1" stroke-dasharray="6 6"/>
+            <circle cx="300" cy="300" r="90" stroke="#E5C384" stroke-width="1.4"/>
+            <circle cx="390" cy="300" r="7" fill="#E5C384" filter="drop-shadow(0 0 10px rgba(229,195,132,0.7))"/>
+        </svg>
+
+        <!-- Estrelas Douradas Shimmering de 4 Pontas (✦) -->
+        <span class="star-point star-1">✦</span>
+        <span class="star-point star-2">✦</span>
+        <span class="star-point star-3">✦</span>
+        <span class="star-point star-4">✦</span>
+        <span class="star-point star-5">✦</span>
+        <span class="star-point star-6">✦</span>
+        <span class="star-point star-7">✦</span>
+    </div>
 
 <div class="container">
     <div class="back-nav">

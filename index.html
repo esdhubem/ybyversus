@@ -1031,40 +1031,114 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL: POSTAGEM RÁPIDA / PUBLICAR SABER NO FEED          -->
+  <!-- MODAL: POSTAGEM RÁPIDA / PUBLICAR EM SABERES             -->
   <!-- ======================================================== -->
-  <div id="modal-new-text-post" class="fixed inset-0 bg-black/75 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-md transition-all">
-    <div class="bg-[#061428] w-full sm:max-w-[420px] rounded-[28px] p-5 space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl border border-amber-500/25">
-      <div class="flex items-center justify-between pb-2 border-b border-slate-700/60">
-        <div class="flex items-center gap-2">
-          <span class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center text-sm font-bold border border-emerald-500/30">🪶</span>
+  <div id="modal-new-text-post" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-md transition-all">
+    <div class="bg-gradient-to-b from-[#0A1728] to-[#040E1E] w-full sm:max-w-[460px] rounded-[28px] p-5 space-y-4 max-h-[92vh] overflow-y-auto shadow-2xl border border-amber-500/35">
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-700/60">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white flex items-center justify-center text-lg font-bold shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+            📖
+          </div>
           <div>
             <h3 class="text-sm font-bold text-slate-100">Publicar em Saberes</h3>
-            <p class="text-[10.5px] text-slate-400">Partilhe relatos, saberes, fotos e ensaios comunitários</p>
+            <p class="text-[10.5px] text-slate-400">Partilhe relatos, sabedoria tradicional ou reflexão comunitária</p>
           </div>
         </div>
-        <button onclick="closeModal('modal-new-text-post')" class="text-slate-400 hover:text-white p-1 tap-active">
+        <button onclick="closeModal('modal-new-text-post')" class="text-slate-400 hover:text-white p-1 rounded-full hover:bg-white/10 transition tap-active">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <textarea id="new-text-content" rows="4" placeholder="Escreva seu relato, sabedoria tradicional ou reflexão sobre autonomia..." class="w-full p-3 rounded-2xl bg-black/40 border border-slate-700/60 outline-none text-xs text-white focus:border-amber-400 resize-none placeholder:text-slate-500"></textarea>
+      <!-- Formulário de Publicação -->
+      <div class="space-y-3.5">
+        <!-- Texto / Relato -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-[#E5C384]">
+            Seu relato, sabedoria ou reflexão <span class="text-rose-400">*</span>
+          </label>
+          <textarea id="new-text-content" rows="4" placeholder="Escreva seu relato, sabedoria tradicional ou reflexão sobre autonomia..." class="w-full p-3 rounded-2xl bg-[#040E1E]/80 border border-slate-700/80 outline-none text-xs text-white focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/40 resize-none placeholder:text-slate-500 transition"></textarea>
+        </div>
 
-      <div class="space-y-1">
-        <label class="block text-xs font-bold text-slate-200 flex items-center gap-1">
-          <i data-lucide="image" class="w-3.5 h-3.5 text-[#E5C384]"></i> Foto ou Imagem (URL da imagem):
-        </label>
-        <input type="url" id="new-text-image" placeholder="Cole o link da foto (opcional)" class="w-full p-2.5 rounded-xl bg-black/40 border border-slate-700/60 text-xs text-white outline-none focus:border-amber-400 placeholder:text-slate-500">
+        <!-- Upload de Foto / Imagem -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-[#E5C384] flex items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="image" class="w-3.5 h-3.5 text-[#E5C384]"></i> Foto ou Imagem
+            </span>
+            <span class="text-[10.5px] text-slate-400 font-normal">(opcional)</span>
+          </label>
+          
+          <div id="modal-upload-area" onclick="document.getElementById('new-post-image-file').click()" class="relative border-2 border-dashed border-amber-500/40 hover:border-amber-400/80 rounded-2xl p-4 text-center cursor-pointer bg-amber-500/5 hover:bg-amber-500/10 transition group">
+            
+            <div id="modal-upload-placeholder" class="space-y-1.5 py-1">
+              <div class="text-2xl group-hover:scale-110 transition-transform">🖼️</div>
+              <p class="text-xs text-slate-200"><strong class="text-[#E5C384]">Clique para enviar</strong> ou arraste a imagem aqui</p>
+              <p class="text-[10px] text-slate-400">JPG, PNG ou WEBP • Máximo 5MB</p>
+            </div>
+
+            <!-- Preview da Imagem Carregada -->
+            <img id="modal-preview-image" alt="Prévia da imagem" class="hidden max-h-44 w-auto mx-auto rounded-xl object-cover shadow-lg border border-amber-500/30">
+            
+            <!-- Botão Remover Imagem -->
+            <button type="button" id="modal-remove-image-btn" onclick="removeModalUploadedImage(event)" class="hidden absolute top-2 right-2 w-7 h-7 rounded-full bg-rose-600/90 hover:bg-rose-500 text-white flex items-center justify-center text-xs shadow-md tap-active">
+              ✕
+            </button>
+
+            <!-- Input File Oculto -->
+            <input type="file" id="new-post-image-file" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleModalImageUpload(event)">
+          </div>
+        </div>
+
+        <!-- Comunidade ou Tag -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-[#E5C384]">Comunidade ou Tag:</label>
+          <input type="text" id="new-text-tag" placeholder="Ex: Etnobotânica, Agroecologia, Saberes da Terra" class="w-full p-2.5 rounded-xl bg-[#040E1E]/80 border border-slate-700/80 text-xs text-white outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/40 placeholder:text-slate-500 transition">
+        </div>
+
+        <!-- AVISO SOBRE DIREITOS AUTORAIS E USO DE IMAGENS -->
+        <div class="bg-amber-500/10 border-l-4 border-amber-400 rounded-r-xl p-3.5 space-y-2 text-[11px] text-slate-200">
+          <h4 class="font-bold text-amber-300 flex items-center gap-1.5 text-xs">
+            <span>⚖️</span> Direitos Autorais e Uso de Imagens
+          </h4>
+          <p class="leading-relaxed text-slate-300">
+            Ao publicar uma imagem, você declara que possui os direitos necessários para compartilhá-la. Respeitamos a criatividade e o trabalho de todos os criadores.
+          </p>
+          <div class="space-y-1 text-[10.5px]">
+            <p class="font-bold text-slate-200">Tipos de imagem permitidos:</p>
+            <ul class="space-y-0.5 text-slate-300 pl-1">
+              <li class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">✓</span> Fotos de sua própria autoria (que você mesmo criou)</li>
+              <li class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">✓</span> Imagens com licença Creative Commons (CC0, CC-BY...)</li>
+              <li class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">✓</span> Imagens geradas por IA (com direito de uso)</li>
+              <li class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">✓</span> Imagens de domínio público</li>
+            </ul>
+          </div>
+          <p class="text-[10px] text-rose-300 font-medium">
+            <strong>Não é permitido:</strong> publicar imagens protegidas por terceiros sem autorização prévia ou violação de privacidade.
+          </p>
+          <p class="text-[10px] text-slate-400">
+            📄 Saiba mais em nossos <a href="convite.html" target="_blank" class="text-amber-300 underline font-semibold">Termos de Uso</a> e <a href="convite.html" target="_blank" class="text-amber-300 underline font-semibold">Política de Privacidade</a>.
+          </p>
+
+          <!-- Checkbox de Concordância -->
+          <div class="flex items-start gap-2 pt-2 border-t border-amber-500/20">
+            <input type="checkbox" id="copyright-agree-check" required class="w-4 h-4 mt-0.5 accent-amber-400 cursor-pointer shrink-0">
+            <label for="copyright-agree-check" class="text-[10.5px] text-slate-200 cursor-pointer leading-tight select-none">
+              Declaro que a imagem enviada é de minha autoria, sob licença Creative Commons, gerada por IA com direito de uso, ou domínio público, respeitando os Termos da plataforma.
+            </label>
+          </div>
+        </div>
+
+        <!-- Mensagem de Erro -->
+        <div id="modal-post-error-msg" class="hidden bg-rose-500/15 border-l-3 border-rose-500 text-rose-300 text-xs p-2.5 rounded-r-lg font-medium"></div>
+
+        <!-- Botão Submit -->
+        <button id="modal-submit-post-btn" onclick="submitNewTextPost()" class="w-full py-3 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] hover:brightness-110 active:scale-95 text-black text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-lg shadow-amber-900/40 tap-active cursor-pointer">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Publicar em Saberes</span>
+        </button>
       </div>
-
-      <div class="space-y-1">
-        <label class="block text-xs font-bold text-slate-200">Comunidade ou Tag:</label>
-        <input type="text" id="new-text-tag" placeholder="Ex: Etnobotânica, Agroecologia, Saberes da Terra" class="w-full p-2.5 rounded-xl bg-black/40 border border-slate-700/60 text-xs text-white outline-none focus:border-amber-400 placeholder:text-slate-500">
-      </div>
-
-      <button onclick="submitNewTextPost()" class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] hover:brightness-110 text-black text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-md tap-active">
-        <i data-lucide="send" class="w-4 h-4"></i> Publicar em Saberes
-      </button>
     </div>
   </div>
 
@@ -4084,14 +4158,87 @@
       filterSaberesPosts();
     }
 
-    function submitNewTextPost() {
-      const content = document.getElementById('new-text-content')?.value.trim();
-      if (!content) {
-        showAppToast('Escreva algo para partilhar com a comunidade.');
+    let modalUploadedImageDataUrl = '';
+
+    function handleModalImageUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (file.size > 5 * 1024 * 1024) {
+        showModalPostError('A imagem é muito grande. O tamanho máximo é 5MB.');
         return;
       }
-      const img = document.getElementById('new-text-image')?.value.trim() || '';
+
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!allowedTypes.includes(file.type)) {
+        showModalPostError('Formato não permitido. Use JPG, PNG ou WEBP.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        modalUploadedImageDataUrl = e.target.result;
+        const preview = document.getElementById('modal-preview-image');
+        if (preview) {
+          preview.src = modalUploadedImageDataUrl;
+          preview.classList.remove('hidden');
+        }
+        document.getElementById('modal-remove-image-btn')?.classList.remove('hidden');
+        document.getElementById('modal-upload-placeholder')?.classList.add('hidden');
+        hideModalPostError();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeModalUploadedImage(event) {
+      if (event) event.stopPropagation();
+      modalUploadedImageDataUrl = '';
+      const input = document.getElementById('new-post-image-file');
+      if (input) input.value = '';
+      const preview = document.getElementById('modal-preview-image');
+      if (preview) {
+        preview.src = '';
+        preview.classList.add('hidden');
+      }
+      document.getElementById('modal-remove-image-btn')?.classList.add('hidden');
+      document.getElementById('modal-upload-placeholder')?.classList.remove('hidden');
+    }
+
+    function showModalPostError(msg) {
+      const err = document.getElementById('modal-post-error-msg');
+      if (err) {
+        err.textContent = '⚠️ ' + msg;
+        err.classList.remove('hidden');
+      }
+    }
+
+    function hideModalPostError() {
+      const err = document.getElementById('modal-post-error-msg');
+      if (err) err.classList.add('hidden');
+    }
+
+    function submitNewTextPost() {
+      const content = document.getElementById('new-text-content')?.value.trim();
+      const agree = document.getElementById('copyright-agree-check')?.checked;
+
+      if (!content) {
+        showModalPostError('Por favor, escreva seu relato ou reflexão.');
+        return;
+      }
+
+      if (!agree) {
+        showModalPostError('Você precisa concordar com os termos sobre direitos autorais para publicar.');
+        return;
+      }
+
       const tag = document.getElementById('new-text-tag')?.value.trim() || 'Saberes';
+      const img = modalUploadedImageDataUrl || '';
+      const btn = document.getElementById('modal-submit-post-btn');
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span>⏳</span> Publicando em Saberes...';
+      }
 
       try {
         const stored = JSON.parse(localStorage.getItem('yby_external_links') || '[]');
@@ -4106,21 +4253,56 @@
           createdAt: new Date().toISOString()
         });
         localStorage.setItem('yby_external_links', JSON.stringify(stored));
-      } catch (e) {}
+      } catch (e) {
+        console.error(e);
+      }
 
-      document.getElementById('new-text-content').value = '';
-      if (document.getElementById('new-text-image')) document.getElementById('new-text-image').value = '';
-      if (document.getElementById('new-text-tag')) document.getElementById('new-text-tag').value = '';
-      closeModal('modal-new-text-post');
-      showAppToast('📖 Postagem publicada com sucesso em Saberes!');
+      setTimeout(() => {
+        document.getElementById('new-text-content').value = '';
+        if (document.getElementById('new-text-tag')) document.getElementById('new-text-tag').value = '';
+        removeModalUploadedImage();
+        const chk = document.getElementById('copyright-agree-check');
+        if (chk) chk.checked = false;
+        hideModalPostError();
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i data-lucide="send" class="w-4 h-4"></i><span>Publicar em Saberes</span>';
+          if (window.lucide) lucide.createIcons();
+        }
+        closeModal('modal-new-text-post');
+        showAppToast('📖 Postagem publicada com sucesso em Saberes!');
+      }, 700);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       renderConnectionsBar();
       initProceduralQuickNoteVideos();
-      enableMouseDragScroll(document.getElementById('format-icons-carousel'));
       enableMouseDragScroll(document.getElementById('following-row'));
+
+      const dropArea = document.getElementById('modal-upload-area');
+      if (dropArea) {
+        dropArea.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropArea.classList.add('border-amber-400', 'bg-amber-500/20');
+        });
+        dropArea.addEventListener('dragleave', (e) => {
+          e.preventDefault();
+          dropArea.classList.remove('border-amber-400', 'bg-amber-500/20');
+        });
+        dropArea.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropArea.classList.remove('border-amber-400', 'bg-amber-500/20');
+          const file = e.dataTransfer.files[0];
+          if (file && file.type.startsWith('image/')) {
+            const input = document.getElementById('new-post-image-file');
+            const dt = new DataTransfer();
+            dt.items.add(file);
+            input.files = dt.files;
+            handleModalImageUpload({ target: input });
+          }
+        });
+      }
       // Service worker registration
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(err => {

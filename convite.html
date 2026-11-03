@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite | YBY Versus - Fediverso do Bem Viver</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --gold: #d4af37;
+            --green: #27ae60;
+            --accent: #3b82f6;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark), #1a1f2e);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            color: var(--gold);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        
+        header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        
+        .hero {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+        
+        .section {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .section h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h3 {
+            color: var(--green);
+            margin: 20px 0 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        
+        .highlight-box p {
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .benefit-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .benefit-card h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .benefit-card p {
+            font-size: 0.95em;
+            margin: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #f4d03f);
+            color: var(--bg-dark);
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 20px 0;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .docs-links {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--accent);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .docs-links a {
+            color: var(--accent);
+            text-decoration: none;
+            display: block;
+            margin: 8px 0;
+        }
+        
+        .docs-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .warning {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        
+        .warning strong {
+            color: #e74c3c;
+        }
+        
+        @media (max-width: 600px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🌿 YBY Versus</h1>
+        <p class="subtitle">Fediverso do Bem Viver • Soberania Digital • Saberes Livres</p>
+    </header>
+
+    <div class="hero">
+        <h2>Convite Especial para Criadores de Conteúdo Independente</h2>
+        <p>Se você produz conhecimento, arte ou conteúdo em plataformas comerciais (YouTube, Instagram, etc.), este convite é para você. Conheça uma nova forma de existir digitalmente — sem algoritmos predatórios, sem venda de dados, sem leilão da sua atenção.</p>
+    </div>
+
+    <div class="section">
+        <h2>🌐 O Que é o Fediverso?</h2>
+        <p>O <strong>Fediverso</strong> (Universo Federado) é uma rede social descentralizada, construída sobre protocolos abertos como o <strong>ActivityPub</strong>. Diferente das plataformas comerciais (YouTube, Instagram, TikTok), o Fediverso:</p>
+        
+        <ul>
+            <li><strong>Não é controlado por uma única empresa</strong> — é uma rede de servidores independentes que se comunicam entre si</li>
+            <li><strong>Não monetiza seus dados</strong> — você não é o produto</li>
+            <li><strong>Não tem algoritmos de engajamento</strong> — sem manipulação da sua atenção, sem vício projetado</li>
+            <li><strong>É baseado em ética e soberania</strong> — você é dono do seu conteúdo e da sua audiência</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Filosofia do Fediverso:</strong> É a internet como deveria ser — um espaço público, democrático, onde o conhecimento circula livremente, sem intermediários corporativos extraindo valor do seu trabalho e da sua comunidade.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Por Que o YBY Versus é Diferente?</h2>
+        <p>O <strong>YBY Versus</strong> é um aplicativo federado no Fediverso, construído especificamente para pensadores independentes, pesquisadores, praticantes de saberes integrativos e defensores do Bem Viver.</p>
+
+        <h3>🚫 O Que NÃO Fazemos:</h3>
+        <ul>
+            <li>❌ Não vendemos seus dados para terceiros</li>
+            <li>❌ Não leiloamos suas informações em mercados de publicidade</li>
+            <li>❌ Não usamos algoritmos para maximizar seu tempo de tela</li>
+            <li>❌ Não monetizamos sua audiência com anúncios invasivos</li>
+            <li>❌ Não censuramos saberes alternativos ou visões de mundo diferentes</li>
+        </ul>
+
+        <h3>✅ O Que Oferecemos:</h3>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h4>🔗 BioLinks Perfil Gratuito</h4>
+                <p>Crie seu perfil personalizado com todos os seus links, redes e conteúdos em um só lugar — sem custo, sem limitações.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <h4> Interoperabilidade Total</h4>
+                <p>Suas publicações no YBY Versus aparecem automaticamente em outras plataformas do Fediverso (Mastodon, Pixelfed, PeerTube), ampliando seu alcance organicamente.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <h4> Integração com Plataformas Comerciais</h4>
+                <p>Você pode publicar os links dos seus vídeos do YouTube e outras plataformas, aumentando a visibilidade e direcionando tráfego qualificado para seu conteúdo.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <h4>🌍 Comunidade de Pares</h4>
+                <p>Conecte-se com pesquisadores independentes, praticantes de saúde integrativa, filósofos, agroecologistas e guardiões de saberes ancestrais.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💡 Como Você Pode Se Beneficiar</h2>
+        
+        <h3>1. Amplie Sua Visibilidade Sem Custos</h3>
+        <p>Ao criar seu perfil BioLinks no YBY Versus, você centraliza todo seu trabalho em um lugar acessível e permanente. Quando publica conteúdo aqui, ele é automaticamente distribuído para milhares de usuários em outras instâncias do Fediverso — sem que você precise fazer nada extra.</p>
+
+        <h3>2. Direcione Tráfego para Suas Plataformas</h3>
+        <p>Você pode (e deve!) continuar publicando no YouTube, Instagram ou outras plataformas comerciais. O YBY Versus funciona como um <strong>hub de curadoria</strong>: você compartilha os links dos seus vídeos lá, e nossa comunidade — formada por pessoas profundamente interessadas em saberes críticos e alternativos — acessa, comenta e compartilha, aumentando suas visualizações na plataforma de origem.</p>
+
+        <h3>3. Soberania sobre Seu Conteúdo</h3>
+        <p>No YBY Versus, você é dono do que publica. Sem risco de desmonetização arbitrária, sem shadowban, sem algoritmos decidindo quem vê seu conteúdo. É você e sua comunidade, em diálogo direto.</p>
+
+        <div class="warning">
+            <p><strong>Importante:</strong> O Fediverso não substitui as plataformas comerciais — ele as <em>complementa</em>. Você mantém sua presença onde já está, mas ganha um espaço soberano, ético e livre de manipulação algorítmica.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📜 Nossa Ética e Compromissos</h2>
+        <p>Antes de se juntar a nós, convidamos você a conhecer nossos documentos fundamentais:</p>
+        
+        <div class="docs-links">
+            <a href="https://esdhubem.github.io/ybyversus/termos.html" target="_blank">📄 Termos de Uso</a>
+            <a href="https://esdhubem.github.io/ybyversus/politica-privacidade.html" target="_blank"> Política de Privacidade</a>
+            <a href="https://esdhubem.github.io/ybyversus/carta-aberta.html" target="_blank">✉️ Carta Aberta do YBY Versus</a>
+            <a href="https://esdhubem.github.io/ybyversus/bemviver-filosofias-v2.html" target="_blank">🌍 Filosofias e o Futuro do Bem Viver</a>
+        </div>
+
+        <p><strong>Resumo do nosso compromisso:</strong></p>
+        <ul>
+            <li> <strong>Privacidade absoluta:</strong> Seus dados são seus. Ponto final.</li>
+            <li>🌱 <strong>Saberes livres:</strong> Valorizamos conhecimentos que as plataformas comerciais invisibilizam — saúde integrativa, saberes ancestrais, epistemologias decoloniais, filosofia crítica.</li>
+            <li>🤝 <strong>Comunidade, não audiência:</strong> Aqui você constrói relações, não números.</li>
+            <li>♻️ <strong>Bem Viver:</strong> Nosso propósito é promover equilíbrio, dignidade e sustentabilidade — não crescimento infinito.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🚀 Como Começar</h2>
+        <p>É simples, rápido e gratuito:</p>
+        
+        <ol style="margin-left: 20px; color: var(--text-secondary); margin-bottom: 20px;">
+            <li style="margin-bottom: 10px;">Crie sua conta no YBY Versus (leva menos de 2 minutos)</li>
+            <li style="margin-bottom: 10px;">Personalize seu perfil BioLinks com foto, bio e links</li>
+            <li style="margin-bottom: 10px;">Publique os links dos seus vídeos, artigos ou projetos</li>
+            <li style="margin-bottom: 10px;">Conecte-se com pessoas que realmente importam</li>
+        </ol>
+
+        <div class="center">
+            <a href="https://esdhubem.github.io/ybyversus/" class="cta-button">Criar Meu Perfil Gratuito →</a>
+        </div>
+        
+        <p style="text-align: center; margin-top: 15px; color: var(--text-secondary); font-size: 0.9em;">
+            Sem cartão de crédito • Sem compromisso • Sem algoritmos
+        </p>
+    </div>
+
+    <div class="section" style="background: rgba(212, 175, 55, 0.05); border: 2px solid var(--gold);">
+        <h2>🌿 Por Que Estamos Fazendo Isso?</h2>
+        <p>Porque acreditamos que o conhecimento não deveria ser mercadoria. Porque pesquisadores independentes, praticantes de saberes ancestrais e pensadores críticos merecem um espaço onde sua voz não seja silenciada por algoritmos ou censurada por corporações.</p>
+        
+        <p>O <strong>YBY Versus</strong> (Yby = Terra em Guarani) é mais que um aplicativo — é um território digital de resistência, onde a terra encontra o cosmos, onde o saber ancestral dialoga com a ciência de ponta, e onde o Bem Viver deixa de ser conceito para se tornar prática.</p>
+
+        <p style="margin-top: 20px; font-style: italic; color: var(--gold); text-align: center;">
+            "Nós somos a infraestrutura que faltava para quem não cabe nas engrenagens do capitalismo de vigilância."
+        </p>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 20px; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+        <p><strong>YBY Versus</strong> — Fediverso do Bem Viver</p>
+        <p style="font-size: 0.9em; margin-top: 10px;">Soberania Digital • Saberes Livres • Terra e Cosmos</p>
+        <p style="font-size: 0.85em; margin-top: 20px;">
+            <a href="https://esdhubem.github.io/ybyversus/" style="color: var(--gold); text-decoration: none;">Visite nossa plataforma →</a>
+        </p>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -205,39 +205,38 @@
       transform: scale(0.94);
     }
 
-    /* Iluminação Verde Florescente Atrás das Postagens */
+    /* Iluminação Verde Suave Atrás das Postagens (Equilíbrio e Sutileza) */
     .celestial-post-glow {
       position: relative;
       border-radius: 28px;
       background: linear-gradient(180deg, #091C36 0%, #06152B 100%);
-      border: 1px solid rgba(74, 222, 128, 0.45);
+      border: 1px solid rgba(74, 222, 128, 0.20);
       box-shadow: 
         0 22px 45px -8px rgba(0, 0, 0, 0.95), 
-        0 0 35px rgba(34, 197, 94, 0.5), 
-        0 0 70px rgba(74, 222, 128, 0.28), 
-        0 8px 24px rgba(34, 197, 94, 0.35);
+        0 0 22px rgba(34, 197, 94, 0.18), 
+        0 4px 15px rgba(34, 197, 94, 0.12);
     }
     .celestial-post-glow::before {
       content: '';
       position: absolute;
-      top: -6px;
-      left: 12%;
-      right: 12%;
-      height: 14px;
-      background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.65) 0%, rgba(34, 197, 94, 0.3) 50%, transparent 80%);
-      filter: blur(10px);
+      top: -4px;
+      left: 15%;
+      right: 15%;
+      height: 8px;
+      background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.25) 0%, transparent 70%);
+      filter: blur(6px);
       pointer-events: none;
       z-index: -1;
     }
     .celestial-post-glow::after {
       content: '';
       position: absolute;
-      bottom: -8px;
-      left: 8%;
-      right: 8%;
-      height: 18px;
-      background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.85) 0%, rgba(34, 197, 94, 0.5) 45%, transparent 80%);
-      filter: blur(12px);
+      bottom: -6px;
+      left: 10%;
+      right: 10%;
+      height: 12px;
+      background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.35) 0%, rgba(34, 197, 94, 0.15) 50%, transparent 80%);
+      filter: blur(8px);
       pointer-events: none;
       z-index: -1;
     }
@@ -418,26 +417,20 @@
     <main class="flex-1 app-screen-scroll px-5 pb-8 space-y-4 min-h-0">
 
       <!-- ======================================================== -->
-      <!-- BANNER DE VÍDEO OFICIAL YBY VERSUS (ODYSEE EM LOOP)      -->
+      <!-- BANNER DE VÍDEO OFICIAL YBY VERSUS (INTEGRADO AO FUNDO)  -->
       <!-- ======================================================== -->
-      <div id="top-video-banner-container" class="relative w-full rounded-2xl overflow-hidden celestial-post-glow group shadow-[0_12px_35px_rgba(0,0,0,0.85)] border border-emerald-400/40">
-        <div class="relative w-full aspect-video bg-black overflow-hidden">
+      <div id="top-video-banner-container" class="relative w-full overflow-hidden my-1 pointer-events-auto">
+        <div class="relative w-full aspect-[16/8] sm:aspect-video overflow-hidden rounded-2xl" style="-webkit-mask-image: radial-gradient(ellipse 95% 85% at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%); mask-image: radial-gradient(ellipse 95% 85% at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);">
           <video id="top-banner-video" autoplay loop muted playsinline class="w-full h-full object-cover">
             <source src="assets/banner-yby-versus.mp4" type="video/mp4">
             <source src="https://player.odycdn.com/api/v3/streams/free/yby-versus-(1)/173098ac34e35db9706bf7df6ace889efa9cec1a/94ab17.mp4" type="video/mp4">
           </video>
           
-          <!-- Gradiente de acabamento suave -->
-          <div class="absolute inset-0 bg-gradient-to-t from-[#06152B]/85 via-transparent to-black/25 pointer-events-none"></div>
+          <!-- Suave fusão com o fundo cósmico -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#030A16]/60 via-transparent to-[#030A16]/50 pointer-events-none"></div>
 
-          <!-- Badge: YBY VersuS • Oficial Odysee -->
-          <div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md text-[#E5C384] text-[10px] font-bold border border-amber-500/30 flex items-center gap-1.5 shadow-md pointer-events-none">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>YBY versus • Vídeo Oficial</span>
-          </div>
-
-          <!-- Botão de Som (Mudo / Ativar Som) -->
-          <button onclick="toggleTopBannerAudio()" id="top-banner-audio-btn" title="Ativar/Desativar áudio" class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-slate-200 hover:text-white text-[11px] font-semibold border border-white/20 flex items-center gap-1.5 shadow-lg active:scale-95 transition-all tap-active">
+          <!-- Botão Discreto de Som -->
+          <button onclick="toggleTopBannerAudio()" id="top-banner-audio-btn" title="Ativar/Desativar áudio" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-slate-300 hover:text-white text-[10.5px] font-medium border border-white/10 flex items-center gap-1.5 shadow-md active:scale-95 transition-all tap-active">
             <i data-lucide="volume-x" id="top-banner-audio-icon" class="w-3.5 h-3.5"></i>
             <span id="top-banner-audio-text">Mudo</span>
           </button>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videoteca Federada YBY</title>
+<style>
+  :root {
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --gold: #d4af37;
+    --green: #27ae60;
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark), #1a1f2e);
+    color: var(--text-primary);
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+  .back-btn:hover {
+    background: rgba(212, 175, 55, 0.25);
+    transform: translateY(-1px);
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 20px;
+    border-bottom: 2px solid var(--gold);
+  }
+  
+  header h1 {
+    color: var(--gold);
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  header p {
+    color: var(--text-secondary);
+    font-size: 1.1em;
+  }
+  
+  .video-main {
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+  
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+  }
+  
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .video-info {
+    padding: 20px;
+  }
+  
+  .video-info h2 {
+    color: var(--text-primary);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+  
+  .video-meta {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .related-videos, .community-discussion {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .related-videos h3, .community-discussion h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+  }
+  
+  .video-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .video-item:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateX(3px);
+  }
+  
+  .video-thumb {
+    width: 120px;
+    height: 68px;
+    background: #111;
+    border-radius: 6px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .video-item-info h4 {
+    color: var(--text-primary);
+    font-size: 0.95em;
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+  
+  .video-item-info p {
+    color: var(--text-secondary);
+    font-size: 0.8em;
+  }
+  
+  .comment {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--green);
+  }
+  
+  .comment p {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  
+  .comment-author {
+    color: var(--gold);
+    font-size: 0.85em;
+    font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-secondary);
+    font-size: 0.85em;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div style="margin-top: 10px;">
+    <a href="index.html" class="back-btn">← Voltar ao YBY versus</a>
+  </div>
+
+  <header>
+    <h1>🎬 Videoteca Federada YBY</h1>
+    <p>Assista sem sair do app. Sem algoritmos predatórios. Sem vigilância.</p>
+  </header>
+
+  <!-- Vídeo Principal em Destaque -->
+  <div class="video-main">
+    <div class="video-wrapper">
+      <!-- Substitua pelo ID do vídeo real -->
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_AQUI" 
+              title="Vídeo em Destaque" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-info">
+      <h2 id="main-video-title">Além do PIB: Por que precisamos de uma nova bússola para o progresso?</h2>
+      <div class="video-meta">
+        <span>📺 @YBYVersus</span>
+        <span>📅 5 dias atrás</span>
+        <span>👁️ 1.2K visualizações</span>
+        <span>🌿 Tema: Economia do Bem Viver</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid: Relacionados + Discussão -->
+  <div class="content-grid">
+    
+    <!-- Vídeos Relacionados (Curadoria Humana) -->
+    <div class="related-videos">
+      <h3>📚 Vídeos Relacionados</h3>
+      
+      <div class="video-item" onclick="changeVideo('VIDEO_ID_1', 'Ubuntu: A Filosofia da Interdependência')">
+        <div class="video-thumb">
+          <img src="assets/card-portal-luz.jpg" onerror="this.src='https://img.youtube.com/vi/VIDEO_ID_1/mqdefault.jpg'" alt="Ubuntu">
+        </div>
+        <div class="video-item-info">
+          <h4>Ubuntu: A Filosofia da Interdependência</h4>
+          <p>@FilosofiaDecolonial • 2 dias atrás</p>
+        </div>
+      </div>
+
+      <div class="video-item" onclick="changeVideo('VIDEO_ID_2', 'Teko Porã: O Bem Viver Guarani')">
+        <div class="video-thumb">
+          <img src="assets/card-sol-ancestral.jpg" onerror="this.src='https://img.youtube.com/vi/VIDEO_ID_2/mqdefault.jpg'" alt="Teko Porã">
+        </div>
+        <div class="video-item-info">
+          <h4>Teko Porã: O Bem Viver Guarani</h4>
+          <p>@SaberesAncestrais • 1 semana atrás</p>
+        </div>
+      </div>
+
+      <div class="video-item" onclick="changeVideo('VIDEO_ID_3', 'Necropolítica no Brasil: Quem o Estado deixa morrer?')">
+        <div class="video-thumb">
+          <img src="assets/card-floresta-sagrada.jpg" onerror="this.src='https://img.youtube.com/vi/VIDEO_ID_3/mqdefault.jpg'" alt="Necropolítica">
+        </div>
+        <div class="video-item-info">
+          <h4>Necropolítica no Brasil: Quem o Estado deixa morrer?</h4>
+          <p>@CriticaSocial • 3 dias atrás</p>
+        </div>
+      </div>
+
+      <div class="video-item" onclick="changeVideo('VIDEO_ID_4', 'Sumak Kawsay: A Alternativa Andina ao Desenvolvimento')">
+        <div class="video-thumb">
+          <img src="assets/card-mestres-terra.jpg" onerror="this.src='https://img.youtube.com/vi/VIDEO_ID_4/mqdefault.jpg'" alt="Sumak Kawsay">
+        </div>
+        <div class="video-item-info">
+          <h4>Sumak Kawsay: A Alternativa Andina ao Desenvolvimento</h4>
+          <p>@AgroecologiaLatam • 1 semana atrás</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discussão da Comunidade (Federada via ActivityPub) -->
+    <div class="community-discussion">
+      <h3>💬 Discussão da Comunidade</h3>
+      
+      <div class="comment">
+        <p>"Excelente análise sobre os limites do PIB. Complementaria com o conceito de 'Bem Viver Bem' que estamos desenvolvendo no YBY."</p>
+        <div class="comment-author">🌿 @pesquisador_independente</div>
+      </div>
+
+      <div class="comment">
+        <p>"Concordo, e acrescentaria que a necropolítica de Mbembe explica muito do que vivemos no Brasil hoje."</p>
+        <div class="comment-author">📚 @filosofia_critica</div>
+      </div>
+
+      <div class="comment">
+        <p>"Como praticante de saúde integrativa, vejo como o modelo biomédico hegemônico ignora os saberes tradicionais."</p>
+        <div class="comment-author">🌱 @naturopata_brasil</div>
+      </div>
+
+      <div class="comment">
+        <p>"Precisamos de mais conteúdo como este. Compartilhando no Mastodon!"</p>
+        <div class="comment-author">🐘 @ativista_digital@fediverso.social</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p><strong>YBY versus</strong> • Videoteca Federada e Soberana</p>
+    <p style="margin-top: 5px;">Distribuição Ética • Livre de Algoritmos Predatórios</p>
+  </footer>
+</div>
+
+<script>
+  // Função para trocar o vídeo principal (simulação)
+  function changeVideo(videoId, title) {
+    const iframe = document.querySelector('.video-wrapper iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    if (title) {
+      const titleEl = document.getElementById('main-video-title');
+      if (titleEl) titleEl.innerText = title;
+    }
+    // Rolar suavemente para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

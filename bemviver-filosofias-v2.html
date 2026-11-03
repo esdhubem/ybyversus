@@ -137,80 +137,19 @@
             line-height: 1.6;
         }
 
-        /* BARRA INTERATIVA: BUSCA E CHIPS (Estilo YBY Versus) */
+        /* BARRA INTERATIVA: CHIPS DE FILTRO (Estilo YBY Versus) */
         .interactive-controls-bar {
             position: sticky;
             top: 15px;
             z-index: 100;
             margin-bottom: 40px;
-            background: rgba(10, 18, 32, 0.85);
+            background: rgba(10, 18, 32, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-gold);
-            border-radius: 24px;
-            padding: 16px 20px;
+            border-radius: 30px;
+            padding: 10px 16px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.08);
-        }
-
-        .search-wrapper {
-            position: relative;
-            margin-bottom: 15px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.1em;
-            color: var(--gold);
-            pointer-events: none;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 14px 45px 14px 46px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 1em;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.25s ease;
-        }
-
-        .search-input:focus {
-            background: rgba(255, 255, 255, 0.09);
-            border-color: var(--gold);
-            box-shadow: 0 0 15px var(--gold-glow);
-        }
-
-        .search-clear-btn {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.2em;
-            cursor: pointer;
-            padding: 4px;
-            display: none;
-            transition: color 0.2s;
-        }
-
-        .search-clear-btn:hover { color: #fff; }
-
-        .search-counter {
-            font-size: 0.88em;
-            color: var(--gold-light);
-            margin-top: 8px;
-            padding: 0 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         /* Carrossel de Chips (Formatos/Filtros) */
@@ -664,17 +603,8 @@
         <p>Para construir o futuro, precisamos entender o passado e o presente. Explore, compare e analise as diferentes correntes que moldam o mundo contemporâneo.</p>
     </header>
 
-    <!-- BARRA INTERATIVA: PESQUISA E CHIPS (Inspirado no App YBY Versus) -->
+    <!-- BARRA INTERATIVA: CHIPS DE FILTRO (Inspirado no App YBY Versus) -->
     <div class="interactive-controls-bar">
-        <div class="search-wrapper">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" class="search-input" placeholder="Buscar país, ideologia, autor (ex: Locke, Butão, Acosta, Suécia, ONU)...">
-            <button id="searchClearBtn" class="search-clear-btn" title="Limpar busca">✕</button>
-        </div>
-        <div id="searchCounter" class="search-counter" style="display: none;">
-            <span id="searchCountText">Filtrando modelos...</span>
-            <span style="font-size: 0.85em; opacity: 0.8;">Pressione ESC para limpar</span>
-        </div>
         <div class="filter-chips-scroller">
             <button class="chip-btn active" data-filter="all"><span class="chip-icon">✨</span> Todos</button>
             <button class="chip-btn" data-filter="sec-g1"><span class="chip-icon">🏛️</span> Ideologias <span class="chip-count">6</span></button>
@@ -2528,89 +2458,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. BARRA DE BUSCA EM TEMPO REAL
-    const searchInput = document.getElementById('searchInput');
-    const searchClearBtn = document.getElementById('searchClearBtn');
-    const searchCounter = document.getElementById('searchCounter');
-    const searchCountText = document.getElementById('searchCountText');
-
-    const allSearchableCards = document.querySelectorAll('.philosophy-card, .mutation-card, .reality-card');
-
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase().trim();
-
-        if (query.length > 0) {
-            searchClearBtn.style.display = 'block';
-            searchCounter.style.display = 'flex';
-
-            // Se estiver filtrando por chips específicos, volta para "Todos"
-            const activeChip = document.querySelector('.chip-btn.active');
-            if (activeChip && activeChip.getAttribute('data-filter') !== 'all') {
-                chipBtns.forEach(c => c.classList.remove('active'));
-                document.querySelector('.chip-btn[data-filter="all"]').classList.add('active');
-                sections.forEach(s => s.style.display = '');
-            }
-
-            let matchCount = 0;
-
-            allSearchableCards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                const isMatch = text.includes(query);
-
-                if (isMatch) {
-                    card.style.display = '';
-                    matchCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            searchCountText.textContent = `🔍 ${matchCount} ${matchCount === 1 ? 'modelo encontrado' : 'modelos encontrados'} para "${query}"`;
-
-            // Ocultar seções cujos cards foram todos escondidos
-            sections.forEach(sec => {
-                const visibleCards = sec.querySelectorAll('.philosophy-card:not([style*="display: none"]), .mutation-card:not([style*="display: none"]), .reality-card:not([style*="display: none"])');
-                // Se a seção tem cards mas nenhum visível, esconde a seção
-                const hasAnyCards = sec.querySelectorAll('.philosophy-card, .mutation-card, .reality-card').length > 0;
-                if (hasAnyCards && visibleCards.length === 0) {
-                    sec.style.display = 'none';
-                } else {
-                    sec.style.display = '';
-                }
-            });
-
-        } else {
-            clearSearch();
-        }
-    });
-
-    function clearSearch() {
-        searchInput.value = '';
-        searchClearBtn.style.display = 'none';
-        searchCounter.style.display = 'none';
-
-        allSearchableCards.forEach(card => {
-            card.style.display = '';
-        });
-
-        // Restaura visibilidade das seções baseada no chip ativo
-        const activeChip = document.querySelector('.chip-btn.active');
-        const filterTarget = activeChip ? activeChip.getAttribute('data-filter') : 'all';
-
-        if (filterTarget === 'all') {
-            sections.forEach(sec => sec.style.display = '');
-        } else {
-            sections.forEach(sec => {
-                sec.style.display = (sec.id === filterTarget) ? '' : 'none';
-            });
-        }
-    }
-
-    searchClearBtn.addEventListener('click', clearSearch);
-
+    // 4. ATALHOS DE TECLADO
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            clearSearch();
             if (versusModal.classList.contains('active')) {
                 versusModal.classList.remove('active');
                 document.body.style.overflow = '';

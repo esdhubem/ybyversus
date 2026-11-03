@@ -6,96 +6,294 @@
     <title>Das Ideologias ao Bem Viver Bem | YBY Versus</title>
     <style>
         :root {
-            --bg-dark: #0f2027;
-            --bg-mid: #203a43;
-            --bg-light: #2c5364;
+            --bg-base: #060b14;
+            --bg-card: rgba(13, 22, 38, 0.72);
+            --bg-card-hover: rgba(18, 30, 52, 0.88);
+            --bg-glass-pill: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.28);
+            --border-gold-hover: rgba(212, 175, 55, 0.65);
             --accent: #d4af37;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --danger: #e74c3c;
-            --text: #f4f1ea;
-            --text-muted: #b0b8c1;
+            --gold: #d4af37;
+            --gold-light: #fcd34d;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --blue-accent: #38bdf8;
+            --blue-glow: rgba(56, 189, 248, 0.15);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid), var(--bg-light));
+            background: 
+                radial-gradient(circle at 15% 10%, rgba(30, 58, 110, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 85% 30%, rgba(56, 30, 85, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 50% 75%, rgba(16, 40, 70, 0.4) 0%, transparent 55%),
+                var(--bg-base);
+            background-attachment: fixed;
             color: var(--text);
             line-height: 1.7;
             min-height: 100vh;
             padding: 20px;
+            scroll-behavior: smooth;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; }
+        .container { max-width: 1140px; margin: 0 auto; position: relative; }
 
         .back-nav {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 15px;
         }
 
         .btn-back {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--accent);
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
             text-decoration: none;
             font-size: 0.9em;
             font-weight: 600;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         .btn-back:hover {
-            background: rgba(212, 175, 55, 0.15);
-            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.18);
+            border-color: var(--gold);
             color: #fff;
-            transform: translateX(-2px);
+            transform: translateX(-3px);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .versus-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 20px;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 35px;
+            padding: 30px 20px 40px 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
         }
 
-        header h1 { font-size: 2.5em; color: var(--accent); margin-bottom: 15px; }
-        header p { color: var(--text-muted); font-size: 1.15em; max-width: 700px; margin: 0 auto; }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 12px;
+            padding: 4px 14px;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.6em;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            font-weight: 800;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 span {
+            background: linear-gradient(135deg, #fcd34d 0%, #d4af37 60%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15em;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* BARRA INTERATIVA: BUSCA E CHIPS (Estilo YBY Versus) */
+        .interactive-controls-bar {
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+            margin-bottom: 40px;
+            background: rgba(10, 18, 32, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-gold);
+            border-radius: 24px;
+            padding: 16px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.08);
+        }
+
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1em;
+            color: var(--gold);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 45px 14px 46px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1em;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .search-clear-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 4px;
+            display: none;
+            transition: color 0.2s;
+        }
+
+        .search-clear-btn:hover { color: #fff; }
+
+        .search-counter {
+            font-size: 0.88em;
+            color: var(--gold-light);
+            margin-top: 8px;
+            padding: 0 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Carrossel de Chips (Formatos/Filtros) */
+        .filter-chips-scroller {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 2px;
+            scrollbar-width: none; /* Firefox */
+        }
+        .filter-chips-scroller::-webkit-scrollbar { display: none; }
+
+        .chip-btn {
+            white-space: nowrap;
+            padding: 9px 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            user-select: none;
+        }
+
+        .chip-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .chip-btn.active {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.28), rgba(212, 175, 55, 0.12));
+            border-color: var(--gold);
+            color: #fff;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .chip-count {
+            font-size: 0.78em;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.35);
+            color: var(--gold-light);
+        }
 
         /* Seção de Introdução e Caixas Informativas */
         .intro-box, .info-box {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent);
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-left: 4px solid var(--gold);
             padding: 30px;
-            border-radius: 0 16px 16px 0;
+            border-radius: 0 20px 20px 0;
             margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
-        .intro-box h2 { color: var(--accent); margin-bottom: 20px; font-size: 1.6em; }
+        .intro-box h2 { color: var(--gold-light); margin-bottom: 20px; font-size: 1.6em; }
         .intro-box p { margin-bottom: 15px; color: var(--text); }
-        .intro-box ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-muted); }
+        .intro-box ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-secondary); }
         .intro-box li { margin-bottom: 8px; }
 
         /* Títulos de Grupo */
         .group-title {
             text-align: center;
-            font-size: 2em;
+            font-size: 2.1em;
             color: var(--text);
-            margin: 60px 0 30px 0;
+            margin: 60px 0 25px 0;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            letter-spacing: -0.01em;
         }
-        .group-title span { color: var(--accent); }
+        .group-title span { color: var(--gold); }
         .group-subtitle {
             text-align: center;
             max-width: 850px;
-            margin: -15px auto 35px auto;
+            margin: -10px auto 35px auto;
             color: var(--text-muted);
             font-size: 1.1em;
             line-height: 1.6;
@@ -109,77 +307,189 @@
             margin-bottom: 40px;
         }
 
+        /* CARD GLASSMORPHISM MODERNO */
         .philosophy-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 25px;
-            transition: all 0.3s ease;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
         }
 
         .philosophy-card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.09);
+            border-color: var(--border-gold-hover);
+            background: var(--bg-card-hover);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--gold-glow);
         }
 
-        .card-header { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        .card-header h3 { color: var(--accent); font-size: 1.4em; margin-bottom: 10px; }
-        .card-desc { font-style: italic; color: var(--text-muted); font-size: 0.95em; line-height: 1.5; }
+        .card-header {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 16px;
+        }
+        
+        .card-top-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card-header h3 {
+            color: var(--gold-light);
+            font-size: 1.35em;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Botão Comparar no Card */
+        .btn-card-compare {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-card-compare:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-card-compare.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            font-weight: 700;
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .card-desc {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+
         .card-examples {
             font-size: 0.88em;
-            color: var(--accent);
-            margin-top: 10px;
+            color: var(--gold);
+            margin-top: 12px;
             background: rgba(212, 175, 55, 0.08);
             padding: 8px 12px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
             line-height: 1.4;
         }
-        .card-examples strong {
-            color: #fff;
+        .card-examples strong { color: #fff; }
+
+        /* MINI-TABS DENTRO DE CADA CARD */
+        .card-tabs-nav {
+            display: flex;
+            gap: 6px;
+            margin: 12px 0 16px 0;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .card-tabs-nav::-webkit-scrollbar { display: none; }
+
+        .card-tab-btn {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            text-align: center;
         }
 
-        .card-section { margin-bottom: 15px; }
+        .card-tab-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .card-tab-btn.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-section {
+            margin-bottom: 15px;
+            transition: opacity 0.25s ease;
+        }
+
         .card-section h4 { 
             font-size: 0.9em; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
-            margin-bottom: 8px; 
+            margin-bottom: 10px; 
             display: flex; 
             align-items: center; 
             gap: 8px; 
         }
         .h-defend { color: var(--success); }
         .h-critic { color: var(--warning); }
-        .h-sources { color: var(--accent); }
+        .h-sources { color: var(--gold-light); }
 
         .card-section ul { margin-left: 18px; color: var(--text); font-size: 0.95em; }
-        .card-section li { margin-bottom: 8px; }
+        .card-section li { margin-bottom: 10px; line-height: 1.55; }
 
         .sources-list { 
             font-size: 0.85em; 
             color: var(--text-muted); 
-            background: rgba(0,0,0,0.2); 
+            background: rgba(0, 0, 0, 0.35); 
             padding: 15px; 
-            border-radius: 8px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.04);
             margin-top: auto; 
+            transition: opacity 0.25s ease;
         }
-        .sources-list p { margin-bottom: 6px; line-height: 1.4; }
-        .sources-list a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
-        .sources-list a:hover { color: #fff; border-bottom-style: solid; }
+        .sources-list p { margin-bottom: 8px; line-height: 1.45; }
+        .sources-list a { color: var(--gold-light); text-decoration: none; border-bottom: 1px dotted var(--gold); }
+        .sources-list a:hover { color: #fff; border-bottom-style: solid; text-shadow: 0 0 10px var(--gold-glow); }
 
-        /* Seção Síntese */
+        /* SÍNTESE COM VISUAL MODERNO */
         .synthesis-section {
-            background: linear-gradient(135deg, rgba(39, 174, 96, 0.15), rgba(212, 175, 55, 0.1));
-            border: 2px solid var(--success);
-            border-radius: 20px;
+            background: radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                        var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 24px;
             padding: 40px;
             margin: 60px 0;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
         }
         .synthesis-section::before {
             content: '🌿';
@@ -187,22 +497,154 @@
             top: -20px;
             right: -20px;
             font-size: 150px;
-            opacity: 0.05;
+            opacity: 0.04;
+            pointer-events: none;
         }
-        .synthesis-section h2 { color: var(--success); font-size: 2em; margin-bottom: 20px; }
-        .synthesis-section p { font-size: 1.1em; margin-bottom: 15px; color: var(--text); }
+        .synthesis-section h2 { color: var(--success); font-size: 2.1em; margin-bottom: 20px; }
+        .synthesis-section p { font-size: 1.1em; margin-bottom: 15px; color: var(--text); line-height: 1.7; }
         .synthesis-highlight {
-            background: rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.35);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-left: 4px solid var(--gold);
+            margin-top: 25px;
+        }
+
+        /* GAVETA / MODAL DE COMPARAÇÃO "VERSUS" */
+        .versus-bar {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            z-index: 999;
+            background: rgba(13, 22, 38, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--gold);
+            padding: 12px 24px;
+            border-radius: 40px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .versus-bar.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .versus-bar-text {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        .versus-bar-text span {
+            color: var(--gold-light);
+        }
+
+        .btn-versus-open {
+            background: linear-gradient(135deg, #fcd34d, #d4af37);
+            color: #000;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--gold-glow);
+            transition: all 0.2s;
+        }
+        .btn-versus-open:hover { transform: scale(1.05); }
+
+        .btn-versus-clear {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 4px;
+        }
+        .btn-versus-clear:hover { color: #fff; }
+
+        /* MODAL POPUP VERSUS */
+        .versus-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 8, 16, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-            margin-top: 20px;
+        }
+        .versus-modal.active { display: flex; }
+
+        .versus-modal-card {
+            background: rgba(13, 22, 38, 0.95);
+            border: 1px solid var(--gold);
+            border-radius: 24px;
+            max-width: 950px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--gold-glow);
+            position: relative;
+        }
+
+        .versus-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .versus-modal-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .versus-modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .versus-modal-header h2 {
+            color: var(--gold-light);
+            font-size: 1.8em;
+            margin-bottom: 6px;
+        }
+
+        .versus-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .versus-col {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 20px;
         }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 1.8em; }
+            header h1 { font-size: 1.9em; }
             .cards-grid { grid-template-columns: 1fr; }
             .synthesis-section { padding: 25px; }
+            .interactive-controls-bar { top: 10px; padding: 12px; }
+            .versus-columns { grid-template-columns: 1fr; }
+            .versus-modal-card { padding: 20px; }
         }
     </style>
 </head>
@@ -211,12 +653,40 @@
 <div class="container">
     <div class="back-nav">
         <a href="bemviver.html" class="btn-back">← Voltar para Economia do Bem Viver</a>
+        <div class="versus-status-badge">
+            <span>✨</span> Edição Interativa
+        </div>
     </div>
 
     <header>
-        <h1>🌍 Das Ideologias ao Bem Viver Bem</h1>
-        <p>Para construir o futuro, precisamos entender o passado e o presente. Conheça as diferentes filosofias que moldam o mundo.</p>
+        <div class="brand-badge">⚡ YBY VersuS • Saberes & Sociedades</div>
+        <h1>Das Ideologias ao <span>Bem Viver Bem</span></h1>
+        <p>Para construir o futuro, precisamos entender o passado e o presente. Explore, compare e analise as diferentes correntes que moldam o mundo contemporâneo.</p>
     </header>
+
+    <!-- BARRA INTERATIVA: PESQUISA E CHIPS (Inspirado no App YBY Versus) -->
+    <div class="interactive-controls-bar">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Buscar país, ideologia, autor (ex: Locke, Butão, Acosta, Suécia, ONU)...">
+            <button id="searchClearBtn" class="search-clear-btn" title="Limpar busca">✕</button>
+        </div>
+        <div id="searchCounter" class="search-counter" style="display: none;">
+            <span id="searchCountText">Filtrando modelos...</span>
+            <span style="font-size: 0.85em; opacity: 0.8;">Pressione ESC para limpar</span>
+        </div>
+        <div class="filter-chips-scroller">
+            <button class="chip-btn active" data-filter="all"><span class="chip-icon">✨</span> Todos</button>
+            <button class="chip-btn" data-filter="sec-g1"><span class="chip-icon">🏛️</span> Ideologias <span class="chip-count">6</span></button>
+            <button class="chip-btn" data-filter="sec-g2"><span class="chip-icon">🌐</span> Países <span class="chip-count">21</span></button>
+            <button class="chip-btn" data-filter="sec-g3"><span class="chip-icon">🌿</span> Filosofias de Vida <span class="chip-count">4</span></button>
+            <button class="chip-btn" data-filter="sec-brasil"><span class="chip-icon">🇧🇷</span> Cenário Brasileiro <span class="chip-count">3</span></button>
+            <button class="chip-btn" data-filter="sec-mutacoes"><span class="chip-icon">⚠️</span> Mutações <span class="chip-count">6</span></button>
+            <button class="chip-btn" data-filter="sec-rupturas"><span class="chip-icon">🛡️</span> Contextos Críticos <span class="chip-count">6</span></button>
+            <button class="chip-btn" data-filter="sec-compasso"><span class="chip-icon">🧭</span> Compasso Ideal <span class="chip-count">15</span></button>
+            <button class="chip-btn" data-filter="sec-sintese"><span class="chip-icon">🌱</span> Síntese Proposta</button>
+        </div>
+    </div>
 
     <!-- INTRODUÇÃO -->
     <div class="intro-box">
@@ -232,8 +702,9 @@
     </div>
 
     <!-- GRUPO 1 -->
-    <h2 class="group-title">Grupo 1: <span>Ideologias e Sistemas Econômicos</span></h2>
-    <div class="cards-grid">
+    <section id="sec-g1" class="page-section">
+        <h2 class="group-title">Grupo 1: <span>Ideologias e Sistemas Econômicos</span></h2>
+        <div class="cards-grid">
         <!-- Capitalismo -->
         <div class="philosophy-card">
             <div class="card-header">
@@ -435,10 +906,12 @@
             </div>
         </div>
     </div>
+    </section>
 
     <!-- GRUPO 2 -->
-    <h2 class="group-title">Grupo 2: <span>Modelos de Países</span></h2>
-    <div class="cards-grid">
+    <section id="sec-g2" class="page-section">
+        <h2 class="group-title">Grupo 2: <span>Modelos de Países</span></h2>
+        <div class="cards-grid">
         <!-- China -->
         <div class="philosophy-card">
             <div class="card-header">
@@ -1022,11 +1495,13 @@
             </div>
         </div>
     </div>
+    </section>
 
     <!-- GRUPO 3 -->
-    <h2 class="group-title">Grupo 3: <span>Filosofias de Vida</span></h2>
-    <p class="group-subtitle">Cada política pública não nasce do nada, ela carrega uma visão de ser humano, de sociedade e de mundo. Aqui estão as principais filosofias que guiam governos, leis e economias hoje:</p>
-    <div class="cards-grid">
+    <section id="sec-g3" class="page-section">
+        <h2 class="group-title">Grupo 3: <span>Filosofias de Vida</span></h2>
+        <p class="group-subtitle">Cada política pública não nasce do nada, ela carrega uma visão de ser humano, de sociedade e de mundo. Aqui estão as principais filosofias que guiam governos, leis e economias hoje:</p>
+        <div class="cards-grid">
         <!-- Ubuntu -->
         <div class="philosophy-card">
             <div class="card-header">
@@ -1149,9 +1624,10 @@
             </div>
         </div>
     </div>
+    </section>
 
     <!-- SEÇÃO: O CENÁRIO BRASILEIRO -->
-    <section class="brazil-context-section" style="margin: 60px 0;">
+    <section id="sec-brasil" class="page-section brazil-context-section" style="margin: 60px 0;">
         <h2 class="group-title">🇧🇷 O Cenário Brasileiro: <span>Entre a Norma e a Realidade</span></h2>
         
         <div class="info-box" style="margin-bottom: 30px;">
@@ -1233,7 +1709,7 @@
     </section>
 
     <!-- SEÇÃO: AS MUTAÇÕES DA DOMINAÇÃO -->
-    <section class="mutations-section" style="margin: 60px 0;">
+    <section id="sec-mutacoes" class="page-section mutations-section" style="margin: 60px 0;">
         <h2 class="group-title">⚠️ As Mutações da Dominação: <span>O Passado que não Passou</span></h2>
         <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; font-size: 1.05em;">
             Embora a história formal tenha declarado o fim de certos sistemas, suas lógicas de exclusão e dominação se metamorfosearam. Elas continuam operando, muitas vezes invisíveis aos olhos do PIB, mas sentidas na pele por quem está na base da pirâmide.
@@ -1397,7 +1873,7 @@
     </style>
 
     <!-- SEÇÃO: REALIDADES CRÍTICAS (O CONTRASTE NECESSÁRIO) -->
-    <section class="critical-realities-section" style="margin: 80px 0;">
+    <section id="sec-rupturas" class="page-section critical-realities-section" style="margin: 80px 0;">
         <div class="section-header" style="text-align: center; margin-bottom: 40px;">
             <h2 style="color: var(--danger); font-size: 2em; margin-bottom: 15px;">⚠️ Contextos de Ruptura e Vulnerabilidade Extrema</h2>
             <p style="color: var(--text); font-size: 1.05em; max-width: 900px; margin: 0 auto; line-height: 1.7;">
@@ -1535,6 +2011,7 @@
     </style>
 
     <!-- SEÇÃO: O COMPASSO DO PAÍS IDEAL -->
+    <section id="sec-compasso" class="page-section compass-section">
     <style>
         /* Container da Tabela (Responsividade) */
         .compass-table-wrapper {
@@ -1767,9 +2244,10 @@
             </tbody>
         </table>
     </div>
+    </section>
 
     <!-- SEÇÃO DA SÍNTESE -->
-    <div class="synthesis-section">
+    <section id="sec-sintese" class="page-section synthesis-section">
         <h2>🌿 A Síntese: Uma Proposta de Futuro, Bem Viver Bem</h2>
         <p><em>Os quadros acima descrevem. A Síntese propõe.</em></p>
         <p>A partir daqui, esta página apresenta uma proposta própria, inspirada nos quadros acima. É uma perspectiva, não um consenso.</p>
@@ -1782,9 +2260,365 @@
             <p style="margin-top: 15px;">Uma política pública sábia não escolhe um extremo, ela ouve todas as vozes que fazem parte do todo. Todo cidadão tem direitos de cidadania, independente de fazer parte da maioria ou da minoria. Não se trata de "voltar ao passado" ou de abolir toda a tecnologia e o mercado. Trata-se de uma <strong>evolução sistêmica</strong>. O capitalismo é excelente em inovação e geração de recursos (o "motor"), mas ele precisa ser guiado pela bússola do Bem Viver e do Ubuntu, desenvolvendo a equidade, a sustentabilidade e os direitos humanos, promovendo o que podemos chamar de <strong>Bem Viver Bem</strong>.</p>
             <p style="margin-top: 15px;">Um Sistema Social do <strong>Bem Viver Bem</strong> pode usar a eficiência do mercado, mas dentro de limites rígidos definidos pela sociedade e pela ecologia, medindo o progresso não apenas pelo PIB, mas pela saúde planetária, coesão social e dignidade humana, conforme recomendado pelo relatório <em>Counting What Counts: A Compass of Progress for People and Planet</em> (ONU Beyond GDP, 2026).</p>
         </div>
-    </div>
+    </section>
 
 </div>
+
+<!-- BARRA FLUTUANTE DE COMPARAÇÃO "VERSUS" -->
+<div id="versusBar" class="versus-bar">
+    <div class="versus-bar-text">
+        ⚔️ Comparando: <span id="versusCardName1">Modelo 1</span> vs <span id="versusCardName2">Modelo 2</span>
+    </div>
+    <button id="btnOpenVersus" class="btn-versus-open">Comparar Lado a Lado</button>
+    <button id="btnClearVersus" class="btn-versus-clear" title="Cancelar seleção">✕</button>
+</div>
+
+<!-- MODAL VERSUS (POPUP GLASSMORPHISM) -->
+<div id="versusModal" class="versus-modal">
+    <div class="versus-modal-card">
+        <button id="btnCloseVersus" class="versus-modal-close" title="Fechar">✕</button>
+        <div class="versus-modal-header">
+            <h2>⚔️ Confronto Direto • YBY VersuS</h2>
+            <p style="color: var(--text-muted); font-size: 0.95em;">Análise comparativa das visões de mundo, forças, contradições e fontes.</p>
+        </div>
+        <div id="versusModalContent" class="versus-columns">
+            <!-- Conteúdo gerado dinamicamente -->
+        </div>
+    </div>
+</div>
+
+<!-- MOTOR INTERATIVO JS (Tabs, Busca, Chips e Modo Versus) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. INICIALIZAR MINI-TABS E BOTÃO COMPARAR NOS CARDS
+    const cards = document.querySelectorAll('.philosophy-card');
+    let selectedForCompare = [];
+
+    cards.forEach((card, index) => {
+        // Atribuir ID único ao card se não tiver
+        const cardId = 'card-' + index;
+        card.setAttribute('data-card-id', cardId);
+
+        const header = card.querySelector('.card-header');
+        const titleEl = header ? header.querySelector('h3') : null;
+        const cardTitle = titleEl ? titleEl.textContent.trim() : 'Modelo ' + (index + 1);
+
+        // Inserir botão de Comparar no topo do header
+        if (header) {
+            const topAction = document.createElement('div');
+            topAction.className = 'card-top-action';
+            
+            // Mover h3 para dentro do topAction
+            if (titleEl) {
+                topAction.appendChild(titleEl);
+            }
+            
+            const btnCompare = document.createElement('button');
+            btnCompare.className = 'btn-card-compare';
+            btnCompare.innerHTML = '⚔️ <span>Comparar</span>';
+            btnCompare.title = 'Selecione 2 modelos para confrontar no modo Versus';
+            btnCompare.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleCompare(card, cardId, cardTitle, btnCompare);
+            });
+            topAction.appendChild(btnCompare);
+            
+            header.insertBefore(topAction, header.firstChild);
+        }
+
+        // Seções de conteúdo do card
+        const sections = card.querySelectorAll('.card-section');
+        const defendSec = sections[0] || null;
+        const criticSec = sections[1] || null;
+        const sourcesSec = card.querySelector('.sources-list');
+
+        if (defendSec && criticSec) {
+            defendSec.classList.add('tab-pane', 'pane-defend');
+            criticSec.classList.add('tab-pane', 'pane-critic');
+            if (sourcesSec) sourcesSec.classList.add('tab-pane', 'pane-sources');
+
+            // Criar barra de navegação de tabs
+            const tabsNav = document.createElement('div');
+            tabsNav.className = 'card-tabs-nav';
+
+            tabsNav.innerHTML = `
+                <button class="card-tab-btn active" data-tab="defend">✓ Forças</button>
+                <button class="card-tab-btn" data-tab="critic">⚠ Limites</button>
+                ${sourcesSec ? '<button class="card-tab-btn" data-tab="sources">📚 Fontes</button>' : ''}
+                <button class="card-tab-btn" data-tab="all">👁️ Ver Tudo</button>
+            `;
+
+            // Inserir tabsNav logo abaixo do card-header
+            header.insertAdjacentElement('afterend', tabsNav);
+
+            // Estado inicial: exibir Forças (defend), esconder critic e sources
+            defendSec.style.display = 'block';
+            criticSec.style.display = 'none';
+            if (sourcesSec) sourcesSec.style.display = 'none';
+
+            // Adicionar evento aos botões de tabs
+            const tabBtns = tabsNav.querySelectorAll('.card-tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const targetTab = btn.getAttribute('data-tab');
+
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    if (targetTab === 'defend') {
+                        defendSec.style.display = 'block';
+                        criticSec.style.display = 'none';
+                        if (sourcesSec) sourcesSec.style.display = 'none';
+                    } else if (targetTab === 'critic') {
+                        defendSec.style.display = 'none';
+                        criticSec.style.display = 'block';
+                        if (sourcesSec) sourcesSec.style.display = 'none';
+                    } else if (targetTab === 'sources') {
+                        defendSec.style.display = 'none';
+                        criticSec.style.display = 'none';
+                        if (sourcesSec) sourcesSec.style.display = 'block';
+                    } else if (targetTab === 'all') {
+                        defendSec.style.display = 'block';
+                        criticSec.style.display = 'block';
+                        if (sourcesSec) sourcesSec.style.display = 'block';
+                    }
+                });
+            });
+        }
+    });
+
+    // 2. SISTEMA DE COMPARAÇÃO "VERSUS"
+    const versusBar = document.getElementById('versusBar');
+    const nameSpan1 = document.getElementById('versusCardName1');
+    const nameSpan2 = document.getElementById('versusCardName2');
+    const btnOpenVersus = document.getElementById('btnOpenVersus');
+    const btnClearVersus = document.getElementById('btnClearVersus');
+    const versusModal = document.getElementById('versusModal');
+    const btnCloseVersus = document.getElementById('btnCloseVersus');
+    const versusModalContent = document.getElementById('versusModalContent');
+
+    function toggleCompare(cardEl, id, title, btn) {
+        const existingIndex = selectedForCompare.findIndex(item => item.id === id);
+
+        if (existingIndex !== -1) {
+            // Desmarcar
+            selectedForCompare.splice(existingIndex, 1);
+            btn.classList.remove('active');
+            btn.innerHTML = '⚔️ <span>Comparar</span>';
+        } else {
+            // Se já tem 2, remove o primeiro
+            if (selectedForCompare.length >= 2) {
+                const removed = selectedForCompare.shift();
+                const oldCard = document.querySelector(`[data-card-id="${removed.id}"]`);
+                if (oldCard) {
+                    const oldBtn = oldCard.querySelector('.btn-card-compare');
+                    if (oldBtn) {
+                        oldBtn.classList.remove('active');
+                        oldBtn.innerHTML = '⚔️ <span>Comparar</span>';
+                    }
+                }
+            }
+            selectedForCompare.push({ id, title, el: cardEl });
+            btn.classList.add('active');
+            btn.innerHTML = '✓ <span>Selecionado</span>';
+        }
+
+        updateVersusBar();
+    }
+
+    function updateVersusBar() {
+        if (selectedForCompare.length === 1) {
+            nameSpan1.textContent = selectedForCompare[0].title;
+            nameSpan2.textContent = '(Selecione o 2º)';
+            versusBar.classList.add('visible');
+            btnOpenVersus.style.display = 'none';
+        } else if (selectedForCompare.length === 2) {
+            nameSpan1.textContent = selectedForCompare[0].title;
+            nameSpan2.textContent = selectedForCompare[1].title;
+            versusBar.classList.add('visible');
+            btnOpenVersus.style.display = 'inline-block';
+        } else {
+            versusBar.classList.remove('visible');
+        }
+    }
+
+    btnClearVersus.addEventListener('click', () => {
+        selectedForCompare.forEach(item => {
+            const c = document.querySelector(`[data-card-id="${item.id}"]`);
+            if (c) {
+                const b = c.querySelector('.btn-card-compare');
+                if (b) {
+                    b.classList.remove('active');
+                    b.innerHTML = '⚔️ <span>Comparar</span>';
+                }
+            }
+        });
+        selectedForCompare = [];
+        updateVersusBar();
+    });
+
+    btnOpenVersus.addEventListener('click', () => {
+        if (selectedForCompare.length === 2) {
+            renderVersusModal();
+            versusModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+
+    btnCloseVersus.addEventListener('click', () => {
+        versusModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    versusModal.addEventListener('click', (e) => {
+        if (e.target === versusModal) {
+            versusModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    function renderVersusModal() {
+        versusModalContent.innerHTML = '';
+        selectedForCompare.forEach(item => {
+            const col = document.createElement('div');
+            col.className = 'versus-col';
+            
+            // Clonar o card limpando tabs ou botões internos
+            const clone = item.el.cloneNode(true);
+            const btn = clone.querySelector('.btn-card-compare');
+            if (btn) btn.remove();
+            const tabsNav = clone.querySelector('.card-tabs-nav');
+            if (tabsNav) tabsNav.remove();
+            
+            // Garantir que todas as seções fiquem visíveis no modal
+            const allPanes = clone.querySelectorAll('.tab-pane');
+            allPanes.forEach(p => p.style.display = 'block');
+
+            col.appendChild(clone);
+            versusModalContent.appendChild(col);
+        });
+    }
+
+    // 3. FILTRAGEM POR CHIPS NO TOPO
+    const chipBtns = document.querySelectorAll('.chip-btn');
+    const sections = document.querySelectorAll('.page-section');
+
+    chipBtns.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chipBtns.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+
+            const filterTarget = chip.getAttribute('data-filter');
+
+            if (filterTarget === 'all') {
+                sections.forEach(sec => {
+                    sec.style.display = '';
+                });
+            } else {
+                sections.forEach(sec => {
+                    if (sec.id === filterTarget) {
+                        sec.style.display = '';
+                        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                });
+            }
+        });
+    });
+
+    // 4. BARRA DE BUSCA EM TEMPO REAL
+    const searchInput = document.getElementById('searchInput');
+    const searchClearBtn = document.getElementById('searchClearBtn');
+    const searchCounter = document.getElementById('searchCounter');
+    const searchCountText = document.getElementById('searchCountText');
+
+    const allSearchableCards = document.querySelectorAll('.philosophy-card, .mutation-card, .reality-card');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        if (query.length > 0) {
+            searchClearBtn.style.display = 'block';
+            searchCounter.style.display = 'flex';
+
+            // Se estiver filtrando por chips específicos, volta para "Todos"
+            const activeChip = document.querySelector('.chip-btn.active');
+            if (activeChip && activeChip.getAttribute('data-filter') !== 'all') {
+                chipBtns.forEach(c => c.classList.remove('active'));
+                document.querySelector('.chip-btn[data-filter="all"]').classList.add('active');
+                sections.forEach(s => s.style.display = '');
+            }
+
+            let matchCount = 0;
+
+            allSearchableCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const isMatch = text.includes(query);
+
+                if (isMatch) {
+                    card.style.display = '';
+                    matchCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            searchCountText.textContent = `🔍 ${matchCount} ${matchCount === 1 ? 'modelo encontrado' : 'modelos encontrados'} para "${query}"`;
+
+            // Ocultar seções cujos cards foram todos escondidos
+            sections.forEach(sec => {
+                const visibleCards = sec.querySelectorAll('.philosophy-card:not([style*="display: none"]), .mutation-card:not([style*="display: none"]), .reality-card:not([style*="display: none"])');
+                // Se a seção tem cards mas nenhum visível, esconde a seção
+                const hasAnyCards = sec.querySelectorAll('.philosophy-card, .mutation-card, .reality-card').length > 0;
+                if (hasAnyCards && visibleCards.length === 0) {
+                    sec.style.display = 'none';
+                } else {
+                    sec.style.display = '';
+                }
+            });
+
+        } else {
+            clearSearch();
+        }
+    });
+
+    function clearSearch() {
+        searchInput.value = '';
+        searchClearBtn.style.display = 'none';
+        searchCounter.style.display = 'none';
+
+        allSearchableCards.forEach(card => {
+            card.style.display = '';
+        });
+
+        // Restaura visibilidade das seções baseada no chip ativo
+        const activeChip = document.querySelector('.chip-btn.active');
+        const filterTarget = activeChip ? activeChip.getAttribute('data-filter') : 'all';
+
+        if (filterTarget === 'all') {
+            sections.forEach(sec => sec.style.display = '');
+        } else {
+            sections.forEach(sec => {
+                sec.style.display = (sec.id === filterTarget) ? '' : 'none';
+            });
+        }
+    }
+
+    searchClearBtn.addEventListener('click', clearSearch);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            clearSearch();
+            if (versusModal.classList.contains('active')) {
+                versusModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+</script>
 
 </body>
 </html>

@@ -241,6 +241,28 @@
         </a>
 
         <!-- ======================================================== -->
+        <!-- BANNER DE ACESSO DIRETO: COMPARATIVO PIB vs. BEM VIVER   -->
+        <!-- ======================================================== -->
+        <button type="button" onclick="switchMainTab('radar'); switchTab('comparativo', document.getElementById('tab-btn-comparativo'));" class="w-full text-left flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-[#0F223D] via-[#091F38] to-[#041021] border border-cyan-500/35 hover:border-cyan-400 text-white shadow-lg active:scale-[0.98] transition group tap-active" title="Ver Comparativo: PIB vs. Bem Viver & Ubuntu">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-lg border border-cyan-500/30 shrink-0 shadow-inner">
+              ⚖️
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-cyan-300 group-hover:text-white transition flex items-center gap-1.5 leading-tight">
+                <span>Comparativo: PIB vs. Bem Viver & Ubuntu</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-200 border border-cyan-500/30 font-semibold">Radar & Contrastes</span>
+              </h3>
+              <p class="text-[10.5px] text-slate-300 leading-tight pt-0.5">Gráfico radar duplo, tabela de contrastes práticos e bússola de equilíbrio</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 text-[11px] font-bold text-cyan-400 group-hover:text-cyan-200 transition shrink-0">
+            <span class="hidden sm:inline">Explorar</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </button>
+
+        <!-- ======================================================== -->
         <!-- TEXTO DE ABERTURA (TRANSPARÊNCIA EDITORIAL)               -->
         <!-- ======================================================== -->
       <section aria-label="Aviso de perspectiva editorial" class="px-1 py-1 text-xs leading-relaxed text-slate-200 space-y-2">
@@ -502,8 +524,9 @@
           <button onclick="switchTab('radar9', this)" id="tab-btn-radar9" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
             📊 9 Dimensões
           </button>
-          <button onclick="switchTab('comparativo', this)" id="tab-btn-comparativo" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
-            ⚖️ Comparativo
+          <button onclick="switchTab('comparativo', this)" id="tab-btn-comparativo" class="tab-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-[#07172F] text-amber-200 hover:text-white border border-amber-500/40 shrink-0 tap-active transition-all inline-flex items-center gap-1.5 shadow-sm">
+            <span>⚖️ Comparativo</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">Novo</span>
           </button>
           <button onclick="switchTab('brasil', this)" id="tab-btn-brasil" class="tab-btn px-3 py-1.5 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] shrink-0 tap-active transition-all">
             🇧🇷 Brasil
@@ -2322,6 +2345,38 @@
       a.download = 'radar-bem-viver-ybyversus.json';
       a.click();
     }
+
+    
+    function handleUrlHash() {
+      const hash = (window.location.hash || '').toLowerCase();
+      if (hash === '#comparativo') {
+        window.switchMainTab('radar');
+        const btn = document.getElementById('tab-btn-comparativo');
+        if (btn) switchTab('comparativo', btn);
+      } else if (hash === '#radar' || hash === '#calculadora') {
+        window.switchMainTab('radar');
+        const btn = document.getElementById('tab-btn-calculadora');
+        if (btn) switchTab('calculadora', btn);
+      } else if (hash === '#radar9') {
+        window.switchMainTab('radar');
+        const btn = document.getElementById('tab-btn-radar9');
+        if (btn) switchTab('radar9', btn);
+      } else if (hash === '#brasil') {
+        window.switchMainTab('radar');
+        const btn = document.getElementById('tab-btn-brasil');
+        if (btn) switchTab('brasil', btn);
+      } else if (hash === '#mundo') {
+        window.switchMainTab('radar');
+        const btn = document.getElementById('tab-btn-mundo');
+        if (btn) switchTab('mundo', btn);
+      } else if (hash === '#evolucao' || hash === '#temporal') {
+        window.switchMainTab('radar');
+        const btn = document.getElementById('tab-btn-temporal');
+        if (btn) switchTab('temporal', btn);
+      }
+    }
+    window.addEventListener('hashchange', handleUrlHash);
+    window.addEventListener('DOMContentLoaded', () => { setTimeout(handleUrlHash, 150); });
 
     function initAllRadarComponents() {
       initPersonalChart();

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <title>🌿 Horizontes de Civilização: Bem Viver & Ubuntu vs. Apenas PIB • YBY versus</title>
+  <meta name="description" content="Comparação conceitual e aprofundada: uma sociedade guiada pelo Bem Viver, Teko Porã e Ubuntu versus um modelo movido exclusivamente pelo crescimento do PIB.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#040E1E">
+
+  <!-- Tailwind CSS CDN para renderização perfeita de classes mobile -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js Local (com Fallback CDN) -->
+  <script src="assets/vendor/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #020813;
+      color: #F1F5F9;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .font-brand {
+      font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .app-screen-scroll {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .app-screen-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .app-screen-scroll::-webkit-scrollbar-track {
+      background: rgba(7, 22, 15, 0.4);
+    }
+    .app-screen-scroll::-webkit-scrollbar-thumb {
+      background: rgba(229, 195, 132, 0.35);
+      border-radius: 9999px;
+    }
+
+    .tap-active:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease;
+    }
+
+    /* Sliders personalizados */
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #E5C384;
+      border: 2px solid #040E1E;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(229, 195, 132, 0.8);
+    }
+
+    /* Moldura Universal YBY VersuS */
+    html, body {
+      height: 100%;
+      height: 100dvh;
+    }
+    @media (max-width: 639px) {
+      html, body {
+        overflow: hidden;
+      }
+    }
+    #phone-container {
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 640px) {
+      body {
+        overflow: auto;
+      }
+      #phone-container {
+        height: 870px;
+        max-height: 96vh;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#020813] text-slate-100 flex items-center justify-center p-0 sm:p-6 overflow-hidden sm:overflow-auto relative selection:bg-amber-500 selection:text-black">
+
+  <!-- ======================================================== -->
+  <!-- FUNDO CÓSMICO EXTERNO (DESKTOP)                          -->
+  <!-- ======================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center" aria-hidden="true">
+    <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-35" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+      <circle cx="300" cy="300" r="220" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+    </svg>
+    <svg class="absolute -bottom-36 -left-36 w-[600px] h-[600px] opacity-35" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="250" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+    </svg>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MOLDURA DO SMARTPHONE NATIVO (YBY VERSUS)                -->
+  <!-- ======================================================== -->
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[420px] sm:h-[870px] sm:max-h-[96vh] bg-[#040E1E] sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#142C4E]">
+
+    <!-- 1. STATUS BAR DO CELULAR -->
+    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]">
+      <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-200" aria-label="Sinal de rede e bateria">
+        <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-200 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-200 rounded-xs"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO DO APLICATIVO -->
+    <nav aria-label="Cabeçalho da Comparação" class="px-4 pt-2 pb-3 bg-[#030A17] border-b border-[#132B4F] flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <!-- Voltar para a página oficial de indicadores -->
+        <a href="bemviver.html" title="Voltar para Indicadores Oficiais de Bem Viver" class="w-9 h-9 rounded-full bg-[#07172F] border border-[#132B4F] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
+          <i data-lucide="arrow-left" class="w-4 h-4 stroke-[2.2]"></i>
+        </a>
+        <div class="truncate">
+          <h1 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5] truncate leading-tight flex items-center gap-1.5">
+            <span>Horizontes de Civilização</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-amber-500/15 text-[#E5C384] border border-amber-500/30">Ensaio</span>
+          </h1>
+          <span class="text-[9.5px] text-[#94B8DB] block">Bem Viver & Ubuntu vs. Sociedade do PIB</span>
+        </div>
+      </div>
+
+      <a href="bemviver.html" class="px-2.5 py-1 rounded-full bg-[#07172F] border border-[#132B4F] text-[10.5px] text-[#E5C384] hover:text-white flex items-center gap-1 tap-active shrink-0" title="Ver Indicadores Oficiais">
+        <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>Dados Oficiais</span>
+      </a>
+    </nav>
+
+    <!-- 3. CONTEÚDO ROLÁVEL COM DESIGN MOBILE DE ALTO PADRÃO -->
+    <main class="flex-1 min-h-0 app-screen-scroll p-4 space-y-4">
+
+      <!-- MENU DOS 4 MODOS DO BEM VIVER (ROLAGEM FLUIDA COM O CONTEÚDO) -->
+      <div class="space-y-1.5 mb-3">
+        <!-- 1. Radar das Dimensões -->
+        <a href="bemviver.html#radar" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-slate-700 shadow-xs active:scale-[0.98] transition group tap-active block">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-7 h-7 rounded-lg bg-slate-800/60 text-slate-400 flex items-center justify-center text-sm border border-slate-700/60 shrink-0">🎯</div>
+            <div class="min-w-0">
+              <div class="text-[11.5px] font-bold text-slate-300 flex items-center gap-1.5">
+                <span>Radar das Dimensões</span>
+                <span class="text-[8.5px] px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Teko Porã & Ubuntu</span>
+              </div>
+              <p class="text-[9.5px] text-slate-400 leading-tight pt-0.5 truncate">Calculadora interativa, 9 dimensões e dados regionais</p>
+            </div>
+          </div>
+          <span class="text-slate-500 text-sm">›</span>
+        </a>
+
+        <!-- 2. Perspectivas dos Índices -->
+        <a href="bemviver.html#perspectivas" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-slate-700 shadow-xs active:scale-[0.98] transition group tap-active block">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-7 h-7 rounded-lg bg-slate-800/60 text-slate-400 flex items-center justify-center text-sm border border-slate-700/60 shrink-0">⚖️</div>
+            <div class="min-w-0">
+              <div class="text-[11.5px] font-bold text-slate-300 flex items-center gap-1.5">
+                <span>Perspectivas dos Índices</span>
+                <span class="text-[8.5px] px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Além do PIB</span>
+              </div>
+              <p class="text-[9.5px] text-slate-400 leading-tight pt-0.5 truncate">Painel crítico com 10 indicadores oficiais (FIB, IDH, Gini)</p>
+            </div>
+          </div>
+          <span class="text-slate-500 text-sm">›</span>
+        </a>
+
+        <!-- 3. Filosofias e o Futuro do Bem Viver -->
+        <a href="bemviver-filosofias-v2.html" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-slate-700 shadow-xs active:scale-[0.98] transition group tap-active block">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-7 h-7 rounded-lg bg-slate-800/60 text-slate-400 flex items-center justify-center text-sm border border-slate-700/60 shrink-0">🌍</div>
+            <div class="min-w-0">
+              <div class="text-[11.5px] font-bold text-slate-300 flex items-center gap-1.5">
+                <span>Filosofias e o Futuro do Bem Viver</span>
+                <span class="text-[8.5px] px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Mapas Mentais</span>
+              </div>
+              <p class="text-[9.5px] text-slate-400 leading-tight pt-0.5 truncate">Ubuntu, Teko Porã, Sumak Kawsay & Decrescimento</p>
+            </div>
+          </div>
+          <span class="text-slate-500 text-sm">›</span>
+        </a>
+
+        <!-- 4. Comparativo: PIB vs. Bem Viver & Ubuntu (ATIVO) -->
+        <div class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-gradient-to-r from-[#081D33] via-[#051629] to-[#030F1C] border border-cyan-400/80 text-white shadow-xs ring-1 ring-cyan-400/30">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-sm border border-cyan-500/40 shrink-0">⚖️</div>
+            <div class="min-w-0">
+              <div class="text-[11.5px] font-bold text-cyan-300 flex items-center gap-1.5">
+                <span>Comparativo: PIB vs. Bem Viver & Ubuntu</span>
+                <span class="text-[8.5px] px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-200 border border-cyan-500/30 font-semibold">Radar & Contrastes</span>
+              </div>
+              <p class="text-[9.5px] text-slate-300 leading-tight pt-0.5 truncate">Gráfico radar duplo e tabela prática de contrastes</p>
+            </div>
+          </div>
+          <span class="text-[9px] font-bold text-cyan-300 px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Ativo
+          </span>
+        </div>
+      </div>
+
+
+      <!-- ======================================================== -->
+      <!-- BANNER DE INTRODUÇÃO & REFLEXÃO FILOSÓFICA               -->
+      <!-- ======================================================== -->
+      <section class="p-4 rounded-2xl bg-gradient-to-br from-[#091F3E] via-[#06152B] to-[#030A17] border border-amber-500/30 shadow-sm space-y-2">
+        <div class="flex items-center gap-2 text-[#E5C384] font-bold text-xs">
+          <span class="text-base">⚖️</span>
+          <span>Dois Caminhos para a Humanidade</span>
+        </div>
+        <p class="text-[11.5px] text-slate-200 leading-relaxed text-justify">
+          O que define o sucesso de um povo? Uma sociedade focada <strong>apenas no PIB</strong> mede o progresso pela velocidade de transformar a natureza e o tempo humano em dinheiro. Já o <strong>Bem Viver (Teko Porã / Sumak Kawsay)</strong> e o <strong>Ubuntu</strong> propõem que o progresso real é a harmonia com a Terra e o florescimento dos laços comunitários.
+        </p>
+        <div class="pt-1 flex items-center justify-between text-[10px] text-slate-400 border-t border-white/10">
+          <span>Perspectiva comparativa</span>
+          <span class="text-[#E5C384]">Diálogo Decolonial</span>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- GRÁFICO RADAR DE CONTRASTE: DUAS SOCIEDADES LADO A LADO  -->
+      <!-- ======================================================== -->
+      <section class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+        <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+          <div class="flex items-center gap-2">
+            <span class="text-base">🕸️</span>
+            <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Bússola de Contraste Civilizatório</h2>
+          </div>
+          <span class="text-[10px] text-[#E5C384] font-bold">Interativo</span>
+        </div>
+
+        <p class="text-[11px] text-slate-300">
+          Toque nos botões para isolar ou comparar os dois horizontes em 8 dimensões de vida:
+        </p>
+
+        <!-- Botões de Alternância das Curvas -->
+        <div class="flex items-center gap-1.5 justify-center py-1 flex-wrap">
+          <button id="btn-toggle-ambos" onclick="toggleDataset('ambos')" class="px-3 py-1 rounded-full text-xs font-bold bg-[#E5C384] text-black tap-active transition-all shadow-xs">
+            Comparar Ambos
+          </button>
+          <button id="btn-toggle-bemviver" onclick="toggleDataset('bemviver')" class="px-3 py-1 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] tap-active transition-all">
+            🌿 Bem Viver & Ubuntu
+          </button>
+          <button id="btn-toggle-pib" onclick="toggleDataset('pib')" class="px-3 py-1 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] tap-active transition-all">
+            📈 Apenas PIB
+          </button>
+        </div>
+
+        <!-- Legenda Visual Nítida -->
+        <div class="flex items-center justify-center gap-4 text-xs font-bold pt-1">
+          <div class="flex items-center gap-1.5 text-[#E5C384]">
+            <span class="w-3 h-3 rounded-full bg-[#E5C384] inline-block shadow-[0_0_8px_rgba(229,195,132,0.6)]"></span>
+            <span>Bem Viver & Ubuntu</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-[#F97316]">
+            <span class="w-3 h-3 rounded-full bg-[#F97316] inline-block shadow-[0_0_8px_rgba(249,115,22,0.6)]"></span>
+            <span>Apenas PIB</span>
+          </div>
+        </div>
+
+        <!-- Contêiner do Gráfico Radar (Alta Legibilidade) -->
+        <div class="p-3 rounded-2xl bg-[#030A17] border border-[#132B4F]">
+          <div class="relative w-full h-[320px]">
+            <canvas id="horizonteRadarChart"></canvas>
+          </div>
+        </div>
+
+        <p class="text-[10px] text-slate-400 italic text-center">
+          * Diagrama didático conceitual para contrastar prioridades de desenvolvimento. Para dados empíricos do Brasil, consulte os cartões oficiais.
+        </p>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- TABELA DE CONTRASTE PONTO A PONTO                        -->
+      <!-- ======================================================== -->
+      <section class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+        <div class="flex items-center gap-2 pb-1 border-b border-[#132B4F]">
+          <span class="text-base">📋</span>
+          <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Contraste de Princípios Práticos</h2>
+        </div>
+
+        <!-- 1. Objetivo Central -->
+        <div class="p-3 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-2">
+          <span class="text-xs font-bold text-[#FFF6E5] block">1. Objetivo Central da Sociedade</span>
+          <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+            <div class="p-2 rounded-lg bg-orange-950/20 border border-orange-500/30 text-orange-200">
+              <strong class="text-orange-400 block mb-1">📈 Apenas PIB</strong>
+              Maximização do lucro e expansão contínua da produção monetária, mesmo gerando poluição ou desigualdade.
+            </div>
+            <div class="p-2 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200">
+              <strong class="text-[#E5C384] block mb-1">🌿 Bem Viver & Ubuntu</strong>
+              Garantir a reprodução digna da vida de todos, a regeneração ecológica e a paz comunitária.
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Relação com a Terra -->
+        <div class="p-3 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-2">
+          <span class="text-xs font-bold text-[#FFF6E5] block">2. Relação com a Terra (Natureza)</span>
+          <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+            <div class="p-2 rounded-lg bg-orange-950/20 border border-orange-500/30 text-orange-200">
+              <strong class="text-orange-400 block mb-1">📈 Apenas PIB</strong>
+              A natureza é tratada como "recurso natural" e depósito infinito de rejeitos a ser explorado até a exaustão.
+            </div>
+            <div class="p-2 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200">
+              <strong class="text-[#E5C384] block mb-1">🌿 Bem Viver & Ubuntu</strong>
+              A Terra (*YBY*) é organismo vivo sagrado; seres humanos são parte indissociável da teia da biodiversidade.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Laços Sociais -->
+        <div class="p-3 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-2">
+          <span class="text-xs font-bold text-[#FFF6E5] block">3. Vínculos e Convivência Humana</span>
+          <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+            <div class="p-2 rounded-lg bg-orange-950/20 border border-orange-500/30 text-orange-200">
+              <strong class="text-orange-400 block mb-1">📈 Apenas PIB</strong>
+              Individualismo competitivo, monetização das relações e isolamento social ("cada um por si").
+            </div>
+            <div class="p-2 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200">
+              <strong class="text-[#E5C384] block mb-1">🌿 Bem Viver & Ubuntu</strong>
+              <strong>Ubuntu</strong>: *"Eu sou porque nós somos"*. O florescimento pessoal só existe no amparo mútuo coletivo.
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Tempo e Trabalho -->
+        <div class="p-3 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-2">
+          <span class="text-xs font-bold text-[#FFF6E5] block">4. Uso do Tempo e do Trabalho</span>
+          <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+            <div class="p-2 rounded-lg bg-orange-950/20 border border-orange-500/30 text-orange-200">
+              <strong class="text-orange-400 block mb-1">📈 Apenas PIB</strong>
+              Hiperprodutivismo, jornadas exaustivas e culpa pelo descanso. O tempo só tem valor se produzir capital.
+            </div>
+            <div class="p-2 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200">
+              <strong class="text-[#E5C384] block mb-1">🌿 Bem Viver & Ubuntu</strong>
+              Tempo de trabalho equilibrado com celebração comunitária, ócio criativo, convivência e sabedoria ancestral.
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Saúde e Cuidado -->
+        <div class="p-3 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-2">
+          <span class="text-xs font-bold text-[#FFF6E5] block">5. Saúde e Cuidado</span>
+          <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+            <div class="p-2 rounded-lg bg-orange-950/20 border border-orange-500/30 text-orange-200">
+              <strong class="text-orange-400 block mb-1">📈 Apenas PIB</strong>
+              Foco na doença como mercado de tratamentos caros e remédios paliativos (doença gera PIB).
+            </div>
+            <div class="p-2 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200">
+              <strong class="text-[#E5C384] block mb-1">🌿 Bem Viver & Ubuntu</strong>
+              Saúde integral territorial, prevenção, fitoterapia, saberes de plantas (PICS) e amparo emocional comunitário.
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- O QUE DISSERAM OS PRÓPRIOS CRIADORES DO PIB              -->
+      <!-- ======================================================== -->
+      <section class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-2.5">
+        <div class="flex items-center gap-2 text-[#E5C384] font-bold text-xs pb-1 border-b border-[#132B4F]">
+          <span class="text-base">📜</span>
+          <span>O Aviso Histórico do Criador do PIB</span>
+        </div>
+        <blockquote class="text-[11px] text-slate-300 italic border-l-2 border-amber-400 pl-3 leading-relaxed">
+          "O bem-estar de uma nação dificilmente pode ser inferido a partir de uma medida do rendimento nacional como o PIB. Se o PIB aumentar, a política deve questionar se o que está aumentando é benéfico ou se está apenas acelerando a exaustão dos recursos e a injustiça."
+        </blockquote>
+        <p class="text-[10px] text-slate-400 text-right">
+          — <strong>Simon Kuznets</strong>, Prêmio Nobel de Economia e formulador do PIB (1934/1962).
+        </p>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- AUTOAVALIAÇÃO PESSOAL RÁPIDA                             -->
+      <!-- ======================================================== -->
+      <section class="p-4 rounded-2xl bg-[#06152B] border border-[#132B4F] shadow-sm space-y-3">
+        <div class="flex items-center justify-between pb-1 border-b border-[#132B4F]">
+          <div class="flex items-center gap-2">
+            <span class="text-base">🧭</span>
+            <h2 class="font-brand text-xs sm:text-sm font-bold text-[#FFF6E5]">Bússola Pessoal: Para Onde Você Pende?</h2>
+          </div>
+          <span class="text-[10px] text-[#E5C384]">Reflexão</span>
+        </div>
+
+        <p class="text-[11px] text-slate-300">
+          Mova os controles abaixo para refletir como está a rotina da sua própria vida atualmente:
+        </p>
+
+        <div class="space-y-2.5 pt-1">
+          <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-200">
+              <span>Seu Ritmo de Descanso vs. Pressão de Produtividade</span>
+              <span id="label-q1" class="text-[#E5C384]">Equilibrado</span>
+            </div>
+            <input type="range" min="0" max="10" value="5" id="slider-q1" oninput="updateBussola()">
+            <div class="flex justify-between text-[9px] text-slate-400">
+              <span>Pressão contínua de PIB</span>
+              <span>Ócio criativo e paz</span>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-[#030A17] border border-[#132B4F] space-y-1">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-200">
+              <span>Seus Vínculos de Amparo e Comunidade (Ubuntu)</span>
+              <span id="label-q2" class="text-[#E5C384]">Moderado</span>
+            </div>
+            <input type="range" min="0" max="10" value="5" id="slider-q2" oninput="updateBussola()">
+            <div class="flex justify-between text-[9px] text-slate-400">
+              <span>Isolamento individualista</span>
+              <span>Rede forte de apoio mútuo</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="resultadoBussola" class="p-3 rounded-xl bg-[#030A17] border border-amber-500/25 text-xs text-slate-200 space-y-1">
+          <strong class="text-[#E5C384] block">Diagnóstico de Equilíbrio:</strong>
+          <p id="textoBussola" class="text-[11px] text-slate-300">
+            Você navega em uma zona de transição, equilibrando as demandas materiais urbanas com o anseio por desaceleração e afeto comunitário.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- ÁREA DE NAVEGAÇÃO E AÇÕES                                -->
+      <!-- ======================================================== -->
+      <section class="space-y-2 pt-1 pb-4">
+        <a href="bemviver.html" class="w-full py-3 px-4 rounded-full bg-gradient-to-r from-[#D8AC52] via-[#E5C384] to-[#C79637] text-black font-extrabold text-xs flex items-center justify-center gap-2 tap-active shadow-lg">
+          <i data-lucide="bar-chart-2" class="w-4 h-4 stroke-[2.5]"></i>
+          <span>Explorar os Indicadores Oficiais Além do PIB</span>
+        </a>
+
+        <a href="index.html" class="w-full py-2.5 px-4 rounded-full bg-[#07172F] border border-[#132B4F] text-[#E5C384] hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 tap-active">
+          <i data-lucide="layout-grid" class="w-4 h-4 text-emerald-400"></i>
+          <span>Voltar para a Praça Pública</span>
+        </a>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- SCRIPT DO GRÁFICO E INTERATIVIDADE -->
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    const EIXOS_COMPARATIVOS = [
+      'Soberania Alimentar',
+      'Regeneração da Terra',
+      'Economia Solidária',
+      'Saúde Coletiva & PICS',
+      'Tempo Livre & Ócio',
+      'Comunidade (Ubuntu)',
+      'Equidade Social',
+      'Acumulação de Capital'
+    ];
+
+    // Dados conceituais de contraste dos dois horizontes civilizatórios
+    const DADOS_BEMVIVER = [9.0, 9.2, 8.8, 8.5, 8.7, 9.5, 8.6, 4.0];
+    const DADOS_PIB =       [4.5, 2.5, 3.0, 5.0, 3.2, 3.5, 4.0, 9.8];
+
+    let radarChartInstance = null;
+
+    window.onload = function() {
+      initComparativoRadar();
+      updateBussola();
+    };
+
+    function initComparativoRadar() {
+      const ctx = document.getElementById('horizonteRadarChart').getContext('2d');
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: EIXOS_COMPARATIVOS,
+          datasets: [
+            {
+              label: 'Sociedade Bem Viver & Ubuntu',
+              data: DADOS_BEMVIVER,
+              backgroundColor: 'rgba(229, 195, 132, 0.25)',
+              borderColor: '#E5C384',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#FFF6E5',
+              pointBorderColor: '#E5C384',
+              pointRadius: 4
+            },
+            {
+              label: 'Sociedade Apenas PIB',
+              data: DADOS_PIB,
+              backgroundColor: 'rgba(249, 115, 22, 0.25)',
+              borderColor: '#F97316',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#FFEDD5',
+              pointBorderColor: '#F97316',
+              pointRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              beginAtZero: true,
+              max: 10,
+              ticks: {
+                display: false,
+                stepSize: 2
+              },
+              grid: {
+                color: 'rgba(229, 195, 132, 0.2)',
+                lineWidth: 1
+              },
+              angleLines: {
+                color: 'rgba(255, 255, 255, 0.12)',
+                lineWidth: 1
+              },
+              pointLabels: {
+                font: {
+                  size: 9.5,
+                  weight: 'bold',
+                  family: "'Outfit', sans-serif"
+                },
+                color: '#FFF6E5'
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    function toggleDataset(mode) {
+      const btnAmbos = document.getElementById('btn-toggle-ambos');
+      const btnBemViver = document.getElementById('btn-toggle-bemviver');
+      const btnPib = document.getElementById('btn-toggle-pib');
+
+      [btnAmbos, btnBemViver, btnPib].forEach(b => {
+        b.className = 'px-3 py-1 rounded-full text-xs font-medium bg-[#07172F] text-slate-300 hover:text-white border border-[#132B4F] tap-active transition-all';
+      });
+
+      if (mode === 'ambos') {
+        btnAmbos.className = 'px-3 py-1 rounded-full text-xs font-bold bg-[#E5C384] text-black tap-active transition-all shadow-xs';
+        radarChartInstance.data.datasets[0].hidden = false;
+        radarChartInstance.data.datasets[1].hidden = false;
+      } else if (mode === 'bemviver') {
+        btnBemViver.className = 'px-3 py-1 rounded-full text-xs font-bold bg-[#E5C384] text-black tap-active transition-all shadow-xs';
+        radarChartInstance.data.datasets[0].hidden = false;
+        radarChartInstance.data.datasets[1].hidden = true;
+      } else if (mode === 'pib') {
+        btnPib.className = 'px-3 py-1 rounded-full text-xs font-bold bg-[#F97316] text-black tap-active transition-all shadow-xs';
+        radarChartInstance.data.datasets[0].hidden = true;
+        radarChartInstance.data.datasets[1].hidden = false;
+      }
+      radarChartInstance.update();
+    }
+
+    function updateBussola() {
+      const v1 = parseInt(document.getElementById('slider-q1').value, 10);
+      const v2 = parseInt(document.getElementById('slider-q2').value, 10);
+
+      const l1 = document.getElementById('label-q1');
+      if (v1 <= 3) l1.textContent = 'Alto estresse (PIB)';
+      else if (v1 <= 7) l1.textContent = 'Em busca de pausa';
+      else l1.textContent = 'Tempo harmonioso';
+
+      const l2 = document.getElementById('label-q2');
+      if (v2 <= 3) l2.textContent = 'Isolado/individual';
+      else if (v2 <= 7) l2.textContent = 'Rede moderada';
+      else l2.textContent = 'Forte laço Ubuntu';
+
+      const media = (v1 + v2) / 2;
+      const textoEl = document.getElementById('textoBussola');
+      if (media >= 7.5) {
+        textoEl.textContent = '🌿 Seu cotidiano está fortemente sintonizado com o Bem Viver: você prioriza tempo de qualidade, respeito ao corpo e conexões genuínas com quem está ao seu redor.';
+      } else if (media >= 4.5) {
+        textoEl.textContent = '⚖️ Você navega em uma zona de transição: lida com as pressões de produtividade e cansaço da vida moderna, mas já busca pausas e momentos de partilha comunitária.';
+      } else {
+        textoEl.textContent = '⚠️ Alerta de sobrecarga material: sua rotina está sendo sugada pela lógica estrita de produção contínua. Desacelerar, pisar descalço na terra e conversar com amigos pode ser seu melhor remédio.';
+      }
+    }
+  </script>
+
+</body>
+</html>
+

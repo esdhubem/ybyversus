@@ -1148,40 +1148,38 @@
 
     </main>
 
-    <!-- 4. RODAPÉ FIXO DO APLICATIVO COM BOTÃO ECO BEM VIVER NA POSIÇÃO DA SETA -->
-    <nav class="shrink-0 z-40 bg-[#030A16]/95 backdrop-blur-md border-t border-[#142C4E] px-2 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.8)]" aria-label="Navegação principal inferior">
-      
+    <!-- 4. RODAPÉ FIXO UNIFICADO (MESMO PADRÃO DA PRAÇA) -->
+    <nav class="shrink-0 z-30 px-3 pt-2 pb-3.5 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_25px_rgba(20,10,5,0.85)]" style="background: linear-gradient(180deg, rgba(62, 34, 18, 0.98) 0%, rgba(36, 19, 10, 0.99) 100%); border-top: 1.5px solid rgba(199, 150, 55, 0.4); padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)); min-height: 68px;" aria-label="Navegação principal inferior">
       <!-- 1. Praça -->
-      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="layout-grid" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Praça</span>
+      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-300 hover:text-white transition-colors tap-active group">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
       </a>
 
       <!-- 2. Tempo -->
       <a href="previsaotempoastros.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="cloud-sun" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Tempo</span>
+        <i data-lucide="cloud-sun" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
       </a>
 
-      <!-- 3. Botão Central (+) -->
-      <div class="relative -top-3 px-1 flex flex-col items-center shrink-0">
-        <a href="index.html" title="Cultivar Saber na Praça" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85)] active:scale-95 transition-all tap-active">
-          <i data-lucide="plus" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[3.5] text-[#1A1204]"></i>
+      <!-- 3. Botão Central Elevado (+) Cultivar Saber (Verde Florescente) -->
+      <div class="relative -top-5 px-2 flex flex-col items-center shrink-0">
+        <a href="index.html" title="Cultivar Saber" class="w-13 h-13 rounded-full bg-gradient-to-tr from-[#15803d] via-[#22c55e] to-[#4ade80] text-[#052e16] flex items-center justify-center border-2 border-[#86efac] shadow-[0_4px_24px_rgba(34,197,94,0.95),0_0_22px_rgba(74,222,128,0.85)] active:scale-95 hover:scale-110 transition-all tap-active">
+          <i data-lucide="plus" class="w-7 h-7 stroke-[3.5] text-[#052e16]"></i>
         </a>
       </div>
 
-      <!-- 5. ECO BEM VIVER (ONDE APONTA A SETA DO USUÁRIO!) -->
-      <a href="bemviver.html" class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group font-bold" aria-current="page" title="Eco Bem Viver: Além do PIB">
-        <i data-lucide="leaf" class="w-4 h-4 sm:w-5 sm:h-5 text-[#E5C384] stroke-[2.2]"></i>
-        <span class="text-[9.5px] font-bold tracking-tight mt-0.5 text-[#E5C384]">Eco BemViver</span>
-      </a>
+      <!-- 4. Eco Bem Viver (Ativo nesta página) -->
+      <div class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group" aria-current="page" title="Eco Bem Viver: Além do PIB">
+        <i data-lucide="leaf" class="w-5 h-5 text-[#E5C384] stroke-[2.2]"></i>
+        <span class="text-[10px] font-bold tracking-tight mt-0.5 text-[#E5C384]">Eco BemViver</span>
+      </div>
 
-      <!-- 6. Presença -->
-      <a href="index.html#presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="user" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-        <span class="text-[9.5px] font-medium tracking-tight mt-0.5">Presença</span>
+      <!-- 5. Presença -->
+      <a href="index.html#presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-[#E5C384] transition-colors tap-active group">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Presença</span>
       </a>
-
     </nav>
 
   </div>

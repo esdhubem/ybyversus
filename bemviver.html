@@ -248,7 +248,7 @@
       </button>
 
       <!-- 3. Filosofias e o Futuro do Bem Viver -->
-      <a id="main-tab-filosofias" href="bemviver-filosofias-v2.html" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-amber-400/50 hover:text-white shadow-xs active:scale-[0.98] transition group tap-active block" title="Acessar Mapas Mentais das Filosofias do Bem Viver">
+      <button id="main-tab-filosofias" type="button" onclick="switchMainTab('filosofias')" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-amber-400/50 hover:text-white shadow-xs active:scale-[0.98] transition group tap-active" title="Acessar Mapas Mentais das Filosofias do Bem Viver">
         <div class="flex items-center gap-2.5 min-w-0">
           <div id="iconbox-tab-filosofias" class="w-7 h-7 rounded-lg bg-slate-800/60 text-slate-400 group-hover:bg-amber-500/20 group-hover:text-amber-300 flex items-center justify-center text-sm border border-slate-700/60 group-hover:border-amber-500/40 shrink-0 shadow-inner transition-colors">
             🌍
@@ -266,7 +266,7 @@
         <div id="status-tab-filosofias" class="shrink-0 pl-1 text-slate-500 group-hover:text-[#E5C384] transition-colors">
           <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
         </div>
-      </a>
+      </button>
 
       <!-- 4. Comparativo: PIB vs. Bem Viver & Ubuntu -->
       <button id="main-tab-comparativo" type="button" onclick="switchMainTab('radar'); switchTab('comparativo', document.getElementById('tab-btn-comparativo')); highlightTabComparativo();" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-cyan-400/50 hover:text-white shadow-xs active:scale-[0.98] transition group tap-active" title="Ver Comparativo: PIB vs. Bem Viver & Ubuntu">
@@ -1130,6 +1130,33 @@
       </section>
       </div>
   
+      
+      <!-- ======================================================== -->
+      <!-- VISUALIZAÇÃO 3: FILOSOFIAS E O FUTURO DO BEM VIVER        -->
+      <!-- ======================================================== -->
+      <div id="view-filosofias" class="hidden space-y-3 pb-6">
+        <!-- Barra de Ações Rápidas de Filosofias -->
+        <div class="flex items-center justify-between px-1 text-xs">
+          <div class="flex items-center gap-1.5 text-slate-300 font-semibold">
+            <span class="text-base">🌍</span>
+            <span>Mapas Mentais & Filosofias do Bem Viver</span>
+          </div>
+          <a href="bemviver-quiz.html" class="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 hover:text-white text-[10px] font-semibold flex items-center gap-1 transition-all">
+            <span>🌿 Quiz do Bem Viver</span>
+            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+          </a>
+        </div>
+
+        <!-- Frame Embutido com Rolagem Integrada -->
+        <div class="w-full rounded-2xl overflow-hidden border border-[#132B4F]/80 bg-[#020712] shadow-2xl relative">
+          <div id="loading-filosofias" class="py-16 flex flex-col items-center justify-center gap-3 text-slate-400">
+            <div class="w-8 h-8 rounded-full border-2 border-amber-400/20 border-t-amber-400 animate-spin"></div>
+            <span class="text-xs text-amber-200/80">Carregando mapas conceituais e sistemas filosóficos...</span>
+          </div>
+          <iframe id="iframe-filosofias" src="about:blank" data-src="bemviver-filosofias-v2.html?embed=1" class="w-full border-0 transition-opacity duration-300 opacity-0" style="min-height: 85vh; width: 100%; border: none;" title="Filosofias e o Futuro do Bem Viver"></iframe>
+        </div>
+      </div>
+
       <!-- Rodapé Institucional -->
       <footer class="pt-4 pb-2 text-center space-y-2 border-t border-slate-800/80">
         <div class="flex items-center justify-center gap-2 flex-wrap text-[10.5px] text-slate-400">
@@ -1508,7 +1535,7 @@
     window.radarInitialized = false;
 
     function resetAllMainTabStates() {
-      ['radar', 'perspectivas', 'comparativo'].forEach(id => {
+      ['radar', 'perspectivas', 'filosofias', 'comparativo'].forEach(id => {
         const btn = document.getElementById('main-tab-' + id);
         const iconbox = document.getElementById('iconbox-tab-' + id);
         const title = document.getElementById('title-tab-' + id);
@@ -1545,6 +1572,13 @@
         if (title) title.className = 'text-[11.5px] font-bold text-emerald-300 transition-colors flex items-center gap-1.5 leading-tight';
         if (desc) desc.className = 'text-[9.5px] text-slate-300 leading-tight pt-0.5 truncate sm:whitespace-normal';
         if (status) status.innerHTML = '<span class="text-[9px] font-bold text-emerald-300 px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Ativo</span>';
+      
+      } else if (theme === 'gold') {
+        btn.className = 'w-full text-left flex items-center justify-between p-2 rounded-xl bg-gradient-to-r from-[#0C2242] via-[#091F3E] to-[#041325] border border-[#d4af37] text-white shadow-xs active:scale-[0.98] transition group tap-active ring-1 ring-[#d4af37]/40';
+        if (iconbox) iconbox.className = 'w-7 h-7 rounded-lg bg-amber-500/25 text-amber-300 flex items-center justify-center text-sm border border-amber-500/50 shrink-0 shadow-inner transition-colors';
+        if (title) title.className = 'text-[11.5px] font-bold text-[#d4af37] transition-colors flex items-center gap-1.5 leading-tight';
+        if (desc) desc.className = 'text-[9.5px] text-slate-200 leading-tight pt-0.5 truncate sm:whitespace-normal';
+        if (status) status.innerHTML = '<span class="text-[9px] font-bold text-[#d4af37] px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span> Ativo</span>';
       } else if (theme === 'cyan') {
         btn.className = 'w-full text-left flex items-center justify-between p-2 rounded-xl bg-gradient-to-r from-[#081D33] via-[#051629] to-[#030F1C] border border-cyan-400/80 text-white shadow-xs active:scale-[0.98] transition group tap-active ring-1 ring-cyan-400/30';
         if (iconbox) iconbox.className = 'w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-sm border border-cyan-500/40 shrink-0 shadow-inner transition-colors';
@@ -1562,11 +1596,15 @@
     window.switchMainTab = function(view) {
       const viewPerspectivas = document.getElementById('view-perspectivas');
       const viewRadar = document.getElementById('view-radar');
+      const viewFilosofias = document.getElementById('view-filosofias');
 
       if (!viewPerspectivas || !viewRadar) return;
 
+      viewPerspectivas.classList.add('hidden');
+      viewRadar.classList.add('hidden');
+      if (viewFilosofias) viewFilosofias.classList.add('hidden');
+
       if (view === 'radar') {
-        viewPerspectivas.classList.add('hidden');
         viewRadar.classList.remove('hidden');
         setMainTabActive('radar', 'amber');
 
@@ -1576,8 +1614,28 @@
         } else {
           setTimeout(resizeRadarCharts, 50);
         }
+      } else if (view === 'filosofias') {
+        if (viewFilosofias) {
+          viewFilosofias.classList.remove('hidden');
+          setMainTabActive('filosofias', 'gold');
+
+          const iframe = document.getElementById('iframe-filosofias');
+          const loader = document.getElementById('loading-filosofias');
+          if (iframe) {
+            if (iframe.src === 'about:blank' || !iframe.src.includes('bemviver-filosofias-v2')) {
+              iframe.src = iframe.getAttribute('data-src') || 'bemviver-filosofias-v2.html?embed=1';
+              iframe.onload = function() {
+                if (loader) loader.classList.add('hidden');
+                iframe.classList.remove('opacity-0');
+                iframe.classList.add('opacity-100');
+                autoResizeFilosofiasIframe();
+              };
+            } else {
+              autoResizeFilosofiasIframe();
+            }
+          }
+        }
       } else {
-        viewRadar.classList.add('hidden');
         viewPerspectivas.classList.remove('hidden');
         setMainTabActive('perspectivas', 'emerald');
 
@@ -1592,6 +1650,29 @@
       if (mainEl) mainEl.scrollTop = 0;
       if (window.lucide) window.lucide.createIcons();
     };
+
+    function autoResizeFilosofiasIframe() {
+      const iframe = document.getElementById('iframe-filosofias');
+      if (!iframe) return;
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (doc) {
+          const h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+          if (h > 400) {
+            iframe.style.height = (h + 30) + 'px';
+          }
+        }
+      } catch(e) {}
+    }
+
+    window.addEventListener('message', function(ev) {
+      if (ev.data && ev.data.type === 'set-iframe-height' && ev.data.height) {
+        const iframe = document.getElementById('iframe-filosofias');
+        if (iframe) {
+          iframe.style.height = (ev.data.height + 30) + 'px';
+        }
+      }
+    });
 
     function resizeRadarCharts() {
       if (personalChart) personalChart.resize();
@@ -2443,7 +2524,9 @@
     
     function handleUrlHash() {
       const hash = (window.location.hash || '').toLowerCase();
-      if (hash === '#comparativo') {
+      if (hash === '#filosofias') {
+        window.switchMainTab('filosofias');
+      } else if (hash === '#comparativo') {
         window.switchMainTab('radar');
         const btn = document.getElementById('tab-btn-comparativo');
         if (btn) switchTab('comparativo', btn);

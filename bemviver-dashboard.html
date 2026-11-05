@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Além do PIB: Economia do Bem Viver • YBY VersuS</title>
+  <meta name="description" content="Explore dados oficiais, indicadores além do PIB, filosofias ancestrais e ferramentas interativas para o Bem Viver.">
+
+  <!-- Fontes: Inter & Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Merriweather', 'serif']
+          },
+          colors: {
+            slate: {
+              850: '#141E33',
+              900: '#0F172A',
+              950: '#070D1A'
+            },
+            amber: {
+              450: '#FBBF24'
+            },
+            emerald: {
+              450: '#34D399'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js (com fallback local) -->
+  <script src="assets/vendor/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-main: #0F172A;
+      --bg-card: #1E293B;
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --accent-gold: #FBBF24;
+      --accent-green: #34D399;
+      --border-subtle: #334155;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar sutil */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F172A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .card-dashboard {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1rem;
+      transition: all 0.25s ease-in-out;
+    }
+    .card-dashboard:hover {
+      border-color: rgba(251, 191, 36, 0.4);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Accordion animation */
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details summary {
+      list-style: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-900">
+
+  <!-- ======================================================== -->
+  <!-- 1. BARRA DE NAVEGAÇÃO STICKY MODERNA                     -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Marca / Voltar -->
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-emerald-400 flex items-center justify-center text-slate-950 font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
+          🌱
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors">YBY VersuS</span>
+          <span class="text-[10px] text-slate-400 font-medium">Além do PIB • Eco Bem Viver</span>
+        </div>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <a href="#indicadores" class="hover:text-amber-300 transition-colors">Indicadores Oficiais</a>
+        <a href="#calculadora" class="hover:text-amber-300 transition-colors">Radar & Calculadora</a>
+        <a href="#filosofias" class="hover:text-amber-300 transition-colors">Filosofias Ancestrais</a>
+        <a href="#comparativo" class="hover:text-amber-300 transition-colors">PIB vs. Bem Viver</a>
+        <a href="LIVRO_ECO_BEM_VIVER_COMPLETO.md" target="_blank" class="text-amber-400 hover:text-amber-300 flex items-center gap-1 transition-colors">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+          <span>Livro Completo</span>
+        </a>
+      </nav>
+
+      <!-- Botão Voltar à Praça -->
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="px-3.5 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 hover:border-slate-600 transition-all flex items-center gap-1.5">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span class="hidden sm:inline">Voltar à</span> Praça
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ======================================================== -->
+  <!-- 2. SEÇÃO 1: HERO (TOPO DA PÁGINA)                        -->
+  <!-- ======================================================== -->
+  <section id="hero" class="relative pt-12 pb-16 px-4 sm:px-6 overflow-hidden border-b border-slate-800/80">
+    <!-- Efeito luminoso de fundo -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-emerald-500/10 via-amber-500/5 to-transparent blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10 space-y-5">
+      
+      <!-- Badge de Contexto -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-medium shadow-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Economia Ecológica & Sabedoria Ancestral</span>
+      </div>
+
+      <!-- Título de Impacto -->
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-serif">
+        Além do PIB: <span class="bg-gradient-to-r from-amber-300 via-amber-200 to-emerald-300 bg-clip-text text-transparent">Medindo o que realmente importa.</span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+        Explore dados oficiais, filosofias ancestrais e ferramentas práticas do <strong>Ecossistema YBY VersuS</strong> para entender, avaliar e promover o Bem Viver em sua comunidade.
+      </p>
+
+      <!-- 4 Cards de Navegação Rápida (CTAs Estratégicos) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 text-left">
+        
+        <!-- CTA 1: Radar das Dimensões -->
+        <a href="#calculadora" class="p-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 hover:border-emerald-400/60 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              🎯
+            </div>
+            <h3 class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">Radar das Dimensões</h3>
+            <span class="text-[10px] text-emerald-400/90 font-medium">Teko Porã & Ubuntu</span>
+            <p class="text-[11px] text-slate-400 mt-1 leading-snug">Calculadora interativa, 9 dimensões e dados regionais.</p>
+          </div>
+          <span class="text-[10.5px] font-semibold text-emerald-400 mt-3 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Calcular meu equilíbrio →</span>
+        </a>
+
+        <!-- CTA 2: Perspectivas dos Índices -->
+        <a href="#indicadores" class="p-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-400/60 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              ⚖️
+            </div>
+            <h3 class="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">Perspectivas dos Índices</h3>
+            <span class="text-[10px] text-amber-400/90 font-medium">Além do PIB</span>
+            <p class="text-[11px] text-slate-400 mt-1 leading-snug">Painel crítico com 10 indicadores oficiais (IDH, Gini, FIB).</p>
+          </div>
+          <span class="text-[10.5px] font-semibold text-amber-400 mt-3 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Ver painel de dados →</span>
+        </a>
+
+        <!-- CTA 3: Filosofias e Futuro -->
+        <a href="#filosofias" class="p-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 hover:border-teal-400/60 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              🌍
+            </div>
+            <h3 class="text-xs font-bold text-white group-hover:text-teal-300 transition-colors">Filosofias e o Futuro</h3>
+            <span class="text-[10px] text-teal-400/90 font-medium">Mapas Mentais</span>
+            <p class="text-[11px] text-slate-400 mt-1 leading-snug">Ubuntu, Teko Porã, Sumak Kawsay, Budismo & Decrescimento.</p>
+          </div>
+          <span class="text-[10.5px] font-semibold text-teal-400 mt-3 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Explorar saberes →</span>
+        </a>
+
+        <!-- CTA 4: Comparativo -->
+        <a href="#comparativo" class="p-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 hover:border-sky-400/60 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              🧭
+            </div>
+            <h3 class="text-xs font-bold text-white group-hover:text-sky-300 transition-colors">Comparativo Prático</h3>
+            <span class="text-[10px] text-sky-400/90 font-medium">PIB vs. Bem Viver</span>
+            <p class="text-[11px] text-slate-400 mt-1 leading-snug">Bússola de equilíbrio e tabela ponto a ponto.</p>
+          </div>
+          <span class="text-[10.5px] font-semibold text-sky-400 mt-3 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Comparar caminhos →</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 3. SEÇÃO 2: AVISO METODOLÓGICO SIMPLIFICADO             -->
+  <!-- ======================================================== -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6">
+    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/80 flex items-start gap-3.5 shadow-xs">
+      <div class="w-6 h-6 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+        <i data-lucide="info" class="w-3.5 h-3.5"></i>
+      </div>
+      <div class="text-xs text-slate-300 space-y-1">
+        <p class="font-bold text-slate-100 flex items-center gap-2">
+          <span>Nota de Transparência Metodológica</span>
+          <span class="text-[10px] font-normal px-2 py-0.5 rounded-full bg-slate-700 text-slate-300">Atualizado: Nov/2026</span>
+        </p>
+        <p class="text-slate-300 leading-relaxed font-light">
+          Os dados apresentados abaixo vêm de fontes oficiais e abertas (IBGE, ONU, PNUD, Global Footprint Network e Gallup). A forma como os cruzamos constitui uma <strong>proposta crítica do Ecossistema YBY VersuS</strong> para ampliar o debate público para além da régua estrita do dinheiro. Não é um consenso dogmático, mas um convite à reflexão consciente sobre as prioridades da vida.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 4. SEÇÃO 3: PAINEL DE DADOS INTERATIVO (DASHBOARD)       -->
+  <!-- ======================================================== -->
+  <section id="indicadores" class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+    
+    <!-- Cabeçalho da Seção -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-5">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+          <span>Painel Crítico • 10 Indicadores Oficiais</span>
+        </div>
+        <h2 class="text-2xl font-bold text-white font-serif">O Que as Métricas Revelam (e o que Ocultam)</h2>
+        <p class="text-xs text-slate-400 mt-1">Navegue pelas dimensões de economia, distribuição de renda, desenvolvimento humano e pegada ecológica.</p>
+      </div>
+
+      <!-- Tooltip & Informação de Comparabilidade -->
+      <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-xs text-slate-300">
+        <i data-lucide="help-circle" class="w-4 h-4 text-amber-400 shrink-0"></i>
+        <span class="text-[11px]">Série histórica de 2018 a 2025 para comparação de trajetórias.</span>
+      </div>
+    </div>
+
+    <!-- Filtros Visuais em Formato de Pílulas Arredondadas (Pills) -->
+    <div class="flex flex-wrap items-center gap-2 select-none">
+      <button onclick="filterIndicators('todos')" id="pill-todos" class="pill-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-400 text-slate-950 shadow-sm transition-all">
+        🟢 Todos (10)
+      </button>
+      <button onclick="filterIndicators('economia')" id="pill-economia" class="pill-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+        💰 Economia (2)
+      </button>
+      <button onclick="filterIndicators('distribuicao')" id="pill-distribuicao" class="pill-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+        ⚖️ Distribuição (2)
+      </button>
+      <button onclick="filterIndicators('pessoas')" id="pill-pessoas" class="pill-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+        👥 Pessoas (3)
+      </button>
+      <button onclick="filterIndicators('ambiente')" id="pill-ambiente" class="pill-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+        🌿 Ambiente (1)
+      </button>
+      <button onclick="filterIndicators('percepcao')" id="pill-percepcao" class="pill-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+        🧠 Percepção (2)
+      </button>
+    </div>
+
+    <!-- GRID DOS CARDS DE INDICADORES (DASHBOARD MODERNO) -->
+    <div id="indicators-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Injetado dinamicamente via JavaScript com Sparklines Canvas -->
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 5. SEÇÃO 4: CALCULADORA & QUIZ TEKO PORÃ & UBUNTU        -->
+  <!-- ======================================================== -->
+  <section id="calculadora" class="max-w-4xl mx-auto px-4 sm:px-6 py-12 space-y-6">
+    
+    <div class="text-center space-y-2 border-b border-slate-800 pb-5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold uppercase tracking-wider">
+        <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+        <span>Ferramenta de Autoconhecimento Coletivo</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white font-serif">Calculadora Teko Porã & Ubuntu</h2>
+      <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+        Responda às 9 perguntas para diagnosticar o equilíbrio entre a sua vida cotidiana, a natureza e a sua comunidade, gerando seu <strong>Gráfico de Radar</strong> e <strong>Plano de Ação</strong>.
+      </p>
+    </div>
+
+    <!-- CARD DA CALCULADORA COM BARRA DE PROGRESSO -->
+    <div class="card-dashboard p-6 sm:p-8 space-y-6 bg-slate-850">
+      
+      <!-- Barra de Progresso Visual -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs font-semibold">
+          <span id="quiz-step-label" class="text-emerald-400">Passo 1 de 9: Natureza & Sustentabilidade</span>
+          <span id="quiz-progress-text" class="text-slate-400">11% concluído</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+          <div id="quiz-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-amber-400 rounded-full transition-all duration-300" style="width: 11%;"></div>
+        </div>
+      </div>
+
+      <!-- Container Dinâmico da Pergunta Atual -->
+      <div id="quiz-question-container" class="space-y-4 py-2">
+        <!-- Renderizado dinamicamente -->
+      </div>
+
+      <!-- Resultado Final (Oculto inicialmente) -->
+      <div id="quiz-result-container" class="hidden space-y-6">
+        
+        <div class="text-center p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-2">
+          <span class="text-xs uppercase tracking-wider font-bold text-emerald-400">Seu Índice de Bem Viver Integral</span>
+          <div class="text-5xl font-black text-amber-300 font-serif" id="quiz-final-score">0.0 <span class="text-xl text-slate-400 font-sans font-normal">/ 10</span></div>
+          <p id="quiz-final-eval" class="text-xs text-slate-300 max-w-md mx-auto pt-1 font-light"></p>
+        </div>
+
+        <!-- Gráfico de Radar -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 text-center">Seu Radar de Equilíbrio (9 Eixos)</h4>
+          <div class="relative w-full max-w-md mx-auto aspect-square">
+            <canvas id="quizRadarChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Plano de Ação Personalizado (As 3 menores notas) -->
+        <div class="space-y-3 pt-4 border-t border-slate-800">
+          <h4 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+            <span>Seu Plano de Ação Personalizado (Práticas do Livro)</span>
+          </h4>
+          <p class="text-xs text-slate-400">Identificamos as dimensões com maior potencial de florescimento na sua rotina atual. Experimente estas ações:</p>
+          <div id="quiz-action-plan" class="space-y-2.5">
+            <!-- Injetado dinamicamente -->
+          </div>
+        </div>
+
+        <!-- Botão Recomeçar -->
+        <div class="text-center pt-2">
+          <button onclick="restartQuiz()" class="px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition-all">
+            ↻ Refazer Calculadora
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 6. SEÇÃO 5: FILOSOFIAS ANCESTRAIS & MAPAS MENTAIS        -->
+  <!-- ======================================================== -->
+  <section id="filosofias" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-6">
+    
+    <div class="border-b border-slate-800 pb-5">
+      <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">
+        <i data-lucide="globe" class="w-4 h-4"></i>
+        <span>Matrizes Epistemológicas</span>
+      </div>
+      <h2 class="text-2xl font-bold text-white font-serif">As Raízes do Bem Viver no Mundo</h2>
+      <p class="text-xs text-slate-400 mt-1">Cosmologias milenares que equilibram comunidade, natureza e dignidade humana.</p>
+    </div>
+
+    <!-- Abas / Cards das Tradições -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      
+      <!-- 1. Sumak Kawsay -->
+      <div class="card-dashboard p-5 space-y-3 bg-slate-850">
+        <div class="flex items-center justify-between">
+          <span class="text-2xl">🌿</span>
+          <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Andes • Quechua</span>
+        </div>
+        <h3 class="text-base font-bold text-white">Sumak Kawsay (Buen Vivir)</h3>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          A vida em plenitude e reciprocidade com a <strong>Pachamama (Mãe-Terra)</strong>. Rejeita o dogma do crescimento infinito e substitui a exploração pelo equilíbrio comunitário (<em>Ayni</em> e <em>Minka</em>).
+        </p>
+        <div class="pt-2 text-[11px] text-emerald-400 font-semibold border-t border-slate-800">
+          Princípio-Chave: A Terra é sujeito de direitos, não mercadoria.
+        </div>
+      </div>
+
+      <!-- 2. Teko Porã -->
+      <div class="card-dashboard p-5 space-y-3 bg-slate-850">
+        <div class="flex items-center justify-between">
+          <span class="text-2xl">🏹</span>
+          <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">Guarani • Abya Yala</span>
+        </div>
+        <h3 class="text-base font-bold text-white">Teko Porã</h3>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          O modo de ser belo, bom e harmônico. Busca a <strong>Terra Sem Mal (<em>Yvy Marãe'ỹ</em>)</strong> no presente, cultivando a fala sagrada, a solidariedade e o cuidado com a floresta (<em>ka'aguy</em>).
+        </p>
+        <div class="pt-2 text-[11px] text-amber-400 font-semibold border-t border-slate-800">
+          Princípio-Chave: A vida só se realiza em comunidade de afetos.
+        </div>
+      </div>
+
+      <!-- 3. Ubuntu -->
+      <div class="card-dashboard p-5 space-y-3 bg-slate-850">
+        <div class="flex items-center justify-between">
+          <span class="text-2xl">🤝</span>
+          <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/20">África Austral • Bantu</span>
+        </div>
+        <h3 class="text-base font-bold text-white">Ubuntu</h3>
+        <p class="text-xs text-slate-300 leading-relaxed font-light">
+          <em>"Umuntu ngumuntu ngabantu"</em>: <strong>"Eu sou porque nós somos"</strong>. A humanidade de um indivíduo só se expressa plenamente através do acolhimento, da dignidade e da justiça restaurativa para com todos.
+        </p>
+        <div class="pt-2 text-[11px] text-teal-400 font-semibold border-t border-slate-800">
+          Princípio-Chave: A desumanização do outro é a ferida de si mesmo.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 7. SEÇÃO 6: COMPARATIVO PRÁTICO (PIB VS. BEM VIVER)       -->
+  <!-- ======================================================== -->
+  <section id="comparativo" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-6">
+    
+    <div class="border-b border-slate-800 pb-5">
+      <div class="flex items-center gap-2 text-xs font-bold text-sky-400 uppercase tracking-wider mb-1">
+        <i data-lucide="scale" class="w-4 h-4"></i>
+        <span>Contraste de Paradigmas</span>
+      </div>
+      <h2 class="text-2xl font-bold text-white font-serif">Dois Caminhos para a Humanidade</h2>
+      <p class="text-xs text-slate-400 mt-1">Veja a diferença prática entre uma sociedade focada exclusivamente no PIB e uma baseada no Bem Viver.</p>
+    </div>
+
+    <!-- Tabela Comparativa Moderna com Scroll Horizontal Seguro -->
+    <div class="card-dashboard overflow-hidden bg-slate-850">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-900 border-b border-slate-800 text-[11px] uppercase tracking-wider text-slate-400">
+            <tr>
+              <th class="p-4 font-bold text-slate-200">Dimensão</th>
+              <th class="p-4 font-bold text-amber-400">📈 Apenas PIB (Paradigma Atual)</th>
+              <th class="p-4 font-bold text-emerald-400">🌿 Bem Viver & Ubuntu (Regeneração)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/80 text-slate-300">
+            <tr>
+              <td class="p-4 font-bold text-white whitespace-nowrap">Objetivo Central</td>
+              <td class="p-4 font-light">Maximização do lucro e expansão monetária infinita.</td>
+              <td class="p-4 font-light text-emerald-300">Reprodução digna da vida de todos e harmonia com a Terra.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white whitespace-nowrap">Relação com a Terra</td>
+              <td class="p-4 font-light">A natureza é 'recurso natural' a explorar e descartar.</td>
+              <td class="p-4 font-light text-emerald-300">A Terra é a Mãe (Pachamama); somos parte viva do ecossistema.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white whitespace-nowrap">Tempo e Ritmo de Vida</td>
+              <td class="p-4 font-light">O tempo é dinheiro; aceleração, produtivismo e estresse contínuo.</td>
+              <td class="p-4 font-light text-emerald-300">O tempo é o tecido da vida; direito ao descanso e ócio criativo.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white whitespace-nowrap">Trabalho Humano</td>
+              <td class="p-4 font-light">Custo de produção a ser minimizado ou alienação por salário.</td>
+              <td class="p-4 font-light text-emerald-300">Expressão da vocação criativa com utilidade social e dignidade.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white whitespace-nowrap">Convivência Social</td>
+              <td class="p-4 font-light">Competição feroz, isolamento e solidão urbana.</td>
+              <td class="p-4 font-light text-emerald-300">Apoio mútuo, vizinhança ativa e acolhimento dos vulneráveis.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white whitespace-nowrap">Medida de Sucesso</td>
+              <td class="p-4 font-light">Acúmulo de patrimônio, bens de luxo e status material.</td>
+              <td class="p-4 font-light text-emerald-300">Relações fraternas saudáveis, sabedoria e tempo de qualidade.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 8. SEÇÃO 7: LIVRO MESTRE & DOWNLOADS                     -->
+  <!-- ======================================================== -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <div class="card-dashboard p-6 sm:p-8 bg-gradient-to-br from-slate-900 to-slate-850 border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center sm:text-left">
+        <span class="text-xs uppercase font-bold tracking-wider text-amber-400">Publicação Completa Disponível</span>
+        <h3 class="text-xl font-bold text-white font-serif">Livro-Mestre: Economia do Bem Viver</h3>
+        <p class="text-xs text-slate-300 max-w-lg font-light leading-relaxed">
+          Baixe o documento integral com mais de 1.700 linhas contendo análises de 20 países, dados históricos do IBGE/ONU e o guia completo para eBooks e aplicativos.
+        </p>
+      </div>
+      <a href="LIVRO_ECO_BEM_VIVER_COMPLETO.md" download class="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:brightness-110 active:scale-95 text-slate-950 text-xs font-bold transition-all shadow-md flex items-center gap-2 shrink-0">
+        <i data-lucide="download" class="w-4 h-4"></i>
+        <span>Baixar Livro (.md)</span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 9. RODAPÉ INSTITUCIONAL                                  -->
+  <!-- ======================================================== -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 text-xs py-10 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      
+      <div class="space-y-1">
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <span class="text-amber-300 font-bold text-sm">YBY VersuS</span>
+          <span class="text-slate-600">•</span>
+          <span class="text-slate-300">Praça Pública Digital</span>
+        </div>
+        <p class="text-[11px] text-slate-500">"Uma infraestrutura de circulação pública de conhecimentos, culturas e oportunidades."</p>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <a href="index.html" class="hover:text-amber-300 transition-colors">Praça Central</a>
+        <a href="trilhadesaberes.html" class="hover:text-amber-300 transition-colors">Trilha de Saberes</a>
+        <a href="LIVRO_ECO_BEM_VIVER_COMPLETO.md" class="hover:text-amber-300 transition-colors">Livro Mestre</a>
+      </div>
+
+      <p class="text-[10.5px] text-slate-600">
+        Dados abertos governamentais e internacionais. Licenças CC BY / Domínio Público.
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!-- ======================================================== -->
+  <!-- 10. JAVASCRIPT: DADOS, FILTROS, SPARKLINE & CALCULADORA  -->
+  <!-- ======================================================== -->
+  <script>
+    // DADOS OFICIAIS DOS 10 INDICADORES
+    const INDICADORES_DATA = [
+      {
+        id: "pib-per-capita-brasil",
+        nome: "PIB per capita (Brasil)",
+        bloco: "economia",
+        badge: "💰 Economia",
+        icone: "dollar-sign",
+        cor: "amber",
+        valorRecente: "R$ 57.240",
+        anoRecente: 2025,
+        variacao: "+5.7% no ano",
+        tendenciaPositiva: true,
+        unidade: "R$ correntes / habitante",
+        descricaoCurta: "Valor total da produção de bens e serviços finais dividida pelo número de habitantes do país.",
+        oQueNaoMede: "Não mede a distribuição da renda entre os cidadãos, o trabalho doméstico e de cuidado não remunerado, nem a degradação dos recursos naturais e do patrimônio ecológico.",
+        fonteNome: "IBGE - Contas Nacionais",
+        fonteUrl: "https://www.ibge.gov.br",
+        serie: [
+          { ano: 2018, valor: 33593 },
+          { ano: 2019, valor: 35161 },
+          { ano: 2020, valor: 35936 },
+          { ano: 2021, valor: 42247 },
+          { ano: 2022, valor: 49324 },
+          { ano: 2023, valor: 51050 },
+          { ano: 2024, valor: 54120 },
+          { ano: 2025, valor: 57240 }
+        ]
+      },
+      {
+        id: "pib-crescimento-anual",
+        nome: "Crescimento Real do PIB (% Anual)",
+        bloco: "economia",
+        badge: "💰 Economia",
+        icone: "trending-up",
+        cor: "amber",
+        valorRecente: "3,4%",
+        anoRecente: 2025,
+        variacao: "+0.3 p.p. vs 2024",
+        tendenciaPositiva: true,
+        unidade: "Variação percentual anual",
+        descricaoCurta: "Taxa de variação percentual anual do volume do Produto Interno Bruto brasileiro.",
+        oQueNaoMede: "Não mede a qualidade do crescimento nem a preservação ambiental; um desastre natural ou aumento de doenças pode elevar gastos hospitalares e reparos que somam positivamente no PIB.",
+        fonteNome: "IBGE - Contas Nacionais",
+        fonteUrl: "https://sidra.ibge.gov.br",
+        serie: [
+          { ano: 2018, valor: 1.8 },
+          { ano: 2019, valor: 1.2 },
+          { ano: 2020, valor: -3.3 },
+          { ano: 2021, valor: 4.8 },
+          { ano: 2022, valor: 3.0 },
+          { ano: 2023, valor: 2.9 },
+          { ano: 2024, valor: 3.1 },
+          { ano: 2025, valor: 3.4 }
+        ]
+      },
+      {
+        id: "indice-gini-rendimento",
+        nome: "Índice de Gini (Desigualdade)",
+        bloco: "distribuicao",
+        badge: "⚖️ Distribuição",
+        icone: "pie-chart",
+        cor: "sky",
+        valorRecente: "0,510",
+        anoRecente: 2025,
+        variacao: "Queda leve (melhora)",
+        tendenciaPositiva: true,
+        unidade: "Índice de 0 (igual) a 1 (desigual)",
+        descricaoCurta: "Medida de desigualdade de renda domiciliar per capita no país.",
+        oQueNaoMede: "Não mede a concentração de riqueza patrimonial (terras, ativos financeiros e heranças), nem a desigualdade no acesso a saneamento e transporte.",
+        fonteNome: "IBGE - PNAD Contínua",
+        fonteUrl: "https://www.ibge.gov.br",
+        serie: [
+          { ano: 2018, valor: 0.545 },
+          { ano: 2019, valor: 0.544 },
+          { ano: 2020, valor: 0.524 },
+          { ano: 2021, valor: 0.544 },
+          { ano: 2022, valor: 0.518 },
+          { ano: 2023, valor: 0.518 },
+          { ano: 2024, valor: 0.514 },
+          { ano: 2025, valor: 0.510 }
+        ]
+      },
+      {
+        id: "rendimento-medio-domiciliar",
+        nome: "Rendimento Médio Domiciliar",
+        bloco: "distribuicao",
+        badge: "⚖️ Distribuição",
+        icone: "wallet",
+        cor: "sky",
+        valorRecente: "R$ 2.040",
+        anoRecente: 2025,
+        variacao: "+4.8% no ano",
+        tendenciaPositiva: true,
+        unidade: "R$ reais por habitante",
+        descricaoCurta: "Média de rendimentos mensais efetivamente disponíveis por habitante nos domicílios.",
+        oQueNaoMede: "Não reflete disparidades de custo de vida entre metrópoles e áreas rurais, nem o endividamento das famílias com juros bancários.",
+        fonteNome: "IBGE - PNAD Contínua",
+        fonteUrl: "https://sidra.ibge.gov.br",
+        serie: [
+          { ano: 2018, valor: 1580 },
+          { ano: 2019, valor: 1605 },
+          { ano: 2020, valor: 1548 },
+          { ano: 2021, valor: 1452 },
+          { ano: 2022, valor: 1625 },
+          { ano: 2023, valor: 1848 },
+          { ano: 2024, valor: 1945 },
+          { ano: 2025, valor: 2040 }
+        ]
+      },
+      {
+        id: "idh-nacional-brasil",
+        nome: "Índice de Desenvolvimento Humano",
+        bloco: "pessoas",
+        badge: "👥 Pessoas",
+        icone: "user-check",
+        cor: "emerald",
+        valorRecente: "0,771",
+        anoRecente: 2025,
+        variacao: "Alto Desenvolvimento",
+        tendenciaPositiva: true,
+        unidade: "Índice de 0 a 1",
+        descricaoCurta: "Composto por longevidade (saúde), educação e padrão de vida (renda).",
+        oQueNaoMede: "Não mede a sustentabilidade ambiental, nem a segurança cidadã, as liberdades civis, ou as desigualdades internas de gênero e raça.",
+        fonteNome: "PNUD - Relatório Global HDR",
+        fonteUrl: "https://hdr.undp.org",
+        serie: [
+          { ano: 2018, valor: 0.761 },
+          { ano: 2019, valor: 0.766 },
+          { ano: 2020, valor: 0.758 },
+          { ano: 2021, valor: 0.754 },
+          { ano: 2022, valor: 0.760 },
+          { ano: 2023, valor: 0.766 },
+          { ano: 2024, valor: 0.768 },
+          { ano: 2025, valor: 0.771 }
+        ]
+      },
+      {
+        id: "idhd-ajustado-desigualdade",
+        nome: "IDH Ajustado à Desigualdade",
+        bloco: "pessoas",
+        badge: "👥 Pessoas",
+        icone: "users",
+        cor: "emerald",
+        valorRecente: "0,593",
+        anoRecente: 2025,
+        variacao: "Perda de ~23% por disparidade",
+        tendenciaPositiva: false,
+        unidade: "Índice de 0 a 1",
+        descricaoCurta: "Mede o desenvolvimento humano quando descontada a perda por desigualdade nas 3 dimensões.",
+        oQueNaoMede: "Não mede a exclusão de povos e comunidades tradicionais que vivem fora de economias formais monetárias.",
+        fonteNome: "PNUD - IHDI",
+        fonteUrl: "https://hdr.undp.org",
+        serie: [
+          { ano: 2018, valor: 0.578 },
+          { ano: 2019, valor: 0.584 },
+          { ano: 2020, valor: 0.570 },
+          { ano: 2021, valor: 0.565 },
+          { ano: 2022, valor: 0.577 },
+          { ano: 2023, valor: 0.585 },
+          { ano: 2024, valor: 0.589 },
+          { ano: 2025, valor: 0.593 }
+        ]
+      },
+      {
+        id: "expectativa-vida-nascer",
+        nome: "Esperança de Vida ao Nascer",
+        bloco: "pessoas",
+        badge: "👥 Pessoas",
+        icone: "heart",
+        cor: "emerald",
+        valorRecente: "76,9 anos",
+        anoRecente: 2025,
+        variacao: "Recuperação pós-pandemia",
+        tendenciaPositiva: true,
+        unidade: "Anos de vida",
+        descricaoCurta: "Número médio de anos que um recém-nascido espera viver mantidos os padrões daquele ano.",
+        oQueNaoMede: "Não mede a quantidade de anos vividos com autonomia e qualidade física/mental livre de incapacidades crônicas.",
+        fonteNome: "IBGE - Tábuas de Mortalidade",
+        fonteUrl: "https://www.ibge.gov.br",
+        serie: [
+          { ano: 2018, valor: 76.3 },
+          { ano: 2019, valor: 76.6 },
+          { ano: 2020, valor: 74.8 },
+          { ano: 2021, valor: 72.8 },
+          { ano: 2022, valor: 75.5 },
+          { ano: 2023, valor: 76.4 },
+          { ano: 2024, valor: 76.7 },
+          { ano: 2025, valor: 76.9 }
+        ]
+      },
+      {
+        id: "pegada-ecologica-brasil",
+        nome: "Pegada Ecológica per capita",
+        bloco: "ambiente",
+        badge: "🌿 Ambiente",
+        icone: "feather",
+        cor: "teal",
+        valorRecente: "2,81 gha",
+        anoRecente: 2025,
+        variacao: "Pressão estável",
+        tendenciaPositiva: true,
+        unidade: "Hectares globais per capita",
+        descricaoCurta: "Área de terra e mar biologicamente produtivos necessária para sustentar o consumo de recursos.",
+        oQueNaoMede: "Não mensura toxicidade crônica de pesticidas específicos na água, nem poluição atmosférica fina local.",
+        fonteNome: "Global Footprint Network",
+        fonteUrl: "https://data.footprintnetwork.org",
+        serie: [
+          { ano: 2018, valor: 2.82 },
+          { ano: 2019, valor: 2.80 },
+          { ano: 2020, valor: 2.74 },
+          { ano: 2021, valor: 2.78 },
+          { ano: 2022, valor: 2.81 },
+          { ano: 2023, valor: 2.83 },
+          { ano: 2024, valor: 2.82 },
+          { ano: 2025, valor: 2.81 }
+        ]
+      },
+      {
+        id: "felicidade-world-report",
+        nome: "Satisfação com a Vida (Gallup/WHR)",
+        bloco: "percepcao",
+        badge: "🧠 Percepção",
+        icone: "smile",
+        cor: "purple",
+        valorRecente: "6,42 / 10",
+        anoRecente: 2025,
+        variacao: "Posição ~38ª global",
+        tendenciaPositiva: true,
+        unidade: "Escala de Cantril (0 a 10)",
+        descricaoCurta: "Avaliação subjetiva onde o respondente pontua a própria vida de 0 (pior possível) a 10 (melhor possível).",
+        oQueNaoMede: "Não mede variações emocionais de curto prazo, nem condições estruturais objetivas de infraestrutura.",
+        fonteNome: "World Happiness Report / Gallup",
+        fonteUrl: "https://worldhappiness.report",
+        serie: [
+          { ano: 2019, valor: 6.30 },
+          { ano: 2020, valor: 6.33 },
+          { ano: 2021, valor: 6.13 },
+          { ano: 2022, valor: 6.12 },
+          { ano: 2023, valor: 6.27 },
+          { ano: 2024, valor: 6.38 },
+          { ano: 2025, valor: 6.42 }
+        ]
+      },
+      {
+        id: "felicidade-ipsos-report",
+        nome: "Felicidade Declarada (Ipsos)",
+        bloco: "percepcao",
+        badge: "🧠 Percepção",
+        icone: "sun",
+        cor: "purple",
+        valorRecente: "82%",
+        anoRecente: 2025,
+        variacao: "+1 p.p. vs 2024",
+        tendenciaPositiva: true,
+        unidade: "% que se declara feliz",
+        descricaoCurta: "Percentual da população adulta que declara considerar-se 'muito feliz' ou 'bastante feliz'.",
+        oQueNaoMede: "Não mensura intensidade contínua e possui sensibilidade a momentos eleitorais e sazonais.",
+        fonteNome: "Ipsos Global Happiness",
+        fonteUrl: "https://www.ipsos.com",
+        serie: [
+          { ano: 2020, valor: 63 },
+          { ano: 2021, valor: 63 },
+          { ano: 2022, valor: 74 },
+          { ano: 2023, valor: 79 },
+          { ano: 2024, valor: 81 },
+          { ano: 2025, valor: 82 }
+        ]
+      }
+    ];
+
+    // RENDERIZAR CARDS NO DASHBOARD
+    function renderIndicators(filter = 'todos') {
+      const container = document.getElementById('indicators-grid');
+      container.innerHTML = '';
+
+      const filtered = filter === 'todos' 
+        ? INDICADORES_DATA 
+        : INDICADORES_DATA.filter(ind => ind.bloco === filter);
+
+      filtered.forEach((ind, index) => {
+        const card = document.createElement('div');
+        card.className = 'card-dashboard p-5 flex flex-col justify-between space-y-4';
+
+        // Geração do canvas id para sparkline
+        const canvasId = `sparkline-${ind.id}`;
+
+        card.innerHTML = `
+          <div class="space-y-3">
+            <!-- Cabeçalho: Badge + Nome -->
+            <div class="flex items-start justify-between gap-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                ${ind.badge}
+              </span>
+              <span class="text-[11px] text-slate-500 font-mono">${ind.anoRecente}</span>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-bold text-white leading-snug">${ind.nome}</h3>
+              <p class="text-[11px] text-slate-400 mt-1 line-clamp-2">${ind.descricaoCurta}</p>
+            </div>
+
+            <!-- Destaque Numérico Grande + Variação -->
+            <div class="flex items-baseline justify-between pt-1">
+              <div class="text-3xl font-extrabold text-amber-400 tracking-tight font-serif">
+                ${ind.valorRecente}
+              </div>
+              <span class="text-[11px] font-semibold ${ind.tendenciaPositiva ? 'text-emerald-400' : 'text-amber-300'} flex items-center gap-0.5">
+                ${ind.tendenciaPositiva ? '▲' : '▼'} ${ind.variacao}
+              </span>
+            </div>
+
+            <!-- Mini Sparkline (Linha de Tendência) -->
+            <div class="pt-2">
+              <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono mb-1">
+                <span>Trajetória (2018–2025)</span>
+                <span>${ind.unidade}</span>
+              </div>
+              <div class="w-full h-12 bg-slate-900/60 rounded-lg p-1 border border-slate-800/80">
+                <canvas id="${canvasId}" class="w-full h-full"></canvas>
+              </div>
+            </div>
+
+            <!-- Acordeão para o "Lado Oculto": O que este número não mede -->
+            <details class="group pt-2 border-t border-slate-800">
+              <summary class="cursor-pointer text-xs font-semibold text-slate-400 hover:text-amber-300 transition-colors flex items-center justify-between select-none py-1">
+                <span class="flex items-center gap-1.5 text-amber-400/90 text-[11px]">
+                  <span>⚠️</span>
+                  <span>O que este número NÃO mede</span>
+                </span>
+                <span class="text-[10px] text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div class="pt-2 text-[11.5px] text-slate-300 font-light leading-relaxed bg-slate-900/80 p-3 rounded-lg border border-slate-800 mt-1">
+                ${ind.oQueNaoMede}
+                <div class="mt-2 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
+                  <span>Fonte Oficial: <strong>${ind.fonteNome}</strong></span>
+                  <a href="${ind.fonteUrl}" target="_blank" class="text-amber-400 hover:underline">Acessar ↗</a>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <!-- Botão Ver Histórico Completo em Tabela Retrátil -->
+          <details class="group">
+            <summary class="cursor-pointer text-[11px] font-semibold text-slate-400 hover:text-slate-200 transition-colors flex items-center justify-center py-1.5 rounded-lg bg-slate-900/40 hover:bg-slate-900 border border-slate-800 select-none">
+              <span>Ver histórico ano a ano</span>
+            </summary>
+            <div class="pt-2">
+              <div class="max-h-36 overflow-y-auto rounded-lg border border-slate-800 bg-slate-900/60 p-2 text-[11px]">
+                <table class="w-full text-center">
+                  <thead class="text-slate-500 font-mono border-b border-slate-800">
+                    <tr><th class="pb-1">Ano</th><th class="pb-1">Valor Oficial</th></tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-800/50 text-slate-300 font-mono">
+                    ${ind.serie.map(s => `<tr><td class="py-1 text-slate-400">${s.ano}</td><td class="py-1 font-bold text-amber-300">${s.valor}</td></tr>`).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        `;
+
+        container.appendChild(card);
+
+        // Desenhar sparkline no canvas
+        setTimeout(() => {
+          drawSparkline(canvasId, ind.serie);
+        }, 10);
+      });
+
+      lucide.createIcons();
+    }
+
+    // DESENHAR SPARKLINE LEVE E MODERNO NO CANVAS
+    function drawSparkline(canvasId, data) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+
+      const w = rect.width;
+      const h = rect.height;
+
+      const values = data.map(d => d.valor);
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      const range = max - min || 1;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Traçado suave
+      ctx.beginPath();
+      data.forEach((d, i) => {
+        const x = (i / (data.length - 1)) * (w - 12) + 6;
+        const y = h - 6 - ((d.valor - min) / range) * (h - 12);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+
+      ctx.strokeStyle = '#FBBF24'; // Dourado
+      ctx.lineWidth = 2;
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+
+      // Ponto final de destaque
+      const lastX = w - 6;
+      const lastY = h - 6 - ((values[values.length - 1] - min) / range) * (h - 12);
+      ctx.fillStyle = '#34D399'; // Verde
+      ctx.beginPath();
+      ctx.arc(lastX, lastY, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // FILTRO DAS PÍLULAS
+    function filterIndicators(categoria) {
+      document.querySelectorAll('.pill-btn').forEach(btn => {
+        btn.classList.remove('bg-amber-400', 'text-slate-950', 'shadow-sm');
+        btn.classList.add('bg-slate-800', 'text-slate-300', 'border', 'border-slate-700');
+      });
+
+      const activeBtn = document.getElementById(`pill-${categoria}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-800', 'text-slate-300', 'border', 'border-slate-700');
+        activeBtn.classList.add('bg-amber-400', 'text-slate-950', 'shadow-sm');
+      }
+
+      renderIndicators(categoria);
+    }
+
+
+    // ========================================================
+    // CALCULADORA & QUIZ TEKO PORÃ & UBUNTU
+    // ========================================================
+    const QUIZ_QUESTIONS = [
+      {
+        axis: "Natureza & Sustentabilidade",
+        question: "Com que frequência você se conecta com a natureza e pratica hábitos sustentáveis?",
+        desc: "A ONU destaca o 'Respeito ao Planeta' como princípio de desenvolvimento. Inclui tempo ao ar livre e diminuição da pegada ecológica.",
+        tip: "Dedique 30 minutos por semana a um parque ou área verde e priorize alimentos de produtores locais agroecológicos.",
+        unSource: "Beyond GDP: Limites planetários e capital natural."
+      },
+      {
+        axis: "Comunidade & Apoio Mútuo (Ubuntu)",
+        question: "Quão presente é a sua rede de amparo mútuo e sua participação comunitária?",
+        desc: "O bem-estar é coletivo: 'Eu sou porque nós somos'. A Carta da ONU enfatiza viver em paz como bons vizinhos.",
+        tip: "Ofereça ajuda prática a um vizinho ou participe de uma rede solidária/banco de tempo sem esperar retorno monetário.",
+        unSource: "Beyond GDP: Coesão social e resiliência comunitária."
+      },
+      {
+        axis: "Tempo Livre & Ócio Criativo",
+        question: "Você reserva tempo para descanso e lazer sem a culpa de 'ter que produzir'?",
+        desc: "O direito ao repouso é fundamental. O estresse crônico destrói a saúde e o capital humano.",
+        tip: "Desconecte-se de telas 1 hora antes de dormir e reserve um turno no fim de semana para o puro descanso despretensioso.",
+        unSource: "Declaração Universal dos Direitos Humanos (Art. 24)."
+      },
+      {
+        axis: "Consumo Consciente (Suficiência)",
+        question: "Suas compras atendem necessidades reais ou impulsos de acúmulo material?",
+        desc: "O Sumak Kawsay valoriza o suficiente contra a exaustão dos recursos gerada pelo hiperconsumismo.",
+        tip: "Adote a regra das 48 horas antes de compras supérfluas e pratique o conserto, troca ou doação.",
+        unSource: "Beyond GDP: Padrões de consumo e produção sustentáveis."
+      },
+      {
+        axis: "Saúde Mental & Autocuidado",
+        question: "Como você avalia seu bem-estar emocional, clareza mental e paz interior?",
+        desc: "A saúde integral supera a mera ausência de doença, abrangendo equilíbrio psicológico e propósito.",
+        tip: "Inicie o dia com 10 minutos de silêncio, respiração consciente ou contemplação.",
+        unSource: "OMS: Saúde como estado de completo bem-estar físico e mental."
+      },
+      {
+        axis: "Diversidade & Inclusão",
+        question: "Como você acolhe pessoas diferentes de você (origem, crença, cultura e identidade)?",
+        desc: "Uma sociedade justa não tolera discriminação. A igualdade é pré-requisito de paz duradoura.",
+        tip: "Ouça ativamente e consuma conteúdos e saberes de autores e culturas fora da sua bolha habitual.",
+        unSource: "Pacto Internacional dos Direitos Civis e Políticos."
+      },
+      {
+        axis: "Saberes & Aprendizado Contínuo",
+        question: "Você busca aprender continuamente, valorizando a ciência e os saberes ancestrais?",
+        desc: "Educação ao longo da vida e respeito às memórias tradicionais nutrem o tecido civilizatório.",
+        tip: "Leia uma obra sobre saberes indígenas ou converse com uma pessoa idosa sobre suas memórias de vida.",
+        unSource: "UNESCO: Patrimônio Imaterial e Educação Transformadora."
+      },
+      {
+        axis: "Saúde Física & Prevenção",
+        question: "Você cuida do seu corpo de forma preventiva com alimentação viva e movimento?",
+        desc: "A vitalidade física sustenta todas as dimensões de atuação no mundo.",
+        tip: "Pratique caminhadas regulares e beba água pura ao longo de todo o dia.",
+        unSource: "Beyond GDP: Esperança de vida saudável e prevenção primária."
+      },
+      {
+        axis: "Autonomia & Propósito (Ikigai)",
+        question: "Você sente que suas escolhas diárias estão alinhadas aos seus valores mais profundos?",
+        desc: "A liberdade de construir um modo de vida significativo é o centro da abordagem das capacitações de Amartya Sen.",
+        tip: "Escreva em um caderno quais são os três valores essenciais dos quais você não abre mão.",
+        unSource: "Relatório de Desenvolvimento Humano (PNUD): Liberdades substantivas."
+      }
+    ];
+
+    let currentStep = 0;
+    let quizScores = [];
+    let radarChartInstance = null;
+
+    function renderQuizStep() {
+      const container = document.getElementById('quiz-question-container');
+      const q = QUIZ_QUESTIONS[currentStep];
+
+      // Atualiza barra de progresso
+      const pct = Math.round(((currentStep + 1) / QUIZ_QUESTIONS.length) * 100);
+      document.getElementById('quiz-step-label').innerText = `Passo ${currentStep + 1} de 9: ${q.axis}`;
+      document.getElementById('quiz-progress-text').innerText = `${pct}% concluído`;
+      document.getElementById('quiz-progress-bar').style.width = `${pct}%`;
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div class="space-y-1">
+            <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">${q.axis}</span>
+            <h3 class="text-base sm:text-lg font-bold text-white leading-snug">${q.question}</h3>
+            <p class="text-xs text-slate-400 font-light leading-relaxed">${q.desc}</p>
+          </div>
+
+          <!-- Seletor de Nota (1 a 10) em Botões Elegantes -->
+          <div class="space-y-2 pt-2">
+            <span class="text-[11px] font-medium text-slate-400">Escolha uma nota de 1 (preciso melhorar muito) a 10 (plenamente equilibrado):</span>
+            <div class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+              ${[1,2,3,4,5,6,7,8,9,10].map(n => `
+                <button onclick="handleAnswer(${n})" class="h-11 rounded-xl bg-slate-900 hover:bg-amber-400 hover:text-slate-950 border border-slate-700/80 hover:border-amber-400 text-xs font-bold text-slate-200 transition-all active:scale-95 flex items-center justify-center">
+                  ${n}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-2 text-[10px] text-slate-500 font-mono">
+            Referência: ${q.unSource}
+          </div>
+        </div>
+      `;
+    }
+
+    function handleAnswer(score) {
+      quizScores.push({ axis: QUIZ_QUESTIONS[currentStep].axis, score: score, tip: QUIZ_QUESTIONS[currentStep].tip });
+      if (currentStep < QUIZ_QUESTIONS.length - 1) {
+        currentStep++;
+        renderQuizStep();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      document.getElementById('quiz-question-container').classList.add('hidden');
+      document.getElementById('quiz-step-label').innerText = "Diagnóstico Concluído!";
+      document.getElementById('quiz-progress-text').innerText = "100%";
+      document.getElementById('quiz-progress-bar').style.width = "100%";
+      document.getElementById('quiz-result-container').classList.remove('hidden');
+
+      const sum = quizScores.reduce((acc, curr) => acc + curr.score, 0);
+      const avg = (sum / quizScores.length).toFixed(1);
+
+      document.getElementById('quiz-final-score').innerText = `${avg} / 10`;
+
+      let evalText = "";
+      if (avg >= 8) {
+        evalText = "Excelente nível de harmonia e equilíbrio com a vida comunitária e a natureza. Você vive os princípios do Teko Porã no dia a dia!";
+      } else if (avg >= 5) {
+        evalText = "Você possui bons alicerces de equilíbrio, com oportunidades preciosas de desaceleração e fortalecimento dos laços de apoio mútuo.";
+      } else {
+        evalText = "Sua rotina reflete forte pressão do produtivismo e da aceleração moderna. As práticas sugeridas abaixo ajudarão a regenerar sua vitalidade.";
+      }
+      document.getElementById('quiz-final-eval').innerText = evalText;
+
+      // Renderizar Gráfico de Radar via Chart.js
+      renderRadarChart(quizScores);
+
+      // Renderizar as 3 menores pontuações no Plano de Ação
+      const sorted = [...quizScores].sort((a, b) => a.score - b.score);
+      const lowest3 = sorted.slice(0, 3);
+
+      const actionPlanContainer = document.getElementById('quiz-action-plan');
+      actionPlanContainer.innerHTML = lowest3.map(item => `
+        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-300">${item.axis}</span>
+            <span class="text-[10.5px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 font-mono">Nota: ${item.score}/10</span>
+          </div>
+          <p class="text-xs text-slate-300 font-light leading-relaxed">💡 ${item.tip}</p>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function renderRadarChart(scores) {
+      const ctx = document.getElementById('quizRadarChart');
+      if (!ctx) return;
+
+      if (radarChartInstance) {
+        radarChartInstance.destroy();
+      }
+
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: scores.map(s => s.axis.split(' ')[0]),
+          datasets: [{
+            label: 'Seu Equilíbrio',
+            data: scores.map(s => s.score),
+            backgroundColor: 'rgba(251, 191, 36, 0.25)',
+            borderColor: '#FBBF24',
+            pointBackgroundColor: '#34D399',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#FBBF24',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            r: {
+              angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+              grid: { color: 'rgba(255, 255, 255, 0.1)' },
+              pointLabels: {
+                color: '#CBD5E1',
+                font: { size: 10, family: 'Inter' }
+              },
+              ticks: {
+                backdropColor: 'transparent',
+                color: '#94A3B8',
+                stepSize: 2,
+                min: 0,
+                max: 10
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    }
+
+    function restartQuiz() {
+      currentStep = 0;
+      quizScores = [];
+      document.getElementById('quiz-result-container').classList.add('hidden');
+      document.getElementById('quiz-question-container').classList.remove('hidden');
+      renderQuizStep();
+    }
+
+    // INICIALIZAÇÃO
+    window.addEventListener('DOMContentLoaded', () => {
+      renderIndicators('todos');
+      renderQuizStep();
+      lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>

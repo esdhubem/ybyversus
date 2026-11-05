@@ -539,7 +539,10 @@
             <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-400"></i>
             <span class="text-[11.5px] uppercase tracking-wider font-extrabold text-emerald-300">Redes de Postagens</span>
           </div>
-          <span class="text-[10px] text-[#E5C384]/70 font-medium">Deslize para ver todos 👉</span>
+          <button onclick="scrollFormatCarousel()" class="text-[10.5px] font-bold text-emerald-950 bg-gradient-to-r from-[#a7f3d0] to-[#fef08a] hover:brightness-105 active:scale-95 px-3 py-1 rounded-full flex items-center gap-1.5 transition-all shadow-sm border border-emerald-300/40 tap-active cursor-pointer" title="Deslizar para ver todas as redes de postagens">
+            <span>Deslize para ver todos</span>
+            <span class="text-[11px] leading-none">👉</span>
+          </button>
         </div>
         <div id="format-icons-carousel" class="flex gap-2 overflow-x-auto no-scrollbar scrollbar-none pb-2 select-none">
           
@@ -2709,6 +2712,16 @@
     let likesCount = 2450;
     let postLikesCount = 2400;
     let isPostLiked = false;
+
+    function scrollFormatCarousel() {
+      const carousel = document.getElementById('format-icons-carousel');
+      if (!carousel) return;
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 25) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: 220, behavior: 'smooth' });
+      }
+    }
 
     function setActiveTab(tab) {
       activeTab = tab;

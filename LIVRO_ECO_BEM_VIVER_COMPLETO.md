@@ -1613,22 +1613,70 @@ Grupo 2: Modelos de Países
 
 ---
 
-## CAPÍTULO 9: HORIZONTES DE CIVILIZAÇÃO: BÚSSOLA E CONTRASTES PRÁTICOS
+## CAPÍTULO 9: HORIZONTES DE CIVILIZAÇÃO: OS TRÊS PARADIGMAS EM CONTRASTE
 
-### 9.1 Os Dois Horizontes em Contraste
+### 9.1 Para Quem Cada Sistema Funciona? E a que Custo?
 
-O contraste entre a **Sociedade do Apenas PIB** e a **Sociedade do Bem Viver & Ubuntu** manifesta-se em escolhas práticas cotidianas sobre como organizamos as cidades, a produção e o tempo:
+> *"Todo modelo econômico beneficia alguém. A pergunta é: quem paga a conta?"*
 
-| Dimensão Civilizatória | 📈 Sociedade Focada Apenas no PIB | 🌿 Sociedade do Bem Viver & Ubuntu |
-| :--- | :--- | :--- |
-| **Objetivo Central** | Maximização do lucro e expansão monetária infinita | Reprodução digna da vida de todos e harmonia com a Terra |
-| **Relação com a Terra** | Natureza como 'recurso' a ser explorado e descartado | A Terra é a Mãe (*Pachamama*); somos parte viva do ecossistema |
-| **Tempo e Vida Humana** | O tempo é dinheiro; aceleração e estresse contínuo | O tempo é o tecido da vida; valorização do descanso e ócio criativo |
-| **Sentido do Trabalho** | Custo de produção ou ferramenta de alienação por renda | Atividade criativa com propósito, utilidade social e dignidade |
-| **Convivência Coletiva** | Competição feroz, hiperindividualismo e solidão | Apoio mútuo, vizinhança ativa e acolhimento dos vulneráveis (*Ubuntu*) |
-| **Sucesso e Riqueza** | Acúmulo de bens materiais, ostentação e status de consumo | Vínculos fraternos, saúde integral, sabedoria e tempo de qualidade |
-| **Justiça e Conflitos** | Encarceramento em massa e punição retributiva de classe | Diálogo, reconciliação comunitária e reparação ativa dos danos |
-| **Governança Política** | Hegemonia do poder econômico e lobbies empresariais | Democracia comunitária direta, soberania popular e escuta circular |
+A tabela e os conceitos abaixo apresentam **três visões de sociedade**:
+1. **O Paradigma Atual do PIB:** Mostra os limites do crescimento infinito e do extrativismo.
+2. **O Bem Viver Ancestral (Teko Porã & Ubuntu):** Aponta o horizonte ideal de regeneração e comunhão ética com a Terra.
+3. **A Economia Bem Viver Bem:** Representa o caminho prático de transição institucional: uma síntese que reconhece a necessidade de desenvolvimento material e tecnológico, mas os subordina à justiça social, à sustentabilidade ecológica e à dignidade humana.
+
+> 💡 **Princípio Orientador:** O Bem Viver Bem não é "contra o crescimento", mas a favor de um crescimento que não destrua a base da vida. Não se trata de escolher entre mercado ou natureza, mas de **domesticar o mercado para servir à vida**.
+
+```
+    📈 APENAS PIB                    ⚖️ BEM VIVER BEM                  🌿 BEM VIVER & UBUNTU
+┌─────────────────────┐          ┌─────────────────────┐          ┌─────────────────────┐
+│  GANHA: 1% do topo  │          │  GANHA: A maioria   │          │  GANHA: Os excluídos│
+│  PERDE: 99% + Terra │          │  PERDE: Ninguém     │          │  PERDE: O excesso   │
+│                     │          │  sistematicamente   │          │  de consumo         │
+└─────────────────────┘          └─────────────────────┘          └─────────────────────┘
+          ↓                                ↓                                ↓
+  Sociedade doente,               Sociedade estável,               Comunidade regenerada,
+  planeta em colapso              em transição justa               mas em escala local.
+```
+
+---
+
+### 9.2 Matriz Comparativa: Beneficiários, Custos e Consequências Sociais
+
+| Dimensão Analítica | 📈 APENAS PIB (Paradigma Atual) | ⚖️ ECONOMIA BEM VIVER BEM (Equilíbrio) | 🌿 BEM VIVER & UBUNTU (Regeneração) |
+| :--- | :--- | :--- | :--- |
+| **Para quem é benéfico?** | Grandes corporações, acionistas, setor financeiro, elites patrimoniais e países centrais do capitalismo global. | Classe média, trabalhadores formais, pequenos empreendedores, cooperativas e países em desenvolvimento que buscam crescimento com justiça social. | Povos originários, comunidades tradicionais, agricultores familiares, cuidadores, artesãos e ecossistemas locais. |
+| **Quem paga a conta?** | Trabalhadores precarizados, populações periféricas, povos indígenas, mulheres (trabalho não remunerado), futuras gerações e a biosfera. | Nenhum grupo é sistematicamente sacrificado; os custos são distribuídos via tributação progressiva e regulação ambiental. | Exige renúncia voluntária ao consumo excessivo e à acumulação individual — um "custo" para quem vive do hiperconsumo. |
+| **Consequência social se for o único sistema** | Desigualdade extrema, erosão da democracia, colapso ecológico, saúde mental deteriorada, polarização política e ascensão de autoritarismos. | Sociedade estável, com mobilidade social, instituições fortes e transição ecológica ordenada. *Risco:* pode perder velocidade diante de crises agudas se o consenso político falhar. | Comunidades resilientes e ecossistemas preservados. *Risco:* vulnerabilidade a choques externos (pandemias, guerras) sem escala industrial de resposta. |
+| **Visão sobre o ser humano** | **Homo economicus:** indivíduo racional, competitivo, movido por interesse próprio e consumo. | **Cidadão integral:** ser produtivo, mas também social, ético e ecologicamente responsável. | **Homo relationalis:** ser em conexão — sua identidade se constrói nos vínculos com humanos e não-humanos. |
+| **Papel do indivíduo** | Consumidor e produtor. Seu valor é medido pela renda e pela capacidade de compra. | Cidadão-consumidor consciente: escolhas de consumo alinhadas a valores, com participação política ativa. | Membro de uma comunidade viva: seu valor está nos vínculos, no cuidado e na contribuição coletiva. |
+| **Como lida com crises** | Externaliza custos (demite, polui, corta direitos). Crises são "oportunidades de mercado" para quem tem capital acumulado. | Responde com proteção social ampliada, investimento público contracíclico e transição justa para setores afetados. | Ativa redes de solidariedade comunitária, saberes ancestrais e adaptação local. Baixa dependência de cadeias globais. |
+| **Legado para as próximas gerações** | Dívida ecológica, climática e social. Um planeta mais quente, desigual e instável. | Infraestrutura sustentável, instituições sólidas e economia descarbonizada com rede de proteção social. | Território regenerado, saberes vivos e cultura de cuidado comunitário transmitida. |
+
+---
+
+### 9.3 Análise Aprofundada dos Três Paradigmas
+
+#### 🔴 O Paradigma do PIB
+É um sistema extrativista por design. Ele beneficia uma minoria global (cerca de **1% mais rico detém quase metade da riqueza mundial**, segundo o *World Inequality Report 2022*) e transfere os custos para:
+- **Corpos:** trabalhadores em burnout crônico, populações expostas à poluição.
+- **Territórios:** zonas de sacrifício onde se extrai minério, planta monocultura ou descarta resíduos.
+- **Tempo:** futuras gerações que herdarão um planeta degradado e instável.
+
+Seguir apenas este caminho leva ao que o economista Jason Hickel chama de *"colapso civilizatório"*: crescimento numérico do PIB com deterioração progressiva da vida real.
+
+#### 🟡 O Caminho do Bem Viver Bem
+É o **ponto de equilíbrio institucional**. Beneficia a ampla maioria da população (a chamada "classe trabalhadora ampliada") sem exigir o colapso do sistema produtivo. É o modelo que países como **Dinamarca, Costa Rica e Uruguai** tentam aproximar — com tributação progressiva, forte estado social e regulação ambiental severa.
+
+*O risco:* se não houver pressão social e mobilização cívica constante, ele pode ser capturado por elites econômicas e virar apenas um "capitalismo de face humana", sem transformação estrutural duradoura.
+
+#### 🟢 O Bem Viver & Ubuntu
+É o **horizonte ético ancestral**. Beneficia diretamente quem está à margem do mercado: povos originários, comunidades rurais, cuidadoras, agricultores familiares e artesãos. Mostra que é plenamente possível viver bem com menos acúmulo material.
+
+*O risco de adotá-lo isoladamente:* em um mundo globalizado e interconectado, comunidades que vivem exclusivamente sob essa lógica podem ficar vulneráveis a choques externos (pandemias, guerras, crises geopolíticas) sem escala industrial e tecnologia médica de ponta para resposta. Por isso, **a síntese com o "Bem Viver Bem" é estratégica e vital**.
+
+> 🚨 **Atenção:** Nenhum sistema é perfeito. A proposta do Bem Viver Bem não é substituir brutalmente o mercado, mas **domesticá-lo — como se doma um rio: não se reprisa a água, mas se constrói um leito para que ela irrigue a todos sem inundar ninguém**.
+
+---
 
 ## CAPÍTULO 10: GUIA PRÁTICO DE AUTOAVALIAÇÃO & QUIZ DO BEM VIVER
 

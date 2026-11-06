@@ -242,6 +242,9 @@
           <button onclick="selecionarTag('Agroecologia')" data-tag="Agroecologia" class="tag-badge px-3 py-1.5 rounded-full border border-lime-300 bg-lime-50 text-lime-900 font-medium hover:bg-lime-100">
             #Agroecologia
           </button>
+          <button onclick="selecionarTag('BioconstrucaoEPermacultura')" data-tag="BioconstrucaoEPermacultura" class="tag-badge px-3 py-1.5 rounded-full border border-emerald-400 bg-emerald-50 text-emerald-950 font-medium hover:bg-emerald-100">
+            #BioconstrucaoEPermacultura
+          </button>
         </div>
 
       </div>
@@ -443,6 +446,7 @@
             <option value="SaudeIntegrativa">#SaudeIntegrativa — Práticas Integrativas, Ervas e PICS</option>
             <option value="EconomiaSolidaria">#EconomiaSolidaria — Redes de Apoio e Comércio Justo</option>
             <option value="Agroecologia">#Agroecologia — Sementes Crioulas e Agricultura Familiar</option>
+            <option value="BioconstrucaoEPermacultura">#BioconstrucaoEPermacultura — Construção, Plantio, Energias Renováveis e Cooperativismo</option>
           </select>
         </div>
 
@@ -591,6 +595,17 @@
         link: "enciclowiki-mapa-mental.html",
         tempoLeitura: "6 min de leitura",
         destaque: false
+      },
+      {
+        id: "bioconstrucao-permacultura",
+        titulo: "Bioconstrução & Permacultura: Habitação Viva, Energias Renováveis e Cooperativismo",
+        eixo: "Bioconstrução & Permacultura",
+        resumo: "Tecnologias ecológicas e sociais que unem construção natural (adobe, taipa, bambu e terra crua), plantio e manejo regenerativo, captação de energias renováveis e o cooperativismo comunitário em mutirões de ajuda mútua.",
+        tags: ["BioconstrucaoEPermacultura", "Agroecologia", "BemViver", "EconomiaSolidaria"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html",
+        tempoLeitura: "7 min de leitura",
+        destaque: true
       }
     ];
 
@@ -640,6 +655,11 @@
         titulo: "#Agroecologia — Agricultura da Vida e Soberania Alimentar",
         texto: "Cultivo sem veneno, sementes crioulas, reflorestamento agroflorestal e a recuperação da fertilidade natural da terra.",
         cor: "bg-lime-50 border-lime-300 text-lime-950"
+      },
+      BioconstrucaoEPermacultura: {
+        titulo: "#BioconstrucaoEPermacultura — Construção, Plantio, Energias Renováveis e Cooperativismo",
+        texto: "Técnicas integradas de habitação ecológica e manejo da terra: construção com materiais naturais e locais (adobe, taipa, bambu), sistemas de plantio permacultural, aproveitamento de energias limpas e renováveis, e a organização coletiva por meio de mutirões e cooperativismo comunitário.",
+        cor: "bg-emerald-50 border-emerald-400 text-emerald-950"
       }
     };
 

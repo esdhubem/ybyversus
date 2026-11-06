@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Enciclowiki YBY VersuS — Memória Viva, Conhecimento e Saberes</title>
+  <meta name="description" content="Enciclowiki YBY VersuS: enciclopédia livre de saberes populares, ancestrais, ciência cidadã e tecnologia do escrever e mapear. Curadoria: Silviane Silvério.">
+
+  <!-- Fontes: Linux Libertine/Merriweather + Sans Serif Limpo estilo Wikipedia clássica -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            serif: ['Merriweather', 'Charter', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Estilo Canônico Enciclowiki: Fundo Branco, Bordas Sutis #a2a9b1 e Azul Clássico #0645ad */
+    body {
+      background-color: #f8f9fa;
+      color: #202122;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Links estilo Wikipedia */
+    a.wiki-link {
+      color: #0645ad;
+      text-decoration: none;
+    }
+    a.wiki-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Caixa Infobox clássica */
+    .wiki-infobox {
+      border: 1px solid #a2a9b1;
+      background-color: #f8f9fa;
+      color: #202122;
+      font-size: 0.775rem;
+      line-height: 1.45;
+    }
+    .wiki-infobox-header {
+      background-color: #eaecf0;
+      border-bottom: 1px solid #a2a9b1;
+      color: #000000;
+      font-family: 'Merriweather', Georgia, serif;
+    }
+
+    /* Caixa de Índice (TOC) */
+    .wiki-toc {
+      border: 1px solid #a2a9b1;
+      background-color: #f8f9fa;
+      padding: 10px 14px;
+      font-size: 0.775rem;
+    }
+
+    /* Títulos estilo Wiki com linha cinza inferior */
+    .wiki-heading {
+      font-family: 'Merriweather', Georgia, serif;
+      color: #000000;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 3px;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    /* Caixa de Conexões em Rede */
+    .connections-box {
+      background-color: #f0f7ff;
+      border: 1px solid #c2dbff;
+      border-left: 4px solid #0645ad;
+    }
+
+    /* Caixa de Raízes Vivas Ancestrais */
+    .roots-box {
+      background-color: #fbf8f2;
+      border: 1px solid #e5d8c3;
+      border-left: 4px solid #b87a28;
+    }
+
+    /* Scrollbar sutil */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col py-6 px-3 sm:px-6">
+
+  <!-- ======================================================== -->
+  <!-- 1. TOPO DE NAVEGAÇÃO & CRUMBS DA ENCICLOWIKI             -->
+  <!-- ======================================================== -->
+  <div class="max-w-4xl mx-auto w-full mb-4">
+    <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-300 text-xs">
+      
+      <!-- Voltar à Enciclowiki -->
+      <a href="enciclowiki.html" class="inline-flex items-center gap-1.5 font-semibold text-[#0645ad] hover:underline group">
+        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"></i>
+        <span>← Voltar ao Portal Enciclowiki YBY VersuS</span>
+      </a>
+
+      <!-- Selo Editorial de Curadoria -->
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-[11.5px] font-semibold text-amber-900 shadow-2xs">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-700"></i>
+        <span>Curadoria Editorial Oficial: Silviane Silvério</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 2. ARTIGO PRINCIPAL: MODELO CANÔNICO ENCICLOWIKI (FUNDO BRANCO) -->
+  <!-- ======================================================== -->
+  <main class="max-w-4xl mx-auto w-full bg-white border border-[#a2a9b1] rounded-xs p-6 sm:p-10 shadow-xs relative">
+    
+    <!-- Cabeçalho do Verbete: H1 Clássico com Linha Divisória -->
+    <header class="mb-5 border-b border-[#a2a9b1] pb-2">
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#000000] font-normal tracking-tight mb-1">
+        Mapa Mental (Pensamento Radial)
+      </h1>
+      <p class="text-xs text-slate-500 italic m-0">
+        Origem: <strong>Enciclowiki YBY VersuS</strong>, a enciclopédia livre dos saberes populares, ancestrais e da tecnologia do escrever e mapear.
+      </p>
+    </header>
+
+
+    <!-- ======================================================== -->
+    <!-- 3. INFOBOX LATERAL CLÁSSICA (WIKIPEDIA / ENCICLOWIKI)    -->
+    <!-- ======================================================== -->
+    <aside class="sm:float-right sm:w-80 sm:ml-6 sm:mb-6 mb-6 wiki-infobox rounded-xs shadow-2xs">
+      <div class="wiki-infobox-header px-3 py-2 text-center font-bold text-xs sm:text-sm">
+        Mapa Mental (Pensamento Radial)
+      </div>
+
+      <div class="p-3 divide-y divide-slate-200">
+        
+        <!-- Eixo Temático -->
+        <div class="py-2 flex flex-col gap-0.5">
+          <span class="font-bold text-slate-600 text-[11px] uppercase tracking-wider">Eixo Temático</span>
+          <span class="font-medium text-[#0645ad]">Tecnologia do Escrever & Mapeamento</span>
+        </div>
+
+        <!-- Autoria & Curadoria -->
+        <div class="py-2 flex flex-col gap-0.5">
+          <span class="font-bold text-slate-600 text-[11px] uppercase tracking-wider">Autoria & Curadoria</span>
+          <div class="font-semibold text-slate-900 text-xs">Silviane Silvério</div>
+          <div class="text-[11px] text-slate-600">Biomédica Integrativa & Pesquisadora Educacional</div>
+          <div class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 mt-1">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Curadoria Editorial • YBY VersuS</span>
+          </div>
+        </div>
+
+        <!-- Enquadramento Filosófico (Tríade Clássica + Kant) -->
+        <div class="py-2 flex flex-col gap-1.5 bg-amber-50/50 -mx-3 px-3">
+          <span class="font-bold text-amber-900 text-[11px] uppercase tracking-wider flex items-center gap-1">
+            <i data-lucide="compass" class="w-3.5 h-3.5 text-amber-700"></i>
+            <span>Enquadramento Filosófico</span>
+          </span>
+          
+          <div class="space-y-1 text-[11px]">
+            <div>
+              <strong class="text-slate-700">Questão de Kant:</strong>
+              <span class="text-slate-900 italic"> O que posso saber? (Epistemologia)</span>
+            </div>
+            <div>
+              <strong class="text-slate-700">Pilar Disciplinar:</strong>
+              <span class="text-slate-900"> Epistemologia & Teoria Cognitiva</span>
+            </div>
+            <div class="pt-1 border-t border-amber-200/70 mt-1">
+              <span class="font-bold text-slate-700 block mb-0.5">Tríade Clássica:</span>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-800 pl-1 text-[10.5px]">
+                <li><strong>O que é? (Essência):</strong> Dispositivo representacional não-linear da cognição humana.</li>
+                <li><strong>Por que é? (Causa):</strong> Inadequação da escrita estritamente horizontal para processar pensamentos em rede.</li>
+                <li><strong>Como é? (Estrutura):</strong> Núcleo central único com irradiação centrífuga e hierarquizada de ramos.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Etimologia -->
+        <div class="py-2 flex flex-col gap-0.5">
+          <span class="font-bold text-slate-600 text-[11px] uppercase tracking-wider">Etimologia & Raízes</span>
+          <span class="text-slate-700 text-[11px] leading-relaxed">
+            Formalizado em inglês como <em>Mind Map</em> por Tony Buzan (década de 1970); radicado nas formas ancestrais de teias, pinturas corporais e mandalas indígenas e quilombolas.
+          </span>
+        </div>
+
+        <!-- Dados do Registro -->
+        <div class="py-2 flex flex-col gap-1 text-[11px] text-slate-600">
+          <div><strong>Última Revisão:</strong> Novembro de 2026</div>
+          <div><strong>Tempo de Leitura:</strong> 5 minutos</div>
+          <div><strong>Acesso:</strong> Aberto / Livre Consulta</div>
+        </div>
+
+      </div>
+    </aside>
+
+
+    <!-- ======================================================== -->
+    <!-- 4. LEAD PARAGRAPH (RESUMO DIRETO)                        -->
+    <!-- ======================================================== -->
+    <div class="text-[15px] sm:text-base text-slate-900 leading-relaxed font-sans mb-4 text-justify">
+      <p class="m-0">
+        <strong class="font-bold text-black">Mapa Mental (Pensamento Radial)</strong> — O mapa mental é uma ferramenta visual de estruturação cognitiva que organiza conceitos a partir de um núcleo central, irradiando ramificações por meio de palavras-chave, cores e conexões sinápticas. Simula a organização cerebral integrando razão e criatividade para acelerar a síntese, a retenção mnêmica e a produção autoral de ideias. Longe de ser apenas uma invenção técnica recente, resgata a forma como as comunidades ancestrais sempre transmitiram o conhecimento: não em linhas retas e isoladas, mas em teias vivas e interligadas.
+      </p>
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- 5. MAPA DE CONEXÕES (VISUAL DAS LIGAÇÕES EM REDE)        -->
+    <!-- ======================================================== -->
+    <div class="connections-box p-4 rounded-xs my-5 text-xs text-slate-800">
+      <div class="font-bold text-[#0645ad] flex items-center gap-1.5 mb-2 uppercase tracking-wider text-[11px]">
+        <i data-lucide="network" class="w-4 h-4"></i>
+        <span>Mapa de Conexões — Estrutura em Rede Deste Verbete</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11.5px] leading-relaxed">
+        <div>• <strong>Origem:</strong> Raízes ancestrais milenares e formalização científica ocidental.</div>
+        <div>• <strong>Estrutura:</strong> Do núcleo central às ramificações (como construir passo a passo).</div>
+        <div>• <strong>Raízes Vivas:</strong> Tradições indígenas, quilombolas e a sabedoria popular em teia.</div>
+        <div>• <strong>Dimensão Ética:</strong> Uso comunitário, partilha sem apropriação e respeito a quem ensinou.</div>
+        <div>• <strong>Prática Acessível:</strong> Como desenhar o seu primeiro mapa sem complicações.</div>
+      </div>
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- 6. ÍNDICE DE SEÇÕES (TOC WIKIPEDIA RETRÁTIL)             -->
+    <!-- ======================================================== -->
+    <nav class="inline-block my-3 wiki-toc rounded-xs min-w-[260px]">
+      <div class="flex items-center justify-between gap-4 font-bold text-slate-900 border-b border-slate-300 pb-1 mb-2">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="list" class="w-3.5 h-3.5 text-slate-600"></i>
+          <span>Índice</span>
+        </span>
+        <button onclick="toggleToc()" id="toc-btn" class="text-[#0645ad] hover:underline font-normal text-[11px] cursor-pointer">
+          [ocultar]
+        </button>
+      </div>
+
+      <ol id="toc-list" class="list-decimal list-inside space-y-1 text-[#0645ad] font-sans text-xs">
+        <li><a href="#origem-fundamentacao" class="hover:underline">Origem e Fundamentação Teórica</a></li>
+        <li><a href="#principios-estruturais" class="hover:underline">Princípios Estruturais — Como se Constrói</a></li>
+        <li><a href="#raizes-vivas" class="hover:underline">Raízes Vivas — A Ancestralidade que Antecedeu a Técnica</a></li>
+        <li><a href="#dimensao-etica" class="hover:underline">Dimensão Ética e Aplicação no Cotidiano</a></li>
+        <li><a href="#ouvir-o-saber" class="hover:underline">Ouvir o Saber — Registro Sonoro</a></li>
+        <li><a href="#pratica-fazer" class="hover:underline">Prática — Como Fazer Você Mesmo</a></li>
+        <li><a href="#ver-tambem" class="hover:underline">Ver também</a></li>
+        <li><a href="#como-citar" class="hover:underline">Como Citar Este Verbete (ABNT)</a></li>
+        <li><a href="#referencias" class="hover:underline">Referências e Bibliografia</a></li>
+      </ol>
+    </nav>
+
+
+    <!-- ======================================================== -->
+    <!-- 7. CORPO DO ARTIGO: SEÇÕES NUMERADAS                     -->
+    <!-- ======================================================== -->
+    <div class="text-[14.5px] sm:text-[15px] text-slate-800 leading-relaxed font-sans mt-4 clear-both sm:clear-none space-y-4">
+      
+      <!-- SEÇÃO 1: ORIGEM -->
+      <h2 id="origem-fundamentacao" class="wiki-heading text-lg sm:text-xl font-bold">
+        1. Origem e Fundamentação Teórica
+      </h2>
+      <p class="text-justify m-0">
+        Embora a representação visual de ideias em forma de árvore remonte a pensadores clássicos como Porfírio de Tiro (século III d.C.), a codificação contemporânea do método foi sistematizada e popularizada na década de 1970 pelo psicólogo britânico <strong>Tony Buzan</strong>. Buzan partiu de investigações sobre a neurobiologia do córtex cerebral, defendendo que a mente humana atinge seu maior rendimento quando integra o hemisfério esquerdo (responsável pelas palavras, lógica e ordenação linear) e o hemisfério direito (associado a ritmos, percepção espacial, imagens e cores).
+      </p>
+      <p class="text-justify m-0">
+        Sob a ótica da psicologia cognitiva contemporânea, a eficácia do mapeamento mental encontra respaldo na <em>Teoria da Carga Cognitiva</em> (Sweller, 1988) e no <em>Efeito de Superioridade da Imagem</em>. Ao condensar blocos inteiros de informação em núcleos visuais ancorados por cores distintas, o mapa alivia a memória de trabalho de curto prazo, permitindo que a atenção se concentre na correlação profunda dos conceitos.
+      </p>
+      <div class="p-3 bg-amber-50/70 border-l-3 border-amber-600 rounded-r-xs text-xs text-slate-800 my-2">
+        <strong>Aviso Histórico & Epistemológico:</strong> O mapa mental, embora formalizado no século XX por autores ocidentais, <strong>não é uma invenção moderna</strong>. Povos originários do Brasil e de todo o mundo sempre organizaram o conhecimento de forma radial — desenhando na terra, entalhando cascas, contando histórias em roda e conectando o centro às ramificações da vida. Nas comunidades quilombolas e nas rodas de conversa comunitárias, o pensamento nunca foi uma linha reta: sempre foi uma teia viva, uma árvore frondosa, uma rede sagrada de relações. A tecnologia do escrever e do mapear acolhe essa raiz e a devolve em método acessível a todos.
+      </div>
+
+      <!-- SEÇÃO 2: COMO SE CONSTRÓI -->
+      <h2 id="principios-estruturais" class="wiki-heading text-lg sm:text-xl font-bold">
+        2. Princípios Estruturais — Como se Constrói
+      </h2>
+      <p class="text-justify m-0">
+        Para que conserve sua força analítica e não se transforme em mero emaranhado de rabiscos, a tradição canônica do pensamento radial estabelece cinco regras constitutivas de arquitetura cognitiva:
+      </p>
+      <ul class="list-disc list-inside space-y-1.5 text-slate-800 pl-1 text-xs sm:text-[13.5px]">
+        <li><strong>Núcleo Central:</strong> O tema gerador localiza-se exatamente no centro geométrico da superfície, acompanhado de uma imagem ou símbolo evocativo.</li>
+        <li><strong>Ramos Primários e Secundários:</strong> Do núcleo brotam ramos curvos e mais espessos (as grandes categorias), dos quais irradiam galhos mais finos com detalhamentos específicos.</li>
+        <li><strong>Economia Verbal (Palavras-Chave):</strong> Emprega-se preferencialmente uma única palavra nuclear (substantivo ou verbo forte) por ramificação, evitando frases longas que provocam leitura passiva.</li>
+        <li><strong>Codificação Cromática:</strong> Cada eixo temático recebe uma cor exclusiva, ativando a retenção fotográfica imediata na memória de longo prazo.</li>
+        <li><strong>Conexões Intersetoriais:</strong> Linhas pontilhadas e setas cruzadas unem ramos distintos quando há relação de causa, efeito ou reciprocidade entre eles.</li>
+      </ul>
+      <p class="text-xs text-slate-600 italic">
+        *O ensinamento ancestral nos lembra: desenhar o pensamento não é artifício artificial; é a forma natural como a mente humana compreende o cosmos.*
+      </p>
+
+      <!-- SEÇÃO 3: RAÍZES VIVAS ANCESTRAIS -->
+      <h2 id="raizes-vivas" class="wiki-heading text-lg sm:text-xl font-bold">
+        3. Raízes Vivas — A Ancestralidade que Antecedeu a Técnica
+      </h2>
+      <div class="roots-box p-4 rounded-xs text-xs sm:text-[13.5px] text-slate-800 space-y-2.5">
+        <p class="m-0 text-justify">
+          A compartimentação do conhecimento em gavetas separadas é uma herança colonial recente. Antes dos manuais de metodologia, a sabedoria já era radial:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          <div class="p-2.5 bg-white/80 border border-[#e5d8c3] rounded-xs space-y-1">
+            <span class="font-bold text-amber-900 block">🪶 Povos Originários</span>
+            <p class="text-[11px] text-slate-700 m-0 leading-relaxed">
+              Pinturas corporais, grafismos em cestarias e calendários lunares sempre foram mapas mentais de sobrevivência, cura e navegação territorial.
+            </p>
+          </div>
+          <div class="p-2.5 bg-white/80 border border-[#e5d8c3] rounded-xs space-y-1">
+            <span class="font-bold text-amber-900 block">🕊️ Tradição Quilombola</span>
+            <p class="text-[11px] text-slate-700 m-0 leading-relaxed">
+              A memória viva do território, das rotas de fuga, dos parentescos e dos rituais transmitida oralmente em rede circular ao redor do fogo.
+            </p>
+          </div>
+          <div class="p-2.5 bg-white/80 border border-[#e5d8c3] rounded-xs space-y-1">
+            <span class="font-bold text-amber-900 block">🌾 Saberes do Chão</span>
+            <p class="text-[11px] text-slate-700 m-0 leading-relaxed">
+              O receituário das ervas medicinais, o ciclo das chuvas e os segredos dos ofícios populares: tudo conectado em teias de afeto e prática.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 4: DIMENSÃO ÉTICA -->
+      <h2 id="dimensao-etica" class="wiki-heading text-lg sm:text-xl font-bold">
+        4. Dimensão Ética e Aplicação no Cotidiano
+      </h2>
+      <p class="text-justify m-0">
+        No campo do desenvolvimento humano, o mapeamento atua como remédio preventivo contra o bloqueio criativo, a dispersão mental e a ansiedade da sobrecarga de informações. Ele transforma uma massa amorfa e assustadora de obrigações em uma cartografia ordenada, acolhedora e realizável.
+      </p>
+      <p class="text-justify m-0">
+        Na perspectiva do <strong>Bem Viver</strong>, a ferramenta deve estar a serviço da coletividade. Não se trata de uma arma de produtividade voraz para esgotar o trabalhador, mas de um instrumento libertador de clareza mental, planejamento autônomo de estudos, redação de livros sem sofrimento e organização comunitária de projetos locais.
+      </p>
+
+      <!-- SEÇÃO 5: ÁUDIO OPCIONAL (OUVIR O SABER) -->
+      <h2 id="ouvir-o-saber" class="wiki-heading text-lg sm:text-xl font-bold">
+        5. Ouvir o Saber — Registro Sonoro & Voz Viva
+      </h2>
+      <div class="p-3.5 bg-[#f8f9fa] border border-[#a2a9b1] rounded-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <button onclick="toggleAudioDemo()" id="wiki-audio-btn" class="w-9 h-9 rounded-full bg-[#eaecf0] hover:bg-[#dfe3e8] border border-[#a2a9b1] text-slate-800 flex items-center justify-center shrink-0 cursor-pointer active:scale-95 transition-all">
+            <i data-lucide="volume-2" id="wiki-audio-icon" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <span class="text-xs font-bold text-slate-900 block">Áudio Explicativo da Curadora</span>
+            <span class="text-[11px] text-slate-600 block">Silviane Silvério comenta a ponte entre o mapa mental e os saberes ancestrais (3:15 min)</span>
+          </div>
+        </div>
+        <span class="text-[10.5px] px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 font-medium">
+          Áudio Disponível
+        </span>
+      </div>
+
+      <!-- SEÇÃO 6: PRÁTICA (FAZER VOCÊ MESMO) -->
+      <h2 id="pratica-fazer" class="wiki-heading text-lg sm:text-xl font-bold">
+        6. Prática — Como Fazer Seu Primeiro Mapa Mental
+      </h2>
+      <div class="p-4 bg-white border border-[#a2a9b1] rounded-xs space-y-2 text-xs sm:text-[13px]">
+        <ol class="list-decimal list-inside space-y-1.5 text-slate-800">
+          <li><strong>Vire a folha de lado (horizontal):</strong> Isso dá amplitude ao campo visual dos seus olhos.</li>
+          <li><strong>Desenhe o tema no centro:</strong> Use uma palavra forte e uma cor de destaque no meio da página.</li>
+          <li><strong>Puxe os ramos mestres:</strong> Crie de 3 a 5 eixos principais irradiando do centro, cada um com uma cor diferente.</li>
+          <li><strong>Ramifique os detalhes:</strong> Puxe galhos mais finos com palavras-chave que explicam o tema.</li>
+          <li><strong>Conecte as pontas:</strong> Use setas para interligar ideias que conversam entre si.</li>
+        </ol>
+      </div>
+
+      <!-- SEÇÃO 7: VER TAMBÉM -->
+      <h2 id="ver-tambem" class="wiki-heading text-lg sm:text-xl font-bold">
+        7. Ver também
+      </h2>
+      <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm text-[#0645ad]">
+        <li><a href="#" class="wiki-link">Tecnologia do Escrever e do Mapear (Metodologia Canônica)</a></li>
+        <li><a href="bemviver-dashboard.html" class="wiki-link">Economia do Bem Viver & Além do PIB</a></li>
+        <li><a href="#" class="wiki-link">Cartografia da Memória Viva e Tradições Orais</a></li>
+        <li><a href="#" class="wiki-link">Ciência Cidadã e Epistemologias do Sul</a></li>
+      </ul>
+
+      <!-- SEÇÃO 8: COMO CITAR (ABNT) -->
+      <h2 id="como-citar" class="wiki-heading text-lg sm:text-xl font-bold">
+        8. Como Citar Este Verbete
+      </h2>
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] text-slate-600">Referência padronizada conforme norma ABNT NBR 6023:</span>
+          <button onclick="copiarCitacao()" class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#eaecf0] hover:bg-[#dfe3e8] border border-[#a2a9b1] text-[11px] font-medium text-slate-800 rounded-xs transition-colors cursor-pointer">
+            <i data-lucide="copy" class="w-3 h-3 text-slate-600"></i>
+            <span id="copy-btn-text">Copiar citação</span>
+          </button>
+        </div>
+        <div id="citacao-box" class="p-3 bg-[#f8f9fa] border border-[#a2a9b1] rounded-xs text-xs font-mono text-slate-800 leading-relaxed select-all">
+SILVÉRIO, Silviane. Mapa Mental (Pensamento Radial): A Tecnologia do Escrever e do Mapear. In: ENCICLOWIKI YBY VERSUS: Memória Viva, Conhecimento e Saberes. Curitiba: Ecossistema YBY VersuS, 2026. Disponível em: &lt;https://esdhubem.github.io/ybyversus/enciclowiki.html?id=mapa-mental&gt;. Acesso em: 06 nov. 2026.
+        </div>
+      </div>
+
+      <!-- SEÇÃO 9: REFERÊNCIAS -->
+      <h2 id="referencias" class="wiki-heading text-lg sm:text-xl font-bold">
+        9. Referências e Bibliografia
+      </h2>
+      <ul class="space-y-1.5 text-xs text-slate-700 pl-1">
+        <li>• BUZAN, Tony; BUZAN, Barry. <em>The Mind Map Book: How to Use Radiant Thinking to Maximize Your Brain's Untapped Potential</em>. London: BBC Books, 1993.</li>
+        <li>• KRENAK, Ailton. <em>Ideias para adiar o fim do mundo</em>. São Paulo: Companhia das Letras, 2019.</li>
+        <li>• SWELLER, John. <em>Cognitive Load Theory and the Format of Instruction</em>. Cognition and Instruction, v. 5, n. 4, p. 257-285, 1988.</li>
+        <li>• SILVÉRIO, Silviane. <em>Cadernos da Tecnologia do Escrever e Mapear</em>. Curitiba: ESDHUBEM / YBY VersuS, 2026.</li>
+        <li>• Fontes vivas: Relatos orais de mestres de ofício, anciãos e guardiões de saberes comunitários registrados no projeto Memória Viva.</li>
+      </ul>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- 8. CAIXA DE CURADORIA & CONTRIBUIÇÃO DA COMUNIDADE       -->
+    <!-- ======================================================== -->
+    <div class="mt-12 pt-6 border-t border-[#a2a9b1] bg-[#f8f9fa] p-5 rounded-xs space-y-3">
+      <div class="flex items-center gap-2">
+        <i data-lucide="edit-3" class="w-4 h-4 text-[#0645ad]"></i>
+        <h3 class="text-sm font-bold text-slate-900 font-serif">Envio de Sugestões, Correções & Curadoria</h3>
+      </div>
+      <p class="text-xs text-slate-700 leading-relaxed text-justify m-0">
+        Esta enciclopédia é de autoria e curadoria direta de <strong>Silviane Silvério</strong>. Se você é leitor, pesquisador ou guardião de saberes e deseja sugerir uma correção, enriquecer este verbete ou enviar fotos e áudios complementares (opcionais), envie sua contribuição para a nossa curadoria editorial.
+      </p>
+      <div class="pt-1 flex flex-wrap items-center gap-3">
+        <button onclick="openModalCuradoria()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#eaecf0] hover:bg-[#dfe3e8] border border-[#a2a9b1] text-xs font-semibold text-slate-900 rounded-xs transition-colors cursor-pointer">
+          <i data-lucide="send" class="w-3.5 h-3.5 text-slate-700"></i>
+          <span>Enviar Sugestão ou Correção para Curadoria</span>
+        </button>
+        <span class="text-[11px] text-slate-500 italic">*Fotos e áudios são opcionais. Todo material passa por curadoria prévia.</span>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- ======================================================== -->
+  <!-- 9. MODAL: ENVIAR CONTRIBUIÇÃO PARA CURADORIA             -->
+  <!-- ======================================================== -->
+  <div id="modal-curadoria" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-[#a2a9b1] max-w-lg w-full p-6 rounded-xs shadow-lg space-y-4 max-h-[90vh] overflow-y-auto text-xs">
+      <div class="flex items-center justify-between border-b border-slate-300 pb-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="inbox" class="w-4 h-4 text-[#0645ad]"></i>
+          <h3 class="text-sm font-bold text-slate-900 font-serif">Enviar para Curadoria • Silviane Silvério</h3>
+        </div>
+        <button onclick="closeModalCuradoria()" class="text-slate-500 hover:text-black p-1">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <p class="text-slate-600 m-0">
+        Preencha os campos abaixo com sua sugestão de melhoria ou novo saber. Todo o conteúdo é lido e avaliado pessoalmente pela curadoria antes da publicação.
+      </p>
+
+      <form onsubmit="handleCuradoriaSubmit(event)" class="space-y-3">
+        <div>
+          <label class="block font-bold text-slate-800 mb-1">Seu Nome e Contato</label>
+          <input type="text" id="curadoria-autor" required placeholder="Nome completo e e-mail/WhatsApp" class="w-full px-3 py-2 border border-[#a2a9b1] rounded-xs bg-white text-slate-900 outline-none focus:border-[#0645ad]">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-800 mb-1">Verbete / Tema Referente</label>
+          <input type="text" id="curadoria-tema" value="Mapa Mental (Pensamento Radial)" required class="w-full px-3 py-2 border border-[#a2a9b1] rounded-xs bg-slate-50 text-slate-900 outline-none">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-800 mb-1">Sugestão, Correção ou Relato</label>
+          <textarea id="curadoria-texto" rows="4" required placeholder="Descreva sua contribuição com detalhes..." class="w-full px-3 py-2 border border-[#a2a9b1] rounded-xs bg-white text-slate-900 outline-none focus:border-[#0645ad]"></textarea>
+        </div>
+
+        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xs text-[11px] text-slate-600">
+          📎 <strong>Envio de fotos e áudios (Opcional):</strong> Se desejar enviar gravações de voz ou fotografias históricas, mencione no texto acima ou anexe o link público (Drive, Dropbox, etc.).
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+          <button type="button" onclick="closeModalCuradoria()" class="px-3 py-1.5 border border-slate-300 rounded-xs text-slate-700 hover:bg-slate-100">
+            Cancelar
+          </button>
+          <button type="submit" class="px-4 py-1.5 bg-[#0645ad] hover:bg-[#0b0080] text-white font-semibold rounded-xs transition-colors">
+            Enviar para Avaliação
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 10. RODAPÉ INSTITUCIONAL CLÁSSICO                        -->
+  <!-- ======================================================== -->
+  <footer class="max-w-4xl mx-auto w-full text-center text-xs text-slate-500 py-8 border-t border-slate-300 mt-6 space-y-1">
+    <p class="m-0">
+      <strong>Enciclowiki YBY VersuS</strong> — Conhecimento Livre, Memória Viva e Saberes do Povo.
+    </p>
+    <p class="text-[11px] text-slate-400 m-0">
+      Curadoria e Direção Editorial: <strong>Silviane Silvério</strong> • Conteúdo distribuído sob licença aberta com atribuição de fonte.
+    </p>
+  </footer>
+
+
+  <!-- ======================================================== -->
+  <!-- 11. JAVASCRIPT: INTERATIVIDADE DA ENCICLOWIKI            -->
+  <!-- ======================================================== -->
+  <script>
+    // Retrair / Expandir Índice TOC
+    let tocVisible = true;
+    function toggleToc() {
+      const list = document.getElementById('toc-list');
+      const btn = document.getElementById('toc-btn');
+      tocVisible = !tocVisible;
+      if (tocVisible) {
+        list.classList.remove('hidden');
+        btn.innerText = '[ocultar]';
+      } else {
+        list.classList.add('hidden');
+        btn.innerText = '[mostrar]';
+      }
+    }
+
+    // Copiar citação ABNT
+    function copiarCitacao() {
+      const text = document.getElementById('citacao-box').innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.innerText = 'Copiado com sucesso! ✓';
+        btnText.classList.add('text-emerald-700', 'font-bold');
+        setTimeout(() => {
+          btnText.innerText = 'Copiar citação';
+          btnText.classList.remove('text-emerald-700', 'font-bold');
+        }, 3000);
+      });
+    }
+
+    // Demo Áudio
+    let isPlayingAudio = false;
+    function toggleAudioDemo() {
+      const btn = document.getElementById('wiki-audio-btn');
+      isPlayingAudio = !isPlayingAudio;
+      if (isPlayingAudio) {
+        btn.classList.add('bg-amber-100', 'border-amber-400');
+        btn.innerHTML = '<i data-lucide="pause" class="w-4 h-4 text-amber-800"></i>';
+        alert('▶️ Reproduzindo trecho sonoro da curadoria de Silviane Silvério sobre Mapa Mental e Saberes Ancestrais...');
+      } else {
+        btn.classList.remove('bg-amber-100', 'border-amber-400');
+        btn.innerHTML = '<i data-lucide="volume-2" class="w-4 h-4"></i>';
+      }
+      lucide.createIcons();
+    }
+
+    // Modal Curadoria
+    function openModalCuradoria() {
+      document.getElementById('modal-curadoria').classList.remove('hidden');
+    }
+    function closeModalCuradoria() {
+      document.getElementById('modal-curadoria').classList.add('hidden');
+    }
+    function handleCuradoriaSubmit(e) {
+      e.preventDefault();
+      alert('Sua sugestão foi enviada com sucesso para a curadoria de Silviane Silvério! Agradecemos sua contribuição.');
+      closeModalCuradoria();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>
+

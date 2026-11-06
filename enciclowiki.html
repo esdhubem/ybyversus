@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Enciclowiki YBY VersuS — Memória Viva, Conhecimento e Saberes</title>
-  <meta name="description" content="Enciclowiki YBY VersuS: enciclopédia livre de saberes populares, ancestrais, ciência cidadã e tecnologia do escrever e mapear. Curadoria: Silviane Silvério.">
+  <title>Enciclowiki YBY VersuS — Portal do Saber Ancestral, Decolonial e da Autonomia</title>
+  <meta name="description" content="Enciclowiki YBY VersuS: enciclopédia livre dos saberes populares, povos originários, pensamento decolonial e desenvolvimento da autonomia empreendedora. Curadoria oficial: Silviane Silvério.">
 
-  <!-- Fontes: Linux Libertine/Merriweather + Sans Serif Limpo estilo Wikipedia clássica -->
+  <!-- Fontes canônicas de alta legibilidade editorial -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
             sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
             serif: ['Merriweather', 'Charter', 'Georgia', 'serif']
+          },
+          colors: {
+            wikiblue: '#0645ad',
+            wikiborder: '#a2a9b1',
+            wikibg: '#f8f9fa'
           }
         }
       }
@@ -31,7 +35,6 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Estilo Canônico Enciclowiki: Fundo Branco, Bordas Sutis #a2a9b1 e Azul Clássico #0645ad */
     body {
       background-color: #f8f9fa;
       color: #202122;
@@ -49,52 +52,32 @@
       text-decoration: underline;
     }
 
-    /* Caixa Infobox clássica */
-    .wiki-infobox {
-      border: 1px solid #a2a9b1;
-      background-color: #f8f9fa;
-      color: #202122;
-      font-size: 0.775rem;
-      line-height: 1.45;
+    /* Badges de Hashtag */
+    .tag-badge {
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
     }
-    .wiki-infobox-header {
-      background-color: #eaecf0;
-      border-bottom: 1px solid #a2a9b1;
-      color: #000000;
-      font-family: 'Merriweather', Georgia, serif;
+    .tag-badge:hover {
+      transform: translateY(-1px);
     }
-
-    /* Caixa de Índice (TOC) */
-    .wiki-toc {
-      border: 1px solid #a2a9b1;
-      background-color: #f8f9fa;
-      padding: 10px 14px;
-      font-size: 0.775rem;
+    .tag-badge.active {
+      background-color: #0645ad !important;
+      color: #ffffff !important;
+      border-color: #0645ad !important;
+      box-shadow: 0 2px 6px rgba(6, 69, 173, 0.25);
     }
 
-    /* Títulos estilo Wiki com linha cinza inferior */
-    .wiki-heading {
-      font-family: 'Merriweather', Georgia, serif;
-      color: #000000;
-      border-bottom: 1px solid #a2a9b1;
-      padding-bottom: 3px;
-      margin-top: 1.75rem;
-      margin-bottom: 0.75rem;
-      font-weight: 400;
+    /* Cards de Verbetes no Padrão Enciclowiki */
+    .wiki-card {
+      background: #ffffff;
+      border: 1px solid #dcdfe3;
+      transition: all 0.2s ease;
     }
-
-    /* Caixa de Conexões em Rede */
-    .connections-box {
-      background-color: #f0f7ff;
-      border: 1px solid #c2dbff;
-      border-left: 4px solid #0645ad;
-    }
-
-    /* Caixa de Raízes Vivas Ancestrais */
-    .roots-box {
-      background-color: #fbf8f2;
-      border: 1px solid #e5d8c3;
-      border-left: 4px solid #b87a28;
+    .wiki-card:hover {
+      border-color: #0645ad;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
     }
 
     /* Scrollbar sutil */
@@ -114,9 +97,9 @@
 <body class="min-h-screen flex flex-col py-6 px-3 sm:px-6">
 
   <!-- ======================================================== -->
-  <!-- 1. TOPO DE NAVEGAÇÃO & CRUMBS DA ENCICLOWIKI             -->
+  <!-- 1. BARRA DE NAVEGAÇÃO SUPERIOR                           -->
   <!-- ======================================================== -->
-  <div class="max-w-4xl mx-auto w-full mb-4">
+  <nav class="max-w-5xl mx-auto w-full mb-6">
     <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-300 text-xs">
       
       <!-- Voltar à Praça -->
@@ -125,469 +108,746 @@
         <span>← Voltar à Praça YBY VersuS</span>
       </a>
 
-      <!-- Selo Editorial de Curadoria -->
+      <!-- Selo Editorial Oficial -->
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-[11.5px] font-semibold text-amber-900 shadow-2xs">
         <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-700"></i>
         <span>Curadoria Editorial Oficial: Silviane Silvério</span>
       </div>
 
+      <!-- Ação Sugerir Verbete -->
+      <button onclick="abrirModalCuradoria()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 font-medium transition-colors">
+        <i data-lucide="send" class="w-3.5 h-3.5 text-slate-500"></i>
+        <span>Sugerir Verbete / Saber</span>
+      </button>
+
     </div>
-  </div>
+  </nav>
 
 
   <!-- ======================================================== -->
-  <!-- 2. ARTIGO PRINCIPAL: MODELO CANÔNICO ENCICLOWIKI (FUNDO BRANCO) -->
+  <!-- 2. PORTAL PRINCIPAL (HERO / MANIFESTO / BUSCA)           -->
   <!-- ======================================================== -->
-  <main class="max-w-4xl mx-auto w-full bg-white border border-[#a2a9b1] rounded-xs p-6 sm:p-10 shadow-xs relative">
-    
-    <!-- Cabeçalho do Verbete: H1 Clássico com Linha Divisória -->
-    <header class="mb-5 border-b border-[#a2a9b1] pb-2">
-      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#000000] font-normal tracking-tight mb-1">
-        Mapa Mental (Pensamento Radial)
-      </h1>
-      <p class="text-xs text-slate-500 italic m-0">
-        Origem: <strong>Enciclowiki YBY VersuS</strong>, a enciclopédia livre dos saberes populares, ancestrais e da tecnologia do escrever e mapear.
-      </p>
+  <main class="max-w-5xl mx-auto w-full flex-1">
+
+    <!-- Caixa Principal de Apresentação -->
+    <header class="bg-white border border-[#a2a9b1] rounded-xs p-6 sm:p-8 shadow-2xs mb-6">
+      
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-5 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-xs border border-emerald-200 mb-2">
+            <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Enciclopédia Livre e Comunitária</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-serif font-normal text-slate-900 tracking-tight">
+            Enciclowiki YBY VersuS
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-600 font-serif italic mt-1">
+            Memória Viva do Brasil: Saberes Ancestrais, Povos Originários, Pensamento Decolonial e Autonomia do Povo.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-start md:items-end text-xs text-slate-500 space-y-1">
+          <div><strong class="text-slate-700">Acesso:</strong> Aberto, gratuito e permanente</div>
+          <div><strong class="text-slate-700">Curadoria:</strong> Silviane Silvério</div>
+          <div><strong class="text-slate-700">Padrão:</strong> ESDHUBEM / Modelo Misto Canônico</div>
+        </div>
+      </div>
+
+      <!-- Manifesto Epistêmico -->
+      <div class="mt-4 text-xs sm:text-[13px] text-slate-700 leading-relaxed bg-[#fbf8f2] border-l-4 border-amber-600 p-3.5 rounded-r-xs">
+        <p class="m-0">
+          <strong>Propósito da Enciclowiki:</strong> Um espaço de rigor conceitual e acolhimento humano dedicado a documentar as tecnologias ancestrais dos <em>povos originários</em> e <em>comunidades quilombolas</em>, aprofundar o <em>pensamento decolonial</em> e oferecer <strong>dicas práticas e ferramentas reais para o desenvolvimento da autonomia</strong> — fortalecendo o trabalhador autônomo, o artesão e o MEI a conquistarem soberania e dignidade com saúde e cooperação.
+        </p>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 3. LUPA DE PESQUISA (SEARCH BAR CENTRAL)                 -->
+      <!-- ======================================================== -->
+      <div class="mt-6">
+        <label for="campoBusca" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="search" class="w-4 h-4 text-[#0645ad]"></i>
+            <span>Pesquisar na Enciclowiki</span>
+          </span>
+          <span id="contadorResultados" class="text-slate-500 font-normal normal-case text-xs">
+            Carregando verbetes...
+          </span>
+        </label>
+        
+        <div class="relative flex items-center">
+          <div class="absolute left-3.5 text-slate-400 pointer-events-none">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400"></i>
+          </div>
+          <input 
+            type="text" 
+            id="campoBusca" 
+            oninput="filtrarVerbetes()"
+            placeholder="Digite palavras-chave, conceitos, povos originários, dicas de autonomia ou nomes..." 
+            class="w-full pl-11 pr-10 py-3 text-sm sm:text-base bg-white border-2 border-slate-300 rounded-xs focus:border-[#0645ad] focus:ring-0 outline-none text-slate-900 placeholder:text-slate-400 transition-colors shadow-2xs"
+          />
+          <button 
+            id="btnLimparBusca" 
+            onclick="limparBusca()" 
+            class="absolute right-3 text-slate-400 hover:text-slate-700 hidden p-1"
+            title="Limpar pesquisa"
+          >
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- 4. NUVEM / GRADE DE HASHTAGS (# DE TEMAS PESQUISÁVEIS)   -->
+      <!-- ======================================================== -->
+      <div class="mt-6 pt-5 border-t border-slate-200">
+        <div class="flex items-center justify-between mb-2.5">
+          <span class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="hash" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Temas & Hashtags para Pesquisa Rápida</span>
+          </span>
+          <button onclick="selecionarTag('todos')" class="text-xs text-[#0645ad] hover:underline font-semibold">
+            Ver Todos
+          </button>
+        </div>
+
+        <div class="flex flex-wrap gap-2 text-xs" id="containerTags">
+          <button onclick="selecionarTag('todos')" data-tag="todos" class="tag-badge active px-3 py-1.5 rounded-full border border-slate-300 bg-white font-medium text-slate-700 hover:bg-slate-50">
+            #Todos
+          </button>
+          <button onclick="selecionarTag('AutonomiaEEmpreender')" data-tag="AutonomiaEEmpreender" class="tag-badge px-3 py-1.5 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-900 font-semibold hover:bg-emerald-100 flex items-center gap-1">
+            <span>#AutonomiaEEmpreender</span>
+            <span class="text-[10px] bg-emerald-200/80 px-1.5 py-0.2 rounded-full">Dicas & MEI</span>
+          </button>
+          <button onclick="selecionarTag('PovosOriginarios')" data-tag="PovosOriginarios" class="tag-badge px-3 py-1.5 rounded-full border border-amber-300 bg-amber-50 text-amber-900 font-medium hover:bg-amber-100">
+            #PovosOriginarios
+          </button>
+          <button onclick="selecionarTag('SaberesAncestrais')" data-tag="SaberesAncestrais" class="tag-badge px-3 py-1.5 rounded-full border border-orange-300 bg-orange-50 text-orange-900 font-medium hover:bg-orange-100">
+            #SaberesAncestrais
+          </button>
+          <button onclick="selecionarTag('PensamentoDecolonial')" data-tag="PensamentoDecolonial" class="tag-badge px-3 py-1.5 rounded-full border border-purple-300 bg-purple-50 text-purple-900 font-medium hover:bg-purple-100">
+            #PensamentoDecolonial
+          </button>
+          <button onclick="selecionarTag('TecnologiaDoMapear')" data-tag="TecnologiaDoMapear" class="tag-badge px-3 py-1.5 rounded-full border border-blue-300 bg-blue-50 text-blue-900 font-medium hover:bg-blue-100">
+            #TecnologiaDoMapear
+          </button>
+          <button onclick="selecionarTag('BemViver')" data-tag="BemViver" class="tag-badge px-3 py-1.5 rounded-full border border-teal-300 bg-teal-50 text-teal-900 font-medium hover:bg-teal-100">
+            #BemViver
+          </button>
+          <button onclick="selecionarTag('SaudeIntegrativa')" data-tag="SaudeIntegrativa" class="tag-badge px-3 py-1.5 rounded-full border border-rose-300 bg-rose-50 text-rose-900 font-medium hover:bg-rose-100">
+            #SaudeIntegrativa
+          </button>
+          <button onclick="selecionarTag('EconomiaSolidaria')" data-tag="EconomiaSolidaria" class="tag-badge px-3 py-1.5 rounded-full border border-indigo-300 bg-indigo-50 text-indigo-900 font-medium hover:bg-indigo-100">
+            #EconomiaSolidaria
+          </button>
+          <button onclick="selecionarTag('Agroecologia')" data-tag="Agroecologia" class="tag-badge px-3 py-1.5 rounded-full border border-lime-300 bg-lime-50 text-lime-900 font-medium hover:bg-lime-100">
+            #Agroecologia
+          </button>
+        </div>
+
+      </div>
+
     </header>
 
-
     <!-- ======================================================== -->
-    <!-- 3. INFOBOX LATERAL CLÁSSICA (WIKIPEDIA / ENCICLOWIKI)    -->
+    <!-- 5. BANNER EXPLICATIVO DO TEMA ATIVO                      -->
     <!-- ======================================================== -->
-    <aside class="sm:float-right sm:w-80 sm:ml-6 sm:mb-6 mb-6 wiki-infobox rounded-xs shadow-2xs">
-      <div class="wiki-infobox-header px-3 py-2 text-center font-bold text-xs sm:text-sm">
-        Mapa Mental (Pensamento Radial)
-      </div>
-
-      <div class="p-3 divide-y divide-slate-200">
-        
-        <!-- Eixo Temático -->
-        <div class="py-2 flex flex-col gap-0.5">
-          <span class="font-bold text-slate-600 text-[11px] uppercase tracking-wider">Eixo Temático</span>
-          <span class="font-medium text-[#0645ad]">Tecnologia do Escrever & Mapeamento</span>
-        </div>
-
-        <!-- Autoria & Curadoria -->
-        <div class="py-2 flex flex-col gap-0.5">
-          <span class="font-bold text-slate-600 text-[11px] uppercase tracking-wider">Autoria & Curadoria</span>
-          <div class="font-semibold text-slate-900 text-xs">Silviane Silvério</div>
-          <div class="text-[11px] text-slate-600">Biomédica Integrativa & Pesquisadora Educacional</div>
-          <div class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 mt-1">
-            <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-600"></i>
-            <span>Curadoria Editorial • YBY VersuS</span>
-          </div>
-        </div>
-
-        <!-- Enquadramento Filosófico (Tríade Clássica + Kant) -->
-        <div class="py-2 flex flex-col gap-1.5 bg-amber-50/50 -mx-3 px-3">
-          <span class="font-bold text-amber-900 text-[11px] uppercase tracking-wider flex items-center gap-1">
-            <i data-lucide="compass" class="w-3.5 h-3.5 text-amber-700"></i>
-            <span>Enquadramento Filosófico</span>
-          </span>
-          
-          <div class="space-y-1 text-[11px]">
-            <div>
-              <strong class="text-slate-700">Questão de Kant:</strong>
-              <span class="text-slate-900 italic"> O que posso saber? (Epistemologia)</span>
-            </div>
-            <div>
-              <strong class="text-slate-700">Pilar Disciplinar:</strong>
-              <span class="text-slate-900"> Epistemologia & Teoria Cognitiva</span>
-            </div>
-            <div class="pt-1 border-t border-amber-200/70 mt-1">
-              <span class="font-bold text-slate-700 block mb-0.5">Tríade Clássica:</span>
-              <ul class="list-disc list-inside space-y-0.5 text-slate-800 pl-1 text-[10.5px]">
-                <li><strong>O que é? (Essência):</strong> Dispositivo representacional não-linear da cognição humana.</li>
-                <li><strong>Por que é? (Causa):</strong> Inadequação da escrita estritamente horizontal para processar pensamentos em rede.</li>
-                <li><strong>Como é? (Estrutura):</strong> Núcleo central único com irradiação centrífuga e hierarquizada de ramos.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Etimologia -->
-        <div class="py-2 flex flex-col gap-0.5">
-          <span class="font-bold text-slate-600 text-[11px] uppercase tracking-wider">Etimologia & Raízes</span>
-          <span class="text-slate-700 text-[11px] leading-relaxed">
-            Formalizado em inglês como <em>Mind Map</em> por Tony Buzan (década de 1970); radicado nas formas ancestrais de teias, pinturas corporais e mandalas indígenas e quilombolas.
-          </span>
-        </div>
-
-        <!-- Dados do Registro -->
-        <div class="py-2 flex flex-col gap-1 text-[11px] text-slate-600">
-          <div><strong>Última Revisão:</strong> Novembro de 2026</div>
-          <div><strong>Tempo de Leitura:</strong> 5 minutos</div>
-          <div><strong>Acesso:</strong> Aberto / Livre Consulta</div>
-        </div>
-
-      </div>
-    </aside>
+    <div id="bannerTemaAtivo" class="hidden mb-6 p-4 rounded-xs border text-xs sm:text-sm"></div>
 
 
     <!-- ======================================================== -->
-    <!-- 4. LEAD PARAGRAPH (RESUMO DIRETO)                        -->
+    <!-- 6. LISTAGEM DINÂMICA DE VERBETES / POSTAGENS DA ENCICLO  -->
     <!-- ======================================================== -->
-    <div class="text-[15px] sm:text-base text-slate-900 leading-relaxed font-sans mb-4 text-justify">
-      <p class="m-0">
-        <strong class="font-bold text-black">Mapa Mental (Pensamento Radial)</strong> — O mapa mental é uma ferramenta visual de estruturação cognitiva que organiza conceitos a partir de um núcleo central, irradiando ramificações por meio de palavras-chave, cores e conexões sinápticas. Simula a organização cerebral integrando razão e criatividade para acelerar a síntese, a retenção mnêmica e a produção autoral de ideias. Longe de ser apenas uma invenção técnica recente, resgata a forma como as comunidades ancestrais sempre transmitiram o conhecimento: não em linhas retas e isoladas, mas em teias vivas e interligadas.
+    <section class="space-y-4" id="listaVerbetes">
+      <!-- Inserido dinamicamente via JavaScript -->
+    </section>
+
+    <!-- Estado Vazio (quando a busca não encontra nada) -->
+    <div id="estadoVazio" class="hidden text-center py-12 bg-white border border-[#a2a9b1] rounded-xs p-8">
+      <i data-lucide="search-x" class="w-12 h-12 text-slate-400 mx-auto mb-3"></i>
+      <h3 class="text-base font-bold text-slate-800">Nenhum verbete encontrado</h3>
+      <p class="text-xs text-slate-500 mt-1 max-w-md mx-auto">
+        Não localizamos verbetes com esse termo. Tente buscar por outros temas, navegue pelas hashtags acima ou envie sua sugestão de verbete para a curadoria.
       </p>
+      <button onclick="limparBusca()" class="mt-4 px-4 py-2 bg-[#0645ad] text-white text-xs font-semibold rounded-xs hover:bg-blue-800 transition-colors">
+        Limpar busca e ver todos os verbetes
+      </button>
     </div>
 
 
     <!-- ======================================================== -->
-    <!-- 5. MAPA DE CONEXÕES (VISUAL DAS LIGAÇÕES EM REDE)        -->
+    <!-- 7. SEÇÃO ESPECIAL: DESENVOLVIMENTO DA AUTONOMIA & DICAS  -->
     <!-- ======================================================== -->
-    <div class="connections-box p-4 rounded-xs my-5 text-xs text-slate-800">
-      <div class="font-bold text-[#0645ad] flex items-center gap-1.5 mb-2 uppercase tracking-wider text-[11px]">
-        <i data-lucide="network" class="w-4 h-4"></i>
-        <span>Mapa de Conexões — Estrutura em Rede Deste Verbete</span>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11.5px] leading-relaxed">
-        <div>• <strong>Origem:</strong> Raízes ancestrais milenares e formalização científica ocidental.</div>
-        <div>• <strong>Estrutura:</strong> Do núcleo central às ramificações (como construir passo a passo).</div>
-        <div>• <strong>Raízes Vivas:</strong> Tradições indígenas, quilombolas e a sabedoria popular em teia.</div>
-        <div>• <strong>Dimensão Ética:</strong> Uso comunitário, partilha sem apropriação e respeito a quem ensinou.</div>
-        <div>• <strong>Prática Acessível:</strong> Como desenhar o seu primeiro mapa sem complicações.</div>
-      </div>
-    </div>
-
-
-    <!-- ======================================================== -->
-    <!-- 6. ÍNDICE DE SEÇÕES (TOC WIKIPEDIA RETRÁTIL)             -->
-    <!-- ======================================================== -->
-    <nav class="inline-block my-3 wiki-toc rounded-xs min-w-[260px]">
-      <div class="flex items-center justify-between gap-4 font-bold text-slate-900 border-b border-slate-300 pb-1 mb-2">
-        <span class="flex items-center gap-1.5">
-          <i data-lucide="list" class="w-3.5 h-3.5 text-slate-600"></i>
-          <span>Índice</span>
-        </span>
-        <button onclick="toggleToc()" id="toc-btn" class="text-[#0645ad] hover:underline font-normal text-[11px] cursor-pointer">
-          [ocultar]
-        </button>
-      </div>
-
-      <ol id="toc-list" class="list-decimal list-inside space-y-1 text-[#0645ad] font-sans text-xs">
-        <li><a href="#origem-fundamentacao" class="hover:underline">Origem e Fundamentação Teórica</a></li>
-        <li><a href="#principios-estruturais" class="hover:underline">Princípios Estruturais — Como se Constrói</a></li>
-        <li><a href="#raizes-vivas" class="hover:underline">Raízes Vivas — A Ancestralidade que Antecedeu a Técnica</a></li>
-        <li><a href="#dimensao-etica" class="hover:underline">Dimensão Ética e Aplicação no Cotidiano</a></li>
-        <li><a href="#ouvir-o-saber" class="hover:underline">Ouvir o Saber — Registro Sonoro</a></li>
-        <li><a href="#pratica-fazer" class="hover:underline">Prática — Como Fazer Você Mesmo</a></li>
-        <li><a href="#ver-tambem" class="hover:underline">Ver também</a></li>
-        <li><a href="#como-citar" class="hover:underline">Como Citar Este Verbete (ABNT)</a></li>
-        <li><a href="#referencias" class="hover:underline">Referências e Bibliografia</a></li>
-      </ol>
-    </nav>
-
-
-    <!-- ======================================================== -->
-    <!-- 7. CORPO DO ARTIGO: SEÇÕES NUMERADAS                     -->
-    <!-- ======================================================== -->
-    <div class="text-[14.5px] sm:text-[15px] text-slate-800 leading-relaxed font-sans mt-4 clear-both sm:clear-none space-y-4">
+    <section class="mt-10 bg-white border border-[#a2a9b1] rounded-xs p-6 sm:p-8 shadow-2xs">
       
-      <!-- SEÇÃO 1: ORIGEM -->
-      <h2 id="origem-fundamentacao" class="wiki-heading text-lg sm:text-xl font-bold">
-        1. Origem e Fundamentação Teórica
-      </h2>
-      <p class="text-justify m-0">
-        Embora a representação visual de ideias em forma de árvore remonte a pensadores clássicos como Porfírio de Tiro (século III d.C.), a codificação contemporânea do método foi sistematizada e popularizada na década de 1970 pelo psicólogo britânico <strong>Tony Buzan</strong>. Buzan partiu de investigações sobre a neurobiologia do córtex cerebral, defendendo que a mente humana atinge seu maior rendimento quando integra o hemisfério esquerdo (responsável pelas palavras, lógica e ordenação linear) e o hemisfério direito (associado a ritmos, percepção espacial, imagens e cores).
-      </p>
-      <p class="text-justify m-0">
-        Sob a ótica da psicologia cognitiva contemporânea, a eficácia do mapeamento mental encontra respaldo na <em>Teoria da Carga Cognitiva</em> (Sweller, 1988) e no <em>Efeito de Superioridade da Imagem</em>. Ao condensar blocos inteiros de informação em núcleos visuais ancorados por cores distintas, o mapa alivia a memória de trabalho de curto prazo, permitindo que a atenção se concentre na correlação profunda dos conceitos.
-      </p>
-      <div class="p-3 bg-amber-50/70 border-l-3 border-amber-600 rounded-r-xs text-xs text-slate-800 my-2">
-        <strong>Aviso Histórico & Epistemológico:</strong> O mapa mental, embora formalizado no século XX por autores ocidentais, <strong>não é uma invenção moderna</strong>. Povos originários do Brasil e de todo o mundo sempre organizaram o conhecimento de forma radial — desenhando na terra, entalhando cascas, contando histórias em roda e conectando o centro às ramificações da vida. Nas comunidades quilombolas e nas rodas de conversa comunitárias, o pensamento nunca foi uma linha reta: sempre foi uma teia viva, uma árvore frondosa, uma rede sagrada de relações. A tecnologia do escrever e do mapear acolhe essa raiz e a devolve em método acessível a todos.
-      </div>
-
-      <!-- SEÇÃO 2: COMO SE CONSTRÓI -->
-      <h2 id="principios-estruturais" class="wiki-heading text-lg sm:text-xl font-bold">
-        2. Princípios Estruturais — Como se Constrói
-      </h2>
-      <p class="text-justify m-0">
-        Para que conserve sua força analítica e não se transforme em mero emaranhado de rabiscos, a tradição canônica do pensamento radial estabelece cinco regras constitutivas de arquitetura cognitiva:
-      </p>
-      <ul class="list-disc list-inside space-y-1.5 text-slate-800 pl-1 text-xs sm:text-[13.5px]">
-        <li><strong>Núcleo Central:</strong> O tema gerador localiza-se exatamente no centro geométrico da superfície, acompanhado de uma imagem ou símbolo evocativo.</li>
-        <li><strong>Ramos Primários e Secundários:</strong> Do núcleo brotam ramos curvos e mais espessos (as grandes categorias), dos quais irradiam galhos mais finos com detalhamentos específicos.</li>
-        <li><strong>Economia Verbal (Palavras-Chave):</strong> Emprega-se preferencialmente uma única palavra nuclear (substantivo ou verbo forte) por ramificação, evitando frases longas que provocam leitura passiva.</li>
-        <li><strong>Codificação Cromática:</strong> Cada eixo temático recebe uma cor exclusiva, ativando a retenção fotográfica imediata na memória de longo prazo.</li>
-        <li><strong>Conexões Intersetoriais:</strong> Linhas pontilhadas e setas cruzadas unem ramos distintos quando há relação de causa, efeito ou reciprocidade entre eles.</li>
-      </ul>
-      <p class="text-xs text-slate-600 italic">
-        *O ensinamento ancestral nos lembra: desenhar o pensamento não é artifício artificial; é a forma natural como a mente humana compreende o cosmos.*
-      </p>
-
-      <!-- SEÇÃO 3: RAÍZES VIVAS ANCESTRAIS -->
-      <h2 id="raizes-vivas" class="wiki-heading text-lg sm:text-xl font-bold">
-        3. Raízes Vivas — A Ancestralidade que Antecedeu a Técnica
-      </h2>
-      <div class="roots-box p-4 rounded-xs text-xs sm:text-[13.5px] text-slate-800 space-y-2.5">
-        <p class="m-0 text-justify">
-          A compartimentação do conhecimento em gavetas separadas é uma herança colonial recente. Antes dos manuais de metodologia, a sabedoria já era radial:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-          <div class="p-2.5 bg-white/80 border border-[#e5d8c3] rounded-xs space-y-1">
-            <span class="font-bold text-amber-900 block">🪶 Povos Originários</span>
-            <p class="text-[11px] text-slate-700 m-0 leading-relaxed">
-              Pinturas corporais, grafismos em cestarias e calendários lunares sempre foram mapas mentais de sobrevivência, cura e navegação territorial.
-            </p>
-          </div>
-          <div class="p-2.5 bg-white/80 border border-[#e5d8c3] rounded-xs space-y-1">
-            <span class="font-bold text-amber-900 block">🕊️ Tradição Quilombola</span>
-            <p class="text-[11px] text-slate-700 m-0 leading-relaxed">
-              A memória viva do território, das rotas de fuga, dos parentescos e dos rituais transmitida oralmente em rede circular ao redor do fogo.
-            </p>
-          </div>
-          <div class="p-2.5 bg-white/80 border border-[#e5d8c3] rounded-xs space-y-1">
-            <span class="font-bold text-amber-900 block">🌾 Saberes do Chão</span>
-            <p class="text-[11px] text-slate-700 m-0 leading-relaxed">
-              O receituário das ervas medicinais, o ciclo das chuvas e os segredos dos ofícios populares: tudo conectado em teias de afeto e prática.
-            </p>
-          </div>
+      <div class="flex items-center gap-2.5 pb-4 border-b border-slate-200">
+        <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 font-bold">
+          💡
+        </div>
+        <div>
+          <h2 class="text-lg sm:text-xl font-serif text-slate-900 font-bold">
+            Espaço da Autonomia: Dicas Práticas para o Empreendedor Popular & MEI
+          </h2>
+          <p class="text-xs text-slate-600">
+            Curadoria prática de Silviane Silvério para quem faz o próprio sustento com dignidade e sem esgotamento.
+          </p>
         </div>
       </div>
 
-      <!-- SEÇÃO 4: DIMENSÃO ÉTICA -->
-      <h2 id="dimensao-etica" class="wiki-heading text-lg sm:text-xl font-bold">
-        4. Dimensão Ética e Aplicação no Cotidiano
-      </h2>
-      <p class="text-justify m-0">
-        No campo do desenvolvimento humano, o mapeamento atua como remédio preventivo contra o bloqueio criativo, a dispersão mental e a ansiedade da sobrecarga de informações. Ele transforma uma massa amorfa e assustadora de obrigações em uma cartografia ordenada, acolhedora e realizável.
-      </p>
-      <p class="text-justify m-0">
-        Na perspectiva do <strong>Bem Viver</strong>, a ferramenta deve estar a serviço da coletividade. Não se trata de uma arma de produtividade voraz para esgotar o trabalhador, mas de um instrumento libertador de clareza mental, planejamento autônomo de estudos, redação de livros sem sofrimento e organização comunitária de projetos locais.
-      </p>
-
-      <!-- SEÇÃO 5: ÁUDIO OPCIONAL (OUVIR O SABER) -->
-      <h2 id="ouvir-o-saber" class="wiki-heading text-lg sm:text-xl font-bold">
-        5. Ouvir o Saber — Registro Sonoro & Voz Viva
-      </h2>
-      <div class="p-3.5 bg-[#f8f9fa] border border-[#a2a9b1] rounded-xs flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div class="flex items-center gap-3">
-          <button onclick="toggleAudioDemo()" id="wiki-audio-btn" class="w-9 h-9 rounded-full bg-[#eaecf0] hover:bg-[#dfe3e8] border border-[#a2a9b1] text-slate-800 flex items-center justify-center shrink-0 cursor-pointer active:scale-95 transition-all">
-            <i data-lucide="volume-2" id="wiki-audio-icon" class="w-4 h-4"></i>
-          </button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 text-xs">
+        
+        <!-- Pílula 1: Preço Justo -->
+        <div class="p-4 rounded-xs border border-emerald-200 bg-emerald-50/40 flex flex-col justify-between">
           <div>
-            <span class="text-xs font-bold text-slate-900 block">Áudio Explicativo da Curadora</span>
-            <span class="text-[11px] text-slate-600 block">Silviane Silvério comenta a ponte entre o mapa mental e os saberes ancestrais (3:15 min)</span>
+            <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-200 text-emerald-900 mb-2">Dica 01 • Precificação</span>
+            <h3 class="font-bold text-slate-900 text-sm mb-1">Preço Justo não é Preço Baixo</h3>
+            <p class="text-slate-700 leading-relaxed">
+              Cobrar pouco desvaloriza sua saúde e o mercado do seu colega. Calcule o custo dos insumos, o tempo de dedicação, o desgaste das ferramentas e o valor do seu descanso. Precificar com dignidade é um ato de respeito ao próprio trabalho.
+            </p>
           </div>
-        </div>
-        <span class="text-[10.5px] px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 font-medium">
-          Áudio Disponível
-        </span>
-      </div>
-
-      <!-- SEÇÃO 6: PRÁTICA (FAZER VOCÊ MESMO) -->
-      <h2 id="pratica-fazer" class="wiki-heading text-lg sm:text-xl font-bold">
-        6. Prática — Como Fazer Seu Primeiro Mapa Mental
-      </h2>
-      <div class="p-4 bg-white border border-[#a2a9b1] rounded-xs space-y-2 text-xs sm:text-[13px]">
-        <ol class="list-decimal list-inside space-y-1.5 text-slate-800">
-          <li><strong>Vire a folha de lado (horizontal):</strong> Isso dá amplitude ao campo visual dos seus olhos.</li>
-          <li><strong>Desenhe o tema no centro:</strong> Use uma palavra forte e uma cor de destaque no meio da página.</li>
-          <li><strong>Puxe os ramos mestres:</strong> Crie de 3 a 5 eixos principais irradiando do centro, cada um com uma cor diferente.</li>
-          <li><strong>Ramifique os detalhes:</strong> Puxe galhos mais finos com palavras-chave que explicam o tema.</li>
-          <li><strong>Conecte as pontas:</strong> Use setas para interligar ideias que conversam entre si.</li>
-        </ol>
-      </div>
-
-      <!-- SEÇÃO 7: VER TAMBÉM -->
-      <h2 id="ver-tambem" class="wiki-heading text-lg sm:text-xl font-bold">
-        7. Ver também
-      </h2>
-      <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm text-[#0645ad]">
-        <li><a href="#" class="wiki-link">Tecnologia do Escrever e do Mapear (Metodologia Canônica)</a></li>
-        <li><a href="bemviver-dashboard.html" class="wiki-link">Economia do Bem Viver & Além do PIB</a></li>
-        <li><a href="#" class="wiki-link">Cartografia da Memória Viva e Tradições Orais</a></li>
-        <li><a href="#" class="wiki-link">Ciência Cidadã e Epistemologias do Sul</a></li>
-      </ul>
-
-      <!-- SEÇÃO 8: COMO CITAR (ABNT) -->
-      <h2 id="como-citar" class="wiki-heading text-lg sm:text-xl font-bold">
-        8. Como Citar Este Verbete
-      </h2>
-      <div class="space-y-2">
-        <div class="flex items-center justify-between">
-          <span class="text-[11px] text-slate-600">Referência padronizada conforme norma ABNT NBR 6023:</span>
-          <button onclick="copiarCitacao()" class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#eaecf0] hover:bg-[#dfe3e8] border border-[#a2a9b1] text-[11px] font-medium text-slate-800 rounded-xs transition-colors cursor-pointer">
-            <i data-lucide="copy" class="w-3 h-3 text-slate-600"></i>
-            <span id="copy-btn-text">Copiar citação</span>
+          <button onclick="selecionarTag('AutonomiaEEmpreender')" class="mt-3 text-emerald-800 font-bold hover:underline self-start inline-flex items-center gap-1">
+            Ver verbetes de autonomia →
           </button>
         </div>
-        <div id="citacao-box" class="p-3 bg-[#f8f9fa] border border-[#a2a9b1] rounded-xs text-xs font-mono text-slate-800 leading-relaxed select-all">
-SILVÉRIO, Silviane. Mapa Mental (Pensamento Radial): A Tecnologia do Escrever e do Mapear. In: ENCICLOWIKI YBY VERSUS: Memória Viva, Conhecimento e Saberes. Curitiba: Ecossistema YBY VersuS, 2026. Disponível em: &lt;https://esdhubem.github.io/ybyversus/enciclowiki.html?id=mapa-mental&gt;. Acesso em: 06 nov. 2026.
+
+        <!-- Pílula 2: Separação de Contas -->
+        <div class="p-4 rounded-xs border border-blue-200 bg-blue-50/40 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-200 text-blue-900 mb-2">Dica 02 • Finanças do Povo</span>
+            <h3 class="font-bold text-slate-900 text-sm mb-1">A Regra dos Dois Bolsos</h3>
+            <p class="text-slate-700 leading-relaxed">
+              O dinheiro que entra no serviço não é o salário de hoje. Tenha contas bancárias gratuitas separadas: uma para o ofício (comprar material e pagar tributos MEI) e outra para o sustento da sua casa. Essa separação traz paz mental.
+            </p>
+          </div>
+          <button onclick="selecionarTag('AutonomiaEEmpreender')" class="mt-3 text-blue-800 font-bold hover:underline self-start inline-flex items-center gap-1">
+            Ver artigos de finanças solidárias →
+          </button>
         </div>
+
+        <!-- Pílula 3: Redes Locais -->
+        <div class="p-4 rounded-xs border border-amber-200 bg-amber-50/40 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-200 text-amber-900 mb-2">Dica 03 • Comunidade</span>
+            <h3 class="font-bold text-slate-900 text-sm mb-1">Fortaleça o Comércio do Bairro</h3>
+            <p class="text-slate-700 leading-relaxed">
+              A melhor propaganda de quem empreende com as próprias mãos é a confiança comunitária. Indique colegas da sua região, faça parcerias de troca e mantenha uma comunicação transparente. A cooperação supera a concorrência predatória.
+            </p>
+          </div>
+          <button onclick="selecionarTag('EconomiaSolidaria')" class="mt-3 text-amber-800 font-bold hover:underline self-start inline-flex items-center gap-1">
+            Ver economia solidária →
+          </button>
+        </div>
+
+        <!-- Pílula 4: Saúde Mental e Físico -->
+        <div class="p-4 rounded-xs border border-rose-200 bg-rose-50/40 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-200 text-rose-900 mb-2">Dica 04 • Bem-Estar</span>
+            <h3 class="font-bold text-slate-900 text-sm mb-1">Descanso também é Trabalho</h3>
+            <p class="text-slate-700 leading-relaxed">
+              O autônomo sem pausa vira o seu pior chefe. Estabeleça horários para responder mensagens, reserve um dia sagrado na semana para a família, a terra e o silêncio. Um corpo doente não sustenta um negócio independente.
+            </p>
+          </div>
+          <button onclick="selecionarTag('SaudeIntegrativa')" class="mt-3 text-rose-800 font-bold hover:underline self-start inline-flex items-center gap-1">
+            Ver saúde integrativa & PICS →
+          </button>
+        </div>
+
       </div>
 
-      <!-- SEÇÃO 9: REFERÊNCIAS -->
-      <h2 id="referencias" class="wiki-heading text-lg sm:text-xl font-bold">
-        9. Referências e Bibliografia
-      </h2>
-      <ul class="space-y-1.5 text-xs text-slate-700 pl-1">
-        <li>• BUZAN, Tony; BUZAN, Barry. <em>The Mind Map Book: How to Use Radiant Thinking to Maximize Your Brain's Untapped Potential</em>. London: BBC Books, 1993.</li>
-        <li>• KRENAK, Ailton. <em>Ideias para adiar o fim do mundo</em>. São Paulo: Companhia das Letras, 2019.</li>
-        <li>• SWELLER, John. <em>Cognitive Load Theory and the Format of Instruction</em>. Cognition and Instruction, v. 5, n. 4, p. 257-285, 1988.</li>
-        <li>• SILVÉRIO, Silviane. <em>Cadernos da Tecnologia do Escrever e Mapear</em>. Curitiba: ESDHUBEM / YBY VersuS, 2026.</li>
-        <li>• Fontes vivas: Relatos orais de mestres de ofício, anciãos e guardiões de saberes comunitários registrados no projeto Memória Viva.</li>
-      </ul>
+    </section>
 
-    </div>
 
     <!-- ======================================================== -->
-    <!-- 8. CAIXA DE CURADORIA & CONTRIBUIÇÃO DA COMUNIDADE       -->
+    <!-- 8. CAIXA DE CURADORIA EDITORIAL SILVIANE SILVÉRIO         -->
     <!-- ======================================================== -->
-    <div class="mt-12 pt-6 border-t border-[#a2a9b1] bg-[#f8f9fa] p-5 rounded-xs space-y-3">
-      <div class="flex items-center gap-2">
-        <i data-lucide="edit-3" class="w-4 h-4 text-[#0645ad]"></i>
-        <h3 class="text-sm font-bold text-slate-900 font-serif">Envio de Sugestões, Correções & Curadoria</h3>
-      </div>
-      <p class="text-xs text-slate-700 leading-relaxed text-justify m-0">
-        Esta enciclopédia é de autoria e curadoria direta de <strong>Silviane Silvério</strong>. Se você é leitor, pesquisador ou guardião de saberes e deseja sugerir uma correção, enriquecer este verbete ou enviar fotos e áudios complementares (opcionais), envie sua contribuição para a nossa curadoria editorial.
-      </p>
-      <div class="pt-1 flex flex-wrap items-center gap-3">
-        <button onclick="openModalCuradoria()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#eaecf0] hover:bg-[#dfe3e8] border border-[#a2a9b1] text-xs font-semibold text-slate-900 rounded-xs transition-colors cursor-pointer">
-          <i data-lucide="send" class="w-3.5 h-3.5 text-slate-700"></i>
-          <span>Enviar Sugestão ou Correção para Curadoria</span>
+    <section class="mt-8 bg-amber-50/60 border border-amber-300 rounded-xs p-6 text-xs text-slate-800">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-1.5 font-bold text-amber-900 text-sm">
+            <i data-lucide="feather" class="w-4 h-4 text-amber-800"></i>
+            <span>Curadoria Editorial: Silviane Silvério</span>
+          </div>
+          <p class="text-slate-700 max-w-2xl leading-relaxed">
+            A Enciclowiki YBY VersuS é permanentemente curada e revisada por <strong>Silviane Silvério</strong> (Biomédica Integrativa & Pesquisadora Educacional). Conhece uma tradição, um ofício popular ou deseja sugerir uma correção? Envie sua proposta para nossa curadoria.
+          </p>
+        </div>
+        <button onclick="abrirModalCuradoria()" class="shrink-0 px-4 py-2.5 bg-amber-700 hover:bg-amber-800 text-white font-semibold rounded-xs transition-colors flex items-center gap-2 shadow-2xs">
+          <i data-lucide="edit-3" class="w-4 h-4"></i>
+          <span>Enviar Saber / Proposta</span>
         </button>
-        <span class="text-[11px] text-slate-500 italic">*Fotos e áudios são opcionais. Todo material passa por curadoria prévia.</span>
       </div>
-    </div>
+    </section>
 
   </main>
 
 
   <!-- ======================================================== -->
-  <!-- 9. MODAL: ENVIAR CONTRIBUIÇÃO PARA CURADORIA             -->
+  <!-- 9. RODAPÉ INSTITUCIONAL                                  -->
   <!-- ======================================================== -->
-  <div id="modal-curadoria" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
-    <div class="bg-white border border-[#a2a9b1] max-w-lg w-full p-6 rounded-xs shadow-lg space-y-4 max-h-[90vh] overflow-y-auto text-xs">
-      <div class="flex items-center justify-between border-b border-slate-300 pb-2">
+  <footer class="max-w-5xl mx-auto w-full mt-12 pt-6 pb-8 border-t border-slate-300 text-center text-xs text-slate-500 space-y-2">
+    <p class="m-0">
+      <strong>Enciclowiki YBY VersuS</strong> — A Enciclopédia Livre do Saber Popular, Ancestral e da Autonomia Emancipatória.
+    </p>
+    <p class="m-0 text-[11px] text-slate-400">
+      Curadoria Editorial: Silviane Silvério • Referência Metodológica ESDHUBEM & ABNT NBR 6023 • Licença Aberta CC BY-SA 4.0
+    </p>
+    <div class="pt-2 flex items-center justify-center gap-4 text-xs">
+      <a href="index.html" class="wiki-link">Praça YBY VersuS</a>
+      <span>•</span>
+      <a href="enciclowiki-mapa-mental.html" class="wiki-link">Verbete Exemplo: Mapa Mental</a>
+      <span>•</span>
+      <a href="javascript:void(0)" onclick="abrirModalCuradoria()" class="wiki-link">Curadoria e Contato</a>
+    </div>
+  </footer>
+
+
+  <!-- ======================================================== -->
+  <!-- 10. MODAL DE CURADORIA EDITORIAL COMUNITÁRIA             -->
+  <!-- ======================================================== -->
+  <div id="modalCuradoria" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-white border border-[#a2a9b1] rounded-xs max-w-lg w-full p-6 sm:p-8 shadow-xl text-left my-auto">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
         <div class="flex items-center gap-2">
-          <i data-lucide="inbox" class="w-4 h-4 text-[#0645ad]"></i>
-          <h3 class="text-sm font-bold text-slate-900 font-serif">Enviar para Curadoria • Silviane Silvério</h3>
+          <i data-lucide="sparkles" class="w-5 h-5 text-amber-600"></i>
+          <h3 class="text-base font-bold text-slate-900 font-serif">Sugerir Saber para a Curadoria</h3>
         </div>
-        <button onclick="closeModalCuradoria()" class="text-slate-500 hover:text-black p-1">
-          <i data-lucide="x" class="w-4 h-4"></i>
+        <button onclick="fecharModalCuradoria()" class="text-slate-400 hover:text-slate-700 p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <p class="text-slate-600 m-0">
-        Preencha os campos abaixo com sua sugestão de melhoria ou novo saber. Todo o conteúdo é lido e avaliado pessoalmente pela curadoria antes da publicação.
+      <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+        A curadoria da Enciclowiki é realizada pessoalmente por <strong>Silviane Silvério</strong>. Preencha os campos abaixo com o saber popular, técnica de autonomia ou memória que você deseja ver registrada.
       </p>
 
-      <form onsubmit="handleCuradoriaSubmit(event)" class="space-y-3">
+      <form id="formCuradoria" onsubmit="enviarPropostaCuradoria(event)" class="space-y-3.5 text-xs">
         <div>
-          <label class="block font-bold text-slate-800 mb-1">Seu Nome e Contato</label>
-          <input type="text" id="curadoria-autor" required placeholder="Nome completo e e-mail/WhatsApp" class="w-full px-3 py-2 border border-[#a2a9b1] rounded-xs bg-white text-slate-900 outline-none focus:border-[#0645ad]">
-        </div>
-
-        <div>
-          <label class="block font-bold text-slate-800 mb-1">Verbete / Tema Referente</label>
-          <input type="text" id="curadoria-tema" value="Mapa Mental (Pensamento Radial)" required class="w-full px-3 py-2 border border-[#a2a9b1] rounded-xs bg-slate-50 text-slate-900 outline-none">
+          <label class="block font-bold text-slate-700 mb-1">Seu Nome / Como prefere ser chamado(a): *</label>
+          <input type="text" required id="propostaNome" placeholder="Ex: Maria das Dores ou João do Barro" class="w-full px-3 py-2 border border-slate-300 rounded-xs focus:border-[#0645ad] outline-none text-slate-800">
         </div>
 
         <div>
-          <label class="block font-bold text-slate-800 mb-1">Sugestão, Correção ou Relato</label>
-          <textarea id="curadoria-texto" rows="4" required placeholder="Descreva sua contribuição com detalhes..." class="w-full px-3 py-2 border border-[#a2a9b1] rounded-xs bg-white text-slate-900 outline-none focus:border-[#0645ad]"></textarea>
+          <label class="block font-bold text-slate-700 mb-1">Território / Cidade / Comunidade de Origem: *</label>
+          <input type="text" required id="propostaTerritorio" placeholder="Ex: Quilombo da Fazenda, Litoral Norte - SP" class="w-full px-3 py-2 border border-slate-300 rounded-xs focus:border-[#0645ad] outline-none text-slate-800">
         </div>
 
-        <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xs text-[11px] text-slate-600">
-          📎 <strong>Envio de fotos e áudios (Opcional):</strong> Se desejar enviar gravações de voz ou fotografias históricas, mencione no texto acima ou anexe o link público (Drive, Dropbox, etc.).
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Eixo Temático Principal: *</label>
+          <select id="propostaEixo" class="w-full px-3 py-2 border border-slate-300 rounded-xs focus:border-[#0645ad] outline-none text-slate-800 bg-white">
+            <option value="AutonomiaEEmpreender">#AutonomiaEEmpreender — Dicas e Práticas para o Autônomo e MEI</option>
+            <option value="PovosOriginarios">#PovosOriginarios — Saberes dos Povos da Floresta e da Terra</option>
+            <option value="SaberesAncestrais">#SaberesAncestrais — Quilombos, Tradição Oral e Mestres</option>
+            <option value="PensamentoDecolonial">#PensamentoDecolonial — Crítica Social, Milton Santos e Darcy Ribeiro</option>
+            <option value="TecnologiaDoMapear">#TecnologiaDoMapear — Mapas Mentais e Organização Cognitiva</option>
+            <option value="BemViver">#BemViver — Sumak Kawsay, Teko Porã e Economia do Cuidado</option>
+            <option value="SaudeIntegrativa">#SaudeIntegrativa — Práticas Integrativas, Ervas e PICS</option>
+            <option value="EconomiaSolidaria">#EconomiaSolidaria — Redes de Apoio e Comércio Justo</option>
+            <option value="Agroecologia">#Agroecologia — Sementes Crioulas e Agricultura Familiar</option>
+          </select>
         </div>
 
-        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
-          <button type="button" onclick="closeModalCuradoria()" class="px-3 py-1.5 border border-slate-300 rounded-xs text-slate-700 hover:bg-slate-100">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Título do Verbete ou Saber: *</label>
+          <input type="text" required id="propostaTitulo" placeholder="Ex: Produção de Farinha D'Água Tradicional" class="w-full px-3 py-2 border border-slate-300 rounded-xs focus:border-[#0645ad] outline-none text-slate-800">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Descrição do Conhecimento / Como é feito: *</label>
+          <textarea required id="propostaDescricao" rows="3" placeholder="Conte a história, os passos práticos, os ensinamentos e a importância desse saber para a comunidade..." class="w-full px-3 py-2 border border-slate-300 rounded-xs focus:border-[#0645ad] outline-none text-slate-800"></textarea>
+        </div>
+
+        <!-- Opcionais com destaque explícito -->
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xs space-y-2">
+          <span class="block font-bold text-slate-700 text-[11px] uppercase tracking-wider text-emerald-800">
+            📎 Materiais Opcionais (Envio Não Obrigatório)
+          </span>
+          <div>
+            <label class="block text-[11px] text-slate-600 mb-0.5">Link de Foto ou Registro Visual (Opcional):</label>
+            <input type="url" id="propostaFoto" placeholder="https://exemplo.com/minha-foto.jpg" class="w-full px-2.5 py-1.5 border border-slate-300 rounded-xs text-xs">
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-600 mb-0.5">Link de Áudio / Gravação da Voz do Mestre (Opcional):</label>
+            <input type="url" id="propostaAudio" placeholder="https://exemplo.com/depoimento.mp3" class="w-full px-2.5 py-1.5 border border-slate-300 rounded-xs text-xs">
+          </div>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-2">
+          <button type="button" onclick="fecharModalCuradoria()" class="px-3.5 py-2 border border-slate-300 text-slate-700 rounded-xs hover:bg-slate-100 font-medium">
             Cancelar
           </button>
-          <button type="submit" class="px-4 py-1.5 bg-[#0645ad] hover:bg-[#0b0080] text-white font-semibold rounded-xs transition-colors">
-            Enviar para Avaliação
+          <button type="submit" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xs transition-colors flex items-center gap-1.5">
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span>Encaminhar para Curadoria</span>
           </button>
         </div>
       </form>
+
+      <!-- Mensagem de Sucesso -->
+      <div id="sucessoCuradoria" class="hidden text-center py-6">
+        <i data-lucide="check-circle" class="w-12 h-12 text-emerald-600 mx-auto mb-2"></i>
+        <h4 class="text-sm font-bold text-slate-900">Proposta enviada com sucesso!</h4>
+        <p class="text-xs text-slate-600 mt-1">
+          Agradecemos por compartilhar sua memória. Silviane Silvério fará a leitura e curadoria do verbete.
+        </p>
+        <button onclick="fecharModalCuradoria()" class="mt-4 px-4 py-1.5 bg-[#0645ad] text-white text-xs font-semibold rounded-xs">
+          Concluir
+        </button>
+      </div>
+
     </div>
   </div>
 
 
   <!-- ======================================================== -->
-  <!-- 10. RODAPÉ INSTITUCIONAL CLÁSSICO                        -->
-  <!-- ======================================================== -->
-  <footer class="max-w-4xl mx-auto w-full text-center text-xs text-slate-500 py-8 border-t border-slate-300 mt-6 space-y-1">
-    <p class="m-0">
-      <strong>Enciclowiki YBY VersuS</strong> — Conhecimento Livre, Memória Viva e Saberes do Povo.
-    </p>
-    <p class="text-[11px] text-slate-400 m-0">
-      Curadoria e Direção Editorial: <strong>Silviane Silvério</strong> • Conteúdo distribuído sob licença aberta com atribuição de fonte.
-    </p>
-  </footer>
-
-
-  <!-- ======================================================== -->
-  <!-- 11. JAVASCRIPT: INTERATIVIDADE DA ENCICLOWIKI            -->
+  <!-- 11. BASE DE DADOS DOS VERBETES & LÓGICA DE INTERAÇÃO     -->
   <!-- ======================================================== -->
   <script>
-    // Retrair / Expandir Índice TOC
-    let tocVisible = true;
-    function toggleToc() {
-      const list = document.getElementById('toc-list');
-      const btn = document.getElementById('toc-btn');
-      tocVisible = !tocVisible;
-      if (tocVisible) {
-        list.classList.remove('hidden');
-        btn.innerText = '[ocultar]';
-      } else {
-        list.classList.add('hidden');
-        btn.innerText = '[mostrar]';
+    // Base de Verbetes Cadastrados na Enciclowiki YBY VersuS
+    const VERBETES_DATABASE = [
+      {
+        id: "mapa-mental",
+        titulo: "Mapa Mental (Pensamento Radial)",
+        eixo: "Tecnologia do Escrever & Mapeamento",
+        resumo: "Dispositivo representacional não-linear que organiza conceitos a partir de um núcleo central, irradiando ramificações por meio de conexões sinápticas. Simula a cognição humana integrando razão, criatividade e síntese mnêmica.",
+        tags: ["TecnologiaDoMapear", "PensamentoDecolonial"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html",
+        tempoLeitura: "6 min de leitura",
+        destaque: true
+      },
+      {
+        id: "autonomia-empreender",
+        titulo: "Autonomia & Empreender com Dignidade: O Saber do Fazer Próprio",
+        eixo: "Desenvolvimento da Autonomia",
+        resumo: "Guia prático e epistemológico para o trabalhador autônomo, artesão e MEI. Como estruturar a autogestão sem cair na armadilha da autoexploração, organizar a precificação justa pelo tempo de vida, administrar entradas e saídas e articular redes solidárias.",
+        tags: ["AutonomiaEEmpreender", "EconomiaSolidaria", "BemViver"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html#pratica", // pode levar ao guia ou página do verbete
+        tempoLeitura: "8 min de leitura",
+        destaque: true
+      },
+      {
+        id: "sumak-kawsay",
+        titulo: "Sumak Kawsay: A Sabedoria Andina da Vida em Plenitude",
+        eixo: "Matrizes Filosóficas Ancestrais",
+        resumo: "Conceito quéchua-aymara que expressa o Bem Viver em harmonia cósmica com a Pachamama (Mãe Terra). Fundamenta-se no Ayni (reciprocidade sagrada), na Minka (trabalho coletivo voluntário) e na superação do paradigma extrativista ocidental.",
+        tags: ["PovosOriginarios", "BemViver", "PensamentoDecolonial"],
+        curador: "Silviane Silvério",
+        link: "bemviver-filosofias.html",
+        tempoLeitura: "7 min de leitura",
+        destaque: true
+      },
+      {
+        id: "teko-pora",
+        titulo: "Teko Porã: O Modo Bom de Ser e Viver do Povo Guarani",
+        eixo: "Saberes dos Povos Originários",
+        resumo: "A busca contínua pela harmonia espiritual, a convivência comunitária respeitosa e o caminhar em direção à Yvy Marãey (Terra Sem Mal). Mostra como o equilíbrio interior depende da preservação da floresta e da palavra verdadeira (Ayvu).",
+        tags: ["PovosOriginarios", "BemViver"],
+        curador: "Silviane Silvério",
+        link: "bemviver-filosofias.html",
+        tempoLeitura: "5 min de leitura",
+        destaque: false
+      },
+      {
+        id: "farmacias-vivas-quilombolas",
+        titulo: "Farmácias Vivas & Sabedorias Quilombolas da Terra",
+        eixo: "Etnobotânica & Tradição Oral",
+        resumo: "O legado de cura tradicional das erveiras, curandeiras e parteiras quilombolas. A preservação de sementes crioulas, raízes medicinais, garrafadas e o respeito aos ciclos da lua na colheita como tecnologia viva de saúde preventiva.",
+        tags: ["SaberesAncestrais", "SaudeIntegrativa", "Agroecologia"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html",
+        tempoLeitura: "6 min de leitura",
+        destaque: false
+      },
+      {
+        id: "milton-santos-territorio",
+        titulo: "Território Usado & Resistência Decolonial (Milton Santos)",
+        eixo: "Pensamento Decolonial Brasileiro",
+        resumo: "A categoria seminal de Milton Santos que demonstra como o espaço geográfico ganha sentido pela ação humana cotidiana. Analisa como o povo comum e as periferias subvertem a globalização hegemônica gerando o 'período popular da história'.",
+        tags: ["PensamentoDecolonial", "AutonomiaEEmpreender"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html",
+        tempoLeitura: "9 min de leitura",
+        destaque: false
+      },
+      {
+        id: "pics-saude-integrativa",
+        titulo: "Práticas Integrativas e Complementares em Saúde (PICS)",
+        eixo: "Saúde Integrativa & Cuidado Popular",
+        resumo: "O resgate e a legitimação pública de saberes terapêuticos tradicionais integrados ao SUS: fitoterapia, homeopatia, acupuntura, arteterapia e imposição de mãos, fortalecendo a autonomia do paciente sobre o próprio corpo.",
+        tags: ["SaudeIntegrativa", "SaberesAncestrais", "BemViver"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html",
+        tempoLeitura: "5 min de leitura",
+        destaque: false
+      },
+      {
+        id: "sementes-crioulas-agroecologia",
+        titulo: "Sementes Crioulas & Soberania Alimentar Popular",
+        eixo: "Agroecologia & Tecnologia Social",
+        resumo: "A preservação de variedades genéticas vegetais mantidas vivas por gerações de agricultores familiares e comunidades tradicionais, livres de patentes industriais e agrotóxicos, como esteio da soberania alimentar do povo.",
+        tags: ["Agroecologia", "SaberesAncestrais", "EconomiaSolidaria"],
+        curador: "Silviane Silvério",
+        link: "enciclowiki-mapa-mental.html",
+        tempoLeitura: "6 min de leitura",
+        destaque: false
       }
-    }
+    ];
 
-    // Copiar citação ABNT
-    function copiarCitacao() {
-      const text = document.getElementById('citacao-box').innerText.trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const btnText = document.getElementById('copy-btn-text');
-        btnText.innerText = 'Copiado com sucesso! ✓';
-        btnText.classList.add('text-emerald-700', 'font-bold');
-        setTimeout(() => {
-          btnText.innerText = 'Copiar citação';
-          btnText.classList.remove('text-emerald-700', 'font-bold');
-        }, 3000);
-      });
-    }
-
-    // Demo Áudio
-    let isPlayingAudio = false;
-    function toggleAudioDemo() {
-      const btn = document.getElementById('wiki-audio-btn');
-      isPlayingAudio = !isPlayingAudio;
-      if (isPlayingAudio) {
-        btn.classList.add('bg-amber-100', 'border-amber-400');
-        btn.innerHTML = '<i data-lucide="pause" class="w-4 h-4 text-amber-800"></i>';
-        alert('▶️ Reproduzindo trecho sonoro da curadoria de Silviane Silvério sobre Mapa Mental e Saberes Ancestrais...');
-      } else {
-        btn.classList.remove('bg-amber-100', 'border-amber-400');
-        btn.innerHTML = '<i data-lucide="volume-2" class="w-4 h-4"></i>';
+    // Descrições pedagógicas de cada Hashtag
+    const DESCRICOES_TAGS = {
+      AutonomiaEEmpreender: {
+        titulo: "#AutonomiaEEmpreender — Dicas Práticas, MEI e Soberania do Fazer",
+        texto: "Espaço voltado a quem vive do próprio trabalho: trabalhadores autônomos, pequenos prestadores de serviços, artesãos, MEIs e criadores. Reúne orientações de precificação justa, gestão descomplicada, preservação da saúde mental e cooperação comunitária.",
+        cor: "bg-emerald-50 border-emerald-300 text-emerald-950"
+      },
+      PovosOriginarios: {
+        titulo: "#PovosOriginarios — Sabedorias das Raízes da Terra",
+        texto: "Cosmovisões, línguas e filosofias vivas dos povos indígenas do Brasil e das Américas (Guarani, Yanomami, Krenak, Quéchua, Aymara). Resgata noções de equilíbrio com a natureza, território sagrado e convivência fraterna.",
+        cor: "bg-amber-50 border-amber-300 text-amber-950"
+      },
+      SaberesAncestrais: {
+        titulo: "#SaberesAncestrais — Memória Viva e Mestres do Chão",
+        texto: "Tradições orais transmitidas por gerações: mestres quilombolas, erveiras, artesãos da palha e do barro, rezadeiras e guardiões da memória comunitária brasileira.",
+        cor: "bg-orange-50 border-orange-300 text-orange-950"
+      },
+      PensamentoDecolonial: {
+        titulo: "#PensamentoDecolonial — Crítica Social e Soberania Epistêmica",
+        texto: "Obras, conceitos e debates que rompem com a hegemonia eurocêntrica: Milton Santos, Darcy Ribeiro, Lélia Gonzalez, Frantz Fanon e a valorização do saber construído no chão do Brasil.",
+        cor: "bg-purple-50 border-purple-300 text-purple-950"
+      },
+      TecnologiaDoMapear: {
+        titulo: "#TecnologiaDoMapear — O Escrever e o Pensar em Rede",
+        texto: "Métodos cognitivos, pensamento radial, mapas conceituais e a tecnologia da escrita como instrumento de emancipação e ordenamento de ideias.",
+        cor: "bg-blue-50 border-blue-300 text-blue-950"
+      },
+      BemViver: {
+        titulo: "#BemViver — Harmonia, Plenitude e Decrescimento Convivial",
+        texto: "Alternativas ao modelo predatório do crescimento econômico cego: Sumak Kawsay, Teko Porã, Ubuntu, Felicidade Interna Bruta e a economia do afeto e do cuidado.",
+        cor: "bg-teal-50 border-teal-300 text-teal-950"
+      },
+      SaudeIntegrativa: {
+        titulo: "#SaudeIntegrativa — PICS, Etnobotânica e Cuidado Popular",
+        texto: "Abordagem holística do bem-estar: fitoterapia tradicional, plantas medicinais, autocuidado e a sabedoria do corpo integrado ao meio ambiente.",
+        cor: "bg-rose-50 border-rose-300 text-rose-950"
+      },
+      EconomiaSolidaria: {
+        titulo: "#EconomiaSolidaria — Comércio Justo e Apoio Mútuo",
+        texto: "Trocas comunitárias, cooperativismo popular, moedas sociais e a economia centrada nas pessoas e não no acúmulo de capital.",
+        cor: "bg-indigo-50 border-indigo-300 text-indigo-950"
+      },
+      Agroecologia: {
+        titulo: "#Agroecologia — Agricultura da Vida e Soberania Alimentar",
+        texto: "Cultivo sem veneno, sementes crioulas, reflorestamento agroflorestal e a recuperação da fertilidade natural da terra.",
+        cor: "bg-lime-50 border-lime-300 text-lime-950"
       }
-      lucide.createIcons();
-    }
+    };
 
-    // Modal Curadoria
-    function openModalCuradoria() {
-      document.getElementById('modal-curadoria').classList.remove('hidden');
-    }
-    function closeModalCuradoria() {
-      document.getElementById('modal-curadoria').classList.add('hidden');
-    }
-    function handleCuradoriaSubmit(e) {
-      e.preventDefault();
-      alert('Sua sugestão foi enviada com sucesso para a curadoria de Silviane Silvério! Agradecemos sua contribuição.');
-      closeModalCuradoria();
-    }
+    let tagAtiva = "todos";
 
-    window.addEventListener('DOMContentLoaded', () => {
+    // Inicialização da Página
+    document.addEventListener("DOMContentLoaded", () => {
+      // Ler parâmetro da URL (ex: ?tag=AutonomiaEEmpreender ou ?q=termo)
+      const urlParams = new URLSearchParams(window.location.search);
+      const tagUrl = urlParams.get('tag');
+      const buscaUrl = urlParams.get('q');
+
+      if (tagUrl) {
+        selecionarTag(tagUrl, false);
+      } else {
+        renderizarVerbetes(VERBETES_DATABASE);
+      }
+
+      if (buscaUrl) {
+        document.getElementById('campoBusca').value = buscaUrl;
+        filtrarVerbetes();
+      }
+
       lucide.createIcons();
     });
+
+    // Função de Seleção de Hashtags
+    function selecionarTag(tagNome, atualizarUrl = true) {
+      tagAtiva = tagNome;
+
+      // Atualizar classes dos botões de tag
+      document.querySelectorAll('.tag-badge').forEach(btn => {
+        if (btn.getAttribute('data-tag') === tagNome) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Atualizar Banner Temático
+      const banner = document.getElementById('bannerTemaAtivo');
+      if (tagNome !== "todos" && DESCRICOES_TAGS[tagNome]) {
+        const info = DESCRICOES_TAGS[tagNome];
+        banner.className = `mb-6 p-4 rounded-xs border text-xs sm:text-sm ${info.cor} flex flex-col gap-1 shadow-2xs`;
+        banner.innerHTML = `
+          <div class="flex items-center justify-between">
+            <strong class="text-sm font-serif font-bold">${info.titulo}</strong>
+            <button onclick="selecionarTag('todos')" class="text-xs font-bold underline opacity-80 hover:opacity-100">✕ Fechar filtro</button>
+          </div>
+          <p class="m-0 leading-relaxed opacity-95">${info.texto}</p>
+        `;
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+
+      // Atualizar URL sem recarregar a página
+      if (atualizarUrl) {
+        const url = new URL(window.location);
+        if (tagNome === "todos") {
+          url.searchParams.delete('tag');
+        } else {
+          url.searchParams.set('tag', tagNome);
+        }
+        window.history.pushState({}, '', url);
+      }
+
+      // Executar filtro
+      filtrarVerbetes();
+    }
+
+    // Filtragem combinada (Termo de Busca + Tag Selecionada)
+    function filtrarVerbetes() {
+      const termo = document.getElementById('campoBusca').value.trim().toLowerCase();
+      const btnLimpar = document.getElementById('btnLimparBusca');
+      
+      btnLimpar.classList.toggle('hidden', termo.length === 0);
+
+      const filtrados = VERBETES_DATABASE.filter(item => {
+        // Checar correspondência com a Tag
+        const atendeTag = (tagAtiva === "todos") || item.tags.includes(tagAtiva);
+
+        // Checar correspondência com o Texto digitado
+        const textoCompleto = `${item.titulo} ${item.eixo} ${item.resumo} ${item.tags.join(" ")} ${item.curador}`.toLowerCase();
+        const atendeTermo = (termo === "") || textoCompleto.includes(termo);
+
+        return atendeTag && atendeTermo;
+      });
+
+      renderizarVerbetes(filtrados);
+    }
+
+    // Limpar termo de busca
+    function limparBusca() {
+      document.getElementById('campoBusca').value = "";
+      filtrarVerbetes();
+      document.getElementById('campoBusca').focus();
+    }
+
+    // Renderização dos Cards na tela
+    function renderizarVerbetes(lista) {
+      const container = document.getElementById('listaVerbetes');
+      const contador = document.getElementById('contadorResultados');
+      const estadoVazio = document.getElementById('estadoVazio');
+
+      contador.textContent = `${lista.length} verbete${lista.length !== 1 ? 's' : ''} disponível${lista.length !== 1 ? 'is' : ''}`;
+
+      if (lista.length === 0) {
+        container.innerHTML = "";
+        estadoVazio.classList.remove('hidden');
+        lucide.createIcons();
+        return;
+      }
+
+      estadoVazio.classList.add('hidden');
+
+      container.innerHTML = lista.map(item => `
+        <article class="wiki-card rounded-xs p-5 sm:p-6 relative">
+          
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2 text-xs">
+            <span class="font-bold text-[#0645ad] uppercase tracking-wider text-[11px] bg-blue-50 px-2 py-0.5 rounded-xs border border-blue-200">
+              ${item.eixo}
+            </span>
+            <div class="flex items-center gap-3 text-slate-500 text-[11.5px]">
+              <span class="flex items-center gap-1">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
+                ${item.tempoLeitura}
+              </span>
+              <span class="inline-flex items-center gap-1 text-emerald-800 font-semibold bg-emerald-50/80 px-2 py-0.5 rounded-xs">
+                <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                Curadoria: ${item.curador}
+              </span>
+            </div>
+          </div>
+
+          <h2 class="text-xl sm:text-2xl font-serif font-normal text-slate-900 mb-2">
+            <a href="${item.link}" class="hover:text-[#0645ad] transition-colors">
+              ${item.titulo}
+            </a>
+          </h2>
+
+          <p class="text-xs sm:text-[13px] text-slate-700 leading-relaxed mb-4">
+            ${item.resumo}
+          </p>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100">
+            <!-- Hashtags do Card -->
+            <div class="flex flex-wrap gap-1.5">
+              ${item.tags.map(t => `
+                <button onclick="selecionarTag('${t}')" class="text-[11px] font-semibold text-slate-600 hover:text-[#0645ad] bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded-xs transition-colors">
+                  #${t}
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Botão Ler Verbete -->
+            <a href="${item.link}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0645ad] hover:underline group">
+              <span>Acessar verbete completo</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+
+        </article>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // Controle do Modal de Curadoria
+    function abrirModalCuradoria() {
+      document.getElementById('modalCuradoria').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      lucide.createIcons();
+    }
+
+    function fecharModalCuradoria() {
+      document.getElementById('modalCuradoria').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      document.getElementById('formCuradoria').reset();
+      document.getElementById('formCuradoria').classList.remove('hidden');
+      document.getElementById('sucessoCuradoria').classList.add('hidden');
+    }
+
+    function enviarPropostaCuradoria(e) {
+      e.preventDefault();
+      
+      const dados = {
+        nome: document.getElementById('propostaNome').value,
+        territorio: document.getElementById('propostaTerritorio').value,
+        eixo: document.getElementById('propostaEixo').value,
+        titulo: document.getElementById('propostaTitulo').value,
+        descricao: document.getElementById('propostaDescricao').value,
+        foto: document.getElementById('propostaFoto').value,
+        audio: document.getElementById('propostaAudio').value,
+        data: new Date().toISOString()
+      };
+
+      // Salvar localmente no navegador (LocalStorage) para persistência segura
+      const propostasSalvas = JSON.parse(localStorage.getItem('yby_propostas_curadoria') || '[]');
+      propostasSalvas.push(dados);
+      localStorage.setItem('yby_propostas_curadoria', JSON.stringify(propostasSalvas));
+
+      // Exibir tela de sucesso
+      document.getElementById('formCuradoria').classList.add('hidden');
+      document.getElementById('sucessoCuradoria').classList.remove('hidden');
+      lucide.createIcons();
+    }
   </script>
 
 </body>
 </html>
-

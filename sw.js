@@ -1,8 +1,9 @@
 // Service Worker - Ybyversus PWA • Praça Pública Digital
-const CACHE_NAME = 'ybyversus-cache-v4.5';
+const CACHE_NAME = 'ybyversus-cache-v4.6';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
+  './enciclowiki.html',
   './enciclopedia-saberes-povo.html',
   './data/enciclopedia_povo.json',
   './bemviver-dashboard.html',

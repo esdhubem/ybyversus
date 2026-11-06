@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Enciclopédia do Saber do Povo — Memória Viva do Brasil • YBY VersuS</title>
+  <meta name="description" content="A enciclopédia viva dos saberes populares, trabalhadores, MEIs, comunidades quilombolas e povos originários do Brasil.">
+
+  <!-- Fontes: Inter & Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Merriweather', 'serif']
+          },
+          colors: {
+            slate: {
+              850: '#131D31',
+              900: '#0F172A',
+              950: '#070D1A'
+            },
+            amber: {
+              450: '#FBBF24'
+            },
+            emerald: {
+              450: '#34D399'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-main: #0F172A;
+      --bg-card: #1E293B;
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --accent-gold: #FBBF24;
+      --accent-green: #34D399;
+      --border-subtle: #334155;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .card-saber {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.25rem;
+      transition: all 0.25s ease-in-out;
+    }
+    .card-saber:hover {
+      border-color: rgba(251, 191, 36, 0.45);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Scrollbar sutil */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F172A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-900">
+
+  <!-- ======================================================== -->
+  <!-- 1. BARRA DE NAVEGAÇÃO STICKY                             -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo / Voltar -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-amber-400 to-emerald-400 flex items-center justify-center text-slate-950 font-bold text-base shadow-md group-hover:scale-105 transition-transform">
+          🏛️
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-extrabold tracking-tight text-white group-hover:text-amber-300 transition-colors">YBY VersuS</span>
+          <span class="text-[10.5px] text-emerald-400 font-semibold tracking-wide">Enciclopédia do Saber do Povo</span>
+        </div>
+      </a>
+
+      <!-- Botão Voltar à Praça -->
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="px-3.5 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 hover:border-slate-600 transition-all flex items-center gap-1.5">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span class="hidden sm:inline">Voltar à</span> Praça
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ======================================================== -->
+  <!-- 2. HERO DA ENCICLOPÉDIA                                  -->
+  <!-- ======================================================== -->
+  <section class="relative pt-10 pb-12 px-4 sm:px-6 border-b border-slate-800/80 overflow-hidden">
+    <!-- Luz ambiente de fundo -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-gradient-to-b from-amber-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10 space-y-4">
+      
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/90 border border-amber-400/30 text-amber-300 text-xs font-bold shadow-xs">
+        <span>📜 Memória Viva do Brasil</span>
+        <span class="text-slate-600">•</span>
+        <span class="text-emerald-400 font-normal">Cartografia dos Saberes</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-serif">
+        Enciclopédia do <span class="bg-gradient-to-r from-amber-300 via-amber-200 to-emerald-300 bg-clip-text text-transparent">Saber do Povo</span>
+      </h1>
+
+      <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+        O conhecimento que nasce da prática diária, do trabalhador assalariado, do MEI, dos povos quilombolas e indígenas. <strong>Aqui não há saber menor: quem sabe, fala.</strong>
+      </p>
+
+      <!-- Princípios Fundantes em Pílulas -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-[11px] text-slate-300">
+        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center gap-1.5">
+          <span class="text-amber-400 font-bold">✓</span> Não há saber menor
+        </span>
+        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center gap-1.5">
+          <span class="text-emerald-400 font-bold">✓</span> Quem sabe, fala
+        </span>
+        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center gap-1.5">
+          <span class="text-teal-400 font-bold">✓</span> Memória viva
+        </span>
+        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 flex items-center gap-1.5">
+          <span class="text-sky-400 font-bold">✓</span> Respeito e honra a quem ensinou
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 3. BARRA DE PESQUISA & FILTROS POR EIXOS TEMÁTICOS       -->
+  <!-- ======================================================== -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-4 space-y-4">
+    
+    <!-- Campo de Busca Instantânea -->
+    <div class="relative max-w-2xl mx-auto">
+      <i data-lucide="search" class="w-5 h-5 text-amber-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+      <input 
+        type="text" 
+        id="search-input" 
+        oninput="handleSearch()"
+        placeholder="Pesquisar por ofício, sabedoria, povo, erva, território..." 
+        class="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-slate-850 border border-slate-700/80 text-sm text-slate-100 placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition shadow-lg"
+      >
+      <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <!-- Filtros de Eixos em Formato de Pílulas Arredondadas -->
+    <div class="flex items-center justify-center gap-2 overflow-x-auto no-scrollbar py-2 select-none">
+      <button onclick="filterByEixo('todos')" id="pill-todos" class="eixo-pill px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-400 text-slate-950 shadow-sm transition-all whitespace-nowrap">
+        🌐 Todos os Saberes (<span id="count-todos">4</span>)
+      </button>
+      <button onclick="filterByEixo('trabalhador')" id="pill-trabalhador" class="eixo-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all whitespace-nowrap">
+        🛠️ O Trabalhador Assalariado
+      </button>
+      <button onclick="filterByEixo('mei')" id="pill-mei" class="eixo-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all whitespace-nowrap">
+        💼 O MEI & Empreender Popular
+      </button>
+      <button onclick="filterByEixo('ancestralidade')" id="pill-ancestralidade" class="eixo-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all whitespace-nowrap">
+        🪶 Ancestralidade Brasileira
+      </button>
+      <button onclick="filterByEixo('nao_livros')" id="pill-nao_livros" class="eixo-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all whitespace-nowrap">
+        🌿 Fora dos Livros
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 4. GRID DE VERBETES DINÂMICOS                           -->
+  <!-- ======================================================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-1">
+    
+    <div id="verbetes-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Verbetes injetados dinamicamente via JS a partir de data/enciclopedia_povo.json -->
+    </div>
+
+    <!-- Mensagem de Busca Vazia -->
+    <div id="empty-state" class="hidden text-center py-16 space-y-3">
+      <div class="text-4xl">🔍</div>
+      <h3 class="text-base font-bold text-white">Nenhum saber encontrado com este termo</h3>
+      <p class="text-xs text-slate-400 max-w-sm mx-auto">Tente buscar por outras palavras ou envie uma sugestão para mapearmos este saber!</p>
+      <button onclick="clearSearch()" class="mt-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-amber-300 border border-slate-700">
+        Ver todos os saberes
+      </button>
+    </div>
+
+  </main>
+
+
+  <!-- ======================================================== -->
+  <!-- 5. SEÇÃO: A METODOLOGIA DO ESCREVER E DO MAPEAR          -->
+  <!-- ======================================================== -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <div class="card-saber p-6 sm:p-8 bg-gradient-to-br from-slate-900 to-slate-850 border-emerald-500/30 space-y-6">
+      
+      <div class="text-center sm:text-left space-y-1.5">
+        <span class="text-xs uppercase font-extrabold tracking-wider text-emerald-400">Tecnologia do Mapear & do Escutar</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-white font-serif">Como Esta Enciclopédia É Construída</h2>
+        <p class="text-xs text-slate-300 font-light leading-relaxed">
+          Cada entrada é registrada através de um processo ético de escuta e comunhão, onde quem detém a sabedoria é o autor legítimo.
+        </p>
+      </div>
+
+      <!-- Os 5 Passos da Metodologia -->
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 text-center sm:text-left">
+        
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+          <span class="text-lg">👂</span>
+          <h4 class="text-xs font-bold text-white">1. Escuta</h4>
+          <p class="text-[10.5px] text-slate-400 leading-snug">Ir até as pessoas, ouvir com reverência e permissão.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+          <span class="text-lg">✍️</span>
+          <h4 class="text-xs font-bold text-white">2. Escrever Junto</h4>
+          <p class="text-[10.5px] text-slate-400 leading-snug">Quem sabe conta; nós apenas ajudamos a organizar.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+          <span class="text-lg">🗺️</span>
+          <h4 class="text-xs font-bold text-white">3. Mapear</h4>
+          <p class="text-[10.5px] text-slate-400 leading-snug">Desenhar conexões de gerações, terras e ofícios.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+          <span class="text-lg">🎙️</span>
+          <h4 class="text-xs font-bold text-white">4. Gravar a Voz</h4>
+          <p class="text-[10.5px] text-slate-400 leading-snug">O áudio preserva o tom, a cadência e a alma do povo.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+          <span class="text-lg">📖</span>
+          <h4 class="text-xs font-bold text-white">5. Publicar</h4>
+          <p class="text-[10.5px] text-slate-400 leading-snug">Gratuito, acessível e com o nome de quem ensinou.</p>
+        </div>
+
+      </div>
+
+      <!-- Botão para Contribuir / Indicar Guardião -->
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-800">
+        <p class="text-xs text-slate-400 text-center sm:text-left">
+          Conhece um mestre de ofício, uma benzedeira, um agricultor ou um MEI que guarda um saber vivo?
+        </p>
+        <button onclick="openIndicarModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-emerald-400 hover:brightness-110 active:scale-95 text-slate-950 text-xs font-bold transition-all shadow-md flex items-center gap-2 shrink-0">
+          <i data-lucide="plus-circle" class="w-4 h-4"></i>
+          <span>Indicar um Saber do Povo</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================== -->
+  <!-- 6. MODAL: INDICAR UM SABER OU GUARDIÃO                   -->
+  <!-- ======================================================== -->
+  <div id="modal-indicar" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="card-saber max-w-lg w-full p-6 bg-slate-900 border-amber-400/40 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🌾</span>
+          <h3 class="text-base font-bold text-white">Indicar um Saber ou Guardião</h3>
+        </div>
+        <button onclick="closeIndicarModal()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-300 font-light leading-relaxed">
+        Partilhe os dados de quem ensina. Nossa equipe do <strong>YBY VersuS</strong> aplica a metodologia da escuta para documentar, gravar a voz e publicar com a devida honra.
+      </p>
+
+      <form id="form-indicar" onsubmit="handleIndicarSubmit(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-200 mb-1">Qual é o saber ou ofício?</label>
+          <input type="text" id="saber-nome" required placeholder="Ex: Trançado de palha, Física do Prumo, Chá de guaco..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none focus:border-amber-400">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-200 mb-1">Quem é o(a) guardião(ã) desse saber?</label>
+          <input type="text" id="guardiao-nome" required placeholder="Nome do mestre, benzedeira, artesão, operário..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none focus:border-amber-400">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-200 mb-1">Território / Cidade / Comunidade</label>
+          <input type="text" id="territorio-local" required placeholder="Ex: Comunidade Quilombola X, Bairro Y, Cidade/UF..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none focus:border-amber-400">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-200 mb-1">Uma frase ou ensinamento marcante desse saber</label>
+          <textarea id="frase-saber" rows="3" placeholder="O que esse mestre ou mestra costuma dizer sobre o que faz?..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none focus:border-amber-400"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:brightness-110 active:scale-95 text-slate-950 font-bold transition-all shadow-md">
+          Enviar Indicação para o Mapeamento
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 7. RODAPÉ                                                -->
+  <!-- ======================================================== -->
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 text-xs py-8 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div>
+        <span class="text-amber-300 font-bold">YBY VersuS</span> • <span class="text-slate-300">Enciclopédia do Saber do Povo</span>
+        <p class="text-[11px] text-slate-500 mt-0.5">Memória viva, saberes ancestrais e dignidade do trabalho brasileiro.</p>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <a href="index.html" class="hover:text-amber-300 transition-colors">Praça Central</a>
+        <a href="bemviver-dashboard.html" class="hover:text-amber-300 transition-colors">Além do PIB</a>
+        <a href="LIVRO_ECO_BEM_VIVER_COMPLETO.md" class="hover:text-amber-300 transition-colors">Livro Mestre</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ======================================================== -->
+  <!-- 8. JAVASCRIPT: BUSCA, FILTRO E RENDERIZAÇÃO              -->
+  <!-- ======================================================== -->
+  <script>
+    let ALL_VERBETES = [];
+    let currentEixoFilter = 'todos';
+
+    // Carregar verbetes do JSON
+    async function loadVerbetes() {
+      try {
+        const res = await fetch('data/enciclopedia_povo.json');
+        if (res.ok) {
+          ALL_VERBETES = await res.json();
+        }
+      } catch (e) {
+        console.warn('Erro ao carregar json, usando base interna:', e);
+      }
+
+      // Fallback de segurança se fetch local for bloqueado por file://
+      if (!ALL_VERBETES || ALL_VERBETES.length === 0) {
+        ALL_VERBETES = [
+          {
+            id: "agricultura-raiz-quilombola",
+            titulo: "🌾 Agricultura de Raiz — Saber Quilombola",
+            eixo: "ancestralidade",
+            eixoNome: "Ancestralidade Brasileira",
+            fraseSabedoria: "Ensinaram meus avós: a terra não é propriedade, é empréstimo. Cuidamos para os que vêm.",
+            topicos: [
+              "Plantar olhando a lua, respeitar o tempo da chuva e guardar sementes crioulas para o próximo ano.",
+              "Quem planta não planta só para si, planta para a fartura da comunidade inteira.",
+              "A terra devolve em dobro o que recebe com amor e reverência."
+            ],
+            guardiao: "Dona Maria Benedita dos Santos",
+            territorio: "Quilombo Mata Cavalo, MT",
+            geracao: "5ª geração de agricultores familiares quilombolas",
+            tags: ["Quilombo", "Agricultura Familiar", "Trabalho da Terra", "Sementes Crioulas"],
+            audioDesc: "Gravação da voz de Dona Benedita ensinando o ciclo das luas no plantio do milho."
+          },
+          {
+            id: "mestre-obras-fisica-prumo",
+            titulo: "🧱 O Prumo, o Nível e a Física do Canteiro",
+            eixo: "trabalhador",
+            eixoNome: "O Trabalhador Assalariado",
+            fraseSabedoria: "O concreto endurece, mas a inteligência da mão que nivela a viga é o que segura a casa de pé.",
+            topicos: [
+              "A leitura intuitiva do peso, da areia e da proporção correta do traço para cada tipo de alvenaria.",
+              "A solidariedade entre o servente e o pedreiro: o ritmo compassado que protege o corpo do desgaste.",
+              "Memória das conquistas da categoria: a história dos operários que ergueram as cidades com a força do braço."
+            ],
+            guardiao: "Seu Antônio Carlos Ribeiro (Mestre Tonho)",
+            territorio: "Ceilândia, DF / Canteiros do Brasil",
+            geracao: "38 anos dedicados à construção civil",
+            tags: ["Construção Civil", "Saberes do Ofício", "Memória do Trabalho", "Dignidade Operária"],
+            audioDesc: "Relato de Seu Tonho sobre como identificar o ponto exato da massa sem errar o prumo."
+          },
+          {
+            id: "costura-sustento-bairro",
+            titulo: "✂️ Da Mão ao Sustento — A Costura de Bairro",
+            eixo: "mei",
+            eixoNome: "O MEI e o Empreender do Povo",
+            fraseSabedoria: "Não vendo apenas roupa: vendo o ajuste do tempo para quem precisa trabalhar com dignidade.",
+            topicos: [
+              "Como transformar retalhos em peças úteis, gerando renda sem produzir desperdício.",
+              "Saber precificar o próprio tempo com justiça: cobrar o valor real da mão de obra sem extorquir o vizinho.",
+              "Rede de confiança no bairro: o comércio popular que gira a economia local onde os bancos não chegam."
+            ],
+            guardiao: "Dona Josefa da Silva (Zefa das Costuras)",
+            territorio: "Bairro do Roger, João Pessoa, PB",
+            geracao: "Costureira autônoma e MEI há 14 anos",
+            tags: ["MEI", "Costura", "Comércio Justo", "Economia do Bairro"],
+            audioDesc: "Dona Zefa partilha a arte de organizar o caderno de encomendas e manter a ética no preço."
+          },
+          {
+            id: "ervas-reza-benzedeiras",
+            titulo: "🌿 O Chá, o Ramo e o Cuidado Invisível",
+            eixo: "nao_livros",
+            eixoNome: "Conhecimento que não está nos Livros",
+            fraseSabedoria: "Para curar o corpo é preciso primeiro escutar onde a tristeza fez morada.",
+            topicos: [
+              "O reconhecimento das ervas do quintal: poejo, guaco, boldo e arruda no tempo certo da colheita matinal.",
+              "O acolhimento que não cobra consulta: a saúde comunitária que apoia as mães antes mesmo do posto abrir.",
+              "A escuta compassiva: o poder terapêutico da palavra mansa e da presença atenta."
+            ],
+            guardiao: "Dona Sebastiana de Carvalho (Vó Bastiana)",
+            territorio: "Vale do Jequitinhonha, MG",
+            geracao: "Benzedeira e raizeira de tradição familiar centenária",
+            tags: ["Benzedeiras", "Ervas Medicinais", "Cuidado Popular", "Saúde Comunitária"],
+            audioDesc: "Vó Bastiana ensina a oração de agradecimento à terra ao colher folhas medicinais."
+          }
+        ];
+      }
+
+      document.getElementById('count-todos').innerText = ALL_VERBETES.length;
+      renderVerbetes();
+    }
+
+    // Renderizar Cards de Verbetes
+    function renderVerbetes() {
+      const container = document.getElementById('verbetes-grid');
+      const emptyState = document.getElementById('empty-state');
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+
+      container.innerHTML = '';
+
+      const filtered = ALL_VERBETES.filter(v => {
+        const matchesEixo = (currentEixoFilter === 'todos') || (v.eixo === currentEixoFilter);
+        const matchesQuery = !query || 
+          v.titulo.toLowerCase().includes(query) ||
+          v.fraseSabedoria.toLowerCase().includes(query) ||
+          v.guardiao.toLowerCase().includes(query) ||
+          v.territorio.toLowerCase().includes(query) ||
+          v.tags.some(t => t.toLowerCase().includes(query)) ||
+          v.topicos.some(top => top.toLowerCase().includes(query));
+
+        return matchesEixo && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      filtered.forEach(v => {
+        const card = document.createElement('article');
+        card.className = 'card-saber p-6 flex flex-col justify-between space-y-4 bg-slate-850';
+
+        card.innerHTML = `
+          <div class="space-y-3">
+            <!-- Cabeçalho do Card: Badge de Eixo + Título -->
+            <div class="flex items-start justify-between gap-2">
+              <span class="text-[10.5px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-slate-800 text-amber-300 border border-slate-700">
+                ${v.eixoNome}
+              </span>
+            </div>
+
+            <h3 class="text-base sm:text-lg font-bold text-white font-serif leading-snug">${v.titulo}</h3>
+
+            <!-- Frase de Sabedoria em Destaque -->
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border-l-4 border-amber-400 text-xs sm:text-[12.5px] italic text-amber-200/90 font-serif leading-relaxed">
+              "${v.fraseSabedoria}"
+            </div>
+
+            <!-- Tópicos do Saber -->
+            <ul class="text-xs text-slate-300 space-y-1.5 font-light pt-1">
+              ${v.topicos.map(t => `<li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span><span>${t}</span></li>`).join('')}
+            </ul>
+
+            <!-- Player de Voz Leve do Guardião -->
+            <div class="pt-2">
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <button onclick="playVoiceSnippet('${v.id}')" id="audio-btn-${v.id}" class="w-8 h-8 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-sm active:scale-95 transition-transform">
+                    <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
+                  </button>
+                  <div class="min-w-0">
+                    <span class="text-[11px] font-bold text-white block truncate">Voz do Guardião</span>
+                    <span class="text-[10px] text-slate-400 block truncate">${v.audioDesc}</span>
+                  </div>
+                </div>
+                <span class="text-[10px] text-emerald-400 font-mono shrink-0">1:30 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metadados de Honra (Quem ensinou, onde e geração) -->
+          <div class="pt-4 border-t border-slate-800 space-y-2">
+            <div class="text-[11px] text-slate-400 space-y-1">
+              <div>👤 <strong class="text-slate-200">Guardado por:</strong> ${v.guardiao}</div>
+              <div>📍 <strong class="text-slate-200">Local:</strong> ${v.territorio}</div>
+              <div>⏳ <strong class="text-slate-200">Tempo de Vida:</strong> ${v.geracao}</div>
+            </div>
+
+            <!-- Tags de Mapeamento Visual -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              ${v.tags.map(tag => `
+                <button onclick="searchTag('${tag}')" class="text-[10px] px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 hover:text-amber-300 hover:bg-slate-800 border border-slate-700/60 transition-colors">
+                  #${tag}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    // Filtro por Eixos
+    function filterByEixo(eixo) {
+      currentEixoFilter = eixo;
+      document.querySelectorAll('.eixo-pill').forEach(btn => {
+        btn.classList.remove('bg-amber-400', 'text-slate-950', 'shadow-sm');
+        btn.classList.add('bg-slate-800', 'text-slate-300', 'border', 'border-slate-700');
+      });
+
+      const activeBtn = document.getElementById(`pill-${eixo}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-800', 'text-slate-300', 'border', 'border-slate-700');
+        activeBtn.classList.add('bg-amber-400', 'text-slate-950', 'shadow-sm');
+      }
+
+      renderVerbetes();
+    }
+
+    // Busca Instantânea
+    function handleSearch() {
+      const q = document.getElementById('search-input').value;
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (q.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderVerbetes();
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      filterByEixo('todos');
+    }
+
+    function searchTag(tag) {
+      document.getElementById('search-input').value = tag;
+      document.getElementById('clear-search-btn').classList.remove('hidden');
+      currentEixoFilter = 'todos';
+      document.getElementById('search-input').scrollIntoView({ behavior: 'smooth' });
+      renderVerbetes();
+    }
+
+    // Player de Voz Leve
+    function playVoiceSnippet(id) {
+      const btn = document.getElementById(`audio-btn-${id}`);
+      if (!btn) return;
+      
+      const isPlaying = btn.getAttribute('data-playing') === 'true';
+      if (isPlaying) {
+        btn.setAttribute('data-playing', 'false');
+        btn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>`;
+      } else {
+        btn.setAttribute('data-playing', 'true');
+        btn.innerHTML = `<i data-lucide="pause" class="w-4 h-4 fill-current"></i>`;
+        
+        // Simulação de reprodução com feedback visual acessível
+        setTimeout(() => {
+          btn.setAttribute('data-playing', 'false');
+          btn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>`;
+          lucide.createIcons();
+        }, 5000);
+      }
+      lucide.createIcons();
+    }
+
+    // Modais
+    function openIndicarModal() {
+      document.getElementById('modal-indicar').classList.remove('hidden');
+    }
+
+    function closeIndicarModal() {
+      document.getElementById('modal-indicar').classList.add('hidden');
+    }
+
+    function handleIndicarSubmit(e) {
+      e.preventDefault();
+      const saber = document.getElementById('saber-nome').value;
+      const guardiao = document.getElementById('guardiao-nome').value;
+      const territorio = document.getElementById('territorio-local').value;
+      const frase = document.getElementById('frase-saber').value;
+
+      const novoVerbete = {
+        id: "indicacao-" + Date.now(),
+        titulo: `✨ ${saber}`,
+        eixo: "nao_livros",
+        eixoNome: "Mapeamento em Andamento",
+        fraseSabedoria: frase || "Sabedoria guardada com honra e respeito à tradição.",
+        topicos: [
+          `Registrado e indicado por membro da comunidade da Praça Pública YBY.`,
+          `Em processo de acolhimento e gravação de áudio pela equipe de cartografia.`
+        ],
+        guardiao: guardiao,
+        territorio: territorio,
+        geracao: "Cadastrado recentemente",
+        tags: ["Mapeamento Popular", "Voz da Comunidade"],
+        audioDesc: "Áudio aguardando gravação de campo."
+      };
+
+      ALL_VERBETES.unshift(novoVerbete);
+      document.getElementById('count-todos').innerText = ALL_VERBETES.length;
+      document.getElementById('form-indicar').reset();
+      closeIndicarModal();
+      renderVerbetes();
+
+      alert('Obrigado! A indicação do saber de ' + guardiao + ' foi registrada na Enciclopédia!');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadVerbetes();
+    });
+  </script>
+
+</body>
+</html>

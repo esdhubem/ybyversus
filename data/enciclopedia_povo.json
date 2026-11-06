@@ -1,0 +1,74 @@
+[
+  {
+    "id": "agricultura-raiz-quilombola",
+    "titulo": "🌾 Agricultura de Raiz — Saber Quilombola",
+    "eixo": "ancestralidade",
+    "eixoNome": "Ancestralidade Brasileira",
+    "fraseSabedoria": "Ensinaram meus avós: a terra não é propriedade, é empréstimo. Cuidamos para os que vêm.",
+    "topicos": [
+      "Plantar olhando a lua, respeitar o tempo da chuva e guardar sementes crioulas para o próximo ano.",
+      "Quem planta não planta só para si, planta para a fartura da comunidade inteira.",
+      "A terra devolve em dobro o que recebe com amor e reverência."
+    ],
+    "guardiao": "Dona Maria Benedita dos Santos",
+    "territorio": "Quilombo Mata Cavalo, MT",
+    "geracao": "5ª geração de agricultores familiares quilombolas",
+    "tags": ["Quilombo", "Agricultura Familiar", "Trabalho da Terra", "Sementes Crioulas"],
+    "audioUrl": "",
+    "audioDesc": "Gravação da voz de Dona Benedita ensinando o ciclo das luas no plantio do milho."
+  },
+  {
+    "id": "mestre-obras-fisica-prumo",
+    "titulo": "🧱 O Prumo, o Nível e a Física do Canteiro",
+    "eixo": "trabalhador",
+    "eixoNome": "O Trabalhador Assalariado",
+    "fraseSabedoria": "O concreto endurece, mas a inteligência da mão que nivela a viga é o que segura a casa de pé.",
+    "topicos": [
+      "A leitura intuitiva do peso, da areia e da proporção correta do traço para cada tipo de alvenaria.",
+      "A solidariedade entre o servente e o pedreiro: o ritmo compassado que protege o corpo do desgaste.",
+      "Memória das conquistas da categoria: a história dos operários que ergueram as cidades com a força do braço."
+    ],
+    "guardiao": "Seu Antônio Carlos Ribeiro (Mestre Tonho)",
+    "territorio": "Ceilândia, DF / Canteiros do Brasil",
+    "geracao": "38 anos dedicados à construção civil",
+    "tags": ["Construção Civil", "Saberes do Ofício", "Memória do Trabalho", "Dignidade Operária"],
+    "audioUrl": "",
+    "audioDesc": "Relato de Seu Tonho sobre como identificar o ponto exato da massa sem errar o prumo."
+  },
+  {
+    "id": "costura-sustento-bairro",
+    "titulo": "✂️ Da Mão ao Sustento — A Costura de Bairro",
+    "eixo": "mei",
+    "eixoNome": "O MEI e o Empreender do Povo",
+    "fraseSabedoria": "Não vendo apenas roupa: vendo o ajuste do tempo para quem precisa trabalhar com dignidade.",
+    "topicos": [
+      "Como transformar retalhos em peças úteis, gerando renda sem produzir desperdício.",
+      "Saber precificar o próprio tempo com justiça: cobrar o valor real da mão de obra sem extorquir o vizinho.",
+      "Rede de confiança no bairro: o comércio popular que gira a economia local onde os bancos não chegam."
+    ],
+    "guardiao": "Dona Josefa da Silva (Zefa das Costuras)",
+    "territorio": "Bairro do Roger, João Pessoa, PB",
+    "geracao": "Costureira autônoma e MEI há 14 anos",
+    "tags": ["MEI", "Costura", "Comércio Justo", "Economia do Bairro"],
+    "audioUrl": "",
+    "audioDesc": "Dona Zefa partilha a arte de organizar o caderno de encomendas e manter a ética no preço."
+  },
+  {
+    "id": "ervas-reza-benzedeiras",
+    "titulo": "🌿 O Chá, o Ramo e o Cuidado Invisível",
+    "eixo": "nao_livros",
+    "eixoNome": "Conhecimento que não está nos Livros",
+    "fraseSabedoria": "Para curar o corpo é preciso primeiro escutar onde a tristeza fez morada.",
+    "topicos": [
+      "O reconhecimento das ervas do quintal: poejo, guaco, boldo e arruda no tempo certo da colheita matinal.",
+      "O acolhimento que não cobra consulta: a saúde comunitária que apoia as mães antes mesmo do posto abrir.",
+      "A escuta compassiva: o poder terapêutico da palavra mansa e da presença atenta."
+    ],
+    "guardiao": "Dona Sebastiana de Carvalho (Vó Bastiana)",
+    "territorio": "Vale do Jequitinhonha, MG",
+    "geracao": "Benzedeira e raizeira de tradição familiar centenária",
+    "tags": ["Benzedeiras", "Ervas Medicinais", "Cuidado Popular", "Saúde Comunitária"],
+    "audioUrl": "",
+    "audioDesc": "Vó Bastiana ensina a oração de agradecimento à terra ao colher folhas medicinais."
+  }
+]

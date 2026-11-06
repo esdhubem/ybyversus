@@ -303,9 +303,12 @@
       <div class="px-1 pt-1 pb-1">
         <div class="mb-2 flex items-center justify-between">
           <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Temas</span>
-          <span class="text-[10px] text-[#E5C384]/70 font-medium">Deslize para ver todos 👉</span>
+          <button onclick="scrollTemasCarousel()" class="text-[10.5px] font-bold text-emerald-950 bg-gradient-to-r from-[#a7f3d0] to-[#fef08a] hover:brightness-105 active:scale-95 px-3 py-1 rounded-full flex items-center gap-1.5 transition-all shadow-sm border border-emerald-300/40 tap-active cursor-pointer" title="Deslizar para ver todos os temas">
+            <span>Deslize para ver todos</span>
+            <span class="text-[11px] leading-none">👉</span>
+          </button>
         </div>
-        <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none select-none">
+        <div id="temas-icons-carousel" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none select-none">
           <button type="button" onclick="scrollToPlaylist('tecnologia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
             <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">💻</span>
             <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Tecnologia & Soberania</span>
@@ -927,6 +930,17 @@
 
     function distributeCards(data) {
       applyTrilhasFilter(document.getElementById('trilhas-search-input')?.value || '');
+    }
+
+    // Rolagem suave do carrossel de temas
+    function scrollTemasCarousel() {
+      const carousel = document.getElementById('temas-icons-carousel');
+      if (!carousel) return;
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 25) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: 240, behavior: 'smooth' });
+      }
     }
 
     // Rolagem suave até a playlist selecionada

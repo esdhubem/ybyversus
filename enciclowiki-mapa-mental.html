@@ -109,6 +109,69 @@
       background: #c1c1c1;
       border-radius: 9999px;
     }
+
+    /* ======================================================== */
+    /* MODO NOTURNO CÓSMICO (ALTERNÂNCIA DINÂMICA)              */
+    /* ======================================================== */
+    body.dark-reading-mode {
+      background-color: #030A16 !important;
+      color: #e2e8f0 !important;
+      background-image: 
+        radial-gradient(circle at 50% 12%, rgba(20, 50, 95, 0.45) 0%, rgba(3, 10, 22, 0.85) 60%, rgba(2, 6, 15, 0.98) 100%),
+        url('assets/cosmic-sky.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    body.dark-reading-mode main {
+      background-color: rgba(4, 14, 30, 0.94) !important;
+      border-color: rgba(229, 195, 132, 0.25) !important;
+      color: #e2e8f0 !important;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(229, 195, 132, 0.08) !important;
+    }
+    body.dark-reading-mode h1,
+    body.dark-reading-mode .wiki-heading {
+      color: #FFF6E5 !important;
+      border-bottom-color: rgba(229, 195, 132, 0.25) !important;
+    }
+    body.dark-reading-mode a.wiki-link {
+      color: #38bdf8 !important;
+    }
+    body.dark-reading-mode .wiki-infobox {
+      background-color: #020718 !important;
+      border-color: rgba(229, 195, 132, 0.3) !important;
+      color: #e2e8f0 !important;
+    }
+    body.dark-reading-mode .wiki-infobox-header {
+      background-color: #091f3c !important;
+      border-bottom-color: rgba(229, 195, 132, 0.3) !important;
+      color: #FFF6E5 !important;
+    }
+    body.dark-reading-mode .wiki-toc {
+      background-color: #020718 !important;
+      border-color: rgba(229, 195, 132, 0.3) !important;
+      color: #e2e8f0 !important;
+    }
+    body.dark-reading-mode .connections-box {
+      background-color: #04142b !important;
+      border-color: #1e3a8a !important;
+      border-left-color: #38bdf8 !important;
+    }
+    body.dark-reading-mode .roots-box {
+      background-color: #171105 !important;
+      border-color: #78350f !important;
+      border-left-color: #f59e0b !important;
+    }
+    body.dark-reading-mode #citacao-box {
+      background-color: #020718 !important;
+      border-color: rgba(229, 195, 132, 0.2) !important;
+      color: #cbd5e1 !important;
+    }
+    body.dark-reading-mode #nav-top-bar {
+      border-color: #1e3a8a !important;
+    }
+    body.dark-reading-mode #nav-top-bar a {
+      color: #7dd3fc !important;
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col py-6 px-3 sm:px-6">
@@ -117,7 +180,7 @@
   <!-- 1. TOPO DE NAVEGAÇÃO & CRUMBS DA ENCICLOWIKI             -->
   <!-- ======================================================== -->
   <div class="max-w-4xl mx-auto w-full mb-4">
-    <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-300 text-xs">
+    <div id="nav-top-bar" class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-300 text-xs">
       
       <!-- Voltar à Enciclowiki -->
       <a href="enciclowiki.html" class="inline-flex items-center gap-1.5 font-semibold text-[#0645ad] hover:underline group">
@@ -125,10 +188,18 @@
         <span>← Voltar ao Portal Enciclowiki YBY VersuS</span>
       </a>
 
-      <!-- Selo Editorial de Curadoria -->
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-[11.5px] font-semibold text-amber-900 shadow-2xs">
-        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-700"></i>
-        <span>Curadoria Editorial Oficial: YBY VersuS</span>
+      <div class="flex items-center gap-2">
+        <!-- Botão Alternador de Tema (🌙 Noturno / ☀️ Papel Claro) -->
+        <button onclick="alternarTemaLeitura()" id="btn-theme-toggle" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-[11.5px] font-semibold text-slate-800 transition-all shadow-xs cursor-pointer active:scale-95" title="Alternar entre Modo Noturno e Papel Claro">
+          <span id="theme-toggle-icon">🌙</span>
+          <span id="theme-toggle-text">Modo Noturno</span>
+        </button>
+
+        <!-- Selo Editorial de Curadoria -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-[11.5px] font-semibold text-amber-900 shadow-2xs">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-700"></i>
+          <span>Curadoria: YBY VersuS</span>
+        </div>
       </div>
 
     </div>
@@ -583,7 +654,35 @@ YBY VERSUS. Mapa Mental (Pensamento Radial): A Tecnologia do Escrever e do Mapea
       closeModalCuradoria();
     }
 
+    // Alternar Tema de Leitura (🌙 Noturno / ☀️ Papel Claro)
+    function alternarTemaLeitura() {
+      const isDark = document.body.classList.toggle('dark-reading-mode');
+      atualizarBotaoTema(isDark);
+      localStorage.setItem('yby_enciclo_theme', isDark ? 'dark' : 'light');
+    }
+
+    function atualizarBotaoTema(isDark) {
+      const icon = document.getElementById('theme-toggle-icon');
+      const text = document.getElementById('theme-toggle-text');
+      const btn = document.getElementById('btn-theme-toggle');
+      if (!btn) return;
+      if (isDark) {
+        icon.innerText = '☀️';
+        text.innerText = 'Papel Claro';
+        btn.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#092244] border border-[#224477] text-[11.5px] font-semibold text-amber-300 transition-all shadow-xs cursor-pointer active:scale-95';
+      } else {
+        icon.innerText = '🌙';
+        text.innerText = 'Modo Noturno';
+        btn.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-[11.5px] font-semibold text-slate-800 transition-all shadow-xs cursor-pointer active:scale-95';
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('yby_enciclo_theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-reading-mode');
+        atualizarBotaoTema(true);
+      }
       lucide.createIcons();
     });
   </script>

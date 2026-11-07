@@ -2,8 +2,8 @@
 <html lang="pt-BR" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <title>Enciclowiki YBY VersuS — Portal dos Saberes Ancestrais & Autonomia</title>
-  <meta name="description" content="Enciclowiki YBY VersuS: enciclopédia livre dos saberes populares, povos originários, pensamento decolonial e desenvolvimento da autonomia popular. Curadoria: YBY VersuS.">
+  <title>Enciclowiki YBY VersuS — Portal dos Saberes, Cosmovisões & Autonomia</title>
+  <meta name="description" content="Enciclowiki YBY VersuS: enciclopédia livre dos saberes populares, cosmovisões, pensamento decolonial e desenvolvimento da autonomia popular. Curadoria: YBY VersuS.">
 
   <!-- Acessibilidade & Viewport Mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -148,24 +148,19 @@
       transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
       z-index: 0;
     }
+    /* Iluminação apenas quando o mouse passa (ou no toque) */
     .theme-chip:hover .icon-halo,
-    .theme-chip:focus .icon-halo,
-    .theme-chip:active .icon-halo,
-    .theme-chip.active .icon-halo {
+    .theme-chip:active .icon-halo {
       opacity: 1;
       transform: translateX(-50%) scale(1.35);
     }
-    .theme-chip:hover .theme-icon,
-    .theme-chip.active .theme-icon {
+    .theme-chip:hover .theme-icon {
       transform: translateY(-2px) scale(1.18);
       filter: drop-shadow(0 0 10px rgba(255, 235, 140, 0.95)) drop-shadow(0 0 20px rgba(234, 199, 132, 0.8));
     }
     .theme-chip:hover .theme-title,
     .theme-chip.active .theme-title {
       color: #FFF9ED !important;
-    }
-    .theme-chip.active .theme-title {
-      text-shadow: 0 0 10px rgba(229, 195, 132, 0.6);
     }
 
     .scrollbar-none {
@@ -263,7 +258,7 @@
           Enciclopédia Livre dos Saberes Populares & Autonomia
         </h2>
         <p class="text-[11.5px] text-slate-300 mt-1 leading-relaxed px-1">
-          Memória ancestral dos povos originários, pensamento decolonial e ferramentas para o desenvolvimento da autonomia prática e cooperativa.
+          Memória viva, cosmovisões integradoras, pensamento decolonial e ferramentas para o desenvolvimento da autonomia prática e cooperativa.
         </p>
 
         <div class="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-[11px] text-emerald-300 font-semibold shadow-xs">
@@ -391,18 +386,11 @@
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Lixo Zero &<br>Coletivo</span>
           </button>
 
-          <!-- 9. Povos Originários -->
-          <button type="button" onclick="selecionarTag('PovosOriginarios')" data-tag="PovosOriginarios" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <!-- 9. Cosmovisões -->
+          <button type="button" onclick="selecionarTag('Cosmovisoes')" data-tag="Cosmovisoes" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
-            <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🏹</span>
-            <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Povos<br>Originários</span>
-          </button>
-
-          <!-- 10. Saberes Ancestrais -->
-          <button type="button" onclick="selecionarTag('SaberesAncestrais')" data-tag="SaberesAncestrais" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
-            <div class="icon-halo"></div>
-            <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🏺</span>
-            <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Saberes<br>Ancestrais</span>
+            <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🌌</span>
+            <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Cosmovisões</span>
           </button>
 
           <!-- 11. Pensamento Decolonial -->
@@ -446,48 +434,6 @@
         </button>
       </div>
 
-      <!-- ======================================================== -->
-      <!-- 8. ESPAÇO DA AUTONOMIA: DICAS PARA O TRABALHO PRÓPRIO    -->
-      <!-- ======================================================== -->
-      <div class="wiki-cosmic-card p-4 space-y-3 border-amber-500/25">
-        <div class="flex items-center gap-2 pb-2 border-b border-white/10">
-          <span class="text-lg">💡</span>
-          <div>
-            <h3 class="font-brand text-sm font-bold text-[#E5C384]">Espaço da Autonomia & Trabalho Próprio</h3>
-            <p class="text-[10.5px] text-slate-400">Dicas práticas de YBY VersuS para fazer o próprio sustento com dignidade.</p>
-          </div>
-        </div>
-
-        <div class="space-y-2 text-[11.5px]">
-          <div class="p-2.5 rounded-xl bg-[#041024]/80 border border-emerald-500/25">
-            <strong class="text-emerald-300 block mb-0.5">01 • Preço Justo não é Preço Baixo</strong>
-            <p class="text-slate-300 leading-relaxed m-0 text-[11px]">
-              Calcule insumos, tempo de vida e o valor do seu descanso. Precificar com dignidade é um ato de respeito ao próprio trabalho.
-            </p>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-[#041024]/80 border border-blue-500/25">
-            <strong class="text-blue-300 block mb-0.5">02 • A Regra dos Dois Bolsos</strong>
-            <p class="text-slate-300 leading-relaxed m-0 text-[11px]">
-              Separe as contas: uma para o ofício (materiais e despesas do trabalho) e outra para o sustento da sua casa.
-            </p>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-[#041024]/80 border border-amber-500/25">
-            <strong class="text-amber-300 block mb-0.5">03 • Fortaleça o Comércio do Bairro</strong>
-            <p class="text-slate-300 leading-relaxed m-0 text-[11px]">
-              Indique colegas, crie parcerias de troca e fortaleça a confiança comunitária. A cooperação supera a concorrência predatória.
-            </p>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-[#041024]/80 border border-rose-500/25">
-            <strong class="text-rose-300 block mb-0.5">04 • Descanso também é Trabalho</strong>
-            <p class="text-slate-300 leading-relaxed m-0 text-[11px]">
-              Reserve momentos de silêncio e convívio com a terra. Um corpo esgotado não sustenta a autonomia produtiva.
-            </p>
-          </div>
-        </div>
-      </div>
 
       <!-- ======================================================== -->
       <!-- 9. CAIXA DE CURADORIA COMUNITÁRIA YBY VERSUS             -->
@@ -552,8 +498,7 @@
             <option value="CulturaMakerETecnologiasAbertas">#CulturaMakerETecnologiasAbertas — Ferramentas, Máquinas e Energias</option>
             <option value="HabitacaoETerritorio">#HabitacaoETerritorio — Comunidades, Cidades de Transição e Co-moradia</option>
             <option value="ConsumoEEstiloDeVida">#ConsumoEEstiloDeVida — Financiamento Coletivo, Lixo Zero e Reciclagem</option>
-            <option value="PovosOriginarios">#PovosOriginarios — Saberes dos Povos da Floresta e da Terra</option>
-            <option value="SaberesAncestrais">#SaberesAncestrais — Quilombos, Tradição Oral e Mestres</option>
+            <option value="Cosmovisoes">#Cosmovisoes — Equilíbrio cósmico, território sagrado, convivência fraterna, memória comunitária</option>
             <option value="PensamentoDecolonial">#PensamentoDecolonial — Soberania, Colonialidade e Giro Decolonial</option>
             <option value="MedicinasEPraticasAncestrais">#MedicinasEPraticasAncestrais — Medicinas e Práticas Ancestrais, Ervas e Cuidado Popular</option>
           </select>
@@ -654,7 +599,7 @@
         titulo: "Espiritualidade & Resistência: Conexão, Centralidade do Corpo e Afetos",
         eixo: "Espiritualidade & Tradições Vivas",
         resumo: "A ancestralidade como território sagrado. A força dos terreiros, ritos e saberes de cura onde o corpo não é pecado nem mercadoria, mas templo de celebração, partilha de afetos e resistência histórica contra o racismo religioso.",
-        tags: ["EspiritualidadeEResistencia", "SaberesAncestrais"],
+        tags: ["EspiritualidadeEResistencia"],
         curador: "YBY VersuS",
         link: "enciclowiki-mapa-mental.html",
         tempoLeitura: "6 min",
@@ -712,43 +657,51 @@
       {
         id: "sumak-kawsay",
         titulo: "Sumak Kawsay: A Sabedoria Andina da Vida em Plenitude",
-        eixo: "Matrizes Filosóficas Ancestrais",
+        eixo: "Cosmovisões & Bem Viver",
+        tipoPublicacao: "Cosmovisão Originária",
+        imagem: "assets/card-sol-ancestral.jpg",
         resumo: "Conceito quéchua-aymara que expressa o Bem Viver em harmonia cósmica com a Pachamama (Mãe Terra). Fundamenta-se no Ayni (reciprocidade sagrada), na Minka (trabalho coletivo voluntário) e na superação do paradigma extrativista.",
-        tags: ["PovosOriginarios", "PensamentoDecolonial"],
+        tags: ["Cosmovisoes", "PensamentoDecolonial"],
         curador: "YBY VersuS",
         link: "bemviver-filosofias.html",
         tempoLeitura: "7 min",
-        emoji: "🏹",
+        emoji: "🌌",
         destaque: false
       },
       {
         id: "teko-pora",
         titulo: "Teko Porã: O Modo Bom de Ser e Viver do Povo Guarani",
-        eixo: "Saberes dos Povos Originários",
+        eixo: "Cosmovisões & Equilíbrio Cósmico",
+        tipoPublicacao: "Cosmovisão Viva",
+        imagem: "assets/card-portal-luz.jpg",
         resumo: "A busca contínua pela harmonia espiritual, a convivência comunitária respeitosa e o caminhar em direção à Yvy Marãey (Terra Sem Mal). Mostra como o equilíbrio interior depende da preservação da floresta e da palavra verdadeira.",
-        tags: ["PovosOriginarios"],
+        tags: ["Cosmovisoes"],
         curador: "YBY VersuS",
         link: "bemviver-filosofias.html",
         tempoLeitura: "5 min",
-        emoji: "🌿",
+        emoji: "🌌",
         destaque: false
       },
       {
         id: "farmacias-vivas-quilombolas",
-        titulo: "Farmácias Vivas & Sabedorias Quilombolas da Terra",
-        eixo: "Etnobotânica & Tradição Oral",
+        titulo: "Farmácias Vivas & Práticas Tradicionais da Terra",
+        eixo: "Etnobotânica & Cuidado Popular",
+        tipoPublicacao: "Prática Tradicional",
+        imagem: "assets/hero-forest.jpg",
         resumo: "O legado de cura tradicional das erveiras, curandeiras e parteiras quilombolas. A preservação de sementes crioulas, raízes medicinais, garrafadas e o respeito aos ciclos da lua na colheita como tecnologia viva de saúde preventiva.",
-        tags: ["SaberesAncestrais", "MedicinasEPraticasAncestrais", "SaudeIntegrativa"],
+        tags: ["MedicinasEPraticasAncestrais", "SaudeIntegrativa"],
         curador: "YBY VersuS",
         link: "enciclowiki-mapa-mental.html",
         tempoLeitura: "6 min",
-        emoji: "🏺",
+        emoji: "🌿",
         destaque: false
       },
       {
         id: "milton-santos-territorio",
         titulo: "Território Usado & Resistência Decolonial",
         eixo: "Pensamento Decolonial",
+        tipoPublicacao: "Revisão Crítica",
+        imagem: "assets/card-mestres-terra.jpg",
         resumo: "A categoria de território usado que demonstra como o espaço geográfico ganha sentido pela ação humana cotidiana. Analisa como o povo comum e as comunidades periféricas exercem sua soberania popular construindo o giro decolonial no chão da história.",
         tags: ["PensamentoDecolonial", "AutonomiaEEmpreender"],
         curador: "YBY VersuS",
@@ -760,9 +713,11 @@
       {
         id: "pics-saude-integrativa",
         titulo: "Medicinas e Práticas Ancestrais de Cura e Cuidado",
-        eixo: "Medicinas & Práticas Ancestrais",
+        eixo: "Medicinas & Práticas Tradicionais",
+        tipoPublicacao: "Prática Tradicional",
+        imagem: "assets/card-floresta-sagrada.jpg",
         resumo: "O resgate e a legitimação pública de saberes terapêuticos tradicionais: plantas medicinais, raizeiros, benzedeiras, garrafadas, fitoterapia e saberes de parteiras, fortalecendo a autonomia e o autocuidado popular.",
-        tags: ["MedicinasEPraticasAncestrais", "SaudeIntegrativa", "SaberesAncestrais"],
+        tags: ["MedicinasEPraticasAncestrais", "SaudeIntegrativa"],
         curador: "YBY VersuS",
         link: "enciclowiki-mapa-mental.html",
         tempoLeitura: "5 min",
@@ -812,15 +767,10 @@
         texto: "Estilos de vida conscientes e regenerativos: estratégias de Lixo Zero (Zero Waste), valorização do trabalho de cooperativas de catadores de materiais recicláveis, financiamento coletivo e compras comunitárias.",
         cor: "bg-violet-950/70 border-violet-500/40 text-violet-200"
       },
-      PovosOriginarios: {
-        titulo: "🏹 #PovosOriginarios — Sabedorias das Raízes da Terra",
-        texto: "Cosmovisões, línguas e filosofias vivas dos povos indígenas do Brasil e das Américas (Guarani, Yanomami, Krenak, Quéchua, Aymara). Noções de equilíbrio cósmico, território sagrado e convivência fraterna.",
-        cor: "bg-amber-950/70 border-amber-500/40 text-amber-200"
-      },
-      SaberesAncestrais: {
-        titulo: "🏺 #SaberesAncestrais — Memória Viva e Mestres do Chão",
-        texto: "Tradições orais transmitidas por gerações: mestres quilombolas, erveiras, artesãos da palha e do barro, rezadeiras e guardiões da memória comunitária brasileira.",
-        cor: "bg-orange-950/70 border-orange-500/40 text-orange-200"
+      Cosmovisoes: {
+        titulo: "🌌 #Cosmovisoes — Equilíbrio cósmico, território sagrado, convivência fraterna, memória comunitária",
+        texto: "Equilíbrio cósmico, território sagrado, convivência fraterna e preservação da memória comunitária viva. Filosofias e cosmovisões que integram o ser humano ao cosmos e à Mãe Terra.",
+        cor: "bg-indigo-950/70 border-indigo-500/40 text-indigo-200"
       },
       PensamentoDecolonial: {
         titulo: "🧭 #PensamentoDecolonial — Soberania, Colonialidade e Giro Decolonial",
@@ -975,7 +925,7 @@
             <!-- Coluna Esquerda: Badge e Título -->
             <div class="flex-1 flex flex-col justify-between pr-2 min-w-0">
               <div>
-                <span class="inline-block px-3 py-1 text-[9.5px] font-black uppercase tracking-wider rounded-full bg-[#0b1b4f] text-[#6ea8fe] border border-[#1b3584]/60 shadow-sm">
+                <span class="inline-block px-3 py-1 text-[9.5px] font-black uppercase tracking-wider rounded-full bg-[#0b1b4f] text-[#F6B73C] border border-[#1b3584]/60 shadow-sm">
                   ${tipo}
                 </span>
               </div>
@@ -992,9 +942,9 @@
               </div>
               
               <a href="${linkUrl}" 
-                 title="Ler na Fonte"
+                 title="Saiba mais"
                  class="w-full text-center py-2 px-1 rounded-full bg-[#c2db1d] hover:bg-[#b0c714] active:scale-95 text-[#0a1505] font-black text-xs shadow-md transition-transform duration-150 block tracking-wide tap-active select-none">
-                Ler na Fonte
+                Saiba mais
               </a>
             </div>
           </article>

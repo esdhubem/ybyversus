@@ -498,37 +498,37 @@
     </main>
 
     <!-- 4. RODAPÉ FIXO DO APLICATIVO (BOTTOM NAVIGATION BAR) -->
-    <nav class="shrink-0 z-30 bg-[#030A16]/95 backdrop-blur-md border-t border-[#142C4E] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.8)]">
-      <!-- Praça -->
-      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="layout-grid" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
-      </a>
+    <nav class="shrink-0 z-30 bg-[#030A16]/95 backdrop-blur-md border-t border-[#142C4E] px-4 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.8)]">
+      <!-- Lado Esquerdo -->
+      <div class="flex items-center justify-around flex-1">
+        <!-- Praça -->
+        <a href="index.html" class="flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+          <i data-lucide="layout-grid" class="w-5 h-5"></i>
+          <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
+        </a>
 
-      <!-- Tempo (Previsão: Tempo, Mar e Céu) -->
-      <a href="previsaotempoastros.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="cloud-sun" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
-      </a>
+        <!-- Tempo (Previsão: Tempo, Mar e Céu) -->
+        <a href="previsaotempoastros.html" class="flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+          <i data-lucide="cloud-sun" class="w-5 h-5"></i>
+          <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
+        </a>
+      </div>
 
       <!-- Botão Central (+) -->
-      <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
+      <div class="relative -top-4 px-3 flex flex-col items-center shrink-0">
         <a href="index.html" title="Cultivar Saber na Praça" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85),0_0_18px_rgba(199,150,55,0.7)] active:scale-95 hover:scale-105 transition-all tap-active">
           <i data-lucide="plus" class="w-6 h-6 stroke-[3.5] text-[#1A1204]"></i>
         </a>
       </div>
 
-      <!-- Livraria -->
-      <a href="livraria.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-[#E5C384] transition-colors tap-active group" title="Livraria YBY: Livros, E-books e Aplicativos">
-        <i data-lucide="book-open" class="w-5 h-5 text-amber-300 group-hover:text-[#E5C384] transition-colors"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Livraria</span>
-      </a>
-
-      <!-- Presença -->
-      <a href="index.html#presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group">
-        <i data-lucide="user" class="w-5 h-5"></i>
-        <span class="text-[10px] font-bold tracking-tight mt-0.5">Presença</span>
-      </a>
+      <!-- Lado Direito -->
+      <div class="flex items-center justify-around flex-1">
+        <!-- Livraria -->
+        <a href="livraria.html" class="flex flex-col items-center justify-center py-1 text-[#E5C384] hover:text-[#FFF6E5] transition-colors tap-active group" title="Livraria YBY: Livros, E-books e Aplicativos">
+          <i data-lucide="book-open" class="w-5 h-5 text-[#E5C384] transition-colors"></i>
+          <span class="text-[10px] font-bold tracking-tight mt-0.5">Livraria</span>
+        </a>
+      </div>
     </nav>
 
   </div>

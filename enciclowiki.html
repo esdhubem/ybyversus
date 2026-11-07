@@ -7,6 +7,9 @@
 
   <!-- Acessibilidade & Viewport Mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <!-- PWA Manifest & Suporte Mobile -->
   <link rel="manifest" href="manifest.json">
@@ -109,10 +112,22 @@
     }
 
     /* Itens de Tema Estilo App YBY (Sem quadrados, com auréola/iluminação no hover) */
-    .theme-chip {
+    .theme-chip,
+    .theme-chip:hover,
+    .theme-chip:focus,
+    .theme-chip:active,
+    .theme-chip.active {
       background: transparent !important;
-      border: none !important;
+      background-color: transparent !important;
+      border: 0 !important;
+      border-width: 0 !important;
+      border-style: none !important;
+      border-color: transparent !important;
       box-shadow: none !important;
+      outline: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      -webkit-tap-highlight-color: transparent !important;
       position: relative;
       transition: all 0.25s ease;
       cursor: pointer;
@@ -314,91 +329,91 @@
         <div id="temas-icons-carousel" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none select-none">
           
           <!-- 0. Todos -->
-          <button type="button" onclick="selecionarTag('todos')" data-tag="todos" class="theme-chip active shrink-0 w-20 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('todos')" data-tag="todos" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip active shrink-0 w-20 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">✨</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Todos</span>
           </button>
 
           <!-- 1. Autonomia & Empreender -->
-          <button type="button" onclick="selecionarTag('AutonomiaEEmpreender')" data-tag="AutonomiaEEmpreender" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('AutonomiaEEmpreender')" data-tag="AutonomiaEEmpreender" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🤝</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Autonomia &<br>Cooperativismo</span>
           </button>
 
           <!-- 2. Permacultura & Bioconstrução -->
-          <button type="button" onclick="selecionarTag('PermaculturaEBioconstrucao')" data-tag="PermaculturaEBioconstrucao" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('PermaculturaEBioconstrucao')" data-tag="PermaculturaEBioconstrucao" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🏡</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Permacultura &<br>Ecovilas</span>
           </button>
 
           <!-- 3. Espiritualidade & Resistência -->
-          <button type="button" onclick="selecionarTag('EspiritualidadeEResistencia')" data-tag="EspiritualidadeEResistencia" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('EspiritualidadeEResistencia')" data-tag="EspiritualidadeEResistencia" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🔮</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Espiritualidade &<br>Afetos</span>
           </button>
 
           <!-- 4. Agriculturas Ecológicas -->
-          <button type="button" onclick="selecionarTag('AgriculturasEcologicas')" data-tag="AgriculturasEcologicas" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('AgriculturasEcologicas')" data-tag="AgriculturasEcologicas" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🌱</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Agricultura<br>Sintrópica</span>
           </button>
 
           <!-- 5. Economias Sociais -->
-          <button type="button" onclick="selecionarTag('EconomiasSociais')" data-tag="EconomiasSociais" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('EconomiasSociais')" data-tag="EconomiasSociais" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🪙</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Moedas Sociais &<br>Bem Viver</span>
           </button>
 
           <!-- 6. Cultura Maker & Tecnologias Abertas -->
-          <button type="button" onclick="selecionarTag('CulturaMakerETecnologiasAbertas')" data-tag="CulturaMakerETecnologiasAbertas" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('CulturaMakerETecnologiasAbertas')" data-tag="CulturaMakerETecnologiasAbertas" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">⚙️</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Cultura Maker &<br>Máquinas</span>
           </button>
 
           <!-- 7. Habitação & Território -->
-          <button type="button" onclick="selecionarTag('HabitacaoETerritorio')" data-tag="HabitacaoETerritorio" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('HabitacaoETerritorio')" data-tag="HabitacaoETerritorio" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🏘️</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Co-moradia &<br>Transição</span>
           </button>
 
           <!-- 8. Consumo & Estilo de Vida -->
-          <button type="button" onclick="selecionarTag('ConsumoEEstiloDeVida')" data-tag="ConsumoEEstiloDeVida" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('ConsumoEEstiloDeVida')" data-tag="ConsumoEEstiloDeVida" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">♻️</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Lixo Zero &<br>Coletivo</span>
           </button>
 
           <!-- 9. Povos Originários -->
-          <button type="button" onclick="selecionarTag('PovosOriginarios')" data-tag="PovosOriginarios" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('PovosOriginarios')" data-tag="PovosOriginarios" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🏹</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Povos<br>Originários</span>
           </button>
 
           <!-- 10. Saberes Ancestrais -->
-          <button type="button" onclick="selecionarTag('SaberesAncestrais')" data-tag="SaberesAncestrais" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('SaberesAncestrais')" data-tag="SaberesAncestrais" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🏺</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Saberes<br>Ancestrais</span>
           </button>
 
           <!-- 11. Pensamento Decolonial -->
-          <button type="button" onclick="selecionarTag('PensamentoDecolonial')" data-tag="PensamentoDecolonial" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('PensamentoDecolonial')" data-tag="PensamentoDecolonial" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🧭</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Pensamento<br>Decolonial</span>
           </button>
 
           <!-- 13. Medicinas e Práticas Ancestrais -->
-          <button type="button" onclick="selecionarTag('MedicinasEPraticasAncestrais')" data-tag="MedicinasEPraticasAncestrais" class="theme-chip shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <button type="button" onclick="selecionarTag('MedicinasEPraticasAncestrais')" data-tag="MedicinasEPraticasAncestrais" style="background: transparent !important; border: none !important; box-shadow: none !important; outline: none !important;" class="theme-chip shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🌿</span>
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Medicinas &<br>Práticas Ancestrais</span>

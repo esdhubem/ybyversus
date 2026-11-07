@@ -396,11 +396,11 @@
             <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Tecnologia do<br>Mapear</span>
           </button>
 
-          <!-- 13. Saúde Integrativa -->
-          <button type="button" onclick="selecionarTag('SaudeIntegrativa')" data-tag="SaudeIntegrativa" class="theme-chip shrink-0 w-22 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
+          <!-- 13. Medicinas e Práticas Ancestrais -->
+          <button type="button" onclick="selecionarTag('MedicinasEPraticasAncestrais')" data-tag="MedicinasEPraticasAncestrais" class="theme-chip shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active transition-all cursor-pointer text-center relative focus:outline-none">
             <div class="icon-halo"></div>
             <span class="theme-icon text-3xl mb-1 transition-all select-none leading-none relative z-10">🌿</span>
-            <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Saúde<br>Integrativa</span>
+            <span class="theme-title text-[10.5px] font-bold text-[#E5C384] tracking-tight leading-tight transition-colors">Medicinas &<br>Práticas Ancestrais</span>
           </button>
 
         </div>
@@ -586,7 +586,7 @@
             <option value="SaberesAncestrais">#SaberesAncestrais — Quilombos, Tradição Oral e Mestres</option>
             <option value="PensamentoDecolonial">#PensamentoDecolonial — Soberania, Colonialidade e Giro Decolonial</option>
             <option value="TecnologiaDoMapear">#TecnologiaDoMapear — Mapas Mentais e Organização Cognitiva</option>
-            <option value="SaudeIntegrativa">#SaudeIntegrativa — Práticas Integrativas, Ervas e PICS</option>
+            <option value="MedicinasEPraticasAncestrais">#MedicinasEPraticasAncestrais — Medicinas e Práticas Ancestrais, Ervas e Cuidado Popular</option>
           </select>
         </div>
 
@@ -781,7 +781,7 @@
         titulo: "Farmácias Vivas & Sabedorias Quilombolas da Terra",
         eixo: "Etnobotânica & Tradição Oral",
         resumo: "O legado de cura tradicional das erveiras, curandeiras e parteiras quilombolas. A preservação de sementes crioulas, raízes medicinais, garrafadas e o respeito aos ciclos da lua na colheita como tecnologia viva de saúde preventiva.",
-        tags: ["SaberesAncestrais", "SaudeIntegrativa"],
+        tags: ["SaberesAncestrais", "MedicinasEPraticasAncestrais", "SaudeIntegrativa"],
         curador: "YBY VersuS",
         link: "enciclowiki-mapa-mental.html",
         tempoLeitura: "6 min",
@@ -802,14 +802,14 @@
       },
       {
         id: "pics-saude-integrativa",
-        titulo: "Práticas Integrativas e Complementares em Saúde (PICS)",
-        eixo: "Saúde Integrativa & Cuidado Popular",
-        resumo: "O resgate e a legitimação pública de saberes terapêuticos tradicionais integrados ao SUS: fitoterapia, homeopatia, acupuntura, arteterapia e imposição de mãos, fortalecendo a autonomia do paciente sobre o próprio corpo.",
-        tags: ["SaudeIntegrativa", "SaberesAncestrais"],
+        titulo: "Medicinas e Práticas Ancestrais de Cura e Cuidado",
+        eixo: "Medicinas & Práticas Ancestrais",
+        resumo: "O resgate e a legitimação pública de saberes terapêuticos tradicionais: plantas medicinais, raizeiros, benzedeiras, garrafadas, fitoterapia e saberes de parteiras, fortalecendo a autonomia e o autocuidado popular.",
+        tags: ["MedicinasEPraticasAncestrais", "SaudeIntegrativa", "SaberesAncestrais"],
         curador: "YBY VersuS",
         link: "enciclowiki-mapa-mental.html",
         tempoLeitura: "5 min",
-        emoji: "🌱",
+        emoji: "🌿",
         destaque: false
       }
     ];
@@ -875,9 +875,14 @@
         texto: "Métodos cognitivos, pensamento radial, mapas conceituais e a tecnologia da escrita como instrumento de emancipação e ordenamento de ideias.",
         cor: "bg-indigo-950/70 border-indigo-500/40 text-indigo-200"
       },
+      MedicinasEPraticasAncestrais: {
+        titulo: "🌿 #MedicinasEPraticasAncestrais — Medicinas e Práticas Ancestrais de Cura e Cuidado",
+        texto: "Abordagem holística e tradicional da saúde: plantas medicinais, raizeiros, benzedeiras, fitoterapia popular, saberes de parteiras e o cuidado vivo integrado ao corpo e à terra.",
+        cor: "bg-rose-950/70 border-rose-500/40 text-rose-200"
+      },
       SaudeIntegrativa: {
-        titulo: "🌿 #SaudeIntegrativa — PICS, Etnobotânica e Cuidado Popular",
-        texto: "Abordagem holística do bem-estar: fitoterapia tradicional, plantas medicinais, autocuidado e a sabedoria do corpo integrado ao meio ambiente.",
+        titulo: "🌿 #MedicinasEPraticasAncestrais — Medicinas e Práticas Ancestrais de Cura e Cuidado",
+        texto: "Abordagem holística e tradicional da saúde: plantas medicinais, raizeiros, benzedeiras, fitoterapia popular, saberes de parteiras e o cuidado vivo integrado ao corpo e à terra.",
         cor: "bg-rose-950/70 border-rose-500/40 text-rose-200"
       }
     };
